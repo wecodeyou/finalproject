@@ -13,76 +13,166 @@
 	
 	
 	<div>
-
-		<form action="#" method="post">
+		<h2 id="message" style="color:red"></h2>
 		<table border="2">	
 			<tr>
+				<td>
 				# 상품이름: 
-				<input type="text" name="productName" id="name"/>
+				<input type="text" name="name" id="name"/>
+				</td>
 			</tr>
 			<tr>
+				<td>
 				# 상품가격: 
-				<input type="text" name="productPrice"id="price"/>
+				<input type="text" name="price"id="price"/>
+				</td>
 			</tr>
 			<tr>
+			<td>
 				# 상품설명: 
-				<input type="text" name="productDetail" id="detail"/>
+				<input type="text" name="detail" id="detail"/>
+			</td>
 			</tr>
 			<tr>
+				<td>
 				# 상품수량
-			  <input type="number" id="seats" name="seats" min="1" max="300" value="1" readonly >
+			  <input type="number" id="seats" name="offSeats" min="1" max="300" value="1" readonly >
+				</td>
 			</tr>
 			<tr>
+				<td>
 				<input type="text" id="thumb" name="thumb" value="https://res.cloudinary.com/dl5spujr5/image/upload/v1574920339/samples/animals/kitten-playing.gif" readonly/>
+				</td>
 			</tr>
 			<tr>
+				<td>
+				<input type="text" id="place" name="place" />
+				</td>
+			</tr>
+			<tr>
+				<td>
 				# 상품등록자: 
-				<input type="text" name="productUser" id="user" value="kouri1004@gmail.com" readonly />
+				<input type="text" name="author" id="author" value="kouri1004@gmail.com" readonly />
+				</td>
 			</tr>
-			<tr># 상품종류: 
-				<select name="productType" id="type">
-				<option value="0">강의</option>
-				<option value="1">상품</option>				
+			<tr>
+				<td>
+					# 상품종류: 
+				<select name="type" id="type">
+				<option value="0">온라인</option>
+				<option value="1">오프라인</option>
+				<option value="2">상품</option>			
 				</select>
+				</td>
 			</tr>
-			<tr>#시작일
-				<input type="date" name="off_start_at" id="start"/>
+			<tr>
+				<td>
+				# 강의종류: 
+				<select name="off_Type" id="off_type">
+				<option value="0">programming</option>
+				<option value="1">cloud</option>
+				<option value="2">network</option>
+				<option value="3">system&server</option>
+				<option value="4">hacking</option>
+				<option value="5">database</option>
+				<option value="6">자격증</option>					
+				</select>
+				</td>
 			</tr>
-			<tr>#종료일
+			<tr>
+			<td> #시작일
+				<input type="date" name="off_start_at" id="start" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					#종료일
 				<input type="date" name="off_end_at" id="end"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<button id="off_submit" >등록</button>
+				</td>
 			</tr>
 		</table>		
-		</form>
 
 	</div>
 <script type="text/javascript">
-	function chkOff(){
-		var productInfo = {
-			"productType" : $("#type").val(),
-			"productName" : $("#name").val(),
-			"productPrice" : $("#price").val(),
-			"productDetail" : $("#detail").val(),
-			"productThumb" : $("#thumb").val()
-		}
-		$.ajax({
-			type: "POST",
-			url : "/product/register",
-			headers:{
-				"Content-Type": "application/json"
-			},
-			dataType: "text",
-			data:offInfo,
-			success: function(data){
-				console.log("received output");
-				if(data === "product_success"){
-					location.href = "/product"
-				}
-			},
-			error: function(){
-				console.log("POST : /off/register 요청에 실패했습니다.")
+
+	$(function(){
+		const type = $('#type').val();
+		console.log(type);
+		
+		const name = $('#name').val();
+		console.log(name);
+
+		const price = $('#price').val();
+		console.log(price);
+
+		const detail = $('#detail').val();
+		console.log(detail);
+
+		const thumb = $('#thumb').val();
+		console.log(thumb);
+		
+		const author = $('#author').val();
+		console.log(author);
+		
+		const off_type = $('#off_type').val();
+		console.log(off_type);
+		
+		const start = $('#start').val();
+		console.log(start);
+		
+		const end = $('#end').val();
+		console.log(end);
+		
+		const seats = $('#seats').val();
+		console.log(seats);
+		
+		const place = $('#place').val();
+		console.log(place);
+		
+		var data = {
+				productType : type,
+				productName : name,
+				productPrice : price,
+				productDetail : detail,
+				productThumb : thumb,
+				offAuthor : author,
+				offCategory : off_type,
+				offPlace : place,
+				offSeats : seats,
+				offStartAt : start,
+				offEndAt : end
 			}
-		}); /* end ajax */
-	}
+		
+
+		$('off_submit').click(function(){
+			$.ajax({
+				type: "POST",
+				url : "/off/register",
+				headers:{
+					"Content-Type": "application/json"
+				},
+				dataType: "text",
+				data:data,
+				success: function(data){
+					console.log("received output: " + data);
+					if(data === "off_success"){
+						location.href = "/product";
+					} else{
+						$('#message').text("서버에러가 발생하였습니다");
+					}
+				},
+				error: function(){
+					$('#message').text("통신에 실패하였습니다");
+				}
+			}); /* end ajax */			
+		});
+	});
+
 </script>
 </body>
 </html>

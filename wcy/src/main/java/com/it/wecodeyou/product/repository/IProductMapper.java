@@ -6,7 +6,7 @@ import com.it.wecodeyou.product.model.ProductVO;
 
 public interface IProductMapper {
 
-	public void insertProduct(ProductVO pvo);
+	public Integer insertProduct(ProductVO pvo);
 	
 	public void updateProduct(ProductVO pvo);
 	

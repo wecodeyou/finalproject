@@ -18,6 +18,9 @@
 		INTO product
 		(product_type, product_name, product_price, product_detail, product_thumb, product_user)
 		VALUES(#{productType}, #{productName}, #{productPrice}, #{productDetail}, #{productThumb}, #{productUser})
+		<selectKey keyProperty="contentSqe" resultType="integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 	</insert>
 	
 	<update id="updateProduct">

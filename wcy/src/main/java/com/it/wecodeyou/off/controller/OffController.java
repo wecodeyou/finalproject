@@ -1,5 +1,6 @@
 package com.it.wecodeyou.off.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.wecodeyou.member.model.MemberVO;
+import com.it.wecodeyou.off.model.OffVO;
 import com.it.wecodeyou.off.model.SeatVO;
+import com.it.wecodeyou.off.service.IOffService;
 import com.it.wecodeyou.off.service.ISeatService;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
@@ -30,6 +33,9 @@ public class OffController {
 
    @Autowired
    IProductService productService;
+   
+   @Autowired
+   IOffService offService;
    
    //강의실 체크 페이지 요청
    @GetMapping("/seat_main")
@@ -48,17 +54,45 @@ public class OffController {
       return mv;
       
    }
-   
+   @GetMapping(value="/register")
+   public ModelAndView register(ModelAndView mv) {
+	   mv.setViewName("/off/OffForm");
+	   return mv;
+   }
    @PostMapping(value="/register")
-      public ModelAndView register(HttpServletRequest request, ModelAndView mv) {
+      public ModelAndView register(
+    		  @RequestBody String productName,
+    		  @RequestBody String productType, 
+    		  @RequestBody Integer productPrice,
+    		  @RequestBody String productDetail,
+    		  @RequestBody String productThumb,
+    		  @RequestBody String offAuthor,
+    		  @RequestBody String offCategory,
+    		  @RequestBody String offPlace,
+    		  @RequestBody Integer offSeats,
+    		  @RequestBody Timestamp offStartAt,
+    		  @RequestBody Timestamp offEndAt,
+    		  ModelAndView mv) {
          System.out.println("/register param received");
          ProductVO pvo = new ProductVO();
-         pvo.setProductName(request.getParameter("productName"));
-         pvo.setProductPrice(Integer.valueOf(request.getParameter("productPrice")));
-         pvo.setProductType(request.getParameter("productType"));
-         pvo.setProductThumb(request.getParameter("productThumb"));
-         pvo.setProductDetail(request.getParameter("productDetail"));
-         productService.register(pvo);
+         pvo.setProductName(productName);
+         pvo.setProductPrice(productPrice);
+         pvo.setProductType(productType);
+         pvo.setProductThumb(productThumb);
+         pvo.setProductDetail(productDetail);
+         
+         OffVO ovo = new OffVO();
+         ovo.setOffAuthor(offAuthor);
+         ovo.setOffCategory(offCategory);
+         ovo.setOffPlace(offPlace);
+         ovo.setOffSeats(offSeats);
+         ovo.setOffStartAt(offStartAt);
+         ovo.setOffEndAt(offEndAt);
+        if( offService.register(pvo, ovo)){
+        	mv.addObject("messsage", "off_success");
+        } else {
+        	mv.addObject("message", "off_fail");
+        }
          
          
          mv.setViewName("/product");
