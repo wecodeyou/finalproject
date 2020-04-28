@@ -6,7 +6,7 @@ import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.off.model.OffVO;
 
 public interface IOffMapper {
-	public void register(OffVO ovo);
+	public boolean register(OffVO ovo);
 	
 	public List<OffVO> listByUser(MemberVO mvo);
 	
