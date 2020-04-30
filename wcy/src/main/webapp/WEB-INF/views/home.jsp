@@ -27,7 +27,7 @@
 
 <a href="/interest_list">INTEREST</a>
 
-<a href="/tag">TAG SEARCH</a>
+<a href="/tag">TAG를 PRODUCT에 등록</a>
 
 <a href="<c:url value='/off/seat_main' />" >자리보기</a>
 </body>

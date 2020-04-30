@@ -7,7 +7,7 @@ import com.it.wecodeyou.tag.model.TagVO;
 
 public interface ITagService {
 	
-	//select all
+		//select all
 		public ArrayList<TagVO> getAllTag() throws SQLException ;
 		
 		//select one
@@ -17,7 +17,8 @@ public interface ITagService {
 		public ArrayList<TagVO> checkTagDetail(String q) throws SQLException;
 		
 		//insert tag
-		public void insertTag(TagVO tvo) throws SQLException ;
+		public void insertTag(String tag) throws SQLException ;
+
 		
 		//update delete 추가 작성
 
