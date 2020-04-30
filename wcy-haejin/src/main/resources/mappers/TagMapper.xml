@@ -27,7 +27,7 @@
   	
   	<!-- tag 등록 -->
   	<insert id="insertTag">
-      	INSERT INTO tag (tag_no,tag_name) VALUES (#{tagNo},#{tagName})
+      	INSERT INTO tag (tag_name) VALUES (#{tagName})
    </insert>
    
 	<!-- update / delete 추가 작성 -->

@@ -40,53 +40,41 @@ public class TagController {
 		return mv;
 	}
 	
-	@ResponseBody
-	 @PostMapping("/insertTag")
-	 public String insertInterest(@RequestBody TagVO tvo, HttpSession session) throws SQLException {
-			System.out.println("/tag/insertTag : 등록 POST 요청 발생!");
-			System.out.println(tvo);
-			String result = null;
-			
-			//중복검사
-			Integer chk = service.checkTag(tvo.getTagName());
-			if(chk == 0) { 
-				service.insertTag(tvo); // insert tag 
-				result = "success";
-			}else if(chk == 1) { //이미 등록된 tag name라면
-				result = "already exist";
-			}
-		 
-		 return result;
-	 }
-	
 	//@ResponseBody
 	 @PostMapping("/checkTagDetail")
 	 public Map<String, ArrayList<String>> checkTagDetail(@RequestBody String q) throws SQLException {
 			System.out.println("/tag/checkTagDetail : 등록 POST 요청 발생!");
-			System.out.println(q);
 			
 			Map<String, ArrayList<String>> retVal = new HashMap<String, ArrayList<String>>();
-			//Map<String, ArrayList<String>> retValNo = new HashMap<String, ArrayList<String>>();
 		    ArrayList<String> nameList = new ArrayList<>();
 		    ArrayList<String> noList = new ArrayList<>();
+		    
 		    for (int i = 0; i < service.checkTagDetail(q).size(); i++) {
 				nameList.add(service.checkTagDetail(q).get(i).getTagName());
 				noList.add(String.valueOf(service.checkTagDetail(q).get(i).getTagNo()));
-				System.out.println(nameList.get(i));
 			}
 		    
 		     if(nameList.size() == 0) {
-		         System.out.println("비어있음");
-		         nameList.add("no result");
-		         retVal.put("list", nameList);
-		      }else {
-		         System.out.println("정보있음" );
-		         retVal.put("nameList", nameList); //list란 키로 nameList의 값을 넣어줍니다.
-		         retVal.put("noList", noList);
-				 
+		         nameList.add(q);
+		         noList.add("no result");
 		      }
+		     
+	         retVal.put("nameList", nameList); //list란 키로 nameList의 값을 넣어줍니다.
+	         retVal.put("noList", noList);
 			
 		 return retVal;
 	 }
+	 
+	@PostMapping("/insertTag")
+	public String insertTag(@RequestBody String tag) throws SQLException {
+		System.out.println("/tag/insertTag : 등록 POST 요청 발생!");
+		System.out.println("등록할 name: " + tag);
+			service.insertTag(tag); // insert interest 
+			String no = String.valueOf(service.checkTagDetail(tag).get(0).getTagNo());
+			System.out.println("등록된 no: " + no);
+			
+		return no;
+	}
+		
 
 }

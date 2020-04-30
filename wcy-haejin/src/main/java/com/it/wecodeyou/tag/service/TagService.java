@@ -32,8 +32,8 @@ public class TagService implements ITagService{
 	}
 
 	@Override
-	public void insertTag(TagVO tvo)  throws SQLException {
-		dao.insertTag(tvo);
+	public void insertTag(String tag)  throws SQLException {
+		dao.insertTag(tag);
 	}
 
 

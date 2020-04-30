@@ -84,19 +84,15 @@ crossorigin="anonymous"></script>
 			dataType : "text",
 			success: function(data) {
 				console.log("통신성공 ! result: " + data);
-				document.write("통신성공 ! result: " + data);
 				if(data === "success") {
-			    	console.log("입력성공!");
-			    	document.write("입력성공!");
+			    	console.log("입력성공! ");
 					//self.location="/wecodeyou/WEB-INF/views/interest/interest-result.jsp";
 				}else if(data === "already exist") {
-					console.log("이미 설문조사를 완료하셨습니다. 입력실패!");
-					document.write("이미 설문조사를 완료하셨습니다. 입력실패!");
+					console.log("이미 설문조사를 완료하셨습니다. 입력실패! ");
 				}
 			},
 			error: function(){
-				console.log("통신실패!");
-				document.write("통신실패!");
+				console.log("통신실패! ");
 			}
 		});
 	//}

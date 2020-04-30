@@ -17,7 +17,7 @@ public interface ITagMapper {
 	public ArrayList<TagVO> checkTagDetail(String q) throws SQLException;
 	
 	//insert tag
-	public void insertTag(TagVO tvo) throws SQLException;
+	public void insertTag(String tag) throws SQLException;
 	
 	//update delete 추가 작성
 	
