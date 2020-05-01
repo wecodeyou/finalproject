@@ -38,11 +38,11 @@ public class SeatService implements ISeatService{
       ArrayList<Integer> al = new ArrayList<>();
       ArrayList<SeatVO> seat_list = dao.bookedList(seat_off_no);
       
-      /*
-       * for (int i = 0; i < seat_list.size(); i++) {
-       * al.add(seat_list.get(i).getSeatIndex());
-       * System.out.println("service에서 찍음: "+seat_list.get(i)); }
-       */
+      
+        for (int i = 0; i < seat_list.size(); i++) {
+        al.add(seat_list.get(i).getSeatIndex());
+        System.out.println("service에서 찍음: "+seat_list.get(i)); }
+       
       return al;
    }
    @Override
@@ -52,7 +52,7 @@ public class SeatService implements ISeatService{
       
       for (int i = 0; i < seat_list.size(); i++) {
          al.add(seat_list.get(i).getSeatIndex());
-         System.out.println("service에서 찍음: "+seat_list.get(i));
+        // System.out.println("service에서 찍음: "+seat_list.get(i));
       }
       return al;
    }
