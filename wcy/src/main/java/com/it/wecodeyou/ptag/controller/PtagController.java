@@ -19,22 +19,22 @@ public class PtagController {
 	private IPtagService service;
 	
 	@PostMapping("/insertPtag")
-	public String insertTag(@RequestBody ArrayList<String> sendTagList) throws SQLException {
+	public String insertTag(@RequestBody ArrayList<Integer> sendTagList) throws SQLException {
 		System.out.println("/ptag/inserPtag : 등록 POST 요청 발생!");
 		System.out.println("등록할 list: " + sendTagList);
-		String no = null;
+		String result = null;
 		
 		//test용 productNo
 		Integer productNo = 3;
-		System.out.println("service.insertPtag 실행");
+		
 		Boolean chk = service.insertPtag(sendTagList, productNo);
+		
 		if(chk) {
-			System.out.println("con: 완료");
+			result = "success";
 		}else {
-			System.out.println("con: 실패");
+			result = "fail";
 		}
-			
-		return no;
+		return result;
 	}
 
 }

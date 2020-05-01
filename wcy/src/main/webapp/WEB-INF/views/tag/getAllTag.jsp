@@ -222,12 +222,14 @@ a {
 				console.log("ajax insertTag 실행중 오류가 발생하였습니다.");
 			},
 			success : function(data) {
-				
-				console.log("태그 등록 성공! " + data + "번 태그");
-				
-			    //태그 버튼 생성
-			    generateBtn(tag, data);
-				
+				if(data === "fail") {
+					alert("태그 등록 실패!");
+				} else{
+					console.log("태그 등록 성공! " + data + "번 태그");
+					
+				    //태그 버튼 생성
+				    generateBtn(tag, data);
+				}
 			}
 			
 		});//end Ajax
@@ -314,8 +316,14 @@ a {
 				console.log("ajax insertPtag 실행중 오류가 발생하였습니다.");
 			},
 			success : function(data) {
+				if(data === "success") {
+					console.log("ptag 테이블에 등록 성공! ");
+					//페이지 이동
+					//self.location="/wecodeyou/WEB-INF/views/interest/interest-result.jsp";
+				} else if(data === "fail") {
+					alert("상품에 태그를 등록하지 못 했어요!");
+				}
 				
-				console.log("ptag 테이블에 등록 성공! " + data + "번 ");
 				
 			}
 			
