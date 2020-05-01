@@ -39,5 +39,8 @@ public interface IMemberMapper {
    
    // 전화번호 중복체크
    Integer checkTel(String userTel);
+   
+   // 설문조사 등록시 true로 수정
+   public void updateInterest(Integer userNo) throws SQLException;
 
 }

@@ -92,6 +92,11 @@
       FROM user
       WHERE user_email=#{userEmail}
    </select>
+   
+   <!-- 설문조사 -->
+   <update id="updateInterest">
+	  UPDATE user SET user_interest = true WHERE user_no = #{userNo}
+   </update>
 
 
 </mapper>

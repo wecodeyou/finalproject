@@ -32,8 +32,15 @@ public class TagService implements ITagService{
 	}
 
 	@Override
-	public void insertTag(String tag)  throws SQLException {
-		dao.insertTag(tag);
+	public boolean insertTag(String tag)  throws SQLException {
+		
+		try {
+			dao.insertTag(tag);
+		} catch (Exception e) {
+			System.out.println("dao insertTag Exeption!: " + tag);
+			return false;
+		}
+		return true;
 	}
 
 

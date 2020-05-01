@@ -46,6 +46,7 @@ public class TagController {
 			System.out.println("/tag/checkTagDetail : 등록 POST 요청 발생!");
 			
 			Map<String, ArrayList<String>> retVal = new HashMap<String, ArrayList<String>>();
+			
 		    ArrayList<String> nameList = new ArrayList<>();
 		    ArrayList<String> noList = new ArrayList<>();
 		    
@@ -59,8 +60,8 @@ public class TagController {
 		         noList.add("no result");
 		      }
 		     
-	         retVal.put("nameList", nameList); //list란 키로 nameList의 값을 넣어줍니다.
-	         retVal.put("noList", noList);
+	         retVal.put("nameList", nameList); //nameList 태그명
+	         retVal.put("noList", noList); //noList 태그 넘버명 (현재 문자열 배열)
 			
 		 return retVal;
 	 }
@@ -69,9 +70,14 @@ public class TagController {
 	public String insertTag(@RequestBody String tag) throws SQLException {
 		System.out.println("/tag/insertTag : 등록 POST 요청 발생!");
 		System.out.println("등록할 name: " + tag);
-			service.insertTag(tag); // insert interest 
-			String no = String.valueOf(service.checkTagDetail(tag).get(0).getTagNo());
-			System.out.println("등록된 no: " + no);
+		
+			Boolean chk = service.insertTag(tag); 
+			String no = null;
+			if(chk) {
+				no = String.valueOf(service.checkTagDetail(tag).get(0).getTagNo());
+			}else {
+				no = "fail";
+			}
 			
 		return no;
 	}

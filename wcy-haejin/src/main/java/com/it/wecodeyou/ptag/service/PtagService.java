@@ -15,19 +15,16 @@ public class PtagService implements IPtagService{
 	IPtagMapper dao;
 
 	@Override
-	public boolean insertPtag(ArrayList<String> sendTagList, Integer productNo) throws SQLException {
+	public boolean insertPtag(ArrayList<Integer> sendTagList, Integer productNo) throws SQLException {
 		
 		for (int i = 0; i < sendTagList.size(); i++) {
-			Integer tagNo = Integer.parseInt(sendTagList.get(i));
-			System.out.println(tagNo);
-			
 			try {
-				dao.insertPtag(tagNo, productNo);
-				System.out.println(tagNo + "dao.insertPtag 실행");
+				dao.insertPtag(sendTagList.get(i), productNo);
+				System.out.println("dao.insertPtag 실행: " + sendTagList.get(i));
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println(tagNo + "dao Exeption!");
+				System.out.println("dao Exeption!: " + sendTagList.get(i));
 				return false;
 			}
 			

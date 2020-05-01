@@ -11,5 +11,6 @@ public interface IInterestMapper {
 
 	// check (중복검사)
 	public Integer checkUserNo(Integer interestUserNo) throws SQLException ;
+	
 
 }
