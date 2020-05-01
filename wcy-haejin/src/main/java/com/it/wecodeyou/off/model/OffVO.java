@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class OffVO {
 	private long offNo;
-	private long offAuthor;
+	private String offAuthor;
 	private String offCategory;
 	private long offProductNo;
 	private String offPlace;
@@ -16,7 +16,7 @@ public class OffVO {
 	private Timestamp offModifiedAt;
 	
 	public OffVO() {}
-	public OffVO(long offNo, long offAuthor, String offCategory, long offProductNo, String offPlace,
+	public OffVO(long offNo, String offAuthor, String offCategory, long offProductNo, String offPlace,
 			String offUploadUri, Integer offSeats, Timestamp offStartAt, Timestamp offEndAt, Timestamp offCreatedAt,
 			Timestamp offModifiedAt) {
 		super();
@@ -32,7 +32,7 @@ public class OffVO {
 		this.offCreatedAt = offCreatedAt;
 		this.offModifiedAt = offModifiedAt;
 	}
-	public OffVO(long offAuthor, String offCategory, long offProductNo, String offPlace, Integer offSeats,
+	public OffVO(String offAuthor, String offCategory, long offProductNo, String offPlace, Integer offSeats,
 			Timestamp offStartAt, Timestamp offEndAt) {
 		super();
 		this.offAuthor = offAuthor;
@@ -58,10 +58,10 @@ public class OffVO {
 	public void setOffNo(long offNo) {
 		this.offNo = offNo;
 	}
-	public long getOffAuthor() {
+	public String getOffAuthor() {
 		return offAuthor;
 	}
-	public void setOffAuthor(long offAuthor) {
+	public void setOffAuthor(String offAuthor) {
 		this.offAuthor = offAuthor;
 	}
 	public String getOffCategory() {

@@ -10,11 +10,11 @@ public class ProductVO {
 	private String productDetail;
 	private Timestamp productCreatedAt;
 	private String productThumb;
-	private String productUser;
 	
 	public ProductVO() {}
+
 	public ProductVO(long productNo, String productType, String productName, Integer productPrice, String productDetail,
-			Timestamp productCreatedAt, String productThumb, String productUser) {
+			Timestamp productCreatedAt, String productThumb) {
 		super();
 		this.productNo = productNo;
 		this.productType = productType;
@@ -23,67 +23,75 @@ public class ProductVO {
 		this.productDetail = productDetail;
 		this.productCreatedAt = productCreatedAt;
 		this.productThumb = productThumb;
-		this.productUser = productUser;
 	}
+
 	public ProductVO(String productType, String productName, Integer productPrice, String productDetail,
-			String productThumb, String productUser) {
+			String productThumb) {
 		super();
 		this.productType = productType;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productDetail = productDetail;
 		this.productThumb = productThumb;
-		this.productUser = productUser;
 	}
-	public long getProductNo() {
-		return productNo;
-	}
-	public void setProductNo(long productNo) {
-		this.productNo = productNo;
-	}
+
 	public String getProductType() {
 		return productType;
 	}
+
 	public void setProductType(String productType) {
 		this.productType = productType;
 	}
+
 	public String getProductName() {
 		return productName;
 	}
+
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
 	public Integer getProductPrice() {
 		return productPrice;
 	}
+
 	public void setProductPrice(Integer productPrice) {
 		this.productPrice = productPrice;
 	}
+
 	public String getProductDetail() {
 		return productDetail;
 	}
+
 	public void setProductDetail(String productDetail) {
 		this.productDetail = productDetail;
 	}
-	public Timestamp getProductCreatedAt() {
-		return productCreatedAt;
-	}
-	public void setProductCreatedAt(Timestamp productCreatedAt) {
-		this.productCreatedAt = productCreatedAt;
-	}
+
 	public String getProductThumb() {
 		return productThumb;
 	}
+
 	public void setProductThumb(String productThumb) {
 		this.productThumb = productThumb;
 	}
 	
-	public String getProductUser() {
-		return productUser;
+	
+	public long getProductNo() {
+		return productNo;
 	}
-	public void setProductUser(String productUser) {
-		this.productUser = productUser;
+
+	public void setProductNo(long productNo) {
+		this.productNo = productNo;
 	}
+
+	public Timestamp getProductCreatedAt() {
+		return productCreatedAt;
+	}
+
+	public void setProductCreatedAt(Timestamp productCreatedAt) {
+		this.productCreatedAt = productCreatedAt;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [productNo=" + productNo + ", productType=" + productType + ", productName=" + productName

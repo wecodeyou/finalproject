@@ -10,14 +10,13 @@
 		<result property="productDetail" column="product_detail"/>
 		<result property="productCreatedAt" column="product_created_at"/>
 		<result property="productThumb" column="product_thumb"/>
-		<result property="productUser" column="product_user"/>
 	</resultMap>
 	
-	<insert id="insertProduct">
+	<insert id="insertProduct" useGeneratedKeys="true" keyProperty="productNo" parameterType="com.it.wecodeyou.product.model.ProductVO">
 		INSERT
 		INTO product
-		(product_type, product_name, product_price, product_detail, product_thumb, product_user)
-		VALUES(#{productType}, #{productName}, #{productPrice}, #{productDetail}, #{productThumb}, #{productUser})
+		(product_type, product_name, product_price, product_detail, product_thumb)
+		VALUES(#{productType}, #{productName}, #{productPrice}, #{productDetail}, #{productThumb})
 	</insert>
 	
 	<update id="updateProduct">

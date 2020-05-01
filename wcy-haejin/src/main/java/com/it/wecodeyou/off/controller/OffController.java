@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.wecodeyou.member.model.MemberVO;
+import com.it.wecodeyou.off.model.OffProductVO;
+import com.it.wecodeyou.off.model.OffVO;
 import com.it.wecodeyou.off.model.SeatVO;
+import com.it.wecodeyou.off.service.IOffService;
 import com.it.wecodeyou.off.service.ISeatService;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
@@ -30,6 +34,9 @@ public class OffController {
 
    @Autowired
    IProductService productService;
+   
+   @Autowired
+   IOffService offService;
    
    //강의실 체크 페이지 요청
    @GetMapping("/seat_main")
@@ -48,23 +55,54 @@ public class OffController {
       return mv;
       
    }
+   @GetMapping(value="/register")
+   public ModelAndView register(ModelAndView mv) {
+	   mv.setViewName("/off/OffForm");
+	   return mv;
+   }
    
+   //객체로 안 받아져서 하나씩 받음.
    @PostMapping(value="/register")
-      public ModelAndView register(HttpServletRequest request, ModelAndView mv) {
-         System.out.println("/register param received");
+   public ModelAndView register(@RequestBody OffProductVO opvo,
+    		  ModelAndView mv) {
+         System.out.println("/register - param received \n\r " + opvo.toString());
          ProductVO pvo = new ProductVO();
-         pvo.setProductName(request.getParameter("productName"));
-         pvo.setProductPrice(Integer.valueOf(request.getParameter("productPrice")));
-         pvo.setProductType(request.getParameter("productType"));
-         pvo.setProductThumb(request.getParameter("productThumb"));
-         pvo.setProductDetail(request.getParameter("productDetail"));
-         productService.register(pvo);
+         pvo.setProductName(opvo.getProductName());
+         pvo.setProductPrice(opvo.getProductPrice());
+         pvo.setProductType(opvo.getProductType());
+         pvo.setProductThumb(opvo.getProductThumb());
+         pvo.setProductDetail(opvo.getProductDetail());
+         
+         OffVO ovo = new OffVO();
+         ovo.setOffAuthor(opvo.getOffAuthor());
+         ovo.setOffCategory(opvo.getOffCategory());
+         ovo.setOffPlace(opvo.getOffPlace());
+         ovo.setOffSeats(opvo.getOffSeats());
+         ovo.setOffStartAt(opvo.getOffStartAt());
+         ovo.setOffEndAt(opvo.getOffEndAt());
+         
+        if( offService.insert(pvo, ovo) == 1){
+        	mv.addObject("messsage", "off_success");
+        } else {
+        	mv.addObject("message", "off_fail");
+        }
          
          
          mv.setViewName("/product");
          return mv;
       }
-   
+  @GetMapping("/{productNo}")
+  public ModelAndView info(@PathVariable Long productNo, ModelAndView mv) {
+	  
+	  ProductVO pvo = productService.getOneInfo(productNo);
+	  OffVO ovo = offService.getInfoByProductNo(productNo);
+	  System.out.println("/off/{productNo} ProductVO : \r\n" + pvo.toString());
+	  System.out.println("/off/{productNo} OffVO : \r\n" + ovo.toString());
+	  	mv.addObject("product", pvo);
+	  	mv.addObject("off", ovo);
+	  	mv.setViewName("/off/detail");
+	  return mv;
+  }
    
    @GetMapping("/test")
    public ModelAndView test(ModelAndView mv, HttpServletRequest req) {

@@ -9,7 +9,7 @@ import com.it.wecodeyou.product.model.ProductVO;
 @Service
 public interface IProductService {
 	
-	public void register(ProductVO pvo);
+	public Integer register(ProductVO pvo);
 	
 	public void update(ProductVO pvo);
 	
