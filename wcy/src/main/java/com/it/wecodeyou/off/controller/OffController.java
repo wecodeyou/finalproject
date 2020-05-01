@@ -139,7 +139,10 @@ public class OffController {
       if(booked_list==null) {
          System.out.println("비어있음");
       }else {
-         System.out.println("정보있음" );   
+         System.out.println("정보있음" ); 
+         for (Integer integer : booked_list) {
+			System.out.println(integer);
+		}
       }
       return retVal;  
            

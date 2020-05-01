@@ -4,14 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-<title>WE CODE YOU | HOME</title>
+	<title>Home</title>
 </head>
 <body>
+<h1>
+	Hello world!  
+</h1>
 
-<jsp:include page="include/header.jsp" />
-
-
-<jsp:include page="include/footer.jsp" />
+<h3>  여기는 임시 메인페이지 입니다.  </h3>
 
 <c:if test="${login == null}">
 	<a href="<c:url value='/member/login' />" >LOGIN</a>
@@ -25,10 +25,9 @@
 
 <a href="#">BOARD</a>
 
-<a href="<c:url value='/product'/>" >Product 리스트 보기</a>
 <a href="/interest_list">INTEREST</a>
 
-<a href="/tag">TAG를 PRODUCT에 등록</a>
+<a href="/tag">TAG SEARCH</a>
 
 <a href="<c:url value='/off/seat_main' />" >자리보기</a>
 </body>
