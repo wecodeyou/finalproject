@@ -46,6 +46,7 @@
 			</tr>
 			<tr>
 				<td>
+				#장소 
 				<input type="text" id="place" name="place" />
 				</td>
 			</tr>
@@ -101,63 +102,64 @@
 <script type="text/javascript">
 
 	$(function(){
-		const type = $('#type').val();
-		console.log(type);
-		
-		const name = $('#name').val();
-		console.log(name);
 
-		const price = $('#price').val();
-		console.log(price);
-
-		const detail = $('#detail').val();
-		console.log(detail);
-
-		const thumb = $('#thumb').val();
-		console.log(thumb);
-		
-		const author = $('#author').val();
-		console.log(author);
-		
-		const off_type = $('#off_type').val();
-		console.log(off_type);
-		
-		const start = $('#start').val();
-		console.log(start);
-		
-		const end = $('#end').val();
-		console.log(end);
-		
-		const seats = $('#seats').val();
-		console.log(seats);
-		
-		const place = $('#place').val();
-		console.log(place);
-		
-		var data = {
-				productType : type,
-				productName : name,
-				productPrice : price,
-				productDetail : detail,
-				productThumb : thumb,
-				offAuthor : author,
-				offCategory : off_type,
-				offPlace : place,
-				offSeats : seats,
-				offStartAt : start,
-				offEndAt : end
-			}
 		
 
-		$('off_submit').click(function(){
+		$('#off_submit').click(function(){
+			const type = $('#type').val();
+			console.log(type);
+			
+			const name = $('#name').val();
+			console.log(name);
+
+			const price = $('#price').val();
+			console.log(price);
+
+			const detail = $('#detail').val();
+			console.log(detail);
+
+			const thumb = $('#thumb').val();
+			console.log(thumb);
+			
+			const author = $('#author').val();
+			console.log(author);
+			
+			const off_type = $('#off_type').val();
+			console.log(off_type);
+			
+			const start = $('#start').val();
+			console.log(start);
+			
+			const end = $('#end').val();
+			console.log(end);
+			
+			const seats = $('#seats').val();
+			console.log(seats);
+			
+			const place = $('#place').val();
+			console.log(place);
+			
+			var data = {
+					productType : type,
+					productName : name,
+					productPrice : price,
+					productDetail : detail,
+					productThumb : thumb,
+					offAuthor : author,
+					offCategory : off_type,
+					offPlace : place,
+					offSeats : seats,
+					offStartAt : start,
+					offEndAt : end
+				}
 			$.ajax({
 				type: "POST",
-				url : "/off/register",
+				url : "<c:url value='/off/register'/>",
 				headers:{
 					"Content-Type": "application/json"
 				},
 				dataType: "text",
-				data:data,
+				data:JSON.stringify(data),
 				success: function(data){
 					console.log("received output: " + data);
 					if(data === "off_success"){
@@ -166,7 +168,7 @@
 						$('#message').text("서버에러가 발생하였습니다");
 					}
 				},
-				error: function(){
+				error: function(request, status, error){
 					$('#message').text("통신에 실패하였습니다");
 				}
 			}); /* end ajax */			

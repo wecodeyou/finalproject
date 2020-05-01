@@ -18,20 +18,20 @@
 		<result property="offModifiedAt" column="off_modified_at"/>	
 	</resultMap>
 	
-	<insert id="insertOff">
+	<insert id="insert">
 		INSERT 
 		INTO off_course
 		(off_author, off_category, off_place, off_product_no, off_seats, off_start_at, off_end_at)
 		VALUES(#{offAuthor}, #{offCategory}, #{offPlace}, #{offProductNo}, #{offSeats}, #{offStartAt}, #{offEndAt})
 	</insert>
 	
-	<update id="updateOff">
+	<update id="update">
 		UPDATE off_course SET
 		off_category = #{offCategory}, off_place = #{offPlace}, off_seats = #{offSeats}, 
 		off_start_at = #{offStartAt},  off_end_at = #{offEndAt}, off_modified_at = now()
 	</update>
 	
-	<delete id="deleteOff">
+	<delete id="delete">
 		DELETE FROM off_course WHERE off_no = #{offNO}
 	</delete>
 	
@@ -43,5 +43,15 @@
 	<select id="list" resultMap="OffMap">
 		SELECT *
 		FROM off_course	
+	</select>
+	<select id="getOneInfo" resultMap = "OffMap">
+		SELECT *
+		FROM off_course
+		WHERE off_no = #{offNo} 
+	</select>
+	<select id="getInfoByProductNo" resultMap = "OffMap">
+		SELECT *
+		FROM off_course
+		WHERE off_product_no = #{offProductNo} 
 	</select>
 </mapper>

@@ -17,7 +17,6 @@ public class ProductService implements IProductService {
 	@Override
 	public Integer register(ProductVO pvo) {
 		return pdao.insertProduct(pvo);
-
 	}
 
 	@Override

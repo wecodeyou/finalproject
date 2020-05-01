@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +25,7 @@ public class ProductController {
 	@GetMapping(value="")
 	public ModelAndView list(ModelAndView mv) {
 		List<ProductVO> pList = productService.list();
-		for(ProductVO pvo: pList) {
-			System.out.println(pvo);
-		}
+
 		mv.addObject("productList", pList);
 		mv.setViewName("/product/list");
 		return mv;
@@ -37,18 +36,30 @@ public class ProductController {
 		mv.setViewName("/product/register");
 		return mv;
 	}
+	
+	//등록에 성공하면 매개객체인 pvo에 자동으로 productNo가 등록된다.(getOneInfo를 써서 확인 안해도 됨)
+	//그리고 product.register(pvo)는 성공시 1, 실패시 0 리턴
 	@PostMapping(value="/register")
 	public String register(@RequestBody ProductVO pvo) {
-		System.out.println("POST /product/register \r" + pvo.toString());
-		
-		productService.register(pvo);
-		if(pvo.equals(productService.getOneInfo(pvo.getProductNo()))) {
+		System.out.println("POST /product/register - inputInfo: \r" + pvo.toString());
+		int result = productService.register(pvo);
+		System.out.println("ProductNo after Insert : " + pvo.getProductNo()
+							+ " \r\n Result : " + result);
+		if(result == 1) {
 			return "product_success";
 		} else {
 			return "product_fail";
 		}
 	}
 
-	
+	  @GetMapping("/{productNo}")
+	  public ModelAndView info(@PathVariable Long productNo, ModelAndView mv) {
+		  
+		  ProductVO pvo = productService.getOneInfo(productNo);
+		  System.out.println("/off/{productNo} ProductVO : \r\n" + pvo.toString());
+		  	mv.addObject("product", pvo);
+		  	mv.setViewName("/off/detail");
+		  return mv;
+	  }
 	
 }

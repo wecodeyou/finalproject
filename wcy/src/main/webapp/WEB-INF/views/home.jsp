@@ -25,6 +25,7 @@
 
 <a href="#">BOARD</a>
 
+<a href="<c:url value='/product'/>" >Product 리스트 보기</a>
 <a href="/interest_list">INTEREST</a>
 
 <a href="/tag">TAG를 PRODUCT에 등록</a>
