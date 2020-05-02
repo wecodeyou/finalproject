@@ -3,7 +3,7 @@ package com.it.wecodeyou.product.model;
 import java.sql.Timestamp;
 
 public class ProductVO {
-	private long productNo;
+	private Integer productNo;
 	private String productType;
 	private String productName;
 	private Integer productPrice;
@@ -13,8 +13,8 @@ public class ProductVO {
 	
 	public ProductVO() {}
 
-	public ProductVO(long productNo, String productType, String productName, Integer productPrice, String productDetail,
-			Timestamp productCreatedAt, String productThumb) {
+	public ProductVO(Integer productNo, String productType, String productName, Integer productPrice,
+			String productDetail, Timestamp productCreatedAt, String productThumb) {
 		super();
 		this.productNo = productNo;
 		this.productType = productType;
@@ -25,14 +25,12 @@ public class ProductVO {
 		this.productThumb = productThumb;
 	}
 
-	public ProductVO(String productType, String productName, Integer productPrice, String productDetail,
-			String productThumb) {
-		super();
-		this.productType = productType;
-		this.productName = productName;
-		this.productPrice = productPrice;
-		this.productDetail = productDetail;
-		this.productThumb = productThumb;
+	public Integer getProductNo() {
+		return productNo;
+	}
+
+	public void setProductNo(Integer productNo) {
+		this.productNo = productNo;
 	}
 
 	public String getProductType() {
@@ -67,23 +65,6 @@ public class ProductVO {
 		this.productDetail = productDetail;
 	}
 
-	public String getProductThumb() {
-		return productThumb;
-	}
-
-	public void setProductThumb(String productThumb) {
-		this.productThumb = productThumb;
-	}
-	
-	
-	public long getProductNo() {
-		return productNo;
-	}
-
-	public void setProductNo(long productNo) {
-		this.productNo = productNo;
-	}
-
 	public Timestamp getProductCreatedAt() {
 		return productCreatedAt;
 	}
@@ -92,12 +73,26 @@ public class ProductVO {
 		this.productCreatedAt = productCreatedAt;
 	}
 
+	public String getProductThumb() {
+		return productThumb;
+	}
+
+	public void setProductThumb(String productThumb) {
+		this.productThumb = productThumb;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductVO [productNo=" + productNo + ", productType=" + productType + ", productName=" + productName
 				+ ", productPrice=" + productPrice + ", productDetail=" + productDetail + ", productCreatedAt="
-				+ productCreatedAt + ", productThumb=" + productThumb + "]";
+				+ productCreatedAt + ", productThumb=" + productThumb + ", getProductNo()=" + getProductNo()
+				+ ", getProductType()=" + getProductType() + ", getProductName()=" + getProductName()
+				+ ", getProductPrice()=" + getProductPrice() + ", getProductDetail()=" + getProductDetail()
+				+ ", getProductCreatedAt()=" + getProductCreatedAt() + ", getProductThumb()=" + getProductThumb()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
+
 	
 	
 }

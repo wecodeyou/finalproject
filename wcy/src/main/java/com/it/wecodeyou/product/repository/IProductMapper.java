@@ -14,5 +14,5 @@ public interface IProductMapper {
 	
 	public List<ProductVO> list();
 	
-	public ProductVO getOneInfo(Long productNo);
+	public ProductVO getOneInfo(Integer productNo);
 }

@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<script src="<c:url value = "/resources/vendor/js/kakao.js"/>"></script>
+<script src="<c:url value = "/resources/js/kakao.js"/>"></script>
 
 <body>
 

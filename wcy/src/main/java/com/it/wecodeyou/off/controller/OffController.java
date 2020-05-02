@@ -63,9 +63,10 @@ public class OffController {
    
    //객체로 안 받아져서 하나씩 받음.
    @PostMapping(value="/register")
-   public ModelAndView register(@RequestBody OffProductVO opvo,
-    		  ModelAndView mv) {
+   public String register(@RequestBody OffProductVO opvo) {
          System.out.println("/register - param received \n\r " + opvo.toString());
+         String result = null;
+         
          ProductVO pvo = new ProductVO();
          pvo.setProductName(opvo.getProductName());
          pvo.setProductPrice(opvo.getProductPrice());
@@ -81,18 +82,20 @@ public class OffController {
          ovo.setOffStartAt(opvo.getOffStartAt());
          ovo.setOffEndAt(opvo.getOffEndAt());
          
-        if( offService.insert(pvo, ovo) == 1){
-        	mv.addObject("messsage", "off_success");
+         //tag number list
+         ArrayList<Integer> sendTagList = opvo.getSendTagList();
+         
+        if( offService.insert(pvo, ovo, sendTagList) == 1){
+        	result =  "off_success";
         } else {
-        	mv.addObject("message", "off_fail");
+        	result = "off_fail";
         }
          
-         
-         mv.setViewName("/product");
-         return mv;
+         return result;
       }
+   
   @GetMapping("/{productNo}")
-  public ModelAndView info(@PathVariable Long productNo, ModelAndView mv) {
+  public ModelAndView info(@PathVariable Integer productNo, ModelAndView mv) {
 	  
 	  ProductVO pvo = productService.getOneInfo(productNo);
 	  OffVO ovo = offService.getInfoByProductNo(productNo);
@@ -139,7 +142,10 @@ public class OffController {
       if(booked_list==null) {
          System.out.println("비어있음");
       }else {
-         System.out.println("정보있음" );   
+         System.out.println("정보있음" ); 
+         for (Integer integer : booked_list) {
+			System.out.println(integer);
+		}
       }
       return retVal;  
            

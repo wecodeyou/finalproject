@@ -11,7 +11,6 @@
 crossorigin="anonymous"></script>
 </head>
 <body>
-	<div>임시 유저번호: ${userNo}</div>
 	<br>
 	<%-- <form id="interest-form" action="<c:url value='/interest_list/insertInterest'/>" method="post"  onsubmit="return formCheck()"> --%>
 	<!-- 전체 설문조사 리스트에서 타입의 수 (예: 4개) 만큼 반복해서 체크박스 생성  -->
@@ -56,7 +55,7 @@ crossorigin="anonymous"></script>
 		console.log("처리완료");
 		
 		//Ajax로 값 넘기기 (InterestVO 객체로)
-		const interestUserNo = ${userNo};
+		const interestUserNo = ${login.userNo};
 		const interestIndex0 = map.get(0);
 		const interestIndex1 = map.get(1);
 		const interestIndex2 = map.get(2);
@@ -88,7 +87,7 @@ crossorigin="anonymous"></script>
 			    	console.log("입력성공! ");
 					//self.location="/wecodeyou/WEB-INF/views/interest/interest-result.jsp";
 				}else if(data === "already exist") {
-					console.log("이미 설문조사를 완료하셨습니다. 입력실패! ");
+					alert("이미 설문조사가 등록되어있어요!");
 				}
 			},
 			error: function(){

@@ -42,4 +42,13 @@ public class HomeController {
 		return "off/NoteClient";
 	}
 	
+	@GetMapping("/test01")
+	public String test01() {
+		return "test/test01";
+	}
+
+	@GetMapping("/test02")
+	public String test02() {
+		return "test/test02";
+	}
 }

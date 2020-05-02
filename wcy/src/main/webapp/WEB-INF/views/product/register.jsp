@@ -5,9 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="<c:url value='/css/tag.css'/>">
 <title>오프라인 강의 추가</title>
 <!-- <script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 	
@@ -50,7 +55,17 @@
 				</select>
 				</td>
 			</tr>
-
+			<tr>
+				<td>
+					<input type="text" id="text" placeholder="#해시태그">
+					<ul class="override" id="resultList"></ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<div id="selectedTagList"></div> 
+				</td>
+			</tr>
 			<tr>
 				<td>
 					<input type="submit" id="product_register_btn" value="등록"/>
@@ -84,6 +99,7 @@ $(function(){
 				productPrice : price,
 				productDetail : detail,
 				productThumb : thumb,
+				sendTagList: sendTagList
 			}
 			$.ajax({
 				type: "POST",
@@ -108,5 +124,8 @@ $(function(){
 });
 
 </script>
+
+<script src="<c:url value='/js/tag.js'/>"></script>
+
 </body>
 </html>

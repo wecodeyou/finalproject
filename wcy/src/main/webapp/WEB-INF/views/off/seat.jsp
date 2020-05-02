@@ -12,7 +12,7 @@
 </head>
 <body>
 <!-- 일단 30에서만 작업해야지  -->
-<input type="hidden" id="seatOffNo" value=10 >
+<input type="hidden" id="seatOffNo" value=1 >
    <c:choose>
       <c:when test="${seat eq 30}">
          <span>좌석 갯수 30 강의실</span><br>

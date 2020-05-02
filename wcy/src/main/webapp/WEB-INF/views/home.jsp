@@ -4,14 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-	<title>Home</title>
+<title>WE CODE YOU | HOME</title>
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
 
-<h3>  여기는 임시 메인페이지 입니다.  </h3>
+<jsp:include page="include/header.jsp" />
+
+
+<jsp:include page="include/footer.jsp" />
 
 <c:if test="${login == null}">
 	<a href="<c:url value='/member/login' />" >LOGIN</a>
