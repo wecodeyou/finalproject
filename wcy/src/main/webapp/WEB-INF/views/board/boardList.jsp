@@ -108,7 +108,7 @@ table {
 			        </tr>
 					<c:forEach var="b" items="${boardList}">
 					<tr class="list-group list-group-horizontal">
-						<td class="list-group-item w20">${b.boardTitle}<a href='#'></a>
+						<td class="list-group-item w20">${b.boardTitle}<a href='/board/${b.boardNo}'></a>
 						<span class="badge badge-pill badge-warning"></span></td>
 						<td class="list-group-item w50">${b.boardDetail}</td>
 						<td class="list-group-item w30">

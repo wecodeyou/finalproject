@@ -39,7 +39,7 @@
 		<websocket:mapping handler="socketHandler" path="/off/lecture"/>
 	</websocket:handlers>
 	
-  	<beans:bean id="socketHandler" class="com.it.wecodeyou.SocketHandler"/>
+  	<beans:bean id="socketHandler" class="com.it.wecodeyou.off_lecture.handler.SocketHandler"/>
 	<!-- 인터셉터 빈 등록
 	<beans:bean id="testInterceptor" class="com.it.wecodeyou.member.commons.interceptor.TestInterceptor"/>
 	<beans:bean id="boardInterceptor" class=""/>

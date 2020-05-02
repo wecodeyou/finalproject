@@ -1,4 +1,4 @@
-package com.it.wecodeyou;
+package com.it.wecodeyou.off_lecture.handler;
 
 import java.util.HashSet;
 import java.util.Set;

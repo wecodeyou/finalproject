@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 			<td>
-				<input type="text" id="thumb" name="productThumb" value="https://res.cloudinary.com/dl5spujr5/image/upload/v1574920339/samples/animals/kitten-playing.gif" readonly/>
+				<input type="text" id="thumb" name="productThumb" value="https://res.cloudinary.com/dl5spujr5/image/upload/v1588318932/samples/KakaoTalk_20200330_102631863_oxod5r.jpg" readonly/>
 				</td>
 			</tr>
 			<tr>
