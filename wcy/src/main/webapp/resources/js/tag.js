@@ -1,3 +1,5 @@
+
+	
 	//input값
 	var oldVal = null;
 	var currentVal = null;
@@ -55,6 +57,7 @@
 						if(data.noList[0] === "no result"){
 							console.log(data.noList[0]);						}
 						else{
+							//있다면
 							sw = 1;
 						}
 							
@@ -68,6 +71,7 @@
 								for (i = 0; i < data.nameList.length; i++) {
 									$("nameList").add(data.nameList[i]);
 									$("noList").add(data.noList[i]);
+									
 									$("#resultList").append("<li 'class='resultList' value='"
 	                                        + data.nameList[i]
 	                                        + "' data-input='"
@@ -77,8 +81,9 @@
 											+ data.nameList[i]
 											+ "'"
 											+ "onclick='appendBtn("
-											+ i
-											+ ")' id='result"
+											//+ i
+											+ ")' id='"
+											+ data.nameList[i]
 											+ "'>"
 											+ data.nameList[i]
 											+ "</a>"
@@ -95,21 +100,24 @@
 				
 	});//end #text-keyup-function
 	
+	//input text 창에 enter
+	$("#text").keyup(function(e){if(e.keyCode == 13)  appendBtn();});
+	console.log("currentFocus: " + currentFocus);
 	
-	//input enter 시 이벤트
-	//$("#text").keyup(function(e){if(e.keyCode == 13)  함수호출 });
-	
-	
-	function appendBtn(obj){
+	function appendBtn(){
 		if(sw == 0){ // no result
 			insertTag();
 			console.log('insert fucntion!');
 			
 		}else{
-			clickLink(obj);
+			if(currentFocus === undefined){
+				currentFocus = 0;
+			}
+			clickLink(currentFocus);
 			console.log('clickLink fucntion!');
 		}
 	}
+	
 	
 
 	function clickLink(obj) {
@@ -121,6 +129,7 @@
 			return;
 		}
 		generateBtn(name, no);
+		console.log("방금 들어간 인덱스: " + obj);
 	}
 	
 	// 새로운 태그 insert
@@ -139,12 +148,13 @@
 			},
 			success : function(data) {
 				if(data === "fail") {
-					alert("태그 등록 실패!");
+					console.log("태그 등록 실패!");
 				} else{
 					console.log("태그 등록 성공! " + data + "번 태그");
 					
 				    //태그 버튼 생성
 				    generateBtn(tag, data);
+				    return;
 				}
 			}
 			
@@ -157,7 +167,8 @@
 	function generateBtn(name, no){
 		
 		var btn = document.createElement( 'button' );
-      	var btnText = document.createTextNode( name );
+		var text = name + " x"; //x -> &times; 로 넣을 방법 생각!
+      	var btnText = document.createTextNode( text );
       	btn.appendChild( btnText );
       	btn.setAttribute("class", "btnTag");
       	btn.id = no; //id = tagId 값 (현재 문자열)
@@ -168,7 +179,7 @@
       	sendTagList.push(no);
       	
       	for (var i = 0; i < sendTagList.length; i++) {
-			console.log("등록: " + sendTagList[i] + " ");
+			console.log("등록된 태그 버튼들: " + sendTagList[i] + " ");
 		}
       	
       	//태그 버튼 누르면 삭제
@@ -193,16 +204,18 @@
     	document.getElementById('text').value = ''
     	//커서 focus
     	document.getElementById('text').focus();
+    	console.log("더 이상 태그 추가 금지~~~ return");
+    	return;
 	}
 	
 	
-	//currentFocus
+	//currentFocus = 현재 인덱스
 	var currentFocus;
 	
 	$(document).on("keyup", function(e){
-		if(e.keyCode === 37 || e.keyCode === 39) {
+		//37 left 39 right 38 up 40 down
+		if(e.keyCode === 37 || e.keyCode === 39 || e.keyCode === 38 || e.keyCode === 40) {
 			e.preventDefault(); //cancle event
-			
 			var children = $("#resultList").children();
 			if(currentFocus === undefined) {
 				currentFocus = 0;
@@ -213,11 +226,20 @@
 			}
 			children.removeClass("--focus");
 			children.eq(currentFocus).addClass("--focus");
+			
+			
+			
+			//문제점: currentFocus가 정의되지 않았을 때..? event작동 안함...
+			console.log("currentFocus: " + currentFocus);
+			//$("#text").keyup(function(e){if(e.keyCode == 13)  appendBtn();});
 		}
 	}) 
 	
 	//enter keyCode => append btn
 	
+	
+	//input enter 시 이벤트
+	//$("#text").keyup(function(e){if(e.keyCode == 13)  함수호출 });
 	
 	//insert into ptag
 	function insertPtag() {
@@ -246,3 +268,12 @@
 		});//end Ajax
 		
 	}
+	
+	
+
+	//tag btn 클릭 시 검색
+	$('.search_tag').click(function() {
+		var id_check = $(this).attr("id");
+		console.log("clicked: " + id_check);
+		location.href = '/tag/searchProductByTag/'+id_check;
+	});

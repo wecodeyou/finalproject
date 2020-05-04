@@ -24,15 +24,19 @@
 </c:if>
 
 <a href="<c:url value='/board/list'/>" >BOARD</a>
-
+<br>
 <a href="<c:url value='/product'/>" >Product 리스트 보기</a>
+<br>
 <a href="/interest_list">INTEREST</a>
-
-<a href="/tag">TAG를 PRODUCT에 등록</a>
-
+<br>
+<a href="/tag">TAG</a>
+<br>
+<a href="<c:url value='/tag/search'/>">TAG SEARCH</a>
+<br>
 <a href="<c:url value='/off/seat_main' />" >자리보기</a>
-
+<br>
 <a href="#">강사로 오프라인 강의 참석하기</a>
+<br>
 <a href="#">학생으로 오프라인 강의 참석하기</a>
 </body>
 </html>

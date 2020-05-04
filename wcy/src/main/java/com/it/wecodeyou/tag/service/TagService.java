@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.tag.model.TagVO;
 import com.it.wecodeyou.tag.repository.ITagMapper;
 
@@ -41,6 +42,16 @@ public class TagService implements ITagService{
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchProductByTag(Integer tagNo) throws SQLException {
+		return  dao.searchProductByTag(tagNo);
+	}
+
+	@Override
+	public ArrayList<TagVO> searchPTagNo() throws SQLException {
+		return dao.searchPTagNo();
 	}
 
 
