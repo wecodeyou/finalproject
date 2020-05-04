@@ -61,7 +61,7 @@ public class OffController {
 	   return mv;
    }
    
-   //객체로 안 받아져서 하나씩 받음.
+   //오프라인강의랑 상품 정보를 다 가져오기 위해 만든 커스텀 VO로 한번에 가져옴
    @PostMapping(value="/register")
    public String register(@RequestBody OffProductVO opvo) {
          System.out.println("/register - param received \n\r " + opvo.toString());

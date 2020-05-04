@@ -1,6 +1,6 @@
 package com.it.wecodeyou.reply.repository;
 
-import com.it.wecodeyou.article.model.ArticleVO;
+import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.reply.model.ReplyVO;
 

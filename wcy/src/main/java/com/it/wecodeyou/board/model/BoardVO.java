@@ -3,13 +3,14 @@ package com.it.wecodeyou.board.model;
 import java.sql.Timestamp;
 
 public class BoardVO {
-	private long boardNo;
+	private Integer boardNo;
 	private String boardTitle;
 	private String boardDetail;
 	private String boardType;
 	private Timestamp boardCreatedAt;
 	
-	public BoardVO(long boardNo, String boardTitle, String boardDetail, String boardType, Timestamp boardCreatedAt) {
+	public BoardVO() {}
+	public BoardVO(Integer boardNo, String boardTitle, String boardDetail, String boardType, Timestamp boardCreatedAt) {
 		super();
 		this.boardNo = boardNo;
 		this.boardTitle = boardTitle;
@@ -25,11 +26,12 @@ public class BoardVO {
 		this.boardType = boardType;
 	}
 
-	public long getBoardNo() {
+
+	public Integer getBoardNo() {
 		return boardNo;
 	}
 
-	public void setBoardNo(long boardNo) {
+	public void setBoardNo(Integer boardNo) {
 		this.boardNo = boardNo;
 	}
 
@@ -63,6 +65,12 @@ public class BoardVO {
 
 	public void setBoardCreatedAt(Timestamp boardCreatedAt) {
 		this.boardCreatedAt = boardCreatedAt;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardVO [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardDetail=" + boardDetail
+				+ ", boardType=" + boardType + ", boardCreatedAt=" + boardCreatedAt + "]";
 	}
 
 

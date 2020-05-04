@@ -98,7 +98,7 @@ table {
 			<div class="content_in">
                 <!--게시판 선택 테이블-->
 
-				<button class="btn btn-warning" style="float:right;" onclick="location.href=<c:url value='/board/register' />">게시판 추가하기</button>
+				<button class="btn btn-warning" style="float:right;" onclick="location.href=<c:url value='/board/register'/>">게시판 추가하기</button>
                 <table>
                 <!--테이블 헤더-->
 			        <tr class="list-group list-group-horizontal ">
@@ -108,7 +108,7 @@ table {
 			        </tr>
 					<c:forEach var="b" items="${boardList}">
 					<tr class="list-group list-group-horizontal">
-						<td class="list-group-item w20">${b.boardTitle}<a href='/board/${b.boardNo}'></a>
+						<td class="list-group-item w20"><a href="<c:url value='/board/${b.boardNo}' />">${b.boardTitle}</a>
 						<span class="badge badge-pill badge-warning"></span></td>
 						<td class="list-group-item w50">${b.boardDetail}</td>
 						<td class="list-group-item w30">
