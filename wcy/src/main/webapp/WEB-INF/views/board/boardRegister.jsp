@@ -38,17 +38,17 @@
             <hr/>
             <div class="form-group">
                 <label for="board-title-input">이름</label>
-                <input type="text" class="form-control" id="board-title-input" name="board_title">
+                <input type="text" class="form-control" id="board-title-input" name="boardTitle">
             </div>
             <div class="form-group">
                 <label for="board-detail-input">설명글</label>
-                <input type="text" name="board_detail" class="form-control" id="board-detail-input">
+                <input type="text" name="boardDetail" class="form-control" id="board-detail-input">
             </div>
             <div class="form-group">
                 <label for="board-type-input">게시판 선택</label>
-                <select name="board_type" class="form-control" id="board-type-input">
-				    <option value="a">비기능 커뮤니티 게시판</option>
-				    <option value="b">기능 게시판</option>
+                <select name="boardType" class="form-control" id="board-type-input">
+				    <option value="0">일반 게시판</option>
+				    <option value="1">코드/특수기능 게시판</option>
 				</select>
             </div>
             <button type="submit" class="btn btn-primary">등록</button>

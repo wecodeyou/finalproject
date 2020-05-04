@@ -6,7 +6,7 @@ import com.it.wecodeyou.board.model.BoardVO;
 
 public interface IBoardMapper {
 	//게시판 삽입문
-	public void insertBoard(BoardVO rvo);
+	public Integer insertBoard(BoardVO rvo);
 
 	//게시판 삭제
 	public void deleteBoard(Integer boardNo);

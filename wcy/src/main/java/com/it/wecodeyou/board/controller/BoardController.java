@@ -1,5 +1,6 @@
 package com.it.wecodeyou.board.controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,40 +15,47 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.board.model.BoardVO;
+import com.it.wecodeyou.board.model.ReplyUserVO;
 import com.it.wecodeyou.board.service.IArticleService;
 import com.it.wecodeyou.board.service.IBoardService;
+import com.it.wecodeyou.board.service.IReplyService;
+import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 
 @RestController
 @RequestMapping(value="/board")
 public class BoardController {
-	private ModelAndView mv = new ModelAndView();
-	
-	@Autowired
-	private IBoardService boardService;
-	
-	@Autowired
-	private IArticleService articleService;
-	
+
 	@Autowired
 	private IMemberService memberService;
+	@Autowired
+	private IBoardService boardService;
+	@Autowired
+	private IArticleService articleService;
+	@Autowired
+	private IReplyService replyService;	
+
 	
 	@GetMapping("/list")
-	public ModelAndView selectBoard() {
+	public ModelAndView selectBoard(ModelAndView mv) {
 		mv.addObject("boardList", boardService.list());
 		mv.setViewName("board/boardList");
 		return mv;
 	}
 	
 	@GetMapping("/register")
-	public ModelAndView registerBoard() {
+	public ModelAndView registerBoard(ModelAndView mv) {
 		mv.setViewName("board/boardRegister");
 		return mv;
 	}
 	@PostMapping("/register")
-	public ModelAndView registerBoard(BoardVO bvo, Model model) {
-		boardService.insert(bvo);
-		
+	public ModelAndView registerBoard(BoardVO bvo, Model model,  ModelAndView mv) {
+		if(boardService.insert(bvo) == 1) {
+			mv.setViewName("/board/boardList");
+		} else {
+			mv.addObject("message", "Board Register Failed");
+			mv.setViewName("/board/boardRegister");
+		}
 		return mv;
 	}
 	
@@ -85,6 +93,21 @@ public class BoardController {
 		
 		ArticleVO avo = articleService.getOneInfo(articleNo);
 		BoardVO bvo = boardService.getInfoByNo(avo.getArticleBoardNo());
+		MemberVO uvo = null;
+		List<ReplyUserVO> replyList = replyService.listByArticle(articleNo);
+		try {
+			uvo = memberService.getOneInfo(avo.getArticleWriter());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("GET /article/{articleNo} - \r\n Article : " + avo.toString());
+		System.out.println( "User : " + uvo.toString());
+		System.out.println("Board : " + bvo.toString());
+		System.out.println("Total Replies : " + replyList.size());
+		mv.addObject("user", uvo);
+		mv.addObject("board", bvo);
+		mv.addObject("article", avo);
+		mv.addObject("replyList", replyList);
 		mv.setViewName("/board/articleDetail");
 		return mv;
 	}

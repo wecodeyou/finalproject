@@ -6,7 +6,7 @@
       <id property="articleNo" column="article_no" />
       <result property="articleTitle" column="article_title" />
       <result property="articleContent" column="article_content" />
-      <result property="articleBoardNo" column="article_board_title" />
+      <result property="articleBoardNo" column="article_board_no" />
       <result property="articleClicks" column="article_clicks" />
       <result property="articleLikes" column="article_likes" />
       <result property="articleWriter" column="article_writer" />

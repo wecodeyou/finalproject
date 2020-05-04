@@ -16,8 +16,8 @@ public class BoardService implements IBoardService {
 	
 	
 	@Override
-	public void insert(BoardVO rvo) {
-		dao.insertBoard(rvo);
+	public Integer insert(BoardVO rvo) {
+		return dao.insertBoard(rvo);
 
 	}
 

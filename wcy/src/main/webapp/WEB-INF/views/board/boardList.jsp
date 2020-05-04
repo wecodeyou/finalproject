@@ -98,7 +98,7 @@ table {
 			<div class="content_in">
                 <!--게시판 선택 테이블-->
 
-				<button class="btn btn-warning" style="float:right;" onclick="location.href=<c:url value='/board/register'/>">게시판 추가하기</button>
+				<button class="btn btn-warning" style="float:right;" onclick="location.href='<c:url value='/board/register'/>'">게시판 추가하기</button>
                 <table>
                 <!--테이블 헤더-->
 			        <tr class="list-group list-group-horizontal ">

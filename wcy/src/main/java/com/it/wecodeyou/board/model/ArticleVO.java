@@ -6,7 +6,7 @@ public class ArticleVO {
 	private Integer articleNo;
 	private String articleTitle;
 	private String articleContent;
-	private String articleWriter;
+	private Integer articleWriter;
 	private Integer articleBoardNo;
 	private Integer articleClicks;
 	private Integer articleLikes;
@@ -15,7 +15,7 @@ public class ArticleVO {
 	
 	public ArticleVO() {}
 
-	public ArticleVO(Integer articleNo, String articleTitle, String articleContent, String articleWriter,
+	public ArticleVO(Integer articleNo, String articleTitle, String articleContent, Integer articleWriter,
 			Integer articleBoardNo, Integer articleClicks, Integer articleLikes, Timestamp articleCreatedAt,
 			Timestamp articleModifiedAt) {
 		super();
@@ -30,7 +30,7 @@ public class ArticleVO {
 		this.articleModifiedAt = articleModifiedAt;
 	}
 
-	public ArticleVO(String articleTitle, String articleContent, String articleWriter, Integer articleBoardNo) {
+	public ArticleVO(String articleTitle, String articleContent, Integer articleWriter, Integer articleBoardNo) {
 		super();
 		this.articleTitle = articleTitle;
 		this.articleContent = articleContent;
@@ -62,11 +62,11 @@ public class ArticleVO {
 		this.articleContent = articleContent;
 	}
 
-	public String getArticleWriter() {
+	public Integer getArticleWriter() {
 		return articleWriter;
 	}
 
-	public void setArticleWriter(String articleWriter) {
+	public void setArticleWriter(Integer articleWriter) {
 		this.articleWriter = articleWriter;
 	}
 
@@ -117,6 +117,6 @@ public class ArticleVO {
 				+ ", articleClicks=" + articleClicks + ", articleLikes=" + articleLikes + ", articleCreatedAt="
 				+ articleCreatedAt + ", articleModifiedAt=" + articleModifiedAt + "]";
 	}
-	
+
 	
 }
