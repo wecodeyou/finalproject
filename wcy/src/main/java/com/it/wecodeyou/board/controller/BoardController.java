@@ -84,7 +84,7 @@ public class BoardController {
 	public ModelAndView articleDetail(@PathVariable Integer articleNo, ModelAndView mv) {
 		
 		ArticleVO avo = articleService.getOneInfo(articleNo);
-		Board
+		BoardVO bvo = boardService.getInfoByNo(avo.getArticleBoardNo());
 		mv.setViewName("/board/articleDetail");
 		return mv;
 	}
