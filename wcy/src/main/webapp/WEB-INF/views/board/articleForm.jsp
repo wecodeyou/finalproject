@@ -40,6 +40,17 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 			</tr>
 			<tr>
 				<td>
+					<input type="text" id="text" placeholder="#해시태그">
+					<ul class="override" id="resultList"></ul>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<div id="selectedTagList"></div> 
+				</td>
+			</tr>
+			<tr>
+				<td>
 					<input type="submit" id="article_register_btn" value="등록"/>
 				</td>
 			</tr>
@@ -61,7 +72,8 @@ $(function(){
 		var data = {
 				articleTitle : title,
 				articleContent : content,
-				articleWriter : writer
+				articleWriter : writer,
+				sendTagList: sendTagList
 			}
 			$.ajax({
 				type: "POST",
@@ -86,6 +98,6 @@ $(function(){
 });
 
 </script>
-
+<script src="<c:url value='/js/tag.js'/>"></script>
 </body>
 </html>

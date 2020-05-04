@@ -7,38 +7,30 @@ public class ArticleTagVO {
 	private Integer articleNo;
 	private String articleTitle;
 	private String articleContent;
-	private String articleBoardTitle;
+	private Integer articleWriter;
+	private Integer articleBoardNo;
 	private Integer articleClicks;
 	private Integer articleLikes;
-	private Integer articleEditorNo;
 	private Timestamp articleCreatedAt;
 	private Timestamp articleModifiedAt;
+	private ArrayList<Integer> sendTagList;
 
-	
 	ArticleTagVO(){}
 
-	public ArticleTagVO(Integer articleNo, String articleTitle, String articleContent, String articleBoardTitle,
-			Integer articleClicks, Integer articleLikes, Integer articleEditorNo, Timestamp articleCreatedAt,
-			Timestamp articleModifiedAt) {
+	public ArticleTagVO(Integer articleNo, String articleTitle, String articleContent, Integer articleWriter,
+			Integer articleBoardNo, Integer articleClicks, Integer articleLikes, Timestamp articleCreatedAt,
+			Timestamp articleModifiedAt, ArrayList<Integer> sendTagList) {
 		super();
 		this.articleNo = articleNo;
 		this.articleTitle = articleTitle;
 		this.articleContent = articleContent;
-		this.articleBoardTitle = articleBoardTitle;
+		this.articleWriter = articleWriter;
+		this.articleBoardNo = articleBoardNo;
 		this.articleClicks = articleClicks;
 		this.articleLikes = articleLikes;
-		this.articleEditorNo = articleEditorNo;
 		this.articleCreatedAt = articleCreatedAt;
 		this.articleModifiedAt = articleModifiedAt;
-	}
-	
-	
-	public ArticleTagVO(String articleTitle, String articleContent, String articleBoardTitle, Integer articleEditorNo) {
-		super();
-		this.articleTitle = articleTitle;
-		this.articleContent = articleContent;
-		this.articleBoardTitle = articleBoardTitle;
-		this.articleEditorNo = articleEditorNo;
+		this.sendTagList = sendTagList;
 	}
 
 	public Integer getArticleNo() {
@@ -65,12 +57,20 @@ public class ArticleTagVO {
 		this.articleContent = articleContent;
 	}
 
-	public String getArticleBoardTitle() {
-		return articleBoardTitle;
+	public Integer getArticleWriter() {
+		return articleWriter;
 	}
 
-	public void setArticleBoardTitle(String articleBoardTitle) {
-		this.articleBoardTitle = articleBoardTitle;
+	public void setArticleWriter(Integer articleWriter) {
+		this.articleWriter = articleWriter;
+	}
+
+	public Integer getArticleBoardNo() {
+		return articleBoardNo;
+	}
+
+	public void setArticleBoardNo(Integer articleBoardNo) {
+		this.articleBoardNo = articleBoardNo;
 	}
 
 	public Integer getArticleClicks() {
@@ -89,14 +89,6 @@ public class ArticleTagVO {
 		this.articleLikes = articleLikes;
 	}
 
-	public Integer getArticleEditorNo() {
-		return articleEditorNo;
-	}
-
-	public void setArticleEditorNo(Integer articleEditorNo) {
-		this.articleEditorNo = articleEditorNo;
-	}
-
 	public Timestamp getArticleCreatedAt() {
 		return articleCreatedAt;
 	}
@@ -113,12 +105,21 @@ public class ArticleTagVO {
 		this.articleModifiedAt = articleModifiedAt;
 	}
 
+	public ArrayList<Integer> getSendTagList() {
+		return sendTagList;
+	}
+
+	public void setSendTagList(ArrayList<Integer> sendTagList) {
+		this.sendTagList = sendTagList;
+	}
+
 	@Override
 	public String toString() {
 		return "ArticleTagVO [articleNo=" + articleNo + ", articleTitle=" + articleTitle + ", articleContent="
-				+ articleContent + ", articleBoardTitle=" + articleBoardTitle + ", articleClicks=" + articleClicks
-				+ ", articleLikes=" + articleLikes + ", articleEditorNo=" + articleEditorNo + ", articleCreatedAt="
-				+ articleCreatedAt + ", articleModifiedAt=" + articleModifiedAt + "]";
+				+ articleContent + ", articleWriter=" + articleWriter + ", articleBoardNo=" + articleBoardNo
+				+ ", articleClicks=" + articleClicks + ", articleLikes=" + articleLikes + ", articleCreatedAt="
+				+ articleCreatedAt + ", articleModifiedAt=" + articleModifiedAt + ", sendTagList=" + sendTagList + "]";
 	}
+
 	
 }

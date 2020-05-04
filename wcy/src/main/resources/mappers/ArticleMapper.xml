@@ -14,7 +14,7 @@
       <result property="articleModifiedAt" column="article_modified_at" />
    </resultMap>
    
-   <insert id="insert">
+   <insert id="insert" useGeneratedKeys="true" keyProperty="articleNo" parameterType="com.it.wecodeyou.board.model.ArticleVO">
    		INSERT
    		INTO article
    		(article_title, article_content, article_board_no, article_writer)

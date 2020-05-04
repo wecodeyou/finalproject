@@ -3,6 +3,7 @@ package com.it.wecodeyou.tag.controller;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +38,26 @@ public class TagController {
 		return mv;
 	}
 	
-	@GetMapping("/search")
-	public ModelAndView search(ModelAndView mv) throws SQLException {
+	@GetMapping("/searchByBtn")
+	public ModelAndView searchByBtn(ModelAndView mv) throws SQLException {
 		 
 		ArrayList<TagVO>nameList = service.getAllTag();
 		ArrayList<TagVO> ptagList = service.searchPTagNo();
 		mv.addObject("ptagList", ptagList);
 		mv.addObject("nameList", nameList);
-		mv.setViewName("tag/search");
+		mv.setViewName("tag/searchByBtn");
+		
+		return mv;
+	}
+	
+	@GetMapping("/searchByInput")
+	public ModelAndView searchByInput(ModelAndView mv) throws SQLException {
+		 
+		ArrayList<TagVO>nameList = service.getAllTag();
+		ArrayList<TagVO> ptagList = service.searchPTagNo();
+		mv.addObject("ptagList", ptagList);
+		mv.addObject("nameList", nameList);
+		mv.setViewName("tag/searchByInput");
 		
 		return mv;
 	}
@@ -102,15 +115,34 @@ public class TagController {
 	public ModelAndView searchProductByTag(@PathVariable ("tagNo") Integer tagNo, ModelAndView mv) throws SQLException {
 		System.out.println("/tag/searchProductByTag : 태그로 상품 검색 POST 요청 발생!");
 		
+		String tagName = service.getTagName(tagNo);
+		
 		ArrayList<ProductVO> pvoList = service.searchProductByTag(tagNo);
 		if(pvoList.size()==0) {
-			pvoList = null;
 			ArrayList<TagVO> ptagList = service.searchPTagNo();
 			mv.addObject("ptagList", ptagList);
+		} else {
+			List<ProductVO> productList = new ArrayList<>();
+			List<ProductVO> offList = new ArrayList<>();
+			List<ProductVO> onList = new ArrayList<>();
+			
+			for (ProductVO pvo : pvoList) {
+				if(pvo.getProductType().equals("0")) {
+					productList.add(pvo);
+				} else if(pvo.getProductType().equals("1")) {
+					offList.add(pvo);
+				} else {
+					onList.add(pvo);
+				}
+			}
+			
+			mv.addObject("productList", productList);
+			mv.addObject("offList", offList);
+			mv.addObject("onList", onList);
+			mv.addObject("pvoList", pvoList);
 		}
-		
-		mv.addObject("pvoList", pvoList);
-		mv.setViewName("tag/tagSearchResult");
+		mv.addObject("tagName", tagName);
+		mv.setViewName("tag/btnSearchResult");
 		
 		return mv;
 	}

@@ -1,5 +1,29 @@
 @charset "UTF-8";
 
+/* .table {
+	border-collapse: collapse;
+} */
+
+.search_tag {
+		display: inline-block;
+		border:none;
+		border-radius: 20px;
+		opacity:0.6;
+		text-align: center;
+		font-size: 16px;
+		margin: 4px 5px;
+		padding: 5px 8px;
+	}
+	
+	.search_tag:hover,
+	
+	.search_tag:focus {
+       	color: blue;
+        text-decoration: none;
+        cursor: pointer;
+        /* font-weight: bold; */
+    }
+
 /* btnTag 하나도 안 적용됨*/
 .btnTag { 
 	margin: 5px;

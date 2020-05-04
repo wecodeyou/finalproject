@@ -29,23 +29,11 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 	
 	<ul class="override" id="resultList"></ul>
 	
-	
-	
-	<button type="button" id="btn_showPtag" onclick="getAllTag();">모든 태그 보기</button>
-	
-	
-	
-	<button type="button" id="appendBtn" >appendBtn</button>
-	
-	<a href="<c:url value='/tag/search'/>">TAG SEARCH</a>
+	<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a>
 	
 </body>
 
 <script src="<c:url value='/js/tag.js'/>"></script>
 
-<script>
-	
-	
-</script>
 
 </html>

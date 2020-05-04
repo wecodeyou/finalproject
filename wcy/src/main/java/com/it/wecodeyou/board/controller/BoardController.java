@@ -1,6 +1,7 @@
 package com.it.wecodeyou.board.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.it.wecodeyou.board.model.ArticleTagVO;
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.board.model.BoardVO;
 import com.it.wecodeyou.board.model.ReplyUserVO;
@@ -79,9 +81,17 @@ public class BoardController {
 	}
 
 	@PostMapping("/{boardNo}/register")
-	public String registerArticle(@PathVariable Integer boardNo, @RequestBody ArticleVO avo) {
+	public String registerArticle(@PathVariable Integer boardNo, @RequestBody ArticleTagVO atvo) {
+		ArticleVO avo = new ArticleVO();
+		avo.setArticleTitle(atvo.getArticleTitle());
+		avo.setArticleContent(atvo.getArticleContent());
+		avo.setArticleWriter(atvo.getArticleWriter());
 		avo.setArticleBoardNo(boardNo);
-		if(articleService.insert(avo) == 1) {
+		
+		//tag number list
+        ArrayList<Integer> sendTagList = atvo.getSendTagList();
+        
+		if(articleService.insert(avo, sendTagList) == 1) {
 			return "register-success";
 		} else {
 			return "register-fail";			

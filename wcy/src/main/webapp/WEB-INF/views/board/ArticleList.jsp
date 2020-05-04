@@ -13,258 +13,13 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
+	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<style>
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
-	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
-	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
-	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
-	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
-	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
-	output, ruby, section, summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, footer, header, hgroup,
-	menu, nav, section {
-	display: block;
-}
-
-body {
-	line-height: 1;
-}
-
-.container {
-	height: 700px;
-}
-
-ol, ul {
-	list-style: none;
-}
-
-blockquote, q {
-	quotes: none;
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-	content: '';
-	content: none;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-/* 
----------------------------end css reset------------------------------------
-*/
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
-	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
-	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
-	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
-	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
-	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
-	output, ruby, section, summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, footer, header, hgroup,
-	menu, nav, section {
-	display: block;
-}
-
-body {
-	line-height: 1;
-	font-family: "나눔바른고딕";
-}
-
-ol, ul {
-	list-style: none;
-}
-
-blockquote, q {
-	quotes: none;
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-	content: '';
-	content: none;
-}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-a:link {
-	text-decoration: none;
-	color: black;
-}
-
-a:visited {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:active {
-	text-decoration: underline;
-}
-/* 
----------------------------end css reset------------------------------------
-*/
-td:nth-child(6n + 1) {
-	width: 5%;
-}
-
-td:nth-child(6n + 2) {
-	width: 10%;
-	padding: 0;
-}
-
-td:nth-child(6n + 2):hover {
-	background-color: white;
-}
-
-td:nth-child(6n + 3) {
-	width: 30%;
-}
-
-td:nth-child(6n + 4) {
-	width: 15%;
-	/*display: none;*/
-}
-
-td:nth-child(6n + 5) {
-	width: 15%;
-	/*display: none;*/
-}
-
-td:nth-child(6n) {
-	width: 15%;
-	/*display: none;*/
-}
-
-th {
-	color: white;
-}
-
-th>a:link {
-	color: white;
-}
-
-th:nth-child(6n + 1) {
-	width: 10%;
-}
-
-th:nth-child(6n + 2) {
-	width: 15%;
-}
-
-th:nth-child(6n + 3) {
-	width: 35%;
-}
-
-th:nth-child(6n + 4) {
-	width: 15%;
-	/*display: none;*/
-}
-
-th:nth-child(6n + 5) {
-	width: 15%;
-}
-
-th:nth-child(6n) {
-	width: 15%;
-}
-
-table {
-	width: 100%;
-	border: 1px solid;
-	text-align: center;
-	margin: 0 auto;
-	box-shadow: 2px 2px 2px;
-	margin-top: 5%;
-}
-
-tr:nth-child(2n + 1) {
-	
-}
-
-tr:nth-child(2n) {
-	
-}
-
-thead {
-	background-color: #084B8A;
-	color: white;
-	padding: 1%;
-}
-
-h2 {
-	font-size: 4vw;
-	margin: 0 auto;
-	color: cornflowerblue;
-}
-
-.class-header {
-	width: 100%;
-	text-align: center;
-	margin-bottom: 5%;
-}
-
-#search-form {
-	border: #084B8A double;
-	background-color: #084B8A;
-	padding: 2%;
-	width: 50%;
-	margin: 0 auto;
-}
-
-tr {
-	text-align: center;
-	border-bottom: 1px solid;
-	margin: 1%;
-	padding-top: 0;
-}
-
-tr:hover {
-	font-weight: bold;
-}
-
-#page {
-	margin: 3%;
-}
-
-#admin-panel {
-	background-color: #084B8A;
-	width: 40%;
-	margin-top: 1%;
-	color: yellow;
-	font-weight: bold;
-	padding: 1%;
-	float: right;
-}
-
-#admin-panel>button {
-	margin: 2%;
-}
-</style>
 <script type="text/javascript" src="./jquery/jquery.js"></script>
 
+<style>
+
+</style>
 </head>
 <body>
 	<div class="container" id="container">
@@ -278,34 +33,30 @@ tr:hover {
 			<hr>
 			<div class="content_in">
 				<button onClick="location.href = '<c:url value="/board/${board.boardNo}/register"/>' ">게시글 추가하기</button>
-				<table>
+				<table border="2px">
 					<thead>
-						<tr class="list-group list-group-horizontal">
-							<th class="list-group list-group-horizontal">번호</th>
-							<th class="list-group list-group-horizontal"><a
-								href='#'>제목</a></th>
-							<th class="list-group list-group-horizontal">글쓴이</th>
-							<th class="list-group list-group-horizontal">조회수</th>
-							<th class="list-group list-group-horizontal"><a
-								href='#'>좋아요</a></th>
-							<th class="list-group list-group-horizontal"><a
-								href='#'>
-									생성일</a></th>
-							<th class="list-group list-group-horizontal">수정일</th>
+						<tr class="">
+							<th class="">번호</th>
+							<th class=""><a href='#'>제목</a></th>
+							<th class="">글쓴이</th>
+							<th class="">조회수</th>
+							<th class=""><a href='#'>좋아요</a></th>
+							<th class=""><a href='#'>생성일</a></th>
+							<th class="">수정일</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="a" items="${articleList}">
-						<tr class="d-flex flex-row justify-content-between align-items-center list-group list-group-horizontal">
-								<div class="row">
+						<tr class="l">
+								<div class="">
 								<div class="col-md-4">
-									<td class="list-group list-group-horizontal">${a.articleNo}</td> 
-									<td class="list-group list-group-horizontal"><a href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle}</a></td>
-									<td class="list-group list-group-horizontal">${a.articleWriter}</td>
-									<td class="list-group list-group-horizontal">${a.articleClicks}</td>
-									<td class="list-group list-group-horizontal">${a.articleLikes}</td>
-									<td class="list-group list-group-horizontal">${a.articleCreatedAt}</td>
-									<td class="list-group list-group-horizontal">${a.articleModifiedAt}</td>
+									<td class="">${a.articleNo}</td> 
+									<td class=""><a href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle}</a></td>
+									<td class="">${a.articleWriter}</td>
+									<td class="">${a.articleClicks}</td>
+									<td class="">${a.articleLikes}</td>
+									<td class="">${a.articleCreatedAt}</td>
+									<td class="">${a.articleModifiedAt}</td>
 								</div>
 								</div>
 						</tr>

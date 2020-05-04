@@ -31,7 +31,9 @@
 <br>
 <a href="/tag">TAG</a>
 <br>
-<a href="<c:url value='/tag/search'/>">TAG SEARCH</a>
+<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a>
+<br>
+<a href="<c:url value='/tag/searchByInput'/>">TAG SEARCH by INPUT TEXT</a>
 <br>
 <a href="<c:url value='/off/seat_main' />" >자리보기</a>
 <br>

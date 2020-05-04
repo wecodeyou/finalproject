@@ -7,4 +7,9 @@
 		<id property="aArticleNo" column="a_article_no" />
 	</resultMap>
 	
+		<!-- ptag 등록 -->
+  	<insert id="insertAtag">
+      	INSERT INTO tag_article (a_tag_no, a_article_no) VALUES (#{aTagNo}, #{aArticleNo})
+   	</insert>
+   	
 </mapper>

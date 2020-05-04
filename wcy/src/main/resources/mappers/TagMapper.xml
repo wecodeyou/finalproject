@@ -22,6 +22,10 @@
       	SELECT * FROM tag order by tag_no asc
   	</select>
   	
+  	<select id="getTagName" resultType="String">
+  		select tag_name from tag where tag_no = #{tagNo}
+  	</select>
+  	
   	<!-- tagName 중복 검사 -->
    	<select id="checkTag" resultType="int">
    		<!-- <bind name="pattern" value='%' + _parameter.getTitle() + '%' /> -->

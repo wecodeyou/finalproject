@@ -11,13 +11,16 @@ public interface ITagService {
 		//select all
 		public ArrayList<TagVO> getAllTag() throws SQLException ;
 		
-		//select one
+		//search tagname by tagno
+		public String getTagName(Integer tagNo) throws SQLException;
+		
+		//check duplicate tagName
 		public Integer checkTag(String tagName) throws SQLException ;
 		
 		//search
 		public ArrayList<TagVO> checkTagDetail(String q) throws SQLException;
 		
-		//insert tag
+		//insert new tag
 		public boolean insertTag(String tag) throws SQLException ;
 
 		//update delete 추가 작성

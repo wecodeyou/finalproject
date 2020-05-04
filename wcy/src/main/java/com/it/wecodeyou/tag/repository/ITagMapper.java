@@ -11,13 +11,16 @@ public interface ITagMapper {
 	//select all
 	public ArrayList<TagVO> getAllTag() throws SQLException;
 	
-	//select one (중복검사)
+	//search tagname by tagno
+	public String getTagName(Integer tagNo) throws SQLException;
+	
+	//check duplicate tagName (중복검사)
 	public Integer checkTag(String tagName) throws SQLException;
 	
 	//search
 	public ArrayList<TagVO> checkTagDetail(String q) throws SQLException;
 	
-	//insert tag
+	//insert new tag
 	public void insertTag(String tag) throws SQLException;
 	
 	//update delete 추가 작성

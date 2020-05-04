@@ -20,6 +20,11 @@ public class TagService implements ITagService{
 	public ArrayList<TagVO> getAllTag()  throws SQLException {
 		return dao.getAllTag();
 	}
+	
+	@Override
+	public String getTagName(Integer tagNo) throws SQLException {
+		return dao.getTagName(tagNo);
+	}
 
 	@Override
 	public Integer checkTag(String tagName)  throws SQLException {
@@ -28,7 +33,6 @@ public class TagService implements ITagService{
 	
 	@Override
 	public ArrayList<TagVO> checkTagDetail(String q) throws SQLException {
-		// TODO Auto-generated method stub
 		return dao.checkTagDetail(q);
 	}
 
@@ -54,6 +58,6 @@ public class TagService implements ITagService{
 		return dao.searchPTagNo();
 	}
 
-
+	
 
 }
