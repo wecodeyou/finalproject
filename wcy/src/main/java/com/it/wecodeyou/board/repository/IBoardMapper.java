@@ -9,11 +9,14 @@ public interface IBoardMapper {
 	public void insertBoard(BoardVO rvo);
 
 	//게시판 삭제
-	public void deleteBoard(BoardVO rvo);
+	public void deleteBoard(Integer boardNo);
 	
 	//게시판 수정
 	public void updateBoard(BoardVO rvo);
 	
 	//게시판 리스트
 	public List<BoardVO> getAllInfo();
+	
+	//단일 게시판 정보
+	public BoardVO getInfoByNo(Integer boardNo);
 }

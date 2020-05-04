@@ -32,4 +32,8 @@
    		SELECT * FROM board
    </select>
    
+   <select id="getInfoByNo" resultMap="BoardMap">
+   		SELECT * FROM board
+   		WHERE board_no = #{boardNo}
+   </select>
 </mapper>

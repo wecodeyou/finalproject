@@ -1,12 +1,12 @@
-package com.it.wecodeyou.article.service;
+package com.it.wecodeyou.board.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.it.wecodeyou.article.model.ArticleVO;
-import com.it.wecodeyou.article.repository.IArticleMapper;
+import com.it.wecodeyou.board.model.ArticleVO;
+import com.it.wecodeyou.board.repository.IArticleMapper;
 
 @Service
 public class ArticleService implements IArticleService {
@@ -15,9 +15,8 @@ public class ArticleService implements IArticleService {
 	private IArticleMapper dao;
 	
 	@Override
-	public void insert(ArticleVO avo) {
-		dao.insert(avo);
-		
+	public Integer insert(ArticleVO avo) {
+		return dao.insert(avo);
 	}
 
 	@Override
@@ -33,9 +32,14 @@ public class ArticleService implements IArticleService {
 	}
 
 	@Override
-	public List<ArticleVO> list(long boardNo) {
+	public List<ArticleVO> list(Integer boardNo) {
 		return dao.list(boardNo);
 	}
 
+	@Override
+	public ArticleVO getOneInfo(Integer articleNo) {
+		return dao.getOneInfo(articleNo);
+	}
 
+	
 }

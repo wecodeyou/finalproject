@@ -10,11 +10,13 @@ public interface IBoardService {
 	public void insert(BoardVO rvo);
 
 	//게시판 삭제
-	public void delete(BoardVO rvo);
+	public void delete(Integer boardNo);
 	
 	//게시판 수정
 	public void update(BoardVO rvo);
 	
 	//게시판 리스트
 	public List<BoardVO> list();
+	
+	public BoardVO getInfoByNo(Integer boardNo);
 }

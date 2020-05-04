@@ -41,7 +41,6 @@
 	<mybatis-spring:scan base-package="com.it.wecodeyou.interest_list.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.schedule.repository"/>
  	<mybatis-spring:scan base-package="com.it.wecodeyou.point_purchase.repository"/>
- 	<mybatis-spring:scan base-package="com.it.wecodeyou.article.repository"/>
  	<mybatis-spring:scan base-package="com.it.wecodeyou.board.repository"/>
  	<mybatis-spring:scan base-package="com.it.wecodeyou.reply.repository"/>
  	<mybatis-spring:scan base-package="com.it.wecodeyou.product.repository"/>

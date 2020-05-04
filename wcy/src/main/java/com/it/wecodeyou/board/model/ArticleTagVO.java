@@ -1,20 +1,24 @@
-package com.it.wecodeyou.article.model;
+package com.it.wecodeyou.board.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
-public class ArticleVO {
-	private long articleNo;
+public class ArticleTagVO {
+	private Integer articleNo;
 	private String articleTitle;
 	private String articleContent;
 	private String articleBoardTitle;
 	private Integer articleClicks;
 	private Integer articleLikes;
-	private long articleEditorNo;
+	private Integer articleEditorNo;
 	private Timestamp articleCreatedAt;
 	private Timestamp articleModifiedAt;
+
 	
-	public ArticleVO(long articleNo, String articleTitle, String articleContent, String articleBoardTitle,
-			Integer articleClicks, Integer articleLikes, long articleEditorNo, Timestamp articleCreatedAt,
+	ArticleTagVO(){}
+
+	public ArticleTagVO(Integer articleNo, String articleTitle, String articleContent, String articleBoardTitle,
+			Integer articleClicks, Integer articleLikes, Integer articleEditorNo, Timestamp articleCreatedAt,
 			Timestamp articleModifiedAt) {
 		super();
 		this.articleNo = articleNo;
@@ -27,8 +31,9 @@ public class ArticleVO {
 		this.articleCreatedAt = articleCreatedAt;
 		this.articleModifiedAt = articleModifiedAt;
 	}
-
-	public ArticleVO(String articleTitle, String articleContent, String articleBoardTitle, long articleEditorNo) {
+	
+	
+	public ArticleTagVO(String articleTitle, String articleContent, String articleBoardTitle, Integer articleEditorNo) {
 		super();
 		this.articleTitle = articleTitle;
 		this.articleContent = articleContent;
@@ -36,11 +41,11 @@ public class ArticleVO {
 		this.articleEditorNo = articleEditorNo;
 	}
 
-	public long getArticleNo() {
+	public Integer getArticleNo() {
 		return articleNo;
 	}
 
-	public void setArticleNo(long articleNo) {
+	public void setArticleNo(Integer articleNo) {
 		this.articleNo = articleNo;
 	}
 
@@ -84,11 +89,11 @@ public class ArticleVO {
 		this.articleLikes = articleLikes;
 	}
 
-	public long getArticleEditorNo() {
+	public Integer getArticleEditorNo() {
 		return articleEditorNo;
 	}
 
-	public void setArticleEditorNo(long articleEditorNo) {
+	public void setArticleEditorNo(Integer articleEditorNo) {
 		this.articleEditorNo = articleEditorNo;
 	}
 
@@ -107,6 +112,13 @@ public class ArticleVO {
 	public void setArticleModifiedAt(Timestamp articleModifiedAt) {
 		this.articleModifiedAt = articleModifiedAt;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "ArticleTagVO [articleNo=" + articleNo + ", articleTitle=" + articleTitle + ", articleContent="
+				+ articleContent + ", articleBoardTitle=" + articleBoardTitle + ", articleClicks=" + articleClicks
+				+ ", articleLikes=" + articleLikes + ", articleEditorNo=" + articleEditorNo + ", articleCreatedAt="
+				+ articleCreatedAt + ", articleModifiedAt=" + articleModifiedAt + "]";
+	}
 	
 }
