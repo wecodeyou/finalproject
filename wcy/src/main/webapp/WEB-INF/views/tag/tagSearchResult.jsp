@@ -47,8 +47,8 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 	<h3>이런 검색결과가 없습니다. </h3>
 	<hr>
 	<h3>추천 태그 검색어</h3>
-	<c:forEach var="pL" items="${ptagList}" varStatus="status">
-		<button type="button" class="search_tag" id="${pL.tagNo}">${pL.tagName}</button>
+	<c:forEach var="p" items="${ptagList}" varStatus="status">
+		<button type="button" class="search_tag" id="${p.tagNo}">${p.tagName}</button>
 	</c:forEach>
 	
 		
@@ -57,21 +57,110 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 <c:if test="${pvoList != null}">
 	<h3>검색결과입니다.</h3> 
 	<hr>
-	<c:forEach var="pL" items="${pvoList}" varStatus="status">
-		<c:if test="${pL.productType == 0}">
+	<c:forEach var="p" items="${pvoList}" varStatus="status">
+		<c:if test="${p.productType == 0}">
 		온라인
 		</c:if>
-		<c:if test="${pL.productType == 1}">
+		<c:if test="${p.productType == 1}">
 		오프라인
 		</c:if>
-		<c:if test="${pL.productType == 2}">
+		<c:if test="${p.productType == 2}">
 		책
 		</c:if>
-		: ${pL.productName}
+		: ${p.productName}
 		<br>
 	</c:forEach>
 </c:if>
 	
+	
+<h2>상품만 출력</h2>
+<table border="2">
+	<thead>
+		<th>썸네일</th>
+		<th>상품번호</th>
+		<th>상품타입</th>
+		<th>상품이름</th>
+		<th>상품정보</th>
+		<th>상품가격</th>
+		<th>등록일</th>
+	</thead>
+	<tbody>
+
+	<c:forEach var="p" items="${pvoList}">
+		<c:if test='${p.productType.equals("2")}'>
+		<tr>
+			<td><img src="${p.productThumb}" alt="${p.productThumb}" width="70px" height="70px"/></td> 
+			<td>${p.productNo}</td>
+			<td>${p.productType}</td>
+			<td><a href="<c:url value="/product/${p.productNo}"/>">${p.productName}</a></td>
+			<td>${p.productDetail}</td>
+			<td>${p.productPrice}</td>
+			<td>${p.productCreatedAt}</td>				
+		</tr>
+		</c:if>
+	</c:forEach>	
+	</tbody>
+</table>
+
+<h2>오프라인만 출력</h2>
+<table border="2">
+	<thead>
+		<th>썸네일</th>
+		<th>상품번호</th>
+		<th>상품타입</th>
+		<th>상품이름</th>
+		<th>상품정보</th>
+		<th>상품가격</th>
+		<th>등록일</th>
+	</thead>
+	<tbody>
+
+	<c:forEach var="p" items="${pvoList}">
+		<c:if test='${p.productType.equals("1")}'>
+		<tr>
+			<td><img src="${p.productThumb}" alt="${p.productThumb}" width="70px" height="70px"/></td> 
+			<td>${p.productNo}</td>
+			<td>${p.productType}</td>
+			<td><a href="<c:url value="/off/${p.productNo}"/>">${p.productName}</a></td>
+			<td>${p.productDetail}</td>
+			<td>${p.productPrice}</td>
+			<td>${p.productCreatedAt}</td>				
+		</tr>
+		</c:if>
+
+	</c:forEach>	
+	</tbody>
+</table>
+
+<table border="2">
+	<thead>
+		<th>썸네일</th>
+		<th>상품번호</th>
+		<th>상품타입</th>
+		<th>상품이름</th>
+		<th>상품정보</th>
+		<th>상품가격</th>
+		<th>등록일</th>
+	</thead>
+	<tbody>
+	
+	
+<h2> 온라인만 출력</h2>
+	<c:forEach var="p" items="${pvoList}">
+		<c:if test='${p.productType.equals("0")}'>
+		<tr>
+			<td><img src="${p.productThumb}" alt="${p.productThumb}" width="70px" height="70px"/></td> 
+			<td>${p.productNo}</td>
+			<td>${p.productType}</td>
+			<td><a href="<c:url value="/on/${p.productNo}"/>">${p.productName}</a></td>
+			<td>${p.productDetail}</td>
+			<td>${p.productPrice}</td>
+			<td>${p.productCreatedAt}</td>				
+		</tr>
+		</c:if>
+	</c:forEach>	
+	</tbody>
+</table>
 	
 </body>
 

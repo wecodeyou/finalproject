@@ -43,8 +43,8 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 </head>
 <body>
 <h3>추천 태그 검색어</h3>
-	<c:forEach var="pL" items="${ptagList}" varStatus="status">
-		<button type="button" class="search_tag" id="${pL.tagNo}">${pL.tagName}</button>
+	<c:forEach var="p" items="${ptagList}" varStatus="status">
+		<button type="button" class="search_tag" id="${p.tagNo}">${p.tagName}</button>
 	</c:forEach>
 	
 <hr>
