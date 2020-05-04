@@ -7,10 +7,19 @@
 		<result property="tagName" column="tag_name" />
 	</resultMap>
 	
+	<resultMap id="ProductMap" type="com.it.wecodeyou.product.model.ProductVO" >
+		<id property="productNo" column="product_no"/>
+		<result property="productType" column="product_type"/>
+		<result property="productName" column="product_name"/>
+		<result property="productPrice" column="product_price"/>
+		<result property="productDetail" column="product_detail"/>
+		<result property="productCreatedAt" column="product_created_at"/>
+		<result property="productThumb" column="product_thumb"/>
+	</resultMap>
 	
 	<!-- tagName 전체 조회 -->
    	<select id="getAllTag" resultMap="TagMap">
-      	SELECT * FROM tag 
+      	SELECT * FROM tag order by tag_no asc
   	</select>
   	
   	<!-- tagName 중복 검사 -->
@@ -28,8 +37,24 @@
   	<!-- tag 등록 -->
   	<insert id="insertTag">
       	INSERT INTO tag (tag_name) VALUES (#{tagName})
-   </insert>
+   	</insert>
    
 	<!-- update / delete 추가 작성 -->
+	
+	<!-- tag로 product 검색 -->
+	<select id="searchProductByTag" resultMap="ProductMap">
+		SELECT p.product_no, p.product_type, p.product_name, p.product_price, 
+		p.product_detail, p.product_created_at, p.product_thumb
+		FROM tag_product tp, tag t, product p
+		WHERE tp.p_tag_no = t.tag_no
+		AND tp.p_product_no = p.product_no
+		AND t.tag_no = #{tagNo}
+	</select>
+	
+	<select id="searchPTagNo" resultMap="TagMap">
+		select distinct t.tag_name, t.tag_no
+		from tag t , tag_product tp
+		where tp.p_tag_no = t.tag_no
+	</select>
 	
 </mapper>

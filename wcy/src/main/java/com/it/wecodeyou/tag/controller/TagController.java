@@ -5,19 +5,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.tag.model.TagVO;
 import com.it.wecodeyou.tag.service.ITagService;
 
@@ -28,10 +25,10 @@ public class TagController {
 	@Autowired
 	private ITagService service;
 	
+	
 	@GetMapping("")
-	public ModelAndView interest() throws SQLException {
-		ModelAndView mv = new ModelAndView();
-		 
+	public ModelAndView tag(ModelAndView mv) throws SQLException {
+		
 		ArrayList<TagVO>nameList = service.getAllTag();
 		  
 		mv.setViewName("tag/getAllTag");
@@ -40,10 +37,22 @@ public class TagController {
 		return mv;
 	}
 	
+	@GetMapping("/search")
+	public ModelAndView search(ModelAndView mv) throws SQLException {
+		 
+		ArrayList<TagVO>nameList = service.getAllTag();
+		ArrayList<TagVO> ptagList = service.searchPTagNo();
+		mv.addObject("ptagList", ptagList);
+		mv.addObject("nameList", nameList);
+		mv.setViewName("tag/search");
+		
+		return mv;
+	}
+	
 	//@ResponseBody
 	 @PostMapping("/checkTagDetail")
 	 public Map<String, ArrayList<String>> checkTagDetail(@RequestBody String q) throws SQLException {
-			System.out.println("/tag/checkTagDetail : 등록 POST 요청 발생!");
+			System.out.println("/tag/checkTagDetail : 태그검색 POST 요청 발생!");
 			
 			Map<String, ArrayList<String>> retVal = new HashMap<String, ArrayList<String>>();
 			
@@ -70,17 +79,45 @@ public class TagController {
 	public String insertTag(@RequestBody String tag) throws SQLException {
 		System.out.println("/tag/insertTag : 등록 POST 요청 발생!");
 		System.out.println("등록할 name: " + tag);
-		
-			Boolean chk = service.insertTag(tag); 
-			String no = null;
-			if(chk) {
-				no = String.valueOf(service.checkTagDetail(tag).get(0).getTagNo());
+		String no = null;
+			if(service.checkTag(tag) == 0) {
+				
+				Boolean chk = service.insertTag(tag); 
+				
+				if(chk) {
+					no = String.valueOf(service.checkTagDetail(tag).get(0).getTagNo());
+				}else {
+					no = "fail";
+				}
 			}else {
+				System.out.println("중복 태그 방지");
 				no = "fail";
 			}
 			
+			
 		return no;
 	}
+	
+	@GetMapping("/searchProductByTag/{tagNo}")
+	public ModelAndView searchProductByTag(@PathVariable ("tagNo") Integer tagNo, ModelAndView mv) throws SQLException {
+		System.out.println("/tag/searchProductByTag : 태그로 상품 검색 POST 요청 발생!");
+		
+		ArrayList<ProductVO> pvoList = service.searchProductByTag(tagNo);
+		if(pvoList.size()==0) {
+			pvoList = null;
+			ArrayList<TagVO> ptagList = service.searchPTagNo();
+			mv.addObject("ptagList", ptagList);
+		}
+		
+		mv.addObject("pvoList", pvoList);
+		mv.setViewName("tag/tagSearchResult");
+		
+		return mv;
+	}
+	
+	
+	
+
 		
 
 }

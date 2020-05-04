@@ -3,6 +3,7 @@ package com.it.wecodeyou.tag.repository;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.tag.model.TagVO;
 
 public interface ITagMapper {
@@ -21,5 +22,10 @@ public interface ITagMapper {
 	
 	//update delete 추가 작성
 	
+	//search products by tag
+	public ArrayList<ProductVO> searchProductByTag(Integer tagNo) throws SQLException;
+	
+	//search all ptagno
+	public ArrayList<TagVO> searchPTagNo() throws SQLException;
 
 }

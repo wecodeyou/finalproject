@@ -17,33 +17,56 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" 
 integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 
-</head>
+<style>
+	.search_tag {
+		display: inline-block;
+		border:none;
+		border-radius: 20px;
+		opacity:0.6;
+		text-align: center;
+		font-size: 16px;
+		margin: 4px 5px;
+		padding: 5px 8px;
+	}
+	
+	.search_tag:hover,
+	
+	.search_tag:focus {
+       	color: blue;
+        text-decoration: none;
+        cursor: pointer;
+        /* font-weight: bold; */
+    }
+	
+</style>
 
+</head>
 <body>
-	<!-- 태그 버튼 생성 -->
-	<div id="selectedTagList"></div>
+<h3>추천 태그 검색어</h3>
+	<c:forEach var="pL" items="${ptagList}" varStatus="status">
+		<button type="button" class="search_tag" id="${pL.tagNo}">${pL.tagName}</button>
+	</c:forEach>
 	
-	<input type = "text" id="text" placeholder="#해시태그">
-	<!-- <button type="button" id="btn_search" onclick="search();">검색</button>  -->
-	<!-- <button type="button" id="btn_insertPtag" onclick="insertPtag();">등록</button> -->
-	
-	<ul class="override" id="resultList"></ul>
-	
-	
-	
-	<button type="button" id="btn_showPtag" onclick="getAllTag();">모든 태그 보기</button>
-	
-	
-	
-	<button type="button" id="appendBtn" >appendBtn</button>
-	
-	<a href="<c:url value='/tag/search'/>">TAG SEARCH</a>
-	
+<hr>
+
+<h3>태그를 눌러서 검색하기</h3>
+	<c:forEach var="nL" items="${nameList}" varStatus="status">
+		<button type="button" class="search_tag" id="${nL.tagNo}">${nL.tagName}</button>
+	</c:forEach>
+
+
 </body>
 
 <script src="<c:url value='/js/tag.js'/>"></script>
 
 <script>
+
+	//tag btn 클릭 시 검색
+	$('.search_tag').click(function() {
+		var id_check = $(this).attr("id");
+		console.log("clicked: " + id_check);
+		location.href = '/tag/searchProductByTag/'+id_check;
+	});
 	
 	
 </script>
