@@ -78,26 +78,42 @@
 		AND t.tag_no = #{tagNo}
 	</select>
 	
-	<!-- ptag 검색 -->
+	<!-- 등록된 모든 ptag 검색 -->
 	<select id="searchPTagNo" resultMap="TagMap">
 		select distinct t.tag_name, t.tag_no
 		from tag t , tag_product tp
 		where tp.p_tag_no = t.tag_no
 	</select>
 	
-	<!-- atag 검색 -->
+	<!-- 등록된 모든 atag 검색 -->
 	<select id="searchATagNo" resultMap="TagMap">
 		select distinct t.tag_name, t.tag_no
 		from tag t , tag_article ta
 		where ta.a_tag_no = t.tag_no
 	</select>
 	
-	<!-- a + ptag 검색 -->
+	<!-- 등록된 모든 a + ptag 검색 -->
 	<select id="searchAPTagNo" resultMap="TagMap">
 		select distinct t.tag_name, t.tag_no
 		from tag t , tag_article ta, tag_product tp
 		where ta.a_tag_no = t.tag_no
 		or tp.p_tag_no = t.tag_no
+	</select>
+	
+	<!-- article당 해당 atag 검색 -->
+	<select id="searchTagByArticle" resultType="String">
+		select t.tag_name
+		from tag_article ta, tag t
+		where ta.a_tag_no = t.tag_no
+		and ta.a_article_no = #{articleNo}
+	</select>
+	
+	<!-- product당 해당 ptag 검색 -->
+	<select id="searchTagByProduct" resultMap="TagMap">
+		select tp.p_tag_no, t.tag_name
+		from tag_product tp, tag t
+		where tp.p_tag_no = t.tag_no
+		and tp.p_product_no = #{productNo}
 	</select>
 	
 </mapper>

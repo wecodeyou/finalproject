@@ -2,7 +2,9 @@ package com.it.wecodeyou.board.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -26,6 +28,7 @@ import com.it.wecodeyou.commons.PageCreator;
 import com.it.wecodeyou.commons.PageVO;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
+import com.it.wecodeyou.tag.model.TagVO;
 
 @RestController
 @RequestMapping(value="/board")
@@ -64,10 +67,23 @@ public class BoardController {
 	}
 	
 	@GetMapping("/{boardNo}")
-	public ModelAndView board(ModelAndView mv, @PathVariable Integer boardNo, PageVO paging) {
+	public ModelAndView board(ModelAndView mv, @PathVariable Integer boardNo, PageVO paging)  throws SQLException  {
+
 		BoardVO bvo = boardService.getInfoByNo(boardNo);
 		System.out.println("Get /board/{boardTitle} Board Info: \r\n" 
 						+ bvo.toString());
+		List<ArticleVO> avo2 = articleService.list(paging);
+		
+		//article no의 각각의 hashtag를 담을 map 
+		Map<Integer, Object> tagMap = new HashMap<Integer, Object>();
+		for (int i = 0; i < avo2.size(); i++) {
+			List<String> tvo = articleService.searchTagByArticle(avo2.get(i).getArticleNo());
+
+			System.out.println("con current key: " + i);
+			tagMap.put(i, tvo);
+		}
+		mv.addObject("tagMap", tagMap);
+
 		paging.setBoardNo(boardNo);
 		List<ArticleVO> list = articleService.list(paging);
 		for(ArticleVO avo: list) {
@@ -77,6 +93,8 @@ public class BoardController {
 		pc.setPaging(paging);
 		pc.setArticleTotalCount(articleService.countArticles(boardNo));
 		System.out.println(pc.toString());
+		
+
 		mv.addObject("board", bvo);
 		mv.addObject("articleList", list);
 		mv.addObject("pc", pc);
