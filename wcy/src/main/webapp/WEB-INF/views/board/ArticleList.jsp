@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,8 @@
 <script type="text/javascript" src="./jquery/jquery.js"></script>
 
 <style>
+
+
 table, th, td {
 	border: 1px solid #bcbcbc;
 }
@@ -28,10 +31,65 @@ table {
 	height: 200px;
 	margin-left: auto;
 	margin-right: auto;
+	text-align:center;
+}
+
+table .article_th {
+	height:40px;
+	background-color:#DBD9D9;/*gray*/
+}
+
+table .article_tr {
+	height:50px;
+}
+
+table .article_no_td {
+	width:5%;
+}
+
+table .article_title_td {
+	width:30%;
+	text-align:left;
+}
+
+table .article_writer_td {
+	width:8%;
+}
+
+table .article_clicks_td {
+	width:5%;
+}
+
+table .article_likes_td {
+	width:5%;
+}
+
+table .article_created_td {
+	width:15%;
+	font-size:small;
+}
+
+table .article_modified_td {
+	width:15%;
+	font-size:small;
 }
 
 .tag {
 	display:block;
+}
+
+.title_link {
+	text-decoration: none;
+	color:black;
+	display:block;
+	height:100%;
+}
+
+a:hover { text-decoration: none;}
+
+
+.hashtag {
+	font-size:70%;
 }
 
 </style>
@@ -48,43 +106,48 @@ table {
 	<button
 		onClick="location.href = '<c:url value="/board/${board.boardNo}/register"/>' ">게시글
 		추가하기</button>
-	<table border="2px">
+	<table>
 		<thead>
-			<tr class="">
+			<tr class="article_th">
 				<th class="">번호</th>
-				<th class=""><a href='#'>제목</a></th>
+				<th class="">제목</a></th>
 				<th class="">글쓴이</th>
 				<th class="">조회수</th>
-				<th class=""><a href='#'>좋아요</a></th>
-				<th class=""><a href='#'>생성일</a></th>
+				<th class="">좋아요</a></th>
+				<th class="">생성일</a></th>
 				<th class="">수정일</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="a" items="${articleList}">
-				<tr class="l">
-					<div class="">
-						<div class="col-md-4">
-							<td class="">${a.articleNo}</td>
-							<td class="">
-								<div class="tag">
-									<span>#해시태그자리</span>
-									<a href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle}</a>
-								</div>
-							</td>
-							<td class="">${a.articleWriter}</td>
-							<td class="">${a.articleClicks}</td>
-							<td class="">${a.articleLikes}</td>
-							<td class="">${a.articleCreatedAt}</td>
-							<td class="">${a.articleModifiedAt}</td>
+			<c:forEach var="a" items="${articleList}" varStatus="status">
+				<tr class="article_tr">
+							<td class="article_no_td">${a.articleNo}</td>
+							<td class="article_title_td">
+						<div class="tag">
+							<c:forEach var="entry" items="${tagMap}">
+								<c:if test="${entry.key eq status.index}">
+									<c:if test="${fn:length(entry.value) > 0}">
+										<c:forEach items="${entry.value}" var="item">
+											<a href="#" class="hashtag">${item}</a>
+										</c:forEach>
+										<br>
+									</c:if>
+								</c:if>
+							</c:forEach>
+							<a class="title_link" href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle}</a>
 						</div>
-					</div>
+					</td>
+							<td class="article_writer_td">${a.articleWriter}</td>
+							<td class="article_clicks_td">${a.articleClicks}</td>
+							<td class="article_likes_td">${a.articleLikes}</td>
+							<td class="article_created_td">${a.articleCreatedAt}</td>
+							<td class="article_modified_td">${a.articleModifiedAt}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 
-
+<br><br><br>
 
 	<script>
 

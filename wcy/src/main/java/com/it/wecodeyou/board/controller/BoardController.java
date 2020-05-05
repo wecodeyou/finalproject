@@ -2,7 +2,9 @@ package com.it.wecodeyou.board.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -23,6 +25,7 @@ import com.it.wecodeyou.board.service.IBoardService;
 import com.it.wecodeyou.board.service.IReplyService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
+import com.it.wecodeyou.tag.model.TagVO;
 
 @RestController
 @RequestMapping(value="/board")
@@ -62,11 +65,21 @@ public class BoardController {
 	}
 	
 	@GetMapping("/{boardNo}")
-	public ModelAndView board(ModelAndView mv, @PathVariable Integer boardNo) {
+	public ModelAndView board(ModelAndView mv, @PathVariable Integer boardNo) throws SQLException {
 		BoardVO bvo = boardService.getInfoByNo(boardNo);
 		System.out.println("Get /board/{boardTitle} Board Info: \r\n" 
 						+ bvo.toString());
 		List<ArticleVO> avo = articleService.list(boardNo);
+		
+		//article no의 각각의 hashtag를 담을 map 
+		Map<Integer, Object> tagMap = new HashMap<Integer, Object>();
+		for (int i = 0; i < avo.size(); i++) {
+			List<String> tvo = articleService.searchTagByArticle(avo.get(i).getArticleNo());
+
+			System.out.println("con current key: " + i);
+			tagMap.put(i, tvo);
+		}
+		mv.addObject("tagMap", tagMap);
 		mv.addObject("board", bvo);
 		mv.addObject("articleList", avo);
 		mv.setViewName("/board/ArticleList");

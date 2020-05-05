@@ -41,4 +41,10 @@ public interface ITagMapper {
 	//search all atagno + ptagno (중복제거)
 	public ArrayList<TagVO> searchAPTagNo() throws SQLException;
 	
+	//search atagname by ano
+	public ArrayList<String> searchTagByArticle(Integer articleNo) throws SQLException;
+	
+	//search ptagname by pno
+	public ArrayList<TagVO> searchTagByProduct(Integer productNo) throws SQLException;
+	
 }

@@ -72,14 +72,9 @@ body {
 	font-weight: bold;
 }
 .card:hover, .card:focus {
-	oapcity:0.6;
-	text-decoration: none;
 	cursor: pointer;
+	background-color:white;
 	/* font-weight: bold; */
-}
-
-.card_title:hover, .card_title:focus {
-	color: blue;
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */
@@ -90,6 +85,16 @@ body {
 		margin-bottom: 20px;
 	}
 }
+
+.title_link {
+	text-decoration: none;
+	display:block;
+	height:100%;
+	width:100%;
+}
+
+a:hover { text-decoration: none;}
+
 </style>
 </head>
 <body>
@@ -105,7 +110,7 @@ body {
 		<c:forEach var="b" items="${boardList}">
 			 <div class="column">
     			<div class="card">
-    				<div class="card_title"><a href="<c:url value='/board/${b.boardNo}' />">${b.boardTitle}</a></div>
+    			<a class="title_link" href="<c:url value='/board/${b.boardNo}'/>">${b.boardTitle}</a>
     				<br>
     				<small>${b.boardDetail}</small>
     			</div>
@@ -124,7 +129,7 @@ body {
 		<c:forEach var="b" items="${boardList}">
 			 <div class="column">
     			<div class="card">
-    				<div class="card_title"><a href="<c:url value='/board/${b.boardNo}' />">${b.boardTitle}</a></div>
+    				<a class="title_link" href="<c:url value='/board/${b.boardNo}'/>">${b.boardTitle}</a>
     				<br>
     				<small>${b.boardDetail}</small>
     				<div class="up_del_btn">

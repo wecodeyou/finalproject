@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.it.wecodeyou.atag.repository.IAtagMapper;
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.board.repository.IArticleMapper;
+import com.it.wecodeyou.tag.model.TagVO;
+import com.it.wecodeyou.tag.repository.ITagMapper;
 
 @Service
 public class ArticleService implements IArticleService {
@@ -19,6 +21,10 @@ public class ArticleService implements IArticleService {
 	
 	@Autowired
 	private IAtagMapper atagDao;
+	
+	@Autowired
+	private ITagMapper tagDao;
+
 	
 	@Override
 	public Integer insert(ArticleVO avo, ArrayList<Integer> sendTagList) {
@@ -58,6 +64,11 @@ public class ArticleService implements IArticleService {
 	@Override
 	public ArticleVO getOneInfo(Integer articleNo) {
 		return dao.getOneInfo(articleNo);
+	}
+
+	@Override
+	public ArrayList<String> searchTagByArticle(Integer articleNo) throws SQLException {
+		return tagDao.searchTagByArticle(articleNo);
 	}
 
 	
