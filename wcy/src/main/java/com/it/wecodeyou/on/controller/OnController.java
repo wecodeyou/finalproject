@@ -13,7 +13,7 @@ public class OnController {
 	public String sample(Model model) {
 		
 		
-		return "/on/sample";
+		return "/on/player";
 	}
 
 }

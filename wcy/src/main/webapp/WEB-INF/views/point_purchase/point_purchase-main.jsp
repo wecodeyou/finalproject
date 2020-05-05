@@ -11,22 +11,10 @@
 </head>
 <body>
 
-<%
-
-/* MemberVO login = (MemberVO)(session.getAttribute("login"));
- */
-
-%>
 
 <h1>결제메인 테스트 페이지</h1>
 
 ${login.userName}님 안녕하세요
-
-<form action = "<c:url value = "/pay/"/>" method = "post">
-
-<input type = "hidden">
-<input type = "submit" value = "login">
-</form>
 
 <form action = "<c:url value = "/pay/gopay"/>" method = "post">
 

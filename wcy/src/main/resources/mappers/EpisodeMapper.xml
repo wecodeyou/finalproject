@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.wecodeyou.episode.repository.IEpisodeMapper">
+
+   <resultMap id="EpisodeMap" type="com.it.wecodeyou.episode.model.EpisodeVO">
+      <id property="episodeNo" column="episode_no" />
+      <result property="episodeOnNo" column="episode_on_no" />
+      <result property="episodeRowNo" column="episode_row_no" />
+      <result property="episodeName" column="episode_name" />
+      <result property="episodeSource" column="episode_source" />
+   </resultMap>
+   
+
+   <select id="getAllEpisode" resultMap="EpisodeMap">
+   		SELECT *
+   		FROM episode
+   		WHERE episode_on_no = 1
+   		ORDER BY episode_row_no
+   </select>
+
+
+</mapper>

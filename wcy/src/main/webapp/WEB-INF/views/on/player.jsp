@@ -47,12 +47,8 @@
 			    		
     		}'
   
-  
-  
-  
   >
-    <source src="<c:url value = "/resources/vendor/videos/Trees.mp4"/>" type="video/mp4" />
-<!--     <source src="MY_VIDEO.webm" type="video/webm" /> --> 
+    <source src="<c:url value = "${videosrc}"/>" type="video/mp4" />
       </video>
   
   
@@ -64,10 +60,10 @@
   
 </section>
 
-<script>
+<!-- <script>
   // Initialize the plugin and build the playlist!
   videojs(document.querySelector('video')).playlistUi();
-</script>
+</script> -->
 
 
 <script type = "text/javascript">
@@ -78,39 +74,23 @@
 	
     player.playlistUi(); 
 
-	var pl = player.playlist([{
-	
+	var pl = player.playlist([
 		
-			name : 'Lotus.mp4',
+		
+		
+	
+		<c:forEach var="p" items="${episodeList}">
+	{
+
+			name : '${p.episodeName}',
 			sources: [{
-			    src: '<c:url value = "/resources/vendor/videos/Lotus.mp4"/>',
+			    src: '<c:url value = "${p.episodeSource}"/>',
 			    type: 'video/mp4'
 			  }],
-			poster: 'http://media.w3.org/2010/05/bunny/poster.png',
-
-			  
 		
-	},{
 		
-			sources: [{
-			    src: '<c:url value = "/resources/vendor/videos/Pasta.mp4"/>',
-			    type: 'video/mp4'
-			  }],
-			poster: 'http://media.w3.org/2010/05/bunny/poster.png'
-
-		
-	},{
-		
-			sources: [{
-		 	   src: '<c:url value = "/resources/vendor/videos/Dubai.mp4"/>',
-		 	   type: 'video/mp4'
-			  }],
-			poster: 'http://media.w3.org/2010/05/bunny/poster.png'
-		
-
-	
-	}
-	
+	},
+		</c:forEach>		
 	
 	]);
 	player.playlist.autoadvance(3);
