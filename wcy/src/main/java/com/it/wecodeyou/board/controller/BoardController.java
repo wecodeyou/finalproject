@@ -94,6 +94,7 @@ public class BoardController {
 		pc.setPaging(paging);
 		pc.setArticleTotalCount(articleService.countArticles(boardNo));
 		System.out.println(pc.toString());
+		
 
 		mv.addObject("board", bvo);
 		mv.addObject("articleList", list);
