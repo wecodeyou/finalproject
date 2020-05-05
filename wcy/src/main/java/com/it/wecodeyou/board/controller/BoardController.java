@@ -47,7 +47,6 @@ public class BoardController {
 		mv.setViewName("board/boardList");
 		return mv;
 	}
-	
 	@GetMapping("/register")
 	public ModelAndView registerBoard(ModelAndView mv) {
 		mv.setViewName("board/boardRegister");
@@ -93,7 +92,8 @@ public class BoardController {
 	}
 
 	@PostMapping("/{boardNo}/register")
-	public String registerArticle(@PathVariable Integer boardNo, @RequestBody ArticleTagVO atvo) {
+	public String registerArticle(@PathVariable Integer boardNo, ArticleTagVO atvo) {
+		System.out.println(atvo.toString());
 		ArticleVO avo = new ArticleVO();
 		avo.setArticleTitle(atvo.getArticleTitle());
 		avo.setArticleContent(atvo.getArticleContent());
