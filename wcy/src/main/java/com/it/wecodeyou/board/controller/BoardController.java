@@ -21,6 +21,8 @@ import com.it.wecodeyou.board.model.ReplyUserVO;
 import com.it.wecodeyou.board.service.IArticleService;
 import com.it.wecodeyou.board.service.IBoardService;
 import com.it.wecodeyou.board.service.IReplyService;
+import com.it.wecodeyou.commons.PageCreator;
+import com.it.wecodeyou.commons.PageVO;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 
@@ -62,13 +64,22 @@ public class BoardController {
 	}
 	
 	@GetMapping("/{boardNo}")
-	public ModelAndView board(ModelAndView mv, @PathVariable Integer boardNo) {
+	public ModelAndView board(ModelAndView mv, @PathVariable Integer boardNo, PageVO paging) {
 		BoardVO bvo = boardService.getInfoByNo(boardNo);
 		System.out.println("Get /board/{boardTitle} Board Info: \r\n" 
 						+ bvo.toString());
-		List<ArticleVO> avo = articleService.list(boardNo);
+		paging.setBoardNo(boardNo);
+		List<ArticleVO> list = articleService.list(paging);
+		for(ArticleVO avo: list) {
+			System.out.println(avo.toString());
+		}
+		PageCreator pc = new PageCreator();
+		pc.setPaging(paging);
+		pc.setArticleTotalCount(articleService.countArticles(boardNo));
+		System.out.println(pc.toString());
 		mv.addObject("board", bvo);
-		mv.addObject("articleList", avo);
+		mv.addObject("articleList", list);
+		mv.addObject("pc", pc);
 		mv.setViewName("/board/ArticleList");
 		return mv;
 	}

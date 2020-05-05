@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.it.wecodeyou.board.model.ArticleVO;
+import com.it.wecodeyou.commons.PageVO;
 
 public interface IArticleService {
 
@@ -14,7 +15,9 @@ public interface IArticleService {
 	
 	public void delete(ArticleVO avo);
 	
-	public List<ArticleVO> list(Integer boardNo);
+	public List<ArticleVO> list( PageVO paging);
 	
 	public ArticleVO getOneInfo(Integer articleNo);
+	
+	public Integer countArticles(Integer boardNo);
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.it.wecodeyou.atag.repository.IAtagMapper;
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.board.repository.IArticleMapper;
+import com.it.wecodeyou.commons.PageVO;
 
 @Service
 public class ArticleService implements IArticleService {
@@ -51,13 +52,18 @@ public class ArticleService implements IArticleService {
 	}
 
 	@Override
-	public List<ArticleVO> list(Integer boardNo) {
-		return dao.list(boardNo);
+	public List<ArticleVO> list(PageVO paging) {
+		return dao.list(paging);
 	}
 
 	@Override
 	public ArticleVO getOneInfo(Integer articleNo) {
 		return dao.getOneInfo(articleNo);
+	}
+
+	@Override
+	public Integer countArticles(Integer boardNo) {
+		return dao.countArticles(boardNo);
 	}
 
 	

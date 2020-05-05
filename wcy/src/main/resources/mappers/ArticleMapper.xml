@@ -35,9 +35,16 @@
    <select id="list" resultMap="ArticleMap">
    		SELECT * 
    		FROM article
-   		WHERE article_board_no = #{boardTitle}
+		WHERE article_board_no = #{boardNo}
+   		ORDER BY article_created_at DESC
+   		LIMIT #{pageStart}, #{countPerPage}
    </select>
 
+	<select id="countArticles" resultType ="int">
+		SELECT COUNT(*)
+		FROM article
+		WHERE article_board_no = #{boardNo}
+	</select>
    <select id="getAllByWriter" resultMap="ArticleMap">
    		SELECT * 
    		FROM article
