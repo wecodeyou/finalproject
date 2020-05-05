@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.tag.model.TagVO;
 import com.it.wecodeyou.tag.service.ITagService;
@@ -117,10 +118,15 @@ public class TagController {
 		
 		String tagName = service.getTagName(tagNo);
 		
+		ArrayList<ArticleVO> avoList = service.searchArticleByTag(tagNo);
 		ArrayList<ProductVO> pvoList = service.searchProductByTag(tagNo);
-		if(pvoList.size()==0) {
-			ArrayList<TagVO> ptagList = service.searchPTagNo();
-			mv.addObject("ptagList", ptagList);
+		
+		System.out.println("article 수: " + avoList.size());
+		
+		if(pvoList.size()==0 && avoList.size()==0) {
+			//검색결과가 없다면 추천 검색어 (중복 배제하기)
+			ArrayList<TagVO> tagList = service.searchAPTagNo();
+			mv.addObject("tagList", tagList);
 		} else {
 			List<ProductVO> productList = new ArrayList<>();
 			List<ProductVO> offList = new ArrayList<>();
@@ -135,7 +141,9 @@ public class TagController {
 					onList.add(pvo);
 				}
 			}
-			
+			//article
+			mv.addObject("avoList", avoList);
+			//product
 			mv.addObject("productList", productList);
 			mv.addObject("offList", offList);
 			mv.addObject("onList", onList);

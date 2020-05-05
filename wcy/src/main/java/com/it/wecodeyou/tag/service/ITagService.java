@@ -3,6 +3,7 @@ package com.it.wecodeyou.tag.service;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.tag.model.TagVO;
 
@@ -28,7 +29,16 @@ public interface ITagService {
 		//search products by tag
 		public ArrayList<ProductVO> searchProductByTag(Integer tagNo) throws SQLException ;
 		
+		//search articles by tag
+		public ArrayList<ArticleVO> searchArticleByTag(Integer tagNo) throws SQLException ;
+		
 		//search all ptagno
 		public ArrayList<TagVO> searchPTagNo() throws SQLException;
+		
+		//search all atagno
+		public ArrayList<TagVO> searchATagNo() throws SQLException;
+		
+		//search all atagno + ptagno (중복제거)
+		public ArrayList<TagVO> searchAPTagNo() throws SQLException;
 
 }
