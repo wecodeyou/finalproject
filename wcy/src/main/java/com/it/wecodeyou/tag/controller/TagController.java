@@ -43,7 +43,7 @@ public class TagController {
 	public ModelAndView searchByBtn(ModelAndView mv) throws SQLException {
 		 
 		ArrayList<TagVO>nameList = service.getAllTag();
-		ArrayList<TagVO> ptagList = service.searchPTagNo();
+		ArrayList<TagVO> ptagList = service.searchPTag();
 		mv.addObject("ptagList", ptagList);
 		mv.addObject("nameList", nameList);
 		mv.setViewName("tag/searchByBtn");
@@ -55,7 +55,7 @@ public class TagController {
 	public ModelAndView searchByInput(ModelAndView mv) throws SQLException {
 		 
 		ArrayList<TagVO>nameList = service.getAllTag();
-		ArrayList<TagVO> ptagList = service.searchPTagNo();
+		ArrayList<TagVO> ptagList = service.searchPTag();
 		mv.addObject("ptagList", ptagList);
 		mv.addObject("nameList", nameList);
 		mv.setViewName("tag/searchByInput");
@@ -112,20 +112,19 @@ public class TagController {
 		return no;
 	}
 	
-	@GetMapping("/searchProductByTag/{tagNo}")
-	public ModelAndView searchProductByTag(@PathVariable ("tagNo") Integer tagNo, ModelAndView mv) throws SQLException {
+	@GetMapping("/searchProductByTag/{tagName}")
+	public ModelAndView searchProductByTag(@PathVariable String tagName, ModelAndView mv) throws SQLException {
 		System.out.println("/tag/searchProductByTag : 태그로 상품 검색 POST 요청 발생!");
-		
-		String tagName = service.getTagName(tagNo);
-		
-		ArrayList<ArticleVO> avoList = service.searchArticleByTag(tagNo);
-		ArrayList<ProductVO> pvoList = service.searchProductByTag(tagNo);
+		System.out.println("tagName: " + tagName);
+		ArrayList<ArticleVO> avoList = service.searchArticleByTag(tagName);
+		ArrayList<ProductVO> pvoList = service.searchProductByTag(tagName);
 		
 		System.out.println("article 수: " + avoList.size());
+		System.out.println("product 수: " + pvoList.size());
 		
 		if(pvoList.size()==0 && avoList.size()==0) {
 			//검색결과가 없다면 추천 검색어 (중복 배제하기)
-			ArrayList<TagVO> tagList = service.searchAPTagNo();
+			ArrayList<TagVO> tagList = service.searchAPTag();
 			mv.addObject("tagList", tagList);
 		} else {
 			List<ProductVO> productList = new ArrayList<>();

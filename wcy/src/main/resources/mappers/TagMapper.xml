@@ -64,7 +64,7 @@
 		FROM tag_product tp, tag t, product p
 		WHERE tp.p_tag_no = t.tag_no
 		AND tp.p_product_no = p.product_no
-		AND t.tag_no = #{tagNo}
+		AND t.tag_name = #{tagName}
 	</select>
 	
 	<!-- tag로 article 검색 -->
@@ -75,25 +75,25 @@
 		FROM tag_article ta, tag t, article a
 		WHERE ta.a_tag_no = t.tag_no
 		AND ta.a_article_no = a.article_no
-		AND t.tag_no = #{tagNo}
+		AND t.tag_name = #{tagName}
 	</select>
 	
 	<!-- 등록된 모든 ptag 검색 -->
-	<select id="searchPTagNo" resultMap="TagMap">
+	<select id="searchPTag" resultMap="TagMap">
 		select distinct t.tag_name, t.tag_no
 		from tag t , tag_product tp
 		where tp.p_tag_no = t.tag_no
 	</select>
 	
 	<!-- 등록된 모든 atag 검색 -->
-	<select id="searchATagNo" resultMap="TagMap">
+	<select id="searchATag" resultMap="TagMap">
 		select distinct t.tag_name, t.tag_no
 		from tag t , tag_article ta
 		where ta.a_tag_no = t.tag_no
 	</select>
 	
 	<!-- 등록된 모든 a + ptag 검색 -->
-	<select id="searchAPTagNo" resultMap="TagMap">
+	<select id="searchAPTag" resultMap="TagMap">
 		select distinct t.tag_name, t.tag_no
 		from tag t , tag_article ta, tag_product tp
 		where ta.a_tag_no = t.tag_no

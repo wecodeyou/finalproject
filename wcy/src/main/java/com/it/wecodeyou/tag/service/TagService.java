@@ -50,28 +50,28 @@ public class TagService implements ITagService{
 	}
 
 	@Override
-	public ArrayList<ProductVO> searchProductByTag(Integer tagNo) throws SQLException {
-		return  dao.searchProductByTag(tagNo);
+	public ArrayList<ProductVO> searchProductByTag(String tagName) throws SQLException {
+		return  dao.searchProductByTag(tagName);
 	}
 
 	@Override
-	public ArrayList<ArticleVO> searchArticleByTag(Integer tagNo) throws SQLException {
-		return dao.searchArticleByTag(tagNo);
+	public ArrayList<ArticleVO> searchArticleByTag(String tagName) throws SQLException {
+		return dao.searchArticleByTag(tagName);
 	}
 
 	@Override
-	public ArrayList<TagVO> searchPTagNo() throws SQLException {
-		return dao.searchPTagNo();
+	public ArrayList<TagVO> searchPTag() throws SQLException {
+		return dao.searchPTag();
 	}
 
 	@Override
-	public ArrayList<TagVO> searchATagNo() throws SQLException {
-		return dao.searchATagNo();
+	public ArrayList<TagVO> searchATag() throws SQLException {
+		return dao.searchATag();
 	}
 
 	@Override
-	public ArrayList<TagVO> searchAPTagNo() throws SQLException {
-		return dao.searchAPTagNo();
+	public ArrayList<TagVO> searchAPTag() throws SQLException {
+		return dao.searchAPTag();
 	}
 
 	@Override

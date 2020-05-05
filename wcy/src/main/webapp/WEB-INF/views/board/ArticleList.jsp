@@ -92,6 +92,23 @@ a:hover { text-decoration: none;}
 	font-size:70%;
 }
 
+.page_ul {
+	text-align:center;
+	margin-top:10px;
+}
+
+.page_li {
+	display:inline;
+	background-color: white;
+	margin:5px;
+	padding:5px;
+}
+
+.page_link {
+
+}
+
+
 </style>
 </head>
 <body>
@@ -110,11 +127,11 @@ a:hover { text-decoration: none;}
 		<thead>
 			<tr class="article_th">
 				<th class="">번호</th>
-				<th class="">제목</a></th>
+				<th class="">제목</th>
 				<th class="">글쓴이</th>
 				<th class="">조회수</th>
-				<th class="">좋아요</a></th>
-				<th class="">생성일</a></th>
+				<th class="">좋아요</th>
+				<th class="">생성일</th>
 				<th class="">수정일</th>
 			</tr>
 		</thead>
@@ -127,8 +144,8 @@ a:hover { text-decoration: none;}
 							<c:forEach var="entry" items="${tagMap}">
 								<c:if test="${entry.key eq status.index}">
 									<c:if test="${fn:length(entry.value) > 0}">
-										<c:forEach items="${entry.value}" var="item">
-											<a href="#" class="hashtag">${item}</a>
+										<c:forEach items="${entry.value}" var="tagName">
+											<a href="<c:url value='/tag/searchProductByTag/${tagName}'/>" class="hashtag">${tagName}</a>
 										</c:forEach>
 										<br>
 									</c:if>
@@ -146,37 +163,31 @@ a:hover { text-decoration: none;}
 			</c:forEach>
 		</tbody>
 	</table>
-
-<br><br><br>
-				<ul class="pignation justify-content-center">
-					<!-- 이전 버튼 -->
-					<c:if test="${pc.prev}">
-					<li class="page-item">
-						<a class="page-link" href="<c:url value='/board/${board.boardNo}?
+	<ul class="page_ul">
+		<!-- 이전 버튼 -->
+		<c:if test="${pc.prev}">
+			<li class="page_li"><a class="page_link"
+				href="<c:url value='/board/${board.boardNo}?
 						page=${pc.beginPage-1}&countPerPage=${pc.paging.countPerPage}'/>">
-						이전</a>
-					</li>
-					</c:if>	
-						<!-- 페이지 버튼 -->
-						<c:forEach var="pageNum" begin="${pc.beginPage}" end="${pc.endPage}">
-							<li class="page-item">
-								<a href="<c:url value='/board/${board.boardNo}?page=${pageNum}&countPerPage=${pc.paging.countPerPage}'/>"
-								class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}">${pageNum}</a>
-							</li>
-						</c:forEach>
-						<!-- 다음 버튼 -->
-						<c:if test="${pc.next}">
-						<li class="page-item">
-							<a class="page-link" href="<c:url value='/board/${board.boardNo}?
+					이전</a></li>
+		</c:if>
+		<!-- 페이지 버튼 -->
+		<c:forEach var="pageNum" begin="${pc.beginPage}" end="${pc.endPage}">
+			<li class="page_li"><a
+				href="<c:url value='/board/${board.boardNo}?page=${pageNum}&countPerPage=${pc.paging.countPerPage}'/>"
+				class="page_link ${(pc.paging.page == pageNum) ? 'page-active' : ''}">${pageNum}</a>
+			</li>
+		</c:forEach>
+		<!-- 다음 버튼 -->
+		<c:if test="${pc.next}">
+			<li class="page_li"><a class="page_link"
+				href="<c:url value='/board/${board.boardNo}?
 							page=${pc.endPage+1}&countPerPage=${pc.paging.countPerPage}'/>">다음</a>
-						</c:if>
-				</ul>
+		</c:if>
+	</ul>
+	<br>
+	<br>
+	<br>
 
-	<script>
-
-		<!-- <div class="side_right"> 우측 사이드 영역</div> -->
-
-
-</script>
 </body>
 </html>

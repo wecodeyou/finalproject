@@ -1,8 +1,8 @@
 	//tag btn 클릭 시 검색
 	$('.search_tag').click(function() {
 		var id_check = $(this).attr("id");
-		console.log("clicked: " + id_check);
-		location.href = '/tag/searchProductByTag/'+id_check;
+		alert("clicked: " + id_check);
+		location.href = '/tag/searchProductByTag/'+ id_check;
 	});
 	
 	
@@ -279,11 +279,3 @@
 		
 	}
 	
-	
-
-	//tag btn 클릭 시 검색
-	$('.search_tag').click(function() {
-		var id_check = $(this).attr("id");
-		console.log("clicked: " + id_check);
-		location.href = '/tag/searchProductByTag/'+id_check;
-	});

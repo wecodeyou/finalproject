@@ -27,19 +27,19 @@ public interface ITagService {
 		//update delete 추가 작성
 		
 		//search products by tag
-		public ArrayList<ProductVO> searchProductByTag(Integer tagNo) throws SQLException ;
+		public ArrayList<ProductVO> searchProductByTag(String tagName) throws SQLException ;
 		
 		//search articles by tag
-		public ArrayList<ArticleVO> searchArticleByTag(Integer tagNo) throws SQLException ;
+		public ArrayList<ArticleVO> searchArticleByTag(String tagName) throws SQLException ;
 		
 		//search all ptagno
-		public ArrayList<TagVO> searchPTagNo() throws SQLException;
+		public ArrayList<TagVO> searchPTag() throws SQLException;
 		
 		//search all atagno
-		public ArrayList<TagVO> searchATagNo() throws SQLException;
+		public ArrayList<TagVO> searchATag() throws SQLException;
 		
 		//search all atagno + ptagno (중복제거)
-		public ArrayList<TagVO> searchAPTagNo() throws SQLException;
+		public ArrayList<TagVO> searchAPTag() throws SQLException;
 		
 		//search atagname by ano
 		public ArrayList<String> searchTagByArticle(Integer articleNo) throws SQLException;
