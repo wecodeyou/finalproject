@@ -35,20 +35,20 @@
    </resultMap> 
    <insert id="insert">
    		INSERT
-   		INTO article
-   		(reply_writer, reply_content, reply_title, reply_board_no )
+   		INTO reply
+   		(reply_writer, reply_content, reply_title, reply_article_no )
    		VALUES
    		(#{replyWriter}, #{replyContent}, #{replyTitle}, #{replyArticleNo})
    </insert>
    
    <update id="update">
    		UPDATE
-   		article
+   		reply
    		SET reply_content = #{replyContent}, reply_title = #{replyTitle}
    </update>
    
    <delete id="delete">
-      DELETE FROM Reply WHERE reply_no=#{replyNo}
+      DELETE FROM reply WHERE reply_no=#{replyNo}
    </delete>
 
    <select id="listByArticle" resultMap="ReplyUserMap">

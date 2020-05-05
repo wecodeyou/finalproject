@@ -84,15 +84,22 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 		</c:choose>
 	</c:forEach>
 	
-	<form
+<%-- 	<form
 		action="<c:url value='/board/reply-register/${article.articleNo}'/>"
-		method="POST">
-		<textarea class="reply_input" id="exampleFormControlTextarea1"
+		method="POST"> --%>
+		<div>
+		<div>
+			<input type="text" id="reply-writer" value="9" readonly>
+		</div>
+			<input type="hidden" id="reply-article" value="${article.articleNo}" readonly>
+			<input type="hidden" id="reply-board" value="${article.articleBoardNo}" readonly>
+		<textarea class="reply_input" id="reply-content"
 			rows="3" name="content"></textarea>
 		<span class="input-group-btn">
-			<button class="btn btn-primary" type="submit">답글달기</button>
+			<button class="btn btn-primary" id="post-reply">답글달기</button>
 		</span>
-	</form>
+		</div>
+<!-- 	</form> -->
 <hr>
 	<%-- <c:forEach var="r" items="${replyList}">
 		<c:choose>
@@ -129,7 +136,55 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 			<button class="btn btn-primary" type="submit">답글달기</button>
 		</span>
 	</form> --%>
-	<script>
+
+<script type="text/javascript">
+$(function(){
+	
+	$("#post-reply").click(function(){
+		
+		const writer = $("#reply-writer").val();
+		console.log(writer);
+		
+		const content = $("#reply-content").val();
+		console.log(content);
+
+		const article = $("#reply-article").val();
+		console.log(article);
+		
+		const board = $("#reply-board").val();
+		console.log(board);		
+		
+		const url = "/board/" + board + "/post-reply"
+		var data = {
+				replyContent : content,
+				replyWriter : writer,
+				replyArticleNo: article
+			}
+			$.ajax({
+				type: "POST",
+				url : url,
+				headers:{
+					"Content-Type": "application/json"
+				},
+				dataType: "text",
+				data:JSON.stringify(data),
+				success: function(data){
+					console.log("received output : " + data);
+					if(data === "post-reply-success"){
+							alert('댓글이 추가되었습니다');
+							window.location.reload();
+						}else{
+							alert('웹사이트 오류입니다');
+						}
+					
+				},
+				error: function(request, status, error){
+					console.log("POST : /board/${boardNo}/register 요청에 실패했습니다.")
+					alert('댓글 등록에 실패하였습니다');
+				}
+			}); /* end ajax */
+	});
+});
 function kaja(selector){
 	$(selector).toggleClass("hidden");
 }

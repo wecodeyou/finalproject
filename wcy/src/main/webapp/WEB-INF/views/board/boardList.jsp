@@ -139,6 +139,7 @@ body {
 	</div>
 	
 	
+	
 	<%-- <table>
 		<!--테이블 헤더-->
 		<tr>
@@ -196,5 +197,6 @@ body {
 						<td class="list-group-item w70"></td>
 					</tr>
 				</table> -->
+
 </body>
 </html>

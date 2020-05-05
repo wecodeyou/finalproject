@@ -18,6 +18,7 @@ import com.it.wecodeyou.board.model.ArticleTagVO;
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.board.model.BoardVO;
 import com.it.wecodeyou.board.model.ReplyUserVO;
+import com.it.wecodeyou.board.model.ReplyVO;
 import com.it.wecodeyou.board.service.IArticleService;
 import com.it.wecodeyou.board.service.IBoardService;
 import com.it.wecodeyou.board.service.IReplyService;
@@ -132,4 +133,15 @@ public class BoardController {
 		mv.setViewName("/board/articleDetail");
 		return mv;
 	}
+	
+	@PostMapping("/{boardNo}/post-reply")
+	public String postReply(@PathVariable Integer boardNo, @RequestBody ReplyVO rvo) {
+		System.out.println(rvo.toString());
+		if(replyService.insert(rvo) == 1) {
+			return "post-reply-success";
+		} else {
+		return "post-reply-fail";
+		}
+	}
+	
 }

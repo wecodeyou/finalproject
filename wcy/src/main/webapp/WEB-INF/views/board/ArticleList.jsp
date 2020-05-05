@@ -87,35 +87,29 @@ table {
 					<!-- 이전 버튼 -->
 					<c:if test="${pc.prev}">
 					<li class="page-item">
-						<a class="page-link" href="<c:url value='/board/list?
-						page=${pc.beginPage-1}&countPerPage=${pc.paging.countPerPage}'/>"
-						style="background-color: #ff52a0; margin-top: 0; height: 40px;
-						color: white; border: 0px solid #f78f24; opacity: 0.8">
+						<a class="page-link" href="<c:url value='/board/${board.boardNo}?
+						page=${pc.beginPage-1}&countPerPage=${pc.paging.countPerPage}'/>">
 						이전</a>
 					</li>
 					</c:if>	
 						<!-- 페이지 버튼 -->
 						<c:forEach var="pageNum" begin="${pc.beginPage}" end="${pc.endPage}">
 							<li class="page-item">
-								<a href="<c:url value='/board/list?page=${pageNum}&countPerPage=${pc.paging.countPerPage}'/>"
-								class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}" 
-								style="margin-top: 0; height: 40px; color: pink; border: 1px solid pink;">${pageNum}</a>
+								<a href="<c:url value='/board/${board.boardNo}?page=${pageNum}&countPerPage=${pc.paging.countPerPage}'/>"
+								class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}">${pageNum}</a>
 							</li>
 						</c:forEach>
 						<!-- 다음 버튼 -->
 						<c:if test="${pc.next}">
 						<li class="page-item">
-							<a class="page-link" href="<c:url value='/board/list?
-							page=${pc.endPage+1}&countPerPage=${pc.paging.countPerPage}'/>"
-							style="background-color: #ff52a0; margin-top: 0; height: 40px;
-							 color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
+							<a class="page-link" href="<c:url value='/board/${board.boardNo}?
+							page=${pc.endPage+1}&countPerPage=${pc.paging.countPerPage}'/>">다음</a>
 						</c:if>
 				</ul>
 
 	<script>
 
 		<!-- <div class="side_right"> 우측 사이드 영역</div> -->
-		<!--		End #container-->
 
 
 </script>
