@@ -144,6 +144,7 @@ a:hover { text-decoration: none;}
 	</div>
 	
 	
+	
 	<%-- <table>
 		<!--테이블 헤더-->
 		<tr>
@@ -201,5 +202,6 @@ a:hover { text-decoration: none;}
 						<td class="list-group-item w70"></td>
 					</tr>
 				</table> -->
+
 </body>
 </html>

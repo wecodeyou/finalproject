@@ -20,9 +20,12 @@ import com.it.wecodeyou.board.model.ArticleTagVO;
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.board.model.BoardVO;
 import com.it.wecodeyou.board.model.ReplyUserVO;
+import com.it.wecodeyou.board.model.ReplyVO;
 import com.it.wecodeyou.board.service.IArticleService;
 import com.it.wecodeyou.board.service.IBoardService;
 import com.it.wecodeyou.board.service.IReplyService;
+import com.it.wecodeyou.commons.PageCreator;
+import com.it.wecodeyou.commons.PageVO;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.tag.model.TagVO;
@@ -65,23 +68,36 @@ public class BoardController {
 	}
 	
 	@GetMapping("/{boardNo}")
-	public ModelAndView board(ModelAndView mv, @PathVariable Integer boardNo) throws SQLException {
+	public ModelAndView board(ModelAndView mv, @PathVariable Integer boardNo, PageVO paging)  throws SQLException  {
+
 		BoardVO bvo = boardService.getInfoByNo(boardNo);
 		System.out.println("Get /board/{boardTitle} Board Info: \r\n" 
 						+ bvo.toString());
-		List<ArticleVO> avo = articleService.list(boardNo);
+		List<ArticleVO> avo2 = articleService.list(paging);
 		
 		//article no의 각각의 hashtag를 담을 map 
 		Map<Integer, Object> tagMap = new HashMap<Integer, Object>();
-		for (int i = 0; i < avo.size(); i++) {
-			List<String> tvo = articleService.searchTagByArticle(avo.get(i).getArticleNo());
+		for (int i = 0; i < avo2.size(); i++) {
+			List<String> tvo = articleService.searchTagByArticle(avo2.get(i).getArticleNo());
 
 			System.out.println("con current key: " + i);
 			tagMap.put(i, tvo);
 		}
 		mv.addObject("tagMap", tagMap);
+
+		paging.setBoardNo(boardNo);
+		List<ArticleVO> list = articleService.list(paging);
+		for(ArticleVO avo: list) {
+			System.out.println(avo.toString());
+		}
+		PageCreator pc = new PageCreator();
+		pc.setPaging(paging);
+		pc.setArticleTotalCount(articleService.countArticles(boardNo));
+		System.out.println(pc.toString());
+
 		mv.addObject("board", bvo);
-		mv.addObject("articleList", avo);
+		mv.addObject("articleList", list);
+		mv.addObject("pc", pc);
 		mv.setViewName("/board/ArticleList");
 		return mv;
 	}
@@ -134,4 +150,15 @@ public class BoardController {
 		mv.setViewName("/board/articleDetail");
 		return mv;
 	}
+	
+	@PostMapping("/{boardNo}/post-reply")
+	public String postReply(@PathVariable Integer boardNo, @RequestBody ReplyVO rvo) {
+		System.out.println(rvo.toString());
+		if(replyService.insert(rvo) == 1) {
+			return "post-reply-success";
+		} else {
+		return "post-reply-fail";
+		}
+	}
+	
 }

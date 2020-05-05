@@ -121,8 +121,8 @@ a:hover { text-decoration: none;}
 		<tbody>
 			<c:forEach var="a" items="${articleList}" varStatus="status">
 				<tr class="article_tr">
-							<td class="article_no_td">${a.articleNo}</td>
-							<td class="article_title_td">
+					<td class="article_no_td">${a.articleNo}</td>
+					<td class="article_title_td">
 						<div class="tag">
 							<c:forEach var="entry" items="${tagMap}">
 								<c:if test="${entry.key eq status.index}">
@@ -137,46 +137,45 @@ a:hover { text-decoration: none;}
 							<a class="title_link" href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle}</a>
 						</div>
 					</td>
-							<td class="article_writer_td">${a.articleWriter}</td>
-							<td class="article_clicks_td">${a.articleClicks}</td>
-							<td class="article_likes_td">${a.articleLikes}</td>
-							<td class="article_created_td">${a.articleCreatedAt}</td>
-							<td class="article_modified_td">${a.articleModifiedAt}</td>
+					<td class="article_writer_td">${a.articleWriter}</td>
+					<td class="article_clicks_td">${a.articleClicks}</td>
+					<td class="article_likes_td">${a.articleLikes}</td>
+					<td class="article_created_td">${a.articleCreatedAt}</td>
+					<td class="article_modified_td">${a.articleModifiedAt}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 
 <br><br><br>
+				<ul class="pignation justify-content-center">
+					<!-- 이전 버튼 -->
+					<c:if test="${pc.prev}">
+					<li class="page-item">
+						<a class="page-link" href="<c:url value='/board/${board.boardNo}?
+						page=${pc.beginPage-1}&countPerPage=${pc.paging.countPerPage}'/>">
+						이전</a>
+					</li>
+					</c:if>	
+						<!-- 페이지 버튼 -->
+						<c:forEach var="pageNum" begin="${pc.beginPage}" end="${pc.endPage}">
+							<li class="page-item">
+								<a href="<c:url value='/board/${board.boardNo}?page=${pageNum}&countPerPage=${pc.paging.countPerPage}'/>"
+								class="page-link ${(pc.paging.page == pageNum) ? 'page-active' : ''}">${pageNum}</a>
+							</li>
+						</c:forEach>
+						<!-- 다음 버튼 -->
+						<c:if test="${pc.next}">
+						<li class="page-item">
+							<a class="page-link" href="<c:url value='/board/${board.boardNo}?
+							page=${pc.endPage+1}&countPerPage=${pc.paging.countPerPage}'/>">다음</a>
+						</c:if>
+				</ul>
 
 	<script>
 
 		<!-- <div class="side_right"> 우측 사이드 영역</div> -->
- <%-- $(function(){
-	$('#register-button').click(function(){
-		
-		$.ajax({
-			type: "POST",
-			url : "<c:url value='/board/${boardNo}/write-article'/>",
-			headers:{
-				"Content-Type": "application/json"
-			},
-			dataType: "text",
-			data:JSON.stringify(data),
-			success: function(data){
-				console.log("received output: " + data);
-				if(data === "off_success"){
-					location.href = "/product";
-				} else{
-					$('#message').text("서버에러가 발생하였습니다");
-				}
-			},
-			error: function(request, status, error){
-				$('#message').text("통신에 실패하였습니다");
-			}
-		});  end ajax 					
-	});
-}); --%>
+
 
 </script>
 </body>
