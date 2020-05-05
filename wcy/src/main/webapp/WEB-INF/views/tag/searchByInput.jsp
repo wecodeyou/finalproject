@@ -19,10 +19,10 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 
 </head>
 <body>
-<form action="" method="get">
-	<input type="text" placeholder="검색어를 입력하세요."/>
-	<input type="submit" value="검색" />
-</form>
+	<form action="" method="get">
+		<input type="text" placeholder="검색어를 입력하세요." /> <input type="submit"
+			value="검색" />
+	</form>
 
 </body>
 </html>

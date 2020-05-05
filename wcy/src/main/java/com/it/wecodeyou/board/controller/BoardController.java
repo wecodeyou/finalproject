@@ -83,13 +83,7 @@ public class BoardController {
 		Map<Integer, Object> tagMap = new HashMap<Integer, Object>();
 		for (int i = 0; i < list.size(); i++) {
 			List<String> tvo = articleService.searchTagByArticle(list.get(i).getArticleNo());
-			System.out.println("con current key: " + i);
 			tagMap.put(i, tvo);
-		}
-		
-		
-		for(ArticleVO avo: list) {
-			System.out.println(avo.toString());
 		}
 		
 		PageCreator pc = new PageCreator();

@@ -108,6 +108,31 @@ a:hover { text-decoration: none;}
 
 }
 
+/*순규님*/
+header.masthead {
+	
+	display: none;
+}	
+.btn-orange {
+	background-color: orange;
+	color: white;
+	font-size:80%;
+}
+.btn-izone {
+	background-color: #B9E5EA;
+	color: white;
+	font-size:80%;
+}
+
+.page-active {
+	background-color: #B9E5EA;
+	font-size:80%;
+}
+
+.form-control {
+	font-size:80%;
+}
+
 
 </style>
 </head>
@@ -115,14 +140,42 @@ a:hover { text-decoration: none;}
 
 	<br>
 	<div style="text-align: center;">
-		<h2>${board.boardTitle}</h2>
+		<h2><b>${board.boardTitle}</b></h2>
 	</div>
 
-	<hr>
+	<hr><br>
 
-	<button
-		onClick="location.href = '<c:url value="/board/${board.boardNo}/register"/>' ">게시글
-		추가하기</button>
+<%-- 	<button
+		onClick="location.href = '<c:url value="/board/${board.boardNo}/register"/>' ">
+		게시글 추가하기</button> --%>
+		
+		<!-- 검색 버튼 -->
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="form-group col-sm-2">
+			<select id="condition" class="form-control" name="condition">
+				<option value="title">제목</option>
+				<option value="content">내용</option>
+				<option value="writer">작성자</option>
+				<option value="titleContent">제목+내용</option>
+			</select>
+		</div>
+		<div class="form-group col-sm-4">
+			<div class="input-group">
+				<input type="text" class="form-control" name="keyword"
+					id="keywordInput" placeholder="검색어"> <span
+					class="input-group-btn"> <input type="button" value="검색"
+					class="btn btn-izone btn-flat" id="searchBtn">
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<a href="<c:url value="/board/${board.boardNo}/register"/>"
+				class="btn btn-izone float-right">글쓰기</a>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+	
 	<table>
 		<thead>
 			<tr class="article_th">
@@ -190,4 +243,43 @@ a:hover { text-decoration: none;}
 	<br>
 
 </body>
+<script>
+	//start jQuery
+	$(function() {
+
+		//목록 개수가 변동하는 이벤트 처리
+		$("#count-per-page .btn-izone").click(function() {
+			console.log("목록 버튼이 클릭됨!");
+			console.log($(this).val());
+			let count = $(this).val();
+			//location.href = "/board/list?countPerPage=" + count;
+		});
+
+		//검색 버튼 이벤트 처리
+		$("#searchBtn").click(
+				function() {
+					console.log("검색 버튼이 클릭됨!");
+					const keyword = $("#keywordInput").val();
+					console.log("검색어: " + keyword);
+
+					const condition = $("#condition option:selected").val();
+					console.log("검색 조건: " + condition);
+
+					//location.href = "/board/list?keyword=" + keyword
+							+ "&condition=" + condition;
+
+				});
+
+		//엔터키 입력 이벤트
+		$("#keywordInput").keydown(function(key) {
+
+			if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
+				$("#searchBtn").click();
+			}
+
+		});
+
+	});//end jQuery
+</script>
+
 </html>

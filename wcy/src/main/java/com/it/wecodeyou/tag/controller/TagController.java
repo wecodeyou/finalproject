@@ -67,7 +67,7 @@ public class TagController {
     @PostMapping("/checkTagDetail")
     public Map<String, ArrayList<String>> checkTagDetail(@RequestBody String q) throws SQLException {
          System.out.println("/tag/checkTagDetail : 태그검색 POST 요청 발생!");
-         
+         System.out.println(q);
          Map<String, ArrayList<String>> retVal = new HashMap<String, ArrayList<String>>();
          
           ArrayList<String> nameList = new ArrayList<>();
@@ -115,8 +115,6 @@ public class TagController {
    @GetMapping("/searchProductByTag/{tagNo}")
    public ModelAndView searchProductByTag(@PathVariable ("tagNo") Integer tagNo, ModelAndView mv) throws SQLException {
       System.out.println("/tag/searchProductByTag : 태그로 상품 검색 POST 요청 발생!");
-      
-      
       
       String tagName = service.getTagName(tagNo);
       
