@@ -116,6 +116,8 @@ public class TagController {
    public ModelAndView searchProductByTag(@PathVariable ("tagNo") Integer tagNo, ModelAndView mv) throws SQLException {
       System.out.println("/tag/searchProductByTag : 태그로 상품 검색 POST 요청 발생!");
       
+      
+      
       String tagName = service.getTagName(tagNo);
       
       ArrayList<ArticleVO> avoList = service.searchArticleByTag(tagNo);
