@@ -19,9 +19,6 @@
 				<th>내용</th>
 				<th>작성일자</th>
 			</tr>
-			<%-- <c:choose>
-			여기다가 내용 흩뿌리기 
-			</c:choose> --%>
 		</table>
 	</div>
 	<div>
