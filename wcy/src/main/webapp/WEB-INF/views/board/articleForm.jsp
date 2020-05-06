@@ -42,6 +42,7 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 			</div>
 			<div>
 				<div id="selectedTagList"></div> 
+				<input type="hidden" name="sendTagList" id="sendTagList" />
 			</div>
 			<div>
 					<input type="submit" id="article_register_btn" onclick="saveContent()" value="등록"/>
@@ -96,9 +97,11 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 	};
 
 	EditorJSLoader.ready(function(Editor) {
+
 		var editor = new Editor(config);
 	});
 	function saveContent() {
+		document.getElementById("sendTagList").value = sendTagList;
 		Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
 	}
 	/**

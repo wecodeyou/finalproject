@@ -192,8 +192,10 @@
       	btn.value = name; //value = tagName
       	$("#selectedTagList").append(btn); 
       	
+      
       	//리스트에 추가 <- 넘버[i]
       	sendTagList.push(no);
+      	
       	
       	for (var i = 0; i < sendTagList.length; i++) {
 			console.log("등록된 태그 버튼들: " + sendTagList[i] + " ");
@@ -289,7 +291,7 @@
 	//tag btn 클릭 시 검색
 	$('.search_tag').click(function() {
 		var id_check = $(this).attr("id");
-		alert("clicked: " + id_check);
+		//alert("clicked: " + id_check);
 		location.href = '/tag/searchProductByTag/'+ id_check;
 	});
 	
