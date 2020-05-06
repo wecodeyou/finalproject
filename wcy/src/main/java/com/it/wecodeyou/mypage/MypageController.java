@@ -1,6 +1,7 @@
 package com.it.wecodeyou.mypage;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
+import com.it.wecodeyou.purchase.model.PurchaseVO;
+import com.it.wecodeyou.purchase.service.IPurchaseService;
 import com.it.wecodeyou.review.model.ReviewVO;
 import com.it.wecodeyou.review.service.IReviewService;
 
@@ -27,6 +30,9 @@ public class MypageController {
 	@Autowired
 	private IReviewService rservice;
 	
+	@Autowired
+	private IPurchaseService pservice;
+	
 	
 	@GetMapping("/")
 	public ModelAndView mypageMain(ModelAndView mv) {
@@ -36,10 +42,13 @@ public class MypageController {
 	}
 	
 	@GetMapping("/leclist")
-	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo) {
+	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo, HttpSession session) {
 		System.out.println("/mypage/leclist : GET 요청 발생!");
 		mv.setViewName("mypage/mypage-lecList");
-		mv.addObject(rvo);
+		ArrayList<PurchaseVO> pv_list = new ArrayList<PurchaseVO>();
+		pv_list = pservice.selectUsersPurchase(((MemberVO)session.getAttribute("login")).getUserNo());
+		mv.addObject("pv_list", pv_list);
+		//mv.addObject(rvo);
 		return mv;
 	}
 
