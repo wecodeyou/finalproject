@@ -19,5 +19,5 @@ public interface IOffMapper {
 	
 	public OffVO getOneInfo(Integer offNo);
 	
-	public OffVO getInfoByProductNo(Long productNo);
+	public OffVO getInfoByProductNo(Integer productNo);
 }

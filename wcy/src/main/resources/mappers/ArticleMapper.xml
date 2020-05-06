@@ -1,53 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.it.wecodeyou.article.repository.IArticleMapper">
+<mapper namespace="com.it.wecodeyou.board.repository.IArticleMapper">
 
-   <resultMap id="ArticleMap" type="com.it.wecodeyou.article.model.ArticleVO">
+   <resultMap id="ArticleMap" type="com.it.wecodeyou.board.model.ArticleVO">
       <id property="articleNo" column="article_no" />
       <result property="articleTitle" column="article_title" />
       <result property="articleContent" column="article_content" />
-      <result property="articleBoardTitle" column="article_board_title" />
+      <result property="articleBoardNo" column="article_board_no" />
       <result property="articleClicks" column="article_clicks" />
       <result property="articleLikes" column="article_likes" />
-      <result property="articleEditorNo" column="article_editor_no" />
-      <result property="articleCreatedAt" column="article_article_at" />
+      <result property="articleWriter" column="article_writer" />
+      <result property="articleCreatedAt" column="article_created_at" />
       <result property="articleModifiedAt" column="article_modified_at" />
    </resultMap>
    
-   <insert id="insertArticle">
+   <insert id="insert" useGeneratedKeys="true" keyProperty="articleNo" parameterType="com.it.wecodeyou.board.model.ArticleVO">
    		INSERT
-   		INTO board
-   		(article_title, article_content, article_board_title, article_editor_no)
+   		INTO article
+   		(article_title, article_content, article_board_no, article_writer)
    		VALUES
-   		(#{articleTitle}, #{articleContent}, #{articleBoardTitle}, #{articleEditorNo})
+   		(#{articleTitle}, #{articleContent}, #{articleBoardNo}, #{articleWriter})
    </insert>
    
-   <update id="updateArticle">
+   <update id="update">
    		UPDATE
    		board
    		SET article_title = #{articleTitle}, article_content = #{articleContent}
    </update>
    
-   <delete id="deleteArticle">
+   <delete id="delete">
       DELETE FROM article WHERE article_no=#{articleNo}
    </delete>
    
-   <select id="getAllByBoard" resultMap="ArticleMap">
+   <select id="list" resultMap="ArticleMap">
    		SELECT * 
    		FROM article
-   		WHERE article_board_title = #{articleBoardTitle}
+		WHERE article_board_no = #{boardNo}
+   		ORDER BY article_created_at DESC
+   		LIMIT #{pageStart}, #{countPerPage}
    </select>
 
+	<select id="countArticles" resultType ="int">
+		SELECT COUNT(*)
+		FROM article
+		WHERE article_board_no = #{boardNo}
+	</select>
    <select id="getAllByWriter" resultMap="ArticleMap">
    		SELECT * 
    		FROM article
-   		WHERE article_editor_no = #{articleEditorNo}
+   		WHERE article_writer = #{articleWriter}
    </select>
   
    <select id="getAllByKeyword" resultMap="ArticleMap">
    		SELECT * 
    		FROM article
-   		WHERE article_title LIKE CONCAT(‘%’, #{articleEditorNo}, ‘%’)
+   		WHERE article_title LIKE CONCAT(‘%’, #{articleTitle}, ‘%’)
+   </select>
+   <select id="getOneInfo" resultMap="ArticleMap">
+   		SELECT *
+   		FROM article
+   		WHERE article_no = #{articleNo}
    </select>
 <!--    LIKE절 DBMS별
    # MySql

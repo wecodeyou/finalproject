@@ -41,15 +41,14 @@
 	<mybatis-spring:scan base-package="com.it.wecodeyou.interest_list.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.schedule.repository"/>
  	<mybatis-spring:scan base-package="com.it.wecodeyou.point_purchase.repository"/>
- 	<mybatis-spring:scan base-package="com.it.wecodeyou.article.repository"/>
  	<mybatis-spring:scan base-package="com.it.wecodeyou.board.repository"/>
- 	<mybatis-spring:scan base-package="com.it.wecodeyou.reply.repository"/>
  	<mybatis-spring:scan base-package="com.it.wecodeyou.product.repository"/>
  	<mybatis-spring:scan base-package="com.it.wecodeyou.tag.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.atag.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.ptag.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.review.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.off.repository"/>
+	<mybatis-spring:scan base-package="com.it.wecodeyou.purchase.repository"/>
 	<!-- 이메일 관련 -->
 	<!-- 메일 보내기(SEND) -->
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">

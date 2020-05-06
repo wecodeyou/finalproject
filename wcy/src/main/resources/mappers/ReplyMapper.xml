@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.it.wecodeyou.reply.repository.IReplyMapper">
+<mapper namespace="com.it.wecodeyou.board.repository.IReplyMapper">
 
-   <resultMap id="ReplyMap" type="com.it.wecodeyou.reply.model.ReplyVO">
+   <resultMap id="ReplyMap" type="com.it.wecodeyou.board.model.ReplyVO">
       <id property="replyNo" column="reply_no" />
       <result property="replyWriter" column="reply_writer" />
       <result property="replyContent" column="reply_content" />
@@ -16,29 +16,46 @@
       <result property="replyLikes" column="reply_likes" />
       <result property="replyArticleNo" column="reply_article_no" />
    </resultMap>
-   
-   <insert id="insertReply">
+ 
+    <resultMap id="ReplyUserMap" type="com.it.wecodeyou.board.model.ReplyUserVO">
+      <id property="replyNo" column="reply_no" />
+      <result property="replyContent" column="reply_content" />
+      <result property="replyTitle" column="reply_title" />
+      <result property="replyCreatedAt" column="reply_created_at" />
+      <result property="replyModifiedAt" column="reply_modified_at" />
+      <result property="replyIsRemoved" column="reply_is_removed" />
+      <result property="replyOrder" column="reply_order" />
+      <result property="replyParent" column="reply_parent" />
+      <result property="replyDepth" column="reply_order" />
+      <result property="replyLikes" column="reply_likes" />
+      <result property="replyArticleNo" column="reply_article_no" />
+      <result property="replyWriter" column="reply_writer" />
+      <result property="userEmail" column="user_email" />
+      <result property="userName" column="user_name" />
+   </resultMap> 
+   <insert id="insert">
    		INSERT
-   		INTO article
-   		(reply_writer, reply_content, reply_title, reply_board_no )
+   		INTO reply
+   		(reply_writer, reply_content, reply_title, reply_article_no )
    		VALUES
    		(#{replyWriter}, #{replyContent}, #{replyTitle}, #{replyArticleNo})
    </insert>
    
-   <update id="updateReply">
+   <update id="update">
    		UPDATE
-   		article
+   		reply
    		SET reply_content = #{replyContent}, reply_title = #{replyTitle}
    </update>
    
-   <delete id="deleteReply">
-      DELETE FROM Reply WHERE reply_no=#{replyNo}
+   <delete id="delete">
+      DELETE FROM reply WHERE reply_no=#{replyNo}
    </delete>
 
-   <select id="getAllInfoByArticle" resultMap="ReplyMap">
-   		SELECT *
-   		FROM article
+   <select id="listByArticle" resultMap="ReplyUserMap">
+   		SELECT reply.*, user_email, user_name
+   		FROM reply, user
    		WHERE reply_article_no = #{replyArticleNo}
+   		AND reply.reply_writer = user.user_no
    		ORDER BY reply_depth, reply_order
    </select>
    

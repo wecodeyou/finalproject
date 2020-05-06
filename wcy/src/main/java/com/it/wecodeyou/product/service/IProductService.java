@@ -1,5 +1,6 @@
 package com.it.wecodeyou.product.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -17,5 +18,7 @@ public interface IProductService {
 	
 	public List<ProductVO> list();
 	
-	public ProductVO getOneInfo(Long productNo);
+	public ProductVO getOneInfo(Integer productNo);
+	
+	public boolean insertPtag(ArrayList<Integer> sendTagList, Integer productNo); 
 }

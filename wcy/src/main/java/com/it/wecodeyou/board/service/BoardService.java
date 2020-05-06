@@ -16,15 +16,14 @@ public class BoardService implements IBoardService {
 	
 	
 	@Override
-	public void insert(BoardVO rvo) {
-		dao.insertBoard(rvo);
+	public Integer insert(BoardVO rvo) {
+		return dao.insertBoard(rvo);
 
 	}
 
 	@Override
-	public void delete(BoardVO rvo) {
-		dao.deleteBoard(rvo);
-
+	public void delete(Integer boardNo) {
+		dao.deleteBoard(boardNo);
 	}
 
 	@Override
@@ -37,6 +36,11 @@ public class BoardService implements IBoardService {
 	public List<BoardVO> list() {
 	
 		return dao.getAllInfo();
+	}
+
+	@Override
+	public BoardVO getInfoByNo(Integer boardNo) {
+		return dao.getInfoByNo(boardNo);
 	}
 
 }
