@@ -16,7 +16,9 @@ public class AtagService implements IAtagService {
 	
 	@Override
 	public boolean insertAtag(ArrayList<Integer> sendTagList, Integer articleNo) throws SQLException {
-		
+		if(sendTagList.size() == 0) {
+			return true;
+		}
 		for (int i = 0; i < sendTagList.size(); i++) {
 			try {
 				dao.insertAtag(sendTagList.get(i), articleNo);
