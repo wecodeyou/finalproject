@@ -26,14 +26,14 @@
 		<tr>
 			<td>${p.episodeRowNo} 차시</td>
 			<td>${p.episodeName}</td>
-			<td><a href = "<c:url value = "/episode/play?episodeSource=${p.episodeSource}"/>">${p.episodeSource}  강의보기</a></td>
+			<td><a href = "<c:url value = "/episode/play?episodeRowNo=${p.episodeRowNo}&episodeSource=${p.episodeSource}"/>">${p.episodeSource}  강의보기</a></td>
 		</tr>
 	</c:forEach>	
 	</tbody>
 			
 		
 	</table>
-	
+	<input type ="hidden" name = "episodeList" value = "${episodeList}">
 
 </body>
 </html>

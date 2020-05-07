@@ -146,11 +146,20 @@
 <div class="list" id="list">
 	<h4>온라인 - 강의 구매 리스트</h4>
 	<br>
-	어쩌구저쩌구 강의명이랑 강사명이랑 수강기간?이나 그런정보 뿌려준다음   <button id="btn1" value="1" onclick="Modal(this)">수강후기</button> <br>
+<!-- 	어쩌구저쩌구 강의명이랑 강사명이랑 수강기간?이나 그런정보 뿌려준다음   <button id="btn1" value="1" onclick="Modal(this)">수강후기</button> <br>
 	어쩌구저쩌구 강의명이랑 강사명이랑 수강기간?이나 그런정보 뿌려준다음   <button id="btn2" value="2" onclick="Modal(this)">수강후기</button> <br>
 	어쩌구저쩌구 강의명이랑 강사명이랑 수강기간?이나 그런정보 뿌려준다음   <button id="btn3" value="3" onclick="Modal(this)">수강후기</button> <br>
 	어쩌구저쩌구 강의명이랑 강사명이랑 수강기간?이나 그런정보 뿌려준다음   <button id="btn4" value="4" onclick="Modal(this)">수강후기</button> <br>
-	어쩌구저쩌구 강의명이랑 강사명이랑 수강기간?이나 그런정보 뿌려준다음   <button id="btn5" value="5" onclick="Modal(this)">수강후기</button> <br>
+	어쩌구저쩌구 강의명이랑 강사명이랑 수강기간?이나 그런정보 뿌려준다음   <button id="btn5" value="5" onclick="Modal(this)">수강후기</button> <br> -->
+	<table border = 1>
+	
+	<c:forEach var = "c" items = '${lec_list}'>
+		<tr>
+			<td><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>">${c.productName}</a></td><td>${c.productCreatedAt}</td>		
+		</tr>
+	</c:forEach>	
+	</table>
+	
 </div>
         <!-- 모달 창 시작 -->
       <div id="myModal" class="modal">  

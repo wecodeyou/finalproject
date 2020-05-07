@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.it.wecodeyou.episode.model.EpisodeVO;
 import com.it.wecodeyou.episode.service.IEpisodeService;
 
 @RestController
@@ -21,10 +22,11 @@ public class EpisodeController {
 	IEpisodeService service;
 	
 	@GetMapping("/")
-	public ModelAndView main() throws SQLException {
+	public ModelAndView main(HttpServletRequest req) throws SQLException {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("episodeList",service.getAllEpisode());
+		Integer productNo = Integer.parseInt(req.getParameter("productNo"));
+		mv.addObject("episodeList",service.getAllEpisode1(productNo));
 		mv.setViewName("episode/main-form");
 		return mv;
 	}
@@ -33,10 +35,16 @@ public class EpisodeController {
 	public ModelAndView play(HttpServletRequest req) throws SQLException {
 		ModelAndView mv = new ModelAndView();
 		
-		String videosrc = req.getParameter("episodeSource");
-		System.out.println(videosrc);
-		mv.addObject("videosrc",videosrc);
-		mv.addObject("episodeList",service.getAllEpisode());
+		Integer episodeRowNo = Integer.parseInt(req.getParameter("episodeRowNo"));
+		String episodeSource = req.getParameter("episodeSource");
+		System.out.println(episodeSource);
+		/*
+		 * System.out.println(videosrc); mv.addObject("videosrc",videosrc);
+		 */
+		
+		mv.addObject("select",episodeRowNo);
+//		mv.addObject("episodeList",service.getAllEpisode(evo.getEpisodeRowNo()));
+		mv.addObject("episodeList",service.getAllEpisode2(episodeSource));
 		mv.setViewName("on/player");
 		return mv;
 	}

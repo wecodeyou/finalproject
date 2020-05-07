@@ -17,12 +17,24 @@ public class EpisodeService implements IEpisodeService {
 	IEpisodeMapper dao;
 	
 	@Override
-	public ArrayList<EpisodeVO> getAllEpisode() throws SQLException {
+	public ArrayList<EpisodeVO> getAllEpisode1(Integer productNo) throws SQLException {
 		
-		
-		
-		return dao.getAllEpisode();
+		return dao.getAllEpisode1(productNo);
 	}
+
+	@Override
+	public ArrayList<EpisodeVO> getAllEpisode2(String episodeSource) throws SQLException {
+		
+		return dao.getAllEpisode2(episodeSource);
+	}
+
+	@Override
+	public Integer getProductNo(Integer episodeOnNo) throws SQLException {
+		// TODO Auto-generated method stub
+		return dao.getProductNo(episodeOnNo);
+	}
+	
+	
 	
 	
 

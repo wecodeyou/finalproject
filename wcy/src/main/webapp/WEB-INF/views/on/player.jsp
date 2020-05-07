@@ -48,7 +48,7 @@
     		}'
   
   >
-    <source src="<c:url value = "${videosrc}"/>" type="video/mp4" />
+    <%-- <source src="<c:url value = "${videosrc}"/>" type="video/mp4" /> --%>
       </video>
   
   
@@ -93,6 +93,9 @@
 		</c:forEach>		
 	
 	]);
+ 	for (let i = 1; i < ${select}; i++){
+		player.playlist.next();
+	} 
 	player.playlist.autoadvance(3);
 
 </script>

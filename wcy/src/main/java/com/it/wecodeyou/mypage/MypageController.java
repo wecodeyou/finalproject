@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 // 이게 왜 안쓰이는 거지 ?
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
+import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.review.model.ReviewVO;
 import com.it.wecodeyou.review.service.IReviewService;
 
@@ -26,7 +25,9 @@ public class MypageController {
 	private IMemberService mservice;
 	@Autowired
 	private IReviewService rservice;
-	
+	@Autowired
+	private IProductService pservice;
+
 	
 	@GetMapping("/")
 	public ModelAndView mypageMain(ModelAndView mv) {
@@ -36,12 +37,20 @@ public class MypageController {
 	}
 	
 	@GetMapping("/leclist")
-	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo) {
+	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo, HttpSession session) {
 		System.out.println("/mypage/leclist : GET 요청 발생!");
+		
+		MemberVO mvo = (MemberVO)session.getAttribute("login");
+
+		
+		mv.addObject("lec_list",pservice.purchasedOn(mvo.getUserNo()));
 		mv.setViewName("mypage/mypage-lecList");
 		mv.addObject(rvo);
 		return mv;
 	}
+	
+	
+	
 
 	@GetMapping("/myinfoChange")
 	public ModelAndView myInfo(ModelAndView mv, HttpSession session) {
@@ -54,6 +63,9 @@ public class MypageController {
 		mv.addObject("user_birthday",sdf.format(mvo.getUserBirthday()));
 		return mv;
 	}
+	
+	
+	
 
 	@GetMapping("/pointInfo")
 	public ModelAndView pointInfo(ModelAndView mv, HttpSession session) {

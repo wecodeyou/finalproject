@@ -61,4 +61,12 @@ public class ProductService implements IProductService {
 		return true;
 	}
 
+	
+	
+	@Override
+	public ArrayList<ProductVO> purchasedOn(Integer userNo) {
+		// TODO Auto-generated method stub
+		return pdao.purchasedOn(userNo);
+	}
+
 }

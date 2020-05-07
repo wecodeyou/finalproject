@@ -10,13 +10,43 @@
       <result property="episodeSource" column="episode_source" />
    </resultMap>
    
-
-   <select id="getAllEpisode" resultMap="EpisodeMap">
-   		SELECT *
-   		FROM episode
-   		WHERE episode_on_no = 1
-   		ORDER BY episode_row_no
+<!-- product_no 받아서  해당 에피소드 반환 -->
+   <select id="getAllEpisode1" resultMap="EpisodeMap">
+		SELECT * 
+		FROM episode
+		WHERE episode_on_no = (SELECT on_no 
+							   FROM on_course 
+							   WHERE on_product_no = #{productNo})
+							   
    </select>
+   
+   <!-- episode_source를 받아서 해당 에피소드 반환 -->
+	<select id = "getAllEpisode2" resultMap = "EpisodeMap">
+		SELECT *
+		FROM episode
+		WHERE episode_on_no = (SELECT episode_on_no
+							   FROM episode 
+							   WHERE episode_source = #{episodeSource});
+
+	</select>
+   
+   <select id = "getOnNo" resultType = "int">
+   		SELCET episode_on_no
+   		FROM episode
+   		WHERE episode_source = #{episodeSource}
+   
+   </select>
+
+   <select id = "getProductNo" resultType = "int">
+   		SELCET on_product_no
+   		FROM on_course
+   		WHERE on_no = #{episodeOnNo}
+   
+   </select>
+
+
+
+
 
 
 </mapper>

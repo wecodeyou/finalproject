@@ -8,9 +8,12 @@ import com.it.wecodeyou.episode.model.EpisodeVO;
 public interface IEpisodeService {
 
 	
-	//강의내용 출력
-	public ArrayList<EpisodeVO> getAllEpisode () throws SQLException;
+	//product_no 받아서  해당 product 강의내용 출력
+	public ArrayList<EpisodeVO> getAllEpisode1(Integer productNo) throws SQLException;
 	
+	//episode_source 받아서 해당 강의 내용 출력
+	public ArrayList<EpisodeVO> getAllEpisode2(String episodeSource) throws SQLException;
 	
-	
+	public Integer getProductNo(Integer episodeOnNo) throws SQLException;
+
 }
