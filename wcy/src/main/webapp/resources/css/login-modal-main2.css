@@ -1,61 +1,5 @@
 @charset "UTF-8";
 
-* {
-   margin: 0px; 
-   padding: 0px; 
-   box-sizing: border-box;
-}
-
-body, html {
-   height: 100%;
-   font-family: Poppins-Regular, sans-serif;
-}
-
-/*---------------------------------------------*/
-a {
-   font-family: Poppins-Regular;
-   font-size: 14px;
-   line-height: 1.7;
-   color: #666666;
-   margin: 0px;
-   transition: all 0.4s;
-   -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-}
-
-a:focus {
-   outline: none !important;
-}
-
-a:hover {
-   text-decoration: none;
-   color: #ffffff;
-  cursor: pointer;
-}
-
-/*---------------------------------------------*/
-h1,h2,h3,h4,h5,h6 {
-   margin: 0px;
-}
-
-p {
-   font-family: Poppins-Regular;
-   font-size: 14px;
-   line-height: 1.7;
-   color: #666666;
-   margin: 0px;
-}
-
-ul, li {
-   margin: 0px;
-   list-style-type: none;
-}
-
-
-
-
-
 /*---------------------------------------------*/
 input {
    outline: none;
@@ -134,14 +78,13 @@ iframe {
 #wcy-login-modal {
     display:none;
     position: fixed;
-    z-index: 10000;
+    z-index: 1;
     left: 0;
     top: 0;
     max-width: 100%;
   width: 100%;
   margin: 0 auto;
 }
-
 
 .container-login100 {
     animation-name: animatetop;/* 에니메이션 */

@@ -3,6 +3,7 @@ package com.it.wecodeyou.mypage;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class MypageController {
 	}
 
 	@GetMapping("/myinfoChange")
-	public ModelAndView myInfo(ModelAndView mv, HttpSession session) {
+	public ModelAndView myInfo(ModelAndView mv, HttpSession session, HttpServletRequest req) {
 		System.out.println("/mypage/myinfoChange : GET 요청 발생!");
 		mv.setViewName("mypage/mypage-change");
 		//Timestamp t = new Timestamp(System.currentTimeMillis());
@@ -61,6 +62,10 @@ public class MypageController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
 		MemberVO mvo = (MemberVO)session.getAttribute("login");
 		mv.addObject("user_birthday",sdf.format(mvo.getUserBirthday()));
+		if(req.getParameter("change") != null) {
+			mv.addObject("change",req.getParameter("change"));			
+			System.out.println(req.getParameter("change"));
+		}
 		return mv;
 	}
 
