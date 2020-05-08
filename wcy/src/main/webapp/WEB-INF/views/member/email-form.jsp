@@ -19,6 +19,7 @@
         border: 0;
         background: transparent;
     }
+    
     .mt20{margin-top: 20px !important;}
     .mt30{margin-top: 30px !important;}
     .mt40{margin-top: 40px !important;}
