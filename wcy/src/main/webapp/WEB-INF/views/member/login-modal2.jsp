@@ -8,17 +8,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <link rel="stylesheet" href="<c:url value='/vendor/bootstrap/css/bootstrap.min.css'/>">
-<%-- <link rel="stylesheet" href="<c:url value='/vendor/animate/animate.css'/>"> --%>
+<link rel="stylesheet" href="<c:url value='/vendor/animate/animate.css'/>">
 <link rel="stylesheet" href="<c:url value='/vendor/css-hamburgers/hamburgers.min.css'/>">
-<%-- <link rel="stylesheet" href="<c:url value='/vendor/animsition/css/animsition.min.css'/>"> --%>
+<link rel="stylesheet" href="<c:url value='/vendor/animsition/css/animsition.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/vendor/select2/select2.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/vendor/daterangepicker/daterangepicker.css'/>">
 <%-- <link rel="stylesheet" href="<c:url value='/fonts/font-awesome-4.7.0/css/font-awesome.min.css'/>"> --%>
 <link rel="stylesheet" href="<c:url value='/fonts/iconic/css/material-design-iconic-font.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/login-modal-util.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/login-modal-main.css'/>">
-
-
 
 
 <title>loginnn</title>
@@ -29,8 +27,8 @@
 <!-- 로그인 모달 -->
 	<!-- <div class="limiter" id="wcy-login-modal"> -->
 	<div class="modal fade" id="wcy-login-modal">
-		<div class="container-login100 modal-dialog">
-			<div class="wrap-login100 modal-content" id="modal-content">
+		<div class="container-login100">
+			<div class="wrap-login100" id="modal-content">
 				<form class="login100-form validate-form">
                 <span class="close" id="modal_close_btn">&times;</span>
                     <div class="wcy-modal-header">
@@ -38,7 +36,7 @@
 						  Login
 					    </span> 
                     </div>
-				<div class="modal-body">
+
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
 						<span class="label-input100">Email</span>
 						<input class="input100" type="text" name="username" placeholder="Type your Email">
@@ -95,9 +93,9 @@
 							Sign Up
 						</a>
 					</div>
-				</div>
 				</form>
 			</div>
+            <div class="modal_layer"></div>
 		</div>
 	</div>
 	
@@ -117,13 +115,11 @@
 <script src="<c:url value = "/js/main.js"/>"></script>
 
 <script>
-        var myModal = document.getElementById("wcy-login-modal");
+        var myModal = document.getElementById("myModal");
         var modal_close_btn = document.getElementById("modal_close_btn");
-      	var modal_bg= document.getElementById("modal_layer");
-        
+      
       modal_close_btn.onclick = function(){
          myModal.style.display = "none";
-         $( '.modal-backdrop' ).remove();
       }
        
         // When the user clicks anywhere outside of the modal, close it

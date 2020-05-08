@@ -142,6 +142,13 @@ a {
   }
 }
 
+@media only screen and (max-width: 1023px) {
+  .wcy-search-menu{
+  	display: none;
+  }
+} 
+
+
 .wcy-auto-hide-header.nav-open .nav-trigger em {
   /* transform menu icon into a 'X' icon */
   background-color: rgba(255, 255, 255, 0);
@@ -467,7 +474,6 @@ position:relative;
 -------------------------------- */
 .wcy-secondary-nav.fixed {
   position: fixed;
-  top: 60px;
 }
 .wcy-secondary-nav.slide-up {
   -webkit-transform: translateY(-60px);
@@ -476,11 +482,7 @@ position:relative;
 }
 
 @media only screen and (min-width: 1024px) {
-  .wcy-secondary-nav.fixed {
-    top: 150px;
-    /* fixes a bug where nav and subnab move with a slight delay */
-    box-shadow: 0 -6px 0 #25283D;
-  }
+
   .wcy-secondary-nav.slide-up {
     -webkit-transform: translateY(-150px);
         -ms-transform: translateY(-150px);
@@ -493,51 +495,34 @@ position:relative;
 Main content
 
 -------------------------------- */
-.wcy-main-content {
-  padding: 60px 5% 2em;
-  overflow: hidden;
+
+
+.wcy-main-content.secondary-nav-fixed {
+  margin-top: 150px;
 }
-.wcy-main-content.sub-nav {
-  /* to be used if there is sub nav */
-  padding-top: 110px;
-}
-.wcy-main-content.sub-nav-hero {
-  /* to be used if there is hero image + subnav */
-  padding-top: 0;
-}
-.wcy-main-content.sub-nav-hero.secondary-nav-fixed {
-  margin-top: 50px;
-}
-.wcy-main-content p {
-  max-width: 1024px;
-  line-height: 1.6;
-  margin: 2em auto;
-  font-family: "David Libre", serif;
-  color: #a5a8a9;
-}
+
 @media only screen and (min-width: 1024px) {
-  .wcy-main-content {
+/*  .wcy-main-content {
     padding-top: 80px;
-  }
-  .wcy-main-content.sub-nav {
-    padding-top: 150px;
-  }
-  .wcy-main-content.sub-nav-hero.secondary-nav-fixed {
-    margin-top: 120px;
-  }
-  .wcy-main-content p {
-    font-size: 1.0rem;
+  } */
+
+  .wcy-main-content.secondary-nav-fixed  {
+    margin-top: 240px;
   }
 }
 
-
+@media only screen and (max-width: 1023px) {
+.wcy-main-content {
+    margin-top: 110px;
+  }
+}
 
 /*
 	adjust the positioning of in-page links
 	http://nicolasgallagher.com/jump-links-and-viewport-positioning/
 */
-.wcy-main-content.sub-nav :target::before,
-.wcy-main-content.sub-nav-hero :target::before {
+.wcy-main-content :target::before,
+.wcy-main-content :target::before {
   display: block;
   content: "";
   margin-top: -50px;
@@ -545,55 +530,12 @@ Main content
   visibility: hidden;
 }
 @media only screen and (min-width: 1024px) {
-  .wcy-main-content.sub-nav :target::before,
-  .wcy-main-content.sub-nav-hero :target::before {
+  .wcy-main-content :target::before,
+  .wcy-main-content :target::before {
     margin-top: -70px;
     height: 70px;
   }
 }
-
-
-
-
-
-/* -------------------------------- 
-
-Intro Section
-
--------------------------------- */
-.wcy-main-img {
-  /* vertically align its content */
-  display: table;
-  width: 100%;
-  margin-top: 60px;
-  height: auto;
-  background-size: cover;
-}
-.wcy-main-img .wcy-img-content {
-  /* vertically align inside parent element */
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
-
-
-@media only screen and (min-width: 768px) {
-  .wcy-main-img {
-    height: auto;
-  }
-}
-@media only screen and (min-width: 1024px) {
-  .wcy-main-img {
-    height: auto;
-    margin-top: 60px;
-  }
-}
-@media only screen and (max-width: 1023px) {
-  .wcy-search-menu{
-  	display: none;
-  }
-}
-
 
 
 /*검색창 디자인*/

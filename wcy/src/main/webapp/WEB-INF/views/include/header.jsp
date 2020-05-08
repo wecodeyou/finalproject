@@ -49,11 +49,10 @@
 	background:#c7c7c7;
 }
 
-#text{font-size: 15px;}
 </style>
 
 
-<title>Insert title hereeeeeeee</title>
+<title>Insert title here</title>
 </head>
 <body>
 
@@ -96,7 +95,7 @@
 			<ul id="wcy-menu">
 				<li><a href="#"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
-				<li><a href="<c:url value='/mypage/' />"><i class="fa fa-user"><p class="user-p" style="font-size:10px; padding-top:5px;">마이페이지</p></i></a></li>
+				<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:10px; padding-top:5px;">마이페이지</p></i></a></li>
 				<li><a href="#"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
 			</ul>
 		</nav>
@@ -221,7 +220,7 @@
 		</div>
 	</section>
 
-<%@ include file="../member/login-modal.jsp" %>  
+<%-- <%@ include file="../member/login-modal.jsp" %>   --%>
 
 
 <main class="wcy-main-content sub-nav-hero">
@@ -264,14 +263,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-<script>
-$(function(){
-	$('.modal-open-btn').click(function(){
-		
-	});
-});
-
-</script>
 
 
 <script>
@@ -291,6 +282,15 @@ $(document).ready(function(){
     	
     });
   });
+
+	function logincheck(){
+	   if(${login == null}){
+	      alert("로그인이 필요한 서비스입니다.");
+	   }else{
+	      location.href="<c:url value='/mypage/' />";
+	   }
+	      
+	};
 
 </script>
 
