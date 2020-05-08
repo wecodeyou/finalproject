@@ -46,5 +46,7 @@ public interface ITagService {
       
       //search ptagname by pno
       public ArrayList<TagVO> searchTagByProduct(Integer productNo) throws SQLException;
+      
+
 
 }

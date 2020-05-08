@@ -116,4 +116,41 @@
       and tp.p_product_no = #{productNo}
    </select>
    
+   <!-- keyword로 article 검색 (페이징 O) -->
+   <select id="searchArticleByKeyWord" resultMap="ArticleMap">
+   	SELECT * FROM article
+   	WHERE article_title LIKE CONCAT('%', #{keyword}, '%')
+   	OR article_content LIKE CONCAT('%', #{keyword}, '%')
+   	ORDER BY article_no DESC
+   	LIMIT #{pageStart}, #{countPerPage}
+   </select>
+   
+   <!-- keyword로 article 검색 (페이징 X) -->
+   <select id="searchAllArticleByKeyWord" resultMap="ArticleMap">
+    SELECT * FROM article
+   	WHERE article_title LIKE CONCAT('%', #{keyword}, '%')
+   	OR article_content LIKE CONCAT('%', #{keyword}, '%')
+   	ORDER BY article_no DESC
+   </select>
+   
+   <!-- keyword로 product 검색 (페이징 O) -->
+   <select id="searchProductByKeyWord" resultMap="ProductMap">
+   	SELECT * FROM product
+   	WHERE product_name LIKE CONCAT('%', #{keyword}, '%')
+   	OR product_detail LIKE CONCAT('%', #{keyword}, '%')
+   	ORDER BY product_no DESC
+   	LIMIT #{pageStart}, #{countPerPage}
+   </select>
+   
+   <!-- keyword로 product 검색 (페이징 X) -->
+   <select id="searchAllProductByKeyWord" resultMap="ProductMap">
+    SELECT * FROM product
+   	WHERE product_name LIKE CONCAT('%', #{keyword}, '%')
+   	OR product_detail LIKE CONCAT('%', #{keyword}, '%')
+   	ORDER BY product_no DESC
+   </select>
+   
+   
+  
+   
 </mapper>

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.search.model.SearchVO;
 import com.it.wecodeyou.tag.model.TagVO;
 
 public interface ITagMapper {
@@ -24,7 +25,7 @@ public interface ITagMapper {
    //insert new tag
    public void insertTag(String tag) throws SQLException;
    
-   //update delete 추가 작성
+   //tag update delete 추가 작성
    
    //search products by tag
    public ArrayList<ProductVO> searchProductByTag(Integer tagNo) throws SQLException;
@@ -46,5 +47,17 @@ public interface ITagMapper {
    
    //search ptagname by pno
    public ArrayList<TagVO> searchTagByProduct(Integer productNo) throws SQLException;
+   
+   //article 세부 검색(paging처리 O) 검색어로 title, content 검색
+   public ArrayList<ArticleVO> searchArticleByKeyWord(SearchVO svo) throws SQLException;
+   
+   //article 메인 검색(paging처리 X) 검색어로 title, content 검색
+   public ArrayList<ArticleVO> searchAllArticleByKeyWord(SearchVO svo) throws SQLException;
+   
+   //product 세부 검색(paging처리 O) 검색어로 name, detail 검색
+   public ArrayList<ProductVO> searchProductByKeyWord(SearchVO svo) throws SQLException;
+   
+   //article 메인 검색(paging처리 X) 검색어로 name, detail 검색
+   public ArrayList<ProductVO> searchAllProductByKeyWord(SearchVO svo) throws SQLException;
    
 }
