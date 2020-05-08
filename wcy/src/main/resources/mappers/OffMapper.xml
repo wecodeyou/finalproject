@@ -18,6 +18,25 @@
 		<result property="offModifiedAt" column="off_modified_at"/>	
 	</resultMap>
 	
+	<resultMap id="OffProductMap" type="com.it.wecodeyou.off.model.OffProductVO">
+		<result property="productNo" column="product_no"/>
+		<result property="productType" column="product_type"/>
+		<result property="productName" column="product_name"/>
+		<result property="productPrice" column="product_price"/>
+		<result property="productDetail" column="product_detail"/>
+		<result property="productCreatedAt" column="product_created_at"/>
+		<result property="productThumb" column="product_thumb"/>
+		<result property="offNo" column="off_no"/>
+		<result property="offAuthor" column="off_author"/>
+		<result property="offCategory" column="off_category"/>
+		<result property="offPlace" column="off_place"/>
+		<result property="offUploadUri" column="off_upload_uri"/>
+		<result property="offSeats" column="off_seats"/>
+		<result property="offStartAt" column="off_start_at"/>
+		<result property="offEndAt" column="off_end_at"/>
+		<result property="offCreatedAt" column="off_created_at"/>
+		<result property="offModifiedAt" column="off_modified_at"/>
+	</resultMap>
 	<insert id="insert">
 		INSERT 
 		INTO off_course
@@ -53,5 +72,11 @@
 		SELECT *
 		FROM off_course
 		WHERE off_product_no = #{offProductNo} 
+	</select>
+	<select id="getOffProduct" resultMap="OffProductMap">
+		SELECT *
+		FROM off_course o, product p
+		WHERE p.product_no = #{productNo} 
+		AND o.off_product_no = p.product_no
 	</select>
 </mapper>

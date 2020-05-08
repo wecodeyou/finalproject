@@ -3,6 +3,7 @@ package com.it.wecodeyou.off.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.off.model.OffVO;
 import com.it.wecodeyou.product.model.ProductVO;
 
@@ -22,4 +23,6 @@ public interface IOffService {
 	public OffVO getOneInfo(Integer offNo);
 	
 	public OffVO getInfoByProductNo(Integer productNo);
+	
+	public OffProductVO getOffProduct(Integer productNo);
 }
