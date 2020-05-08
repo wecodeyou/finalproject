@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.it.wecodeyou.purchase.repository.IPurchaseMapper">
+	<!-- purchase_no
+		purchase_pro_no
+		purchase_amount
+		purchase_buyer
+		purchase_seat_no 
+		purchase_date
+		purchase_isrefund 
+		purchase_refund_date
+		-->
+	<resultMap id="PurchaseMap"
+		type="com.it.wecodeyou.purchase.model.PurchaseVO">
+		<id property="purchaseNo" column="purchase_no" />
+		<result property="purchaseProNo" column="purchase_pro_no" />
+		<result property="purchaseAmount" column="purchase_amount" />
+		<result property="purchaseBuyer" column="purchase_buyer" />
+		<result property="purchaseSeatNo" column="purchase_seat_no" />
+		<result property="purchaseDate" column="purchase_date" />
+		<result property="purchaseIsrefund" column="purchase_isrefund" />
+		<result property="purchaseRefundDate" column="purchase_refund_date" />
+	</resultMap>
+	
+	<!-- 구매 -->
+	<insert id="insertPurchase">
+		INSERT INTO 
+		(purchase_no, purchase_pro_no, purchase_amount, purchase_buyer, purchase_seat_no, purchase_date, purchase_isrefund, purchase_refund_date)
+		VALUES 
+		(#{purchaseNo},#{purchaseProNo},#{purchaseAmount},#{purchaseBuyer},#{purchaseSeatNo},#{purchaseDate},#{purchaseIsrefund},#{purchaseRefundDate})
+	</insert>
+	
+		<!-- 회원 구매 내용 출력 (관리자페이지) -->
+	<select id="selectAllPurchase" resultMap="PurchaseMap">
+		SELECT * FROM purchase
+	</select>
+
+		<!-- 회원번호를 받아서 구매/취소 내역 조회 (유저페이지) -->
+	<select id="selectUsersPurchase" resultMap="PurchaseMap">
+		SELECT * FROM purchase where purchase_buyer=#{purchaseBuyer}
+	</select>
+
+	<!-- 취소/환불 -> isrefund를 false 에서 true로  수정  -->
+	<update id="updateRefund">
+		UPDATE purchase SET 
+		purchase_isrefund=true, purchase_refund_date=now() 
+		WHERE 
+		purchase_no=#{purchaseNo}
+	</update>
+
+</mapper>
+
+

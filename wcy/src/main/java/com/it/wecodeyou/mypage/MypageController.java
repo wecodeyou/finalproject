@@ -1,7 +1,9 @@
 package com.it.wecodeyou.mypage;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.product.service.IProductService;
+import com.it.wecodeyou.purchase.model.PurchaseVO;
+import com.it.wecodeyou.purchase.service.IPurchaseService;
 import com.it.wecodeyou.review.model.ReviewVO;
 import com.it.wecodeyou.review.service.IReviewService;
 
@@ -26,8 +30,10 @@ public class MypageController {
 	@Autowired
 	private IReviewService rservice;
 	@Autowired
-	private IProductService pservice;
-
+	private IProductService pdservice;
+	@Autowired
+	private IPurchaseService pservice;
+	
 	
 	@GetMapping("/")
 	public ModelAndView mypageMain(ModelAndView mv) {
@@ -38,14 +44,16 @@ public class MypageController {
 	
 	@GetMapping("/leclist")
 	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo, HttpSession session) {
+
 		System.out.println("/mypage/leclist : GET 요청 발생!");
 		
-		MemberVO mvo = (MemberVO)session.getAttribute("login");
-
 		
-		mv.addObject("lec_list",pservice.purchasedOn(mvo.getUserNo()));
+		mv.addObject("lec_list",pdservice.purchasedOn(((MemberVO)session.getAttribute("login")).getUserNo()));
 		mv.setViewName("mypage/mypage-lecList");
-		mv.addObject(rvo);
+		ArrayList<PurchaseVO> pv_list = new ArrayList<PurchaseVO>();
+		pv_list = pservice.selectUsersPurchase(((MemberVO)session.getAttribute("login")).getUserNo());
+		mv.addObject("pv_list", pv_list);
+		//mv.addObject(rvo);
 		return mv;
 	}
 	
@@ -53,7 +61,7 @@ public class MypageController {
 	
 
 	@GetMapping("/myinfoChange")
-	public ModelAndView myInfo(ModelAndView mv, HttpSession session) {
+	public ModelAndView myInfo(ModelAndView mv, HttpSession session, HttpServletRequest req) {
 		System.out.println("/mypage/myinfoChange : GET 요청 발생!");
 		mv.setViewName("mypage/mypage-change");
 		//Timestamp t = new Timestamp(System.currentTimeMillis());
@@ -61,6 +69,10 @@ public class MypageController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
 		MemberVO mvo = (MemberVO)session.getAttribute("login");
 		mv.addObject("user_birthday",sdf.format(mvo.getUserBirthday()));
+		if(req.getParameter("change") != null) {
+			mv.addObject("change",req.getParameter("change"));			
+			System.out.println(req.getParameter("change"));
+		}
 		return mv;
 	}
 	

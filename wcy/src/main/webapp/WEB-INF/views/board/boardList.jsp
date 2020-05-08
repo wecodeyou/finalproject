@@ -11,119 +11,186 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+.register_btn {
+	
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+
+.update_btn	{
+	opacity: 0.8;
 }
+
+.delete_btn {
+	opacity: 0.8;
+}
+
+.up_del_btn {
+	display:inline-block;
+	cursor: pointer;
+	margin-top: 30px; 
+	opacity: 0.8;
+	font-size: 80%;
+}
+
+* {
+	box-sizing: border-box;
+}
+
 body {
-	line-height: 1;
+	font-family: Arial, Helvetica, sans-serif;
 }
-ol, ul {
-	list-style: none;
+
+/* Float four columns side by side */
+.column {
+	float: left;
+	width: 25%;
+	padding: 0 10px;
 }
-blockquote, q {
-	quotes: none;
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {
+	margin: 0 -5px;
+	width:80%;
+	margin-left: auto;
+	margin-right: auto;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
 }
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+
+/* Style the counter cards */
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	/* this adds the "card" effect */
+	padding: 30px;
+	width:90%;
+	text-align: center;
+	background-color: #f1f1f1;
+	font-weight: bold;
 }
-    
-/* 
----------------------------end css reset------------------------------------
-*/    
-   
-    table {
-    	width:90%;
-    	margin: 10% auto 10% auto;
-    }
-    .w30 {
-    	width: 30%;
-    }
-    .w70 {
-    	width: 70%;
-    }
-    .w20 {
-    	width: 20%;
-    }
-    .w50 {
-    	width: 50%;
-    }
-    tr {
-    	width: 100%;
-    }
-    th{
-    	background-color: #084B8A;
-    }
+.card:hover, .card:focus {
+	cursor: pointer;
+	background-color:white;
+	/* font-weight: bold; */
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+	.column {
+		width: 100%;
+		display: block;
+		margin-bottom: 20px;
+	}
+}
+
+.title_link {
+	text-decoration: none;
+	display:block;
+	height:100%;
+	width:100%;
+}
+
+a:hover { text-decoration: none;}
 
 </style>
 </head>
 <body>
 
-	<div class="container" id="container">
-		<div class="content">
-			<!-- 컨텐츠 영역 -->
-			<div class="title">
-				<ul>
-					<li style="text-align: center;"><h2>커뮤니티 </h2>
-				</ul>
-			</div>
-			<hr>
-			<div class="content_in">
-                <!--게시판 선택 테이블-->
+	<br>
+	<div style="text-align: center;">
+		<h2>커뮤니티</h2>
+	</div>
+	
+	<hr>
+	일반회원
+	<div class="row">
+		<c:forEach var="b" items="${boardList}">
+			 <div class="column">
+    			<div class="card">
+    			<a class="title_link" href="<c:url value='/board/${b.boardNo}'/>">${b.boardTitle}</a>
+    				<br>
+    				<small>${b.boardDetail}</small>
+    			</div>
+    			
+  			</div>
+		</c:forEach>
+	
+	</div>
+	
+	<br><br><br><hr>
+	관리자모드
+	<button class="register_btn" onclick="location.href='<c:url value='/board/register'/>'">게시판 추가하기</button>
+	<br><br>
+	
+	<div class="row">
+		<c:forEach var="b" items="${boardList}">
+			 <div class="column">
+    			<div class="card">
+    				<a class="title_link" href="<c:url value='/board/${b.boardNo}'/>">${b.boardTitle}</a>
+    				<br>
+    				<small>${b.boardDetail}</small>
+    				<div class="up_del_btn">
+						<button class="update_btn"onclick="location.href='#'">수정</button>
+						<button class="delete_btn" onclick="location.href='#'">삭제</button>
+					</div>
+    			</div>
+    			
+  			</div>
+		</c:forEach>
+	
+	</div>
+	
+	
+	
+	<%-- <table>
+		<!--테이블 헤더-->
+		<tr>
+			<th>게시판명</th>
+			<th>게시판 설명</th>
+			<th>관리자 메뉴</th>
+		</tr>
+		<c:forEach var="b" items="${boardList}">
+			<tr>
+				<td><a href="<c:url value='/board/${b.boardNo}' />">${b.boardTitle}</a></td>
+				<td>${b.boardDetail}</td>
+				<td><div class="form-check">
+						<button class="btn btn-info" onclick="location.href='#'">수정</button>
+					</div>
+					<div class="form-check">
+						<button class="btn btn-danger" onclick="location.href='#'">삭제</button>
+					</div></td>
+			</tr>
+		</c:forEach>
+	</table> --%>
+		
+		
+		<%-- <tr class="list-group list-group-horizontal ">
+			<th class="list-group-item w20">게시판명</th>
+			<th class="list-group-item w50">게시판 설명</th>
+			<th class="list-group-item w30">관리자 메뉴</th>
+		</tr>
+		<c:forEach var="b" items="${boardList}">
+			<tr class="list-group list-group-horizontal">
+				<td class="list-group-item w20"><a
+					href="<c:url value='/board/${b.boardNo}' />">${b.boardTitle}</a> <span
+					class="badge badge-pill badge-warning"></span></td>
+				<td class="list-group-item w50">${b.boardDetail}</td>
+				<td class="list-group-item w30">
+					<div class="form-check">
+						<button class="btn btn-info" onclick="location.href='#'">수정</button>
+					</div>
+					<div class="form-check">
+						<button class="btn btn-danger" onclick="location.href='#'">삭제</button>
+					</div>
+				</td>
+			</tr>
+		</c:forEach>
+	</table> --%>
 
-				<button class="btn btn-warning" style="float:right;" onclick="location.href='<c:url value='/board/register'/>'">게시판 추가하기</button>
-                <table>
-                <!--테이블 헤더-->
-			        <tr class="list-group list-group-horizontal ">
-                        <th class="list-group-item w20">게시판명</th>
-                        <th class="list-group-item w50" >게시판 설명</th>
-                        <th class="list-group-item w30">관리자 메뉴</th>
-			        </tr>
-					<c:forEach var="b" items="${boardList}">
-					<tr class="list-group list-group-horizontal">
-						<td class="list-group-item w20"><a href="<c:url value='/board/${b.boardNo}' />">${b.boardTitle}</a>
-						<span class="badge badge-pill badge-warning"></span></td>
-						<td class="list-group-item w50">${b.boardDetail}</td>
-						<td class="list-group-item w30">
-		                <div class="form-check">
-		                     <button class="btn btn-info" onclick="location.href='#'">수정</button> 
-		                </div>
-		                <div class="form-check">
-							<button class="btn btn-danger" onclick="location.href='#'">삭제</button>				
-		                </div>
-		                </td>
-					</tr>
-					</c:forEach>
-				</table>
-
-<!--                 <table>
+	<!--                 <table>
                 테이블 헤더
 			        <tr class="list-group list-group-horizontal ">
                         <th class="list-group-item w30">게시판명</th>
@@ -135,8 +202,6 @@ table {
 						<td class="list-group-item w70"></td>
 					</tr>
 				</table> -->
-			</div>
-		</div>
-	</div>
+
 </body>
 </html>

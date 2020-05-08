@@ -1,9 +1,4 @@
-	//tag btn 클릭 시 검색
-	$('.search_tag').click(function() {
-		var id_check = $(this).attr("id");
-		console.log("clicked: " + id_check);
-		location.href = '/tag/searchProductByTag/'+id_check;
-	});
+
 	
 	
 	//input값
@@ -22,7 +17,7 @@
 	
 	$("#text").on("propertychange change keyup paste input", function() {
 		var cv = $(this).val();
-		
+		console.log(cv);
 		
 		//#로 시작하는지 검사
 		if(!cv.startsWith( '#' )){
@@ -108,7 +103,19 @@
 	
 	//input text 창에 enter
 	$("#text").keyup(function(e){if(e.keyCode == 13)  appendBtn();});
-	console.log("currentFocus: " + currentFocus);
+	
+	//엔터키 입력 이벤트
+/*	$("#text").keydown(function (key) {
+		 
+        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+        	appendBtn();
+        }
+ 
+    });
+	*/
+	
+	
+	
 	
 	function appendBtn(){
 		if(currentFocus === undefined){
@@ -185,8 +192,10 @@
       	btn.value = name; //value = tagName
       	$("#selectedTagList").append(btn); 
       	
+      
       	//리스트에 추가 <- 넘버[i]
       	sendTagList.push(no);
+      	
       	
       	for (var i = 0; i < sendTagList.length; i++) {
 			console.log("등록된 태그 버튼들: " + sendTagList[i] + " ");
@@ -279,11 +288,10 @@
 		
 	}
 	
-	
-
 	//tag btn 클릭 시 검색
 	$('.search_tag').click(function() {
 		var id_check = $(this).attr("id");
-		console.log("clicked: " + id_check);
-		location.href = '/tag/searchProductByTag/'+id_check;
+		//alert("clicked: " + id_check);
+		location.href = '/tag/searchProductByTag/'+ id_check;
 	});
+	

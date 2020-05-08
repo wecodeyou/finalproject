@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.off.model.OffVO;
 import com.it.wecodeyou.off.repository.IOffMapper;
 import com.it.wecodeyou.product.model.ProductVO;
@@ -56,8 +57,7 @@ public class OffService implements IOffService {
 
 	@Override
 	public List<OffVO> getInfoByAuthor(String offAuthor) {
-		// TODO Auto-generated method stub
-		return null;
+		return offDao.getInfoByAuthor(offAuthor);
 	}
 
 	@Override
@@ -87,6 +87,11 @@ public class OffService implements IOffService {
 	@Override
 	public OffVO getInfoByProductNo(Integer productNo) {
 		return offDao.getInfoByProductNo(productNo);
+	}
+
+	@Override
+	public OffProductVO getOffProduct(Integer productNo) {
+		return offDao.getOffProduct(productNo);
 	}
 
 }

@@ -24,10 +24,13 @@ time, mark, audio, video {
 
 /* 링크 초기화 */
 a{
-	/*color: #222;*/
+	color: #222;
 	text-decoration: none;
 }
 
+a:hover{
+	cursor:pointer;
+}
 
 /* 폰트 초기화 */
 body, input, textarea, select, button, table {

@@ -47,4 +47,5 @@
 		where product_no IN (select purchase_pro_no from purchase where purchase_buyer = #{userNo} AND product_type = 0);
 	
 	</select>
+
 </mapper>

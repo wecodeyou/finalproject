@@ -98,7 +98,10 @@
 	  UPDATE user SET user_interest = true WHERE user_no = #{userNo}
    </update>
 
-
+	<!-- 아이디로 정보 가져오기 -->
+	<select id="findMemberById" resultMap="MemberMap">
+		SELECT * FROM user WHERE user_email = #{userEmail} 
+	</select>
 </mapper>
 
 

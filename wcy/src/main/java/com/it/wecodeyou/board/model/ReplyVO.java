@@ -20,6 +20,7 @@ public class ReplyVO {
 	private Integer replyLikes;
 	private long replyArticleNo;
 	
+	public ReplyVO() {}
 	public ReplyVO(long replyNo, String replyWriter, String replyContent, String replyTitle, Timestamp replyCreatedAt,
 			Timestamp replyModifiedAt, boolean replyIsRemoved, Integer replyOrder, long replyParent, Integer replyDepth,
 			Integer replyLikes, long replyArticleNo) {
@@ -144,6 +145,14 @@ public class ReplyVO {
 
 	public void setReplyArticleNo(long replyArticleNo) {
 		this.replyArticleNo = replyArticleNo;
+	}
+	@Override
+	public String toString() {
+		return "ReplyVO [replyNo=" + replyNo + ", replyWriter=" + replyWriter + ", replyContent=" + replyContent
+				+ ", replyTitle=" + replyTitle + ", replyCreatedAt=" + replyCreatedAt + ", replyModifiedAt="
+				+ replyModifiedAt + ", replyIsRemoved=" + replyIsRemoved + ", replyOrder=" + replyOrder
+				+ ", replyParent=" + replyParent + ", replyDepth=" + replyDepth + ", replyLikes=" + replyLikes
+				+ ", replyArticleNo=" + replyArticleNo + "]";
 	}
 	
 	

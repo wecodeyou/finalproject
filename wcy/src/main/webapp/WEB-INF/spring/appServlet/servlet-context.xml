@@ -19,11 +19,15 @@
 	<!-- 파일경로는 src>main>webapp까지는 자동으로 잡아주고 그 뒤는 구체적으로 적어줘야함 -->
 	<!-- 내가 uri로 /css/** 이런 경로를 주면 /css/ 이 경로에서 찾아라는 뜻 -->
 	<resources mapping="/resources/**" location="/resources/" />	
-	<resources mapping="/vendor/**" location="/resources/vendor/" />
 	<resources mapping="/css/**" location="/resources/css/" />
-	<resources mapping="/js/**" location="/resources/js/" />
+	<resources mapping="/fonts/**" location="/resources/fonts/" />
 	<resources mapping="/img/**" location="/resources/img/" />
+	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
+	<resources mapping="/upload/**" location="/upload/" />	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+	<resources mapping="/vendor/**" location="/resources/vendor/" />
 
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

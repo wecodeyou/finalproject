@@ -215,7 +215,7 @@ public class MemberController {
 	         Random r = new Random();
 	         int dice = r.nextInt(4589362)+49311;
 	         
-	         String setFrom =  "kouri1004@gmail.com"; //보내는 사람(관리자) 이메일
+	         String setFrom =  "wcy.manager@gmail.com"; //보내는 사람(관리자) 이메일
 	         String tomail = request.getParameter("userEmail"); //받는 사람 이메일
 	         String title = "[WeCodeYou] 회원가입 인증 번호 발송";   //제목
 	         String content =
@@ -312,8 +312,7 @@ public class MemberController {
 	      if(service.findEmail(mvo) == null) {
 	         // 없어서 널이 나왔다. 
 	         //model.addAttribute("msg", "입력하신 정보에 맞는 계정이 없습니다.");
-	      
-	         mv.setViewName("member/find-form");
+	    	  mv.setViewName("member/find-form");
 	          mv.addObject("msg", "입력하신 정보에 맞는 계정이 없습니다.");
 	          
 	      }else {
@@ -342,13 +341,15 @@ public class MemberController {
 	      String uuid = UUID.randomUUID().toString().replaceAll("-", ""); // -를 제거해 주었다.
 	      uuid = uuid.substring(0, 10); //uuid를 앞에서부터 10자리 잘라줌.
 	      System.out.println(uuid);
+	      // 임시 번호 만들기 
 	      
 	      MemberVO mvo = new MemberVO();
 	      mvo.setUserEmail(userEmail);
 	      mvo.setUserPw(uuid);
 	      service.changePw(mvo);
+	      // 임시 비밀번호로 변경하기
 	      
-	      String setFrom =  "kouri1004@gmail.com"; //보내는 사람(관리자) 이메일
+	      String setFrom =  "wcy.manager@gmail.com"; //보내는 사람(관리자) 이메일
 	      String tomail = request.getParameter("userEmail"); //받는 사람 이메일
 	      String title = "[WeCodeYou] 임시비밀번호 발송";   //제목
 	      String content =

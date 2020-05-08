@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-<script src="<c:url value = "/js/kakao.js"/>"></script>
+<script src="<c:url value = "/resources/js/kakao.js"/>"></script>
 
 
 </head>

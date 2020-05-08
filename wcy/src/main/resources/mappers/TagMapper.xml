@@ -2,63 +2,118 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.wecodeyou.tag.repository.ITagMapper">
 
-	<resultMap id="TagMap" type="com.it.wecodeyou.tag.model.TagVO">
-		<id property="tagNo" column="tag_no" />
-		<result property="tagName" column="tag_name" />
-	</resultMap>
-	
-	<resultMap id="ProductMap" type="com.it.wecodeyou.product.model.ProductVO" >
-		<id property="productNo" column="product_no"/>
-		<result property="productType" column="product_type"/>
-		<result property="productName" column="product_name"/>
-		<result property="productPrice" column="product_price"/>
-		<result property="productDetail" column="product_detail"/>
-		<result property="productCreatedAt" column="product_created_at"/>
-		<result property="productThumb" column="product_thumb"/>
-	</resultMap>
-	
-	<!-- tagName 전체 조회 -->
-   	<select id="getAllTag" resultMap="TagMap">
-      	SELECT * FROM tag order by tag_no asc
-  	</select>
-  	
-  	<select id="getTagName" resultType="String">
-  		select tag_name from tag where tag_no = #{tagNo}
-  	</select>
-  	
-  	<!-- tagName 중복 검사 -->
-   	<select id="checkTag" resultType="int">
-   		<!-- <bind name="pattern" value='%' + _parameter.getTitle() + '%' /> -->
-      	SELECT COUNT(*) FROM tag WHERE tag_name=#{tagName}
-  	</select>
-  	
-   	<select id="checkTagDetail" parameterType="String" resultMap="TagMap">
-  		SELECT * FROM tag
-  		WHERE tag_name LIKE CONCAT('%',#{q},'%')
-	</select>
-	<!-- '%' #{q} '%' -->
-  	
-  	<!-- tag 등록 -->
-  	<insert id="insertTag">
-      	INSERT INTO tag (tag_name) VALUES (#{tagName})
-   	</insert>
+   <resultMap id="TagMap" type="com.it.wecodeyou.tag.model.TagVO">
+      <id property="tagNo" column="tag_no" />
+      <result property="tagName" column="tag_name" />
+   </resultMap>
    
-	<!-- update / delete 추가 작성 -->
-	
-	<!-- tag로 product 검색 -->
-	<select id="searchProductByTag" resultMap="ProductMap">
-		SELECT p.product_no, p.product_type, p.product_name, p.product_price, 
-		p.product_detail, p.product_created_at, p.product_thumb
-		FROM tag_product tp, tag t, product p
-		WHERE tp.p_tag_no = t.tag_no
-		AND tp.p_product_no = p.product_no
-		AND t.tag_no = #{tagNo}
-	</select>
-	
-	<select id="searchPTagNo" resultMap="TagMap">
-		select distinct t.tag_name, t.tag_no
-		from tag t , tag_product tp
-		where tp.p_tag_no = t.tag_no
-	</select>
-	
+   <resultMap id="ProductMap" type="com.it.wecodeyou.product.model.ProductVO" >
+      <id property="productNo" column="product_no"/>
+      <result property="productType" column="product_type"/>
+      <result property="productName" column="product_name"/>
+      <result property="productPrice" column="product_price"/>
+      <result property="productDetail" column="product_detail"/>
+      <result property="productCreatedAt" column="product_created_at"/>
+      <result property="productThumb" column="product_thumb"/>
+   </resultMap>
+   
+   <resultMap id="ArticleMap" type="com.it.wecodeyou.board.model.ArticleVO">
+      <id property="articleNo" column="article_no" />
+      <result property="articleTitle" column="article_title" />
+      <result property="articleContent" column="article_content" />
+      <result property="articleBoardNo" column="article_board_no" />
+      <result property="articleClicks" column="article_clicks" />
+      <result property="articleLikes" column="article_likes" />
+      <result property="articleWriter" column="article_writer" />
+      <result property="articleCreatedAt" column="article_created_at" />
+      <result property="articleModifiedAt" column="article_modified_at" />
+   </resultMap>
+   
+   <!-- tagName 전체 조회 -->
+      <select id="getAllTag" resultMap="TagMap">
+         SELECT * FROM tag order by tag_no asc
+     </select>
+     
+     <select id="getTagName" resultType="String">
+        select tag_name from tag where tag_no = #{tagNo}
+     </select>
+     
+     <!-- tagName 중복 검사 -->
+      <select id="checkTag" resultType="int">
+         <!-- <bind name="pattern" value='%' + _parameter.getTitle() + '%' /> -->
+         SELECT COUNT(*) FROM tag WHERE tag_name=#{tagName}
+     </select>
+     
+      <select id="checkTagDetail" parameterType="String" resultMap="TagMap">
+        SELECT * FROM tag
+        WHERE tag_name LIKE CONCAT('%',#{q},'%')
+   </select>
+   <!-- '%' #{q} '%' -->
+     
+     <!-- tag 등록 -->
+     <insert id="insertTag">
+         INSERT INTO tag (tag_name) VALUES (#{tagName})
+      </insert>
+   
+   <!-- update / delete 추가 작성 -->
+   
+   <!-- tag로 product 검색 -->
+   <select id="searchProductByTag" resultMap="ProductMap">
+      SELECT p.product_no, p.product_type, p.product_name, p.product_price, 
+      p.product_detail, p.product_created_at, p.product_thumb
+      FROM tag_product tp, tag t, product p
+      WHERE tp.p_tag_no = t.tag_no
+      AND tp.p_product_no = p.product_no
+      AND t.tag_no = #{tagNo}
+   </select>
+   
+   <!-- tag로 article 검색 -->
+   <select id="searchArticleByTag" resultMap="ArticleMap">
+      SELECT a.article_no, a.article_title, a.article_content, a.article_board_no, 
+            a.article_clicks, a.article_likes, a.article_created_at, 
+            a.article_modified_at, a.article_writer
+      FROM tag_article ta, tag t, article a
+      WHERE ta.a_tag_no = t.tag_no
+      AND ta.a_article_no = a.article_no
+      AND t.tag_no = #{tagNo}
+   </select>
+   
+   <!-- 등록된 모든 ptag 검색 -->
+   <select id="searchPTagNo" resultMap="TagMap">
+      select distinct t.tag_name, t.tag_no
+      from tag t , tag_product tp
+      where tp.p_tag_no = t.tag_no
+   </select>
+   
+   <!-- 등록된 모든 atag 검색 -->
+   <select id="searchATagNo" resultMap="TagMap">
+      select distinct t.tag_name, t.tag_no
+      from tag t , tag_article ta
+      where ta.a_tag_no = t.tag_no
+   </select>
+   
+   <!-- 등록된 모든 a + ptag 검색 -->
+   <select id="searchAPTagNo" resultMap="TagMap">
+      select distinct t.tag_name, t.tag_no
+      from tag t , tag_article ta, tag_product tp
+      where ta.a_tag_no = t.tag_no
+      or tp.p_tag_no = t.tag_no
+   </select>
+   
+   <!-- article당 해당 atag 검색 -->
+   <select id="searchTagByArticle" resultType="String">
+      select t.tag_name
+      from tag_article ta, tag t
+      where ta.a_tag_no = t.tag_no
+      and ta.a_article_no = #{articleNo}
+   </select>
+   
+   <!-- product당 해당 ptag 검색 -->
+   <select id="searchTagByProduct" resultMap="TagMap">
+      select tp.p_tag_no, t.tag_name
+      from tag_product tp, tag t
+      where tp.p_tag_no = t.tag_no
+      and tp.p_product_no = #{productNo}
+   </select>
+   
 </mapper>

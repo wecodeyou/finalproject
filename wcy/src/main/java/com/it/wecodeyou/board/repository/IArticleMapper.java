@@ -3,6 +3,7 @@ package com.it.wecodeyou.board.repository;
 import java.util.List;
 
 import com.it.wecodeyou.board.model.ArticleVO;
+import com.it.wecodeyou.commons.PageVO;
 
 public interface IArticleMapper {
 	
@@ -12,7 +13,9 @@ public interface IArticleMapper {
 	
 	public void delete(ArticleVO avo);
 	
-	public List<ArticleVO> list(Integer boardNo);
+	public List<ArticleVO> list(PageVO paging);
 	
 	public ArticleVO getOneInfo(Integer articleNo);
+	
+	public Integer countArticles(Integer boardNo);
 }
