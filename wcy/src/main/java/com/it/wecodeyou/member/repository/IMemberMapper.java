@@ -42,5 +42,7 @@ public interface IMemberMapper {
    
    // 설문조사 등록시 true로 수정
    public void updateInterest(Integer userNo) throws SQLException;
+   
+   public MemberVO findMemberById(String userEmail) throws SQLException;
 
 }

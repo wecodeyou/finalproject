@@ -82,25 +82,27 @@
          </ul>
       </nav> <!-- .wcy-primary-nav -->
 
-      <nav class="wcy-search-menu">
-         <ul id="wcy-menu-left">
-         </ul>
-         <form action="" method="get" class="search-form">
-         <ul id="wcy-search">
-            <li>
-            <fieldset id="search-fieldset"><input type="search" id="search-input" placeholder="파이썬(Python)기초 프로젝트"/><button type="submit" id="search-btn"><i class="fa fa-search"></i></button></fieldset>
-            </li>
-         </ul>
-         </form>
-         <ul id="wcy-menu">
-            <li><a href="#"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
-            <li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
-            <li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:10px; padding-top:5px;">마이페이지</p></i></a></li>
-            <li><a href="#"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
-         </ul>
-      </nav>
-      
-   </header> <!-- .wcy-auto-hide-header -->
+
+		<nav class="wcy-search-menu">
+			<ul id="wcy-menu-left">
+			</ul>
+			<form action="" method="get" class="search-form">
+			<ul id="wcy-search">
+				<li>
+				<fieldset id="search-fieldset"><input type="search" id="search-input" placeholder="파이썬(Python)기초 프로젝트"/><button type="submit" id="search-btn"><i class="fa fa-search"></i></button></fieldset>
+				</li>
+			</ul>
+			</form>
+			<ul id="wcy-menu">
+				<li><a href="#"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
+				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
+				<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:10px; padding-top:5px;">마이페이지</p></i></a></li>
+				<li><a href="#"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
+			</ul>
+		</nav>
+		
+	</header> <!-- .wcy-auto-hide-header -->
+
 
 
    <nav class="wcy-secondary-nav">
@@ -310,8 +312,7 @@
       </div>
    </section>
 
-<%-- <%@ include file="../member/login-modal.jsp" %>  
- --%>
+
 
 <main class="wcy-main-content sub-nav-hero">
    <div>
@@ -373,15 +374,14 @@ $(document).ready(function(){
     });
   });
 
-   function logincheck(){
-      if(${login == null}){
-         alert("로그인이 필요한 서비스입니다.");
-      }else{
-         location.href="<c:url value='/mypage/' />";
-      }
-         
-   };
-
+	function logincheck(){
+	   if(${login == null}){
+	      alert("로그인이 필요한 서비스입니다.");
+	   }else{
+	      location.href="<c:url value='/mypage/' />";
+	   }
+	      
+	};
 </script>
 
 

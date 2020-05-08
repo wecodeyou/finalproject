@@ -24,6 +24,9 @@
 	<resources mapping="/img/**" location="/resources/img/" />
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
+	<resources mapping="/upload/**" location="/upload/" />	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 	<resources mapping="/vendor/**" location="/resources/vendor/" />
 
 

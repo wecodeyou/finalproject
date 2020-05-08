@@ -1,4 +1,61 @@
 @charset "UTF-8";
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	font-family: Poppins-Regular, sans-serif;
+}
+
+.bg1 {background-color: #3b5998}
+.bg2 {background-color: #1da1f2}
+.bg3 {background-color: #ea4335}
+
+
+/*---------------------------------------------*/
+a {
+	font-family: Poppins-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+
+a:focus {
+	outline: none !important;
+}
+
+a:hover {
+	text-decoration: none;
+  color: #a64bf4;
+}
+
+/*---------------------------------------------*/
+h1,h2,h3,h4,h5,h6 {
+	margin: 0px;
+}
+
+p {
+	font-family: Poppins-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+}
+
+ul, li {
+	margin: 0px;
+	list-style-type: none;
+}
+
+
 
 * {
    margin: 0px; 
@@ -123,11 +180,6 @@ iframe {
   text-transform: uppercase;
 }
 
-.bg1 {background-color: #3b5998}
-.bg2 {background-color: #1da1f2}
-.bg3 {background-color: #ea4335}
-
-
 
 /*///////////////////////////////////////////////////////////////////////////////////
 [ login ]*/
@@ -144,8 +196,8 @@ iframe {
 
 
 .container-login100 {
-    animation-name: animatetop;/* 에니메이션 */
-    animation-duration: 0.6s;
+  /*animation-name: animatetop; 에니메이션 */
+  /*animation-duration: 0.6s;*/
   width: 100%;  
   min-height: 100vh;
   display: -webkit-box;
@@ -161,12 +213,12 @@ iframe {
   background-position: center;
   background-size: cover;
 }
-
+/* 
 @keyframes animatetop {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
 }
-
+ */
 .wrap-login100 {
   width: 500px;
     height:650px;
@@ -180,16 +232,6 @@ iframe {
     padding: 30px;  /*모달과 모달 컨텐츠가 20px 떨어지게 */
 }
 
-#wcy-login-modal .modal_layer {
-         position:fixed;
-         top:0;
-         left:0;
-         width:100%;
-         height:100%;
-         background-color: rgb(0,0,0); /* 투명도가 적용 안 될 때의 fallback color */
-            background-color: rgba(0,0,0,0.7); /* 검정 투명도 */
-         z-index:-1; /*가장 앞에 나오도록 제일 낮은 값 부여*/
- }
 
 /* 상단 닫기 버튼 */
 #wcy-login-modal .close {
