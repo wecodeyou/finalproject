@@ -68,8 +68,8 @@
 
 <script type = "text/javascript">
 
-	
 
+	
 	let player = videojs('vod');
 	
     player.playlistUi(); 
