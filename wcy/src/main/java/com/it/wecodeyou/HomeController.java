@@ -47,9 +47,17 @@ public class HomeController {
 		return "home";
 	}
 	
-	@GetMapping("/off")
-	public String note() {
-		return "off/NoteClient";
+	@GetMapping("/greeting")
+	public String greetingPage() {
+		return "intro/greeting";
+	}
+	@GetMapping("/intro")
+	public String introPage() {
+		return "intro/intro";
+	}
+	@GetMapping("/location")
+	public String locationPage() {
+		return "intro/location";
 	}
 	
 	@GetMapping("/test01")
