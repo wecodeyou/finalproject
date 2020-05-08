@@ -72,25 +72,28 @@ public class BoardController {
 		BoardVO bvo = boardService.getInfoByNo(boardNo);
 		System.out.println("Get /board/{boardTitle} Board Info: \r\n" 
 						+ bvo.toString());
-		
-		paging.setBoardNo(boardNo);
-		List<ArticleVO> list = articleService.list(paging);
-		
-		//List<ArticleVO> avo2 = articleService.list(paging);
+		List<ArticleVO> avo2 = articleService.list(paging);
 		
 		//article no의 각각의 hashtag를 담을 map 
 		Map<Integer, Object> tagMap = new HashMap<Integer, Object>();
-		for (int i = 0; i < list.size(); i++) {
-			List<String> tvo = articleService.searchTagByArticle(list.get(i).getArticleNo());
+		for (int i = 0; i < avo2.size(); i++) {
+			List<String> tvo = articleService.searchTagByArticle(avo2.get(i).getArticleNo());
+
+			System.out.println("con current key: " + i);
 			tagMap.put(i, tvo);
 		}
-		
+		mv.addObject("tagMap", tagMap);
+
+		paging.setBoardNo(boardNo);
+		List<ArticleVO> list = articleService.list(paging);
+		for(ArticleVO avo: list) {
+			System.out.println(avo.toString());
+		}
 		PageCreator pc = new PageCreator();
 		pc.setPaging(paging);
 		pc.setArticleTotalCount(articleService.countArticles(boardNo));
 		System.out.println(pc.toString());
 		
-		mv.addObject("tagMap", tagMap);
 
 		mv.addObject("board", bvo);
 		mv.addObject("articleList", list);
@@ -107,7 +110,7 @@ public class BoardController {
 	}
 
 	@PostMapping("/{boardNo}/register")
-	public String registerArticle(@PathVariable Integer boardNo, ArticleTagVO atvo) {
+	public ModelAndView registerArticle(@PathVariable Integer boardNo, ArticleTagVO atvo, ModelAndView mv) {
 		System.out.println(atvo.toString());
 		ArticleVO avo = new ArticleVO();
 		avo.setArticleTitle(atvo.getArticleTitle());
@@ -117,12 +120,14 @@ public class BoardController {
 		
 		//tag number list
         ArrayList<Integer> sendTagList = atvo.getSendTagList();
-        
 		if(articleService.insert(avo, sendTagList) == 1) {
-			return "register-success";
+			mv.addObject("message", "register-success");
+			mv.setViewName("redirect:/board/" + boardNo);
 		} else {
-			return "register-fail";			
+			mv.addObject("message", "register-fail");
+			mv.setViewName("redirect:/board/" + boardNo + "/register");
 		}
+		return mv;
 	}
 	
 	@GetMapping("/article/{articleNo}")
