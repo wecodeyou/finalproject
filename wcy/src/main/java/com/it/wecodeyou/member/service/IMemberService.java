@@ -39,4 +39,6 @@ public interface IMemberService {
    // 전화번호 중복체크
    Integer checkTel(String userTel);
    
+   public MemberVO findMemberById(String userEmail);
+   
 }

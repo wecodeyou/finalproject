@@ -39,4 +39,5 @@
 		SELECT * FROM product
 		WHERE product_no = #{productNo}
 	</select>
+
 </mapper>

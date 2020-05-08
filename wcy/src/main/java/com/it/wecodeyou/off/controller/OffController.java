@@ -2,6 +2,7 @@ package com.it.wecodeyou.off.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.wecodeyou.member.model.MemberVO;
+import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.off.model.OffVO;
 import com.it.wecodeyou.off.model.SeatVO;
@@ -24,6 +27,8 @@ import com.it.wecodeyou.off.service.IOffService;
 import com.it.wecodeyou.off.service.ISeatService;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
+import com.it.wecodeyou.purchase.model.PurchaseVO;
+import com.it.wecodeyou.purchase.service.IPurchaseService;
 
 @RestController
 @RequestMapping("/off")
@@ -37,6 +42,12 @@ public class OffController {
    
    @Autowired
    IOffService offService;
+   
+   @Autowired
+   IMemberService memberService;
+   
+   @Autowired
+   IPurchaseService purchaseService;
    
    //강의실 체크 페이지 요청
    @GetMapping("/seat_main")
@@ -150,7 +161,18 @@ public class OffController {
       return retVal;  
            
    }
-   
-   
+
+	/*
+	 * @GetMapping() public ModelAndViewTest() {
+	 * 
+	 * }
+	 */
+   @RequestMapping("/myoff/{userEmail}")
+   public @ResponseBody List<PurchaseVO> getMyList(@PathVariable String userEmail) {
+	   MemberVO mvo = memberService.findMemberById(userEmail);
+	   List<PurchaseVO> purchaseList = purchaseService.selectUsersPurchase(mvo.getUserNo());
+	   return purchaseList;
+	  
+   }
    
 }
