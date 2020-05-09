@@ -48,6 +48,7 @@ $(function() {
 			function() {
 				console.log("검색 버튼이 클릭됨!");
 				const keyword = $("#search-input").val();
+				
 				console.log("검색어: " + keyword);
 
 				//const condition = $("#condition option:selected").val();

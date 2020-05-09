@@ -2,7 +2,9 @@ package com.it.wecodeyou.search.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -31,42 +33,63 @@ public class SearchController {
 		System.out.println("URL: /tag/search GET -> result: ");
 		System.out.println("메인 검색");
 		System.out.println("검색어: " + svo.getQ());
+		System.out.println("페이지: " + svo.getPage());
+		System.out.println("start page: " + svo.getPageStart());
+		System.out.println("카운트 페이지: " + svo.getCountPerPage());
 		
+		//페이지 처리???
+		PageCreator pc = new PageCreator();
+		pc.setPaging(svo);
 		
+		//검색 정규식으로 만들기
+		String sentence = svo.getQ();
+		String str[] = sentence.split(" ");
+		String keyword = "";
+		for (int i = 0; i < str.length; i++) {
+			if(i != str.length-1) {
+				keyword += str[i] + "|";
+			} else {
+				keyword += str[i];
+			}
+			
+		}
+		System.out.println("keyword 정규식 변환 후: " + keyword);
+		svo.setQ(keyword);
 		
 		List<ArticleVO> articleList = null;
-		List<ProductVO> allProductList = null;
+		articleList = service.searchArticleByKeywordList(svo);
+		for (ArticleVO a : articleList) {
+			System.out.println(a.getArticleTitle());
+		}
 		
-		articleList = service.searchAllArticleByKeyWord(svo);
-		allProductList = service.searchAllProductByKeyWord(svo);
-		System.out.println("검색된 article 수: " + articleList.size());
-		System.out.println("검색된 product 수: " + allProductList.size());
+		List<ProductVO> allProductList = null;
+		allProductList = service.searchProductByKeywordList(svo);
 		
 		// product, off, on type으로 나눠서 저장
-		if (allProductList.size() > 0) {
-			List<ProductVO> productList = new ArrayList<>();
-			List<ProductVO> offList = new ArrayList<>();
-			List<ProductVO> onList = new ArrayList<>();
-
-			for (ProductVO pvo : allProductList) {
-				if (pvo.getProductType().equals("0")) {
-					productList.add(pvo);
-				} else if (pvo.getProductType().equals("1")) {
-					offList.add(pvo);
-				} else {
-					onList.add(pvo);
-				}
-			}
-			mv.addObject("productList", productList);
-			mv.addObject("offList", offList);
-	        mv.addObject("onList", onList);
-		} 
+		List<ProductVO> productList = new ArrayList<>();
+		List<ProductVO> offList = new ArrayList<>();
+		List<ProductVO> onList = new ArrayList<>();
 		
-		mv.addObject("keyword", svo.getQ());
+		if(allProductList != null) {
+			for (ProductVO pvo : allProductList) { 
+				 if (pvo.getProductType().equals("0")) {
+					 productList.add(pvo); 
+				 } else if(pvo.getProductType().equals("1") ) {
+					 offList.add(pvo);
+				 } else { 
+					 onList.add(pvo); 
+				 } 
+			} 
+		}
+			 
+		
+		mv.addObject("tagName", keyword); 
+		mv.addObject("productList", productList); 
+		mv.addObject("offList", offList); 
+		mv.addObject("onList",  onList);
 		mv.addObject("articleList", articleList);
 		mv.addObject("allProductList", allProductList);
 		mv.setViewName("tag/searchResult");
-
 		return mv;
 	}
    

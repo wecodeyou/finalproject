@@ -2,6 +2,9 @@ package com.it.wecodeyou.search.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +38,28 @@ public class SearchService implements ISearchService{
 	@Override
 	public ArrayList<ProductVO> searchAllProductByKeyWord(SearchVO svo) throws SQLException {
 		return dao.searchAllProductByKeyWord(svo);
+	}
+
+	@Override
+	public ArrayList<ArticleVO> searchArticleByKeywordList(SearchVO svo) throws SQLException {
+		
+		try {
+			return dao.searchArticleByKeywordList(svo);
+		} catch (Exception e) {
+			System.out.println("dao exception Article");
+		}
+		return null;
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchProductByKeywordList(SearchVO svo) throws SQLException {
+		
+		try {
+			return dao.searchProductByKeywordList(svo);
+		} catch (Exception e) {
+			System.out.println("dao exception : Product");
+		}
+		return null;
 	}
 
 }

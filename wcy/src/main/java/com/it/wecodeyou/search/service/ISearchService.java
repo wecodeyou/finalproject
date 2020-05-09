@@ -21,4 +21,9 @@ public interface ISearchService {
     //article 메인 검색(paging처리 X) 검색어로 name, detail 검색
     public ArrayList<ProductVO> searchAllProductByKeyWord(SearchVO svo) throws SQLException;
 
+    //keywordList로 검색(paging처리 X)
+    public ArrayList<ArticleVO> searchArticleByKeywordList(SearchVO svo) throws SQLException;
+    
+    //product keywordList로 검색(paging처리 O)
+    public ArrayList<ProductVO> searchProductByKeywordList(SearchVO svo) throws SQLException;
 }

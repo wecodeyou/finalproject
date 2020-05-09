@@ -2,6 +2,8 @@ package com.it.wecodeyou.tag.repository;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.product.model.ProductVO;
@@ -59,5 +61,14 @@ public interface ITagMapper {
    
    //article 메인 검색(paging처리 X) 검색어로 name, detail 검색
    public ArrayList<ProductVO> searchAllProductByKeyWord(SearchVO svo) throws SQLException;
+   
+   //article keywordList로 검색(paging처리 O)
+   public ArrayList<ArticleVO> searchArticleByKeywordList(SearchVO svo) throws SQLException;
+   
+   //product keywordList로 검색(paging처리 O)
+   public ArrayList<ProductVO> searchProductByKeywordList(SearchVO svo) throws SQLException;
+   
+   
+
    
 }
