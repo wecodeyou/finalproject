@@ -82,6 +82,7 @@ public class SearchController {
 			} 
 		}
 		
+		
 		mv.addObject("tagName", keyword); 
 		mv.addObject("productList", productList); 
 		mv.addObject("offList", offList); 
