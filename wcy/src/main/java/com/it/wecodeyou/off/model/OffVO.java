@@ -3,10 +3,10 @@ package com.it.wecodeyou.off.model;
 import java.sql.Timestamp;
 
 public class OffVO {
-	private long offNo;
+	private Integer offNo;
 	private String offAuthor;
 	private String offCategory;
-	private long offProductNo;
+	private Integer offProductNo;
 	private String offPlace;
 	private String offUploadUri;
 	private Integer offSeats;
@@ -16,7 +16,8 @@ public class OffVO {
 	private Timestamp offModifiedAt;
 	
 	public OffVO() {}
-	public OffVO(long offNo, String offAuthor, String offCategory, long offProductNo, String offPlace,
+
+	public OffVO(Integer offNo, String offAuthor, String offCategory, Integer offProductNo, String offPlace,
 			String offUploadUri, Integer offSeats, Timestamp offStartAt, Timestamp offEndAt, Timestamp offCreatedAt,
 			Timestamp offModifiedAt) {
 		super();
@@ -32,92 +33,95 @@ public class OffVO {
 		this.offCreatedAt = offCreatedAt;
 		this.offModifiedAt = offModifiedAt;
 	}
-	public OffVO(String offAuthor, String offCategory, long offProductNo, String offPlace, Integer offSeats,
-			Timestamp offStartAt, Timestamp offEndAt) {
-		super();
-		this.offAuthor = offAuthor;
-		this.offCategory = offCategory;
-		this.offProductNo = offProductNo;
-		this.offPlace = offPlace;
-		this.offSeats = offSeats;
-		this.offStartAt = offStartAt;
-		this.offEndAt = offEndAt;
-	}
-	
-	
-	public OffVO(String offPlace, Integer offSeats, Timestamp offStartAt, Timestamp offEndAt) {
-		super();
-		this.offPlace = offPlace;
-		this.offSeats = offSeats;
-		this.offStartAt = offStartAt;
-		this.offEndAt = offEndAt;
-	}
-	public long getOffNo() {
+
+	public Integer getOffNo() {
 		return offNo;
 	}
-	public void setOffNo(long offNo) {
+
+	public void setOffNo(Integer offNo) {
 		this.offNo = offNo;
 	}
+
 	public String getOffAuthor() {
 		return offAuthor;
 	}
+
 	public void setOffAuthor(String offAuthor) {
 		this.offAuthor = offAuthor;
 	}
+
 	public String getOffCategory() {
 		return offCategory;
 	}
+
 	public void setOffCategory(String offCategory) {
 		this.offCategory = offCategory;
 	}
-	public long getOffProductNo() {
+
+	public Integer getOffProductNo() {
 		return offProductNo;
 	}
-	public void setOffProductNo(long offProductNo) {
+
+	public void setOffProductNo(Integer offProductNo) {
 		this.offProductNo = offProductNo;
 	}
+
 	public String getOffPlace() {
 		return offPlace;
 	}
+
 	public void setOffPlace(String offPlace) {
 		this.offPlace = offPlace;
 	}
+
 	public String getOffUploadUri() {
 		return offUploadUri;
 	}
+
 	public void setOffUploadUri(String offUploadUri) {
 		this.offUploadUri = offUploadUri;
 	}
+
 	public Integer getOffSeats() {
 		return offSeats;
 	}
+
 	public void setOffSeats(Integer offSeats) {
 		this.offSeats = offSeats;
 	}
+
 	public Timestamp getOffStartAt() {
 		return offStartAt;
 	}
+
 	public void setOffStartAt(Timestamp offStartAt) {
 		this.offStartAt = offStartAt;
 	}
+
 	public Timestamp getOffEndAt() {
 		return offEndAt;
 	}
+
 	public void setOffEndAt(Timestamp offEndAt) {
 		this.offEndAt = offEndAt;
 	}
+
 	public Timestamp getOffCreatedAt() {
 		return offCreatedAt;
 	}
+
 	public void setOffCreatedAt(Timestamp offCreatedAt) {
 		this.offCreatedAt = offCreatedAt;
 	}
+
 	public Timestamp getOffModifiedAt() {
 		return offModifiedAt;
 	}
+
 	public void setOffModifiedAt(Timestamp offModifiedAt) {
 		this.offModifiedAt = offModifiedAt;
 	}
+
 	@Override
 	public String toString() {
 		return "OffVO [offNo=" + offNo + ", offAuthor=" + offAuthor + ", offCategory=" + offCategory + ", offProductNo="
@@ -125,7 +129,6 @@ public class OffVO {
 				+ ", offStartAt=" + offStartAt + ", offEndAt=" + offEndAt + ", offCreatedAt=" + offCreatedAt
 				+ ", offModifiedAt=" + offModifiedAt + "]";
 	}
-
 	
 	
 }

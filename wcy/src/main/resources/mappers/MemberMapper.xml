@@ -99,7 +99,7 @@
    </update>
 
 	<!-- 아이디로 정보 가져오기 -->
-	<select id="findMemberbyId" resultMap="MemberMap">
+	<select id="findMemberById" resultMap="MemberMap">
 		SELECT * FROM user WHERE user_email = #{userEmail} 
 	</select>
 </mapper>
