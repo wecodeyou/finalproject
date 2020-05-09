@@ -2,8 +2,8 @@ package com.it.wecodeyou.tag.repository;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
 
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.product.model.ProductVO;
@@ -48,25 +48,35 @@ public interface ITagMapper {
    public ArrayList<String> searchTagByArticle(Integer articleNo) throws SQLException;
    
    //search ptagname by pno
-   public ArrayList<TagVO> searchTagByProduct(Integer productNo) throws SQLException;
+   public ArrayList<String> searchTagByAllProduct(Integer productNo) throws SQLException;
    
-   //article 세부 검색(paging처리 O) 검색어로 title, content 검색
-   public ArrayList<ArticleVO> searchArticleByKeyWord(SearchVO svo) throws SQLException;
-   
-   //article 메인 검색(paging처리 X) 검색어로 title, content 검색
-   public ArrayList<ArticleVO> searchAllArticleByKeyWord(SearchVO svo) throws SQLException;
-   
-   //product 세부 검색(paging처리 O) 검색어로 name, detail 검색
-   public ArrayList<ProductVO> searchProductByKeyWord(SearchVO svo) throws SQLException;
-   
-   //article 메인 검색(paging처리 X) 검색어로 name, detail 검색
-   public ArrayList<ProductVO> searchAllProductByKeyWord(SearchVO svo) throws SQLException;
-   
+   //search on off product by productNo and productType
+   public ArrayList<String> searchTags(@Param("productNo") Integer productNo) throws SQLException;
+	
    //article keywordList로 검색(paging처리 O)
    public ArrayList<ArticleVO> searchArticleByKeywordList(SearchVO svo) throws SQLException;
    
-   //product keywordList로 검색(paging처리 O)
+   //product - all keywordList로 검색(paging처리 O)
+   public ArrayList<ProductVO> searchAllProductByKeywordList(SearchVO svo) throws SQLException;
+   
+   //product - online keywordList로 검색(paging처리 O)
+   public ArrayList<ProductVO> searchOnlineByKeywordList(SearchVO svo) throws SQLException;
+   
+   //product - offline keywordList로 검색(paging처리 O)
+   public ArrayList<ProductVO> searchOfflineByKeywordList(SearchVO svo) throws SQLException;
+   
+   //product - product keywordList로 검색(paging처리 O)
    public ArrayList<ProductVO> searchProductByKeywordList(SearchVO svo) throws SQLException;
+   
+   
+   //test productType
+   public ArrayList<ProductVO> productByKeywordList(SearchVO svo) throws SQLException;
+   
+   
+   
+   
+   
+   
    
    
 

@@ -139,11 +139,11 @@ public class TagController {
          
          for (ProductVO pvo : pvoList) {
             if(pvo.getProductType().equals("0")) {
-               productList.add(pvo);
+            	onList.add(pvo);
             } else if(pvo.getProductType().equals("1")) {
                offList.add(pvo);
             } else {
-               onList.add(pvo);
+            	productList.add(pvo);
             }
          }
          //article

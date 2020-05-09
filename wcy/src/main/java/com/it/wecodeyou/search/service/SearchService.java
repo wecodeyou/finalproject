@@ -20,46 +20,35 @@ public class SearchService implements ISearchService{
 	@Autowired 
 	ITagMapper dao;
 
-   	@Override
-	public ArrayList<ArticleVO> searchArticleByKeyWord(SearchVO svo) throws SQLException {
-		return dao.searchArticleByKeyWord(svo);
-	}
-
-	@Override
-	public ArrayList<ArticleVO> searchAllArticleByKeyWord(SearchVO svo) throws SQLException {
-		return dao.searchAllArticleByKeyWord(svo);
-	}
-
-	@Override
-	public ArrayList<ProductVO> searchProductByKeyWord(SearchVO svo) throws SQLException {
-		return dao.searchProductByKeyWord(svo);
-	}
-
-	@Override
-	public ArrayList<ProductVO> searchAllProductByKeyWord(SearchVO svo) throws SQLException {
-		return dao.searchAllProductByKeyWord(svo);
-	}
-
 	@Override
 	public ArrayList<ArticleVO> searchArticleByKeywordList(SearchVO svo) throws SQLException {
-		
-		try {
 			return dao.searchArticleByKeywordList(svo);
-		} catch (Exception e) {
-			System.out.println("dao exception Article");
-		}
-		return null;
 	}
 
 	@Override
+	public ArrayList<ProductVO> searchAllProductByKeywordList(SearchVO svo) throws SQLException {
+			return dao.searchAllProductByKeywordList(svo);
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchOnlineByKeywordList(SearchVO svo) throws SQLException {
+			return dao.searchOnlineByKeywordList(svo);
+	}
+
+	@Override
+	public ArrayList<ProductVO> searchOfflineByKeywordList(SearchVO svo) throws SQLException {
+			return dao.searchOfflineByKeywordList(svo);
+	}
+	
+	@Override
 	public ArrayList<ProductVO> searchProductByKeywordList(SearchVO svo) throws SQLException {
-		
-		try {
 			return dao.searchProductByKeywordList(svo);
-		} catch (Exception e) {
-			System.out.println("dao exception : Product");
-		}
-		return null;
+	}
+
+
+	@Override
+	public ArrayList<ProductVO> productByKeywordList(SearchVO svo) throws SQLException {
+			return dao.productByKeywordList(svo);
 	}
 
 }

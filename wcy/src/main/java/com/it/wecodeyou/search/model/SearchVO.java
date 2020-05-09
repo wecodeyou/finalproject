@@ -6,10 +6,13 @@ public class SearchVO extends PageVO {
 	
 	private String q;
 	private String condition;
+	private String productType;
 	
-	public SearchVO() {
+	public SearchVO(String q, String condition, String productType) {
+		super();
 		this.q = "";
 		this.condition = "";
+		this.productType = productType;
 	}
 
 	public String getQ() {
@@ -27,7 +30,16 @@ public class SearchVO extends PageVO {
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
+
+	public String getProductType() {
+		return productType;
+	}
+
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
 	
+
 	
 	
 }

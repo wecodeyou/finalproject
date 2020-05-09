@@ -113,48 +113,22 @@
 		and ta.a_article_no = #{articleNo}
 	</select>
 
-	<!-- product당 해당 ptag 검색 -->
-	<select id="searchTagByProduct" resultMap="TagMap">
-		select tp.p_tag_no, t.tag_name
+	<!-- all product ptag 검색 -->
+	<select id="searchTagByAllProduct" resultType="String">
+		select t.tag_name
 		from tag_product tp, tag t
 		where tp.p_tag_no = t.tag_no
 		and tp.p_product_no = #{productNo}
 	</select>
-
-	<!-- keyword로 article 검색 (페이징 O) -->
-	<select id="searchArticleByKeyWord" resultMap="ArticleMap">
-		SELECT * FROM article
-		WHERE article_title LIKE CONCAT('%', #{q}, '%')
-		OR article_content LIKE CONCAT('%', #{q}, '%')
-		ORDER BY article_no DESC
-		LIMIT #{pageStart}, #{countPerPage}
+	
+	<!-- on off product 각각 ptag 검색 -->
+	<select id="searchTags" resultType="String">
+		select distinct t.tag_name
+		from tag t, tag_product tp
+		where tp.p_tag_no = t.tag_no
+		and tp.p_tag_no in (select p_tag_no from tag_product where p_product_no = #{productNo})
 	</select>
-
-	<!-- keyword로 article 검색 (페이징 X) -->
-	<select id="searchAllArticleByKeyWord" resultMap="ArticleMap">
-		SELECT * FROM article
-		WHERE article_title LIKE CONCAT('%', #{q}, '%')
-		OR article_content LIKE CONCAT('%', #{q}, '%')
-		ORDER BY article_no DESC
-	</select>
-
-	<!-- keyword로 product 검색 (페이징 O) -->
-	<select id="searchProductByKeyWord" resultMap="ProductMap">
-		SELECT * FROM product
-		WHERE product_name LIKE CONCAT('%', #{q}, '%')
-		OR product_detail LIKE CONCAT('%', #{q}, '%')
-		ORDER BY product_no DESC
-		LIMIT #{pageStart}, #{countPerPage}
-	</select>
-
-	<!-- keyword로 product 검색 (페이징 X) -->
-	<select id="searchAllProductByKeyWord" resultMap="ProductMap">
-		SELECT * FROM product
-		WHERE product_name LIKE CONCAT('%', #{q}, '%')
-		OR product_detail LIKE CONCAT('%', #{q}, '%')
-		ORDER BY product_no DESC
-	</select>
-
+	
 	<select id="searchArticleByKeywordList" resultMap="ArticleMap">
 		SELECT * FROM article
 		WHERE article_title REGEXP #{q}
@@ -163,15 +137,24 @@
 		LIMIT #{pageStart}, #{countPerPage}
 	</select>
 	
-	<select id="searchProductByKeywordList" resultMap="ProductMap">
+	<!-- 검색어로 모든 결과 가져오기 -->
+	<select id="searchAllProductByKeywordList" resultMap="ProductMap">
 		SELECT * FROM product
 		WHERE product_name REGEXP #{q}
 		OR product_detail REGEXP #{q}
 		<!-- ORDER BY product_no DESC -->
 		LIMIT #{pageStart}, #{countPerPage}
 	</select>
+	
+	<!-- productType과 검색어로 결과 가져오기 -->
+	<select id="productByKeywordList" resultMap="ProductMap">
+		SELECT * FROM product
+		WHERE product_name REGEXP #{q}
+		OR product_detail REGEXP #{q}
+		HAVING product_type = #{productType}
+		<!-- ORDER BY product_no DESC -->
+		LIMIT #{pageStart}, #{countPerPage}
+	</select>
 
-
-
-
+	
 </mapper>

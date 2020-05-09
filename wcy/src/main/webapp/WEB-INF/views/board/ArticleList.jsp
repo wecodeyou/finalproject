@@ -158,6 +158,7 @@ header.masthead {
 				<option value="content">내용</option>
 				<option value="writer">작성자</option>
 				<option value="titleContent">제목+내용</option>
+				<option value="hashtag">해시태그</option>
 			</select>
 		</div>
 		<div class="form-group col-sm-4">
