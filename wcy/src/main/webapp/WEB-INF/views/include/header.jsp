@@ -69,9 +69,10 @@
          
          <ul id="wcy-navigation">
             <c:if test="${login == null}">
-               <li><a class="modal-open-btn" data-toggle="modal" data-target="#wcy-login-modal">로그인</a></li>
+               <li><a class="modal_open_btn" data-toggle="modal" data-target="#wcy-login-modal">로그인</a></li>
                <li><a href="<c:url value='/member/email-form' />">회원가입</a></li>
-               <li><a href="#">아이디(이메일)/비밀번호 찾기</a></li>
+               <li><a href="<c:url value='/member/find-form?target=email' />">아이디(이메일)찾기&nbsp;</a></li>
+               <li><a href="<c:url value='/member/find-form?target=pw' />">&nbsp;비밀번호 찾기</a></li>
             </c:if>
             
             <c:if test="${login != null}">
@@ -84,8 +85,7 @@
 
 
 		<nav class="wcy-search-menu">
-			<ul id="wcy-menu-left">
-			</ul>
+			
 			<form action="" method="get" class="search-form">
 			<ul id="wcy-search">
 				<li>
@@ -312,7 +312,7 @@
       </div>
    </section>
 
-
+<%@ include file="../member/login_modal.jsp" %>  
 
 <main class="wcy-main-content sub-nav-hero">
    <div>

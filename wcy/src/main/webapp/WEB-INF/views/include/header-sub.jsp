@@ -9,8 +9,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
 <link rel="stylesheet" href="<c:url value='/css/reset.css'/>">
-<link rel="stylesheet" href="<c:url value='/css/header2.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/header-sub.css'/>">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <style>
@@ -32,7 +33,7 @@
 <body>
 
 	<header class="wcy-auto-hide-header">
-		<div class="logo"><a href="#"><img src="<c:url value='/img/commons/wcy_logo_sample_black.png'/>" alt="Logo" /></a></div>
+		<div class="logo"><a href="<c:url value='/' />"><img src="<c:url value='/img/commons/wcy_logo_sample_black.png'/>" alt="Logo" /></a></div>
 		
 		<nav class="wcy-primary-nav">
 			<a href="#" class="nav-trigger">
@@ -44,9 +45,10 @@
 			
 			<ul id="wcy-navigation">
 				<c:if test="${login == null}">
-					<li><a class="modal-open-btn" data-toggle="modal" data-target="#wcy-login-modal">로그인</a></li>
+					<li><a class="modal_open_btn" data-toggle="modal" data-target="#wcy-login-modal">로그인</a></li>
 					<li><a href="<c:url value='/member/email-form' />">회원가입</a></li>
-					<li><a href="#">아이디(이메일)/비밀번호 찾기</a></li>
+              		 <li><a href="<c:url value='/member/find-form?target=email' />">아이디(이메일)찾기&nbsp;</a></li>
+              		 <li><a href="<c:url value='/member/find-form?target=pw' />">&nbsp;비밀번호 찾기</a></li>
 				</c:if>
 				
 				<c:if test="${login != null}">
@@ -58,8 +60,6 @@
 		</nav> <!-- .wcy-primary-nav -->
 
 		<nav class="wcy-search-menu">
-			<ul id="wcy-menu-left">
-			</ul>
 			<form action="" method="get" class="search-form">
 			<ul id="wcy-search">
 				<li>
@@ -186,10 +186,10 @@
 		</ul>
 	</nav> <!-- .wcy-secondary-nav -->
 
-
+<%@ include file="../member/login_modal.jsp" %>  
 
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
-<script src="<c:url value = "/js/main2.js"/>"></script>
+<script src="<c:url value = "/js/header-sub.js"/>"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -197,7 +197,7 @@
 <script>
 
 
-	function logincheck(){
+function logincheck(){
 	   if(${login == null}){
 	      alert("로그인이 필요한 서비스입니다.");
 	   }else{

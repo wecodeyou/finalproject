@@ -5,6 +5,7 @@ jQuery(document).ready(function($){
 		wcyMainContent = $('.wcy-main-content'),
 		belowNavHeroContent = $('.sub-nav-hero'),
 		headerHeight = mainHeader.height();
+
 	
 	//set scrolling variables
 	var scrolling = false,
@@ -17,6 +18,11 @@ jQuery(document).ready(function($){
 		// open primary navigation on mobile
 		event.preventDefault();
 		mainHeader.toggleClass('nav-open');
+	});
+	
+	$('.nav-trigger').on('click',function(e){
+		event.preventDefault();
+		$('.wcy-auto-hide-header').toggleClass('nav-open');
 	});
 
 	$(window).on('scroll', function(){
