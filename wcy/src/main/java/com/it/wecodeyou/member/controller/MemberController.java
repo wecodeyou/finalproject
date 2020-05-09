@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -191,21 +192,15 @@ public class MemberController {
 		return new ModelAndView("/member/email-form");
 	}
 	
-	 //mailSending
+		
+	   //mailSending
 	   @PostMapping("/auth")
-	   public ModelAndView emailSending(HttpServletRequest request, String userEmail, HttpServletResponse response, HttpSession session) throws IOException {
-	     ModelAndView mv=new ModelAndView();   //ModelAndView로 보낼 페이지를 지정하고 보낼 값을 지정한다
-	     response.setContentType("text/html; charset=UTF-8");
-	     PrintWriter out_email = response.getWriter();
-	         
+	   public void emailSending(@RequestBody String userEmail, Model model, HttpSession session) throws IOException {
+	    
 	     //중복된 경우 -> 다시 email-form으로 
 	     if(checkEmail(userEmail).equals("NO") || userEmail.equals("")){// 중복되면 
-	        mv.setViewName("/member/login-form");  
-	         
-	         System.out.println("view: "+mv.getViewName());
-	         out_email.println("<script>alert('이메일을 확인해 주세요.');</script>");
-	         out_email.flush();
-	     
+	        
+
 	     }else{
 	      
 	        System.out.println("/member/auth : 이메일 인증번호 발송 POST 요청 발생!");
@@ -216,7 +211,7 @@ public class MemberController {
 	         int dice = r.nextInt(4589362)+49311;
 	         
 	         String setFrom =  "wcy.manager@gmail.com"; //보내는 사람(관리자) 이메일
-	         String tomail = request.getParameter("userEmail"); //받는 사람 이메일
+	         String tomail = userEmail; //받는 사람 이메일
 	         String title = "[WeCodeYou] 회원가입 인증 번호 발송";   //제목
 	         String content =
 	               //한줄씩 줄간격을 두기 위해 작성
@@ -238,57 +233,48 @@ public class MemberController {
 	            e.printStackTrace();
 	         }
 	         
-	         mv.setViewName("/member/email-auth");
-	         session.setAttribute("user_email", userEmail);
+	         model.addAttribute("user_email", userEmail);
 	         session.setAttribute("dice", dice);
 	         
-	         System.out.println("view: "+mv.getViewName()   + "   인증 code: "+dice);
-	         out_email.println("<script>alert('인증번호가 이메일로 발송되었습니다. 확인 후 인증번호를 입력해주세요.');</script>");
-	         out_email.flush();
+	         System.out.println("인증 code: "+dice);
 	         
 	     }
-	     return mv;
+	 
 	   }
+	   
+	   
+	   
 	
-		
 	//이메일로 받은 인증번호를 입력하고 확인버튼을 누르면 맵핑되는 메서드
 	//내가 입력한 인증번호와 메일로 받은 인증번호가 맞는지 확인해서 맞으면 회원가입 페이지로 넘기고 틀리면 다시 원래 페이지로 돌아오는 메소드
-	@PostMapping("/join_auth")
-	public ModelAndView join_auth(String email_auth, HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException {
-		String dice = request.getParameter("dice");
-		
-		System.out.print("사용자 입력 code: "+email_auth);
-		System.out.println("\t\t인증 code: "+dice);
-		
-		//페이지 이동과 자료를 동시에 하기 위해 ModelAndView를 사용해서 이동할 페이지와 자료를 담음
-		ModelAndView mv=new ModelAndView();
-		mv.setViewName("/join");
-		mv.addObject("email_auth", email_auth);
-		if(email_auth.equals(dice)) {
-			//인증번호가 일치할 경우 인증번호가 맞다는 창을 출력하고 회원가입창으로 이동함
-			session.removeAttribute("dice");
-			mv.setViewName("member/join-form");
-			mv.addObject("email_auth", email_auth);
+		@PostMapping("/join_auth")
+		public String join_auth(@RequestBody String email_auth, HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException {
+			String dice = String.valueOf(session.getAttribute("dice"));
 			
-			//만약 인증번호가 같다면 이메일을 회원가입 페이지로 같이 넘겨서 이메일을 한번더 입력할 필요가 없게 한다.
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out_equals = response.getWriter();
-			out_equals.println("<script>alert('이메일 인증 성공! 회원가입 페이지로 이동합니다.');</script>");
-			out_equals.flush();
+			System.out.print("사용자 입력 code: "+email_auth);
+			System.out.println("\t\t인증 code: "+dice);
 			
-			return mv;
-		}else{
-			ModelAndView mv2 = new ModelAndView();
-			mv2.setViewName("/member/email-auth");
+			//페이지 이동과 자료를 동시에 하기 위해 ModelAndView를 사용해서 이동할 페이지와 자료를 담음
+
+			if(email_auth.equals(dice)) {
+				//인증번호가 일치할 경우 인증번호가 맞다는 창을 출력하고 회원가입창으로 이동함
+				session.removeAttribute("dice");
+				//만약 인증번호가 같다면 이메일을 회원가입 페이지로 같이 넘겨서 이메일을 한번더 입력할 필요가 없게 한다.
+				response.setContentType("text/html; charset=UTF-8");			
+				return "YES";
+			}else{
+				response.setContentType("text/html; charset=UTF-8");
+				return "NO";
+			}
 			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out_equals = response.getWriter();
-			out_equals.println("<script>alert('인증번호가 일치하지 않습니다. 인증번호를 다시 입력해주세요!');</script>");
-			out_equals.flush();
-			
-			return mv2;
 		}
-		
+	
+	//이메일 인증후 페이지 맵핑 메서드
+	@GetMapping("/send_join")
+	public ModelAndView send_join() {
+		System.out.println("이메일 인증 성공");
+			
+		return new ModelAndView("/member/join-form");
 	}
 	
 	//이메일,비번찾기 페이지 요청 
