@@ -270,7 +270,7 @@
             </div>
          </li>
          
-         <li><a href="#">커뮤니티<span>&#x25BE;</span></a>
+         <li><a href="<c:url value='/board/list'/>">커뮤니티<span>&#x25BE;</span></a>
             <div class="sub-menu-1">
                 <ul>
                   <li class="hover-me"><a href="#">공지사항</a></li>

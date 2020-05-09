@@ -183,68 +183,66 @@ public class MemberController {
       return new ModelAndView("redirect:/");
    }
 
-   
-   //이메일 인증 페이지 맵핑 메서드
-   @GetMapping("/email-form")
-   public ModelAndView email() {
-      System.out.println("/member/email-form : 이메일 인증 form GET 요청 발생!");
-      
-      return new ModelAndView("/member/email-form");
-   }
-   
-      
-      //mailSending
-      @PostMapping("/auth")
-      public void emailSending(@RequestBody String userEmail, Model model, HttpSession session) throws IOException {
-       
-        //중복된 경우 -> 다시 email-form으로 
-        if(checkEmail(userEmail).equals("NO") || userEmail.equals("")){// 중복되면 
-           
 
-        }else{
-         
-           System.out.println("/member/auth : 이메일 인증번호 발송 POST 요청 발생!");
-           System.out.println("받는사람 이메일주소: "+userEmail);
-         
-            
-            Random r = new Random();
-            int dice = r.nextInt(4589362)+49311;
-            
-            String setFrom =  "wcy.manager@gmail.com"; //보내는 사람(관리자) 이메일
-            String tomail = userEmail; //받는 사람 이메일
-            String title = "[WeCodeYou] 회원가입 인증 번호 발송";   //제목
-            String content =
-                  //한줄씩 줄간격을 두기 위해 작성
-                  System.getProperty("line.separator")+System.getProperty("line.separator")+
-                  "안녕하세요, 회원님. 저희 [WeCodeYou]를 찾아주셔서 감사합니다."+System.getProperty("line.separator")+
-                  "인증번호는 "+dice+" 입니다."+System.getProperty("line.separator")+
-                  "홈페이지로 돌아가 위 인증번호를 입력해주시면 회원가입이 진행됩니다."+System.getProperty("line.separator");
-            
-            try {
-               MimeMessage message = mailSender.createMimeMessage();
-               MimeMessageHelper messageHelper = new MimeMessageHelper(message, true,"UTF-8");
-               messageHelper.setFrom(setFrom);   //보내는사람 생략하면 정상작동 안함
-               messageHelper.setTo(tomail);   //받는사람 이메일
-               messageHelper.setSubject(title);//메일제목 (생략가능)
-               messageHelper.setText(content); //메일 내용
-               
-               mailSender.send(message);
-            } catch (MessagingException e) {
-               e.printStackTrace();
-            }
-            
-            model.addAttribute("user_email", userEmail);
-            session.setAttribute("dice", dice);
-            
-            System.out.println("인증 code: "+dice);
-            
-        }
-    
-      }
-      
-      
-      
-   
+	//이메일 인증 페이지 맵핑 메서드
+	@GetMapping("/email-form")
+	public ModelAndView email() {
+		System.out.println("/member/email-form : 이메일 인증 form GET 요청 발생!");
+		
+		return new ModelAndView("/member/email-form");
+	}
+	
+		
+	   //mailSending
+	   @PostMapping("/auth")
+	   public void emailSending(@RequestBody String userEmail, Model model, HttpSession session) throws IOException {
+	    
+	     //중복된 경우 -> 다시 email-form으로 
+	     if(checkEmail(userEmail).equals("NO") || userEmail.equals("")){// 중복되면 
+	        
+
+	     }else{
+	      
+	        System.out.println("/member/auth : 이메일 인증번호 발송 POST 요청 발생!");
+	        System.out.println("받는사람 이메일주소: "+userEmail);
+	      
+	         
+	         Random r = new Random();
+	         int dice = r.nextInt(4589362)+49311;
+	         
+	         String setFrom =  "wcy.manager@gmail.com"; //보내는 사람(관리자) 이메일
+	         String tomail = userEmail; //받는 사람 이메일
+	         String title = "[WeCodeYou] 회원가입 인증 번호 발송";   //제목
+	         String content =
+	               //한줄씩 줄간격을 두기 위해 작성
+	               System.getProperty("line.separator")+System.getProperty("line.separator")+
+	               "안녕하세요, 회원님. 저희 [WeCodeYou]를 찾아주셔서 감사합니다."+System.getProperty("line.separator")+
+	               "인증번호는 "+dice+" 입니다."+System.getProperty("line.separator")+
+	               "홈페이지로 돌아가 위 인증번호를 입력해주시면 회원가입이 진행됩니다."+System.getProperty("line.separator");
+	         
+	         try {
+	            MimeMessage message = mailSender.createMimeMessage();
+	            MimeMessageHelper messageHelper = new MimeMessageHelper(message, true,"UTF-8");
+	            messageHelper.setFrom(setFrom);   //보내는사람 생략하면 정상작동 안함
+	            messageHelper.setTo(tomail);   //받는사람 이메일
+	            messageHelper.setSubject(title);//메일제목 (생략가능)
+	            messageHelper.setText(content); //메일 내용
+	            
+	            mailSender.send(message);
+	         } catch (MessagingException e) {
+	            e.printStackTrace();
+	         }
+	         
+	         model.addAttribute("user_email", userEmail);
+	         session.setAttribute("dice", dice);
+	         
+	         System.out.println("인증 code: "+dice);
+	         
+	     }
+	 
+	   }
+	   
+
    //이메일로 받은 인증번호를 입력하고 확인버튼을 누르면 맵핑되는 메서드
    //내가 입력한 인증번호와 메일로 받은 인증번호가 맞는지 확인해서 맞으면 회원가입 페이지로 넘기고 틀리면 다시 원래 페이지로 돌아오는 메소드
       @PostMapping("/join_auth")

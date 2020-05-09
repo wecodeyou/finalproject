@@ -41,8 +41,8 @@
 <br>
 <a href="<c:url value='/off/seat_main' />" >자리보기</a>
 <br>
-<a href="#">강사로 오프라인 강의 참석하기</a>
+<a href="<c:url value='off/myclass'/>" >강사로 오프라인 강의 참석하기</a>
 <br>
-<a href="#">학생으로 오프라인 강의 참석하기</a>
+<a href="<c:url value='off/myoff'/>" >학생으로 오프라인 강의 참석하기</a>
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.search.model.SearchVO;
 import com.it.wecodeyou.tag.model.TagVO;
 import com.it.wecodeyou.tag.repository.ITagMapper;
 
@@ -80,9 +81,15 @@ public class TagService implements ITagService{
    }
 
    @Override
-   public ArrayList<TagVO> searchTagByProduct(Integer productNo) throws SQLException {
-      return dao.searchTagByProduct(productNo);
+   public ArrayList<String> searchTagByAllProduct(Integer productNo) throws SQLException {
+      return dao.searchTagByAllProduct(productNo);
    }
+
+	@Override
+	public ArrayList<String> searchTags(Integer productNo) throws SQLException {
+			return dao.searchTags(productNo);
+	}
+
 
 
 

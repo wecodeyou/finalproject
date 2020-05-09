@@ -220,20 +220,20 @@
                         <li><button type="submit" name="submit" id="submit_btn" onclick="sendChkMail()">인증번호 발송</button></li>
                         <li>
                         <div id="auth_div">
-                  <%-- <form action="<c:url value='/member/join_auth' />" method="post">
-                   --%>   <table border="1">
-                        <tr>
-                        <td>인증번호 입력: <input type="text" id="email_auth" name="email_auth" placeholder="인증번호를 입력해주세요"> </td>
-                        </tr>
-                        <tr>
-                        <td>
-                           <span id="auth_alert"></span></td>
-                        </tr>
-                        </table>
-                     <button type="submit" name="submit" onclick="chkCode()">이메일 인증하기</button>
-                     <input type="hidden" name="dice" id="dice" />
-                  
-                  </div>
+	                 		 <%-- <form action="<c:url value='/member/join_auth' />" method="post">--%>   
+	                   		<table border="1">
+	                        <tr>
+	                        <td>인증번호 입력: <input type="text" id="email_auth" name="email_auth" placeholder="인증번호를 입력해주세요"> </td>
+	                        </tr>
+	                        <tr>
+	                        <td>
+	                           <span id="auth_alert"></span></td>
+	                        </tr>
+	                        </table>
+		                     <button type="submit" name="submit" onclick="chkCode()">이메일 인증하기</button>
+		                     <input type="hidden" name="dice" id="dice" />
+                  		</div>
+
                         </li>
                    <!--  </form> -->
                 </ul>
@@ -326,6 +326,60 @@ function chkCode(){
                 alert("인증성공! 정보입력 페이지로 이동됩니다.");
                 location.replace("/member/send_join");
             } else{
+	 			document.getElementById('auth_div').style.display="none";
+            }
+        }
+	});
+}
+/* 인증번호 이메일을 발송하고 인증번호 입력창을 띄워주는  */   
+function sendChkMail(){
+
+	/*  if(!$(':input:checkbox[id=agree]:checked').val() || !$(':input:checkbox[id=agree2]:checked').val()){
+	      alert("이용약관 및 개인정보처리방침에 모두 동의해주세요.");
+	      $('#next').prop('disabled',true);
+	 }else{} */
+	 // 잠시 잠궈놓음
+
+	 var email = document.getElementById('userEmail');  
+	 $.ajax({
+         type:"POST",
+         url:"/member/auth",
+         headers:{
+            "Content-Type":"application/json"
+         },
+         dataType:"text",
+         data:$(email).val(),
+         success:function(result){
+            document.getElementById('submit_btn').style.display="none";
+            document.getElementById('auth_div').style.display="block";
+            
+            document.getElementById('dice').value = result;
+         },
+         error:function(){
+            console.log("서버와 통신 실패");
+         }
+      });
+}   
+   
+
+// 인증번호 비교 
+function chkCode(){
+
+	 var email_auth = document.getElementById('email_auth');
+
+	 $.ajax({
+        type:"POST",
+        url:"/member/join_auth",
+        headers:{
+           "Content-Type":"application/json"
+        },
+        dataType:"text",
+        data:$(email_auth).val(),
+        success:function(result){
+        	 if(result==="YES"){
+             	alert("인증성공! 정보입력 페이지로 이동됩니다.");
+             	location.replace("/member/send_join");
+        	 } else{
                  $("#email_auth").css("border-color","red");
                  $("#auth_alert").html("<b style='font-size:12px; color:red;'> 인증번호를 다시 확인해 주세요. </b>");
               }

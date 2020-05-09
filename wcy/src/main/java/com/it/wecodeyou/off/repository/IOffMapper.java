@@ -2,7 +2,7 @@ package com.it.wecodeyou.off.repository;
 
 import java.util.List;
 
-import com.it.wecodeyou.member.model.MemberVO;
+import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.off.model.OffVO;
 
 public interface IOffMapper {
@@ -10,7 +10,7 @@ public interface IOffMapper {
 	
 	/* public List<OffVO> listByUser(MemberVO mvo); */
 	
-	public List<OffVO> getInfoByAuthor();
+	public List<OffVO> getInfoByAuthor(String offAuthor);
 	public List<OffVO> list();
 	
 	public void update(OffVO ovo);
@@ -20,4 +20,6 @@ public interface IOffMapper {
 	public OffVO getOneInfo(Integer offNo);
 	
 	public OffVO getInfoByProductNo(Integer productNo);
+	
+	public OffProductVO getOffProduct(Integer productNo);
 }
