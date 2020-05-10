@@ -16,8 +16,10 @@ import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.board.service.IArticleService;
 import com.it.wecodeyou.commons.PageCreator;
 import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.search.model.SearchVO;
 import com.it.wecodeyou.search.service.ISearchService;
+import com.it.wecodeyou.tag.model.TagVO;
 import com.it.wecodeyou.tag.service.ITagService;
 
 @RestController 
@@ -33,43 +35,56 @@ public class SearchController {
 	@Autowired
 	ITagService tagService;
 	
-	//home에서 기본 검색 (paging처리 O)
+	@Autowired
+	IProductService productService;
+	
+	
+	//home에서 기본 검색
    	@GetMapping("")
 	public ModelAndView search(SearchVO svo, ModelAndView mv) throws SQLException {
-		System.out.println("URL: /search GET -> result: ");
-		System.out.println("메인 검색");
-		System.out.println("검색어: " + svo.getQ());
+		System.out.println("URL: /search 메인검색 GET -> result: ");
 		
-		//페이지 처리???
+		String productType = svo.getProductType();
+		System.out.println("넘어온 상품타입: " + productType);
+		
+		String condition = svo.getCondition();
+		
 		PageCreator pc = new PageCreator();
 		pc.setPaging(svo);
 		
-		//검색 정규식으로 만들기
+		// 검색어 정규식으로 만들기 (mapper 용)
 		String search = svo.getQ();
-		
+
 		String str[] = search.split(" ");
 		String keyword = "";
 		for (int i = 0; i < str.length; i++) {
-			if(i != str.length-1) {
+			if (i != str.length - 1) {
 				keyword += str[i] + "|";
 			} else {
 				keyword += str[i];
 			}
-			
 		}
 		System.out.println("keyword 정규식 변환 후: " + keyword);
 		svo.setQ(keyword);
 		
+		//1. 게시글 검색 
 		List<ArticleVO> articleList = null;
-		articleList = service.searchArticleByKeywordList(svo);
-		for (ArticleVO a : articleList) {
-			System.out.println(a.getArticleTitle());
-		}
-		
+		//2-1. 상품 전체 검색 
 		List<ProductVO> allProductList = null;
-		allProductList = service.searchAllProductByKeywordList(svo);
 		
-		// product, off, on type으로 나눠서 저장
+		if(condition.equals("title")) {
+			articleList = articleService.getArticleListByTitle(svo);
+			allProductList = productService.getProductByTitle(svo);
+		} else if(condition.equals("titleContent")) { 
+			articleList = articleService.getArticleByTitleContent(svo);
+			allProductList = productService.getProductByTitleContent(svo);
+		} else if(condition.equals("hashtag")) {
+			articleList = tagService.getArticleByHashtag(svo);
+			allProductList = tagService.getProductByHashtag(svo);
+			search = "#" + search;
+		} 
+		
+		//2-2. 상품 전체를 product, off, on 3가지 type으로 나누기
 		List<ProductVO> productList = new ArrayList<>();
 		List<ProductVO> offList = new ArrayList<>();
 		List<ProductVO> onList = new ArrayList<>();
@@ -85,81 +100,72 @@ public class SearchController {
 				 } 
 			} 
 		}
-		mv.addObject("search", search);
+		
+		//hashtag
+		Map<Integer, Object> tagMapArticle = new HashMap<Integer, Object>();
+		Map<Integer, Object> tagMapOnline = new HashMap<Integer, Object>();
+		Map<Integer, Object> tagMapOffline = new HashMap<Integer, Object>();
+		Map<Integer, Object> tagMapProduct = new HashMap<Integer, Object>();
+		
+		for (int i = 0; i < articleList.size(); i++) {
+			System.out.println(articleList.get(i).getArticleTitle());
+			List<String> tvo = articleService.searchTagByArticle(articleList.get(i).getArticleNo());
+			tagMapArticle.put(i, tvo);
+		}
+		for (int i = 0; i < onList.size(); i++) {
+			System.out.println("onList name: " + onList.get(i).getProductName());
+			List<String> tvo = tagService.searchTags(onList.get(i).getProductNo());
+			tagMapOnline.put(i, tvo);
+		}
+		for (int i = 0; i < offList.size(); i++) {
+			System.out.println("onList name: " + offList.get(i).getProductName());
+			List<String> tvo = tagService.searchTags(offList.get(i).getProductNo());
+			tagMapOffline.put(i, tvo);
+		}
+		for (int i = 0; i < productList.size(); i++) {
+			System.out.println("onList name: " + productList.get(i).getProductName());
+			List<String> tvo = tagService.searchTags(productList.get(i).getProductNo());
+			tagMapProduct.put(i, tvo);
+		}
+		//검색어 결과에 따른 String[] hashtag가 담긴 Map
+		mv.addObject("tagA", tagMapArticle);
+		mv.addObject("tagOn", tagMapOnline);
+		mv.addObject("tagOff", tagMapOffline);
+		mv.addObject("tagP", tagMapProduct);
+		
+		//검색 추천 태그
+		ArrayList<TagVO>nameList = tagService.getAllTag();
+	    ArrayList<TagVO> ptagList = tagService.searchPTagNo();
+	    mv.addObject("ptagList", ptagList);
+	    mv.addObject("nameList", nameList);
+	      
+	    //검색어 & 조건
+	    mv.addObject("search", search);
+	    mv.addObject("condition", condition);
+		
+	    //검색어 결과 리스트
+	    mv.addObject("articleList", articleList);
+	    mv.addObject("allProductList", allProductList);
+	    mv.addObject("onList",  onList);
+	    mv.addObject("offList", offList); 
 		mv.addObject("productList", productList); 
-		mv.addObject("offList", offList); 
-		mv.addObject("onList",  onList);
-		mv.addObject("articleList", articleList);
-		mv.addObject("allProductList", allProductList);
-		mv.setViewName("search/searchResult");
+		
+		//페이징
+		mv.addObject("pc", pc);
+		
+		//productType
+	    mv.addObject("productType", productType);
+		
+		//결과 페이지
+		if(productType == null ) {
+			mv.setViewName("search/searchResult");
+		} else if(productType.equals("0") || productType.equals("1") || productType.equals("2")) {
+			mv.setViewName("search/productlist");
+		} else {
+			mv.setViewName("search/articles");
+		}
+
 		return mv;
 	}
   
-	@GetMapping("/articles")
-	public ModelAndView products(SearchVO svo, ModelAndView mv) throws SQLException {
-		System.out.println("URL: /search/products GET -> result: ");
-		System.out.println("products검색");
-		
-		System.out.println("넘어온 상품타입: " + svo.getProductType());
-   		
-		// 페이지 처리???
-		PageCreator pc = new PageCreator();
-		pc.setPaging(svo);
-
-		// 검색 정규식으로 만들기
-		String search = svo.getQ();
-
-		String str[] = search.split(" ");
-		String keyword = "";
-		for (int i = 0; i < str.length; i++) {
-			if (i != str.length - 1) {
-				keyword += str[i] + "|";
-			} else {
-				keyword += str[i];
-			}
-
-		}
-		System.out.println("keyword 정규식 변환 후: " + keyword);
-		svo.setQ(keyword);
-		
-		if(svo.getProductType().equals("3")) {
-			List<ArticleVO> articleList = null;
-			articleList = service.searchArticleByKeywordList(svo);
-			
-			// article no의 각각의 hashtag를 담을 map
-			Map<Integer, Object> tagMap = new HashMap<Integer, Object>();
-			for (int i = 0; i < articleList.size(); i++) {
-				System.out.println(articleList.get(i).getArticleTitle());
-				List<String> tvo = articleService.searchTagByArticle(articleList.get(i).getArticleNo());
-				tagMap.put(i, tvo);
-			}
-			mv.addObject("articleList", articleList);
-			mv.addObject("tagMap", tagMap);
-			mv.addObject("search", search);
-			mv.addObject("articleList", articleList);
-			mv.setViewName("search/articles");
-			
-		} else {
-			//online만 가져오기
-			List<ProductVO> productList = service.productByKeywordList(svo);
-			System.out.println("productList 사이즈: " + productList.size());
-			
-			// article no의 각각의 hashtag를 담을 map
-			Map<Integer, Object> tagMap = new HashMap<Integer, Object>();
-
-			for (int i = 0; i < productList.size(); i++) {
-				System.out.println("product name: " + productList.get(i).getProductName());
-				List<String> tvo = tagService.searchTags(productList.get(i).getProductNo());
-				tagMap.put(i, tvo);
-			}
-			
-			mv.addObject("tagMap", tagMap);
-			mv.addObject("search", search);
-			mv.addObject("productList", productList);
-			mv.setViewName("search/productlist");
-		}
-		
-   		return mv;
-   	}
-	
 }

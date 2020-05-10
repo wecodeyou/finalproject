@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.it.wecodeyou.board.model.BoardVO;
 import com.it.wecodeyou.board.repository.IBoardMapper;
+import com.it.wecodeyou.commons.PageVO;
+import com.it.wecodeyou.search.model.SearchVO;
 
 @Service
 public class BoardService implements IBoardService {
@@ -42,5 +44,6 @@ public class BoardService implements IBoardService {
 	public BoardVO getInfoByNo(Integer boardNo) {
 		return dao.getInfoByNo(boardNo);
 	}
+
 
 }

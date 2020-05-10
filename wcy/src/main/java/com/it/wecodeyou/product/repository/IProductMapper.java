@@ -3,6 +3,7 @@ package com.it.wecodeyou.product.repository;
 import java.util.List;
 
 import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.search.model.SearchVO;
 
 public interface IProductMapper {
 
@@ -15,4 +16,16 @@ public interface IProductMapper {
 	public List<ProductVO> list();
 	
 	public ProductVO getOneInfo(Integer productNo);
+
+	public List<ProductVO> getProductByTitle(SearchVO svo);
+
+	public Integer countProductsByTitle(SearchVO svo);
+
+	public List<ProductVO> getProductByTitleContent(SearchVO svo);
+
+	public Integer countProductsByTitleContent(SearchVO svo);
+
+	public List<ProductVO> getProductListPaging(SearchVO svo);
+
+	public Integer countProducts();
 }

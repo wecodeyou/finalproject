@@ -3,6 +3,8 @@ package com.it.wecodeyou.board.service;
 import java.util.List;
 
 import com.it.wecodeyou.board.model.BoardVO;
+import com.it.wecodeyou.commons.PageVO;
+import com.it.wecodeyou.search.model.SearchVO;
 
 public interface IBoardService {
 
@@ -19,4 +21,5 @@ public interface IBoardService {
 	public List<BoardVO> list();
 	
 	public BoardVO getInfoByNo(Integer boardNo);
+	
 }

@@ -39,5 +39,45 @@
 		SELECT * FROM product
 		WHERE product_no = #{productNo}
 	</select>
+	
+	<select id="getProductByTitle" resultMap="ProductMap">
+		SELECT * FROM product
+		WHERE product_name REGEXP #{q}
+		ORDER BY product_no DESC
+		LIMIT #{pageStart}, #{countPerPage}
+	</select>
+	
+	<select id="countProductsByTitle" resultType="int">
+		SELECT COUNT(*) FROM product
+		WHERE product_name REGEXP #{q}
+	</select>
+	
+	<select id="getProductByTitleContent" resultMap="ProductMap">
+		SELECT * FROM product
+		WHERE product_name REGEXP #{q}
+		OR product_detail REGEXP #{q}
+		<!-- ORDER BY article_no DESC -->
+		LIMIT #{pageStart}, #{countPerPage}
+	</select>
+	
+	<select id="countProductsByTitleContent" resultType="int">
+		SELECT COUNT(*) FROM product
+		WHERE product_name REGEXP #{q}
+		OR product_detail REGEXP #{q}
+	</select>
+	
+	<select id="getProductListPaging" resultMap="ProductMap">
+   		SELECT * FROM product
+   		ORDER BY product_no DESC
+   		LIMIT #{pageStart}, #{countPerPage} 
+   </select>
+	
+	<select id="countProducts" resultType ="int">
+		SELECT COUNT(*)
+		FROM product
+		WHERE product_no = #{productNo}
+	</select>
+	
+	
 
 </mapper>

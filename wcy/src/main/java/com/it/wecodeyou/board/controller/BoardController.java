@@ -29,6 +29,7 @@ import com.it.wecodeyou.commons.PageVO;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.tag.model.TagVO;
+import com.it.wecodeyou.tag.service.ITagService;
 
 @RestController
 @RequestMapping(value="/board")
@@ -42,6 +43,8 @@ public class BoardController {
 	private IArticleService articleService;
 	@Autowired
 	private IReplyService replyService;	
+	@Autowired
+	private ITagService tagService;
 
 	
 	@GetMapping("/list")
@@ -94,6 +97,10 @@ public class BoardController {
 		pc.setArticleTotalCount(articleService.countArticles(boardNo));
 		System.out.println(pc.toString());
 		
+		ArrayList<TagVO>nameList = tagService.getAllTag();
+	    ArrayList<TagVO> ptagList = tagService.searchPTagNo();
+	    mv.addObject("ptagList", ptagList);
+	    mv.addObject("nameList", nameList);
 
 		mv.addObject("board", bvo);
 		mv.addObject("articleList", list);

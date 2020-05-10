@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.it.wecodeyou.board.model.ArticleVO;
+import com.it.wecodeyou.board.model.BoardVO;
 import com.it.wecodeyou.tag.model.TagVO;
 import com.it.wecodeyou.commons.PageVO;
+import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.search.model.SearchVO;
 
 public interface IArticleService {
 
@@ -25,4 +28,21 @@ public interface IArticleService {
 	public ArrayList<String> searchTagByArticle(Integer articleNo) throws SQLException;
 			
 	public Integer countArticles(Integer boardNo);
+
+	//filter search
+	public List<ArticleVO> getArticleListByTitle(SearchVO svo);
+
+	public Integer countArticlesByTitle(SearchVO svo);
+
+	public List<ArticleVO> getArticleListPaging(SearchVO svo);
+
+	public Integer countArticles();
+
+	public List<ArticleVO> getArticleByTitleContent(SearchVO svo);
+
+	public Integer countArticlesByTitleContent(SearchVO svo);
+
+	
+	
+	
 }

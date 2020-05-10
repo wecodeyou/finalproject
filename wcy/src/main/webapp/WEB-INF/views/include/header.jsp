@@ -15,6 +15,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
+<link rel="stylesheet" href="<c:url value='/css/search.css'/>">
+
 <style>
 /* 이미지 슬라이더 스타일 변경 오버라이드 */
 .bx-wrapper{border:0; background:#fff; box-shadow:none; position:relative; margin-bottom:0px; margin-top:90px;}
@@ -85,14 +87,19 @@
 
 
 		<nav class="wcy-search-menu">
-			
-			<form action="" method="get" class="search-form">
-			<ul id="wcy-search">
-				<li>
-				<fieldset id="search-fieldset"><input type="search" id="search-input" placeholder="파이썬(Python)기초 프로젝트"/><button type="submit" id="search-btn"><i class="fa fa-search"></i></button></fieldset>
-				</li>
-			</ul>
-			</form>
+			<div class="search-form">
+				<ul id="wcy-search">
+					<li>
+						<fieldset id="search-fieldset">
+							<input type="search" id="search-input"
+								placeholder="파이썬(Python)기초 프로젝트" />
+							<button type="submit" id="search-btn">
+								<i class="fa fa-search"></i>
+							</button>
+						</fieldset>
+					</li>
+				</ul>
+			</div>
 			<ul id="wcy-menu">
 				<li><a href="#"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
@@ -354,7 +361,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-
+<!-- 검색 기능 -->
+<script src="<c:url value='/js/search-main.js'/>"></script>
 
 <script>
 
