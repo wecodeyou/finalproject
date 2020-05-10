@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles requests for the application home page.
@@ -137,4 +139,35 @@ public class HomeController {
 			}
 		return fileInfo; // @ResponseBody 어노테이션을 사용하여 Map을  
 	}
+	
+	//커리큘럼소개 main 요청
+	@GetMapping("/curriculum/on_main")
+	public ModelAndView curriculumOnMain(ModelAndView mv, HttpServletRequest req) {
+	      
+	mv.setViewName("curriculum/onMain");
+	mv.addObject("seq", req.getParameter("seq"));
+	return mv;
+	      
+	}
+
+	//커리큘럼소개 main 요청
+	@GetMapping("/curriculum/off_main")
+	public ModelAndView curriculumOffMain(ModelAndView mv, HttpServletRequest req) {
+		
+		mv.setViewName("curriculum/offMain");
+		mv.addObject("seq", req.getParameter("seq"));
+		return mv;
+		
+	}
+	
+	//커리큘럼소개 sub 요청
+	@GetMapping("/curriculum/sub")
+	public ModelAndView curriculumSub(ModelAndView mv, HttpServletRequest req) {
+		
+		mv.setViewName("curriculum/sub");
+		mv.addObject("seq", req.getParameter("seq"));
+		return mv;
+		
+	}
+	
 }

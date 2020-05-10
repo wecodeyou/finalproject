@@ -37,39 +37,7 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 		</li>
 	</ul>
 	
-<%-- 	<script src="<c:url value='/js/search.js'/>"></script> --%>
-<script>
+	<script src="<c:url value='/js/search-main.js'/>"></script>
 
-//start jQuery
-$(function() {
-
-	//검색 버튼 이벤트 처리
-	$("#search-btn").click(
-			function() {
-				console.log("검색 버튼이 클릭됨!");
-				const keyword = $("#search-input").val();
-				
-				console.log("검색어: " + keyword);
-
-				//const condition = $("#condition option:selected").val();
-				//console.log("검색 조건: " + condition);
-				var url = "/search?q=" + keyword;
-				location.href = url;
-						//+ "&condition=" + condition;
-
-			});
-
-	//엔터키 입력 이벤트
-	$("#search-input").keydown(function(key) {
-
-		if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
-			$("#search-btn").click();
-		}
-
-	});
-
-});//end jQuery
-
-</script>
 </body>
 </html>

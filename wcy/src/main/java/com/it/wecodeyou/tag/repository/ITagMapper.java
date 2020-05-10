@@ -2,6 +2,7 @@ package com.it.wecodeyou.tag.repository;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -52,9 +53,6 @@ public interface ITagMapper {
    
    //search on off product by productNo and productType
    public ArrayList<String> searchTags(@Param("productNo") Integer productNo) throws SQLException;
-	
-   //article keywordList로 검색(paging처리 O)
-   public ArrayList<ArticleVO> searchArticleByKeywordList(SearchVO svo) throws SQLException;
    
    //product - all keywordList로 검색(paging처리 O)
    public ArrayList<ProductVO> searchAllProductByKeywordList(SearchVO svo) throws SQLException;
@@ -68,9 +66,20 @@ public interface ITagMapper {
    //product - product keywordList로 검색(paging처리 O)
    public ArrayList<ProductVO> searchProductByKeywordList(SearchVO svo) throws SQLException;
    
-   
-   //test productType
+   //productType
    public ArrayList<ProductVO> productByKeywordList(SearchVO svo) throws SQLException;
+
+   //search article by %tag%
+   public List<ArticleVO> getArticleByHashtag(SearchVO svo);
+
+   //count article by tags
+   public Integer countArticlesByHashtag(SearchVO svo);
+
+   //페이징을 위한 상품 개수
+   public Integer countProductsByKeywordList(SearchVO svo);
+
+ //search products by %tag%
+   public List<ProductVO> getProductByHashtag(SearchVO svo);
    
    
    

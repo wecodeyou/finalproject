@@ -2,6 +2,7 @@ package com.it.wecodeyou.tag.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,6 +89,21 @@ public class TagService implements ITagService{
 	@Override
 	public ArrayList<String> searchTags(Integer productNo) throws SQLException {
 			return dao.searchTags(productNo);
+	}
+
+	@Override
+	public List<ArticleVO> getArticleByHashtag(SearchVO svo) {
+		return dao.getArticleByHashtag(svo);
+	}
+
+	@Override
+	public Integer countArticlesByHashtag(SearchVO svo) {
+		return dao.countArticlesByHashtag(svo);
+	}
+
+	@Override
+	public List<ProductVO> getProductByHashtag(SearchVO svo) {
+		return dao.getProductByHashtag(svo);
 	}
 
 

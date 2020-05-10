@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 
 import com.it.wecodeyou.atag.repository.IAtagMapper;
 import com.it.wecodeyou.board.model.ArticleVO;
+import com.it.wecodeyou.board.model.BoardVO;
 import com.it.wecodeyou.board.repository.IArticleMapper;
 
 import com.it.wecodeyou.tag.model.TagVO;
 import com.it.wecodeyou.tag.repository.ITagMapper;
 
 import com.it.wecodeyou.commons.PageVO;
+import com.it.wecodeyou.search.model.SearchVO;
 
 @Service
 public class ArticleService implements IArticleService {
@@ -77,6 +79,37 @@ public class ArticleService implements IArticleService {
 	public Integer countArticles(Integer boardNo) {
 		return dao.countArticles(boardNo);
 	}
+
+	@Override
+	public List<ArticleVO> getArticleListByTitle(SearchVO svo) {
+		return dao.getArticleListByTitle(svo);
+	}
+
+	@Override
+	public Integer countArticlesByTitle(SearchVO svo) {
+		return dao.countArticlesByTitle(svo);
+	}
+
+	@Override
+	public List<ArticleVO> getArticleListPaging(SearchVO svo) {
+		return dao.getArticleListPaging(svo);
+	}
+
+	@Override
+	public Integer countArticles() {
+		return dao.countArticles();
+	}
+
+	@Override
+	public List<ArticleVO> getArticleByTitleContent(SearchVO svo) {
+		return dao.getArticleByTitleContent(svo);
+	}
+
+	@Override
+	public Integer countArticlesByTitleContent(SearchVO svo) {
+		return dao.countArticlesByTitleContent(svo);
+	}
+
 
 	
 }

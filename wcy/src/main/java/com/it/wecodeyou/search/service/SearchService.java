@@ -21,34 +21,19 @@ public class SearchService implements ISearchService{
 	ITagMapper dao;
 
 	@Override
-	public ArrayList<ArticleVO> searchArticleByKeywordList(SearchVO svo) throws SQLException {
-			return dao.searchArticleByKeywordList(svo);
-	}
-
-	@Override
 	public ArrayList<ProductVO> searchAllProductByKeywordList(SearchVO svo) throws SQLException {
 			return dao.searchAllProductByKeywordList(svo);
 	}
 
 	@Override
-	public ArrayList<ProductVO> searchOnlineByKeywordList(SearchVO svo) throws SQLException {
-			return dao.searchOnlineByKeywordList(svo);
-	}
-
-	@Override
-	public ArrayList<ProductVO> searchOfflineByKeywordList(SearchVO svo) throws SQLException {
-			return dao.searchOfflineByKeywordList(svo);
-	}
-	
-	@Override
-	public ArrayList<ProductVO> searchProductByKeywordList(SearchVO svo) throws SQLException {
-			return dao.searchProductByKeywordList(svo);
-	}
-
-
-	@Override
 	public ArrayList<ProductVO> productByKeywordList(SearchVO svo) throws SQLException {
 			return dao.productByKeywordList(svo);
 	}
+
+	@Override
+	public Integer countProductsByKeywordList(SearchVO svo) {
+			return dao.countProductsByKeywordList(svo);
+	}
+
 
 }

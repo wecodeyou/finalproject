@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.search.model.SearchVO;
 
 @Service
 public interface IProductService {
@@ -20,5 +21,20 @@ public interface IProductService {
 	
 	public ProductVO getOneInfo(Integer productNo);
 	
-	public boolean insertPtag(ArrayList<Integer> sendTagList, Integer productNo); 
+	public boolean insertPtag(ArrayList<Integer> sendTagList, Integer productNo);
+
+	public List<ProductVO> Product(SearchVO svo);
+
+	public List<ProductVO> getProductByTitle(SearchVO svo);
+
+	public Integer countProductsByTitle(SearchVO svo);
+
+	public List<ProductVO> getProductByTitleContent(SearchVO svo);
+
+	public Integer countProductsByTitleContent(SearchVO svo);
+
+	public List<ProductVO> getProductListPaging(SearchVO svo);
+
+	public Integer countProducts(); 
+	
 }
