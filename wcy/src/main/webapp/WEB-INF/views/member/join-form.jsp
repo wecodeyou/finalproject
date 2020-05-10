@@ -5,35 +5,119 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<!-- <script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.js"></script> -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- 파비콘 적용 -->
+<link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+
+
+<link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
+
+<title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
+
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<style>
+
+    
+    .left-section{float: left; width:210px;}
+    .left-section > h2{width: 210px; height: 112px; background: #25283D; color: #fff; text-align: center; display: table-cell; vertical-align: middle;}
+    .left-section .left-sub-nav{width:210px; border: solid #dbdbdb; border-width: 0 1px; box-sizing: border-box;}
+    .left-section .left-sub-nav>li>a{padding: 10px 20px; font-size: 14px; display: block; position: relative; border-bottom: 1px solid #dbdbdb; font-weight: bold; color: #333;}
+    
+    
+    .right-section{width:840px; float: right; position: relative;}
+    
+    .right-header .right-sub-nav{width: 100%; background: #f4f4f4; border-radius: 5px; display: table; table-layout: fixed; margin-bottom: 50px; overflow: hidden;}
+    .right-header .right-sub-nav li{display: table-cell;}
+    .right-header .right-sub-nav li a{display: block; height: 60px; box-sizing: border-box; font-size: 18px; color: #888; padding: 0 0 0 20px; line-height: 60px; border-bottom: 4px solid #ddd;}
+    .right-sub-nav li a.active{color: #25283D; border-color: #25283D;}
+    
+    
+    .contents-title:before{display: block; content: ''; width: 50px; height: 3px; background:#25283D; position: absolute; left: 0; top: 0;}
+    .contents-title{font-size: 22px; margin-bottom: 20px; color: #000; position: relative; padding-top: 5px; height: 40px; line-height: 40px;}
+    
+
+    
+    p{line-height: 150% !important;}
+
+</style>
+
 </head>
 <body>
 
+<jsp:include page="../include/header-sub.jsp" />
    
-   이메일 <input type="email" id="userEmail" name="userEmail" value="${user_email}" readonly="readonly"/><span id="emailChk"></span><br>
    
-   비밀번호 <input type="password" id="userPw" name="userPw" /><span id="pwChk1"></span><br>
-   <span id="pwChk"> </span><br>
-   비밀번호 확인 <input type="password" id="userPwChk" name="userPwChk" /><span id="pwChk2"></span><br>
-   <span id="pwChk2"> </span><br>
-   이름 <input type="text" id="userName" name="userName" /><span id="nameChk"></span><br>
-   전화번호 <input type="text" id="userTel" name="userTel" placeholder="-을 제외한 11자리 번호 입력"/><span id="telChk"></span><br>
-   생일 <input type="date" id="userBirthday" name="userBirthday" /> <br>
-   주소
-   <input type="text" name="userZipcode" id="userZipCode" placeholder="우편번호 검색하기" readonly="readonly" onclick="openDaumPostcode('userZipCode','userFirstAddr','userSecondAddr'); return false;" />
-   <input type="text" name="userAddress" id="userFirstAddr" readonly="readonly">
-   <input type="text" name="userDetailAddress" type="text" id="userSecondAddr" placeholder="상세주소를 입력해주세요" required="required">
+   <main class="wcy-main-content">
+       <div class="left-section">
+	        <h2>로그인 / 회원가입</h2>
+	        <ul class="left-sub-nav">
+	            <li><a href="#">로그인</a></li>
+	            <li><a href="#">회원가입</a></li>
+	            <li><a href="#">아이디(이메일)찾기</a></li>
+	            <li><a href="#">비밀번호 찾기</a></li>
+	        </ul>
+    	</div>
 
-   <div id="layer" style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
-      <img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer"
-         style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-   </div>
-   <br>
-   
-   <input type="button" id="signup-btn" value="회원가입" />
+    	<div class="right-section">
+	        <div class="right-header">
+	            <ul class="right-sub-nav">
+	                <li><a>01 약관확인 및 본인인증</a></li>
+	                <li><a class="active">02 회원가입 정보입력</a></li>
+	                <li><a>03 가입완료</a></li>
+	            </ul> 
+	        </div>
+	        
+	        <div class="right-contents">
+            	<h4 class="contents-title">회원가입</h4>
+            	<div class="">
+            		<label for="userEmail">아이디(이메일)</label>
+            		<input type="email" id="userEmail" name="userEmail" value="${user_email}" readonly="readonly"/><span id="emailChk"></span>
+            	</div>
+            	<div class="">
+            		<label for="userPw">비밀번호</label>
+            		<input type="password" id="userPw" name="userPw" /><span id="pwChk1"></span>
+            	</div>
+            	<div class="">
+            		<label for="userPwChk">비밀번호 확인</label>
+            		<input type="password" id="userPwChk" name="userPwChk" /><span id="pwChk2"></span>
+            	</div>
+				<div class="">
+					<label for="userName">이름</label>
+					<input type="text" id="userName" name="userName" /><span id="nameChk"></span>
+				</div>
+            	<div class="">
+            		<label for="userTel">휴대폰번호</label>
+            		<input type="text" id="userTel" name="userTel" placeholder="-을 제외한 11자리 번호 입력"/><span id="telChk"></span>
+            	</div>
+            	<div class="">
+            		<label for="userBirthday">생일</label>
+            		<input type="date" id="userBirthday" name="userBirthday" />
+            	</div>
+            	<div class="">
+            	   <input type="text" name="userZipcode" id="userZipCode" placeholder="우편번호 검색하기" readonly="readonly" onclick="openDaumPostcode('userZipCode','userFirstAddr','userSecondAddr'); return false;" />
+				   <input type="text" name="userAddress" id="userFirstAddr" readonly="readonly">
+				   <input type="text" name="userDetailAddress" type="text" id="userSecondAddr" placeholder="상세주소를 입력해주세요" required="required">
+				
+				   <div id="layer" style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+				      <img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer"
+				         style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+				   </div>
+            	</div>    	
+            	<input type="button" id="signup-btn" value="회원가입" />
+	        </div>
+	   </div>
+   </main>
+
+
+<jsp:include page="../include/footer.jsp" />  
+
+
+<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
+<script src="<c:url value = "/js/main.js"/>"></script>   
+
 
 
 <script type="text/javascript">

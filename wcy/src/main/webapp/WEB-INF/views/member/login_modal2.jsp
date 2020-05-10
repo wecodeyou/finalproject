@@ -90,7 +90,7 @@
 						<span id="emailCheck" class="m-l-10"></span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "UserEmail is required">
-						<input class="input100" type="text" name="userEmail" id="loginUserEmail" aria-required="true">
+						<input class="input100" type="text" name="userEmail" id="userEmail" aria-required="true" placeholder="aaa@google.com">
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -282,14 +282,14 @@ $(function(){
 
 	   // 1. 로그인 입력값 검증 =======================================================================
 	   // 1) 이메일 입력값 keyup 검증
-	   $("#loginUserEmail").on("keyup",function(){
+	   $("#userEmail").on("keyup",function(){
 	      // 이메일 공백
-	      if($("#loginUserEmail").val() == ""){
+	      if($("#userEmail").val() == ""){
 	         $('#emailCheck').html('<b style="font-size:14px;color:red;">이메일을 입력해주세요.</b>');
 	         chk1 = false;
 	      }
 	      // 이메일 유효성 검증
-	      else if(!getMail.test($("#loginUserEmail").val())){
+	      else if(!getMail.test($("#userEmail").val())){
 	         $('#emailCheck').html('<b style="font-size:14px;color:red;">이메일 형식에 맞게 입력해주세요.</b>');
 	         chk1 = false;
 	      }
@@ -319,7 +319,7 @@ $(function(){
 	      // 위의 검증을 모두 통과한 경우!!!!!!!!!!!!!
 	      if(chk1 && chk2) {
 	         //ajax통신으로 서버에서 값 받아오기
-	         const email = $('#loginUserEmail').val();
+	         const email = $('#userEmail').val();
 	         const pw = $('#userPw').val();
 	         
 	         console.log("id: " + email);
@@ -344,7 +344,7 @@ $(function(){
 	               if(data === "emailFail") {
 	                  $('#emailCheck').html('<b style="font-size:14px;color:red;">존재하지 않는 이메일입니다. 회원가입 해주세요.</b>');
 	                  $('#userPw').val("");
-	                  $('#loginUserEmail').focus();
+	                  $('#userEmail').focus();
 	                  chk2 = false;
 	                } else if(data === "pwFail") {
 	                  $('#pwCheck').html('<b style="font-size:14px;color:red;">비밀번호가 틀렸습니다.</b>');

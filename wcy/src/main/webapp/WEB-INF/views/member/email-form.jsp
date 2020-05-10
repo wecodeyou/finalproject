@@ -213,7 +213,7 @@
                       <li class="mb20"><strong>이메일로 인증번호 발송</strong></li>
                         <li class="mb10">이메일 인증을 받아야 다음 단계로 넘어갈 수 있습니다.</li>
                         <li class="mb10">
-                            이메일 : <input type="email" name="userEmail" id="userEmail" placeholder="example@google.com">
+                         	 이메일 : <input type="email" name="userEmail" id="userEmail" placeholder="example@google.com">
                             <button type="button" id="check_btn" onclick="isOverRap()">이메일 중복체크</button>
                             <span id="emailChk"></span>
                         </li>
