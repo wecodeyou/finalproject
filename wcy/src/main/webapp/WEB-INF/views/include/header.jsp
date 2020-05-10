@@ -305,10 +305,10 @@
    
    <section class="wcy-main-img">
       <div class="wcy-img-content">
-         <a href="#"><img src="<c:url value='/img/main/sample01.png'/>" alt="" title="이미지1" /></a>
-         <a href="#"><img src="<c:url value='/img/main/sample02.png'/>" alt="" title="이미지2" /></a>
-         <a href="#"><img src="<c:url value='/img/main/sample03.png'/>" alt="" title="이미지3" /></a>
-         <a href="#"><img src="<c:url value='/img/main/sample04.png'/>" alt="" title="이미지4" /></a>
+         <a href="#"><img src="<c:url value='/img/main/mainrollingimg1.png'/>" alt="" title="이미지1" /></a>
+         <a href="#"><img src="<c:url value='/img/main/mainrollingimg2.png'/>" alt="" title="이미지2" /></a>
+         <a href="#"><img src="<c:url value='/img/main/mainrollingimg3.png'/>" alt="" title="이미지3" /></a>
+         <a href="#"><img src="<c:url value='/img/main/mainrollingimg4.png'/>" alt="" title="이미지4" /></a>
       </div>
    </section>
 

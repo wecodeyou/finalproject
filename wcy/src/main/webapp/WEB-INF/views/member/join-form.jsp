@@ -38,7 +38,7 @@
     .contents-title:before{display: block; content: ''; width: 50px; height: 3px; background:#25283D; position: absolute; left: 0; top: 0;}
     .contents-title{font-size: 22px; margin-bottom: 20px; color: #000; position: relative; padding-top: 5px; height: 40px; line-height: 40px;}
     
-
+	.form-control{width:500px !important;}
     
     p{line-height: 150% !important;}
 
@@ -71,42 +71,59 @@
 	        </div>
 	        
 	        <div class="right-contents">
-            	<h4 class="contents-title">회원가입</h4>
-            	<div class="">
-            		<label for="userEmail">아이디(이메일)</label>
-            		<input type="email" id="userEmail" name="userEmail" value="${user_email}" readonly="readonly"/><span id="emailChk"></span>
-            	</div>
-            	<div class="">
-            		<label for="userPw">비밀번호</label>
-            		<input type="password" id="userPw" name="userPw" /><span id="pwChk1"></span>
-            	</div>
-            	<div class="">
-            		<label for="userPwChk">비밀번호 확인</label>
-            		<input type="password" id="userPwChk" name="userPwChk" /><span id="pwChk2"></span>
-            	</div>
-				<div class="">
-					<label for="userName">이름</label>
-					<input type="text" id="userName" name="userName" /><span id="nameChk"></span>
-				</div>
-            	<div class="">
-            		<label for="userTel">휴대폰번호</label>
-            		<input type="text" id="userTel" name="userTel" placeholder="-을 제외한 11자리 번호 입력"/><span id="telChk"></span>
-            	</div>
-            	<div class="">
-            		<label for="userBirthday">생일</label>
-            		<input type="date" id="userBirthday" name="userBirthday" />
-            	</div>
-            	<div class="">
-            	   <input type="text" name="userZipcode" id="userZipCode" placeholder="우편번호 검색하기" readonly="readonly" onclick="openDaumPostcode('userZipCode','userFirstAddr','userSecondAddr'); return false;" />
-				   <input type="text" name="userAddress" id="userFirstAddr" readonly="readonly">
-				   <input type="text" name="userDetailAddress" type="text" id="userSecondAddr" placeholder="상세주소를 입력해주세요" required="required">
-				
-				   <div id="layer" style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
-				      <img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer"
-				         style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-				   </div>
-            	</div>    	
-            	<input type="button" id="signup-btn" value="회원가입" />
+            	<h4 class="contents-title mb20">회원가입</h4>
+            	<form class="form-horizontal">
+	            	<div class="form-group">
+	            		<label for="userEmail" class="col-sm-2 control-label">아이디(이메일)</label>
+	            		<div class="col-sm-10">
+	            			<input type="email" id="userEmail" class="form-control mt10" name="userEmail" value="${user_email}" readonly="readonly"/><span id="emailChk"></span>
+	            		</div>
+	            	</div>
+	            	<div class="form-group">
+	            		<label for="userPw" class="col-sm-2 control-label">비밀번호</label>
+	            		<div class="col-sm-10">
+	            			<input type="password" id="userPw" class="form-control mt10" name="userPw" /><span id="pwChk1"></span>
+	            		</div>
+	            	</div>
+	            	<div class="form-group">
+	            		<label for="userPwChk" class="col-sm-2 control-label">비밀번호 확인</label>
+	            		<div class="col-sm-10">
+	            			<input type="password" id="userPwChk" class="form-control mt10" name="userPwChk" /><span id="pwChk2"></span>
+	            		</div>
+	            	</div>
+					<div class="form-group">
+						<label for="userName" class="col-sm-2 control-label">이름</label>
+						<div class="col-sm-10">
+							<input type="text" id="userName" class="form-control mt10" name="userName" /><span id="nameChk"></span>
+						</div>
+					</div>
+	            	<div class="form-group">
+	            		<label for="userTel" class="col-sm-2 control-label">휴대폰번호</label>
+	            		<div class="col-sm-10">
+	            			<input type="text" id="userTel" class="form-control mt10" name="userTel" placeholder="-을 제외한 11자리 번호 입력"/><span id="telChk"></span>
+	            		</div>
+	            	</div>
+	            	<div class="form-group">
+	            		<label for="userBirthday" class="col-sm-2 control-label">생일</label>
+	            		<div class="col-sm-10">
+	            			<input type="date" id="userBirthday" class="form-control mt10" name="userBirthday" />
+	            		</div>
+	            	</div>
+	            	<div class="form-group">
+	            	   <label for="userZipCode" class="col-sm-2 control-label">주소</label>
+	            	   <div class="col-sm-10">
+							<input type="text" name="userZipcode" id="userZipCode" class="form-control mt10" placeholder="우편번호 검색하기" readonly="readonly" onclick="openDaumPostcode('userZipCode','userFirstAddr','userSecondAddr'); return false;" />
+					  		<input type="text" name="userAddress" id="userFirstAddr" class="form-control mt5" readonly="readonly">
+					  		<input type="text" name="userDetailAddress" type="text" id="userSecondAddr" class="form-control mt5 mb20" placeholder="상세주소를 입력해주세요" required="required">
+					   </div>
+					   <div id="layer" style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+					      <img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer"
+					         style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+					   </div>
+	            	</div>    	
+	            </form>
+		            	<input type="button" id="signup-btn" value="회원가입" class="btn btn-success ml15 mr15"/>
+		            	<input type="reset" value="취소" class="btn btn-warning" />
 	        </div>
 	   </div>
    </main>
@@ -338,7 +355,7 @@
 </script>
 
 
-<!-- 이메일 인증 -->
+<!-- 이메일 인증 
 <script type="text/javascript">
    $(function(){
       //이메일인증 - 발송 버튼 클릭시
@@ -387,7 +404,7 @@
       });
    });
 </script>
-
+-->
 
 <!-- 주소 -->
 <script>

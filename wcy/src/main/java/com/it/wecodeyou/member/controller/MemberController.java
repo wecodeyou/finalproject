@@ -195,7 +195,7 @@ public class MemberController {
 		
 	   //mailSending
 	   @PostMapping("/auth")
-	   public void emailSending(@RequestBody String userEmail, Model model, HttpSession session) throws IOException {
+	   public void emailSending(@RequestBody String userEmail, HttpSession session) throws IOException {
 	    
 	     //중복된 경우 -> 다시 email-form으로 
 	     if(checkEmail(userEmail).equals("NO") || userEmail.equals("")){// 중복되면 
@@ -233,7 +233,7 @@ public class MemberController {
 	            e.printStackTrace();
 	         }
 	         
-	         model.addAttribute("user_email", userEmail);
+	         session.setAttribute("user_email", userEmail);
 	         session.setAttribute("dice", dice);
 	         
 	         System.out.println("인증 code: "+dice);

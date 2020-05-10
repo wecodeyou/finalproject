@@ -48,6 +48,8 @@
     .email-auth-contents li{padding 3px 0;}
     
     p{line-height: 150% !important;}
+    
+
 
 </style>
 
@@ -285,7 +287,7 @@ function sendChkMail(){
          $('#next').prop('disabled',true);
     }else{} */
     // 잠시 잠궈놓음
-
+	
     var email = document.getElementById('userEmail');  
     $.ajax({
          type:"POST",
@@ -302,7 +304,7 @@ function sendChkMail(){
             document.getElementById('dice').value = result;
          },
          error:function(){
-            console.log("서버와 통신 실패");
+            console.log("서버와 통신 실패1");
          }
       });
 }   
@@ -350,13 +352,15 @@ function sendChkMail(){
          dataType:"text",
          data:$(email).val(),
          success:function(result){
+            alert('인증번호가 발송되었습니다.');
             document.getElementById('submit_btn').style.display="none";
             document.getElementById('auth_div').style.display="block";
             
             document.getElementById('dice').value = result;
          },
          error:function(){
-            console.log("서버와 통신 실패");
+            console.log("서버와 통신 실패2");
+            alert('이메일 입력 후 중복확인을 먼저 해주세요.');
          }
       });
 }   
@@ -385,7 +389,7 @@ function chkCode(){
               }
         },
         error:function(){
-           console.log("서버와 통신 실패");
+           console.log("서버와 통신 실패3");
         }
      });
 }     
@@ -431,7 +435,7 @@ function isOverRap(){
                $("#submit_btn").prop("disabled",false);
             },
             error:function(){
-               console.log("서버와 통신 실패");
+               console.log("서버와 통신 실패4");
             }
          });
       }   

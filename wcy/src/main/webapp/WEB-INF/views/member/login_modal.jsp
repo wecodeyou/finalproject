@@ -106,12 +106,12 @@
 						<span id="pwCheck" class="m-l-10"></span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="userPw" id="userPw" aria-required="true" >
+						<input class="input100" type="password" name="userPw" id="loginUserPw" aria-required="true" >
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn" id="login-btn" value="로그인">
+						<button type="button" class="login100-form-btn" id="login-btn" value="로그인">
 							로그인
 						</button>
 					</div>
@@ -135,6 +135,7 @@
 <!--===============================================================================================-->
 	<script src="<c:url value = "/vendor/jquery/jquery-3.2.1.min.js"/>"></script>
 	<script src="<c:url value = "/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
+   
     
 
 <script>
@@ -146,8 +147,8 @@
     /*==================================================================
     [ Validate ]*/
     var input = $('.validate-input .input100');
-
-    $('.validate-form').on('submit',function(){
+    
+    $('.login100-form-btn').click(function(){
         var check = true;
 
         for(var i=0; i<input.length; i++) {
@@ -160,6 +161,20 @@
         return check;
     });
 
+    /*
+    $('.validate-form').on('submit',function(){
+        var check = true;
+
+        for(var i=0; i<input.length; i++) {
+            if(validate(input[i]) == false){
+                showValidate(input[i]);
+                check=false;
+            }
+        }
+
+        return check;
+    });
+	*/
 
     $('.validate-form .input100').each(function(){
         $(this).focus(function(){
@@ -301,9 +316,9 @@ $(function(){
 	   }); // end - 이메일 입력값 검증
 	   
 	   // 2) 패스워드 입력값 keyup 검증
-	   $("#userPw").on("keyup",function(){
+	   $("#loginUserPw").on("keyup",function(){
 	      // 패스워드 공백
-	      if($("#userPw").val() == ""){
+	      if($("#loginUserPw").val() == ""){
 	         $('#pwCheck').html('<b style="font-size:14px;color:red;">비밀번호를 입력해주세요.</b>');
 	         chk2 = false;
 	      }
@@ -320,7 +335,7 @@ $(function(){
 	      if(chk1 && chk2) {
 	         //ajax통신으로 서버에서 값 받아오기
 	         const email = $('#loginUserEmail').val();
-	         const pw = $('#userPw').val();
+	         const pw = $('#"loginUserPw"').val();
 	         
 	         console.log("id: " + email);
 	         console.log("pw: " + pw);
@@ -343,13 +358,13 @@ $(function(){
 	               
 	               if(data === "emailFail") {
 	                  $('#emailCheck').html('<b style="font-size:14px;color:red;">존재하지 않는 이메일입니다. 회원가입 해주세요.</b>');
-	                  $('#userPw').val("");
+	                  $('#"loginUserPw"').val("");
 	                  $('#loginUserEmail').focus();
 	                  chk2 = false;
 	                } else if(data === "pwFail") {
 	                  $('#pwCheck').html('<b style="font-size:14px;color:red;">비밀번호가 틀렸습니다.</b>');
-	                  $('#userPw').val("");
-	                  $('#userPw').focus();
+	                  $('#"loginUserPw"').val("");
+	                  $('#"loginUserPw"').focus();
 	                  chk2 = false;
 	               } else if(data === "loginSuccess") {
 	                  self.location="/";
@@ -371,16 +386,6 @@ $(function(){
 	   
 	}); //end - jquery
 </script>
-
-
-
-
-
-
-
-
-
-
 
 
 
