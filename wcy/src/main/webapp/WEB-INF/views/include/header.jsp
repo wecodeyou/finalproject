@@ -121,80 +121,80 @@
          	<a href="#">온라인 강의<span>&#x25BE;</span></a>
             <div class="sub-menu-1">	
                <ul>
-                  <li class="hover-me"><a href="#">Programming</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=102' />">Programming</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">Spring Framework Open Source Project</a></li>
-                           <li style="width:300px;"><a href="#">Android App 개발</a></li>
-                           <li style="width:300px;"><a href="#">JSP Programming</a></li>
-                           <li style="width:300px;"><a href="#">JAVA Programming</a></li>
-                           <li style="width:300px;"><a href="#">TCP/IP 소켓 프로그래밍</a></li>
-                           <li style="width:300px;"><a href="#">자료구조</a></li>
-                           <li style="width:300px;"><a href="#">C++</a></li>
-                           <li style="width:300px;"><a href="#">C언어</a></li>
-                           <li style="width:300px;"><a href="#">Python을 이용한 웹서버 구축 </a></li>
-                           <li style="width:300px;"><a href="#">Python 기초 </a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2001' />">Spring Framework Open Source Project</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2002' />">Android App 개발</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2003' />">JSP Programming</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2004' />">JAVA Programming</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2005' />">TCP/IP 소켓 프로그래밍</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2006' />">자료구조</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2007' />">C++</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2008' />">C언어</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2009' />">Python을 이용한 웹서버 구축 </a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2010' />">Python 기초 </a></li>
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">Cloud</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=103' />">Cloud</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">AWS Cloud 입문</a></li>
-                           <li style="width:300px;"><a href="#">AWS Technical Essentials</a></li>
-                           <li style="width:300px;"><a href="#">Architecting on AWS</a></li>
-                           <li style="width:300px;"><a href="#">Windows Server New Features</a></li>
-                           <li style="width:300px;"><a href="#">Windows Server Azure</a></li>
-                           <li style="width:300px;"><a href="#">Windows Azure Cloud</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3001' />">AWS Cloud 입문</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3002' />">AWS Technical Essentials</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3003' />">Architecting on AWS</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3004' />">Windows Server New Features</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3005' />">Windows Server Azure</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3006' />">Windows Azure Cloud</a></li>
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">Network</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=104' />">Network</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">CCNP-Switch</a></li>
-                           <li style="width:300px;"><a href="#">CCNP-Route</a></li>
-                           <li style="width:300px;"><a href="#">네트워크기초</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4001' />">CCNP-Switch</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4002' />">CCNP-Route</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4003' />">네트워크기초</a></li>
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">System/Server</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=105' />">System/Server</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">LinuxServer</a></li>
-                           <li style="width:300px;"><a href="#">WindowsServer 2012</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=5001' />">LinuxServer</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=5002' />">WindowsServer 2012</a></li>
                         </ul>                     
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">Hacking</a>
-                     <div class="sub-menu-2">
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=106' />">Hacking</a>
+                     <div class="sub-menu-2">600
                         <ul>
-                           <li style="width:300px;"><a href="#">Hacking Trace</a></li>
-                           <li style="width:300px;"><a href="#">Web Hacking</a></li>
-                           <li style="width:300px;"><a href="#">악성코드분석</a></li>
-                           <li style="width:300px;"><a href="#">리버스엔지니어링</a></li>
-                           <li style="width:300px;"><a href="#">시스템 해킹</a></li>
-                           <li style="width:300px;"><a href="#">네트워크 해킹</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6001' />">Hacking Trace</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6002' />">Web Hacking</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6003' />">악성코드분석</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6004' />">리버스엔지니어링</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6005' />">시스템 해킹</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6006' />">네트워크 해킹</a></li>
                         </ul>                     
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">Database</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=107' />">Database</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">R 프로그래밍</a></li>
-                           <li style="width:300px;"><a href="#">하둡 프로그래밍</a></li>
-                           <li style="width:300px;"><a href="#">Oracle(WDP)</a></li>
-                           <li style="width:300px;"><a href="#">Oracle Database 12c:SQL</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=7001' />">R 프로그래밍</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=7002' />">하둡 프로그래밍</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=7003' />">Oracle(WDP)</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=7004' />">Oracle Database 12c:SQL</a></li>
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">자격증</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=108' />">자격증</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">정보처리기능사-필기</a></li>
-                           <li style="width:300px;"><a href="#">정보처리기능사-실기</a></li>
-                           <li style="width:300px;"><a href="#">정보처리기사-필기</a></li>
-                           <li style="width:300px;"><a href="#">정보처리기사-실기</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=8001' />">정보처리기능사-필기</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=8002' />">정보처리기능사-실기</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=8003' />">정보처리기사-필기</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=8004' />">정보처리기사-실기</a></li>
                         </ul>                  
                      </div>
                   </li>
@@ -205,64 +205,64 @@
          <li><a href="#">현장 강의<span>&#x25BE;</span></a>
             <div class="sub-menu-1">
                 <ul>
-                  <li class="hover-me"><a href="#">학원 둘러보기</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/off_main?seq=109' />">학원 둘러보기</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">종로점</a></li>
-                           <li style="width:300px;"><a href="#">강남점</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=9001' />">종로점</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=9002' />">강남점</a></li>
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">Programming</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/off_main?seq=102' />">Programming</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">Spring Framework Open Source Project</a></li>
-                           <li style="width:300px;"><a href="#">Android App 개발</a></li>
-                           <li style="width:300px;"><a href="#">JSP Programming</a></li>
-                           <li style="width:300px;"><a href="#">JAVA Programming</a></li>
-                           <li style="width:300px;"><a href="#">C언어</a></li>
-                           <li style="width:300px;"><a href="#">Python을 이용한 웹서버 구축 </a></li>
-                           <li style="width:300px;"><a href="#">Python 기초 </a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2001' />">Spring Framework Open Source Project</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2002' />">Android App 개발</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2003' />">JSP Programming</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2004' />">JAVA Programming</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2008' />">C언어</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2009' />">Python을 이용한 웹서버 구축 </a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=2010' />">Python 기초 </a></li>
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">Network</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/off_main?seq=104' />">Network</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">CCNP - 통합</a></li>
-                           <li style="width:300px;"><a href="#">네트워크기초</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4004' />">CCNP - 통합</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4003' />">네트워크기초</a></li>
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">System/Server</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/off_main?seq=105' />">System/Server</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">LinuxServer</a></li>
-                           <li style="width:300px;"><a href="#">WindowsServer 2012</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=5001' />">LinuxServer</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=5002' />">WindowsServer 2012</a></li>
                         </ul>                     
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">Hacking</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/main?seq=106' />">Hacking</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">Hacking Trace</a></li>
-                           <li style="width:300px;"><a href="#">Web Hacking</a></li>
-                           <li style="width:300px;"><a href="#">시스템 해킹</a></li>
-                           <li style="width:300px;"><a href="#">네트워크 해킹</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6001' />">Hacking Trace</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6002' />">Web Hacking</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6005' />">시스템 해킹</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6006' />">네트워크 해킹</a></li>
                         </ul>                     
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">Database</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/main?seq=107' />">Database</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">Oracle - 통합</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=7005' />">Oracle - 통합</a></li>
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">자격증</a>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/main?seq=108' />">자격증</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="#">정보처리기사 - 필기/실기</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=8005' />">정보처리기사 - 필기/실기</a></li>
                         </ul>                  
                      </div>
                   </li>

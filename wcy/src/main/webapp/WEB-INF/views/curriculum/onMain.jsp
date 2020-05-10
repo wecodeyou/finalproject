@@ -124,27 +124,32 @@ p {
 
 	<main class="wcy-main-content">
 		<div class="left-section">
-			<h2>WeCodeYou</h2>
+			<h2>온라인 강의</h2>
 			<ul class="left-sub-nav">
-				<li><a href="#">인삿말</a></li>
-				<li><a href="#">WCY 소개</a></li>
-				<li><a class="active" href="#">오시는 길</a></li>
+				<li><a href="#">Programing</a></li>
+				<li><a href="#">Cloud</a></li>
+				<li><a href="#">Netork</a></li>
+				<li><a href="#">System/Server</a></li>
+				<li><a href="#">Hacking</a></li>
+				<li><a href="#">DataBase</a></li>
+				<li><a href="#">자격증</a></li>
 			</ul>
 		</div>
 
 		<div class="right-section">
 			<div class="right-header">
 				<ul class="right-sub-nav">
-					<li><a class="active"> 오시는길 </a></li>
+					<li><a class="active">>커리큘럼 메인페이지 시퀀스 ${seq}</a></li>
 				</ul>
 			</div>
 			<div class="right-contents">
-				<h4 class="contents-title">WeCodeYou의 위치 안내입니다.</h4>
+				<h4 class="contents-title">메인 페이지의 seq는 102~109 까지 있습니다.</h4>
 				<p class="mb10">
-					<a href="#">종로</a>
-					/<a href="#">강남</a><br>
-					<br>
-					클릭에 따라서 지도 위치 
+
+
+					102 = programming<br> 103 = cloud<br> 104 = network<br>
+					105 = system/server<br> 106 = hacking<br> 107 = database<br>
+					108 = 자격증<br> 109 = 학원 둘러보기<br>
 				</p>
 			</div>
 		</div>
