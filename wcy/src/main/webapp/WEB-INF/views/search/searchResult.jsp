@@ -122,6 +122,7 @@
 	</div>
 	<br><br>
 	
+	
 	<div id="contents">
 		<c:if test="${fn:length(onList)!=0}">
 			<h3>온라인 강의 검색결과</h3>
