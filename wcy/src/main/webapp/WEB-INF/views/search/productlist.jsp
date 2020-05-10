@@ -150,7 +150,7 @@
 										</c:if>
 									</c:if>
 								</c:forEach>
-								<a class="title_link" href="<c:url value="/on/${p.productNo}"/>">${p.productName}</a>
+								<a class="title_link" href="<c:url value="/product/${p.productNo}"/>">${p.productName}</a>
 							</div>
 						</td>
 						<td>${p.productDetail}</td>
