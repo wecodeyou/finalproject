@@ -103,9 +103,12 @@
 			<ul id="wcy-menu">
 				<li><a href="#"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
-				<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">
-					<c:if test="${login == null || login.userType == 0 || login.userType == 1}">마이페이지</c:if>
-					<c:if test="${login.userType == 2}">관리자페이지</c:if></p></i></a></li>
+				<c:if test="${login == null || login.userType == 0 || login.userType == 1}">
+				<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">마이페이지</p></i></a></li>
+				</c:if>
+				<c:if test="${login.userType == 2}">
+				<li><a href="#"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">
+					관리자페이지</p></i></a></li></c:if>
 				<li><a href="#"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
 			</ul>
 		</nav>
@@ -388,11 +391,7 @@ function logincheck(){
     if(${login == null}){
        alert("로그인이 필요한 서비스입니다.");
     }else{
-       if(${login.userType} == 0 || ${login.userType} == 1){
-    	   location.href="<c:url value='/mypage/myinfoChange' />";
-       }else {
-    	   location.href="<c:url value='/admin' />";
-       }
+    	location.href="<c:url value='/mypage/myinfoChange' />";
     }
        
  };
