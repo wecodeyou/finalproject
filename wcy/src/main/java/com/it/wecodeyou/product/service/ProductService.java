@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.repository.IProductMapper;
 import com.it.wecodeyou.ptag.repository.IPtagMapper;
+import com.it.wecodeyou.search.model.SearchVO;
 
 @Service
 public class ProductService implements IProductService {
@@ -59,6 +60,42 @@ public class ProductService implements IProductService {
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public List<ProductVO> Product(SearchVO svo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ProductVO> getProductByTitle(SearchVO svo) {
+		return pdao.getProductByTitle(svo);
+	}
+
+	@Override
+	public Integer countProductsByTitle(SearchVO svo) {
+		return pdao.countProductsByTitle(svo);
+	}
+
+	@Override
+	public List<ProductVO> getProductByTitleContent(SearchVO svo) {
+		return pdao.getProductByTitleContent(svo);
+	}
+
+	@Override
+	public Integer countProductsByTitleContent(SearchVO svo) {
+		return pdao.countProductsByTitleContent(svo);
+	}
+
+	@Override
+	public List<ProductVO> getProductListPaging(SearchVO svo) {
+		return pdao.getProductListPaging(svo);
+	}
+
+	@Override
+	public Integer countProducts() {
+		return pdao.countProducts();
 	}
 
 }

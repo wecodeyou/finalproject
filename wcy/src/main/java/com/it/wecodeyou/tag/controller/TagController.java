@@ -54,6 +54,11 @@ public class TagController {
    @GetMapping("/searchByInput")
    public ModelAndView searchByInput(ModelAndView mv) throws SQLException {
        
+	   
+	  
+	   
+	   
+	   
       ArrayList<TagVO>nameList = service.getAllTag();
       ArrayList<TagVO> ptagList = service.searchPTagNo();
       mv.addObject("ptagList", ptagList);
@@ -134,11 +139,11 @@ public class TagController {
          
          for (ProductVO pvo : pvoList) {
             if(pvo.getProductType().equals("0")) {
-               productList.add(pvo);
+            	onList.add(pvo);
             } else if(pvo.getProductType().equals("1")) {
                offList.add(pvo);
             } else {
-               onList.add(pvo);
+            	productList.add(pvo);
             }
          }
          //article
@@ -154,5 +159,10 @@ public class TagController {
       
       return mv;
    }
+  
+   	
+
+   
+   
 
 }

@@ -2,9 +2,11 @@ package com.it.wecodeyou.tag.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.search.model.SearchVO;
 import com.it.wecodeyou.tag.model.TagVO;
 
 public interface ITagService {
@@ -45,6 +47,23 @@ public interface ITagService {
       public ArrayList<String> searchTagByArticle(Integer articleNo) throws SQLException;
       
       //search ptagname by pno
-      public ArrayList<TagVO> searchTagByProduct(Integer productNo) throws SQLException;
+      public ArrayList<String> searchTagByAllProduct(Integer productNo) throws SQLException;
+      
+      //search on off product by productNo and productType
+      public ArrayList<String> searchTags(Integer productNo) throws SQLException;
+
+      //search article by %tag%
+      public List<ArticleVO> getArticleByHashtag(SearchVO svo);
+      
+      //count article by tags
+      public Integer countArticlesByHashtag(SearchVO svo);
+
+    //search product by %tag%
+      public List<ProductVO> getProductByHashtag(SearchVO svo);
+      
+      
+      
+      
+
 
 }

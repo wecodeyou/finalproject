@@ -6,8 +6,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" href="<c:url value='/css/reset.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/header.css'/>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
 <link rel="stylesheet" href="<c:url value='/css/tag.css'/>">
 <title>tag</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -19,10 +26,18 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 
 </head>
 <body>
-	<form action="" method="get">
-		<input type="text" placeholder="검색어를 입력하세요." /> <input type="submit"
-			value="검색" />
-	</form>
+	<ul id="wcy-search">
+		<li>
+			<fieldset id="search-fieldset">
+				<input type="search" id="search-input" placeholder="파이썬(Python)기초 프로젝트" />
+				<button type="submit" id="search-btn">
+					<i class="fa fa-search"></i>
+				</button>
+			</fieldset>
+		</li>
+	</ul>
+	
+	<script src="<c:url value='/js/search-main.js'/>"></script>
 
 </body>
 </html>

@@ -4,7 +4,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-<title>WE CODE YOU | HOME</title>
+
+<!-- 파비콘 적용 -->
+<link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+
+<title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 </head>
 <body>
 

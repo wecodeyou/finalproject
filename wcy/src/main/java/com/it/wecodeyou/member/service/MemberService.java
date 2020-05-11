@@ -88,6 +88,7 @@ public class MemberService implements IMemberService {
 
    @Override
    public MemberVO checkLogin(String userEmail) {
+	  dao.updateLoginedAt(userEmail);
       return dao.checkLogin(userEmail);
    }
 

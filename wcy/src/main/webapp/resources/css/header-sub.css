@@ -87,7 +87,7 @@ a {
   display: table;
   height: 100%;
   padding: 0 1em;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   text-transform: uppercase;
   color: #25283D;
   font-weight: bold;
@@ -170,7 +170,7 @@ a {
   display: inline-block;
   float: right;
   height: 18px;
-  padding-right: 8%;
+  padding-right: 70px;
   padding-top:1%;
 }
 
@@ -178,7 +178,7 @@ a {
   display: inline-block;
   float: right;
   height: 50px;
-  padding:2% 8% 2% 1%;
+  padding:30px 70px 30px 70px;
   width:100%;
 }
 
@@ -259,6 +259,11 @@ a {
   .wcy-search-menu > ul li:last-of-type {
     margin-right: 0;
   }
+  
+    .wcy-primary-nav > ul li:nth-of-type(3){
+    margin-right: 0;
+  }
+  
   .wcy-primary-nav > ul a {
     /* reset mobile style */
     height: auto;
@@ -543,7 +548,6 @@ Main content
 .search-form{
   width: 300px;
   margin: 0 auto;
-  /* padding-top: 8rem; */
 }
 
 #search-fieldset {
