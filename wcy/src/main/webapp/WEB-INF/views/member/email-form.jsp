@@ -62,9 +62,8 @@
 
 <main class="wcy-main-content">
     <div class="left-section">
-        <h2>로그인 / 회원가입</h2>
+        <h2>회원가입</h2>
         <ul class="left-sub-nav">
-            <li><a href="#">로그인</a></li>
             <li><a href="#">회원가입</a></li>
             <li><a href="#">아이디(이메일)찾기</a></li>
             <li><a href="#">비밀번호 찾기</a></li>
@@ -131,7 +130,7 @@
                 </div>
             </div>
             <div class="contents-check mt20">
-                <input type="checkbox" value="" id="agree" name="agree">
+                <input type="checkbox" value="true" id="agree" name="agree">
                 <label for="agree">위 이용약관에 동의합니다.</label>
             </div>
             
@@ -200,7 +199,7 @@
                 </div>
             </div>
             <div class="contents-check mt20">
-                <input type="checkbox" value="" id="agree2" name="agree">
+                <input type="checkbox" value="true" id="agree2" name="agree">
                 <label for="agree2">위 개인정보처리방침에 동의합니다.</label>
             </div>
             
@@ -225,15 +224,15 @@
 	                 		 <%-- <form action="<c:url value='/member/join_auth' />" method="post">--%>   
 	                   		<table border="1">
 	                        <tr>
-	                        <td>인증번호 입력: <input type="text" id="email_auth" name="email_auth" placeholder="인증번호를 입력해주세요"> </td>
+	                        <td>인증번호 입력: <input type="text" id="email_auth" name="email_auth" size="25" placeholder="인증번호를 입력해주세요">    <button type="submit" name="submit" onclick="chkCode()">이메일 인증하기</button>
+		                   </td>
 	                        </tr>
 	                        <tr>
 	                        <td>
 	                           <span id="auth_alert"></span></td>
 	                        </tr>
 	                        </table>
-		                     <button type="submit" name="submit" onclick="chkCode()">이메일 인증하기</button>
-		                     <input type="hidden" name="dice" id="dice" />
+		                    <input type="hidden" name="dice" id="dice" />
                   		</div>
 
                         </li>
@@ -279,90 +278,41 @@ $(document).ready(function() {
     document.getElementById('auth_div').style.display="none";
 });
    
-/* 인증번호 이메일을 발송하고 인증번호 입력창을 띄워주는  */   
-function sendChkMail(){
-
-   /*  if(!$(':input:checkbox[id=agree]:checked').val() || !$(':input:checkbox[id=agree2]:checked').val()){
-         alert("이용약관 및 개인정보처리방침에 모두 동의해주세요.");
-         $('#next').prop('disabled',true);
-    }else{} */
-    // 잠시 잠궈놓음
-	
-    var email = document.getElementById('userEmail');  
-    $.ajax({
-         type:"POST",
-         url:"/member/auth",
-         headers:{
-            "Content-Type":"application/json"
-         },
-         dataType:"text",
-         data:$(email).val(),
-         success:function(result){
-            document.getElementById('submit_btn').style.display="none";
-            document.getElementById('auth_div').style.display="block";
-            
-            document.getElementById('dice').value = result;
-         },
-         error:function(){
-            console.log("서버와 통신 실패1");
-         }
-      });
-}   
    
-
-// 인증번호 비교 
-function chkCode(){
-
-    var email_auth = document.getElementById('email_auth');
-
-    $.ajax({
-        type:"POST",
-        url:"/member/join_auth",
-        headers:{
-           "Content-Type":"application/json"
-        },
-        dataType:"text",
-        data:$(email_auth).val(),
-        success:function(result){
-            if(result==="YES"){
-                alert("인증성공! 정보입력 페이지로 이동됩니다.");
-                location.replace("/member/send_join");
-            } else{
-	 			document.getElementById('auth_div').style.display="none";
-            }
-        }
-	});
-}
+   
 /* 인증번호 이메일을 발송하고 인증번호 입력창을 띄워주는  */   
 function sendChkMail(){
 
-	/*  if(!$(':input:checkbox[id=agree]:checked').val() || !$(':input:checkbox[id=agree2]:checked').val()){
-	      alert("이용약관 및 개인정보처리방침에 모두 동의해주세요.");
-	      $('#next').prop('disabled',true);
-	 }else{} */
-	 // 잠시 잠궈놓음
-
-	 var email = document.getElementById('userEmail');  
-	 $.ajax({
-         type:"POST",
-         url:"/member/auth",
-         headers:{
-            "Content-Type":"application/json"
-         },
-         dataType:"text",
-         data:$(email).val(),
-         success:function(result){
-            alert('인증번호가 발송되었습니다.');
-            document.getElementById('submit_btn').style.display="none";
-            document.getElementById('auth_div').style.display="block";
-            
-            document.getElementById('dice').value = result;
-         },
-         error:function(){
-            console.log("서버와 통신 실패2");
-            alert('이메일 입력 후 중복확인을 먼저 해주세요.');
-         }
-      });
+	var email = document.getElementById('userEmail');  
+	
+	 if($(':input:checkbox[id=agree]:checked').val() === 'true' && $(':input:checkbox[id=agree2]:checked').val() === 'true' ){
+		 $.ajax({
+		         type:"POST",
+		         url:"/member/auth",
+		         headers:{
+		            "Content-Type":"application/json"
+		         },
+		         dataType:"text",
+		         data:$(email).val(),
+		         success:function(result){
+		        	alert('인증번호가 발송되었습니다. 인증번호를 적어주세요.'); 
+		            document.getElementById('submit_btn').style.display="none";
+		            document.getElementById('auth_div').style.display="block";
+		            
+		            document.getElementById('dice').value = result;
+		         },
+		         error:function(){
+		            console.log("서버와 통신 실패1");
+		            alert('이메일 입력 후 중복확인을 먼저 해주세요.');
+		         }
+		      });
+  }else{
+       alert("이용약관 및 개인정보처리방침에 모두 동의해주세요.");
+       $('#next').prop('disabled',true);
+  }  
+	 
+	 
+	 
 }   
    
 

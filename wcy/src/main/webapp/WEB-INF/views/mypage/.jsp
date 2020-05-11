@@ -115,6 +115,12 @@ p {
 	line-height: 150% !important;
 }
 </style>
+<c:if test="${login == null}">
+	<script>   
+	   alert("로그인이 필요한 서비스입니다.");
+	   location.href="<c:url value='/' />";
+	</script>
+</c:if>	
 
 </head>
 <body>
@@ -126,10 +132,10 @@ p {
 		<div class="left-section">
 			<h2>MyPage</h2>
 			<ul class="left-sub-nav">
-				<li><a class="active" href="<c:url value='/mypage/myinfoChange' />">내 정보</a></li>
-				<li><a href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
-				<li><a href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
-				<li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
+				<li><a href="#">정보 수정</a></li>
+				<li><a href="#">강의 리스트</a></li>
+				<li><a href="#">내 포인트</a></li>
+				<li><a href="#">최근 활동</a></li>
 			</ul>
 		</div>
 
@@ -142,7 +148,21 @@ p {
 			<div class="right-contents">
 				<h4 class="contents-title">${login.userName}님의 MYPAGE</h4>
 				<p class="mb10">
-					
+					<!-- 일단 들어와서 확인만 할때는 -->
+<c:if test="${change == null}">
+	<h1>내정보 확인 창입니다. </h1>
+	<br>
+	이메일: ${login.userEmail}<br> 
+	이름: ${login.userName}<br>
+	생일: ${user_birthday}<br>
+	전화번호: ${login.userTel}<br>
+	주 소: ${login.userAddress}&nbsp;${login.userDetailAddress}
+
+<br>
+<a href="<c:url value='/mypage/myinfoChange?change=info' />">내정보 수정</a> <br>
+<a href="<c:url value='/mypage/myinfoChange?change=pw' />">비밀번호 수정</a> <br>
+</c:if><br>
+
 
 <!-- 위의 정보들을 바꾸겠다. -->
 <c:if test="${change eq 'info'}">
@@ -466,13 +486,6 @@ p {
 
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
-
-<c:if test="${login == null}">
-	<script>   
-	   alert("로그인이 필요한 서비스입니다.");
-	   location.href="<c:url value='/' />";
-	</script>
-</c:if>	
 
 </body>
 </html>

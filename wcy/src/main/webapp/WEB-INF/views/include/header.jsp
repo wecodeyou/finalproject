@@ -282,7 +282,7 @@
          <li><a href="<c:url value='/board/list'/>">커뮤니티<span>&#x25BE;</span></a>
             <div class="sub-menu-1">
                 <ul>
-                  <li class="hover-me"><a href="#">공지사항</a></li>
+                  
                   <li class="hover-me"><a href="#">자유게시판</a></li>
                   <li class="hover-me"><a href="#">질문게시판</a>
                      <div class="sub-menu-2">
@@ -307,7 +307,7 @@
          </li>
          
          <li><a href="#">도움이 되는 사이트</a></li>
-         <li><a href="#">고객센터</a></li>
+         <li><a href="#">공지사항</a></li>
          
       </ul>
    </nav> <!-- .wcy-secondary-nav -->
@@ -388,14 +388,12 @@ $(document).ready(function(){
 	   if(${login == null}){
 	      alert("로그인이 필요한 서비스입니다.");
 	   }else{
-		   //alert("user type: " + ${login.userType});
 		  if(${login.userType} == 0 || ${login.userType} == 1) {
 			  location.href="<c:url value='/mypage/myinfoChange' />";
 		  }else {
 			  location.href="<c:url value='/admin' />";
 		  }
-	   }
-	      
+
 	};
 	
 
