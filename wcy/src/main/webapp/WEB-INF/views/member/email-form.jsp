@@ -10,11 +10,11 @@
 
 <!-- 파비콘 적용 -->
 <link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icheck-bootstrap@3.0.1/icheck-bootstrap.min.css" />
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
 
-<title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 
 <style>
 
@@ -129,7 +129,7 @@
                         </p>
                 </div>
             </div>
-            <div class="contents-check mt20">
+            <div class="mt20 contents-check checkbox icheck-alizarin">
                 <input type="checkbox" value="true" id="agree" name="agree">
                 <label for="agree">위 이용약관에 동의합니다.</label>
             </div>
@@ -198,7 +198,7 @@
                         </p>
                 </div>
             </div>
-            <div class="contents-check mt20">
+            <div class="contents-check mt20 checkbox icheck-alizarin">
                 <input type="checkbox" value="true" id="agree2" name="agree">
                 <label for="agree2">위 개인정보처리방침에 동의합니다.</label>
             </div>
@@ -214,7 +214,7 @@
                       <li class="mb20"><strong>이메일로 인증번호 발송</strong></li>
                         <li class="mb10">이메일 인증을 받아야 다음 단계로 넘어갈 수 있습니다.</li>
                         <li class="mb10">
-                         	 이메일 : <input type="email" name="userEmail" id="userEmail" placeholder="example@google.com">
+                         	 이메일 : <input type="email" name="userEmail" id="userEmail" placeholder="example@google.com" class="form-control form-rounded" style="display:inline-block; height:30px; width:200px;">
                             <button type="button" id="check_btn" onclick="isOverRap()">이메일 중복체크</button>
                             <span id="emailChk"></span>
                         </li>
