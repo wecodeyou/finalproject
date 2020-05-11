@@ -92,15 +92,17 @@ public class MemberService implements IMemberService {
       return dao.checkLogin(userEmail);
    }
 
-@Override
-public MemberVO findMemberById(String userEmail) {
-	try {
-		return dao.findMemberById(userEmail);
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	@Override
+	public MemberVO findMemberById(String userEmail) {
+		try {
+			return dao.findMemberById(userEmail);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
-	return null;
-}
+
+
 
 }

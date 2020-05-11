@@ -47,5 +47,6 @@ public interface IMemberMapper {
 
    // 로그인 시 시간 등록
    public void updateLoginedAt(String userEmail);
+
    
 }
