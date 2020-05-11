@@ -21,100 +21,6 @@
 	integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
 	crossorigin="anonymous"></script>
 
-<style>
-.left-section {
-	float: left;
-	width: 210px;
-}
-
-.left-section>h2 {
-	width: 210px;
-	height: 112px;
-	background: #25283D;
-	color: #fff;
-	text-align: center;
-	display: table-cell;
-	vertical-align: middle;
-}
-
-.left-section .left-sub-nav {
-	width: 210px;
-	border: solid #dbdbdb;
-	border-width: 0 1px;
-	box-sizing: border-box;
-}
-
-.left-section .left-sub-nav>li>a {
-	padding: 10px 20px;
-	font-size: 14px;
-	display: block;
-	position: relative;
-	border-bottom: 1px solid #dbdbdb;
-	font-weight: bold;
-	color: #333;
-}
-
-.right-section {
-	width: 840px;
-	float: right;
-	position: relative;
-}
-
-.right-header .right-sub-nav {
-	width: 100%;
-	background: #f4f4f4;
-	border-radius: 5px;
-	display: table;
-	table-layout: fixed;
-	margin-bottom: 50px;
-	overflow: hidden;
-}
-
-.right-header .right-sub-nav li {
-	display: table-cell;
-}
-
-.right-header .right-sub-nav li a {
-	display: block;
-	height: 60px;
-	box-sizing: border-box;
-	font-size: 18px;
-	color: #888;
-	padding: 0 0 0 20px;
-	line-height: 60px;
-	border-bottom: 4px solid #ddd;
-}
-
-.right-sub-nav li a.active {
-	color: #25283D;
-	border-color: #25283D;
-}
-
-.contents-title:before {
-	display: block;
-	content: '';
-	width: 50px;
-	height: 3px;
-	background: #25283D;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-
-.contents-title {
-	font-size: 22px;
-	margin-bottom: 20px;
-	color: #000;
-	position: relative;
-	padding-top: 5px;
-	height: 40px;
-	line-height: 40px;
-}
-
-p {
-	line-height: 150% !important;
-}
-</style>
 
 </head>
 <body>
@@ -123,39 +29,73 @@ p {
 
 
 	<main class="wcy-main-content">
-		<div class="left-section">
-			<h2>온라인 강의</h2>
-			<ul class="left-sub-nav">
-				<li><a href="#">Programing</a></li>
-				<li><a href="#">Cloud</a></li>
-				<li><a href="#">Netork</a></li>
-				<li><a href="#">System/Server</a></li>
-				<li><a href="#">Hacking</a></li>
-				<li><a href="#">DataBase</a></li>
-				<li><a href="#">자격증</a></li>
-			</ul>
-		</div>
-
-		<div class="right-section">
-			<div class="right-header">
-				<ul class="right-sub-nav">
-					<li><a class="active">>커리큘럼 메인페이지 시퀀스 ${seq}</a></li>
-				</ul>
+		<div class="wcy-contents">
+			<div class="page-width">
+				<h1>NetWork</h1>
+				<h2>[ <span>네트워크에 관련된 과정</span> ]</h2>
 			</div>
-			<div class="right-contents">
-				<h4 class="contents-title">메인 페이지의 seq는 102~109 까지 있습니다.</h4>
-				<p class="mb10">
-
-
-					102 = programming<br> 103 = cloud<br> 104 = network<br>
-					105 = system/server<br> 106 = hacking<br> 107 = database<br>
-					108 = 자격증<br> 109 = 학원 둘러보기<br>
-				</p>
-			</div>
+			
+			<article class="curriculum">
+				<div class="page-width">
+					<h5 class="curri-title">Network</h5>
+					<ul class="curri-list">
+						<li>
+							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
+							<a href="#">
+								<div class="curri-list-img"><img src="<c:url value='/img/curriculum/network01.jpg'/>" alt="" /></div>
+							</a>
+							<div class="curri-list-text">
+								<h5>CCNP-Switch</h5>
+								<p>라우터와 스위치 등의 장비를 이용하여 네트워크를 구성하는 방법을 학습하는 과정
+								<div class="curri-list-btn">
+									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
+								</div>
+							</div>
+						</li>
+						
+						<li class="mt20">
+							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
+							<a href="#">
+								<div class="curri-list-img"><img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="" /></div>
+							</a>
+							<div class="curri-list-text">
+								<h5>CCNP-Switch</h5>
+								<p>라우터와 스위치 등의 장비를 이용하여 네트워크를 구성하는 방법을 학습하는 과정
+								<div class="curri-list-btn">
+									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
+								</div>
+							</div>
+						</li>
+						
+						<li class="mt20">
+							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
+							<a href="#">
+								<div class="curri-list-img"><img src="<c:url value='/img/curriculum/network03.png'/>" alt="" /></div>
+							</a>
+							<div class="curri-list-text">
+								<h5>CCNP-Switch</h5>
+								<p>라우터와 스위치 등의 장비를 이용하여 네트워크를 구성하는 방법을 학습하는 과정
+								<div class="curri-list-btn">
+									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
+								</div>
+							</div>
+						</li>
+						
+					</ul>
+				</div>
+			</article>
+			
 		</div>
 	</main>
 
 	<jsp:include page="../include/footer.jsp" />
+
+
+
+
 
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
