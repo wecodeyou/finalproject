@@ -45,7 +45,7 @@
 		FROM article
 		WHERE article_board_no = #{boardNo}
 	</select>
-   <select id="getAllByWriter" resultMap="ArticleMap">
+  <!--  <select id="getAllByWriter" resultMap="ArticleMap">
    		SELECT * 
    		FROM article
    		WHERE article_writer = #{articleWriter}
@@ -55,12 +55,46 @@
    		SELECT * 
    		FROM article
    		WHERE article_title LIKE CONCAT(‘%’, #{articleTitle}, ‘%’)
-   </select>
+   </select> -->
    <select id="getOneInfo" resultMap="ArticleMap">
    		SELECT *
    		FROM article
    		WHERE article_no = #{articleNo}
    </select>
+   
+    <select id="getArticleListPaging" resultMap="ArticleMap">
+   		SELECT * FROM article
+   		ORDER BY article_no DESC
+   		LIMIT #{pageStart}, #{countPerPage} 
+   </select>
+
+	<select id="getArticleListByTitle" resultMap="ArticleMap">
+		SELECT * FROM article
+		WHERE article_title REGEXP #{q}
+		ORDER BY article_no DESC
+		LIMIT #{pageStart}, #{countPerPage}
+	</select>
+
+	<select id="countArticlesByTitle" resultType="int">
+		SELECT COUNT(*) FROM article
+		WHERE article_title REGEXP #{q}
+	</select>
+	
+	<select id="getArticleByTitleContent" resultMap="ArticleMap">
+		SELECT * FROM article
+		WHERE article_title REGEXP #{q}
+		OR article_content REGEXP #{q}
+		<!-- ORDER BY article_no DESC -->
+		LIMIT #{pageStart}, #{countPerPage}
+	</select>
+	
+	<select id="countArticlesByTitleContent" resultType="int">
+		SELECT COUNT(*) FROM article
+		WHERE article_title REGEXP #{q}
+		OR article_content REGEXP #{q}
+	</select>
+	
+	
 <!--    LIKE절 DBMS별
    # MySql
 SELECT * FROM TABLE_NAME

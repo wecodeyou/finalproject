@@ -17,16 +17,6 @@
 
 <jsp:include page="include/footer.jsp" />
 
-<c:if test="${login == null}">
-	<a href="<c:url value='/member/login' />" >LOGIN</a>
-	<a href="<c:url value='/member/email-form' />" >JOIN</a>
-</c:if>
-
-<c:if test="${login != null}">
-	<a href="<c:url value='/mypage/' />" >MYPAGE</a>
-	<a href="<c:url value='/member/logout' />" onclick="return confirm('정말로 로그아웃 하시겠습니까?')">LOGOUT</a>
-</c:if>
-
 <a href="<c:url value='/board/list'/>" >BOARD</a>
 <br>
 <a href="<c:url value='/product'/>" >Product 리스트 보기</a>

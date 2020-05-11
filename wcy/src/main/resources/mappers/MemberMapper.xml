@@ -93,6 +93,10 @@
       WHERE user_email=#{userEmail}
    </select>
    
+   <update id="updateLoginedAt">
+	  UPDATE user SET user_login_at = now() WHERE user_email = #{userEmail}
+   </update> 
+   
    <!-- 설문조사 -->
    <update id="updateInterest">
 	  UPDATE user SET user_interest = true WHERE user_no = #{userNo}
@@ -102,6 +106,8 @@
 	<select id="findMemberById" resultMap="MemberMap">
 		SELECT * FROM user WHERE user_email = #{userEmail} 
 	</select>
+	
+	
 </mapper>
 
 

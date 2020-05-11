@@ -89,21 +89,31 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 			attachbox: {
 				show: true,
 				confirmForDeleteAll: true
-			}
-		},
+			},
+			// 이미지첨부 관련 추가
+		 attacher:{
+			 image:{
+				 features:{
+					 left:250,
+					 top:65,
+					 width:400,
+					 height:190,
+					 scrollbars:0
+				}, 
+				//팝업창 사이즈 
+				popPageUrl:'${pageContext.request.contextPath}/daumeditor/img-popup'
+				//팝업창 주소 
+				} 
+			},	 
 		// 이미지첨부 관련 추가 
-		attacher: { 
-			image:{ 
-				features:{left:250,top:65,width:400,height:190,scrollbars:0}, //팝업창 사이즈 
-				popPageUrl:'${pageContext.request.contextPath}/daumeditor/img-popup' //팝업창 주소 } },
-		capacity: {
-			maximum: 5 * 1024*1024
+			capacity: {
+				maximum: 5 * 1024*1024
+			}
 		},
 		size: {
 			contentWidth: 700 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
 		}
 	};
-
 	EditorJSLoader.ready(function(Editor) {
 
 		var editor = new Editor(config);

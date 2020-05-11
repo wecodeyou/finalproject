@@ -45,4 +45,8 @@ public interface IMemberMapper {
    
    public MemberVO findMemberById(String userEmail) throws SQLException;
 
+   // 로그인 시 시간 등록
+   public void updateLoginedAt(String userEmail);
+
+   
 }

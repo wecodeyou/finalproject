@@ -1,13 +1,12 @@
 @charset "UTF-8";
 
 
-.wcy-main-content{
-	width: 1100px;
-	height:100%;
-	margin: 190px auto 150px;
-	overflow: hidden;
-}
-
+	.wcy-main-content{
+		width: 1100px;
+		height:100%;
+		margin: 190px auto 150px;
+		overflow: hidden;
+	}
 
     html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video{
         margin: 0;
@@ -15,6 +14,10 @@
         border: 0;
         background: transparent;
     }
+    
+    
+    .mt5{margin-top: 5px !important;}
+    .mt10{margin-top: 10px !important;}
     .mt20{margin-top: 20px !important;}
     .mt30{margin-top: 30px !important;}
     .mt40{margin-top: 40px !important;}
@@ -26,6 +29,9 @@
     .mb10{margin-bottom: 10px !important;}
     .mb20{margin-bottom: 20px !important;}
     
+    .mr15{margin-right: 15px !important;}
+    .ml15{margin-left: 15px !important;}
+    
     .fs13{font-size: 13px !important;}
     .fs14{font-size: 14px !important;}
     .fs14b{font-size: 14px !important; font-weight: bold;}
@@ -33,3 +39,77 @@
     
     ul, li{list-style: none;}
     a{text-decoration: none; color: black;}
+    
+    
+    /* 온 오프라인 페이지 디자인*/
+    
+    .wcy-contents{margin:0 auto; text-align:center;}
+    .page-width{width:1100px; margin:0 auto;}
+	
+	
+	.page-width > h1 , .wcy-main-content .page-width h1{font-size:42px; font-weight:normal;}
+    
+    .page-width > h2:before , .wcy-main-content .page-width h2:before{display:block; content:''; width:1px; height:23px; background: #8F3985; margin:0 auto; margin-bottom: 8px;}
+    .page-width > h2:after , .wcy-main-content .page-width h2:after{display:block; content:''; width:1px; height:23px; background: #8F3985; margin:0 auto; margin-after: 8px;}
+    .page-width > h2 , .wcy-main-content .page-width h2{font-size:20px; font-weight:600; color:#8F3985; margin-top:25px;}
+    
+    
+    .curriculum{margin-top: 60px; text-align: left;}
+    article{font-size:14px; color:#666; line-height: 20px;}
+    
+    .curriculum .curri-title{height: 140px; font-size: 20px; color: #fff; background-color: #8F3985; line-height: 85px; text-align: center;}
+    
+    .curriculum .curri-list{width:1030px; margin:0 auto; position:relative; bottom:50px;}
+    
+    .curriculum .curri-list li{height:250px; background-color: #fff; border-bottom: 1px solid #e3e3e3;}
+    .curriculum .curri-list li:last-of-type{border-bottom: 0px;}
+    
+    .curriculum .curri-list li a{position: relative; overflow: hidden;}
+    
+    .curriculum .curri-list li .curri-list-img{float: left; width:320px; height:230px; overflow: hidden;}
+    .curriculum .curri-list li img{
+    	vertical-align: top; 
+    	width:100%;
+    	height:230px; 
+    	transform:scale(1.0, 1.0);
+    	-webkit-transform: scale(1.0, 1.0);
+    	-moz-transform: scale(1.0, 1.0);
+    	-ms-transform: scale(1.0, 1.0);
+    }
+    
+    
+    .curriculum .curri-list li a:after{
+    	position: absolute;
+    	left:0;
+    	top:0;
+    	width:100%;
+    	height:100%;
+    	z-index: 3;
+    	display: block;
+    	content:"";
+    	opacity:0;
+    	margin-left: 0;
+    }
+    
+    .curriculum .curri-list li .curri-list-text{float: right; width: 690px;}
+    
+    .curriculum .curri-list li .curri-list-text h5{font-size: 20px; color:#333; margin-top: 50px; height:20px;}
+      
+    .curriculum .curri-list li .curri-list-text p{height:100px; overflow: hidden; margin-top: 20px; font-size: 14px;}  
+      
+    .curriculum .curri-list li .curri-list-text .curri-list-btn{margin-top: 5px;}
+    .curriculum .curri-list li .curri-list-text .curri-list-btn button{width: 150px; height:35px;}
+    .btn_blue{background-color: #25283D; font-size: 13px; color:#fff; font-weight: 600;}
+    .btn_red{background-color: #830101; font-size: 13px; color:#fff; font-weight: 600;}
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    

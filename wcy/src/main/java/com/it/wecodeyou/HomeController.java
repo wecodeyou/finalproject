@@ -3,15 +3,18 @@ package com.it.wecodeyou;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.it.wecodeyou.curriculum.model.CurriculumVO;
+import com.it.wecodeyou.curriculum.service.CurriculumService;
+import com.it.wecodeyou.curriculum.service.ICurriculumService;
 
 /**
  * Handles requests for the application home page.
@@ -77,7 +85,7 @@ public class HomeController {
 	@PostMapping("/singleUploadImageAjax")
 	public @ResponseBody HashMap singleUploadImageAjax(
 			@RequestParam("Filedata") MultipartFile multipartFile, HttpSession session) {
-		
+		System.out.println("POST: /singleUploadImageAjax 파일 업로드 ");
 		HashMap fileInfo = new HashMap(); //CallBack할 때 이미지 정보를 담을 Map
 		
 		if(multipartFile != null && !(multipartFile.getOriginalFilename().equals(""))) {
@@ -137,4 +145,8 @@ public class HomeController {
 			}
 		return fileInfo; // @ResponseBody 어노테이션을 사용하여 Map을  
 	}
+	
+
+	
+	
 }

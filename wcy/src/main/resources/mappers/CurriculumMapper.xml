@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.wecodeyou.curriculum.repository.ICurriculumMapper">
+
+   <resultMap id="CurriculumMap" type="com.it.wecodeyou.curriculum.model.CurriculumVO">
+      <id property="seq" column="seq" />
+      <result property="engName" column="eng_name" />
+      <result property="korName" column="kor_name" />
+      <result property="subTitle1" column="sub_title1" />
+      <result property="subDetail1" column="sub_detail1" />
+      <result property="subTitle2" column="sub_title2" />
+      <result property="subDetail2" column="sub_detail2" />
+      <result property="subTitle3" column="sub_title3" />
+      <result property="subDetail3" column="sub_detail3" />
+      <result property="subTitle4" column="sub_title4" />
+      <result property="subDetail4" column="sub_detail4" />
+      <result property="subTitle5" column="sub_title5" />
+      <result property="subDetail5" column="sub_detail5" />
+      <result property="subTitle6" column="sub_title6" />
+      <result property="subDetail6" column="sub_detail6" />
+      <result property="subTitle7" column="sub_title7" />
+      <result property="subDetail7" column="sub_detail7" />
+      <result property="subTitle8" column="sub_title8" />
+      <result property="subDetail8" column="sub_detail8" />
+      <result property="subTitle9" column="sub_title9" />
+      <result property="subDetail9" column="sub_detail9" />
+   </resultMap>
+
+   <!-- seq를 받아서 해당 정보 가져오기 -->
+   <select id="showCurriculum" resultMap="CurriculumMap">
+      SELECT * FROM curriculum WHERE seq=#{seq}
+   </select>
+  
+</mapper>
+
+

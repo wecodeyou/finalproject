@@ -2,6 +2,7 @@ package com.it.wecodeyou.tag.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.it.wecodeyou.board.model.ArticleVO;
 import com.it.wecodeyou.product.model.ProductVO;
@@ -50,6 +51,15 @@ public interface ITagService {
       
       //search on off product by productNo and productType
       public ArrayList<String> searchTags(Integer productNo) throws SQLException;
+
+      //search article by %tag%
+      public List<ArticleVO> getArticleByHashtag(SearchVO svo);
+      
+      //count article by tags
+      public Integer countArticlesByHashtag(SearchVO svo);
+
+    //search product by %tag%
+      public List<ProductVO> getProductByHashtag(SearchVO svo);
       
       
       
