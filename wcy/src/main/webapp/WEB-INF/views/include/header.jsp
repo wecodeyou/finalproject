@@ -128,7 +128,7 @@
                </ul>
             </div>
          </li>
-         <li>
+         <li> 
          	<!-- <a class="active" href="#">온라인 강의<span>&#x25BE;</span></a>-->
          	<a href="#">교육 과정<span>&#x25BE;</span></a>
             <div class="sub-menu-1">	
