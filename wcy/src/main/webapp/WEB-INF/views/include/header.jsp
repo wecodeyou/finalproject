@@ -384,18 +384,18 @@ $(document).ready(function(){
     });
   });
 
-	function logincheck(){
-	   if(${login == null}){
-	      alert("로그인이 필요한 서비스입니다.");
-	   }else{
-		  if(${login.userType} == 0 || ${login.userType} == 1) {
-			  location.href="<c:url value='/mypage/myinfoChange' />";
-		  }else {
-			  location.href="<c:url value='/admin' />";
-		  }
-	   }
-
-	};
+function logincheck(){
+    if(${login == null}){
+       alert("로그인이 필요한 서비스입니다.");
+    }else{
+       if(${login.userType} == 0 || ${login.userType} == 1){
+    	   location.href="<c:url value='/mypage/myinfoChange' />";
+       }else {
+    	   location.href="<c:url value='/admin' />";
+       }
+    }
+       
+ };
 	
 
 </script>
