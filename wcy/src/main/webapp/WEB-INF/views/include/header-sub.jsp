@@ -208,6 +208,7 @@ function logincheck(){
 		  }else {
 			  location.href="<c:url value='/admin' />";
 		  }
+	   }
 
 	};
 </script>

@@ -393,6 +393,7 @@ $(document).ready(function(){
 		  }else {
 			  location.href="<c:url value='/admin' />";
 		  }
+	   }
 
 	};
 	
