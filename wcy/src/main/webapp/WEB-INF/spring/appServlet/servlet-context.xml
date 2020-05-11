@@ -24,6 +24,7 @@
 	<resources mapping="/img/**" location="/resources/img/" />
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/scss/**" location="/resources/scss/" />
+	<resources mapping="/vendor/**" location="/resources/vendor/" />
 	<resources mapping="/upload/**" location="/upload/" />	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
@@ -41,6 +42,7 @@
 <!-- 	웹소켓 핸들러와 빈등록 -->
 	<websocket:handlers>
 		<websocket:mapping handler="socketHandler" path="/off/lecture"/>
+<!-- 		<websocket:mapping handler="MastersocketHandler" -->
 	</websocket:handlers>
 	
   	<beans:bean id="socketHandler" class="com.it.wecodeyou.off_lecture.handler.SocketHandler"/>

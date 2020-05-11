@@ -1,7 +1,7 @@
 package com.it.wecodeyou.off_lecture.handler;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 public class SocketHandler extends TextWebSocketHandler implements InitializingBean {
 
 	private final Logger logger = LoggerFactory.getLogger(SocketHandler.class);
-	private Set<WebSocketSession> sessionSet = new HashSet<WebSocketSession>();
+	private Map<String,Object> sessionMap = new HashMap<String,Object>();
 	
 	public SocketHandler() {
 		this.logger.info("create SocketHandler instance");
@@ -26,7 +26,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		super.afterConnectionClosed(session, status);
-		sessionSet.remove(session);
+		sessionMap.remove(session);
 		this.logger.info("remove session!");
 	}
 	
@@ -35,7 +35,7 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		super.afterConnectionEstablished(session);
 		
-		sessionSet.add(session);
+		/* sessionMap.add(session); */
 		this.logger.info("afterConnectoinEstablished: added session " );
 	}
 	
@@ -62,15 +62,11 @@ public class SocketHandler extends TextWebSocketHandler implements InitializingB
 	
 	/* 세션들을 보내는 메소드를 호출 */
 	public void sendMessage(String message) {
-		for(WebSocketSession session: this.sessionSet) {
-			if(session.isOpen()) {
-				try {
-					session.sendMessage(new TextMessage(message));
-				} catch (Exception e) {
-					this.logger.error("fail to send message!", e);
-				}
-			}
-		}
+		/*
+		 * for(WebSocketSession session: this.sessionMap) { if(session.isOpen()) { try {
+		 * session.sendMessage(new TextMessage(message)); } catch (Exception e) {
+		 * this.logger.error("fail to send message!", e); } } }
+		 */
 	}
 	
 	

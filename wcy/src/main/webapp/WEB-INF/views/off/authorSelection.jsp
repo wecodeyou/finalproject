@@ -28,7 +28,7 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 		<table border="2">
 			<c:forEach var="o" items="${offList}">
 				<tr>
-					<td><a href="#">${o.productName}</a></td>
+					<td><a href="<c:url value='/off/myclass/enter/${o.offNo}' /> ">${o.productName}</a></td>
 					<td>${o.offPlace}</td>
 				</tr>
 			</c:forEach>
