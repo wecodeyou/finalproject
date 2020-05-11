@@ -23,7 +23,7 @@ public class AdminController {
    		System.out.println("/admin/ : GET 요청 발생!");
    		//
    		
-   		mv.setViewName("search/adminpage");
+   		mv.setViewName("admin/adminpage");
    		return mv;
    	}
 
