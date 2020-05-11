@@ -35,13 +35,6 @@ public class MypageController {
 	private IPurchaseService pservice;
 	
 	
-	@GetMapping("/")
-	public ModelAndView mypageMain(ModelAndView mv) {
-		System.out.println("/mypage/ : GET 요청 발생!");
-		mv.setViewName("mypage/mypage-main");
-		return mv;
-	}
-	
 	@GetMapping("/leclist")
 	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo, HttpSession session) {
 		System.out.println("/mypage/leclist : GET 요청 발생!");

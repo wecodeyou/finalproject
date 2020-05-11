@@ -177,6 +177,10 @@ public class OffController {
 		List<PurchaseVO> purchaseList = null;
 		List<OffProductVO> temp = new ArrayList<OffProductVO>();
 		MemberVO mvo = null;
+		/**
+		 나중에 미리세션처리하고 지금은 인자로 받은 이메일로 세션만듬
+		 */
+		
 		if (memberService.checkEmail(userEmail) == 1) {
 			mvo = memberService.findMemberById(userEmail);
 			System.out.println("유저 정보: " + mvo.toString());

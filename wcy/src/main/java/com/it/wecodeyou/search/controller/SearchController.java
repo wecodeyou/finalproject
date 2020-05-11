@@ -28,13 +28,10 @@ public class SearchController {
 	
 	@Autowired
 	ISearchService service;
-	
 	@Autowired 
 	IArticleService articleService;
-	
 	@Autowired
 	ITagService tagService;
-	
 	@Autowired
 	IProductService productService;
 	
@@ -168,4 +165,5 @@ public class SearchController {
 		return mv;
 	}
   
+
 }

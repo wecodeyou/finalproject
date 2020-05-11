@@ -79,7 +79,7 @@ public class HomeController {
 	@PostMapping("/singleUploadImageAjax")
 	public @ResponseBody HashMap singleUploadImageAjax(
 			@RequestParam("Filedata") MultipartFile multipartFile, HttpSession session) {
-		
+		System.out.println("POST: /singleUploadImageAjax 파일 업로드 ");
 		HashMap fileInfo = new HashMap(); //CallBack할 때 이미지 정보를 담을 Map
 		
 		if(multipartFile != null && !(multipartFile.getOriginalFilename().equals(""))) {
