@@ -41,4 +41,5 @@ public interface IMemberService {
    
    public MemberVO findMemberById(String userEmail);
    
+   
 }

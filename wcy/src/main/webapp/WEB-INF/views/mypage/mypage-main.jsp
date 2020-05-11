@@ -25,12 +25,6 @@
 
 
 
-<c:if test="${login == null}">
-	<script>   
-	   alert("로그인이 필요한 서비스입니다.");
-	   location.href="<c:url value='/' />";
-	</script>
-</c:if>	
 
 
 </body>

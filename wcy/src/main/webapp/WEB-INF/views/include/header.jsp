@@ -103,7 +103,12 @@
 			<ul id="wcy-menu">
 				<li><a href="#"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
-				<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:10px; padding-top:5px;">마이페이지</p></i></a></li>
+				<c:if test="${login == null || login.userType == 0 || login.userType == 1}">
+				<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">마이페이지</p></i></a></li>
+				</c:if>
+				<c:if test="${login.userType == 2}">
+				<li><a href="#"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">
+					관리자페이지</p></i></a></li></c:if>
 				<li><a href="#"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
 			</ul>
 		</nav>
@@ -280,7 +285,7 @@
          <li><a href="<c:url value='/board/list'/>">커뮤니티<span>&#x25BE;</span></a>
             <div class="sub-menu-1">
                 <ul>
-                  <li class="hover-me"><a href="#">공지사항</a></li>
+                  
                   <li class="hover-me"><a href="#">자유게시판</a></li>
                   <li class="hover-me"><a href="#">질문게시판</a>
                      <div class="sub-menu-2">
@@ -305,7 +310,7 @@
          </li>
          
          <li><a href="#">도움이 되는 사이트</a></li>
-         <li><a href="#">고객센터</a></li>
+         <li><a href="#">공지사항</a></li>
          
       </ul>
    </nav> <!-- .wcy-secondary-nav -->
@@ -382,14 +387,16 @@ $(document).ready(function(){
     });
   });
 
-	function logincheck(){
-	   if(${login == null}){
-	      alert("로그인이 필요한 서비스입니다.");
-	   }else{
-	      location.href="<c:url value='/mypage/' />";
-	   }
-	      
-	};
+function logincheck(){
+    if(${login == null}){
+       alert("로그인이 필요한 서비스입니다.");
+    }else{
+    	location.href="<c:url value='/mypage/myinfoChange' />";
+    }
+       
+ };
+	
+
 </script>
 
 
