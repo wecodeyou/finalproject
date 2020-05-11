@@ -54,7 +54,7 @@
 </style>
 
 
-<title>Insert title here</title>
+<title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 </head>
 <body>
 
@@ -104,11 +104,11 @@
 				<li><a href="#"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
 				<c:if test="${login == null || login.userType == 0 || login.userType == 1}">
-				<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">마이페이지</p></i></a></li>
+					<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">마이페이지</p></i></a></li>
 				</c:if>
 				<c:if test="${login.userType == 2}">
-				<li><a href="#"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">
-					관리자페이지</p></i></a></li></c:if>
+					<li><a href="#"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">관리자페이지</p></i></a></li>
+				</c:if>
 				<li><a href="#"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
 			</ul>
 		</nav>
@@ -179,9 +179,9 @@
                         <ul>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6001' />">Hacking Trace</a></li>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6002' />">Web Hacking</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6004' />">reverse Engineering</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6005' />">System Hacking</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6006' />">Network Hacking</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6003' />">reverse Engineering</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6004' />">System Hacking</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6005' />">Network Hacking</a></li>
                         </ul>                     
                      </div>
                   </li>
