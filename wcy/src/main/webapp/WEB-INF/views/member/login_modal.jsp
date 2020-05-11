@@ -335,7 +335,7 @@ $(function(){
 	      if(chk1 && chk2) {
 	         //ajax통신으로 서버에서 값 받아오기
 	         const email = $('#loginUserEmail').val();
-	         const pw = $('#"loginUserPw"').val();
+	         const pw = $('#loginUserPw').val();
 	         
 	         console.log("id: " + email);
 	         console.log("pw: " + pw);

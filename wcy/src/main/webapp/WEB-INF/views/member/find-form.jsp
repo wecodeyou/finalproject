@@ -53,9 +53,8 @@
 <c:if test="${target eq 'email'}">
 	<main class="wcy-main-content">
 		<div class="left-section">
-	        <h2>로그인 / 회원가입</h2>
+	        <h2>회원가입</h2>
 	        <ul class="left-sub-nav">
-	            <li><a href="#">로그인</a></li>
 	            <li><a href="#">회원가입</a></li>
 	            <li><a href="#">아이디(이메일)찾기</a></li>
 	            <li><a href="#">비밀번호 찾기</a></li>
