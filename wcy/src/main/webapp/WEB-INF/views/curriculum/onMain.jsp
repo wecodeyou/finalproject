@@ -31,22 +31,23 @@
 	<main class="wcy-main-content">
 		<div class="wcy-contents">
 			<div class="page-width">
-				<h1>NetWork</h1>
-				<h2>[ <span>네트워크에 관련된 과정</span> ]</h2>
+				<h1>${c.engName}</h1>
+				<h2>[ <span>${c.korName}에 관련된 과정</span> ]</h2>
 			</div>
 			
 			<article class="curriculum">
 				<div class="page-width">
-					<h5 class="curri-title">Network</h5>
+					<h5 class="curri-title">${c.engName}</h5>
 					<ul class="curri-list">
+						
 						<li>
 							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
 							<a href="#">
 								<div class="curri-list-img"><img src="<c:url value='/img/curriculum/network01.jpg'/>" alt="" /></div>
 							</a>
 							<div class="curri-list-text">
-								<h5>CCNP-Switch</h5>
-								<p>라우터와 스위치 등의 장비를 이용하여 네트워크를 구성하는 방법을 학습하는 과정
+								<h5>${c.subTitle1}</h5>
+								<p>${c.subDetail1}
 								<div class="curri-list-btn">
 									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
 									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
@@ -60,8 +61,8 @@
 								<div class="curri-list-img"><img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="" /></div>
 							</a>
 							<div class="curri-list-text">
-								<h5>CCNP-Switch</h5>
-								<p>라우터와 스위치 등의 장비를 이용하여 네트워크를 구성하는 방법을 학습하는 과정
+								<h5>${c.subTitle2}</h5>
+								<p>${c.subDetail2}
 								<div class="curri-list-btn">
 									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
 									<button type="button" onclick="" class="btn_red">장바구니 담기</button>

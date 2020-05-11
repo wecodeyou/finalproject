@@ -3,6 +3,7 @@ package com.it.wecodeyou;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.it.wecodeyou.curriculum.model.CurriculumVO;
+import com.it.wecodeyou.curriculum.service.CurriculumService;
+import com.it.wecodeyou.curriculum.service.ICurriculumService;
 
 /**
  * Handles requests for the application home page.
@@ -140,34 +146,7 @@ public class HomeController {
 		return fileInfo; // @ResponseBody 어노테이션을 사용하여 Map을  
 	}
 	
-	//커리큘럼소개 main 요청
-	@GetMapping("/curriculum/on_main")
-	public ModelAndView curriculumOnMain(ModelAndView mv, HttpServletRequest req) {
-	      
-	mv.setViewName("curriculum/onMain");
-	mv.addObject("seq", req.getParameter("seq"));
-	return mv;
-	      
-	}
 
-	//커리큘럼소개 main 요청
-	@GetMapping("/curriculum/off_main")
-	public ModelAndView curriculumOffMain(ModelAndView mv, HttpServletRequest req) {
-		
-		mv.setViewName("curriculum/offMain");
-		mv.addObject("seq", req.getParameter("seq"));
-		return mv;
-		
-	}
 	
-	//커리큘럼소개 sub 요청
-	@GetMapping("/curriculum/sub")
-	public ModelAndView curriculumSub(ModelAndView mv, HttpServletRequest req) {
-		
-		mv.setViewName("curriculum/sub");
-		mv.addObject("seq", req.getParameter("seq"));
-		return mv;
-		
-	}
 	
 }

@@ -49,6 +49,7 @@
 	<mybatis-spring:scan base-package="com.it.wecodeyou.review.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.off.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.purchase.repository"/>
+	<mybatis-spring:scan base-package="com.it.wecodeyou.curriculum.repository"/>
 	<!-- 이메일 관련 -->
 	<!-- 메일 보내기(SEND) -->
 	<bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">

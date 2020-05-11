@@ -149,20 +149,19 @@
                   <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=103' />">Cloud</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3001' />">AWS Cloud Basic</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3002' />">AWS Technical Essentials</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3003' />">Architecting on AWS</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3004' />">Windows Server New Features</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3005' />">Windows Server Azure</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3001' />">AWS Technical Essentials</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3002' />">Architecting on AWS</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3003' />">Windows Server New Features</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=3004' />">Windows Server Azure</a></li>
                         </ul>
                      </div>
                   </li>
                   <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=104' />">Network</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4001' />">CCNP-Switch</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4002' />">CCNP-Route</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4003' />">CCNA-Basic</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4001' />">CCNA-Basic</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4002' />">CCNP-Switch</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=4003' />">CCNP-Route</a></li>
                         </ul>
                      </div>
                   </li>
@@ -179,9 +178,9 @@
                         <ul>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6001' />">Hacking Trace</a></li>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6002' />">Web Hacking</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6004' />">reverse Engineering</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6005' />">System Hacking</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6006' />">Network Hacking</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6003' />">reverse Engineering</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6004' />">System Hacking</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?seq=6005' />">Network Hacking</a></li>
                         </ul>                     
                      </div>
                   </li>
