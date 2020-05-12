@@ -162,7 +162,7 @@
 										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
 										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
 										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
-									</p>
+									</p> 
 									<span class="review-classTitle">수강한 과목명</span>
 									<span class="review-teacherName">강사이름</span>
 									<div class="writer-date">
