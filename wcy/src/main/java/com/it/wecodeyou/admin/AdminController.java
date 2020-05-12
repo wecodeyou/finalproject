@@ -34,6 +34,7 @@ public class AdminController {
    		//
    		
    		mv.setViewName("admin/user");
+   		mv.addObject("members",memberService.getAllInfo());
    		return mv;
    	}
    	
