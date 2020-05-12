@@ -101,7 +101,7 @@
 				</ul>
 			</div>
 			<ul id="wcy-menu">
-				<li><a href="#"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
+				<li><a class="modal_open_btn" data-toggle="modal" data-target="#wcy-event-modal"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
 				<c:if test="${login == null || login.userType == 0 || login.userType == 1}">
 					<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">마이페이지</p></i></a></li>
@@ -257,6 +257,7 @@
    </section>
 
 <%@ include file="../member/login_modal.jsp" %>  
+<%@ include file="../member/event_modal.jsp" %>  
 
 <main class="wcy-main-content sub-nav-hero">
    <div>
