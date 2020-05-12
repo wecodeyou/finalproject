@@ -20,7 +20,7 @@ public class CurriculumController {
    @Autowired
    private ICurriculumService service;
  
-	//커리큘럼소개 main 요청
+	//커리큘럼소개 main 요청 (==> 온라인, 오프라인 통합 main임. 맵핑 주소 이름 변경 요망)
 	@GetMapping("/on_main")
 	public ModelAndView curriculumOnMain(ModelAndView mv, HttpServletRequest req) {
 	
@@ -33,17 +33,8 @@ public class CurriculumController {
 	      
 	}
 
-	//커리큘럼소개 main 요청
-	@GetMapping("/curriculum/off_main")
-	public ModelAndView curriculumOffMain(ModelAndView mv, HttpServletRequest req) {
-		
-		mv.setViewName("curriculum/offMain");
-		mv.addObject("seq", req.getParameter("seq"));
-		return mv;
-		
-	}
 	
-	//커리큘럼소개 sub 요청
+	//커리큘럼소개 sub 요청 (==> 온라인 detatil page, 오프라인 detatil 페이지 구분. 맵핑 요망)
 	@GetMapping("/curriculum/sub")
 	public ModelAndView curriculumSub(ModelAndView mv, HttpServletRequest req) {
 		
@@ -52,6 +43,25 @@ public class CurriculumController {
 		return mv;
 		
 	}
+	
+	//online detail 페이지 임시 겟 맵핑 
+	@GetMapping("/on_detail")
+	public ModelAndView on_detatil() {
+		ModelAndView mv = new ModelAndView();
+	    mv.setViewName("curriculum/onDetail");
+	    return mv;
+	}
    
+	//online detail 페이지 임시 겟 맵핑 
+	@GetMapping("/off_detail")
+	public ModelAndView odd_detatil() {
+		ModelAndView mv = new ModelAndView();
+	    mv.setViewName("curriculum/offDetail");
+	    return mv;
+	}
    
 }
+
+
+
+
