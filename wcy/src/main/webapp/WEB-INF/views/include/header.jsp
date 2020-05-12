@@ -107,7 +107,7 @@
 					<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">마이페이지</p></i></a></li>
 				</c:if>
 				<c:if test="${login.userType == 2}">
-					<li><a href="#"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">관리자페이지</p></i></a></li>
+					<li><a href="<c:url value='/admin' />"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">관리자페이지</p></i></a></li>
 				</c:if>
 				<li><a href="#"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
 			</ul>
@@ -319,16 +319,6 @@ $(document).ready(function(){
     });
   });
 
-<<<<<<< HEAD
-	function logincheck(){
-	   if(${login == null}){
-	      alert("로그인이 필요한 서비스입니다.");
-	   }else{
-	      location.href="<c:url value='/mypage/' />";
-	   }
-	      
-	};
-=======
 function logincheck(){
     if(${login == null}){
        alert("로그인이 필요한 서비스입니다.");
@@ -338,8 +328,6 @@ function logincheck(){
        
  };
 	
-
->>>>>>> branch 'master' of https://github.com/wecodeyou/finalproject.git
 </script>
 
 
