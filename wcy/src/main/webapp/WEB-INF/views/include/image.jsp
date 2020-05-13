@@ -23,8 +23,8 @@ $(document).ready(function (){ // <input type=file> 태그 기능 구현
 		console.log(inputObj.val());
 		var fileLocation = $(this).val(); // 파일경로 가져오기
 		console.log(fileLocation);
- 		inputObj.val(fileLocation.replace('C:\\fakepath\\','')); // 몇몇 브라우저는 보안을 이유로 경로가 변경되서 나오므로 대체 후 text에 경로 넣기 }); }); 
-		});
+/*  		inputObj.val(fileLocation.replace('C:\\fakepath\\','')); // 몇몇 브라우저는 보안을 이유로 경로가 변경되서 나오므로 대체 후 text에 경로 넣기 }); }); 
+		}); */
 
 	
 		//첨부한 이미지를 에디터에 적용시키는 함수
