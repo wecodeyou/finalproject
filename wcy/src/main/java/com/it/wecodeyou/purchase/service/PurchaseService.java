@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.it.wecodeyou.purchase.model.PurchaseResultVO;
 import com.it.wecodeyou.purchase.model.PurchaseVO;
 import com.it.wecodeyou.purchase.repository.IPurchaseMapper;
 
@@ -32,6 +33,26 @@ public class PurchaseService implements IPurchaseService {
 	@Override
 	public void updateRefund(PurchaseVO pv) {
 		dao.updateRefund(pv);
+	}
+
+	@Override
+	public ArrayList<PurchaseResultVO> getMonthlyEarnings() {
+		return dao.getMonthlyEarnings();
+	}
+
+	@Override
+	public ArrayList<PurchaseResultVO> getAnnualEarnings() {
+		return dao.getAnnualEarnings();
+	}
+
+	@Override
+	public PurchaseResultVO getThisMonthlyEarnings() {
+		return dao.getThisMonthlyEarnings();
+	}
+
+	@Override
+	public PurchaseResultVO getThisAnnualEarnings() {
+		return dao.getThisAnnualEarnings();
 	}
 
 }

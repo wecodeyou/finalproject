@@ -27,6 +27,32 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
+
+//ajax로 수익 데이터 불러오기
+$(document).ready(function(){
+	console.log("request ready");
+	
+	const q = "request";
+	//start Ajax 
+	$.ajax({
+				type : 'POST',
+				url : "/admin/getMonthlyReport",
+				headers : {"Content-Type" : "application/json"},
+				data : q,
+				dataType : "text",
+				error : function(err) {
+					console.log("ajax getMonthlyReport 실행중 오류가 발생하였습니다.");
+				},
+				success : function(data) {
+					
+					console.log("성공");
+				}
+				
+			});//end Ajax
+});
+
+
+
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
