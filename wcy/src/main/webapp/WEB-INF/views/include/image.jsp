@@ -17,23 +17,35 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 <style> /* css */ .header { background-image: none; background-color: #027dfc; } /* 파일첨부(.file) */ .file { display: inline-block; margin-top: 8px; overflow: hidden; } .file .file-text { display: inline-block; padding: 6px 10px 8px 10px; border : 1px solid #c7c7c7; width: 179px; font-size: 14px; color: #8a8a8a; float: left; } .file .file-text:FOCUS { border-color: #54c4e5; outline: 0; -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); } .file .file-btn { margin-left: 2px; padding: 6px 8px 4px 8px; height: 20px; line-height: 20px; font-size: 12px; font-weight: bold; background-color: #fff; border: 1px solid #989898; color: #989898; cursor: pointer; float: left; } .file .file-btn:HOVER { background-color: #edfbff; border: 1px solid #009bc8; color: #009bc8; } </style>
 
 <script>
-$(document).ready(function (){ // <input type=file> 태그 기능 구현
-	$('.file input[type=file]').change(function (){
-		var inputObj = $(this).prev().prev(); // 두번째 앞 형제(text) 객체
-		console.log(inputObj.val());
-		var fileLocation = $(this).val(); // 파일경로 가져오기
-		console.log(fileLocation);
- 		inputObj.val(fileLocation.replace('C:\\fakepath\\','')); // 몇몇 브라우저는 보안을 이유로 경로가 변경되서 나오므로 대체 후 text에 경로 넣기 }); }); 
-		});
-
+$(function (){ 
+	$("#saveBtn").click(function(){
+		$("#daumOpenEditorForm").submit();
+	});
 	
+	$("#daumOpenEditorForm").ajaxForm({
+		beforeSubmit: function(data, form, option){
+			console.log(data);
+			/* 			if(validation(fileName)) {
+				return false;
+			} */
+			return true;
+		},
+		success: function(response, status){
+			console.log(response);
+			done(response);
+		},
+		error: function(){
+			alert("이미지 업로드에 문제가 있습니다");
+		}
+	});
+});
 		//첨부한 이미지를 에디터에 적용시키는 함수
-		function done() {
+		function done(response) {
 			if (typeof(execAttach) == 'undefined') {
 				return;
 	    		}
 			
-			var _mockdata = {
+/*\\ 			var _mockdata = {
 					'imageurl': fileInfo.imageurl, 
 					'filename': fileInfo.filename, 
 					'filesize': fileInfo.filesize, 
@@ -42,11 +54,12 @@ $(document).ready(function (){ // <input type=file> 태그 기능 구현
 					'thumburl': fileInfo.thumburl
 			};
 			console.log(_mockdata);
-			execAttach(_mockdata);
+			execAttach(_mockdata); */
+			execAttach(response);
 			closeWindow();
 		}
 		
-		// 등록버튼 클릭 이벤트
+/* 		// 등록버튼 클릭 이벤트
 		$('.submit a').on('click', function () {
 			var form = $('#daumOpenEditorForm'); // form id값
 			var fileName = $('.file input[type=text]').val(); // 파일명(절대경로명 또는 단일명) 
@@ -78,7 +91,7 @@ $(document).ready(function (){ // <input type=file> 태그 기능 구현
 				}); 
 			});
 		});
-		
+		 */
 
 	</script>
 	
@@ -93,7 +106,7 @@ $(document).ready(function (){ // <input type=file> 태그 기능 구현
 		<div class="body">
 <dl class=alert>
 <dt>&nbsp;1MB이하 (JPG,GIF,PNG,BMP)</dt>
-<dd> <form id=daumOpenEditorForm encType=multipart/form-data method="post" action="#">
+<dd> <form id=daumOpenEditorForm encType=multipart/form-data method="post" action="<c:url value='/singleUploadImageAjax'/> " >
  <!-- 파일첨부 --> <div class="file"> <input disabled class=file-text>
  <label class=file-btn for=uploadInputBox>사진첨부</label>
  <input id=uploadInputBox style="display: none" type="file" name="Filedata"/>
@@ -103,7 +116,7 @@ $(document).ready(function (){ // <input type=file> 태그 기능 구현
 		</div>
 		<div class="footer">
 			<ul>
-				<li class="submit"><a href="#" title="등록" class="btnlink">등록</a> </li>
+				<li class="submit"><a href="#" title="등록" id="saveBtn">등록</a> </li>
 				<li class="cancel"><a href="#" onclick="closeWindow();" title="취소" class="btnlink">취소</a></li>
 			</ul>
 		</div>

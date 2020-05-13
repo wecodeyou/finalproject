@@ -51,6 +51,8 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 	
 	
 <script type="text/javascript">
+$(function(){
+	
 	var config = {
 		txHost: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) http://xxx.xxx.com */
 		txPath: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) /xxx/xxx/ */
@@ -92,32 +94,29 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 			},
 			// 이미지첨부 관련 추가
 		 attacher:{
-			 image:{
-				 features:{
-					 left:250,
-					 top:65,
-					 width:400,
-					 height:190,
-					 scrollbars:0
-				}, 
+			 image:{ 
+				 features:{ left:250, top:65, width:400, height:190,scrollbars:0 }, 
 				//팝업창 사이즈 
 				popPageUrl:'${pageContext.request.contextPath}/daumeditor/img-popup'
 				//팝업창 주소 
 				} 
 			},	 
 		// 이미지첨부 관련 추가 
-			capacity: {
-				maximum: 5 * 1024*1024
+			capacity:{
+				maximum: 5 * 1024 * 1024
 			}
 		},
 		size: {
 			contentWidth: 700 /* 지정된 본문영역의 넓이가 있을 경우에 설정 */
 		}
-	};
+	}
+	
 	EditorJSLoader.ready(function(Editor) {
 
 		var editor = new Editor(config);
 	});
+
+});
 	function saveContent() {
 		document.getElementById("sendTagList").value = sendTagList;
 		Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
