@@ -35,7 +35,6 @@
 				<div class="detail-top"> <!-- detail-top : start  -->
 					<div class="detail-top-left">
 						<div class="top-left-img">
-							<span class="labelOnline">온라인</span>
 							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="" />
 						</div>
 						<div class="top-left-info">

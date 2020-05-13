@@ -328,41 +328,13 @@ iframe {
   flex-wrap: wrap;
 }
 
-.login100-form-btn {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
+.modalLogin {
+
   width: 100%;
   height: 60px;
-  background-color: #333333;
-  border-radius: 10px;
-
-  font-family: Poppins-Medium;
-  font-size: 19px;
   font-weight: bold;
-  color: #fff;
-  line-height: 1.2;
-
-  position: relative;
-  z-index: 1;
 }
 
-.login100-form-btn::before {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  top: 0;
-  left: 0;
-}
 
 
 /*------------------------------------------------------------------

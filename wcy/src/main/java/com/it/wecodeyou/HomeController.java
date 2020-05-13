@@ -86,22 +86,25 @@ public class HomeController {
 	public @ResponseBody HashMap singleUploadImageAjax(
 			@RequestParam("Filedata") MultipartFile multipartFile, HttpSession session) {
 		System.out.println("POST: /singleUploadImageAjax 파일 업로드 ");
+		System.out.println(multipartFile);
 		HashMap fileInfo = new HashMap(); //CallBack할 때 이미지 정보를 담을 Map
 		
 		if(multipartFile != null && !(multipartFile.getOriginalFilename().equals(""))) {
-			
+			System.out.println("확장자, 파일 명 확인");
 			//확장자 제한
 			String originalName = multipartFile.getOriginalFilename(); //실제 파일명
 			String originalNameExtension = originalName.substring(originalName.lastIndexOf(".")+1).toLowerCase();
 			if(!(originalNameExtension.equals("jpg")) || !(originalNameExtension.equals("gif")) ||
 					!(originalNameExtension.equals("png")) || !(originalNameExtension.equals("bmp"))){
+				System.out.println("파일확장자 : " + originalNameExtension);
 				fileInfo.put("result", -1);
 				return fileInfo;
 			}
 			
 			long fileSize = multipartFile.getSize();
-			long limitFileSize = 1*1024*1024;
+			long limitFileSize = 5*1024*1024;
 			if(limitFileSize < fileSize) {
+				System.out.println("파일 사이즈 : " + fileSize);
 				fileInfo.put("result", -2);
 			}
 			//저장경로
@@ -111,6 +114,7 @@ public class HomeController {
 			File file = new File(path);
 			//디렉토리 없을시 생성
 			if(!file.exists()) {
+				System.out.println("업로드폴더 생성");
 				file.mkdirs();
 			}
 			//파일 저장명 처리

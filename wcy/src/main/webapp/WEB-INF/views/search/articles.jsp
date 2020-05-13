@@ -11,7 +11,12 @@
 <link rel="stylesheet" href="<c:url value='/css/reset.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/search.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/tag.css'/>">
-<title>게시글 검색결과입니다</title>
+<link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
+
+<!-- 파비콘 적용 -->
+<link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+
+<title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -20,10 +25,53 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="./jquery/jquery.js"></script>
+
+<style>
+	.searchResult-table{
+		background-color: rgba(249,249,249,0.8);
+		
+	}
+
+	.searchResult-table .tdImg{
+		width:95px;
+		height:80px;
+	}
+	
+	.searchResult-table .tdImgSize{
+		width:70px;
+		height:70px;
+	}
+	
+	.searchResult-table td.tdImg, td.tdNo, td.tdType, td.tdPrice, td.tdDate{
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+	.searchResult-table td.tdName, td.tdDetail{
+		padding-left: 10px;
+    	vertical-align: middle;
+	}
+
+	.searchResult-table tr.trHead{
+		background-color: rgba(220,220,222,0.7);
+		height: 30px;
+   		line-height: 30px;
+   		font-weight: 600;
+	}
+
+	.link{
+		float:right;
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
+	
+</style>
+
 </head>
 <body>
+ <jsp:include page="../include/header-sub.jsp" /> 
 
-
+<main class="wcy-main-content">	
 	<!-- ${productType} hidden 값으로 넘기기 -->
 	<input type="hidden" id="reseult-type" name="reseult-type" value="${productType}"/>
 	
@@ -183,6 +231,9 @@
 			</c:if>
 		</ul>
 	</c:if>
+</main>
+	
+<jsp:include page="../include/footer.jsp" />
 
 <script src="<c:url value='/js/search-filter.js'/>"></script>
 <script src="<c:url value='/js/tag.js'/>"></script>
