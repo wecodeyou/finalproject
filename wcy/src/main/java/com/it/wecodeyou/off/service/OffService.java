@@ -80,8 +80,7 @@ public class OffService implements IOffService {
 
 	@Override
 	public OffVO getOneInfo(Integer offNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return offDao.getOneInfo(offNo);
 	}
 
 	@Override
