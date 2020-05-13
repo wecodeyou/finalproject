@@ -20,10 +20,31 @@ public class AdminController {
    	//admin page 호출
    	@GetMapping("")
 	public ModelAndView admin(ModelAndView mv) throws SQLException {
-   		System.out.println("/admin/ : GET 요청 발생!");
+   		System.out.println("/admin : GET 요청 발생!");
    		//
    		
    		mv.setViewName("admin/adminpage");
+   		return mv;
+   	}
+   	
+   	//admin page 호출
+   	@GetMapping("/user")
+	public ModelAndView user(ModelAndView mv) throws SQLException {
+   		System.out.println("/user : GET 요청 발생!");
+   		//
+   		
+   		mv.setViewName("admin/user");
+   		mv.addObject("members",memberService.getAllInfo());
+   		return mv;
+   	}
+   	
+   	//admin page 호출
+   	@GetMapping("/etc")
+	public ModelAndView etc(ModelAndView mv) throws SQLException {
+   		System.out.println("/etc : GET 요청 발생!");
+   		//
+   		
+   		mv.setViewName("admin/etc");
    		return mv;
    	}
 

@@ -33,7 +33,6 @@
 
 
 </style>
-
 </head>
 <body>
 
@@ -44,9 +43,9 @@
 			<div class="page-width">
 				<div class="center-header">
 					<ul class="center-sub-nav">
-						<li><a class="active">관리자 대시보드</a></li>
+						<li><a href="<c:url value='/admin'/>">관리자 대시보드</a></li>
 						<li><a href="<c:url value='/admin/user'/>">회원 관리</a></li>
-						<li><a href="<c:url value='/admin/etc'/>">기타 관리</a></li>
+						<li><a class="active">기타 관리</a></li>
 					</ul>
 				</div>
 			</div>
@@ -56,10 +55,10 @@
 				<!-- Page Heading -->
 				<div
 					class="d-sm-flex align-items-center justify-content-between mb-4">
-					<h1 class="h3 mb-0 text-gray-800">한 눈에 보기</h1>
-					<!-- <a href="#"
+					<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+					<a href="#"
 						class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-						class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
+						class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 				</div>
 
 				<!-- Content Row -->

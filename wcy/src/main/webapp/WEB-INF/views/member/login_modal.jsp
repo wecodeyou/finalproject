@@ -111,7 +111,7 @@
 					</div>
 
 					<div class="container-login100-form-btn m-t-20">
-						<button type="button" class="login100-form-btn" id="login-btn" value="로그인">
+						<button type="button" class="btn btn-outline-dark modalLogin" id="login-btn" value="로그인">
 							로그인
 						</button>
 					</div>

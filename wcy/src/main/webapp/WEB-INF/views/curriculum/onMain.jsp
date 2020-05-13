@@ -14,7 +14,7 @@
 
 
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"
@@ -41,46 +41,41 @@
 					<ul class="curri-list">
 						
 						<li>
-							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
-							<a href="#">
-								<div class="curri-list-img"><img src="<c:url value='/img/curriculum/network01.jpg'/>" alt="" /></div>
-							</a>
+							<div class="curri-list-img">
+								<img src="<c:url value='/img/curriculum/network01.jpg'/>" alt="" />
+							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle1}</h5>
 								<p>${c.subDetail1}
 								<div class="curri-list-btn">
 									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
-									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
+									<!-- <button type="button" onclick="" class="btn_red">장바구니 담기</button> -->
 								</div>
 							</div>
 						</li>
 						
 						<li class="mt20">
-							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
-							<a href="#">
-								<div class="curri-list-img"><img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="" /></div>
-							</a>
+							<div class="curri-list-img">
+								<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="" />
+							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle2}</h5>
 								<p>${c.subDetail2}
 								<div class="curri-list-btn">
 									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
-									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
 								</div>
 							</div>
 						</li>
 						
 						<li class="mt20">
-							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
-							<a href="#">
-								<div class="curri-list-img"><img src="<c:url value='/img/curriculum/network03.png'/>" alt="" /></div>
-							</a>
+							<div class="curri-list-img">
+								<img src="<c:url value='/img/curriculum/network03.png'/>" alt="" />
+							</div>
 							<div class="curri-list-text">
 								<h5>CCNP-Switch</h5>
 								<p>라우터와 스위치 등의 장비를 이용하여 네트워크를 구성하는 방법을 학습하는 과정
 								<div class="curri-list-btn">
 									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
-									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
 								</div>
 							</div>
 						</li>

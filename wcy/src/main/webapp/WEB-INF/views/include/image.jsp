@@ -17,10 +17,22 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 <style> /* css */ .header { background-image: none; background-color: #027dfc; } /* 파일첨부(.file) */ .file { display: inline-block; margin-top: 8px; overflow: hidden; } .file .file-text { display: inline-block; padding: 6px 10px 8px 10px; border : 1px solid #c7c7c7; width: 179px; font-size: 14px; color: #8a8a8a; float: left; } .file .file-text:FOCUS { border-color: #54c4e5; outline: 0; -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.6); } .file .file-btn { margin-left: 2px; padding: 6px 8px 4px 8px; height: 20px; line-height: 20px; font-size: 12px; font-weight: bold; background-color: #fff; border: 1px solid #989898; color: #989898; cursor: pointer; float: left; } .file .file-btn:HOVER { background-color: #edfbff; border: 1px solid #009bc8; color: #009bc8; } </style>
 
 <script>
+<<<<<<< HEAD
 $(function (){ 
 	$("#saveBtn").click(function(){
 		$("#daumOpenEditorForm").submit();
 	});
+=======
+$(document).ready(function (){ // <input type=file> 태그 기능 구현
+	$('.file input[type=file]').change(function (){
+		var inputObj = $(this).prev().prev(); // 두번째 앞 형제(text) 객체
+		console.log(inputObj.val());
+		var fileLocation = $(this).val(); // 파일경로 가져오기
+		console.log(fileLocation);
+/*  		inputObj.val(fileLocation.replace('C:\\fakepath\\','')); // 몇몇 브라우저는 보안을 이유로 경로가 변경되서 나오므로 대체 후 text에 경로 넣기 }); }); 
+		}); */
+
+>>>>>>> branch 'master' of https://github.com/wecodeyou/finalproject.git
 	
 	$("#daumOpenEditorForm").ajaxForm({
 		beforeSubmit: function(data, form, option){

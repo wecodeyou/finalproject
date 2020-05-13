@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="<c:url value='/css/header-sub.css'/>">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
+<link rel="stylesheet" href="<c:url value='/css/search.css'/>">
 <style>
 @media only screen and (max-width: 1023px) {
   .wcy-search-menu{
@@ -55,19 +57,19 @@
 		</nav> <!-- .wcy-primary-nav -->
 
 		<nav class="wcy-search-menu">
-			<form action="" method="get" class="search-form">
-			<ul id="wcy-search">
-				<li>
-				<fieldset id="search-fieldset">
-					<input type="search" id="search-input" 
-						placeholder="파이썬(Python)기초 프로젝트"/>
-					<button type="submit" id="search-btn">
-						<i class="fa fa-search"></i>
-					</button>
-				</fieldset>
-				</li>
-			</ul>
-			</form>
+			<div class="search-form">
+				<ul id="wcy-search">
+					<li>
+						<fieldset id="search-fieldset">
+							<input type="search" id="search-input"
+								placeholder="파이썬(Python)기초 프로젝트" />
+							<button type="submit" id="search-btn">
+								<i class="fa fa-search"></i>
+							</button>
+						</fieldset>
+					</li>
+				</ul>
+			</div>
 			<ul id="wcy-menu">
 				<li><a href="#"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
 				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
@@ -75,7 +77,7 @@
 					<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">마이페이지</p></i></a></li>
 				</c:if>
 				<c:if test="${login.userType == 2}">
-					<li><a href="#"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">관리자페이지</p></i></a></li>
+					<li><a href="<c:url value='/admin' />"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">관리자페이지</p></i></a></li>
 				</c:if>
 				<li><a href="#"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
 			</ul>
@@ -219,6 +221,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+<!-- 검색 기능 -->
+<script src="<c:url value='/js/search-main.js'/>"></script>
 
 <script>
 
