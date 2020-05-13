@@ -84,7 +84,7 @@ public class HomeController {
 	
 	@PostMapping("/singleUploadImageAjax")
 	public @ResponseBody HashMap singleUploadImageAjax(
-			@RequestParam("Filedata") MultipartFile multipartFile, HttpSession session) {
+			@RequestParam("filedata") MultipartFile multipartFile, HttpSession session) {
 		System.out.println("POST: /singleUploadImageAjax 파일 업로드 ");
 		System.out.println(multipartFile);
 		HashMap fileInfo = new HashMap(); //CallBack할 때 이미지 정보를 담을 Map
@@ -94,8 +94,8 @@ public class HomeController {
 			//확장자 제한
 			String originalName = multipartFile.getOriginalFilename(); //실제 파일명
 			String originalNameExtension = originalName.substring(originalName.lastIndexOf(".")+1).toLowerCase();
-			if(!(originalNameExtension.equals("jpg")) || !(originalNameExtension.equals("gif")) ||
-					!(originalNameExtension.equals("png")) || !(originalNameExtension.equals("bmp"))){
+			if(!(originalNameExtension.equals("jpg") || originalNameExtension.equals("gif") ||
+					originalNameExtension.equals("png") || originalNameExtension.equals("bmp"))){
 				System.out.println("파일확장자 : " + originalNameExtension);
 				fileInfo.put("result", -1);
 				return fileInfo;
