@@ -62,6 +62,7 @@ public class ProductService implements IProductService {
 		return true;
 	}
 
+<<<<<<< HEAD
 	@Override
 	public List<ProductVO> Product(SearchVO svo) {
 		// TODO Auto-generated method stub
@@ -96,6 +97,14 @@ public class ProductService implements IProductService {
 	@Override
 	public Integer countProducts() {
 		return pdao.countProducts();
+=======
+	
+	
+	@Override
+	public ArrayList<ProductVO> purchasedOn(Integer userNo) {
+		// TODO Auto-generated method stub
+		return pdao.purchasedOn(userNo);
+>>>>>>> refs/heads/asd
 	}
 
 }

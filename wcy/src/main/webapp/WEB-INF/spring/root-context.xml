@@ -48,6 +48,7 @@
 	<mybatis-spring:scan base-package="com.it.wecodeyou.ptag.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.review.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.off.repository"/>
+	<mybatis-spring:scan base-package="com.it.wecodeyou.episode.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.purchase.repository"/>
 	<mybatis-spring:scan base-package="com.it.wecodeyou.curriculum.repository"/>
 	<!-- 이메일 관련 -->

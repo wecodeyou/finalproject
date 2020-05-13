@@ -39,7 +39,7 @@ public class Point_PurchaseController {
 		
 		
 		
-		request.getSession().setAttribute("login", mdao.getOneInfo(1));
+//		request.getSession().setAttribute("login", mdao.getOneInfo(1));
 		
 		
 		

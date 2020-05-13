@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -291,7 +291,15 @@ to {
 	<hr>
 	<br>
 	<br>
-
+	
+	<table border = 1>
+	
+	<c:forEach var = "c" items = '${lec_list}'>
+		<tr>
+			<td><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>">${c.productName}</a></td><td>${c.productCreatedAt}</td>		
+		</tr>
+	</c:forEach>	
+	</table>
 
 	<a href="/mypage/leclist?type=on">[온라인]</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="/mypage/leclist?type=off">[오프라인]</a>
@@ -348,7 +356,9 @@ to {
 </c:if>
 	
 	
-
+	
+	
+	
 <c:if test="${param.type eq 'off' }">
 	<!-- 구매리스트 -->
 	<div class="list" id="list">
@@ -437,6 +447,7 @@ to {
 		<div class="modal_layer"></div>
 	</div>
 	<!-- 모달 창 끝 -->
+<<<<<<< HEAD
 			
 
 				</p>
@@ -458,33 +469,45 @@ to {
 
 <!-- 별점 -->
 <script>
+=======
+	
+	
+	<a href="<c:url value='/mypage/' />" >MYPAGE</a>
+	
+	<script>
+>>>>>>> refs/heads/asd
 		//별점
 		$(".star_rating a").click(function() {
 			$(this).parent().children("a").removeClass("on");
 			$(this).addClass("on").prevAll("a").addClass("on");
 			return false;
 		});
-
+		
 		//모달 띄우기
 		const rmodal = document.getElementsByClassName("modal");
-
+		
 		function Modal(obj) {
 			var click_id = $(obj).attr('id');
 			console.log(click_id);
 			rmodal[0].style.display = "block";
-
+			
 		};
-
+		
 		function ModalClose() {
 			rmodal[0].style.display = "none";
 		};
-
+		
 		/* 	window.onclick=function(event){
 		 if(event.target.className=="modal"){
 		 event.target.style.display="none";
 		 };
 		 }; */
 	</script>
+<<<<<<< HEAD
 
+=======
+	
+	
+>>>>>>> refs/heads/asd
 </body>
 </html>
