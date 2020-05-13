@@ -21,7 +21,6 @@ public interface IProductService {
 	
 	public ProductVO getOneInfo(Integer productNo);
 	
-<<<<<<< HEAD
 	public boolean insertPtag(ArrayList<Integer> sendTagList, Integer productNo);
 
 	public List<ProductVO> Product(SearchVO svo);
@@ -38,11 +37,6 @@ public interface IProductService {
 
 	public Integer countProducts(); 
 	
-=======
-	public boolean insertPtag(ArrayList<Integer> sendTagList, Integer productNo); 
-	
-	
 	//수강중인 강의 출력
 	public ArrayList<ProductVO> purchasedOn(Integer userNo);
->>>>>>> refs/heads/asd
 }

@@ -18,7 +18,6 @@ public interface IProductMapper {
 	
 	public ProductVO getOneInfo(Integer productNo);
 
-<<<<<<< HEAD
 	public List<ProductVO> getProductByTitle(SearchVO svo);
 
 	public Integer countProductsByTitle(SearchVO svo);
@@ -30,8 +29,7 @@ public interface IProductMapper {
 	public List<ProductVO> getProductListPaging(SearchVO svo);
 
 	public Integer countProducts();
-=======
+
 	//수강중인 온라인강의 출력
 	public ArrayList<ProductVO> purchasedOn(Integer userNo);
->>>>>>> refs/heads/asd
 }

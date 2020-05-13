@@ -469,13 +469,6 @@ to {
 
 <!-- 별점 -->
 <script>
-=======
-	
-	
-	<a href="<c:url value='/mypage/' />" >MYPAGE</a>
-	
-	<script>
->>>>>>> refs/heads/asd
 		//별점
 		$(".star_rating a").click(function() {
 			$(this).parent().children("a").removeClass("on");
@@ -503,11 +496,6 @@ to {
 		 };
 		 }; */
 	</script>
-<<<<<<< HEAD
 
-=======
-	
-	
->>>>>>> refs/heads/asd
 </body>
 </html>
