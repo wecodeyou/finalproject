@@ -114,12 +114,6 @@
 		</nav>
 		
 	</header> <!-- .wcy-auto-hide-header -->
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/wecodeyou/finalproject.git
-
-  
 
    <nav class="wcy-secondary-nav">
       <ul>

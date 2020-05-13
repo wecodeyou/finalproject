@@ -41,77 +41,41 @@
 					<ul class="curri-list">
 						
 						<li>
-							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
 							<div class="curri-list-img">
-								<span class="labelOffline">오프라인</span>
 								<img src="<c:url value='/img/curriculum/network01.jpg'/>" alt="" />
-								<div class="curri-list-img-hover">
-									<div class="hover-left">
-										<!-- <a href="javascript:addMyCart('','','','','');" onclick="addCart();" title="카트담기"><img src="" alt="" /></a> -->
-										<a href="#" title="카트담기"><i class="fa fa-shopping-cart"></i></a>
-									</div>
-									<div class="hover-right">
-										<a href="#">수강신청</a>
-									</div>
-								</div>
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle1}</h5>
 								<p>${c.subDetail1}
 								<div class="curri-list-btn">
 									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
-									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
+									<!-- <button type="button" onclick="" class="btn_red">장바구니 담기</button> -->
 								</div>
 							</div>
 						</li>
 						
 						<li class="mt20">
-							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
 							<div class="curri-list-img">
-								<span class="labelOnline">온라인</span>
 								<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="" />
-								<div class="curri-list-img-hover">
-									<div class="hover-left">
-										<!-- <a href="javascript:addMyCart('','','','','');" onclick="addCart();" title="카트담기"><img src="" alt="" /></a> -->
-										<a href="#" title="카트담기"><i class="fa fa-shopping-cart"></i></a>
-									</div>
-									<div class="hover-right">
-										<a href="#">수강신청</a>
-									</div>
-								</div>
 							</div>
-							
 							<div class="curri-list-text">
 								<h5>${c.subTitle2}</h5>
 								<p>${c.subDetail2}
 								<div class="curri-list-btn">
 									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
-									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
 								</div>
 							</div>
 						</li>
 						
 						<li class="mt20">
-							<!-- <a href="#" onclick="location.href='/curriculum/sub.php?seq=34'"></a> -->
-								<div class="curri-list-img">
-									<span class="labelOffline">오프라인</span>
-									<img src="<c:url value='/img/curriculum/network03.png'/>" alt="" />
-										<div class="curri-list-img-hover">
-										<div class="hover-left">
-											<!-- <a href="javascript:addMyCart('','','','','');" onclick="addCart();" title="카트담기"><img src="" alt="" /></a> -->
-											<a href="#" title="카트담기"><i class="fa fa-shopping-cart"></i></a>
-										</div>
-										<div class="hover-right">
-											<a href="#">수강신청</a>
-										</div>
-									</div>
-								</div>
+							<div class="curri-list-img">
+								<img src="<c:url value='/img/curriculum/network03.png'/>" alt="" />
+							</div>
 							<div class="curri-list-text">
 								<h5>CCNP-Switch</h5>
 								<p>라우터와 스위치 등의 장비를 이용하여 네트워크를 구성하는 방법을 학습하는 과정
 								<div class="curri-list-btn">
 									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
-									<button type="button" onclick="" class="btn_red">장바구니 담기</button>
 								</div>
 							</div>
 						</li>
