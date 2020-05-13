@@ -322,7 +322,7 @@
 		</c:if>
 	</ul>
 </c:if>
-</main>
+</main> 
 
 <jsp:include page="../include/footer.jsp" />
 
