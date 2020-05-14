@@ -70,7 +70,7 @@
 .wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-next{
 	right: 0%;
 }
-
+ 
 
 @media only screen and (max-width: 1225px) {
 	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
