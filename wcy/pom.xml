@@ -111,11 +111,11 @@
 		    <version>2.9.8</version>
 		</dependency>
 <!-- STOMP 사용을 위한 디펜던시 -->
-		<dependency>
+<!-- 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-messaging</artifactId>
 		    <version>5.2.5.RELEASE</version>
-		</dependency>
+		</dependency> -->
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>

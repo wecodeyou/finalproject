@@ -38,15 +38,15 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.it.wecodeyou" />
-
+<!-- 
 	<websocket:message-broker application-destination-prefix="/app">
 		<websocket:stomp-endpoint path="/off/lecture">
 			<websocket:sockjs/>
 		</websocket:stomp-endpoint>
 		<websocket:simple-broker prefix="/topic"/>
-	</websocket:message-broker>
+	</websocket:message-broker> -->
 	
-  	<beans:bean id="socketHandler" class="com.it.wecodeyou.off_lecture.handler.SocketHandler"/>
+<!--   	<beans:bean id="socketHandler" class="com.it.wecodeyou.off_lecture.handler.SocketHandler"/> -->
 	<!-- 인터셉터 빈 등록
 	<beans:bean id="testInterceptor" class="com.it.wecodeyou.member.commons.interceptor.TestInterceptor"/>
 	<beans:bean id="boardInterceptor" class=""/>
