@@ -82,6 +82,12 @@ public class HomeController {
 		return "/include/image";
 	}
 	
+	
+	/*
+	 *	이미지 업로드 사용법
+	 *	폼 속성에 >>  encType=multipart/form-data << 추가
+	 *	 인풋 태그 추가 <input  type="file" name="Filedata"/> 
+	 */
 	@PostMapping("/singleUploadImageAjax")
 	public @ResponseBody HashMap singleUploadImageAjax(
 			@RequestParam("Filedata") MultipartFile multipartFile, HttpSession session) {

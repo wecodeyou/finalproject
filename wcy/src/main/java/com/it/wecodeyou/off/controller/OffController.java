@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -256,5 +257,10 @@ public class OffController {
 		mv.addObject("lecture", opvo);
 		mv.setViewName("/off/OffLectureMaster");
 		return mv;
+	}
+	
+	@MessageMapping("/lecture")
+	public String handle(String message) {
+		return "[" + System.currentTimeMillis() + " : " + message;
 	}
 }
