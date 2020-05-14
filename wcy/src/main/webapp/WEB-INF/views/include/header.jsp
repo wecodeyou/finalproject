@@ -17,9 +17,17 @@
 
 <link rel="stylesheet" href="<c:url value='/css/search.css'/>">
 
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
+
+
+<!-- 인기강의 슬라이더 -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
+
+
 <style>
 /* 이미지 슬라이더 스타일 변경 오버라이드 */
-.bx-wrapper{border:0; background:#fff; box-shadow:none; position:relative; margin-bottom:0px; margin-top:90px;}
+.bx-wrapper{border:0; background:#fff; box-shadow:none; position:relative; margin: 90px auto 0px;}
 
 @media only screen and (max-width: 1023px) {
    .bx-wrapper{
@@ -50,6 +58,59 @@
 .bx-wrapper .bx-pager.bx-default-pager a:focus{
    background:#c7c7c7;
 }
+
+.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
+	margin-top: 15px;
+	top:100%;
+} 
+
+.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+	left: 94%;
+}
+.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-next{
+	right: 0%;
+}
+
+
+@media only screen and (max-width: 1225px) {
+	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+		left: 93%;
+	}
+}
+@media only screen and (max-width: 1060px) {
+	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+		left: 92%;
+	}
+}
+@media only screen and (max-width: 945px) {
+	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+		left: 91%;
+	}
+}
+@media only screen and (max-width: 815px) {
+	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+		left: 90%;
+	}
+}
+@media only screen and (max-width: 760px) {
+	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
+		display:none;
+	} 
+}
+
+
+.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager{
+	bottom: -35px;
+}
+.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:hover,
+.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a.active,
+.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:focus{
+	background: #807e7e;
+}
+.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a{
+	background: #c9c9c9;
+}
+
 
 </style>
 
@@ -254,37 +315,173 @@
 <%@ include file="../member/event_modal.jsp" %>  
 
 <main class="wcy-main-content sub-nav-hero">
-   <div>
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, quos, voluptate, sunt, in suscipit quibusdam quis dignissimos eligendi repellendus ipsam exercitationem adipisci nostrum fugit accusamus quae cum nisi accusantium eaque.
-      </p>
 
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, dolore, impedit eveniet necessitatibus voluptate distinctio quam repellendus voluptates voluptatum inventore rem sapiente minus esse saepe iste harum architecto numquam quis vero dignissimos beatae est id libero adipisci enim odio natus commodi explicabo modi similique nesciunt deserunt vel consectetur velit omnis quaerat corrupti. Cumque, perspiciatis, culpa, reprehenderit laboriosam obcaecati deleniti soluta tempora ipsum ipsam iure temporibus dolore modi quidem cum doloribus ex vel suscipit sapiente ut esse optio voluptates molestias natus nostrum illo nihil quisquam facilis hic atque voluptas quae pariatur placeat officia doloremque quia ea recusandae rem iste asperiores iusto debitis quod incidunt id nemo repellendus itaque. Iure, vel, expedita quam repellendus aliquam fugit autem obcaecati libero reiciendis excepturi officia voluptate molestiae quis itaque consequatur nulla ea sunt facilis cupiditate tempora sequi nam in asperiores! Sunt, maxime at id eaque debitis quasi a possimus eveniet eum velit tempore quidem voluptates expedita quibusdam officiis. Ipsum, quaerat, vero, adipisci enim autem inventore eum maiores consectetur culpa molestiae cumque sed qui dolorem. Placeat, quae deleniti molestiae minima cupiditate quaerat sit est perspiciatis error iste. Ratione, minus, commodi, magni laborum doloribus libero ullam quos tenetur quis molestias ipsam consequuntur harum asperiores culpa nostrum omnis.
-      </p>
+	<div class="wcy-ProgramLayout">
+		<div class="wcy-ProgramBox">
+			<div class="class-title">
+				WECODEYOU 추천 강의
+			</div>
+			<div class="mainProgramTabLsit">
+				<ul>
+					<li class="on" style="width:27.875px; margin-bottom: 15px;">
+						<a href="javasctipt:void(0);" title="기초완성반"">
+							기초완성반
+						</a>
+					</li>
+					<li style="width:27.875px; margin-bottom: 15px;">
+						<a href="javasctipt:void(0);" title="기초완성반">
+							네트워크
+						</a>
+					</li>
+					<li style="width:27.875px; margin-bottom: 15px;">
+						<a href="javasctipt:void(0);" title="기초완성반">
+							프로그래밍
+						</a>
+					</li>
+					<li style="width:27.875px;">
+						<a href="javasctipt:void(0);" title="기초완성반">
+							데이터베이스
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mainProgramTabCon">
+				<ul>
+					<li class="on" style="display:block;">
+						<div class="mainProgramTabTitle">
+							<strong>[오프라인]</strong> IT 통합 기초
+						</div>
+						<div class="mainProgramTabContent01">
+							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="IT통합 기초반" class="leftImage" />
+							<table class="pProgram01">
+								<tbody>
+									<tr>
+										<td class="ppTitle">기초탄탄</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">기초튼튼</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">탄탄기초</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">튼튼기초</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</li>
+					
+					<li style="display:none;">
+						<div class="mainProgramTabTitle">
+							<strong>[오프라인]</strong> IT 통합 기초
+						</div>
+						<div class="mainProgramTabContent01">
+							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="IT통합 기초반" class="leftImage" />
+							<table class="pProgram01">
+								<tbody>
+									<tr>
+										<td class="ppTitle">기초탄탄</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">기초튼튼</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">탄탄기초</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">튼튼기초</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</li>
+					
+					<li style="display:none;">
+						<div class="mainProgramTabTitle">
+							<strong>[오프라인]</strong> IT 통합 기초
+						</div>
+						<div class="mainProgramTabContent01">
+							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="IT통합 기초반" class="leftImage" />
+							<table class="pProgram01">
+								<tbody>
+									<tr>
+										<td class="ppTitle">기초탄탄</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">기초튼튼</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">탄탄기초</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">튼튼기초</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</li>
+					
+					<li style="display:none;">
+						<div class="main-class-con-title">
+							<strong>[오프라인]</strong> IT 통합 기초
+						</div>
+						<div class="mainProgramTabContent01">
+							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="IT통합 기초반" class="leftImage" />
+							<table class="pProgram01">
+								<tbody>
+									<tr>
+										<td class="ppTitle">기초탄탄</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">기초튼튼</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">탄탄기초</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+									<tr>
+										<td class="ppTitle">튼튼기초</td>
+										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="wcy-ProgramLayout">
+		<ul class="wcy-best-class">
+			<li><img src="<c:url value='/img/curriculum/network01.jpg'/>" style="width:300px; height:300px;"/></li>
+			<li><img src="<c:url value='/img/curriculum/network02.jpg'/>" style="width:300px; height:300px;"/></li>
+			<li><img src="<c:url value='/img/curriculum/network03.png'/>" style="width:300px; height:300px;"/></li>
+			<li><img src="<c:url value='/img/curriculum/network04.jpg'/>" style="width:300px; height:300px;"/></li>
+			<li><img src="<c:url value='/img/curriculum/network05.jpg'/>" style="width:300px; height:300px;"/></li>
+			<li><img src="<c:url value='/img/curriculum/network06.jpg'/>" style="width:300px; height:300px;"/></li>
+		</ul>
+	</div>
 
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, dolore, impedit eveniet necessitatibus voluptate distinctio quam repellendus voluptates voluptatum inventore rem sapiente minus esse saepe iste harum architecto numquam quis vero dignissimos beatae est id libero adipisci enim odio natus commodi explicabo modi similique nesciunt deserunt vel consectetur velit omnis quaerat corrupti. Cumque, perspiciatis, culpa, reprehenderit laboriosam obcaecati deleniti soluta tempora ipsum ipsam iure temporibus dolore modi quidem cum doloribus ex vel suscipit sapiente ut esse optio voluptates molestias natus nostrum illo nihil quisquam facilis hic atque voluptas quae pariatur placeat officia doloremque quia ea recusandae rem iste asperiores iusto debitis quod incidunt id nemo repellendus itaque. Iure, vel, expedita quam repellendus aliquam fugit autem obcaecati libero reiciendis excepturi officia voluptate molestiae quis itaque consequatur nulla ea sunt facilis cupiditate tempora sequi nam in asperiores! Sunt, maxime at id eaque debitis quasi a possimus eveniet eum velit tempore quidem voluptates expedita quibusdam officiis. Ipsum, quaerat, vero, adipisci enim autem inventore eum maiores consectetur culpa molestiae cumque sed qui dolorem. Placeat, quae deleniti molestiae minima cupiditate quaerat sit est perspiciatis error iste. Ratione, minus, commodi, magni laborum doloribus libero ullam quos tenetur quis molestias ipsam consequuntur harum asperiores culpa nostrum omnis.
-      </p>
 
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, quos, voluptate, sunt, in suscipit quibusdam quis dignissimos eligendi repellendus ipsam exercitationem adipisci nostrum fugit accusamus quae cum nisi accusantium eaque.
-      </p>
 
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, dolore, impedit eveniet necessitatibus voluptate distinctio quam repellendus voluptates voluptatum inventore rem sapiente minus esse saepe iste harum architecto numquam quis vero dignissimos beatae est id libero adipisci enim odio natus commodi explicabo modi similique nesciunt deserunt vel consectetur velit omnis quaerat corrupti. Cumque, perspiciatis, culpa, reprehenderit laboriosam obcaecati deleniti soluta tempora ipsum ipsam iure temporibus dolore modi quidem cum doloribus ex vel suscipit sapiente ut esse optio voluptates molestias natus nostrum illo nihil quisquam facilis hic atque voluptas quae pariatur placeat officia doloremque quia ea recusandae rem iste asperiores iusto debitis quod incidunt id nemo repellendus itaque. Iure, vel, expedita quam repellendus aliquam fugit autem obcaecati libero reiciendis excepturi officia voluptate molestiae quis itaque consequatur nulla ea sunt facilis cupiditate tempora sequi nam in asperiores! Sunt, maxime at id eaque debitis quasi a possimus eveniet eum velit tempore quidem voluptates expedita quibusdam officiis. Ipsum, quaerat, vero, adipisci enim autem inventore eum maiores consectetur culpa molestiae cumque sed qui dolorem. Placeat, quae deleniti molestiae minima cupiditate quaerat sit est perspiciatis error iste. Ratione, minus, commodi, magni laborum doloribus libero ullam quos tenetur quis molestias ipsam consequuntur harum asperiores culpa nostrum omnis.
-      </p>
-
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, dolore, impedit eveniet necessitatibus voluptate distinctio quam repellendus voluptates voluptatum inventore rem sapiente minus esse saepe iste harum architecto numquam quis vero dignissimos beatae est id libero adipisci enim odio natus commodi explicabo modi similique nesciunt deserunt vel consectetur velit omnis quaerat corrupti. Cumque, perspiciatis, culpa, reprehenderit laboriosam obcaecati deleniti soluta tempora ipsum ipsam iure temporibus dolore modi quidem cum doloribus ex vel suscipit sapiente ut esse optio voluptates molestias natus nostrum illo nihil quisquam facilis hic atque voluptas quae pariatur placeat officia doloremque quia ea recusandae rem iste asperiores iusto debitis quod incidunt id nemo repellendus itaque. Iure, vel, expedita quam repellendus aliquam fugit autem obcaecati libero reiciendis excepturi officia voluptate molestiae quis itaque consequatur nulla ea sunt facilis cupiditate tempora sequi nam in asperiores! Sunt, maxime at id eaque debitis quasi a possimus eveniet eum velit tempore quidem voluptates expedita quibusdam officiis. Ipsum, quaerat, vero, adipisci enim autem inventore eum maiores consectetur culpa molestiae cumque sed qui dolorem. Placeat, quae deleniti molestiae minima cupiditate quaerat sit est perspiciatis error iste. Ratione, minus, commodi, magni laborum doloribus libero ullam quos tenetur quis molestias ipsam consequuntur harum asperiores culpa nostrum omnis.
-      </p>
-
-      <p>
-         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, dolore, impedit eveniet necessitatibus voluptate distinctio quam repellendus voluptates voluptatum inventore rem sapiente minus esse saepe iste harum architecto numquam quis vero dignissimos beatae est id libero adipisci enim odio natus commodi explicabo modi similique nesciunt deserunt vel consectetur velit omnis quaerat corrupti. Cumque, perspiciatis, culpa, reprehenderit laboriosam obcaecati deleniti soluta tempora ipsum ipsam iure temporibus dolore modi quidem cum doloribus ex vel suscipit sapiente ut esse optio voluptates molestias natus nostrum illo nihil quisquam facilis hic atque voluptas quae pariatur placeat officia doloremque quia ea recusandae rem iste asperiores iusto debitis quod incidunt id nemo repellendus itaque. Iure, vel, expedita quam repellendus aliquam fugit autem obcaecati libero reiciendis excepturi officia voluptate molestiae quis itaque consequatur nulla ea sunt facilis cupiditate tempora sequi nam in asperiores! Sunt, maxime at id eaque debitis quasi a possimus eveniet eum velit tempore quidem voluptates expedita quibusdam officiis. Ipsum, quaerat, vero, adipisci enim autem inventore eum maiores consectetur culpa molestiae cumque sed qui dolorem. Placeat, quae deleniti molestiae minima cupiditate quaerat sit est perspiciatis error iste. Ratione, minus, commodi, magni laborum doloribus libero ullam quos tenetur quis molestias ipsam consequuntur harum asperiores culpa nostrum omnis.
-      </p>
-   </div>
 </main> <!-- .cd-main-content -->
-
 
 
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
@@ -292,6 +489,10 @@
 <!-- jquery 이미지 슬라이더 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<!-- 인기강의 슬라이더 -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 
 <!-- 검색 기능 -->
 <script src="<c:url value='/js/search-main.js'/>"></script>
@@ -308,12 +509,35 @@ $(document).ready(function(){
        mode:'fade',      //슬라이드 모드('fade', 'horizontal', 'vertical'이 있음)
        autoControls:false,   //시작, 중지 버튼 숨기기
        autoHover:true,      //슬라이드에 마우스 오버시 애니메이션 정지하기
-       pager:true,         //페이지 표시 보이기
+       pager:true         //페이지 표시 보이기
        //captions:true,      //이미지 위에 텍스트 보이기
-       
+
     });
   });
+  
 
+$(document).ready(function(){
+    $('.wcy-best-class').bxSlider({
+       
+       auto:true,         //자동으로 애니메이션 시작
+       speed:800,         //애니메이션 속도
+       pause:3000,         //애니메이션 유지 시간 (4초)
+       adaptiveHeight:true,//자동으로 이미지의 높이에 맞게 슬라이드의 높이값 조절함
+       mode:'horizontal',      //슬라이드 모드('fade', 'horizontal', 'vertical'이 있음)
+       autoControls:false,   //시작, 중지 버튼 숨기기
+       autoHover:true,      //슬라이드에 마우스 오버시 애니메이션 정지하기
+       pager:true,         	//페이지 표시 보이기
+       minSlides:1,
+       maxSlides:4,
+       shrinkItems:true,
+       slideWidth:300,
+       slideMargin:30
+       //ticker:true,		//뉴스기사처럼 흘러가는것 
+       //tickerHover:true	//마우스 호버시 정지
+    });
+  });
+  
+  
 function logincheck(){
     if(${login == null}){
        alert("로그인이 필요한 서비스입니다.");
@@ -322,7 +546,11 @@ function logincheck(){
     }
        
  };
-	
+
+ 
+ // 인기강의 슬라이더
+
+ 
 </script>
 
 
