@@ -347,7 +347,7 @@ $(function(){
 	         
 	         $.ajax({
 	            type: "POST",
-	            url: "/member/loginCheck",
+	            url: "<c:url value = "/member/loginCheck"/>",
 	            headers: {
 	                   "Content-Type": "application/json"
 	               },

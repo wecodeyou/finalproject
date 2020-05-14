@@ -16,5 +16,8 @@ public interface IEpisodeMapper {
 	
 	public Integer getProductNo(Integer episodeOnNo) throws SQLException;
 	
+	public Integer insertEpisode(EpisodeVO evo) throws SQLException;
 	
+	public Integer getOnNo(Integer productNo) throws SQLException;
+
 }

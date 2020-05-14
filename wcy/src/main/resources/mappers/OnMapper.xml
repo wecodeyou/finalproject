@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.wecodeyou.on.repository.IOnMapper">
+
+	<resultMap id="OnMap" type="com.it.wecodeyou.on.model.OnVO">
+		<id property="onNo" column="on_no" />
+		<result property="onAuthor" column="on_author" />
+		<result property="onCategory" column="on_category" />
+		<result property="onProductNo" column="on_product_no" />
+		<result property="onUploadUri" column="on_upload_uri" />
+		<result property="onDays" column="on_days" />
+	</resultMap>
+
+	<insert id="InsertOn">
+
+		INSERT INTO on_course
+		(on_author, on_category, on_product_no, on_upload_uri, on_days)
+		VALUES
+		(#{onAuthor}, #{onCategory}, #{onProductNo}, #{onUploadUri}, #{onDays})
+
+
+	</insert>
+
+
+
+
+
+
+
+</mapper>

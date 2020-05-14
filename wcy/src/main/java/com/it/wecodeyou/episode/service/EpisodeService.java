@@ -33,6 +33,19 @@ public class EpisodeService implements IEpisodeService {
 		// TODO Auto-generated method stub
 		return dao.getProductNo(episodeOnNo);
 	}
+
+	@Override
+	public Integer insertEpisode(EpisodeVO evo) throws SQLException {
+		// TODO Auto-generated method stub
+		return dao.insertEpisode(evo);
+	}
+
+	@Override
+	public Integer getOnNo(Integer productNo) throws SQLException {
+		// TODO Auto-generated method stub
+		return dao.getOnNo(productNo);
+	}
+	
 	
 	
 	

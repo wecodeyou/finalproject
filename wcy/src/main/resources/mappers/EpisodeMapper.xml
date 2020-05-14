@@ -10,6 +10,20 @@
       <result property="episodeSource" column="episode_source" />
    </resultMap>
    
+   
+   <insert id = "insertEpisode">
+   INSERT INTO 
+   episode
+   (episode_on_no, episode_row_no, episode_name,episode_source)
+   VALUES
+   (#{episodeOnNo}, #{episodeRowNo}, #{episodeName},#{episodeSource})
+   
+   </insert>
+   
+   
+   
+   
+   
 <!-- product_no 받아서  해당 에피소드 반환 -->
    <select id="getAllEpisode1" resultMap="EpisodeMap">
 		SELECT * 
@@ -31,9 +45,11 @@
 	</select>
    
    <select id = "getOnNo" resultType = "int">
-   		SELCET episode_on_no
-   		FROM episode
-   		WHERE episode_source = #{episodeSource}
+		SELECT on_no 
+		FROM on_course
+		WHERE on_product_no = (SELECT product_no
+					   FROM product 
+					   WHERE product_no = #{productNo});
    
    </select>
 

@@ -447,10 +447,8 @@ to {
 		<div class="modal_layer"></div>
 	</div>
 	<!-- 모달 창 끝 -->
-<<<<<<< HEAD
 			
 
-				</p>
 			</div>
 		</div>
 	</main>
