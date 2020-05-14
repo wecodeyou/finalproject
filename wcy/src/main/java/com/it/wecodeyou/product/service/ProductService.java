@@ -104,4 +104,9 @@ public class ProductService implements IProductService {
 		return pdao.purchasedOn(userNo);
 	}
 
+	@Override
+	public ProductVO getOneByName(String productName) {
+		return pdao.getOneByName(productName);
+	}
+
 }

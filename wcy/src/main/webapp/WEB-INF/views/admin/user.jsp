@@ -13,15 +13,17 @@
 <link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
 
+
 <!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template-->
 <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 
 <!-- datatable-->
-<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 
 <title>WE CODE YOU | 회원 관리</title>
@@ -63,30 +65,35 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                                <th>UserType</th>
                                                 <th>Email</th>
                                                 <th>Name</th>
-                                                <th>Birthday</th>
                                                 <th>Tel</th>
                                                 <th>Created_at</th>
                                                 <th>Login_at</th>
                                             </tr>
                                         </thead>
-                                        <!-- <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </tfoot> -->
                                         <tbody>
                                         	<c:forEach var="m" items="${members}">
                                         		<tr>
+                                        			<td>
+                                        			<div style="text-align:center">
+                                        				<c:if test="${m.userType == 0}">
+                                        					일반회원
+                                        					<button type="button" style="font-size:11px; width:50px"class="btn btn-info">변경</button>
+                                        				</c:if>
+                                        				<c:if test="${m.userType == 1}">
+                                        					강사
+                                        					<button type="button" style="font-size:11px; width:50px"class="btn btn-info">변경</button>
+                                        				</c:if>
+                                        				<c:if test="${m.userType == 2}">
+                                        					*관리자
+                                        				</c:if>
+                                        				</div>
+                                   
+                                        			</td>
                                         			<td>${m.userEmail}</td>
                                         			<td>${m.userName}</td>
-                                        			<td>${m.userBirthday}</td>
                                         			<td>${m.userTel}</td>
                                         			<td>${m.userCreatedAt}</td>
                                         			<td>${m.userLoginAt}</td>

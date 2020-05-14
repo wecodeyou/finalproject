@@ -33,7 +33,6 @@ import com.it.wecodeyou.purchase.service.IPurchaseService;
 @RestController
 @RequestMapping("/off")
 public class OffController {
-
 	@Autowired
 	private ISeatService service;
 
@@ -235,4 +234,36 @@ public class OffController {
 	
 	
 
+	@GetMapping("/instructor/startlecture")
+	public ModelAndView instructorCheck(ModelAndView mv) {
+		mv.setViewName("off/authorSelection");
+		return mv;
+	}
+
+	@PostMapping("/instructor/startlecture/{offNo}")
+	public String instructorCheck(ModelAndView mv, @PathVariable Integer offNo, HttpSession session) {
+		OffVO ovo = offService.getOneInfo(offNo);
+		MemberVO mvo = (MemberVO) session.getAttribute("login");
+		System.out.println(ovo);
+		System.out.println(mvo);
+		if(ovo.getOffAuthor().equals(mvo.getUserEmail())) {
+			return "off_start";
+		}
+		return "off_error";
+	}
+	
+	@GetMapping("/instructor/lecture/{offNo}")
+	public ModelAndView instructorEnter(ModelAndView mv, @PathVariable Integer offNo) {
+		
+		OffVO ovo = offService.getOneInfo(offNo);
+		OffProductVO opvo = offService.getOffProduct(ovo.getOffProductNo());
+		mv.addObject("lecture", opvo);
+		mv.setViewName("/off/OffLectureMaster");
+		return mv;
+	}
+	
+	/*
+	 * @MessageMapping("/lecture") public String handle(String message) { return "["
+	 * + System.currentTimeMillis() + " : " + message; }
+	 */
 }

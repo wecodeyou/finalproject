@@ -53,12 +53,6 @@ public class TagController {
    
    @GetMapping("/searchByInput")
    public ModelAndView searchByInput(ModelAndView mv) throws SQLException {
-       
-	   
-	  
-	   
-	   
-	   
       ArrayList<TagVO>nameList = service.getAllTag();
       ArrayList<TagVO> ptagList = service.searchPTagNo();
       mv.addObject("ptagList", ptagList);

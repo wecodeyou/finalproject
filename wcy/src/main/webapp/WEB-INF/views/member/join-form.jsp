@@ -19,7 +19,6 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <style>
-
     
     .left-section{float: left; width:210px;}
     .left-section > h2{width: 210px; height: 112px; background: #25283D; color: #fff; text-align: center; display: table-cell; vertical-align: middle;}

@@ -37,6 +37,8 @@ public interface IProductService {
 
 	public Integer countProducts(); 
 	
+	public ProductVO getOneByName(String productName);
 	//수강중인 강의 출력
 	public ArrayList<ProductVO> purchasedOn(Integer userNo);
+	
 }
