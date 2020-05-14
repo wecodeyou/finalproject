@@ -180,14 +180,15 @@
 										<a class="dropdown-item" href="#">Action</a> <a
 											class="dropdown-item" href="#">Another action</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Something else here</a>
+										<a class="dropdown-item" href="#">ShxncvdSsdfgh else here</a>
 									</div>
 								</div>
 							</div>
 							<!-- Card Body -->
 							<div class="card-body">
 								<div class="chart-area">
-									<canvas id="myAreaChart"></canvas>
+									<%-- <canvas id="myAreaChart"></canvas> --%>
+									<canvas id="myChart" width="800" height="450"></canvas>
 								</div>
 							</div>
 						</div>
@@ -404,8 +405,7 @@
 						
 						<!-- test -->
 						<div class="card shadow mb-4">
-							<canvas id="myChart" width="800" height="450"></canvas>
-							<button id="sendAjax">sendAjax</button>
+							
 						</div>
 						
 
@@ -495,10 +495,34 @@
 	};
 	
 	var options = {
+		maintainAspectRatio: false,
+		layout: {
+			 padding: {
+			 left: 10,
+			 right: 25,
+			 top: 25,
+			 bottom: 0
+			 }
+		},
 		title : {
 			display : true,
 			text : '수익 그래프'
-		}
+		},
+		 tooltips: {
+			 backgroundColor: "rgb(255,255,255)",
+		      bodyFontColor: "#858796",
+		      titleMarginBottom: 10,
+		      titleFontColor: '#6e707e',
+		      titleFontSize: 14,
+		      borderColor: '#dddfeb',
+		      borderWidth: 1,
+		      xPadding: 15,
+		      yPadding: 15,
+		      displayColors: false,
+		      intersect: false,
+		      mode: 'index',
+		      caretPadding: 10
+		 }
 	};
 
 	
@@ -546,8 +570,6 @@
 		}
 
 	});
-	
-
 	
 </script>
 
