@@ -42,27 +42,20 @@ public class AdminController {
    		return mv;
    	}
    	
-   	@PostMapping("/getMonthlyReport")
-	public Map<String, ArrayList<String>> getMonthlyReport(@RequestBody String q) throws SQLException {
-   		System.out.println("/admin/getMonthlyReport : GET 요청 발생!");
-   		System.out.println(q);
-   		//통계 결과 담을 map
-   		Map<String, ArrayList<String>> retVal = new HashMap<String, ArrayList<String>>();
-   		
+	@PostMapping("/getMonthlyEarning")
+	public ArrayList<Integer> getMonthlyEarning() throws SQLException {
+		System.out.println("/admin/getMonthlyReport : POST 요청 발생!"); 
+
 		ArrayList<PurchaseResultVO> prvoList = purchaseService.getMonthlyEarnings();
 
-		ArrayList<String> monthList = new ArrayList<>();
-		ArrayList<String> earningList = new ArrayList<>();
+		ArrayList<Integer> earningList = new ArrayList<>();
 		for (int i = 0; i < prvoList.size(); i++) {
-			monthList.add(prvoList.get(i).getPurchaseM());
-			earningList.add(String.valueOf(prvoList.get(i).getEarningMonthly()));
-			System.out.println(monthList.get(i) + "월 " + earningList.get(i) + "원");
+			earningList.add(prvoList.get(i).getEarningMonthly());
 		}
-		retVal.put("monthList", monthList);
-		retVal.put("earningList", earningList);
-   		
-   		return retVal;
-   	}
+
+		return earningList;
+	}
+	 
    	
    	
    	//user page 호출
