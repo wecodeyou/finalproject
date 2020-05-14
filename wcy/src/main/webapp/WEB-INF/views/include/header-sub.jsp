@@ -98,65 +98,6 @@
                </ul>
             </div>
          </li>	
-         	<!-- 온라인 강의 -->         
-           <li> 
-         	<a href="#">온라인 강의<span>&#x25BE;</span></a>
-            <div class="sub-menu-1">	
-               <ul>
-                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=109' />">Programming</a>
-                     <div class="sub-menu-2">
-                        <ul>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9001' />">파이썬 기초정복 30강!</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9002' />">자바 java wcy 강의</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9003' />">SpringFramework 프로젝트 짜보기 20강 완성</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9004' />">IT 통합 기초</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9005' />">자바스크립트와 제이쿼리</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9006' />">Visual Basic 2017 제대로 사용하기</a></li>
-                        </ul>
-                     </div>
-                  </li>
-                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=110' />">Design</a>
-                     <div class="sub-menu-2">
-                        <ul>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1001' />">HTML,CSS 기초와 웹구현하기</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1002' />">CSS 고급 레이아웃</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1003' />">프론트엔드 개발환경의 이해와 실습</a></li>
-                        </ul>
-                     </div>
-                  </li>
-                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=111' />">Business</a>
-                     <div class="sub-menu-2">
-                        <ul>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1101' />">파이어베이스로 웹앱 구성</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1102' />">반응형 웹제작 제대로 하기</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1103' />">하이브리드 웹/앱 배우기 기초</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1104' />">직접 구현하며 익히는 자료구조</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1105' />">JSP 기초부터 실무까지</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1106' />">나홀로 제작 쇼핑몰</a></li>
-                        </ul>
-                     </div>
-                  </li>
-                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=112' />">Big Data/Security</a>
-                     <div class="sub-menu-2">
-                        <ul>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1201' />">빅데이터 분석 R 프로그래밍</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1202' />">초보자를 위한 정보 보안및 해킹 방어 개론</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1202' />">파일 다운로드 취약점, 공격 기법과 실무사례</a></li>
-                        </ul>                     
-                     </div>
-                  </li>
-                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=113' />">Server/License</a>
-                     <div class="sub-menu-2">
-                        <ul>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1301' />">LINUX 기초 익히기</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1302' />">정보처리 기능사 (교안+이론+문제)</a></li>
-                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1303' />">정보처리기사 (신유형 분석)</a></li>
-                        </ul>                     
-                     </div>
-                  </li>  
-               </ul>
-            </div>
-         </li>
          		<!-- 오프라인 강의 -->
          <li> 
           	<a href="#">현장 강의<span>&#x25BE;</span></a>
@@ -245,7 +186,65 @@
                </ul>
             </div>
          </li>
-
+	<!-- 온라인 강의 -->         
+         <li> 
+         	<a href="#">온라인 강의<span>&#x25BE;</span></a>
+            <div class="sub-menu-1">	
+               <ul>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=109' />">Programming</a>
+                     <div class="sub-menu-2">
+                        <ul>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9001' />">파이썬 기초정복 30강!</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9002' />">자바 java wcy 강의</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9003' />">SpringFramework 프로젝트 짜보기 20강 완성</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9004' />">IT 통합 기초</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9005' />">자바스크립트와 제이쿼리</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=9006' />">Visual Basic 2017 제대로 사용하기</a></li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=110' />">Design</a>
+                     <div class="sub-menu-2">
+                        <ul>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1001' />">HTML,CSS 기초와 웹구현하기</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1002' />">CSS 고급 레이아웃</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1003' />">프론트엔드 개발환경의 이해와 실습</a></li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=111' />">Business</a>
+                     <div class="sub-menu-2">
+                        <ul>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1101' />">파이어베이스로 웹앱 구성</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1102' />">반응형 웹제작 제대로 하기</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1103' />">하이브리드 웹/앱 배우기 기초</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1104' />">직접 구현하며 익히는 자료구조</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1105' />">JSP 기초부터 실무까지</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1106' />">나홀로 제작 쇼핑몰</a></li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=112' />">Big Data/Security</a>
+                     <div class="sub-menu-2">
+                        <ul>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1201' />">빅데이터 분석 R 프로그래밍</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1202' />">초보자를 위한 정보 보안및 해킹 방어 개론</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1202' />">파일 다운로드 취약점, 공격 기법과 실무사례</a></li>
+                        </ul>                     
+                     </div>
+                  </li>
+                  <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=113' />">Server/License</a>
+                     <div class="sub-menu-2">
+                        <ul>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1301' />">LINUX 기초 익히기</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1302' />">정보처리 기능사 (교안+이론+문제)</a></li>
+                           <li style="width:350px;"><a href="<c:url value='/curriculum/sub?seq=1303' />">정보처리기사 (신유형 분석)</a></li>
+                        </ul>                     
+                     </div>
+                  </li>  
+               </ul>
+            </div>
+         </li>
          <li><a href="<c:url value='/board/list'/>">커뮤니티<span>&#x25BE;</span></a>
             <div class="sub-menu-1">
                 <ul>
