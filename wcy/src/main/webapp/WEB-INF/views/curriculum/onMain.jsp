@@ -84,7 +84,7 @@
 						<c:if test="${c.subTitle4 != null }">
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network03.png'/>" alt="" />
+								<img src="<c:url value='/img/curriculum/network04.jpg'/>" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle4}</h5>
@@ -98,7 +98,7 @@
 						<c:if test="${c.subTitle5 != null }">
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network03.png'/>" alt="" />
+								<img src="<c:url value='/img/curriculum/network05.jpg'/>" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle5}</h5>
@@ -112,7 +112,7 @@
 						<c:if test="${c.subTitle6 != null }">
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network03.png'/>" alt="" />
+								<img src="<c:url value='/img/curriculum/network06.jpg'/>" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle6}</h5>
@@ -126,7 +126,7 @@
 						<c:if test="${c.subTitle7 != null }">
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network03.png'/>" alt="" />
+								<img src="<c:url value='/img/curriculum/network07.jpg'/>" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle7}</h5>

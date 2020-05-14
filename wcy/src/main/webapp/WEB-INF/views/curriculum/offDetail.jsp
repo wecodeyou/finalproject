@@ -56,7 +56,7 @@
 						</div>
 					</div>
 					<div class="detail-top-right">
-						<h1 class="className">[온라인] ${pro.productName}</h1>
+						<h1 class="className">[현장강의] ${pro.productName}</h1>
 						<table class="top-right-info">
 							<tbody>
 								<tr>
@@ -83,7 +83,7 @@
 								</a>
 							</div>
 							<div class="button-register">
-								<a href="#" title="수강신청" class="btn_red_regi">수강신청</a>
+								<a href="#" title="수강신청" class="btn_red_regi">좌석선택</a>
 							</div>
 						</div>
 					</div>

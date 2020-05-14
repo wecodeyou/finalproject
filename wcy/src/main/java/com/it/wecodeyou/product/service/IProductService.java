@@ -37,4 +37,6 @@ public interface IProductService {
 
 	public Integer countProducts(); 
 	
+	public ProductVO getOneByName(String productName);
+	
 }

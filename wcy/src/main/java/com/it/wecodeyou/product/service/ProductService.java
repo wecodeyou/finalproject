@@ -98,4 +98,9 @@ public class ProductService implements IProductService {
 		return pdao.countProducts();
 	}
 
+	@Override
+	public ProductVO getOneByName(String productName) {
+		return pdao.getOneByName(productName);
+	}
+
 }

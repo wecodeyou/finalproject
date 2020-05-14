@@ -78,6 +78,11 @@
 		WHERE product_no = #{productNo}
 	</select>
 	
+	<select id="getOneByName" resultMap="ProductMap">
+		SELECT * FROM product
+		WHERE product_name = #{productName}
+	</select>
+	
 	
 
 </mapper>

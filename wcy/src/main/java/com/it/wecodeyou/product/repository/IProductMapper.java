@@ -28,4 +28,6 @@ public interface IProductMapper {
 	public List<ProductVO> getProductListPaging(SearchVO svo);
 
 	public Integer countProducts();
+	
+	public ProductVO getOneByName(String productName);
 }
