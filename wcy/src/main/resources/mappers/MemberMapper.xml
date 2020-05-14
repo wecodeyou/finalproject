@@ -64,7 +64,7 @@
    
    <!-- 회원 전체 정보 출력 (관리자페이지) -->
    <select id="getAllInfo" resultMap="MemberMap">
-      SELECT * FROM user
+      SELECT * FROM user ORDER BY user_type ASC
    </select>
 
    <!-- 이메일 중복체크 -->

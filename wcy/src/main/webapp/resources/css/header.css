@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* -------------------------------- 
 
 Primary style
@@ -509,6 +510,7 @@ Main content
 .wcy-main-content.sub-nav-hero {
   /* to be used if there is hero image + subnav */
   padding-top: 0;
+  margin-top: 50px;
 }
 .wcy-main-content.sub-nav-hero.secondary-nav-fixed {
   margin-top: 50px;
@@ -702,6 +704,207 @@ Intro Section
 {
 	color:#8a0000;
 }
+
+
+
+/*메인 중간 컨텐츠 영역*/
+/*첫번째 영역 - 추천강의*/
+.wcy-ProgramLayout {
+    background-color: #FBFBFB;
+    margin-bottom: 120px !important;
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+}
+
+.wcy-ProgramBox{
+	width: 1024px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+.wcy-ProgramBox .class-title{
+	margin-bottom: 28px;
+    font-size: 35px;
+    font-weight: bold;
+    position: relative;
+    color: #000;
+}
+
+.wcy-ProgramBox .class-title:before{
+	width: 609px;
+    height: 6px;
+    display: block;
+    content: '';
+    position: absolute;
+    left: 415px;
+    top: 16px;
+    background-color: #333;
+}
+
+.mainProgramTabLsit{
+	position: absolute;
+    left: 0;
+}
+
+.mainProgramTabLsit li.on a {
+    color: #fff;
+    font-weight: 600;
+}
+
+
+.mainProgramTabLsit li.on a:before {
+    width: 100%;
+    box-shadow: 6px 12px 16px rgba(0,0,0,0.3);
+}
+
+
+.mainProgramTabLsit li a {
+    width: 188px;
+    padding: 12px 18px 12px;
+    display: block;
+    color: #9C9C9C;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1;
+    transition: all .3s ease;
+    position: relative;
+    line-height: 22px;
+}
+
+.mainProgramTabLsit li a:before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #191D2C;
+    transition: all .4s ease;
+    z-index: -1;
+}
+
+.mainProgramTabLsit li a {
+    width: 188px;
+    padding: 12px 18px 12px;
+    display: block;
+    color: #9C9C9C;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1;
+    transition: all .3s ease;
+    position: relative;
+    line-height: 22px;
+}
+
+.mainProgramTabLsit li a:before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #191D2C;
+    transition: all .4s ease;
+    z-index: -1;
+}
+
+
+.mainProgramTabCon{
+	padding-left: 272px;
+    /*padding-bottom: 103px;*/
+}
+
+.mainProgramTabTitle {
+    color: #1b275a;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    height: 38px;
+    position: relative;
+}
+
+.mainProgramTabContent01 {
+    position: relative;
+    height: 330px;
+    min-height: 280px;
+}
+
+.leftImage {
+    margin-top: 44px;
+    width:220px;
+    height:186px;
+}
+
+.pProgram01 {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    width: 480px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.pProgram01 td.ppTitle {
+    color: #1f1f1f;
+    font-size: 33px;
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+.pProgram01 td {
+    font-size: 16px;
+    color: #666;
+    border-bottom: 1px solid #ebebeb;
+    padding: 10px 0 5px 0;
+    position: relative;
+    vertical-align: middle;
+}
+
+
+
+
+/*slick 슬라이드*/
+/* 화살표 */ 
+.slick-arrow{ 
+	z-index: 2; /* prev버튼은 위치 이동시 이미지 뒤로 숨겨짐 */ 
+	position:absolute; /* 원하는 위치에 지정 */ 
+	top: 50%; 
+	width: 50px; 
+	height: 50px; 
+	transform: translateY(-25px); 
+} 
+
+.slick-prev.slick-arrow{ 
+	/* prev 이전 */ 
+	left: 0; 
+} 
+.slick-next.slick-arrow{ 
+	/* next 다음 */ 
+	right: 0; 
+	} 
+	
+/* 아래점 */ 
+.slick-dots{ 
+	text-align: center; 
+} 
+.slick-dots li{ 
+	display: inline-block; 
+	margin: 0 5px; 
+}
+
+
+
+
+
+
+
 
 
 

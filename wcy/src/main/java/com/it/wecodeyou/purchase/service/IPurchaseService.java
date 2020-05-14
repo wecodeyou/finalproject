@@ -2,6 +2,7 @@ package com.it.wecodeyou.purchase.service;
 
 import java.util.ArrayList;
 
+import com.it.wecodeyou.purchase.model.PurchaseResultVO;
 import com.it.wecodeyou.purchase.model.PurchaseVO;
 
 public interface IPurchaseService {
@@ -18,5 +19,16 @@ public interface IPurchaseService {
 
 	// 취소/환불 -> isrefund를 false 에서 true로 수정
 	public void updateRefund(PurchaseVO pv);
-
+	
+	// 월간 수입
+	public ArrayList<PurchaseResultVO> getMonthlyEarnings();
+	
+	// 연간 수입
+	public ArrayList<PurchaseResultVO> getAnnualEarnings();
+	
+	// 이 달의 수입
+	public PurchaseResultVO getThisMonthlyEarnings();
+	
+	// 올 해의 수입
+	public PurchaseResultVO getThisAnnualEarnings();
 }

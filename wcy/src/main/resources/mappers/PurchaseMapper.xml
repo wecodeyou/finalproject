@@ -23,6 +23,18 @@
 		<result property="purchaseRefundDate" column="purchase_refund_date" />
 	</resultMap>
 	
+	<resultMap id="PurchaseResultMap" type="com.it.wecodeyou.purchase.model.PurchaseResultVO">
+		<id property="purchaseYM" column="ym" />
+		<result property="purchaseY" column="y" />
+		<result property="purchaseM" column="m" />
+		<result property="earningAnnual" column="e_annual" />
+		<result property="earningMonthly" column="e_monthly" />
+		<result property="purchaseCount" column="p_count" />
+		<result property="earningCount" column="e_count" />
+		<result property="refundCount" column="r_count" />
+		<result property="refundSum" column="r_sum" />
+	</resultMap>
+	
 	<!-- 구매 -->
 	<insert id="insertPurchase">
 		INSERT INTO 
@@ -48,6 +60,69 @@
 		WHERE 
 		purchase_no=#{purchaseNo}
 	</update>
+
+	<!-- monthly -->
+	<select id="getMonthlyEarnings" resultMap="PurchaseResultMap">
+		SELECT CONCAT(YEAR(purchase_date), '-', MONTH(purchase_date)) ym,
+		CONCAT(YEAR(purchase_date)) y,
+		CONCAT(MONTH(purchase_date)) m,
+		sum(purchase_amount)-sum(if(purchase_isrefund = 1, purchase_amount, 0)) e_monthly,
+		sum(if(purchase_isrefund = 1, purchase_amount, 0)) r_sum,
+		count(purchase_no) p_count,
+		sum(if(purchase_isrefund = 0, 1, 0 )) e_count,
+		sum(if(purchase_isrefund = 1, 1, 0)) r_count
+		from purchase
+		GROUP BY ym
+		ORDER BY ym ASC
+	</select>
+	
+		<!-- this monthly -->
+	<select id="getThisMonthlyEarnings" resultMap="PurchaseResultMap">
+		SELECT CONCAT(YEAR(purchase_date), '-', MONTH(purchase_date)) ym,
+		CONCAT(YEAR(purchase_date)) y,
+		CONCAT(MONTH(purchase_date)) m,
+		sum(purchase_amount)-sum(if(purchase_isrefund = 1, purchase_amount, 0)) e_monthly,
+		sum(if(purchase_isrefund = 1, purchase_amount, 0)) r_sum,
+		count(purchase_no) p_count,
+		sum(if(purchase_isrefund = 0, 1, 0 )) e_count,
+		sum(if(purchase_isrefund = 1, 1, 0)) r_count
+		from purchase
+		GROUP BY ym
+		ORDER BY ym DESC
+		LIMIT 1
+	</select>
+
+	<!-- annual -->
+	<select id="getAnnualEarnings" resultMap="PurchaseResultMap">
+		SELECT
+		CONCAT(YEAR(purchase_date), '-', MONTH(purchase_date)) ym,
+		CONCAT(YEAR(purchase_date)) y,
+		CONCAT(MONTH(purchase_date)) m,
+		sum(purchase_amount)-sum(if(purchase_isrefund = 1, purchase_amount, 0)) e_annual,
+		sum(if(purchase_isrefund = 1, purchase_amount, 0)) r_sum,
+		count(purchase_no) p_count,
+		sum(if(purchase_isrefund = 0, 1, 0 )) e_count,
+		sum(if(purchase_isrefund = 1, 1, 0)) r_count
+		from purchase
+		GROUP BY y
+		ORDER BY y ASC
+	</select>
+	
+		<!-- this annual -->
+	<select id="getThisAnnualEarnings" resultMap="PurchaseResultMap">
+		SELECT CONCAT(YEAR(purchase_date), '-', MONTH(purchase_date)) ym,
+		CONCAT(YEAR(purchase_date)) y,
+		CONCAT(MONTH(purchase_date)) m,
+		sum(purchase_amount)-sum(if(purchase_isrefund = 1, purchase_amount, 0)) e_annual,
+		sum(if(purchase_isrefund = 1, purchase_amount, 0)) r_sum,
+		count(purchase_no) p_count,
+		sum(if(purchase_isrefund = 0, 1, 0 )) e_count,
+		sum(if(purchase_isrefund = 1, 1, 0)) r_count
+		from purchase
+		GROUP BY y
+		ORDER BY y DESC
+		LIMIT 1
+	</select>
 
 </mapper>
 
