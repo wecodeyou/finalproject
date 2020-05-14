@@ -45,10 +45,12 @@ public class CurriculumController {
 		
 		mv.addObject("s", req.getParameter("s"));
 		mv.addObject("pro",pservice.getOneByName(req.getParameter("s")));
-		if(pservice.getOneByName(req.getParameter("ss")).equals("1")) {
+		if(pservice.getOneByName(req.getParameter("s")).getProductType().equals("1")) {
 			mv.setViewName("curriculum/offDetail");
+			System.out.println("현장강의 선택");
 		}else {
 			mv.setViewName("curriculum/onDetail");
+			System.out.println("온라인 선택");
 		}
 		return mv;
 		
