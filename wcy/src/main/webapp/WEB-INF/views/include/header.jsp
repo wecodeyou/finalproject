@@ -28,6 +28,8 @@
 <style>
 /* 이미지 슬라이더 스타일 변경 오버라이드 */
 .bx-wrapper{border:0; background:#fff; box-shadow:none; position:relative; margin: 90px auto 0px;}
+.wcy-ProgramLayout > .bx-wrapper{margin: 45px auto 0px;}
+
 
 @media only screen and (max-width: 1023px) {
    .bx-wrapper{
@@ -380,7 +382,6 @@
 <%@ include file="../member/event_modal.jsp" %>  
 
 <main class="wcy-main-content sub-nav-hero">
-
 	<div class="wcy-ProgramLayout">
 		<div class="wcy-ProgramBox">
 			<div class="class-title">
@@ -533,7 +534,64 @@
 	</div>
 	
 	
+	<div class="main-reviewLayout">
+		<div class="reviewLayoutIn">
+			<ul class="reviewTitleTab" id="reviewTitleTab">
+				<li id="review01" class="on">
+					<a href="javasctipt:;" onclick="reviewClick('01')">자바</a>
+				</li>
+				<li id="review01" class="">
+					<a href="javasctipt:;" onclick="reviewClick('01')">C언어</a>
+				</li>
+				<li id="review01" class="">
+					<a href="javasctipt:;" onclick="reviewClick('01')">파이썬</a>
+				</li>
+				<li id="review01" class="">
+					<a href="javasctipt:;" onclick="reviewClick('01')">네트워크</a>
+				</li>
+				<li id="review01" class="">
+					<a href="javasctipt:;" onclick="reviewClick('01')">데이터베이스</a>
+				</li>
+			</ul>
+			<div class="reviewTextBox">
+				<div class="reviewConBox">
+					<div class="prevNextBox">
+						<a href="javascript:void(0);" class="prevBu"><i class="fas fa-arrow-left"></i></a>
+						<a href="javascript:void(0);" class="nextBu"><i class="fas fa-arrow-right"></i></a>
+					</div>
+					<div class="reviewConBoxTitle">
+						<p>위코드유 실제 수강생들의 생생한 리뷰</p>
+					</div>
+					<ul>
+						<li class="real">
+							<a href="javascript:;">
+								<div class="textBox">
+									<p class="textBox-title">이 수업 진짜 최고!</p>
+									<p class="textBox-star">★ ★ ★ ★ ★ 수강생 평점 5</p>
+									<p class="textBox-text">
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										<p class="textBox-writer">김*수 수강생</p>
+									</p>
+								</div>
+								<div class="imgBox">
+									<div class="imgBox-title">[온라인] 자바 java wcy 강의</div>
+									<img src="<c:url value='/img/main/main-review-java.png'/>" alt="java" />
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
 	<div class="wcy-ProgramLayout">
+		<div class="class-title">
+			과목별 인기강의 
+		</div>
 		<ul class="wcy-best-class">
 			<li><img src="<c:url value='/img/curriculum/network01.jpg'/>" style="width:300px; height:300px;"/></li>
 			<li><img src="<c:url value='/img/curriculum/network02.jpg'/>" style="width:300px; height:300px;"/></li>
