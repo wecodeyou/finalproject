@@ -43,7 +43,6 @@
 <main class="wcy-main-content">
 		<div class="wcy-contents">
 			<div class="page-width">
-			<button onclick="a()">test</button>
 				<div class="center-header">
 					<ul class="center-sub-nav">
 						<li><a class="active">관리자 대시보드</a></li>
@@ -198,8 +197,7 @@
 					<div class="col-xl-4 col-lg-5">
 						<div class="card shadow mb-4">
 							<!-- Card Header - Dropdown -->
-							<div
-								class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 								<h6 class="m-0 font-weight-bold text-primary">Revenue
 									Sources</h6>
 								<div class="dropdown no-arrow">
@@ -446,130 +444,6 @@
 
 <script type="text/javascript">
 	
-	var eL = Array();
-	var eL2 = Array();
-	for (var i = 0; i < 12; i++) {
-		eL[i] = 0;
-		eL2[i] = 0;
-	}
-	
-
-	var dataVar = {
-		labels : [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
-				"Sep", "Oct", "Nov", "Dec" ],
-		datasets : [ {
-			data : [eL[0], eL[1], eL[2], eL[3], eL[4], eL[5], eL[6],
-				eL[7], eL[8], eL[9], eL[10], eL[11] ],
-			label : "2020",
-			lineTension : 0.5,
-			backgroundColor : "rgba(78, 115, 223, 0.05)",
-			borderColor : "rgba(78, 115, 223, 1)",
-			pointRadius : 3,
-			pointBackgroundColor : "rgba(78, 115, 223, 1)",
-			pointBorderColor : "rgba(78, 115, 223, 1)",
-			pointHoverRadius : 3,
-			pointHoverBackgroundColor : "rgba(78, 115, 223, 1)",
-			pointHoverBorderColor : "rgba(78, 115, 223, 1)",
-			pointHitRadius : 10,
-			pointBorderWidth : 2,
-			fill: false,
-		}/* ,{
-			label: '2019',
-			lineTension : 0.5,
-			backgroundColor: 'rgba(255, 99, 132, 1)',
-			borderColor: 'rgba(255, 99, 132, 1)',
-			pointRadius : 3,
-			pointBackgroundColor : "rgba(78, 115, 223, 1)",
-			pointBorderColor : "rgba(78, 115, 223, 1)",
-			pointHoverRadius : 3,
-			pointHoverBackgroundColor : "rgba(78, 115, 223, 1)",
-			pointHoverBorderColor : "rgba(78, 115, 223, 1)",
-			pointHitRadius : 10,
-			pointBorderWidth : 2,
-			fill: false,
-			data: [
-				eL2[0], eL2[1], eL2[2], eL2[3], eL2[4], eL2[5], eL2[6],
-				eL2[7], eL2[8], eL2[9], eL2[10], eL2[11]
-			],
-		} */]
-	};
-	
-	var options = {
-		maintainAspectRatio: false,
-		layout: {
-			 padding: {
-			 left: 10,
-			 right: 25,
-			 top: 25,
-			 bottom: 0
-			 }
-		},
-		title : {
-			display : true,
-			text : '수익 그래프'
-		},
-		 tooltips: {
-			 backgroundColor: "rgb(255,255,255)",
-		      bodyFontColor: "#858796",
-		      titleMarginBottom: 10,
-		      titleFontColor: '#6e707e',
-		      titleFontSize: 14,
-		      borderColor: '#dddfeb',
-		      borderWidth: 1,
-		      xPadding: 15,
-		      yPadding: 15,
-		      displayColors: false,
-		      intersect: false,
-		      mode: 'index',
-		      caretPadding: 10
-		 }
-	};
-
-	
-	
-	var ctx = document.getElementById("myChart").getContext('2d');                                           
-	var myBarChart = new Chart(ctx, {
-	    type: 'line',
-	    data: dataVar, 
-	    options: options
-	});
-	
-	
-	
-	//결과 값
-	var earningList = Array();
-	var test = Array();
-
-	//start Ajax 
-	$.ajax({
-		type : 'POST',
-		url : "/admin/getMonthlyEarning",
-		headers : {
-			"Content-Type" : "application/json"
-		},
-		dataType : "text",
-		error : function(err) {
-			console.log("ajax getMonthlyReport 실행중 오류가 발생하였습니다.");
-		},
-		success : function(data) {
-			earningList = data;
-			console.log("ajax 실행됨");
-			var result = JSON.parse(data);
-			var e = result.earningList;
-			console.log("result : " + result);
-			
-			var eL = dataVar.datasets[0].data;
-			console.log("eL.length : " + eL.length);
-			
-			for (var i = 0; i < eL.length; i++) {
-	            eL[i] = result[i]; 
-				console.log("eL[" + i + "] : " +  eL[i] + " = " + "result[" + i + "] : " + result[i]);
-	        }
-	        dataVar.datasets[0].data = eL; 
-	        myBarChart.update();
-		}
-
-	});
 	
 </script>
 

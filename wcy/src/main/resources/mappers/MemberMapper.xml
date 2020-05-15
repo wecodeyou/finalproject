@@ -107,6 +107,11 @@
 		SELECT * FROM user WHERE user_email = #{userEmail} 
 	</select>
 	
+	<select id="checkInterest" resultType="int">
+		SELECT user_interest FROM user WHERE user_no = #{userNo}
+	</select>
+	
+	
 	
 </mapper>
 

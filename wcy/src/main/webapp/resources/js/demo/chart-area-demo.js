@@ -28,96 +28,128 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 
+var eL = Array();
+var eL2 = Array();
+for (var i = 0; i < 12; i++) {
+	eL[i] = 0;
+	eL2[i] = 0;
+}
+
+
+var dataVar = {
+	labels : [ "Jan", "Feb", "Mar", "Apr", "May", "Jun"/* , "Jul", "Aug",
+			"Sep", "Oct", "Nov", "Dec"  */],
+	datasets : [ {
+		data : [eL[0], eL[1], eL[2], eL[3], eL[4], eL[5], eL[6],
+			eL[7], eL[8], eL[9], eL[10], eL[11] ],
+		label : "2020",
+		lineTension : 0.5,
+		backgroundColor : "rgba(78, 115, 223, 0.05)",
+		borderColor : "rgba(78, 115, 223, 1)",
+		pointRadius : 2,
+		pointBackgroundColor : "rgba(78, 115, 223, 1)",
+		pointBorderColor : "rgba(78, 115, 223, 1)",
+		pointHoverRadius : 3,
+		pointHoverBackgroundColor : "rgba(78, 115, 223, 1)",
+		pointHoverBorderColor : "rgba(78, 115, 223, 1)",
+		pointHitRadius : 10,
+		pointBorderWidth : 3,
+		//fill: false,
+	}/* ,{
+		label: '2019',
+		lineTension : 0.5,
+		backgroundColor: 'rgba(255, 99, 132, 1)',
+		borderColor: 'rgba(255, 99, 132, 1)',
+		pointRadius : 3,
+		pointBackgroundColor : "rgba(78, 115, 223, 1)",
+		pointBorderColor : "rgba(78, 115, 223, 1)",
+		pointHoverRadius : 3,
+		pointHoverBackgroundColor : "rgba(78, 115, 223, 1)",
+		pointHoverBorderColor : "rgba(78, 115, 223, 1)",
+		pointHitRadius : 10,
+		pointBorderWidth : 2,
+		fill: false,
+		data: [
+			eL2[0], eL2[1], eL2[2], eL2[3], eL2[4], eL2[5], eL2[6],
+			eL2[7], eL2[8], eL2[9], eL2[10], eL2[11]
+		],
+	} */]
+};
+
+var options = {
+	maintainAspectRatio: false,
+	layout: {
+		 padding: {
+		 left: 10,
+		 right: 20,
+		 top: 0,
+		 bottom: 10
+		 }
+	},
+	title : {
+		display : true,
+		//text : '수익 그래프'
+	},
+	 tooltips: {
+		 backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      titleMarginBottom: 5,
+	      titleFontColor: '#6e707e',
+	      titleFontSize: 20,
+	      borderColor: '#dddfeb',
+	      borderWidth: 1,
+	      xPadding: 15,
+	      yPadding: 15,
+	      displayColors: false,
+	      intersect: false,
+	      mode: 'index',
+	      caretPadding: 10
+	 }
+};
 
 
 
-
-// Area Chart Example
-var ctx = document.getElementById("myAreaChart");
-var myLineChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [{
-      label: "Earnings",
-      lineTension: 0.3,
-      backgroundColor: "rgba(78, 115, 223, 0.05)",
-      borderColor: "rgba(78, 115, 223, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointBorderColor: "rgba(78, 115, 223, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      data: [0, 5000, 5000, 5000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
-    }],
-  },
-  options: {
-    maintainAspectRatio: false,
-    layout: {
-      padding: {
-        left: 10,
-        right: 25,
-        top: 25,
-        bottom: 0
-      }
-    },
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'date'
-        },
-        gridLines: {
-          display: false,
-          drawBorder: false
-        },
-        ticks: {
-          maxTicksLimit: 7
-        }
-      }],
-      yAxes: [{
-        ticks: {
-          maxTicksLimit: 5,
-          padding: 10,
-          // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-            return '$' + number_format(value);
-          }
-        },
-        gridLines: {
-          color: "rgb(234, 236, 244)",
-          zeroLineColor: "rgb(234, 236, 244)",
-          drawBorder: false,
-          borderDash: [2],
-          zeroLineBorderDash: [2]
-        }
-      }],
-    },
-    legend: {
-      display: false
-    },
-    tooltips: {
-      backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
-      titleMarginBottom: 10,
-      titleFontColor: '#6e707e',
-      titleFontSize: 14,
-      borderColor: '#dddfeb',
-      borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
-      displayColors: false,
-      intersect: false,
-      mode: 'index',
-      caretPadding: 10,
-      callbacks: {
-        label: function(tooltipItem, chart) {
-          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-        }
-      }
-    }
-  }
+var ctx = document.getElementById("myChart").getContext('2d');                                           
+var myBarChart = new Chart(ctx, {
+    type: 'line',
+    data: dataVar, 
+    options: options
 });
+
+
+
+//결과 값
+var earningList = Array();
+var test = Array();
+
+//start Ajax 
+$.ajax({
+	type : 'POST',
+	url : "/admin/getMonthlyEarning",
+	headers : {
+		"Content-Type" : "application/json"
+	},
+	dataType : "text",
+	error : function(err) {
+		console.log("ajax getMonthlyReport 실행중 오류가 발생하였습니다.");
+	},
+	success : function(data) {
+		earningList = data;
+		console.log("ajax 실행됨");
+		var result = JSON.parse(data);
+		var e = result.earningList;
+		console.log("result : " + result);
+		
+		var eL = dataVar.datasets[0].data;
+		console.log("eL.length : " + eL.length);
+		
+		for (var i = 0; i < eL.length; i++) {
+            eL[i] = result[i]; 
+			console.log("eL[" + i + "] : " +  eL[i] + " = " + "result[" + i + "] : " + result[i]);
+        }
+        dataVar.datasets[0].data = eL; 
+        myBarChart.update();
+	}
+
+});
+

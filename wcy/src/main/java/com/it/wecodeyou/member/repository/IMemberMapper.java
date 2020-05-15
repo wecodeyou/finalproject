@@ -47,6 +47,9 @@ public interface IMemberMapper {
 
    // 로그인 시 시간 등록
    public void updateLoginedAt(String userEmail);
+   
+   // 설문조사 true 인지 false 인지
+   public int checkInterest(Integer userNo) throws SQLException;
 
    
 }

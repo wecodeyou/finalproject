@@ -103,6 +103,15 @@ public class MemberService implements IMemberService {
 		return null;
 	}
 
+	@Override
+	public int checkInterest(Integer userNo) throws SQLException {
+		return dao.checkInterest(userNo);
+	}
+
+	@Override
+	public void updateInterest(Integer userNo) throws SQLException {
+	}
+
 
 
 }

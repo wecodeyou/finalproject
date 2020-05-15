@@ -32,5 +32,21 @@ public class Interest_ListController {
 			
 			return mv;
 		}
+		
+		@GetMapping("/form")
+		public ModelAndView form() throws SQLException {
+			ModelAndView mv = new ModelAndView();
+			 
+			ArrayList<Interest_ListVO>typeList = service.getOneInterestType();
+			ArrayList<Interest_ListVO>allInterest = service.getAllInterestList();
+			  
+			mv.setViewName("interest/interest-modal");
+			mv.addObject("typeList", typeList);
+			mv.addObject("allInterest", allInterest);
+			
+			return mv;
+		}
+		
+		
 	 
 }

@@ -23,6 +23,8 @@
 <br>
 <a href="/interest_list">INTEREST</a>
 <br>
+<a href="/interest_list/form">INTEREST-modal</a>
+<br>
 <a href="/tag">TAG</a>
 <br>
 <a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a>
@@ -34,5 +36,43 @@
 <a href="<c:url value='off/myclass'/>" >강사로 오프라인 강의 참석하기</a>
 <br>
 <a href="<c:url value='off/myoff'/>" >학생으로 오프라인 강의 참석하기</a>
+
+
+<br><br><br>
+<a class="modal_open_btn" data-toggle="modal" data-target="#wcy-interest-modal">설문조사</a>
+
+<!-- 설문조사 pop up modal -->
+<script>
+	window.onload = function(){
+		showInterestModal();
+	};
+	
+	function showInterestModal(){
+		
+		 $.ajax({
+	            type: "POST",
+	            url: "/member/checkUserInterest",
+	            headers: {
+	                   "Content-Type": "application/json"
+	               },
+	            dataType : "text",
+	            success: function(data) {
+	               console.log("통신성공 ! result: " + data);   
+	               if(data === "pass") {
+	            	   return;
+	               }else if(data === "success"){
+	            	   console.log("설문조사 모달을 엽니다.");
+	            	   self.location="/interest_list/form";
+	               }
+	            },
+	            error: function(){
+	               console.log("통신실패!");
+	            }
+	         });
+		
+		
+	} 
+
+</script>
 </body>
 </html>
