@@ -589,16 +589,25 @@
 	
 	
 	<div class="wcy-ProgramLayout">
-		<div class="class-title">
+		<div class="class-title2">
 			과목별 인기강의 
+			<span  style="font-size:17px; font-weight:400;">&nbsp;&nbsp;&nbsp;수강생들이 사랑한 강의</span>
 		</div>
 		<ul class="wcy-best-class">
-			<li><img src="<c:url value='/img/curriculum/network01.jpg'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network02.jpg'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network03.png'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network04.jpg'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network05.jpg'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network06.jpg'/>" style="width:300px; height:300px;"/></li>
+			<li class="hover-wrap">
+
+					<a href="#"><img src="<c:url value='/img/curriculum/network01.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[온라인] Python</h3>
+					<div class="hover-bottom">
+						<a href="#"><i class="fas fa-cart-plus"></i></a>
+						<a href="#"><i class="fas fa-search-plus"></i></a>
+					</div>
+			</li>
+			<li><a href="#"><img src="<c:url value='/img/curriculum/network08.jpg'/>" style="width:300px; height:300px;"/></a></li>
+			<li><a href="#"><img src="<c:url value='/img/curriculum/network03.png'/>" style="width:300px; height:300px;"/></a></li>
+			<li><a href="#"><img src="<c:url value='/img/curriculum/network04.jpg'/>" style="width:300px; height:300px;"/></a></li>
+			<li><a href="#"><img src="<c:url value='/img/curriculum/network05.jpg'/>" style="width:300px; height:300px;"/></a></li>
+			<li><a href="#"><img src="<c:url value='/img/curriculum/network06.jpg'/>" style="width:300px; height:300px;"/></a></li>
 		</ul>
 	</div>
 
@@ -643,7 +652,7 @@ $(document).ready(function(){
     $('.wcy-best-class').bxSlider({
        
        auto:true,         //자동으로 애니메이션 시작
-       speed:800,         //애니메이션 속도
+       speed:700,         //애니메이션 속도
        pause:3000,         //애니메이션 유지 시간 (4초)
        adaptiveHeight:true,//자동으로 이미지의 높이에 맞게 슬라이드의 높이값 조절함
        mode:'horizontal',      //슬라이드 모드('fade', 'horizontal', 'vertical'이 있음)
