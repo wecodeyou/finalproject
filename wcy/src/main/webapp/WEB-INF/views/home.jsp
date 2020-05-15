@@ -17,29 +17,27 @@
 
 <jsp:include page="include/footer.jsp" />
 
-<a href="<c:url value='/board/list'/>" >BOARD</a>
-<br>
-<a href="<c:url value='/product'/>" >Product 리스트 보기</a>
-<br>
-<a href="/interest_list">INTEREST</a>
-<br>
-<a href="/interest_list/form">INTEREST-modal</a>
-<br>
-<a href="/tag">TAG</a>
-<br>
-<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a>
-<br>
-<a href="<c:url value='/tag/searchByInput'/>">TAG SEARCH by INPUT TEXT</a>
-<br>
-<a href="<c:url value='/off/seat_main' />" >자리보기</a>
-<br>
-<a href="<c:url value='off/myclass'/>" >강사로 오프라인 강의 참석하기</a>
-<br>
-<a href="<c:url value='off/myoff'/>" >학생으로 오프라인 강의 참석하기</a>
+<a href="<c:url value='/board/list'/>" >BOARD </a>
 
+<a href="<c:url value='/product'/>" > Product 리스트 보기 </a>
 
-<br><br><br>
-<a class="modal_open_btn" data-toggle="modal" data-target="#wcy-interest-modal">설문조사</a>
+<a href="/interest_list"> INTEREST </a>
+
+<a href="/interest_list/form"> INTEREST-modal </a>
+
+<a href="/tag"> TAG </a>
+
+<a href="<c:url value='/tag/searchByBtn'/>"> TAG SEARCH by BTN </a>
+
+<a href="<c:url value='/tag/searchByInput'/>"> TAG SEARCH by INPUT TEXT </a>
+
+<a href="<c:url value='/off/seat_main' />" > 자리보기 </a>
+
+<a href="<c:url value='off/myclass'/>" > 강사로 오프라인 강의 참석하기 </a>
+
+<a href="<c:url value='off/myoff'/>" > 학생으로 오프라인 강의 참석하기 </a>
+
+<a class="modal_open_btn" data-toggle="modal" data-target="#wcy-interest-modal"> 설문조사 </a>
 
 <!-- 설문조사 pop up modal -->
 <script>

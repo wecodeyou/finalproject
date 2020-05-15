@@ -698,7 +698,7 @@ Intro Section
 /*메인 중간 컨텐츠 영역*/
 /*추천강의*/
 .wcy-ProgramLayout {
-	margin-bottom: 100px !important;
+	margin-bottom: 80px !important;
 	margin: 0 auto;
 	position: relative;
 	z-index: 0;
@@ -871,11 +871,11 @@ Intro Section
 	vertical-align: middle;
 }
 
-/*인기강의*/
+/*수강리뷰*/
 .main-reviewLayout {
 	background-color: #F3F6F9;
 	padding: 65px 0 0 0;
-	margin-bottom: 120px;
+	margin-bottom: 125px;
 	min-height: 540;
 }
 
@@ -1047,8 +1047,16 @@ Intro Section
 	background-repeat: no-repeat;
 }
 
+/*인기강의*/
 /*slick 슬라이드*/
 /* 화살표 */
+.wcy-ProgramLayout2{
+	margin-bottom: 175px !important;
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+}
+
 .slick-arrow {
 	z-index: 2; /* prev버튼은 위치 이동시 이미지 뒤로 숨겨짐 */
 	position: absolute; /* 원하는 위치에 지정 */
@@ -1206,3 +1214,115 @@ Intro Section
 	-webkit-transform: translateY(0%);
 	transform: translateY(0%);
 }
+
+
+/*공지사항,faq 영역*/
+.wcy-boardLayout{
+    margin-bottom: 50px !important;
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+    min-height: 130px;
+}
+
+.boardWrap .boardNotice,
+.boardWrap .boardFAQ{
+	float: left;
+	width:50%;
+}
+
+.boardWrap .boardNotice h1{
+	float: left;
+    width: 105px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+
+.boardWrap .boardNotice li img{
+	margin-left: 7px;
+}
+
+.boardWrap .boardFAQ h1{
+	float: left;
+    width: 105px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.boardWrap h1:before{
+	display: inline-block;
+    content: '';
+    width: 5px;
+    height: 15px;
+    background: #111;
+    margin-right: 5px;
+}
+
+
+.boardWrap .boardFAQ{
+	float:right;
+}
+
+
+.more{
+	display: block;
+    color: #b59f9f;
+    font-size: 13px;
+    font-weight: normal;
+    width: 75px;
+    float: right;
+    margin-top: 15px;
+}
+.more2{
+	display: block;
+    color: #b59f9f;
+    font-size: 13px;
+    font-weight: normal;
+    width: 107px;
+    float: right;
+    margin-top: 15px;
+}
+
+.boardWrap ul{
+	float: left;
+    font-size: 13px;
+    color: #666;
+    margin-top: -5px;
+    height: 70px;
+    overflow: hidden;
+    height:120px;
+}
+
+.boardWrap ul li{
+	width: 440px;
+    height: 23px;
+    line-height: 23px;
+}
+
+.boardWrap ul li a{
+	display: inline-block;
+    width: 350px;
+    height: 23px;
+    overflow: hidden;
+}
+
+.boardWrap ul li span{
+	color: #999;
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+

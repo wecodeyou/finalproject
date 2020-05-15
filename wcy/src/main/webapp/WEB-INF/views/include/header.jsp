@@ -29,7 +29,7 @@
 <style>
 /* 이미지 슬라이더 스타일 변경 오버라이드 */
 .bx-wrapper{border:0; background:#fff; box-shadow:none; position:relative; margin: 90px auto 0px;}
-.wcy-ProgramLayout > .bx-wrapper{margin: 45px 0 0 0;}
+.wcy-ProgramLayout2 > .bx-wrapper{margin: 45px 0 0 0;}
 
 
 @media only screen and (max-width: 1023px) {
@@ -62,15 +62,15 @@
    background:#c7c7c7;
 }
 
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
 	margin-top: 15px;
 	top:100%;
 } 
 
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 	left: 94%;
 }
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-next{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-next{
 	right: 0%;
 }
  
@@ -590,7 +590,7 @@
 	</div>
 	
 	
-	<div class="wcy-ProgramLayout">
+	<div class="wcy-ProgramLayout2">
 		<div class="class-title2">
 			과목별 인기강의 
 			<span  style="font-size:17px; font-weight:400;">&nbsp;&nbsp;&nbsp;수강생들이 사랑한 강의</span>
@@ -683,7 +683,53 @@
 		</ul>
 	</div>
 
-
+	<div class="wcy-boardLayout">
+		<div class="boardWrap">
+			<div class="boardNotice">
+				<h1>공지사항<a href="#" class="more">더보기 ></a></h1>
+				<ul>
+					<li>
+						<a href="#">개인정보처리방침 개정 - 위코드유<img src="<c:url value='/img/commons/new.png'/>" alt="new" />
+						</a>
+						<span>2020-05-15</span>
+					</li>
+					<li>
+						<a href="#">직업능력개발훈련 인증평가 3년연속 우수 훈련기관 선정</a>
+						<span>2020-05-14</span>
+					</li>
+					<li>
+						<a href="#">코로나 관련 원내 방역작업 실시</a>
+						<span>2020-04-10</span>
+					</li>
+					<li>
+						<a href="#">네트워크 인재양성 아카데미 신규 런칭</a>
+						<span>2019-12-12</span>
+					</li>
+				</ul>
+			</div>
+			<div class="boardFAQ">
+				<h1>FAQ<a href="#" class="more2">더보기 ></a></h1>
+				<ul>
+					<li>
+						<a href="#">강의는 어떻게 구매하나요?</a>
+						<span>2017-05-01</span>
+					</li>
+					<li>
+						<a href="#">포인트로는 무엇을 살 수 있나요?</a>
+						<span>2017-05-01</span>
+					</li>
+					<li>
+						<a href="#">동영상이 끊길 때 어떻게 해야 되나요?</a>
+						<span>2016-07-13</span>
+					</li>
+					<li>
+						<a href="#">취소나 환불을 하고 싶어요.</a>
+						<span>2016-04-03</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 </main> <!-- .cd-main-content -->
 
