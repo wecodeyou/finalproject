@@ -56,7 +56,7 @@
 						</div>
 					</div>
 					<div class="detail-top-right">
-						<h1 class="className">[온라인] C Programming</h1>
+						<h1 class="className">[온라인] ${pro.productName}</h1>
 						<table class="top-right-info">
 							<tbody>
 								<tr>
@@ -65,7 +65,7 @@
 								</tr>
 								<tr>
 									<td class="info-title">수강료</td>
-									<td class="info-content">200,000원</td>									
+									<td class="info-content">${pro.productPrice}원</td>									
 								</tr>
 								<tr>
 									<td class="info-title">교재</td>
@@ -93,19 +93,13 @@
 					<h4 class="contents-title">과목 설명</h4>
 					<div class="contents-text">
 						<p class="mb10">
-							과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다.
-							과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다.
-							과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다.
+							${pro.productDetail}
 						</p>
 						<p class="mb10">
-							과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다.
-							과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다.
-							과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다.
+							${pro.productDetail}
 						</p>
 						<p class="mb40">
-							과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다.과정 설명 text 들어갈 자리입니다.
-							과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다.과정 설명 text 들어갈 자리입니다.
-							과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다. 과정 설명 text 들어갈 자리입니다.과정 설명 text 들어갈 자리입니다.
+							${pro.productDetail}
 						</p>
 					</div>
 					<h4 class="contents-title">커리큘럼</h4>

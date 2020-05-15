@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
 
 <!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template-->
@@ -42,6 +43,7 @@
 <main class="wcy-main-content">
 		<div class="wcy-contents">
 			<div class="page-width">
+			<button onclick="a()">test</button>
 				<div class="center-header">
 					<ul class="center-sub-nav">
 						<li><a class="active">관리자 대시보드</a></li>
@@ -60,6 +62,7 @@
 					<a href="#"
 						class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 						class="fas fa-download fa-sm text-white-50"></i> 월간 리포트 등록</a>
+						
 				</div>
 
 				<!-- Content Row -->
@@ -398,14 +401,19 @@
 									utility classes.</p>
 							</div>
 						</div>
+						
+						<!-- test -->
+						<div class="card shadow mb-4">
+							<canvas id="myChart" width="800" height="450"></canvas>
+							<button id="sendAjax">sendAjax</button>
+						</div>
+						
 
 					</div>
 				</div>
 
 			</div>
 			<!-- /.container-fluid -->
-
-
 
 		</div>
 	</main>
@@ -438,7 +446,109 @@
 
 <script type="text/javascript">
 	
+	var eL = Array();
+	var eL2 = Array();
+	for (var i = 0; i < 12; i++) {
+		eL[i] = 0;
+		eL2[i] = 0;
+	}
+	
 
+	var dataVar = {
+		labels : [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
+				"Sep", "Oct", "Nov", "Dec" ],
+		datasets : [ {
+			data : [eL[0], eL[1], eL[2], eL[3], eL[4], eL[5], eL[6],
+				eL[7], eL[8], eL[9], eL[10], eL[11] ],
+			label : "2020",
+			lineTension : 0.5,
+			backgroundColor : "rgba(78, 115, 223, 0.05)",
+			borderColor : "rgba(78, 115, 223, 1)",
+			pointRadius : 3,
+			pointBackgroundColor : "rgba(78, 115, 223, 1)",
+			pointBorderColor : "rgba(78, 115, 223, 1)",
+			pointHoverRadius : 3,
+			pointHoverBackgroundColor : "rgba(78, 115, 223, 1)",
+			pointHoverBorderColor : "rgba(78, 115, 223, 1)",
+			pointHitRadius : 10,
+			pointBorderWidth : 2,
+			fill: false,
+		}/* ,{
+			label: '2019',
+			lineTension : 0.5,
+			backgroundColor: 'rgba(255, 99, 132, 1)',
+			borderColor: 'rgba(255, 99, 132, 1)',
+			pointRadius : 3,
+			pointBackgroundColor : "rgba(78, 115, 223, 1)",
+			pointBorderColor : "rgba(78, 115, 223, 1)",
+			pointHoverRadius : 3,
+			pointHoverBackgroundColor : "rgba(78, 115, 223, 1)",
+			pointHoverBorderColor : "rgba(78, 115, 223, 1)",
+			pointHitRadius : 10,
+			pointBorderWidth : 2,
+			fill: false,
+			data: [
+				eL2[0], eL2[1], eL2[2], eL2[3], eL2[4], eL2[5], eL2[6],
+				eL2[7], eL2[8], eL2[9], eL2[10], eL2[11]
+			],
+		} */]
+	};
+	
+	var options = {
+		title : {
+			display : true,
+			text : '수익 그래프'
+		}
+	};
+
+	
+	
+	var ctx = document.getElementById("myChart").getContext('2d');                                           
+	var myBarChart = new Chart(ctx, {
+	    type: 'line',
+	    data: dataVar, 
+	    options: options
+	});
+	
+	
+	
+	//결과 값
+	var earningList = Array();
+	var test = Array();
+
+	//start Ajax 
+	$.ajax({
+		type : 'POST',
+		url : "/admin/getMonthlyEarning",
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		dataType : "text",
+		error : function(err) {
+			console.log("ajax getMonthlyReport 실행중 오류가 발생하였습니다.");
+		},
+		success : function(data) {
+			earningList = data;
+			console.log("ajax 실행됨");
+			var result = JSON.parse(data);
+			var e = result.earningList;
+			console.log("result : " + result);
+			
+			var eL = dataVar.datasets[0].data;
+			console.log("eL.length : " + eL.length);
+			
+			for (var i = 0; i < eL.length; i++) {
+	            eL[i] = result[i]; 
+				console.log("eL[" + i + "] : " +  eL[i] + " = " + "result[" + i + "] : " + result[i]);
+	        }
+	        dataVar.datasets[0].data = eL; 
+	        myBarChart.update();
+		}
+
+	});
+	
+
+	
 </script>
 
 </body>

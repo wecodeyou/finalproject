@@ -229,6 +229,10 @@ public class OffController {
 		mv.setViewName("/off/authorSelection");
 		return mv;
 	}
+	
+	
+	
+	
 
 	@GetMapping("/instructor/startlecture")
 	public ModelAndView instructorCheck(ModelAndView mv) {
@@ -257,4 +261,9 @@ public class OffController {
 		mv.setViewName("/off/OffLectureMaster");
 		return mv;
 	}
+	
+	/*
+	 * @MessageMapping("/lecture") public String handle(String message) { return "["
+	 * + System.currentTimeMillis() + " : " + message; }
+	 */
 }
