@@ -164,7 +164,7 @@ $(function(){
 	         
 	         $.ajax({
 	            type: "POST",
-	            url: "/member/loginCheck",
+	            url: "/wecodeyou/member/loginCheck",
 	            headers: {
 	                   "Content-Type": "application/json"
 	               },

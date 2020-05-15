@@ -97,5 +97,16 @@ public class ProductService implements IProductService {
 	public Integer countProducts() {
 		return pdao.countProducts();
 	}
+	
+	@Override
+	public ArrayList<ProductVO> purchasedOn(Integer userNo) {
+		// TODO Auto-generated method stub
+		return pdao.purchasedOn(userNo);
+	}
+
+	@Override
+	public ProductVO getOneByName(String productName) {
+		return pdao.getOneByName(productName);
+	}
 
 }

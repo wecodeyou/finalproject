@@ -78,6 +78,18 @@
 		WHERE product_no = #{productNo}
 	</select>
 	
+	<select id="getOneByName" resultMap="ProductMap">
+		SELECT * FROM product
+		WHERE product_name = #{productName}
+	</select>
+	
+	
+	<!-- 수강중인 온라인 강의 출력 -->
+	<select id = "purchasedOn" resultMap = "ProductMap">
+		select * from product 
+		where product_no IN (select purchase_pro_no from purchase where purchase_buyer = #{userNo} AND product_type = 0);
+	
+	</select>
 	
 
 </mapper>

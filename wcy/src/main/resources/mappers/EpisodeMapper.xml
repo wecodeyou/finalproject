@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.wecodeyou.episode.repository.IEpisodeMapper">
+
+   <resultMap id="EpisodeMap" type="com.it.wecodeyou.episode.model.EpisodeVO">
+      <id property="episodeNo" column="episode_no" />
+      <result property="episodeOnNo" column="episode_on_no" />
+      <result property="episodeRowNo" column="episode_row_no" />
+      <result property="episodeName" column="episode_name" />
+      <result property="episodeSource" column="episode_source" />
+   </resultMap>
+   
+   
+   <insert id = "insertEpisode">
+   INSERT INTO 
+   episode
+   (episode_on_no, episode_row_no, episode_name,episode_source)
+   VALUES
+   (#{episodeOnNo}, #{episodeRowNo}, #{episodeName},#{episodeSource})
+   
+   </insert>
+   
+   
+   
+   
+   
+<!-- product_no 받아서  해당 에피소드 반환 -->
+   <select id="getAllEpisode1" resultMap="EpisodeMap">
+		SELECT * 
+		FROM episode
+		WHERE episode_on_no = (SELECT on_no 
+							   FROM on_course 
+							   WHERE on_product_no = #{productNo})
+							   
+   </select>
+   
+   <!-- episode_source를 받아서 해당 에피소드 반환 -->
+	<select id = "getAllEpisode2" resultMap = "EpisodeMap">
+		SELECT *
+		FROM episode
+		WHERE episode_on_no = (SELECT episode_on_no
+							   FROM episode 
+							   WHERE episode_source = #{episodeSource});
+
+	</select>
+   
+   <select id = "getOnNo" resultType = "int">
+		SELECT on_no 
+		FROM on_course
+		WHERE on_product_no = (SELECT product_no
+					   FROM product 
+					   WHERE product_no = #{productNo});
+   
+   </select>
+
+   <select id = "getProductNo" resultType = "int">
+   		SELCET on_product_no
+   		FROM on_course
+   		WHERE on_no = #{episodeOnNo}
+   
+   </select>
+
+
+
+
+
+
+</mapper>
