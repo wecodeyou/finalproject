@@ -13,8 +13,9 @@
 <link rel="stylesheet" href="<c:url value='/css/header.css'/>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" /> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
 <link rel="stylesheet" href="<c:url value='/css/search.css'/>">
 
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
@@ -28,7 +29,7 @@
 <style>
 /* 이미지 슬라이더 스타일 변경 오버라이드 */
 .bx-wrapper{border:0; background:#fff; box-shadow:none; position:relative; margin: 90px auto 0px;}
-.wcy-ProgramLayout > .bx-wrapper{margin: 45px auto 0px;}
+.wcy-ProgramLayout > .bx-wrapper{margin: 45px 0 0 0;}
 
 
 @media only screen and (max-width: 1023px) {
@@ -595,20 +596,90 @@
 			<span  style="font-size:17px; font-weight:400;">&nbsp;&nbsp;&nbsp;수강생들이 사랑한 강의</span>
 		</div>
 		<ul class="wcy-best-class">
-			<li class="hover-wrap">
-
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>프론트엔드 개발환경의 이해와 실습 </p>
+		            <p>김영희</p>
+        		</div>
+				<div class="hover-wrap">
 					<a href="#"><img src="<c:url value='/img/curriculum/network01.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[온라인] Python</h3>
+					<h3>[온라인] 디자인</h3>
 					<div class="hover-bottom">
-						<a href="#"><i class="fas fa-cart-plus"></i></a>
-						<a href="#"><i class="fas fa-search-plus"></i></a>
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
 					</div>
+				</div>
 			</li>
-			<li><a href="#"><img src="<c:url value='/img/curriculum/network08.jpg'/>" style="width:300px; height:300px;"/></a></li>
-			<li><a href="#"><img src="<c:url value='/img/curriculum/network03.png'/>" style="width:300px; height:300px;"/></a></li>
-			<li><a href="#"><img src="<c:url value='/img/curriculum/network04.jpg'/>" style="width:300px; height:300px;"/></a></li>
-			<li><a href="#"><img src="<c:url value='/img/curriculum/network05.jpg'/>" style="width:300px; height:300px;"/></a></li>
-			<li><a href="#"><img src="<c:url value='/img/curriculum/network06.jpg'/>" style="width:300px; height:300px;"/></a></li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>Spring Framework Project</p>
+		            <p>서영준</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network08.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[오프라인] Programming</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>			
+				</div>
+			</li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>빅데이터 분석 R 프로그래밍</p>
+		            <p>아무개</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network03.png'/>" style="width:300px; height:300px;"/></a>
+					<h3>[온라인] 빅데이터/보안</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>	
+				</div>		
+			</li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>JSP Programming</p>
+		            <p>홍순구</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network04.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[오프라인] Programming</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>	
+				</div>		
+			</li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>정보처리기사 (신유형 분석)</p>
+		            <p>김개똥</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network05.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[온라인] 서버/자격증</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>		
+				</div>	
+			</li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>Hacking Trace</p>
+		            <p>박철수</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network06.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[오프라인] Hacking</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>
+				</div>		
+			</li>
 		</ul>
 	</div>
 
