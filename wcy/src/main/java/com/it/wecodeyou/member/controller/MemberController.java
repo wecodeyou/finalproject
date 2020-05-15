@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.it.wecodeyou.interest.sevice.IInterestService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 
@@ -38,6 +38,8 @@ public class MemberController {
    private IMemberService service;
    @Autowired
    JavaMailSender mailSender; //메일 서비스를 사용하기 위해 의존성을 주입함
+   @Autowired
+   private IInterestService interestService;
    
    
    //회원가입 페이지 처리
@@ -369,5 +371,46 @@ public class MemberController {
          return mv;
       }
    
+      @PostMapping("/checkUserInterest")
+      public String checkUserInterest(HttpSession session) throws SQLException {
+    	  System.out.println("/member/checkUserInterest : 설문조사 완료 여부 체크 POST 요청 발생!");
+    	  String result;
+    	  MemberVO mvo = (MemberVO) session.getAttribute("login");
+    	  if(mvo != null) {
+    		  if(service.checkInterest(mvo.getUserNo()) == 1) {
+    			  System.out.println("설문조사 대상아님");
+        		  result = "pass";
+        	  }else {
+        		  System.out.println("설문조사 대상");
+        		  result = "success";
+        	  }
+    	  }else {
+    		  System.out.println("로그인 정보가 없습니다.");
+    		  result = "pass";
+    	  }
+    	 
+    	  return result;
+      }
+      
+      @PostMapping("/updateInterest")
+      public String updateInterest(HttpSession session) throws SQLException {
+    	  System.out.println("/member/updateInterest : 설문조사 참여처리 POST 요청 발생!");
+    	  String result;
+    	  MemberVO mvo = (MemberVO) session.getAttribute("login");
+    	  if(mvo != null) {
+    		  if(interestService.updateInterest(mvo.getUserNo())) {
+    			  System.out.println("설문조사 참여 처리 완료");
+    			  result = "success";
+    		  }else {
+    			  System.out.println("설문조사 참여 처리 실패");
+        		  result = "pass";
+    		  }
+    	  }else {
+    		  System.out.println("로그인 정보가 없습니다.");
+    		  result = "pass";
+    	  };
+    	  return result;
+      }
+      
    
 }

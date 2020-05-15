@@ -381,6 +381,7 @@
 <%@ include file="../member/login_modal.jsp" %>  
 <%@ include file="../member/event_modal.jsp" %>  
 
+
 <main class="wcy-main-content sub-nav-hero">
 	<div class="wcy-ProgramLayout">
 		<div class="wcy-ProgramBox">
@@ -684,6 +685,7 @@ function logincheck(){
 
  
 </script>
+
 
 
 </body>

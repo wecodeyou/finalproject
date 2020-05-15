@@ -2,6 +2,36 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+$.ajax({
+	type : 'POST',
+	url : "/admin/getInterestLanguage",
+	headers : {
+		"Content-Type" : "application/json"
+	},
+	dataType : "text",
+	error : function(err) {
+		console.log("ajax getMonthlyReport 실행중 오류가 발생하였습니다.");
+	},
+	success : function(data) {
+		earningList = data;
+		console.log("ajax 실행됨");
+		var result = JSON.parse(data);
+		var e = result.earningList;
+		console.log("result : " + result);
+		
+		var eL = dataVar.datasets[0].data;
+		console.log("eL.length : " + eL.length);
+		
+		for (var i = 0; i < eL.length; i++) {
+            eL[i] = result[i]; 
+			console.log("eL[" + i + "] : " +  eL[i] + " = " + "result[" + i + "] : " + result[i]);
+        }
+        dataVar.datasets[0].data = eL; 
+        myBarChart.update();
+	}
+
+});
+
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {

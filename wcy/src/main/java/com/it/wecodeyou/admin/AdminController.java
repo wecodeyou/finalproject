@@ -2,17 +2,15 @@ package com.it.wecodeyou.admin;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.it.wecodeyou.interest.sevice.IInterestService;
 import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.purchase.model.PurchaseResultVO;
 import com.it.wecodeyou.purchase.service.IPurchaseService;
@@ -25,6 +23,8 @@ public class AdminController {
 	private IMemberService memberService;
 	@Autowired
 	private IPurchaseService purchaseService;
+	@Autowired
+	private IInterestService interestService;
 	
    	//admin page 호출
    	@GetMapping("")
@@ -55,7 +55,20 @@ public class AdminController {
 
 		return earningList;
 	}
-	 
+	
+	@PostMapping("/getInterestLanguage")
+	public ArrayList<Integer> getInterestLanguage() throws SQLException {
+		System.out.println("/admin/getMonthlyReport : POST 요청 발생!"); 
+
+		ArrayList<PurchaseResultVO> prvoList = purchaseService.getMonthlyEarnings();
+
+		ArrayList<Integer> earningList = new ArrayList<>();
+		for (int i = 0; i < prvoList.size(); i++) {
+			earningList.add(prvoList.get(i).getEarningMonthly());
+		}
+
+		return earningList;
+	}
    	
    	
    	//user page 호출
