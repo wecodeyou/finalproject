@@ -76,41 +76,41 @@
  
 
 @media only screen and (max-width: 1225px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 		left: 93%;
 	}
 }
 @media only screen and (max-width: 1060px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 		left: 92%;
 	}
 }
 @media only screen and (max-width: 945px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 		left: 91%;
 	}
 }
 @media only screen and (max-width: 815px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 		left: 90%;
 	}
 }
 @media only screen and (max-width: 760px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
 		display:none;
 	} 
 }
 
 
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager{
-	bottom: -35px;
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager{
+	bottom: -40px;
 }
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:hover,
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a.active,
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:focus{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:hover,
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a.active,
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:focus{
 	background: #807e7e;
 }
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a{
 	background: #c9c9c9;
 }
 
@@ -813,7 +813,7 @@ $(document).ready(function(){
        autoHover:true,      //슬라이드에 마우스 오버시 애니메이션 정지하기
        pager:true,         	//페이지 표시 보이기
        minSlides:1,
-       maxSlides:4,
+       maxSlides:5,
        shrinkItems:true,
        slideWidth:300,
        slideMargin:30

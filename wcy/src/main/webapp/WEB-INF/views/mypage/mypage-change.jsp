@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- 파비콘 적용 -->
 <link rel="shortcut icon"
-	href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+   href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
 
 
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
@@ -18,108 +18,108 @@
 
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"
-	integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-	crossorigin="anonymous"></script>
+   integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+   crossorigin="anonymous"></script>
 
 <style>
 .left-section {
-	float: left;
-	width: 210px;
+   float: left;
+   width: 210px;
 }
 
 .left-section>h2 {
-	width: 210px;
-	height: 112px;
-	background: #25283D;
-	color: #fff;
-	text-align: center;
-	display: table-cell;
-	vertical-align: middle;
+   width: 210px;
+   height: 112px;
+   background: #25283D;
+   color: #fff;
+   text-align: center;
+   display: table-cell;
+   vertical-align: middle;
 }
 
 .left-section .left-sub-nav {
-	width: 210px;
-	border: solid #dbdbdb;
-	border-width: 0 1px;
-	box-sizing: border-box;
+   width: 210px;
+   border: solid #dbdbdb;
+   border-width: 0 1px;
+   box-sizing: border-box;
 }
 
 .left-section .left-sub-nav>li>a {
-	padding: 10px 20px;
-	font-size: 14px;
-	display: block;
-	position: relative;
-	border-bottom: 1px solid #dbdbdb;
-	font-weight: bold;
-	color: #333;
+   padding: 10px 20px;
+   font-size: 14px;
+   display: block;
+   position: relative;
+   border-bottom: 1px solid #dbdbdb;
+   font-weight: bold;
+   color: #333;
 }
 
 .right-section {
-	width: 840px;
-	float: right;
-	position: relative;
+   width: 840px;
+   float: right;
+   position: relative;
 }
 
 .right-header .right-sub-nav {
-	width: 100%;
-	background: #f4f4f4;
-	border-radius: 5px;
-	display: table;
-	table-layout: fixed;
-	margin-bottom: 50px;
-	overflow: hidden;
+   width: 100%;
+   background: #f4f4f4;
+   border-radius: 5px;
+   display: table;
+   table-layout: fixed;
+   margin-bottom: 50px;
+   overflow: hidden;
 }
 
 .right-header .right-sub-nav li {
-	display: table-cell;
+   display: table-cell;
 }
 
 .right-header .right-sub-nav li a {
-	display: block;
-	height: 60px;
-	box-sizing: border-box;
-	font-size: 18px;
-	color: #888;
-	padding: 0 0 0 20px;
-	line-height: 60px;
-	border-bottom: 4px solid #ddd;
+   display: block;
+   height: 60px;
+   box-sizing: border-box;
+   font-size: 18px;
+   color: #888;
+   padding: 0 0 0 20px;
+   line-height: 60px;
+   border-bottom: 4px solid #ddd;
 }
 
 .right-sub-nav li a.active {
-	color: #25283D;
-	border-color: #25283D;
+   color: #25283D;
+   border-color: #25283D;
 }
 
 .contents-title:before {
-	display: block;
-	content: '';
-	width: 50px;
-	height: 3px;
-	background: #25283D;
-	position: absolute;
-	left: 0;
-	top: 0;
+   display: block;
+   content: '';
+   width: 50px;
+   height: 3px;
+   background: #25283D;
+   position: absolute;
+   left: 0;
+   top: 0;
 }
 
 .contents-title {
-	font-size: 22px;
-	margin-bottom: 20px;
-	color: #000;
-	position: relative;
-	padding-top: 5px;
-	height: 40px;
-	line-height: 40px;
+   font-size: 22px;
+   margin-bottom: 20px;
+   color: #000;
+   position: relative;
+   padding-top: 5px;
+   height: 40px;
+   line-height: 40px;
 }
 
 p {
-	line-height: 150% !important;
+   line-height: 150% !important;
 }
 </style>
 
 </head>
 <body>
 
-	<jsp:include page="../include/header-sub.jsp" />
+   <jsp:include page="../include/header-sub.jsp" />
 
 
 	<main class="wcy-main-content">
@@ -133,21 +133,21 @@ p {
 				<li><a href="<c:url value='/mypage/mylec' />">내 강의실</a></li>
 			</ul>
 		</div>
-
-		<div class="right-section">
-			<div class="right-header">
-				<ul class="right-sub-nav">
-					<li><a class="active"> 내 정보 </a></li>
-				</ul>
-			</div>
-			<div class="right-contents">
-				<h4 class="contents-title">${login.userName}님의 MYPAGE</h4>
-				<p class="mb10">
-					
+      <div class="right-section">
+         <div class="right-header">
+            <ul class="right-sub-nav">
+               <li><a class="active"> 내 정보 </a></li>
+            </ul>
+         </div>
+         <div class="right-contents">
+            <h4 class="contents-title">${login.userName}님의 MYPAGE</h4>
+            <p class="mb10">
+               <a href="<c:url value='/mypage/myinfoChange?change=info' />">정보변경</a>
+               <a href="<c:url value='/mypage/myinfoChange?change=pw' />">비밀번호 변경</a>
 
 <!-- 위의 정보들을 바꾸겠다. -->
 <c:if test="${change eq 'info'}">
-	<table border="0" class="tbl_model">
+   <table border="0" class="tbl_model">
                 <caption><span class="blind">연락처 수정 입력</span></caption>
                 <colgroup>
                     <col style="width:22%"><col>
@@ -156,8 +156,8 @@ p {
                 <tr>
                     <th scope="row">
                         <div class="thcell">
-						     	  사용자 <span class="word_br">이름</span>
-						     </div>
+                            사용자 <span class="word_br">이름</span>
+                       </div>
                     </th>
                     <td>
                         <div class="tdcell">
@@ -396,9 +396,9 @@ p {
                                                 <option value="61">호주</option>
                                                 <option value="852">홍콩</option>
                                     </select>
-								    <span class="country_code_w">
+                            <span class="country_code_w">
                                         <span id="input_internationalCode" class="country_code">+82</span>
-										<input type="text" id="phoneNo" name="phoneNo" maxlength="14" onkeydown="check_num_ajax2('phoneNo', '2', 'e_phoneNo','e_authNo');">
+                              <input type="text" id="phoneNo" name="phoneNo" maxlength="14" onkeydown="check_num_ajax2('phoneNo', '2', 'e_phoneNo','e_authNo');">
                                     </span>
                                     <a href="#" onclick="sendSmsForChangePhoneNo();return false;" class="btn_model"><span class="btn4">인증</span></a>
                                 </p>
@@ -424,8 +424,8 @@ p {
   <tr>
                    <th scope="row">
                         <div class="thcell">
-						     	 <span class="word_br">주소지</span>
-						     </div>
+                           <span class="word_br">주소지</span>
+                       </div>
                     </th>
                     <td>
                         <span class="zipcode">${login.userZipcode}</span> ${login.userAddress}<br>${login.userDetailAddress}
@@ -451,29 +451,29 @@ p {
 다른 아이디/사이트에서 사용한 적 없는 비밀번호
 
 이전에 사용한 적 없는 비밀번호가 안전합니다.<br>
-	비밀번호: <input type="password" name="" id="" /><br>
-	번호확인: <input type="password" name="" id="" /><br>
-	
+   비밀번호: <input type="password" name="" id="" /><br>
+   번호확인: <input type="password" name="" id="" /><br>
+   
 <br>
 <a href="<c:url value='/mypage/myinfoChange' />">내정보</a> <br>
 </c:if>
 
-				</p>
-			</div>
-		</div>
-	</main>
+            </p>
+         </div>
+      </div>
+   </main>
 
-	<jsp:include page="../include/footer.jsp" />
+   <jsp:include page="../include/footer.jsp" />
 
-	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
-	<script src="<c:url value = "/js/main.js"/>"></script>
+   <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
+   <script src="<c:url value = "/js/main.js"/>"></script>
 
 <c:if test="${login == null}">
-	<script>   
-	   alert("로그인이 필요한 서비스입니다.");
-	   location.href="<c:url value='/' />";
-	</script>
-</c:if>	
+   <script>   
+      alert("로그인이 필요한 서비스입니다.");
+      location.href="<c:url value='/' />";
+   </script>
+</c:if>   
 
 </body>
 </html>
