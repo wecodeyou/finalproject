@@ -105,38 +105,12 @@
 					<h4 class="contents-title">커리큘럼</h4>
 					<div class="contents-text mb40">
 						<table class="curri-table">
+						<c:forEach var="e" items="${episodeList}">
 							<tr>
-								<td class="curri-table-title">1차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
+								<td class="curri-table-title">${e.episodeRowNo}차</td>
+								<td class="curri-table-content">${e.episodeName}</td>
 							</tr>
-							<tr>
-								<td class="curri-table-title">2차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">3차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">4차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">5차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">6차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">7차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">8차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
+						</c:forEach>
 						</table>
 					</div>
 				</div> <!-- detail-middle : end -->
