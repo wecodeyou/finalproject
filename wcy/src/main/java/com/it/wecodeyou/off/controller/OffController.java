@@ -25,6 +25,8 @@ import com.it.wecodeyou.off.model.OffVO;
 import com.it.wecodeyou.off.model.SeatVO;
 import com.it.wecodeyou.off.service.IOffService;
 import com.it.wecodeyou.off.service.ISeatService;
+import com.it.wecodeyou.on.model.OnVO;
+import com.it.wecodeyou.on.service.IOnService;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.purchase.model.PurchaseVO;
@@ -41,6 +43,9 @@ public class OffController {
 
 	@Autowired
 	IOffService offService;
+
+	@Autowired
+	IOnService onService;
 
 	@Autowired
 	IMemberService memberService;
@@ -85,23 +90,42 @@ public class OffController {
 		pvo.setProductType(opvo.getProductType());
 		pvo.setProductThumb(opvo.getProductThumb());
 		pvo.setProductDetail(opvo.getProductDetail());
-
+		
+		OnVO onvo = new OnVO();
 		OffVO ovo = new OffVO();
-		ovo.setOffAuthor(opvo.getOffAuthor());
-		ovo.setOffCategory(opvo.getOffCategory());
-		ovo.setOffPlace(opvo.getOffPlace());
-		ovo.setOffSeats(opvo.getOffSeats());
-		ovo.setOffStartAt(opvo.getOffStartAt());
-		ovo.setOffEndAt(opvo.getOffEndAt());
-
+		
 		// tag number list
 		ArrayList<Integer> sendTagList = opvo.getSendTagList();
 
-		if (offService.insert(pvo, ovo, sendTagList) == 1) {
-			result = "off_success";
-		} else {
-			result = "off_fail";
-		}
+		
+		switch (pvo.getProductType()) {
+			
+			case "0": 
+					  onvo.setOnAuthor(opvo.getOffAuthor());
+					  onvo.setOnCategory(Integer.parseInt(opvo.getOffCategory()));
+					  onvo.setOnDays(0);
+					  
+						if (onService.insert(pvo, onvo, sendTagList) == 1) {
+							result = "off_success";
+						} else {
+							result = "off_fail";
+						}
+					  break;
+			case "1": 
+					  ovo.setOffAuthor(opvo.getOffAuthor());
+					  ovo.setOffCategory(opvo.getOffCategory());
+					  ovo.setOffPlace(opvo.getOffPlace());
+					  ovo.setOffSeats(opvo.getOffSeats());
+					  ovo.setOffStartAt(opvo.getOffStartAt());
+					  ovo.setOffEndAt(opvo.getOffEndAt());
+					  
+						if (offService.insert(pvo, ovo, sendTagList) == 1) {
+							result = "off_success";
+						} else {
+							result = "off_fail";
+						}
+					  break;
+		}		
 
 		return result;
 	}

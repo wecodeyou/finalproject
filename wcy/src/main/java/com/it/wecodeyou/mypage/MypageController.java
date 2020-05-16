@@ -41,7 +41,6 @@ public class MypageController {
 		System.out.println("/mypage/leclist : GET 요청 발생!");
 		
 		
-		mv.addObject("lec_list",pdservice.purchasedOn(((MemberVO)session.getAttribute("login")).getUserNo()));
 		mv.setViewName("mypage/mypage-lecList");
 		ArrayList<PurchaseVO> pv_list = new ArrayList<PurchaseVO>();
 		pv_list = pservice.selectUsersPurchase(((MemberVO)session.getAttribute("login")).getUserNo());
@@ -86,4 +85,17 @@ public class MypageController {
 		return mv;
 	}
 
+	@GetMapping("/mylec")
+	public ModelAndView mylec(ModelAndView mv, HttpSession session) {
+		System.out.println("/mypage/mylec : GET 요청 발생!");
+		mv.setViewName("mypage/mypage-mylec");
+		
+		//구매내역에 있는 온라인 강의 출력
+		mv.addObject("lec_list",pdservice.purchasedOn(((MemberVO)session.getAttribute("login")).getUserNo()));
+
+		
+		return mv;
+	}
+	
+	
 }
