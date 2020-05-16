@@ -1,25 +1,19 @@
 package com.it.wecodeyou.interest.controller;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.it.wecodeyou.interest.model.InterestVO;
 import com.it.wecodeyou.interest.sevice.IInterestService;
-import com.it.wecodeyou.interest_list.model.Interest_ListVO;
 import com.it.wecodeyou.member.model.MemberVO;
-import com.it.wecodeyou.member.service.IMemberService;
 
 
 @RestController
@@ -33,10 +27,13 @@ public class InterestController {
 	 @PostMapping("/insertInterest")
 	 public String insertInterest(@RequestBody InterestVO ivo, HttpSession session) throws SQLException {
 			System.out.println("/interest/insertInterest : 등록 POST 요청 발생!");
-			System.out.println(ivo);
+			
 			
 			String result = null;
+			MemberVO mvo = (MemberVO)session.getAttribute("login");
+			ivo.setInterestUserNo(mvo.getUserNo());
 			System.out.println("login: " + ivo.getInterestUserNo());
+			System.out.println(ivo);
 			//중복검사
 			Integer chk = service.checkUserNo(ivo.getInterestUserNo());
 			System.out.println("중복검사결과: " + chk);
