@@ -747,6 +747,41 @@
 <!-- 검색 기능 -->
 <script src="<c:url value='/js/search-main.js'/>"></script>
 
+<!-- 설문조사 pop up modal -->
+<script>
+	window.onload = function(){
+		showInterestModal();
+	};
+	
+	function showInterestModal(){
+		
+		 $.ajax({
+	            type: "POST",
+	            url: "/member/checkUserInterest",
+	            headers: {
+	                   "Content-Type": "application/json"
+	               },
+	            dataType : "text",
+	            success: function(data) {
+	               console.log("통신성공 ! result: " + data);   
+	               if(data === "pass") {
+	            	   return;
+	               }else if(data === "success"){
+	            	   console.log("설문조사 모달을 엽니다.");
+	            	   self.location="/interest_list/form";
+	            	   $("#interest-modal").trigger("click");
+	               }
+	            },
+	            error: function(){
+	               console.log("통신실패!");
+	            }
+	         });
+		
+		
+	} 
+
+</script>
+
 <script>
 
 $(document).ready(function(){

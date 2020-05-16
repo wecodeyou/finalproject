@@ -162,9 +162,16 @@ input[type="file"] {
 	
 }
 
+#wcy-interest-modal {
+	animation-duration: 3s;
+  	animation-name: slidein;
+}
+
+
+
 </style>
 <body>
-	<div class="signup-form" id="wcy-interest-modal">
+	<div class="signup-form" id="wcy-interest-modal" >
 		<!-- form header -->
 		<div class="form-header">
 			<h1>WE CODE YOU | 첫 로그인 이벤트</h1>
@@ -198,98 +205,165 @@ input[type="file"] {
 
 	<script>
 	
-			/* 전체 타입 목록 개수 */
-			const n = 4;
-			
-			// insert-btn 클릭 이벤트
-			$("#insert-btn").click(function() {
-			//function formCheck(){
-				let map = new Map();
-				var option_cnt = 0; 
-				for (var i = 0; i < n; i++) {
-					var chkbox = $("." + i); //class명 
-					for (j = 0; j < chkbox.length; j++) {
-						if (chkbox[j].checked == true) {
-							map.set(option_cnt, chkbox[j].value);
-							console.log("map: " +map + " getting value of map: " + map.get(option_cnt));
-							option_cnt++;
+		var totalChecked = 0;	
+	
+		$('input:checkbox[name=0]').click(function(){ //고용형태 최대 3개까지
+		  
+		  var cntEPT = $('input:checkbox[name=0]:checked').length;
+		  totalChecked++;
+		  
+		  if(cntEPT>3){
+		   alert('최대 3개까지 선택 가능합니다.')
+		   totalChecked--;
+		   $(this).prop('checked', false);
+		  }
+		  
+		  console.log("totalChecked : " + totalChecked);
+		 });
+		
+		$('input:checkbox[name=1]').click(function(){ //고용형태 최대 3개까지
+			  
+			  var cntEPT = $('input:checkbox[name=1]:checked').length;
+			  totalChecked++;
+			  
+			  if(cntEPT>1){
+			   alert('최대 1개까지 선택 가능합니다.')
+			   totalChecked--;
+			   $(this).prop('checked', false);
+			  }
+			  
+			  console.log("totalChecked : " + totalChecked);
+		});
+		
+		$('input:checkbox[name=2]').click(function(){ //고용형태 최대 3개까지
+			  
+			  var cntEPT = $('input:checkbox[name=2]:checked').length;
+			  totalChecked++;
+			  
+			  if(cntEPT>1){
+			   alert('최대 1개까지 선택 가능합니다.')
+			   totalChecked--;
+			   $(this).prop('checked', false);
+			  }
+
+			  console.log("totalChecked : " + totalChecked);
+		});
+		
+		$('input:checkbox[name=3]').click(function(){ //고용형태 최대 3개까지
+			  
+			  var cntEPT = $('input:checkbox[name=3]:checked').length;
+			  totalChecked++;
+			  
+			  if(cntEPT>1){
+			   alert('최대 1개까지 선택 가능합니다.')
+			   totalChecked--;
+			   $(this).prop('checked', false);
+			  }
+
+			  console.log("totalChecked : " + totalChecked);
+		});
+		
+		
+
+		
+		
+
+		/* 전체 타입 목록 개수 */
+		const n = 4;
+
+		// insert-btn 클릭 이벤트
+		$("#insert-btn").click(
+				
+				function() {
+					
+					if(totalChecked < 6){
+						alert("빠뜨린 문항이 있어요! 다시 한 번 확인해주세요.");
+						return;
+					}
+					
+					let map = new Map();
+					var option_cnt = 0;
+					for (var i = 0; i < n; i++) {
+						var chkbox = $("." + i); //class명 
+						for (j = 0; j < chkbox.length; j++) {
+							if (chkbox[j].checked == true) {
+								map.set(option_cnt, chkbox[j].value);
+								console.log("map: " + map
+										+ " getting value of map: "
+										+ map.get(option_cnt));
+								option_cnt++;
+							}
 						}
 					}
-				}
-				console.log("처리완료");
-				
-				//Ajax로 값 넘기기 (InterestVO 객체로)
-				const interestUserNo = ${login.userNo};
-				const interestIndex0 = map.get(0);
-				const interestIndex1 = map.get(1);
-				const interestIndex2 = map.get(2);
-				const interestIndex3 = map.get(3);
-				const interestIndex4 = map.get(4);
-				const interestIndex5 = map.get(5);
-				
-				const ivo = {
-						interestUserNo : interestUserNo,
+					console.log("처리완료");
+
+					//Ajax로 값 넘기기 (InterestVO 객체로)
+					const interestIndex0 = map.get(0);
+					const interestIndex1 = map.get(1);
+					const interestIndex2 = map.get(2);
+					const interestIndex3 = map.get(3);
+					const interestIndex4 = map.get(4);
+					const interestIndex5 = map.get(5);
+
+					const ivo = {
 						interestIndex0 : interestIndex0,
 						interestIndex1 : interestIndex1,
 						interestIndex2 : interestIndex2,
 						interestIndex3 : interestIndex3,
 						interestIndex4 : interestIndex4,
 						interestIndex5 : interestIndex5
-				};
-				
-				$.ajax({
-					type: "POST",
-					url: "/interest/insertInterest",
-					headers: {
-		                "Content-Type": "application/json"
-		            },
-					data: JSON.stringify(ivo),
-					dataType : "text",
-					success: function(data) {
-						console.log("통신성공 ! result: " + data);
-						if(data === "success") {
-					    	console.log("입력성공! ");
-					    	alert("감사합니다! 00포인트가 지급됩니다.");
-							location.href ="/";
-						}else if(data === "already exist") {
-							alert("이미 설문조사가 등록되어있어요!");
-						}
-					},
-					error: function(){
-						console.log("통신실패! ");
-					}
-				});
-			//}
-			});
-			
-			// skip-btn 클릭 이벤트
-			$("#skip-btn").click(function() {
-				if (confirm("설문조사를 건너뛰면 포인트를 받을 수 없어요... 정말로 건너뛸까요?") == false){   
-					return;
-				}else{   
+					};
+
 					$.ajax({
-						type: "POST",
-						url: "/member/updateInterest",
-						headers: {
-			                "Content-Type": "application/json"
-			            },
+						type : "POST",
+						url : "/interest/insertInterest",
+						headers : {
+							"Content-Type" : "application/json"
+						},
+						data : JSON.stringify(ivo),
 						dataType : "text",
-						success: function(data) {
+						success : function(data) {
 							console.log("통신성공 ! result: " + data);
-							if(data === "success") {
-						    	console.log("설문조사 참여처리");
-								location.href ="/";
+							if (data === "success") {
+								console.log("입력성공! ");
+								alert("감사합니다! 00포인트가 지급됩니다.");
+								location.href = "/";
+							} else if (data === "already exist") {
+								alert("이미 설문조사가 등록되어있어요!");
 							}
 						},
-						error: function(){
+						error : function() {
 							console.log("통신실패! ");
 						}
 					});
-				}
-			});
+					
+				});
 
-
-	
+		// skip-btn 클릭 이벤트
+		$("#skip-btn").click(function() {
+			if (confirm("설문조사를 건너뛰면 포인트를 받을 수 없어요... 정말로 건너뛸까요?") == false) {
+				return;
+			} else {
+				$.ajax({
+					type : "POST",
+					url : "/member/updateInterest",
+					headers : {
+						"Content-Type" : "application/json"
+					},
+					dataType : "text",
+					success : function(data) {
+						console.log("통신성공 ! result: " + data);
+						if (data === "success") {
+							console.log("설문조사 참여처리");
+							location.href = "/";
+						}
+					},
+					error : function() {
+						console.log("통신실패! ");
+					}
+				});
+			}
+		});
 	</script>
 </body>
 </html>
