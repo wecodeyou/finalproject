@@ -272,6 +272,8 @@ to {
 				<li><a class="active" href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
 				<li><a href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
 				<li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
+				<li><a href="<c:url value='/mypage/mylec' />">내 강의실</a></li>
+				
 			</ul>
 		</div>
 
@@ -292,14 +294,14 @@ to {
 	<br>
 	<br>
 	
-	<table border = 1>
+<%-- 	<table border = 1>
 	
 	<c:forEach var = "c" items = '${lec_list}'>
 		<tr>
 			<td><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>">${c.productName}</a></td><td>${c.productCreatedAt}</td>		
 		</tr>
 	</c:forEach>	
-	</table>
+	</table> --%>
 
 	<a href="/mypage/leclist?type=on">[온라인]</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<a href="/mypage/leclist?type=off">[오프라인]</a>

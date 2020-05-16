@@ -4,14 +4,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.it.wecodeyou.off.repository.IOffMapper;
 import com.it.wecodeyou.on.model.OnVO;
 import com.it.wecodeyou.on.repository.IOnMapper;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.repository.IProductMapper;
 import com.it.wecodeyou.ptag.repository.IPtagMapper;
 
+@Service
 public class OnService implements IOnService {
 
 	
@@ -46,7 +47,7 @@ public class OnService implements IOnService {
 			//insert into off_course table
 			ovo.setOnProductNo(pvo.getProductNo());
 			result = onDao.insert(ovo);
-			System.out.println("OffService register() - off_course Insert Result: " + result);
+			System.out.println("OnService register() - on_course Insert Result: " + result);
 		} else {
 			return 0;
 		}
