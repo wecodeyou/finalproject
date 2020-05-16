@@ -27,10 +27,8 @@
 
 .footer > .bx-wrapper > .bx-viewport{
 	height: 80px !important;
-	padding: 17 80 0 80px !important;
+	padding: 17px 80px 0px 80px !important;
 }
-
-
 </style>
 
 </head>
@@ -81,6 +79,7 @@
     
     
     <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
+
 	
 	<!-- bxSlider -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

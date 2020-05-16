@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icheck-bootstrap@3.0.1/icheck-bootstrap.min.css" />
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
 
+
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 
@@ -251,7 +252,6 @@
    
    
 
-<jsp:include page="../include/footer.jsp" />
    
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 <script src="<c:url value = "/js/main.js"/>"></script>
@@ -396,6 +396,6 @@ function isOverRap(){
 
 
 </script>
-
 </body>
+ <jsp:include page="../include/footer.jsp" /> 
 </html>

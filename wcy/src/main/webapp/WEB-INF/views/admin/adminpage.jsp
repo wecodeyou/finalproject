@@ -416,9 +416,6 @@
 		</div>
 	</main>
 
-
-
-<jsp:include page="../include/footer.jsp" /> 
    
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 <script src="<c:url value = "/js/main.js"/>"></script>
@@ -448,4 +445,5 @@
 </script>
 
 </body>
+<jsp:include page="../include/footer.jsp" /> 
 </html>

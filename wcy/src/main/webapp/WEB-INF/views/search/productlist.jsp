@@ -324,10 +324,10 @@
 </c:if>
 </main> 
 
-<jsp:include page="../include/footer.jsp" />
 
 <script src="<c:url value='/js/search-filter.js'/>"></script>
 <script src="<c:url value='/js/tag.js'/>"></script>
 
 </body>
+<jsp:include page="../include/footer.jsp" />
 </html>
