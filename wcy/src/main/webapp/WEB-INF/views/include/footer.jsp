@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="<c:url value='/css/footer.css'/>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 
-<style>
+<style> 
 .footer > .bx-wrapper{
 	-moz-box-shadow: 0 0 0px;
     -webkit-box-shadow: 0 0 0px;
