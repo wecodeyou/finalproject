@@ -126,8 +126,7 @@ p {
 		<div class="left-section">
 			<h2>WeCodeYou</h2>
 			<ul class="left-sub-nav">
-				<li><a class="active">인삿말</a></li>
-				<li><a href="<c:url value='/intro' />">WCY 소개</a></li>
+				<li><a class="active">인삿말/소개</a></li>
 				<li><a href="<c:url value='/location' />">오시는 길</a></li>
 			</ul>
 		</div>
@@ -135,7 +134,7 @@ p {
 		<div class="right-section">
 			<div class="right-header">
 				<ul class="right-sub-nav">
-					<li><a class="active"> 인삿말 </a></li>
+					<li><a class="active"> 인삿말/소개 </a></li>
 				</ul>
 			</div>
 			<div class="right-contents">
