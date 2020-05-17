@@ -130,6 +130,7 @@ p {
 				<li><a href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
 				<li><a class="active" href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
 				<li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
+				<li><a href="<c:url value='/mypage/mylec' />">내 강의실</a></li>
 			</ul>
 		</div>
 

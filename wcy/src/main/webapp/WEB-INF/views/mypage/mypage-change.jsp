@@ -147,8 +147,9 @@ p {
           
 <!-- 일반적인 정보들을 바꾸겠다. -->
 <div id="info_change_form">
-   <table border="0" class="tbl_model">
-                <caption><span class="blind">연락처 수정 입력</span></caption>
+
+  
+    <table border="1" class="tbl_model">
                 <colgroup>
                     <col style="width:22%"><col>
                 </colgroup>
@@ -200,7 +201,7 @@ p {
                                 </p>
                             </div>
                             <p id="p_phoneNo" class="btn_area_btm">
-                                <a href="#" onclick="display('phoneNo');return false;" class="btn_model"><b class="btn2">수정</b></a>
+                                <a href="javascript:changeName();" onclick="display('phoneNo');return false;" class="btn_model"><b class="btn2">수정</b></a>
                             </p>
                         </div>
                     </td>
@@ -212,16 +213,15 @@ p {
                        </div>
                     </th>
                     <td>
-                        <span class="zipcode">${login.userZipcode}</span> ${login.userAddress}<br>${login.userDetailAddress}
-                    </td>
-                    <td class="cell_edit">
-                        <a href="#" class="_modify setting_btn type_h">수정</a><!--N=a:adr.listmodi-->
-                        <input type="hidden" id="hash" value="2ff228e4bcb6dc68572bff884bff4541db19f05a79e29095b53b315355cc525d"/>
-                    </td>
+                        <p><span class="zipcode">${login.userZipcode}</span> ${login.userAddress}&nbsp;&nbsp;${login.userDetailAddress}</p>
+							<p class="btn_area_btm">
+                                <a href="javascript:changeName();" class="btn_model"><b class="btn2">수정</b></a>
+							</p>
+					</td>
                 </tr>
                 
                 </tbody>
-            </table>
+            </table> 
             
             
 <br>
@@ -229,7 +229,7 @@ p {
 
 <div id="pw_change_form" style="display: none;">
 	<div id="pcf_check">
-	기존의 비밀번호를 입력해주세요.
+	기존의 비밀번호를 입력해주세요.<br><br>
 	
 	현재 비밀번호: <input type="password" name="is_pw" id="is_pw" required="required"/> <button onclick="check()"> 입력 </button>
 	</div>
@@ -312,6 +312,7 @@ function check(){
 	        error:function(){
 	         	console.log("서버와 통신 실패");
 			 	$("#is_pw").css("border-color","red");
+			 	$('#is_pw').html('');
 	        }
 	     });
 	}else{
