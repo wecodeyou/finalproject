@@ -122,17 +122,18 @@ p {
    <jsp:include page="../include/header-sub.jsp" />
 
 
-   <main class="wcy-main-content">
-      <div class="left-section">
-         <h2>MyPage</h2>
-         <ul class="left-sub-nav">
-       		<li><a class="active" href="<c:url value='/mypage/myinfoChange' />">내 정보</a></li>
-			<li><a href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
-			<li><a href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
-			<li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
-         </ul>
-      </div>
 
+	<main class="wcy-main-content">
+		<div class="left-section">
+			<h2>MyPage</h2>
+			<ul class="left-sub-nav">
+				<li><a class="active" href="<c:url value='/mypage/myinfoChange' />">내 정보</a></li>
+				<li><a href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
+				<li><a href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
+				<li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
+				<li><a href="<c:url value='/mypage/mylec' />">내 강의실</a></li>
+			</ul>
+		</div>
       <div class="right-section">
          <div class="right-header">
             <ul class="right-sub-nav">
@@ -254,7 +255,6 @@ p {
       </div>
    </main>
 
-   <jsp:include page="../include/footer.jsp" />
 
    <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
    <script src="<c:url value = "/js/main.js"/>"></script>
@@ -399,4 +399,5 @@ function change_pw(){
 
 </script>
 </body>
+   <jsp:include page="../include/footer.jsp" />
 </html>

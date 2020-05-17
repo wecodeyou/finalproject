@@ -280,8 +280,12 @@
 <%@ include file="../member/login_modal.jsp" %>   
 <%@ include file="../member/event_modal.jsp" %>  
 
+
+
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 <script src="<c:url value = "/js/header-sub.js"/>"></script>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
