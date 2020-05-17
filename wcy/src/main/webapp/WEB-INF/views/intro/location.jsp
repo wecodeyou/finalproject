@@ -162,7 +162,6 @@ p {
 
 
 	<main class="wcy-main-content">
-
 		<div class="wcy-contents">
 			<div class="right-header">
 				<ul class="right-sub-nav">
