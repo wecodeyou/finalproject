@@ -9,5 +9,8 @@ public interface IOnService {
 
 	public Integer insert(ProductVO pvo, OnVO ovo, ArrayList<Integer> sendTagList);
 
+	public OnVO getOne(Integer productNo);
 	
+	public String getAuthor(Integer productNo);
+
 }

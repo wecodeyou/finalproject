@@ -17,7 +17,7 @@ public class ScheduleController {
 	@Autowired
 	ScheduleService dao;
 	
-	@GetMapping("/calendar")
+	@GetMapping("/")
 	public String schedule(Model model) throws SQLException {
 		
 //		model.addAttribute("el",dao.getEvent());

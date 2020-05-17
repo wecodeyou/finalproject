@@ -10,10 +10,10 @@
 <html lang="ko">
 <head>
 
-<link href="<c:url value='/resources/vendor/calcss/fullcalendar.min.css' />" rel='stylesheet' />
-<link href="<c:url value='/resources/vendor/calcss/bootstrap.min.css' />" rel='stylesheet' />
-<link href="<c:url value='/resources/vendor/calcss/select2.min.css' />" rel='stylesheet' />
-<link href="<c:url value='/resources/vendor/calcss/calendar.css' />" rel='stylesheet' />
+<link href="<c:url value='/resources/vendor/calendar/calcss/fullcalendar.min.css' />" rel='stylesheet' />
+<link href="<c:url value='/resources/vendor/calendar/calcss/bootstrap.min.css' />" rel='stylesheet' />
+<link href="<c:url value='/resources/vendor/calendar/calcss/select2.min.css' />" rel='stylesheet' />
+<link href="<c:url value='/resources/vendor/calendar/calcss/calendar.css' />" rel='stylesheet' />
 
 
 <link
@@ -64,12 +64,12 @@ var calendar = new Calendar($('#calendar'),{
 	     	<c:forEach var="el" items="${el}">
 		
 				{
-				   id : '${el.schedule_no}'
-    			 , title : '${el.schedule_title}' // off_no ?
-     	 		 , start : '${el.schedule_start_date}'
+				   /* id : '${el.schedule_no}' */
+    			 /* , title : '${el.schedule_title}' // off_no ? */
+     	 		   start : '${el.schedule_start_date}'
    				 , end : '${el.schedule_end_date}'
-   				 , backgroundColor : '${el.schedule_bg_color}'
-   				 , description : '${el.schedule_detail}' 				 
+/*    				 , backgroundColor : '${el.schedule_bg_color}'
+   				 , description : '${el.schedule_detail}'  */				 
    				 , allday : true
  	 			},
 				</c:forEach>
@@ -134,12 +134,12 @@ var calendar = new Calendar($('#calendar'),{
 	</div>
 	<!-- /.container -->
 
-<script src = "<c:url value='/resources/vendor/caljs/jquery.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/bootstrap.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/moment.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/fullcalendar.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/select2.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/ko.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/jquery.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/bootstrap.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/moment.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/fullcalendar.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/select2.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/ko.js' />"></script>
 
 
 </body>

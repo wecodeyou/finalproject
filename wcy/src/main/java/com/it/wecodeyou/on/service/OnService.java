@@ -55,5 +55,21 @@ public class OnService implements IOnService {
 		return result;
 	}
 
+
+
+	@Override
+	public OnVO getOne(Integer productNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public String getAuthor(Integer productNo){	
+		// TODO Auto-generated method stub
+		return onDao.getAuthor(productNo);
+	}
+
 	
 }

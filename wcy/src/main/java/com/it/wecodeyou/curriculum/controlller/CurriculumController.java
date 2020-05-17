@@ -13,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.it.wecodeyou.curriculum.model.CurriculumVO;
 import com.it.wecodeyou.curriculum.service.ICurriculumService;
 import com.it.wecodeyou.episode.service.IEpisodeService;
+import com.it.wecodeyou.on.repository.IOnMapper;
+import com.it.wecodeyou.on.service.IOnService;
 import com.it.wecodeyou.product.service.IProductService;
 
 @RestController
@@ -27,6 +29,9 @@ public class CurriculumController {
    
    @Autowired
    private IEpisodeService eservice;
+   
+   @Autowired
+   private IOnService onservice;
    
 	//커리큘럼소개 main 요청 (==> 온라인, 오프라인 통합 main임. 맵핑 주소 이름 변경 요망)
 	@GetMapping("/on_main")
@@ -56,7 +61,7 @@ public class CurriculumController {
 			
 			//에피소드 리스트 
 			mv.addObject("episodeList",eservice.getAllEpisode1(pservice.getOneByName(req.getParameter("s")).getProductNo()));
-			System.out.println(eservice.getAllEpisode1(pservice.getOneByName(req.getParameter("s")).getProductNo()));
+			mv.addObject("sensei",onservice.getAuthor(pservice.getOneByName(req.getParameter("s")).getProductNo()));
 			mv.setViewName("curriculum/onDetail");
 			System.out.println("온라인 선택");
 		}
