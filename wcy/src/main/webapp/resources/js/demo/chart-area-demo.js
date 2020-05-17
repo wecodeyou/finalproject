@@ -44,16 +44,16 @@ var dataVar = {
 			eL[7], eL[8], eL[9], eL[10], eL[11] ],
 		label : "2020",
 		lineTension : 0.5,
-		backgroundColor : "rgba(78, 115, 223, 0.05)",
-		borderColor : "rgba(78, 115, 223, 1)",
+		borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
 		pointRadius : 2,
-		pointBackgroundColor : "rgba(78, 115, 223, 1)",
-		pointBorderColor : "rgba(78, 115, 223, 1)",
+		pointBackgroundColor : "rgba(85, 77, 255, 1)",
+		pointBorderColor : "rgba(85, 77, 255, 1)",
 		pointHoverRadius : 3,
-		pointHoverBackgroundColor : "rgba(78, 115, 223, 1)",
-		pointHoverBorderColor : "rgba(78, 115, 223, 1)",
-		pointHitRadius : 10,
-		pointBorderWidth : 3,
+		pointHoverBackgroundColor : "rgba(143, 195, 255, 1)",
+		pointHoverBorderColor : "rgba(143, 195, 255, 1)",
+		pointHitRadius : 15,
+		pointBorderWidth : 0,
 		//fill: false,
 	}/* ,{
 		label: '2019',
@@ -88,7 +88,7 @@ var options = {
 	},
 	title : {
 		display : true,
-		//text : '수익 그래프'
+		text: '실시간 수익을 반영합니다.'
 	},
 	 tooltips: {
 		 backgroundColor: "rgb(255,255,255)",
@@ -104,13 +104,25 @@ var options = {
 	      intersect: false,
 	      mode: 'index',
 	      caretPadding: 10
-	 }
+	 },
+	 scales: {
+         yAxes: [{
+             ticks: {
+                 beginAtZero: true,
+                 callback: function(value, index, values) {
+                     return float2dollar(value);
+                 }
+             }
+         }]                
+     }
 };
 
-
+function float2dollar(value){
+    return "￦ "+(value).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
 
 var ctx = document.getElementById("myChart").getContext('2d');                                           
-var myBarChart = new Chart(ctx, {
+var myLineChart = new Chart(ctx, {
     type: 'line',
     data: dataVar, 
     options: options
@@ -135,20 +147,17 @@ $.ajax({
 	},
 	success : function(data) {
 		earningList = data;
-		console.log("ajax 실행됨");
+		console.log("chart - line ajax 실행됨");
 		var result = JSON.parse(data);
 		var e = result.earningList;
-		console.log("result : " + result);
 		
 		var eL = dataVar.datasets[0].data;
-		console.log("eL.length : " + eL.length);
 		
 		for (var i = 0; i < eL.length; i++) {
             eL[i] = result[i]; 
-			console.log("eL[" + i + "] : " +  eL[i] + " = " + "result[" + i + "] : " + result[i]);
         }
         dataVar.datasets[0].data = eL; 
-        myBarChart.update();
+        myLineChart.update();
 	}
 
 });

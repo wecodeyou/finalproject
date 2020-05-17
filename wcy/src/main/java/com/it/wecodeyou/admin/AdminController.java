@@ -38,6 +38,12 @@ public class AdminController {
 	public ModelAndView admin(ModelAndView mv) throws SQLException {
    		System.out.println("/admin : GET 요청 발생!");
    		
+   		// goal의 답 종류들
+   		List<String> goalList = interestService.getInterestsByType("goal");
+   		for (int i = 0; i < goalList.size(); i++) {
+			Integer cnt = interestService.countAnswer(goalList.get(i));
+		}
+   		
    		//이 달, 올 해의 통계
    		PurchaseResultVO thisMonthly = purchaseService.getThisMonthlyEarnings();
    		mv.addObject("thisMonthly", thisMonthly);
@@ -73,8 +79,23 @@ public class AdminController {
 		List<String> langList = interestService.getInterestsByType("lang");
 		for (int i = 0; i < langList.size(); i++) {
 			Integer cnt = interestService.countAnswer(langList.get(i));
-			System.out.println("언어: " + interestService.getAnswer(langList.get(i)) + " 개수: " + cnt);
 			retVal.put(interestService.getAnswer(langList.get(i)), cnt);
+		}
+		
+		return retVal;
+	}
+	
+	@PostMapping("/getInterestFunnels")
+	public Map<String, Integer> getInterestFunnels() throws SQLException {
+		System.out.println("/admin/getInterestFunnels : POST 요청 발생!"); 
+
+		Map<String, Integer> retVal = new HashMap<String, Integer>();
+		
+		// funnels의 답 종류들
+		List<String> funnelList = interestService.getInterestsByType("funnel");
+		for (int i = 0; i < funnelList.size(); i++) {
+			Integer cnt = interestService.countAnswer(funnelList.get(i));
+			retVal.put(interestService.getAnswer(funnelList.get(i)), cnt);
 		}
 		
 		return retVal;

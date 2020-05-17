@@ -93,4 +93,8 @@ public class OffService implements IOffService {
 		return offDao.getOffProduct(productNo);
 	}
 
+	@Override
+	public List<OffProductVO> getOffProductByAuthor(String offAuthor) {
+		return offDao.getOffProductByAuthor(offAuthor);
+	}
 }

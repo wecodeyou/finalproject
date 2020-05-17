@@ -25,4 +25,6 @@ public interface IOffService {
 	public OffVO getInfoByProductNo(Integer productNo);
 	
 	public OffProductVO getOffProduct(Integer productNo);
+	
+	public List<OffProductVO> getOffProductByAuthor(String offAuthor);
 }
