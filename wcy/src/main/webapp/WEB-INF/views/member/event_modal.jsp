@@ -93,6 +93,59 @@ body {
 	align-content: center;
 	align-items: center;
 }
+
+.event-ul{
+	margin-left: 30px;
+    margin-top: 10px;
+}
+
+.event-ing{
+	width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: block;
+    background-color: #fcaf17;
+    color: #fff;
+    line-height: 65px;
+    text-align: center;
+    font-weight: bold;
+}
+.event-end{
+	width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: block;
+    background-color: #ccc;
+    color: #fff;
+    line-height: 65px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.event-condition{
+	position: absolute;
+    top: 185px;
+    left: 140px;
+    z-index:2;
+}
+
+.event-img{
+	display: block;
+	margin-bottom: 40px;
+}
+
+.event-text > p{
+	margin-top: 3px;
+    font-size: 12px;
+    color: #8a8a8a;
+}
+
+.event-img > .event-end-grayscale{
+	-webkit-filter: grayscale(100%);
+	filter: gray;
+	z-index:1;
+}
+
 </style>
 
 
@@ -106,25 +159,29 @@ body {
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<form class="login100-form validate-form flex-sb flex-w">
-
-
-
-					<div class="body-section">
-						<div class="body-header">
-							<ul class="body-sub-nav">
-								<li><a class="active">진행중인 이벤트</a></li>
-								<li><a>마감된 이벤트</a></li>
-							</ul>
-						</div>
-						<div class="right-contents">
-							<h4 class="contents-title">이벤트 목록</h4>
-							<p class="mb10">여기다가 2x2 나 3x3 으로 놓고 싶은데</p>
-						</div>
-					</div>
-
-
-
+				<form class="login100-form validate-form flex-sb flex-w" style="">
+					<ul class="event-ul">
+						<li style="position: relative; margin-bottom: 20px;">
+							<a href="#">
+								<p class="event-condition"><span class="event-ing">진행중</span></p>
+								<span class="event-img"><img src="<c:url value='/img/commons/event-ing.png'/>"/></span>
+							</a>
+							<span class="event-text">
+								국가기술자격증 합격보장 이벤트
+								<p> 2020-05-15 ~ 2020-06-15 </p>
+							</span>
+						</li>
+						<li style="position: relative;">
+							<a href="#">
+								<p class="event-condition"><span class="event-end">마감</span></p>
+								<span class="event-img"><img class="event-end-grayscale" src="<c:url value='/img/commons/event-end.png'/>"/></span>
+							</a>
+							<span class="event-text">
+								2020 자유이용권 이벤트
+								<p> 2020-01-01 ~ 2020-03-31 </p>
+							</span>
+						</li>
+					</ul>
 				</form>
 			</div>
 		</div>

@@ -36,7 +36,7 @@
             buyer_email : '${login.userEmail}',
             buyer_name : '${login.userName}',
             buyer_tel : '${login.userTel}',
-            buyer_postcode : '123-123',
+            buyer_postcode : '${login.userZipcode}',
         }, function(rsp) {
             if ( rsp.success ) {
             	
@@ -48,7 +48,6 @@
                     dataType: 'json',
                     data:   {
                        		imp_uid : rsp.imp_uid,
-                       		user_no : ${login.userNo},
                        		gname : rsp.name,
                        		bname : rsp.buyer_name,
                        		purchased_at : new Date().getTime(),
@@ -56,6 +55,7 @@
 							
                         	//기타 필요한 데이터가 있으면 추가 전달
 							},success : function(result){
+									console.log("ajax 통신 성공");
 								
 							},error : function(){console.log("실패")}
 								
@@ -64,7 +64,7 @@
          	           		            		  
                     //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
 
-               location.href="<c:url value='/pay/paycomplete' />";
+               location.href="/pay/paycomplete";
                 //성공시 이동할 페이지
 				
                 

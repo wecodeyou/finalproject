@@ -23,6 +23,8 @@
 <br>
 <a href="/interest_list">INTEREST</a>
 <br>
+<a href="/interest_list/form">INTEREST-modal</a>
+<br>
 <a href="/tag">TAG</a>
 <br>
 <a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a>
@@ -33,6 +35,13 @@
 <br>
 <a href="<c:url value='session/instructor/myclass'/>" >강사로 오프라인 강의 참석하기</a>
 <br>
+
 <a href="<c:url value='session/participant/myoff'/>" >학생으로 오프라인 강의 참석하기</a>
+
+
+
+<br><br><br>
+<a class="modal_open_btn" data-toggle="modal" data-target="#wcy-interest-modal">설문조사</a>
+
 </body>
 </html>

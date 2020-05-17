@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -85,9 +85,16 @@
 	border-bottom: 4px solid #ddd;
 }
 
-.right-sub-nav li a.active {
+.right-sub-nav > li > a.active
+ {
 	color: #25283D;
 	border-color: #25283D;
+}
+
+.right-sub-nav > li > a:hover{
+	color: #25283D;
+	border-color: #25283D;
+	transition:all .4s ease-in-out;
 }
 
 .contents-title:before {
@@ -110,10 +117,42 @@
 	height: 40px;
 	line-height: 40px;
 }
-
 p {
 	line-height: 150% !important;
 }
+
+.gangnam{display: none;}
+
+.bold{font-weight: 600 !important;}
+
+.right-contents dl{float:left;}
+.right-contents dl dt{
+	width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+    vertical-align: middle;
+    text-align:center;
+    line-height: 98px;
+    font-weight: bold;
+    position: relative;
+    bottom: 30px;
+    z-index: 1;
+}
+.right-contents dl dd{
+	/* width: 550px; */
+    color: #111;
+    font-size: 18px;
+    display: inline-block;
+    text-align: left;
+    padding: 15px 20px;
+    line-height: 24px;
+}
+.fleft{float:left !important;}
+.right-contents dl dd p{font-size: 15px;}
+
 </style>
 
 </head>
@@ -123,37 +162,137 @@ p {
 
 
 	<main class="wcy-main-content">
-		<div class="left-section">
-			<h2>WeCodeYou</h2>
-			<ul class="left-sub-nav">
-				<li><a href="#">인삿말</a></li>
-				<li><a href="#">WCY 소개</a></li>
-				<li><a class="active" href="#">오시는 길</a></li>
-			</ul>
-		</div>
-
-		<div class="right-section">
+		<div class="wcy-contents">
 			<div class="right-header">
 				<ul class="right-sub-nav">
-					<li><a class="active"> 오시는길 </a></li>
+					<li><a class="active" href="javascript:mapchoiceJ();"> 종로 </a></li>
+					<li><a class="" href="javascript:mapchoiceG();"> 강남 </a></li>
 				</ul>
-			</div>
-			<div class="right-contents">
-				<h4 class="contents-title">WeCodeYou의 위치 안내입니다.</h4>
-				<p class="mb10">
-					<a href="#">종로</a>
-					/<a href="#">강남</a><br>
-					<br>
-					클릭에 따라서 지도 위치 
-				</p>
+				
+				<div class="right-contents jongro">
+					<h4 class="contents-title fleft">WeCodeYou <span class="bold">종로점</span> 오시는 길 안내</h4>
+					<div id="map1" style="width:100%; height:350px;"></div>
+					<dl>
+						<dt>주소</dt>
+						<dd>서울특별시 종로구 돈화문로 26, 4층<p>(서울특별시 종로구 묘동 56 단성사빌딩)</p></dd>
+					</dl>
+					<dl>
+						<dt>대중교통</dt>
+						<dd>지하철: 3호선 종로3가역 9번출구 / 1호선 종로3가역 10번출구<br>버스: 종로12 마을버스 하차 후 도보 1분</dd>
+					</dl>
+				</div>
+				
+				<div class="right-contents gangnam">
+					<h4 class="contents-title fleft">WeCodeYou <span class="bold">강남점</span> 오시는 길 안내</h4>
+					<div id="map2" style="width:100%; height:350px;"></div>
+					<dl>
+						<dt>주소</dt>
+						<dd>서울특별시 강남구 강남대로84길 16 제이스타워<p>(서울특별시 강남구 역삼동 826-27)</p></dd>
+					</dl>
+					<dl>
+						<dt>대중교통</dt>
+						<dd>지하철: 2호선 /신분당선 강남역 2/3번 출구<br>버스: 140,402,400,421,440번 등</dd>
+					</dl>
+				</div>
+				
 			</div>
 		</div>
 	</main>
+	
 
-	<jsp:include page="../include/footer.jsp" />
 
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=947482f976d50aef18432cb401577b10"></script>
+	
+	
+	<!-- 카카오 지도 -->
+	<script>
+	var mapContainer1 = document.getElementById('map1'), // 지도를 표시할 div 
+	    mapOption1 = { 
+	        center: new kakao.maps.LatLng(37.571181, 126.992549), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+	var mapContainer2 = document.getElementById('map2'), // 지도를 표시할 div 
+	    mapOption2 = { 
+	        center: new kakao.maps.LatLng(37.496685, 127.030124), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+	
+	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+	var map1 = new kakao.maps.Map(mapContainer1, mapOption1); 
+	var map2 = new kakao.maps.Map(mapContainer2, mapOption2); 
+	
+	// 마커가 표시될 위치입니다 
+	var markerPosition1  = new kakao.maps.LatLng(37.571181, 126.992549); 
+	var markerPosition2  = new kakao.maps.LatLng(37.496685, 127.030124); 
+
+	// 마커를 생성합니다
+	var marker1 = new kakao.maps.Marker({
+	    position: markerPosition1
+	});
+	var marker2 = new kakao.maps.Marker({
+	    position: markerPosition2
+	});
+
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker1.setMap(map1);
+	marker2.setMap(map2);
+	
+	// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
+	var iwContent1 = '<div style="padding:5px;">위코드유 종로점</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	var iwContent2 = '<div style="padding:5px;">위코드유 강남점</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+
+	// 인포윈도우를 생성합니다
+	var infowindow1 = new kakao.maps.InfoWindow({
+	    content : iwContent1
+	});
+	var infowindow2 = new kakao.maps.InfoWindow({
+	    content : iwContent2
+	});
+
+	// 마커에 마우스오버 이벤트를 등록합니다
+	kakao.maps.event.addListener(marker1, 'mouseover', function() {
+	  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+	    infowindow1.open(map1, marker1);
+	});
+	kakao.maps.event.addListener(marker2, 'mouseover', function() {
+	    infowindow2.open(map2, marker2);
+	});
+
+	// 마커에 마우스아웃 이벤트를 등록합니다
+	kakao.maps.event.addListener(marker1, 'mouseout', function() {
+	    // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+	    infowindow1.close();
+	});
+	kakao.maps.event.addListener(marker2, 'mouseout', function() {
+	    infowindow2.close();
+	});
+	
+	var sBtn = $(".right-sub-nav > li");    //  ul > li 이를 sBtn으로 칭한다. (클릭이벤트는 li에 적용 된다.)
+	$(function(){
+		  sBtn.find("a").click(function(){   // sBtn에 속해 있는  a 찾아 클릭 하면.
+		  sBtn.find("a").removeClass("active");     // sBtn 속에 (active) 클래스를 삭제 한다.
+		  $(this).addClass("active"); // 클릭한 a에 (active)클래스를 넣는다.
+		});
+	});
+
+	
+ 	function mapchoiceJ(){
+ 		$('.jongro').show();
+	 	$('.gangnam').hide();
+ 	}
+ 	function mapchoiceG(){
+ 		$('.jongro').hide();
+ 		$('.gangnam').show();
+ 		map2.relayout();
+ 		map2.setCenter(new kakao.maps.LatLng(37.496685, 127.030124));
+		
+ 	}
+
+	
+	</script>
 
 </body>
+<jsp:include page="../include/footer.jsp" />
 </html>

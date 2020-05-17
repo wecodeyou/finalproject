@@ -126,9 +126,8 @@ p {
 		<div class="left-section">
 			<h2>WeCodeYou</h2>
 			<ul class="left-sub-nav">
-				<li><a href="#">인삿말</a></li>
-				<li><a class="active" href="#">WCY 소개</a></li>
-				<li><a href="#">오시는 길</a></li>
+				<li><a href="<c:url value='/greeting' />">인삿말/소개</a></li>
+				<li><a href="<c:url value='/location' />">오시는 길</a></li>
 			</ul>
 		</div>
 
@@ -147,10 +146,10 @@ p {
 		</div>
 	</main>
 
-	<jsp:include page="../include/footer.jsp" />
 
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
 
 </body>
+	<jsp:include page="../include/footer.jsp" />
 </html>

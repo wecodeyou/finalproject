@@ -124,10 +124,7 @@
 		            	<input type="reset" value="취소" class="btn btn-warning" />
 	        </div>
 	   </div>
-   </main>
-
-
-<jsp:include page="../include/footer.jsp" />  
+   </main> 
 
 
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
@@ -446,4 +443,5 @@
    
    
 </body>
+	<jsp:include page="../include/footer.jsp" /> 
 </html>

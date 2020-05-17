@@ -41,5 +41,11 @@ public interface IMemberService {
    
    public MemberVO findMemberById(String userEmail);
    
+   // 설문조사 true 인지 false 인지
+   public int checkInterest(Integer userNo) throws SQLException;
+   
+   // 설문조사 등록시 true로 수정
+   public void updateInterest(Integer userNo) throws SQLException;
+   
    
 }

@@ -2,6 +2,26 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+$.ajax({
+	type : 'POST',
+	url : "/admin/getInterestLanguage",
+	headers : {
+		"Content-Type" : "application/json"
+	},
+	dataType : "json",
+	error : function(err) {
+		console.log("ajax getInterestLanguage 실행중 오류가 발생하였습니다.");
+	},
+	success : function(data) {
+		console.log("ajax 실행됨");
+		console.log("data : " + data);
+
+		console.log(data.Java);
+		
+	}
+
+});
+
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {

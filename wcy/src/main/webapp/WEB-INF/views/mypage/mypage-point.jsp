@@ -130,6 +130,7 @@ p {
 				<li><a href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
 				<li><a class="active" href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
 				<li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
+				<li><a href="<c:url value='/mypage/mylec' />">내 강의실</a></li>
 			</ul>
 		</div>
 
@@ -142,7 +143,25 @@ p {
 			<div class="right-contents">
 				<h4 class="contents-title"><h1>${login.userName}님  <a href="<c:url value='/mypage/myinfoChange' />"><button>MY ></button></a></h1></h4>
 				<p class="mb10">
-				
+
+<br>
+<br>
+<form action = "<c:url value = "/pay/gopay"/>" method = "post">
+
+구매할 포인트
+<input type = "text" name = "point">
+<br>
+<br>
+ 라디오 버튼<br>
+  <input type='radio' name='radiop' value='100' />100P(테스트용)
+  <input type='radio' name='radiop' value='10000' />10000P
+  <input type='radio' name='radiop' value='50000' />50000P
+  <input type='radio' name='radiop' value='100000' />100000P
+
+<input type = "submit" value = "구매하기">
+</form>
+<br>
+<br>
 <H2>사용 가능 코드머니	${login.userPoint}</H2>
 
 코드 머니 충전&amp;사용 내역<br>
@@ -168,7 +187,6 @@ p {
 		</div>
 	</main>
 
-	<jsp:include page="../include/footer.jsp" />
 
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
@@ -181,4 +199,5 @@ p {
 </c:if>	
 
 </body>
+	<jsp:include page="../include/footer.jsp" />
 </html>

@@ -11,7 +11,7 @@
 		<result property="onDays" column="on_days" />
 	</resultMap>
 
-	<insert id="InsertOn">
+	<insert id="insert">
 
 		INSERT INTO on_course
 		(on_author, on_category, on_product_no, on_upload_uri, on_days)

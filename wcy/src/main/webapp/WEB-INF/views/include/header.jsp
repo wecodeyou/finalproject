@@ -13,30 +13,35 @@
 <link rel="stylesheet" href="<c:url value='/css/header.css'/>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" /> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
 <link rel="stylesheet" href="<c:url value='/css/search.css'/>">
 
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
 
 
-<!-- 인기강의 슬라이더 -->
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-
-
-
 <style>
 /* 이미지 슬라이더 스타일 변경 오버라이드 */
-.bx-wrapper{border:0; background:#fff; box-shadow:none; position:relative; margin: 90px auto 0px;}
+.bx-wrapper{
+	border:0 !important; 
+	background:#fff; 
+	position:relative; 
+	margin: 90px auto 0px;
+	-webkit-box-shadow: 0 0 0px !important;
+	box-shoadow:0 0 0px !important;
+	}
+.wcy-ProgramLayout2 > .bx-wrapper{margin: 45px 0 0 0;}
+
 
 @media only screen and (max-width: 1023px) {
    .bx-wrapper{
-      margin-top:0px;
+      margin-top:0px !important;
    }
 }
 
 .bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto{
-   bottom: 10px;
+   bottom: 10px !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -59,58 +64,69 @@
    background:#c7c7c7;
 }
 
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
 	margin-top: 15px;
 	top:100%;
 } 
 
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 	left: 94%;
 }
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-next{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-next{
 	right: 0%;
 }
  
 
 @media only screen and (max-width: 1225px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 		left: 93%;
 	}
 }
 @media only screen and (max-width: 1060px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 		left: 92%;
 	}
 }
 @media only screen and (max-width: 945px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 		left: 91%;
 	}
 }
 @media only screen and (max-width: 815px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > .bx-prev{
 		left: 90%;
 	}
 }
 @media only screen and (max-width: 760px) {
-	.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
+	.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
 		display:none;
 	} 
 }
 
 
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager{
-	bottom: -35px;
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager{
+	bottom: -40px !important;
 }
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:hover,
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a.active,
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:focus{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:hover,
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a.active,
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a:focus{
 	background: #807e7e;
 }
-.wcy-ProgramLayout > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a{
+.wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-pager > .bx-pager-item > a{
 	background: #c9c9c9;
 }
 
+.main-reviewLayout > .reviewLayoutIn > .reviewTextBox > .reviewConBox > .bx-wrapper{
+	background: transparent !important;
+	margin: 0px !important;
+	border:0px;
+	-webkit-box-shadow: 0 0 0px;
+	box-shoadow:0 0 0px;
+}
+.main-reviewLayout > .reviewLayoutIn > .reviewTextBox > .reviewConBox > .bx-wrapper > .bx-viewport{
+	height:380px !important;
+	overflow:visible;
+}
 
 </style>
 
@@ -181,8 +197,7 @@
      	 <li><a href="<c:url value='/greeting' />">WeCodeYou<span>&#x25BE;</span></a>
             <div class="sub-menu-1">
                 <ul>
-                  <li class="hover-me"><a href="<c:url value='/greeting' />">인삿말</a></li>
-                  <li class="hover-me"><a href="<c:url value='/intro' />">소개</a></li>
+                  <li class="hover-me"><a href="<c:url value='/greeting' />">인삿말/소개</a></li>
                   <li class="hover-me"><a href="<c:url value='/location' />">오시는 길</a></li>  
                </ul>
             </div>
@@ -192,14 +207,6 @@
          	<a href="#">현장 강의<span>&#x25BE;</span></a>
             <div class="sub-menu-1">	
                <ul>
-                  <li class="hover-me"><a href="<c:url value='/curriculum/classroom' />">강의실 둘러보기</a>
-                 	 <div class="sub-menu-2">
-                 	  <ul>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/classroom' />">종로점</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/classroom' />">강남점</a></li>
-                      </ul>
-                     </div>
-                  </li>
                   <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=102' />">Programming</a>
                      <div class="sub-menu-2">
                         <ul>
@@ -361,7 +368,7 @@
             </div>
          </li>
          
-         <li><a href="#">도움이 되는 사이트</a></li>
+         <li><a href="<c:url value='/helpsite' />">도움이 되는 사이트</a></li>
          <li><a href="#">공지사항</a></li>
          
       </ul>
@@ -379,45 +386,45 @@
 <%@ include file="../member/login_modal.jsp" %>  
 <%@ include file="../member/event_modal.jsp" %>  
 
-<main class="wcy-main-content sub-nav-hero">
 
+<main class="wcy-main-content sub-nav-hero">
 	<div class="wcy-ProgramLayout">
 		<div class="wcy-ProgramBox">
 			<div class="class-title">
 				WECODEYOU 추천 강의
 			</div>
 			<div class="mainProgramTabLsit">
-				<ul>
+				<ul class="maingProgramTabList-ul">
 					<li class="on" style="width:27.875px; margin-bottom: 15px;">
-						<a href="javasctipt:void(0);" title="기초완성반"">
+						<a href="javascript:basic();" title="기초완성반">
 							기초완성반
 						</a>
 					</li>
 					<li style="width:27.875px; margin-bottom: 15px;">
-						<a href="javasctipt:void(0);" title="기초완성반">
+						<a href="javascript:network();" title="네트워크">
 							네트워크
 						</a>
 					</li>
 					<li style="width:27.875px; margin-bottom: 15px;">
-						<a href="javasctipt:void(0);" title="기초완성반">
+						<a href="javascript:programming();" title="프로그래밍">
 							프로그래밍
 						</a>
 					</li>
 					<li style="width:27.875px;">
-						<a href="javasctipt:void(0);" title="기초완성반">
-							데이터베이스
+						<a href="javascript:bigdata();" title="빅데이터">
+							빅데이터
 						</a>
 					</li>
 				</ul>
 			</div>
 			<div class="mainProgramTabCon">
-				<ul>
-					<li class="on" style="display:block;">
+				<ul class="mainProgramTabCon-ul">
+					<li class="basicCon" style="display:list-item;">
 						<div class="mainProgramTabTitle">
 							<strong>[오프라인]</strong> IT 통합 기초
 						</div>
 						<div class="mainProgramTabContent01">
-							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="IT통합 기초반" class="leftImage" />
+							<img src="<c:url value='/img/main/main-recommend-b.png'/>" alt="IT통합 기초반" class="leftImage" />
 							<table class="pProgram01">
 								<tbody>
 									<tr>
@@ -425,103 +432,103 @@
 										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">기초튼튼</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">용어정립</td>
+										<td>IT관련 생소한 용어 확실히 정리</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">탄탄기초</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">운영체제</td>
+										<td>운영체제 활용을 통한 여러 기능 학습</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">튼튼기초</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">상위과정</td>
+										<td>상위과정을 위한 역량 갖추기</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</li>
 					
-					<li style="display:none;">
+					<li class="networkCon" style="display:none;">
 						<div class="mainProgramTabTitle">
-							<strong>[오프라인]</strong> IT 통합 기초
+							<strong>[오프라인]</strong> CCNA Basic
 						</div>
 						<div class="mainProgramTabContent01">
-							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="IT통합 기초반" class="leftImage" />
+							<img src="<c:url value='/img/main/main-recommend-n.png'/>" alt="네트워크" class="leftImage" />
 							<table class="pProgram01">
 								<tbody>
 									<tr>
-										<td class="ppTitle">기초탄탄</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">CCNA 란?</td>
+										<td>Cisco Certified Network Associate</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">기초튼튼</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">초급 네트워킹</td>
+										<td>네트워크 설치 및 운영능력 향상</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">탄탄기초</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">자격증 준비</td>
+										<td>네트워크 운영상 여러 트러블 슈팅 능력</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">튼튼기초</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">기초내용</td>
+										<td>초적인 네트워킹 학습을 포함</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</li>
 					
-					<li style="display:none;">
+					<li class="programmingCon" style="display:none;">
 						<div class="mainProgramTabTitle">
-							<strong>[오프라인]</strong> IT 통합 기초
+							<strong>[온라인]</strong> Visual Basic 2017 제대로 사용하기
 						</div>
 						<div class="mainProgramTabContent01">
-							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="IT통합 기초반" class="leftImage" />
+							<img src="<c:url value='/img/main/main-recommend-p.png'/>" alt="프로그래밍" class="leftImage" />
 							<table class="pProgram01">
 								<tbody>
 									<tr>
-										<td class="ppTitle">기초탄탄</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">설치부터</td>
+										<td>Visual Studio 플랫폼 설치</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">기초튼튼</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">맞춤패키지</td>
+										<td>필요 목표에 따른 패키지 구성 가능</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">탄탄기초</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">초급강좌</td>
+										<td>개발 플랫폼 설치 및 환경 구성</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">튼튼기초</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">Tool 활용</td>
+										<td>샘플강의를 통해 무료강좌 수강 가능</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</li>
 					
-					<li style="display:none;">
-						<div class="main-class-con-title">
-							<strong>[오프라인]</strong> IT 통합 기초
+					<li class="databaseCon" style="display:none;">
+						<div class="mainProgramTabTitle">
+							<strong>[온라인]</strong> 빅데이터 분석 R 프로그래밍
 						</div>
 						<div class="mainProgramTabContent01">
-							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="IT통합 기초반" class="leftImage" />
+							<img src="<c:url value='/img/main/main-recommend-big.png'/>" alt="빅데이터" class="leftImage" />
 							<table class="pProgram01">
 								<tbody>
 									<tr>
-										<td class="ppTitle">기초탄탄</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">내장 함수</td>
+										<td>R의 내장 통계 함수 활용 데이터 분석</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">기초튼튼</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">통계학</td>
+										<td>통계학 분야 활용법 학습</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">탄탄기초</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">검증·분석</td>
+										<td>R검증 및 분석을 통한 데이터 시각화</td>
 									</tr>
 									<tr>
-										<td class="ppTitle">튼튼기초</td>
-										<td>확실하게 짚고 넘어가는 IT 기초 정복반</td>
+										<td class="ppTitle">데이터 분석</td>
+										<td>데이터 시각화를 이용한 실전 분석</td>
 									</tr>
 								</tbody>
 							</table>
@@ -533,18 +540,272 @@
 	</div>
 	
 	
-	<div class="wcy-ProgramLayout">
+	<div class="main-reviewLayout">
+		<div class="reviewLayoutIn">
+			<ul class="reviewTitleTab" id="reviewTitleTab">
+				<li id="review01" class="on">
+					<a href="javasctipt:;">자바</a>
+				</li>
+				<li id="review01" class="">
+					<a href="javasctipt:;">C언어</a>
+				</li>
+				<li id="review01" class="">
+					<a href="javasctipt:;">파이썬</a>
+				</li>
+				<li id="review01" class="">
+					<a href="javasctipt:;">네트워크</a>
+				</li>
+				<li id="review01" class="">
+					<a href="javasctipt:;">데이터베이스</a>
+				</li>
+			</ul>
+			<div class="reviewTextBox">
+				<div class="reviewConBox">
+					<div class="prevNextBox">
+						<a href="javascript:void(0);" class="prevBu"><i class="fas fa-arrow-left"></i></a>
+						<a href="javascript:void(0);" class="nextBu"><i class="fas fa-arrow-right"></i></a>
+					</div>
+					<div class="reviewConBoxTitle">
+						<p>위코드유 실제 수강생들의 생생한 리뷰</p>
+					</div>
+					<ul class="reviewChangeBox">
+						<li class="real">
+							<a href="javascript:;">
+								<div class="textBox">
+									<p class="textBox-title">이 수업 진짜 최고!</p>
+									<p class="textBox-star">★ ★ ★ ★ ★ 수강생 평점 5</p>
+									<p class="textBox-text">
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										<p class="textBox-writer">김*수 수강생</p>
+									</p>
+								</div>
+								<div class="imgBox">
+									<div class="imgBox-title">[온라인] 자바 java wcy 강의</div>
+									<img src="<c:url value='/img/main/main-review-java.png'/>" alt="java" />
+								</div>
+							</a>
+						</li>
+						<li class="real">
+							<a href="javascript:;">
+								<div class="textBox">
+									<p class="textBox-title">강사님이 잘가르쳐요.</p>
+									<p class="textBox-star">★ ★ ★ ★ ★ 수강생 평점 5</p>
+									<p class="textBox-text">
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										<p class="textBox-writer">김*수 수강생</p>
+									</p>
+								</div>
+								<div class="imgBox">
+									<div class="imgBox-title">[오프라인] C Programming </div>
+									<img src="<c:url value='/img/main/main-review-c.png'/>" alt="java" />
+								</div>
+							</a>
+						</li>
+						<li class="real">
+							<a href="javascript:;">
+								<div class="textBox">
+									<p class="textBox-title">기초부터 알려줍니다!</p>
+									<p class="textBox-star">★ ★ ★ ★ ★ 수강생 평점 5</p>
+									<p class="textBox-text">
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										<p class="textBox-writer">김*수 수강생</p>
+									</p>
+								</div>
+								<div class="imgBox">
+									<div class="imgBox-title">[온라인] 파이썬 기초정복 30강!</div>
+									<img src="<c:url value='/img/main/main-review-python.png'/>" alt="java" />
+								</div>
+							</a>
+						</li>
+						<li class="real">
+							<a href="javascript:;">
+								<div class="textBox">
+									<p class="textBox-title">네트워크 전문가 될듯 ㅎㅎ</p>
+									<p class="textBox-star">★ ★ ★ ★ ★ 수강생 평점 5</p>
+									<p class="textBox-text">
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										<p class="textBox-writer">김*수 수강생</p>
+									</p>
+								</div>
+								<div class="imgBox">
+									<div class="imgBox-title">[오프라인] CCNP-Route</div>
+									<img src="<c:url value='/img/main/main-review-net.png'/>" alt="java" />
+								</div>
+							</a>
+						</li>
+						<li class="real">
+							<a href="javascript:;">
+								<div class="textBox">
+									<p class="textBox-title">이 수업 왜 안들으세요?</p>
+									<p class="textBox-star">★ ★ ★ ★ ★ 수강생 평점 5</p>
+									<p class="textBox-text">
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										이 수업 듣고 자바 기초는 완전 정복했어요.이 수업 듣고 자바 기초는 완전 정복했어요.
+										<p class="textBox-writer">김*수 수강생</p>
+									</p>
+								</div>
+								<div class="imgBox">
+									<div class="imgBox-title">[오프라인] Oracle WDP</div>
+									<img src="<c:url value='/img/main/main-review-data.png'/>" alt="java" />
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="wcy-ProgramLayout2">
+		<div class="class-title2">
+			과목별 인기강의 
+			<span  style="font-size:17px; font-weight:400;">&nbsp;&nbsp;&nbsp;수강생들이 사랑한 강의</span>
+		</div>
 		<ul class="wcy-best-class">
-			<li><img src="<c:url value='/img/curriculum/network01.jpg'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network02.jpg'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network03.png'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network04.jpg'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network05.jpg'/>" style="width:300px; height:300px;"/></li>
-			<li><img src="<c:url value='/img/curriculum/network06.jpg'/>" style="width:300px; height:300px;"/></li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>프론트엔드 개발환경의 이해와 실습 </p>
+		            <p>김영희</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network01.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[온라인] 디자인</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>
+				</div>
+			</li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>Spring Framework Project</p>
+		            <p>서영준</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network08.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[오프라인] Programming</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>			
+				</div>
+			</li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>빅데이터 분석 R 프로그래밍</p>
+		            <p>아무개</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network03.png'/>" style="width:300px; height:300px;"/></a>
+					<h3>[온라인] 빅데이터/보안</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>	
+				</div>		
+			</li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>JSP Programming</p>
+		            <p>홍순구</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network04.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[오프라인] Programming</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>	
+				</div>		
+			</li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>정보처리기사 (신유형 분석)</p>
+		            <p>김개똥</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network05.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[온라인] 서버/자격증</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>		
+				</div>	
+			</li>
+			<li class="hover-layout">
+				<div class="overrap-bottom">
+		            <p>Hacking Trace</p>
+		            <p>박철수</p>
+        		</div>
+				<div class="hover-wrap">
+					<a href="#"><img src="<c:url value='/img/curriculum/network06.jpg'/>" style="width:300px; height:300px;"/></a>
+					<h3>[오프라인] Hacking</h3>
+					<div class="hover-bottom">
+						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+					</div>
+				</div>		
+			</li>
 		</ul>
 	</div>
 
-
+	<div class="wcy-boardLayout">
+		<div class="boardWrap">
+			<div class="boardNotice">
+				<h1>공지사항<a href="#" class="more">더보기 ></a></h1>
+				<ul>
+					<li>
+						<a href="#">개인정보처리방침 개정 - 위코드유<img src="<c:url value='/img/commons/new.png'/>" alt="new" />
+						</a>
+						<span>2020-05-15</span>
+					</li>
+					<li>
+						<a href="#">직업능력개발훈련 인증평가 3년연속 우수 훈련기관 선정</a>
+						<span>2020-05-14</span>
+					</li>
+					<li>
+						<a href="#">코로나 관련 원내 방역작업 실시</a>
+						<span>2020-04-10</span>
+					</li>
+					<li>
+						<a href="#">네트워크 인재양성 아카데미 신규 런칭</a>
+						<span>2019-12-12</span>
+					</li>
+				</ul>
+			</div>
+			<div class="boardFAQ">
+				<h1>FAQ<a href="#" class="more2">더보기 ></a></h1>
+				<ul>
+					<li>
+						<a href="#">강의는 어떻게 구매하나요?</a>
+						<span>2017-05-01</span>
+					</li>
+					<li>
+						<a href="#">포인트로는 무엇을 살 수 있나요?</a>
+						<span>2017-05-01</span>
+					</li>
+					<li>
+						<a href="#">동영상이 끊길 때 어떻게 해야 되나요?</a>
+						<span>2016-07-13</span>
+					</li>
+					<li>
+						<a href="#">취소나 환불을 하고 싶어요.</a>
+						<span>2016-04-03</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 </main> <!-- .cd-main-content -->
 
@@ -555,12 +816,81 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-<!-- 인기강의 슬라이더 -->
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 
 <!-- 검색 기능 -->
 <script src="<c:url value='/js/search-main.js'/>"></script>
+
+<!-- 추천강의 변환 -->
+<script>
+	var s1=$('.maingProgramTabList-ul > li');	//ul > li 를 s1 으로 정함
+	$(function(){
+		s1.find("a").click(function(){			//s1의 아래에 속해 있는 a태그를 찾아서 클릭할 경우
+			s1.removeClass("on");				//s1(li)의 클래스 on을 삭제
+			$(this).parent().addClass("on");	//현재 클릭한 a의 부모인 li에 on클래스를 삽입
+		});
+	});
+	
+	var s2=$('.mainProgramTabCon-ul > li');
+	function basic(){
+		$('.basicCon').show();
+		s2.not('.basicCon').hide();
+
+		
+	}
+	
+	function network(){
+		$('.networkCon').show();
+		s2.not('.networkCon').hide();
+		
+	}
+	
+	function programming(){
+		$('.programmingCon').show();
+		s2.not('.programmingCon').hide();
+		
+	}
+	function bigdata(){
+		$('.databaseCon').show();
+		s2.not('.databaseCon').hide();
+		
+	}
+</script>
+
+
+<!-- 설문조사 pop up modal -->
+<script>
+	window.onload = function(){
+		showInterestModal();
+	};
+	
+	function showInterestModal(){
+		
+		 $.ajax({
+	            type: "POST",
+	            url: "/member/checkUserInterest",
+	            headers: {
+	                   "Content-Type": "application/json"
+	               },
+	            dataType : "text",
+	            success: function(data) {
+	               console.log("통신성공 ! result: " + data);   
+	               if(data === "pass") {
+	            	   return;
+	               }else if(data === "success"){
+	            	   console.log("설문조사 모달을 엽니다.");
+	            	   self.location="/interest_list/form";
+	            	   $("#interest-modal").trigger("click");
+	               }
+	            },
+	            error: function(){
+	               console.log("통신실패!");
+	            }
+	         });
+		
+		
+	} 
+
+</script>
 
 <script>
 
@@ -568,7 +898,7 @@ $(document).ready(function(){
     $('.wcy-img-content').bxSlider({
        
        auto:true,         //자동으로 애니메이션 시작
-       speed:500,         //애니메이션 속도
+       speed:700,         //애니메이션 속도
        pause:4000,         //애니메이션 유지 시간 (4초)
        adaptiveHeight:true,//자동으로 이미지의 높이에 맞게 슬라이드의 높이값 조절함
        mode:'fade',      //슬라이드 모드('fade', 'horizontal', 'vertical'이 있음)
@@ -579,13 +909,27 @@ $(document).ready(function(){
 
     });
   });
+$(document).ready(function(){
+    $('.reviewChangeBox').bxSlider({
+       
+       auto:true,         //자동으로 애니메이션 시작
+       speed:500,         //애니메이션 속도
+       pause:4000,         //애니메이션 유지 시간 (4초)
+       adaptiveHeight:true,//자동으로 이미지의 높이에 맞게 슬라이드의 높이값 조절함
+       mode:'fade',      //슬라이드 모드('fade', 'horizontal', 'vertical'이 있음)
+       autoControls:false,   //시작, 중지 버튼 숨기기
+       autoHover:true,      //슬라이드에 마우스 오버시 애니메이션 정지하기
+       pager:false,         //페이지 표시 보이기
+	   controls:false,
+    });
+  });
   
 
 $(document).ready(function(){
     $('.wcy-best-class').bxSlider({
        
        auto:true,         //자동으로 애니메이션 시작
-       speed:800,         //애니메이션 속도
+       speed:700,         //애니메이션 속도
        pause:3000,         //애니메이션 유지 시간 (4초)
        adaptiveHeight:true,//자동으로 이미지의 높이에 맞게 슬라이드의 높이값 조절함
        mode:'horizontal',      //슬라이드 모드('fade', 'horizontal', 'vertical'이 있음)
@@ -593,7 +937,7 @@ $(document).ready(function(){
        autoHover:true,      //슬라이드에 마우스 오버시 애니메이션 정지하기
        pager:true,         	//페이지 표시 보이기
        minSlides:1,
-       maxSlides:4,
+       maxSlides:5,
        shrinkItems:true,
        slideWidth:300,
        slideMargin:30
@@ -617,6 +961,7 @@ function logincheck(){
 
  
 </script>
+
 
 
 </body>
