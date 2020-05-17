@@ -382,8 +382,16 @@ $(function(){
 	      //}
 	   });
 	      
-	      
-	   
+
+		//엔터키 입력 이벤트
+		$("#loginUserPw").keydown(function(key) {
+
+			if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
+				$("#login-btn").click();
+			}
+
+		});
+
 	}); //end - jquery
 </script>
 

@@ -21,6 +21,11 @@
 		<result property="interestListOption" column="interest_list_option" />
 	</resultMap>
 	
+	<resultMap id="InterestReportMap" type="com.it.wecodeyou.interest.model.InterestReportVO">
+		<id property="interestIndex" column="interest_index" />
+		<result property="cnt" column="cnt" />
+	</resultMap>
+	
 	<!-- insert into interest -->
 	<insert id="insertInterest">
       INSERT
@@ -40,12 +45,12 @@
 	<!-- 대답 당 개수 구하기 -->
 	<select id="countAnswer" resultType="int">
 		select count(*) from interest
-		where interest_index0 = #{interestListAnswer} 
-		or interest_index1 = #{interestListAnswer} 
-		or interest_index2 = #{interestListAnswer}
-		or interest_index3 = #{interestListAnswer} 
-		or interest_index4 = #{interestListAnswer} 
-		or interest_index5 = #{interestListAnswer}
+		where interest_index0 = #{interestListId} 
+		or interest_index1 = #{interestListId} 
+		or interest_index2 = #{interestListId}
+		or interest_index3 = #{interestListId} 
+		or interest_index4 = #{interestListId} 
+		or interest_index5 = #{interestListId}
 	</select>
 	
 	<!-- 총 설문조사 참여 인원 구하기 -->
@@ -57,6 +62,59 @@
 	<select id="getAnswer" resultType="String">
 		select interest_list_answer from interest_list
 		where interest_list_id = #{interestListId}
+	</select>
+
+	<!-- 모든 항목, id 구하기 -->
+	<select id="getAllIndex" resultMap="Interest_ListMap">
+		select interest_list_id, interest_list_answer from interest_list
+	</select>
+
+	<!-- Index 별  큰 순서대로 cnt desc-->
+	<select id="getInterestReportByIndex" resultMap="InterestReportMap">
+		select #{interestIndex} interest_index, count(#{interestIndex}) cnt
+		from interest
+		group by #{interestIndex}
+		order by cnt desc
+	</select>
+	
+	<select id="getAllColumnName" resultType="String">
+		SELECT COLUMN_NAME
+		FROM INFORMATION_SCHEMA.COLUMNS
+		WHERE TABLE_NAME = "interest"
+		LIMIT 2,8
+	</select>
+	
+	<select id="getIndexLang" resultType="String">
+		SELECT COLUMN_NAME
+		FROM INFORMATION_SCHEMA.COLUMNS
+		WHERE TABLE_NAME = "interest"
+		LIMIT 2,3
+	</select>
+	
+	<select id="getIndexPeriod" resultType="String">
+		SELECT COLUMN_NAME
+		FROM INFORMATION_SCHEMA.COLUMNS
+		WHERE TABLE_NAME = "interest"
+		LIMIT 5,1
+	</select>
+	
+	<select id="getIndexGoal" resultType="String">
+		SELECT COLUMN_NAME
+		FROM INFORMATION_SCHEMA.COLUMNS
+		WHERE TABLE_NAME = "interest"
+		LIMIT 6,1
+	</select>
+	
+	<select id="getIndexFunnel" resultType="String">
+		SELECT COLUMN_NAME
+		FROM INFORMATION_SCHEMA.COLUMNS
+		WHERE TABLE_NAME = "interest"
+		LIMIT 7,1
+	</select>
+	
+	<select id="getInterestsByType" resultType="String">
+		select interest_list_id from interest_list
+		where interest_list_type = #{interestListType}
 	</select>
 
 </mapper>
