@@ -47,83 +47,160 @@
 
 						<!-- 디자인 -->
 						<li data-pile="Design">
-							<a href="#">
-								<span class="tp-info"><span>Flu &amp; You</span></span>
-								<img src="<c:url value='/img/site/site01.PNG'/>" />
+							<a href="https://www.webjangi.com/" target="_blank">
+								<span class="tp-info"><span>웹쟁이</span></span>
+								<img src="<c:url value='/img/site/site08.PNG'/>" />
 							</a>
 						</li>
 						<li data-pile="Design">
-							<a href="#">
-								<span class="tp-info"><span>Test Your Flu IQ</span></span>
-								<img src="<c:url value='/img/site/site011.png'/>" />
-							</a>
-						</li>
-						<li data-pile="Design">
-							<a href="#">
-								<span class="tp-info"><span>Unexpected Fatherly Faces and Feelings</span></span>
+							<a href="http://bootstrapk.com/" target="_blank">
+								<span class="tp-info"><span>Bootstrap</span></span>
 								<img src="<c:url value='/img/site/site02.PNG'/>" />
+							</a>
+						</li>
+						<li data-pile="Design">
+							<a href="https://www.pinterest.co.kr/" target="_blank">
+								<span class="tp-info"><span>Pinterest</span></span>
+								<img src="<c:url value='/img/site/site15.png'/>" />
+							</a>
+						</li>
+						<li data-pile="Design">
+							<a href="https://www.blueb.co.kr/" target="_blank">
+								<span class="tp-info"><span>blue B</span></span>
+								<img src="<c:url value='/img/site/site17.PNG'/>" />
+							</a>
+						</li>
+						<li data-pile="Design">
+							<a href="https://www.graphberry.com/" target="_blank">
+								<span class="tp-info"><span>GRAPHBERRY</span></span>
+								<img src="<c:url value='/img/site/site18.PNG'/>" />
+							</a>
+						</li>
+						<li data-pile="Design">
+							<a href="https://codepen.io/" target="_blank">
+								<span class="tp-info"><span>CODE PEN</span></span>
+								<img src="<c:url value='/img/site/site16.PNG'/>" />
 							</a>
 						</li>
 
 						<!-- 개발자 커뮤니티 -->
 						<li data-pile="Community">
-							<a href="#">
-								<span class="tp-info"><span>On to Easter</span></span>
-								<img src="<c:url value='/img/site/site03.png'/>" />
-							</a>
-						</li>
-						<li data-pile="Community">
-							<a href="#">
-								<span class="tp-info"><span>Love Birds</span></span>
+							<a href="#" target="_blank">
+								<span class="tp-info"><span>stackoverflow</span></span>
 								<img src="<c:url value='/img/site/site04.png'/>" />
 							</a>
 						</li>
 						<li data-pile="Community">
-							<a href="#">
-								<span class="tp-info"><span>Here Fishy fishy</span></span>
-								<img src="<c:url value='/img/site/site05.png'/>" />
+							<a href="http://www.devpia.com/" target="_blank">
+								<span class="tp-info"><span>DEVPIA</span></span>
+								<img src="<c:url value='/img/site/site19.PNG'/>" />
+							</a>
+						</li>
+						<li data-pile="Community">
+							<a href="https://devsnote.com/" target="_blank">
+								<span class="tp-info"><span>뎁스노트</span></span>
+								<img src="<c:url value='/img/site/site20.png'/>" />
+							</a>
+						</li>
+						<li data-pile="Community">
+							<a href="http://www.ksug.org/" target="_blank">
+								<span class="tp-info"><span>KSUG</span></span>
+								<img src="<c:url value='/img/site/site21.png'/>" />
+							</a>
+						</li>
+						<li data-pile="Community">
+							<a href="#" target="_blank">
+								<span class="tp-info"><span>OKKY</span></span>
+								<img src="<c:url value='/img/site/site03.png'/>" />
 							</a>
 						</li>
 
+
 						<!-- 무료소스 -->
-						<li data-pile="Open Source">
+						<li data-pile="Free resource">
 							<a href="#">
-								<span class="tp-info"><span>Briefcase</span></span>
+								<span class="tp-info"><span>pixabay</span></span>
 								<img src="<c:url value='/img/site/site06.png'/>" />
 							</a>
 						</li>
-						<li data-pile="Open Source">
+						<li data-pile="Free resource">
 							<a href="#">
-								<span class="tp-info"><span>Clipboard</span></span>
-								<img src="<c:url value='/img/site/site07.PNG'/>" />
+								<span class="tp-info"><span>Font Awesome</span></span>
+								<img src="<c:url value='/img/site/site01.PNG'/>" />
 							</a>
 						</li>
-						<li data-pile="Open Source">
-							<a href="#">
-								<span class="tp-info"><span>Sweet pack</span></span>
-								<img src="<c:url value='/img/site/site08.PNG'/>" />
+						<li data-pile="Free resource">
+							<a href="https://icomoon.io/" target="_blank">
+								<span class="tp-info"><span>IcoMoon</span></span>
+								<img src="<c:url value='/img/site/site24.png'/>" />
 							</a>
 						</li>
 
+						<!-- javascript library -->
+						<li data-pile="javascript library">
+							<a href="#">
+								<span class="tp-info"><span>jQuery</span></span>
+								<img src="<c:url value='/img/site/site05.png'/>" />
+							</a>
+						</li>
+						<li data-pile="javascript library">
+							<a href="https://dojotoolkit.org/" target="_blank">
+								<span class="tp-info"><span>Dojo Toolkit</span></span>
+								<img src="<c:url value='/img/site/site14.PNG'/>" />
+							</a>
+						</li>
+						<li data-pile="javascript library">
+							<a href="https://zeptojs.com/#download" target="_blank">
+								<span class="tp-info"><span>Zepto.JS</span></span>
+								<img src="<c:url value='/img/site/site012.png'/>" />
+							</a>
+						</li>
+						<li data-pile="javascript library">
+							<a href="https://www.syncfusion.com/javascript-ui-controls" target="_blank">
+								<span class="tp-info"><span>싱크퓨전 에센셜 JS 2</span></span>
+								<img src="<c:url value='/img/site/site13.PNG'/>" />
+							</a>
+						</li>
+						
 						<!-- 기타 -->
 						<li data-pile="etc">
 							<a href="#">
-								<span class="tp-info"><span>Growth in 2012 (Holiday Card)</span></span>
+								<span class="tp-info"><span>MVN repository</span></span>
+								<img src="<c:url value='/img/site/site07.PNG'/>" />
+							</a>
+						</li>
+						<li data-pile="etc">
+							<a href="#">
+								<span class="tp-info"><span>GitHub</span></span>
 								<img src="<c:url value='/img/site/site09.png'/>" />
 							</a>
 						</li>
 						<li data-pile="etc">
 							<a href="#">
-								<span class="tp-info"><span>Grady Wilson</span></span>
-								<img src="<c:url value='/img/site/site010.PNG'/>" />
+								<span class="tp-info"><span>Google</span></span>
+								<img src="<c:url value='/img/site/site011.png'/>" />
 							</a>
 						</li>
 						<li data-pile="etc">
 							<a href="#">
-								<span class="tp-info"><span>More Cowbell</span></span>
-								<img src="<c:url value='/img/site/site011.png'/>" />
+								<span class="tp-info"><span>생활코딩</span></span>
+								<img src="<c:url value='/img/site/site010.PNG'/>" />
 							</a>
 						</li>
+						<li data-pile="etc">
+							<a href="https://d2.naver.com/helloworld" target="_blank">
+								<span class="tp-info"><span>네이버 개발자들의 실전 개발 경험 블로그</span></span>
+								<img src="<c:url value='/img/site/site22.png'/>" />
+							</a>
+						</li>
+						<li data-pile="etc">
+							<a href="http://www.regexr.com/" target="_blank">
+								<span class="tp-info"><span>정규식 실시간 코딩/테스트</span></span>
+								<img src="<c:url value='/img/site/site23.png'/>" />
+							</a>
+						</li>
+
+
 					</ul>
 				</div>
 			</section>
