@@ -52,7 +52,7 @@
     .w500{width:500px !important;}
     .wp100{width:100% !important;}
     
-    ul, li{list-style: none;}
+    ul, li, dl, {list-style: none;}
     a{text-decoration: none; color: black;}
     
     

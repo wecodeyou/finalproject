@@ -271,7 +271,7 @@
             </div>
          </li>
          
-         <li><a href="#">도움이 되는 사이트</a></li>
+         <li><a href="<c:url value='/helpsite' />">도움이 되는 사이트</a></li>
          <li><a href="#">공지사항</a></li>
          
 		</ul>
