@@ -163,107 +163,64 @@ public class OffController {
 
 	}
 
-
-		@GetMapping("/myoff")
-		public ModelAndView Test(ModelAndView mv) {	
-			mv.setViewName("/off/selectOff");
-			return mv;
-		}
-
-	@PostMapping(value = "/myoff")
-	public ModelAndView getMyList(@RequestParam(value="userEmail") String userEmail, ModelAndView mv) {
-		System.out.println("POST /myoff/" + userEmail + " ");
-		List<PurchaseVO> purchaseList = null;
-		List<OffProductVO> temp = new ArrayList<OffProductVO>();
-		MemberVO mvo = null;
-		/**
-		 나중에 미리세션처리하고 지금은 인자로 받은 이메일로 세션만듬
-		 */
-		
-		if (memberService.checkEmail(userEmail) == 1) {
-			mvo = memberService.findMemberById(userEmail);
-			System.out.println("유저 정보: " + mvo.toString());
-			purchaseList = purchaseService.selectUsersPurchase(mvo.getUserNo());
-			for(PurchaseVO pvo : purchaseList) {
-				ProductVO productVO = productService.getOneInfo(pvo.getPurchaseProNo());
-				if(productVO.getProductType().equals("1")) {
-					temp.add(offService.getOffProduct(productVO.getProductNo()));
-				}
-			}
-		} else {
-			System.out.println("유저를  찾을 수 없습니다");
-		}
-		mv.addObject("purchaseList", temp);
-		mv.setViewName("/off/selectOff");
-		return mv;
-
-	}
-	
-	@GetMapping("/myclass")
-	public ModelAndView getMyClass(ModelAndView mv) {
-		System.out.println("GET /myclass");		
-		mv.setViewName("/off/authorSelection");
-		return mv;
-	}
-	
-	@PostMapping("/myclass")
-	public ModelAndView getMyClass(@RequestParam(value="userEmail") String userEmail, ModelAndView mv) {
-		System.out.println("POST /myclass");
-		MemberVO mvo = null;
-		List<OffVO> offList = null;
-		List<OffProductVO> opvo = new ArrayList<OffProductVO>();
-		if (memberService.checkEmail(userEmail) == 1) {
-			mvo = memberService.findMemberById(userEmail);
-			System.out.println("유저 정보: " + mvo.toString());
-			offList = offService.getInfoByAuthor(mvo.getUserEmail());
-			System.out.println(offList.size());
-			for(OffVO ovo: offList) {
-				System.out.println(ovo.toString());
-				opvo.add(offService.getOffProduct(ovo.getOffProductNo()));
-			}
-			
-		} else {
-			System.out.println("유저 정보가 없습니다");
-		}
-		mv.addObject("offList", opvo);
-		mv.setViewName("/off/authorSelection");
-		return mv;
-	}
-	
-	
-	
-	
-
-	@GetMapping("/instructor/startlecture")
-	public ModelAndView instructorCheck(ModelAndView mv) {
-		mv.setViewName("off/authorSelection");
-		return mv;
-	}
-
-	@PostMapping("/instructor/startlecture/{offNo}")
-	public String instructorCheck(ModelAndView mv, @PathVariable Integer offNo, HttpSession session) {
-		OffVO ovo = offService.getOneInfo(offNo);
-		MemberVO mvo = (MemberVO) session.getAttribute("login");
-		System.out.println(ovo);
-		System.out.println(mvo);
-		if(ovo.getOffAuthor().equals(mvo.getUserEmail())) {
-			return "off_start";
-		}
-		return "off_error";
-	}
-	
-	@GetMapping("/instructor/lecture/{offNo}")
-	public ModelAndView instructorEnter(ModelAndView mv, @PathVariable Integer offNo) {
-		
-		OffVO ovo = offService.getOneInfo(offNo);
-		OffProductVO opvo = offService.getOffProduct(ovo.getOffProductNo());
-		mv.addObject("lecture", opvo);
-		mv.setViewName("/off/OffLectureMaster");
-		return mv;
-	}
-	
 	/*
-	 * @MessageMapping("/lecture") public String handle(String message) { return "["
-	 * + System.currentTimeMillis() + " : " + message; }
-	 */
+	 * @GetMapping("/myoff") public ModelAndView Test(ModelAndView mv) {
+	 * mv.setViewName("/off/selectOff"); return mv; }
+	 * 
+	 * @PostMapping(value = "/myoff") public ModelAndView
+	 * getMyList(@RequestParam(value="userEmail") String userEmail, ModelAndView mv)
+	 * { System.out.println("POST /myoff/" + userEmail + " "); List<PurchaseVO>
+	 * purchaseList = null; List<OffProductVO> temp = new ArrayList<OffProductVO>();
+	 * MemberVO mvo = null;
+	 *//**
+		 * 나중에 미리세션처리하고 지금은 인자로 받은 이메일로 세션만듬
+		 *//*
+			 * 
+			 * if (memberService.checkEmail(userEmail) == 1) { mvo =
+			 * memberService.findMemberById(userEmail); System.out.println("유저 정보: " +
+			 * mvo.toString()); purchaseList =
+			 * purchaseService.selectUsersPurchase(mvo.getUserNo()); for(PurchaseVO pvo :
+			 * purchaseList) { ProductVO productVO =
+			 * productService.getOneInfo(pvo.getPurchaseProNo());
+			 * if(productVO.getProductType().equals("1")) {
+			 * temp.add(offService.getOffProduct(productVO.getProductNo())); } } } else {
+			 * System.out.println("유저를  찾을 수 없습니다"); } mv.addObject("purchaseList", temp);
+			 * mv.setViewName("/off/selectOff"); return mv;
+			 * 
+			 * }
+			 * 
+			 * @GetMapping("/myclass") public ModelAndView getMyClass(ModelAndView mv) {
+			 * System.out.println("GET /myclass"); mv.setViewName("/off/authorSelection");
+			 * MemberVO mvo = null; List<OffVO> offList = null; List<OffProductVO> opvo =
+			 * new ArrayList<OffProductVO>(); if (memberService.checkEmail(userEmail) == 1)
+			 * { mvo = memberService.findMemberById(userEmail); System.out.println("유저 정보: "
+			 * + mvo.toString()); offList = offService.getInfoByAuthor(mvo.getUserEmail());
+			 * System.out.println(offList.size()); for(OffVO ovo: offList) {
+			 * System.out.println(ovo.toString());
+			 * opvo.add(offService.getOffProduct(ovo.getOffProductNo())); }
+			 * 
+			 * } else { System.out.println("유저 정보가 없습니다"); } mv.addObject("offList", opvo);
+			 * mv.setViewName("/off/authorSelection"); return mv; }
+			 * 
+			 * @PostMapping("/myclass") public ModelAndView
+			 * getMyClass(@RequestParam(value="userEmail") String userEmail, ModelAndView
+			 * mv) { System.out.println("POST /myclass"); MemberVO mvo = null; List<OffVO>
+			 * offList = null; List<OffProductVO> opvo = new ArrayList<OffProductVO>(); if
+			 * (memberService.checkEmail(userEmail) == 1) { mvo =
+			 * memberService.findMemberById(userEmail); System.out.println("유저 정보: " +
+			 * mvo.toString()); offList = offService.getInfoByAuthor(mvo.getUserEmail());
+			 * System.out.println(offList.size()); for(OffVO ovo: offList) {
+			 * System.out.println(ovo.toString());
+			 * opvo.add(offService.getOffProduct(ovo.getOffProductNo())); }
+			 * 
+			 * } else { System.out.println("유저 정보가 없습니다"); } mv.addObject("offList", opvo);
+			 * mv.setViewName("/off/authorSelection"); return mv; }
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 */
+
 }

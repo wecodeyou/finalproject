@@ -22,4 +22,6 @@ public interface IOffMapper {
 	public OffVO getInfoByProductNo(Integer productNo);
 	
 	public OffProductVO getOffProduct(Integer productNo);
+	
+	public List<OffProductVO> getOffProductByAuthor(String offAuthor);
 }

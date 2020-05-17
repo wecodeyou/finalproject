@@ -102,7 +102,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>4.2.1.RELEASE</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<!-- 데이터를 JSON형태로 파싱해주는 라이브러리 -->
 		<dependency>
@@ -111,11 +111,11 @@
 		    <version>2.9.8</version>
 		</dependency>
 <!-- STOMP 사용을 위한 디펜던시 -->
-<!-- 		<dependency>
+		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-messaging</artifactId>
-		    <version>5.2.5.RELEASE</version>
-		</dependency> -->
+		    <version>${org.springframework-version}</version>
+		</dependency>
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -221,7 +221,15 @@
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>
 		    <version>1.4</version>
-		</dependency>  
+		</dependency>
+<!-- getter setter 자동 빌드 모듈 lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.12</version>
+    <scope>provided</scope>
+</dependency>
+
 	</dependencies>
     <build>
         <plugins>
