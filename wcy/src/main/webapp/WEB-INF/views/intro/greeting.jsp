@@ -126,9 +126,9 @@ p {
 		<div class="left-section">
 			<h2>WeCodeYou</h2>
 			<ul class="left-sub-nav">
-				<li><a class="active" href="#">인삿말</a></li>
-				<li><a href="#">WCY 소개</a></li>
-				<li><a href="#">오시는 길</a></li>
+				<li><a class="active">인삿말</a></li>
+				<li><a href="<c:url value='/intro' />">WCY 소개</a></li>
+				<li><a href="<c:url value='/location' />">오시는 길</a></li>
 			</ul>
 		</div>
 
@@ -141,8 +141,20 @@ p {
 			<div class="right-contents">
 				<h4 class="contents-title">모든 프로그래머의 지침서 WCY입니다.</h4>
 				<p class="mb10">
-					대충 인사하는 이야기
+					[ 여러분과 함께 나아가는 IT 교육 사이트]
 				</p>
+				WCY는 기존 IT 강의 사이트를 벗어나 커뮤니티적 성격이 추가된 <br>
+				새로운 형식의 교육 사이트입니다. <br>
+				프로그래머분들이 필요한 정보와 기능을 지원하기위해 항상 최선을 다하겠습니다.<br>
+				
+				<div>
+					<ul>
+						<li>여기에 이미지</li>
+						<li>2020년 새로운 교육 플랫폼을 구상하던 우리는 프로그래머들이 막혔을때  
+						기존의 강의 사이트의 영상과 질의 응답 커뮤니티 등의 기능을 모두 필요로 한다는것을 알았습니다.
+						이에 WCY는 모두를 충족 시키는 사이트가 되는것을 자처하며 여러분의 개발에 든든한 파트너가 되겠습니다.</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</main>

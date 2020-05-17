@@ -137,9 +137,9 @@ p {
 		<div class="left-section">
 			<h2>WeCodeYou</h2>
 			<ul class="left-sub-nav">
-				<li><a href="#">인삿말</a></li>
-				<li><a href="#">WCY 소개</a></li>
-				<li><a class="active" href="#">오시는 길</a></li>
+				<li><a href="<c:url value='/greeting' />">인삿말</a></li>
+				<li><a href="<c:url value='/intro' />">WCY 소개</a></li>
+				<li><a class="active">오시는 길</a></li>
 			</ul>
 		</div>
 
