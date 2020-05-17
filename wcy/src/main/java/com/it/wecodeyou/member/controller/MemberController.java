@@ -359,7 +359,7 @@ public class MemberController {
          }
          
          ModelAndView mv=new ModelAndView();   //ModelAndView로 보낼 페이지를 지정하고 보낼 값을 지정한다
-         mv.setViewName("/member/login-form");
+         mv.setViewName("/");
          
          System.out.println("view: "+mv.getViewName()   + "   임시 비밀번호: "+uuid);
          
@@ -410,6 +410,17 @@ public class MemberController {
     		  result = "pass";
     	  };
     	  return result;
+      }
+      
+      @PostMapping("/changePw")
+      public void changePw(HttpSession session, @RequestBody String userPw) {
+    	  String userEmail = ((MemberVO) session.getAttribute("login")).getUserEmail();
+    	  MemberVO mvo = new MemberVO();
+          mvo.setUserEmail(userEmail);
+    	  mvo.setUserPw(userPw);
+    	  service.changePw(mvo);
+    	  
+    	  session.removeAttribute("login");    	  
       }
       
    

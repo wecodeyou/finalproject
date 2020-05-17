@@ -126,27 +126,26 @@ p {
       <div class="left-section">
          <h2>MyPage</h2>
          <ul class="left-sub-nav">
-            <li><a class="active" href="<c:url value='/mypage/myinfoChange' />">내 정보</a></li>
-            <li><a href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
-            <li><a href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
-            <li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
+       		<li><a class="active" href="<c:url value='/mypage/myinfoChange' />">내 정보</a></li>
+			<li><a href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
+			<li><a href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
+			<li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
          </ul>
       </div>
 
       <div class="right-section">
          <div class="right-header">
             <ul class="right-sub-nav">
-               <li><a class="active"> 내 정보 </a></li>
+               <li><a id="info_link" class="active" onclick="info_active()"> 내 정보 </a></li>
+               <li><a id="pw_link" onclick="pw_active()"> 비밀번호 변경 </a></li>
             </ul>
          </div>
          <div class="right-contents">
             <h4 class="contents-title">${login.userName}님의 MYPAGE</h4>
             <p class="mb10">
-               <a href="<c:url value='/mypage/myinfoChange?change=info' />">정보변경</a>
-               <a href="<c:url value='/mypage/myinfoChange?change=pw' />">비밀번호 변경</a>
-
-<!-- 위의 정보들을 바꾸겠다. -->
-<c:if test="${change eq 'info'}">
+          
+<!-- 일반적인 정보들을 바꾸겠다. -->
+<div id="info_change_form">
    <table border="0" class="tbl_model">
                 <caption><span class="blind">연락처 수정 입력</span></caption>
                 <colgroup>
@@ -180,222 +179,6 @@ p {
                             <div id="d_phoneNo" style="display:none">
                                 <p id="p_txt_phoneNo_changeYn" class="contxt_tit2"><label for="phoneNo">변경할 휴대전화</label></p>
                                 <p class="contxt_webctrl">
-                                    <select id="internationalCode" name="internationalCode" class="country_drop" onchange="javascript:setInternationalCode('internationalCode','input_internationalCode', '');">
-                                                <option value="233">가나</option>
-                                                <option value="241">가봉</option>
-                                                <option value="592">가이아나</option>
-                                                <option value="220">감비아</option>
-                                                <option value="502">과테말라</option>
-                                                <option value="1671">괌</option>
-                                                <option value="1473">그레나다</option>
-                                                <option value="30">그리스</option>
-                                                <option value="224">기니</option>
-                                                <option value="245">기니비사우</option>
-                                                <option value="264">나미비아</option>
-                                                <option value="674">나우루</option>
-                                                <option value="234">나이지리아</option>
-                                                <option value="672">남극,오스트레일리아의외</option>
-                                                <option value="27">남아프리카공화국</option>
-                                                <option value="31">네덜란드</option>
-                                                <option value="599">네덜란드령보네르</option>
-                                                <option value="297">네덜란드령아루바</option>
-                                                <option value="977">네팔</option>
-                                                <option value="47">노르웨이</option>
-                                                <option value="64">뉴질랜드</option>
-                                                <option value="683">뉴질랜드령니우에</option>
-                                                <option value="690">뉴질랜드령토켈라우제도</option>
-                                                <option value="227">니제르</option>
-                                                <option value="505">니카라과</option>
-                                                <option value="82">대한민국</option>
-                                                <option value="45">덴마크</option>
-                                                <option value="299">덴마크령그린란드</option>
-                                                <option value="298">덴마크령페로제도</option>
-                                                <option value="1809">도미니카공화국</option>
-                                                <option value="1829">도미니카공화국 2</option>
-                                                <option value="1849">도미니카공화국 3</option>
-                                                <option value="49">독일</option>
-                                                <option value="670">동티모르</option>
-                                                <option value="856">라오스</option>
-                                                <option value="231">라이베리아</option>
-                                                <option value="371">라트비아</option>
-                                                <option value="7">러시아/카자흐스탄</option>
-                                                <option value="961">레바논</option>
-                                                <option value="266">레소토</option>
-                                                <option value="40">루마니아</option>
-                                                <option value="352">룩셈부르크</option>
-                                                <option value="250">르완다</option>
-                                                <option value="218">리비아</option>
-                                                <option value="370">리투아니아</option>
-                                                <option value="423">리히텐슈타인</option>
-                                                <option value="261">마다가스카르</option>
-                                                <option value="692">마셜제도공화국</option>
-                                                <option value="691">마이크로네시아연방</option>
-                                                <option value="853">마카오</option>
-                                                <option value="389">마케도니아공화국</option>
-                                                <option value="265">말라위</option>
-                                                <option value="60">말레이시아</option>
-                                                <option value="223">말리</option>
-                                                <option value="52">멕시코</option>
-                                                <option value="377">모나코</option>
-                                                <option value="212">모로코</option>
-                                                <option value="230">모리셔스</option>
-                                                <option value="222">모리타니아</option>
-                                                <option value="258">모잠비크</option>
-                                                <option value="382">몬테네그로</option>
-                                                <option value="373">몰도바</option>
-                                                <option value="960">몰디브</option>
-                                                <option value="356">몰타</option>
-                                                <option value="976">몽골</option>
-                                                <option value="1">미국/캐나다</option>
-                                                <option value="1670">미국령북마리아나제도</option>
-                                                <option value="95">미얀마</option>
-                                                <option value="678">바누아투</option>
-                                                <option value="973">바레인</option>
-                                                <option value="1246">바베이도스</option>
-                                                <option value="1242">바하마</option>
-                                                <option value="880">방글라데시</option>
-                                                <option value="229">베냉</option>
-                                                <option value="58">베네수엘라</option>
-                                                <option value="84">베트남</option>
-                                                <option value="32">벨기에</option>
-                                                <option value="375">벨라루스</option>
-                                                <option value="501">벨리즈</option>
-                                                <option value="387">보스니아헤르체고비나</option>
-                                                <option value="267">보츠와나</option>
-                                                <option value="591">볼리비아</option>
-                                                <option value="257">부룬디</option>
-                                                <option value="226">부르키나파소</option>
-                                                <option value="975">부탄</option>
-                                                <option value="359">불가리아</option>
-                                                <option value="55">브라질</option>
-                                                <option value="673">브루나이</option>
-                                                <option value="685">사모아</option>
-                                                <option value="966">사우디아라비아</option>
-                                                <option value="378">산마리노</option>
-                                                <option value="239">상투메프린시페</option>
-                                                <option value="221">세네갈</option>
-                                                <option value="381">세르비아</option>
-                                                <option value="248">세이셀</option>
-                                                <option value="1784">세인트빈센트그레나딘</option>
-                                                <option value="252">소말리아</option>
-                                                <option value="677">솔로몬제도</option>
-                                                <option value="249">수단</option>
-                                                <option value="597">수리남</option>
-                                                <option value="94">스리랑카</option>
-                                                <option value="268">스와질랜드</option>
-                                                <option value="46">스웨덴</option>
-                                                <option value="41">스위스</option>
-                                                <option value="34">스페인</option>
-                                                <option value="421">슬로바키아</option>
-                                                <option value="386">슬로베니아</option>
-                                                <option value="963">시리아</option>
-                                                <option value="232">시에라리온</option>
-                                                <option value="65">싱가포르</option>
-                                                <option value="971">아랍에미리트</option>
-                                                <option value="374">아르메니아</option>
-                                                <option value="54">아르헨티나</option>
-                                                <option value="1684">아메리칸사모아</option>
-                                                <option value="354">아이슬란드</option>
-                                                <option value="509">아이티</option>
-                                                <option value="353">아일랜드</option>
-                                                <option value="994">아제르바이잔</option>
-                                                <option value="93">아프가니스탄</option>
-                                                <option value="376">안도라</option>
-                                                <option value="355">알바니아</option>
-                                                <option value="213">알제리</option>
-                                                <option value="244">앙골라</option>
-                                                <option value="251">에디오피아</option>
-                                                <option value="291">에리트레아</option>
-                                                <option value="372">에스토니아</option>
-                                                <option value="593">에콰도르</option>
-                                                <option value="503">엘살바도르</option>
-                                                <option value="44">영국</option>
-                                                <option value="290">영국령세인트헬레나</option>
-                                                <option value="246">영국령인도양지역</option>
-                                                <option value="350">영국령지브롤터</option>
-                                                <option value="500">영국령포클랜드제도</option>
-                                                <option value="967">예멘</option>
-                                                <option value="968">오만</option>
-                                                <option value="43">오스트리아</option>
-                                                <option value="504">온두라스</option>
-                                                <option value="962">요르단</option>
-                                                <option value="256">우간다</option>
-                                                <option value="598">우루과이</option>
-                                                <option value="998">우즈베키스탄</option>
-                                                <option value="380">우크라이나</option>
-                                                <option value="964">이라크</option>
-                                                <option value="98">이란</option>
-                                                <option value="972">이스라엘</option>
-                                                <option value="20">이집트</option>
-                                                <option value="39">이탈리아</option>
-                                                <option value="91">인도</option>
-                                                <option value="62">인도네시아</option>
-                                                <option value="81">일본</option>
-                                                <option value="1876">자메이카</option>
-                                                <option value="260">잠비아</option>
-                                                <option value="240">적도기니</option>
-                                                <option value="995">조지아</option>
-                                                <option value="86">중국</option>
-                                                <option value="236">중앙아프리카공화국</option>
-                                                <option value="253">지부티</option>
-                                                <option value="263">짐바브웨</option>
-                                                <option value="235">차드</option>
-                                                <option value="420">체코</option>
-                                                <option value="56">칠레</option>
-                                                <option value="237">카메룬</option>
-                                                <option value="238">카보베르데</option>
-                                                <option value="974">카타르</option>
-                                                <option value="855">캄보디아왕국</option>
-                                                <option value="254">케냐</option>
-                                                <option value="269">코모로,마요트</option>
-                                                <option value="506">코스타리카</option>
-                                                <option value="225">코트디부아르</option>
-                                                <option value="57">콜롬비아</option>
-                                                <option value="242">콩고</option>
-                                                <option value="243">콩고민주공화국</option>
-                                                <option value="53">쿠바</option>
-                                                <option value="965">쿠웨이트</option>
-                                                <option value="682">쿡제도</option>
-                                                <option value="385">크로아티아</option>
-                                                <option value="996">키르기스스탄</option>
-                                                <option value="686">키리바시</option>
-                                                <option value="357">키프로스</option>
-                                                <option value="886">타이완</option>
-                                                <option value="992">타지키스탄</option>
-                                                <option value="255">탄자니아</option>
-                                                <option value="66">태국</option>
-                                                <option value="90">터키</option>
-                                                <option value="228">토고</option>
-                                                <option value="676">통가</option>
-                                                <option value="993">투르크메니스탄</option>
-                                                <option value="216">튀니지</option>
-                                                <option value="1868">트리니다드토바고</option>
-                                                <option value="507">파나마</option>
-                                                <option value="595">파라과이</option>
-                                                <option value="92">파키스탄</option>
-                                                <option value="675">파푸아뉴기니</option>
-                                                <option value="680">팔라우</option>
-                                                <option value="970">팔레스타인</option>
-                                                <option value="51">페루</option>
-                                                <option value="351">포르투갈</option>
-                                                <option value="48">폴란드</option>
-                                                <option value="1787">푸에르토리코</option>
-                                                <option value="33">프랑스</option>
-                                                <option value="590">프랑스령과들루프</option>
-                                                <option value="594">프랑스령기아나</option>
-                                                <option value="687">프랑스령뉴칼레도니아</option>
-                                                <option value="262">프랑스령레위니옹</option>
-                                                <option value="596">프랑스령마르티니크</option>
-                                                <option value="508">프랑스령생피에르미클롱</option>
-                                                <option value="681">프랑스령월리스푸투나제</option>
-                                                <option value="689">프랑스령폴리네시아</option>
-                                                <option value="679">피지</option>
-                                                <option value="358">핀란드</option>
-                                                <option value="63">필리핀</option>
-                                                <option value="36">헝가리</option>
-                                                <option value="61">호주</option>
-                                                <option value="852">홍콩</option>
-                                    </select>
                             <span class="country_code_w">
                                         <span id="input_internationalCode" class="country_code">+82</span>
                               <input type="text" id="phoneNo" name="phoneNo" maxlength="14" onkeydown="check_num_ajax2('phoneNo', '2', 'e_phoneNo','e_authNo');">
@@ -441,22 +224,30 @@ p {
             
             
 <br>
-<a href="<c:url value='/mypage/myinfoChange' />">내정보</a> <br>
-</c:if>
+</div>
 
-<c:if test="${change eq 'pw'}">
-비밀번호 변경
-안전한 비밀번호로 내정보를 보호하세요
-
-다른 아이디/사이트에서 사용한 적 없는 비밀번호
-
-이전에 사용한 적 없는 비밀번호가 안전합니다.<br>
-   비밀번호: <input type="password" name="" id="" /><br>
-   번호확인: <input type="password" name="" id="" /><br>
+<div id="pw_change_form" style="display: none;">
+	<div id="pcf_check">
+	기존의 비밀번호를 입력해주세요.
+	
+	현재 비밀번호: <input type="password" name="is_pw" id="is_pw" required="required"/> <button onclick="check()"> 입력 </button>
+	</div>
+	<div id="pcf_ok" style="display: none;">
+	비밀번호 변경<br>
+	안전한 비밀번호로 내정보를 보호하세요.<br>
+	
+	다른 아이디/사이트에서 사용한 적 없는 비밀번호<br>
+	
+	이전에 사용한 적 없는 비밀번호가 안전합니다.<br>
+	
+	비밀번호: <input type="password" name="newPw" id="newPw" /><span id="pwChk1"></span><br>
+	번호확인: <input type="password" name="newPwChk" id="newPwChk" /><span id="pwChk2"></span><br>
    
+    <button onclick="change_pw()">비밀번호 변경</button>
+   </div>
 <br>
-<a href="<c:url value='/mypage/myinfoChange' />">내정보</a> <br>
-</c:if>
+</div>
+
 
             </p>
          </div>
@@ -475,5 +266,137 @@ p {
    </script>
 </c:if>   
 
+<script type="text/javascript">
+function pw_active(){
+	document.getElementById("info_change_form").style.display = "none";
+	document.getElementById("pw_change_form").style.display = "block";
+
+	document.getElementById("info_link").className = "";
+	document.getElementById("pw_link").className = "active";
+} // 비밀번호 변경창 active
+
+function info_active(){
+	document.getElementById("info_change_form").style.display = "block";
+	document.getElementById("pw_change_form").style.display = "none";
+
+	document.getElementById("info_link").className = "active";
+	document.getElementById("pw_link").className = "";
+
+	document.getElementById("pcf_ok").style.display = "none";
+	document.getElementById("pcf_check").style.display = "block";
+	
+	document.getElementById("is_pw").value = "";
+	$("#is_pw").css("border-color","none");
+} // 기본정보 변경창 active
+
+function check(){
+	var userPw = document.getElementById("is_pw");
+	
+	if(userPw != ""){
+		$.ajax({
+	        type:"POST",
+	        url:"/mypage/pwCheck",
+	        headers:{
+	           "Content-Type":"application/json"
+	        },
+	        dataType:"text",
+	        data:userPw.value,
+	        success:function(result){
+	        	 if(result==="OK"){
+	        			document.getElementById("pcf_ok").style.display = "block";
+	        			document.getElementById("pcf_check").style.display = "none";
+	        	 } else{
+	        		 $("#is_pw").css("border-color","red");
+	              }
+	        },
+	        error:function(){
+	         	console.log("서버와 통신 실패");
+			 	$("#is_pw").css("border-color","red");
+	        }
+	     });
+	}else{
+		$("#is_pw").css("border-color","red");
+	}
+} // 현재 비밀번호 확인 (복호화해서 확인해야 하기때문에 ajax) 
+
+
+
+
+// 1. 비밀번호 입력 값 검증 ======================================================================================
+const getPwCheck= RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
+let chk1 = false, chk2 = false;
+
+// 2) 비밀번호 입력값 keyup 이벤트
+$('#newPw').on('keyup', function() {
+      
+      // 비밀번호 공백 체크
+      if($("#newPw").val() === ""){
+          $('#newPw').css("background-color", "pink");
+         $('#pwChk1').html('<b style="font-size:14px;color:red;">비밀번호는 필수 정보 입니다.</b>');
+         chk1 = false;
+      }               
+      // 비밀번호 유효성 검증 (특수문자 포함 8자 이상인지 검사)
+      else if(!getPwCheck.test($("#newPw").val()) || $("#newPw").val().length < 8){
+          $('#newPw').css("background-color", "pink");
+         $('#pwChk1').html('<b style="font-size:14px;color:red;">특수문자 포함 8자 이상으로 입력해주세요.</b>');
+         chk1 = false;
+      } 
+      // 비밀번호 제대로 썼을 때
+      else {
+         $('#newPw').css("background-color", "white");
+         $('#pwChk1').html('<b style="font-size:14px;color:green;">사용 가능한 비밀번호입니다.</b>');
+         chk1 = true;
+      }      
+}); //end - 비밀번호 입력값 keyup 이벤트
+
+
+$('#newPwChk').on('keyup', function() { 
+    // 비밀번호 확인란 공백 체크
+    if($("#newPwChk").val() === ""){
+		$('#newPwChk').css("background-color", "pink");
+		$('#pwChk2').html('<b style="font-size:14px;color:red;">비밀번호 확인을 입력해주세요.</b>');
+		chk2 = false;
+    }               
+    // 비밀번호 확인 검증 (비밀번호와 같은지 검사)
+    else if($("#newPwChk").val() != $("#newPw").val()){
+		$('#newPwChk').css("background-color", "pink");
+		$('#pwChk2').html('<b style="font-size:14px;color:red;">비밀번호와 동일하게 입력해주세요.</b>');
+		chk2 = false;
+    } 
+    // 비밀번호 확인 제대로 썼을 떄
+    else if($("#newPwChk").val() == $("#newPw").val()){
+       $('#newPwChk').css("background-color", "white");
+       $('#pwChk2').html('');
+       chk2 = true;
+    }
+}); // end - 비밀번호 확인 입력값 keyup 이벤트
+
+function change_pw(){
+	var newPw = document.getElementById("newPw");
+	
+	if(chk1 == true && chk2 == true){
+		$.ajax({
+	        type:"POST",
+	        url:"/member/changePw",
+	        headers:{
+	           "Content-Type":"application/json"
+	        },
+	        dataType:"text",
+	        data:newPw.value,
+	        success:function(){
+	        	location.replace("/");
+	        },
+	        error:function(){
+	         	console.log("서버와 통신 실패");
+				alert("알수 없는 오류가 발생했습니다.");
+	        }
+	     });
+	}else{
+		$("#pwChk2").css("border-color","red");
+	}
+} // 현재 비밀번호 확인 (복호화해서 확인해야 하기때문에 ajax) 
+
+
+</script>
 </body>
 </html>
