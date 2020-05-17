@@ -85,7 +85,7 @@
 
 						<!-- 개발자 커뮤니티 -->
 						<li data-pile="Community">
-							<a href="#" target="_blank">
+							<a href="https://stackoverflow.com/" target="_blank">
 								<span class="tp-info"><span>stackoverflow</span></span>
 								<img src="<c:url value='/img/site/site04.png'/>" />
 							</a>
@@ -109,7 +109,7 @@
 							</a>
 						</li>
 						<li data-pile="Community">
-							<a href="#" target="_blank">
+							<a href="https://okky.kr/" target="_blank">
 								<span class="tp-info"><span>OKKY</span></span>
 								<img src="<c:url value='/img/site/site03.png'/>" />
 							</a>
@@ -118,13 +118,13 @@
 
 						<!-- 무료소스 -->
 						<li data-pile="Free resource">
-							<a href="#">
+							<a href="https://pixabay.com/ko/" target="_blank">
 								<span class="tp-info"><span>pixabay</span></span>
 								<img src="<c:url value='/img/site/site06.png'/>" />
 							</a>
 						</li>
 						<li data-pile="Free resource">
-							<a href="#">
+							<a href="https://fontawesome.com/" target="_blank">
 								<span class="tp-info"><span>Font Awesome</span></span>
 								<img src="<c:url value='/img/site/site01.PNG'/>" />
 							</a>
@@ -138,7 +138,7 @@
 
 						<!-- javascript library -->
 						<li data-pile="javascript library">
-							<a href="#">
+							<a href="https://api.jquery.com/" target="_blank">
 								<span class="tp-info"><span>jQuery</span></span>
 								<img src="<c:url value='/img/site/site05.png'/>" />
 							</a>
@@ -164,25 +164,25 @@
 						
 						<!-- 기타 -->
 						<li data-pile="etc">
-							<a href="#">
+							<a href="https://mvnrepository.com/" target="_blank">
 								<span class="tp-info"><span>MVN repository</span></span>
 								<img src="<c:url value='/img/site/site07.PNG'/>" />
 							</a>
 						</li>
 						<li data-pile="etc">
-							<a href="#">
+							<a href="https://github.com/" target="_blank">
 								<span class="tp-info"><span>GitHub</span></span>
 								<img src="<c:url value='/img/site/site09.png'/>" />
 							</a>
 						</li>
 						<li data-pile="etc">
-							<a href="#">
+							<a href="https://www.google.com/" target="_blank">
 								<span class="tp-info"><span>Google</span></span>
 								<img src="<c:url value='/img/site/site011.png'/>" />
 							</a>
 						</li>
 						<li data-pile="etc">
-							<a href="#">
+							<a href="https://opentutorials.org/" target="_blank">
 								<span class="tp-info"><span>생활코딩</span></span>
 								<img src="<c:url value='/img/site/site010.PNG'/>" />
 							</a>

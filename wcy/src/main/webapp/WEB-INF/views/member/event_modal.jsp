@@ -43,7 +43,7 @@
 
 }
 .modal {
-	z-index: 10001;
+	z-index: 100000;
 }
 
 body {
