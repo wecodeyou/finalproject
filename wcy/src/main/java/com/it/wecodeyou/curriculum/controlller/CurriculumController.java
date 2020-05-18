@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.it.wecodeyou.curriculum.model.CurriculumVO;
 import com.it.wecodeyou.curriculum.service.ICurriculumService;
 import com.it.wecodeyou.episode.service.IEpisodeService;
-import com.it.wecodeyou.on.repository.IOnMapper;
+import com.it.wecodeyou.off.service.IOffService;
 import com.it.wecodeyou.on.service.IOnService;
 import com.it.wecodeyou.product.service.IProductService;
 
@@ -32,6 +32,9 @@ public class CurriculumController {
    
    @Autowired
    private IOnService onservice;
+
+   @Autowired
+   private IOffService offservice;
    
 	//커리큘럼소개 main 요청 (==> 온라인, 오프라인 통합 main임. 맵핑 주소 이름 변경 요망)
 	@GetMapping("/on_main")
@@ -56,6 +59,7 @@ public class CurriculumController {
 		System.out.println(pservice.getOneByName(req.getParameter("s")).getProductNo());
 		if(pservice.getOneByName(req.getParameter("s")).getProductType().equals("1")) {
 			mv.setViewName("curriculum/offDetail");
+			mv.addObject("off",offservice.getInfoByProductNo((pservice.getOneByName(req.getParameter("s")).getProductNo())));
 			System.out.println("현장강의 선택");
 		}else {
 			

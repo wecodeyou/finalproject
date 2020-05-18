@@ -1,3 +1,24 @@
+
+/* .modal fade show in > .table
+.modal-dialog modal-lg > .modal-content
+> .modal-header > .modal-body > .container2
+> .fc fc-unthemed fc-ltr > .fc-view-container
+> .fc-view fc-month-view fc-basic-view
+> table{
+	height:100;
+	
+} */
+.modal fade > .modal-dialog > .modal-content 
+> .modal-header > .modal-body > .container2 
+> .fc > .fc-view-container > .fc-view > table{
+	height:100;
+	
+}
+#calendar > table{
+
+	height:100;
+}
+
 body {
   font-family: '나눔바른고딕';
   padding: 10px;

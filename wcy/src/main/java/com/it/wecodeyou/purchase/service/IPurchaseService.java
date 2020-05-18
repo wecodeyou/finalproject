@@ -31,4 +31,10 @@ public interface IPurchaseService {
 	
 	// 올 해의 수입
 	public PurchaseResultVO getThisAnnualEarnings();
+	
+	// 회원번호 받아서 온라인 구매내역 조회
+	public ArrayList<PurchaseVO> selectUsersPurchaseOn(Integer user_no);
+	
+	//수강 기간 만료 > seat_no = 0 으로 설정
+	public void updateExpire(PurchaseVO pv);
 }
