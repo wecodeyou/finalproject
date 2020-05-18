@@ -47,11 +47,11 @@
 							</ul>
 							<p>
 								<span class="info-title">강의평점</span>
-								<span class="info-content">5 <span class="star">★ ★ ★ ★ ★</span></span>
+								<span class="info-content">${avg} <span class="star">★ ★ ★ ★ ★</span></span>
 							</p>
 							<p>
 								<span class="info-title">수강후기</span>
-								<span class="info-content">100 건</span>
+								<span class="info-content">${review_num} 건</span>
 							</p>
 						</div>
 					</div>
@@ -147,57 +147,23 @@
 					</div>
 					<div class="review-wrap">
 						<ul class="review-container">
+							<c:forEach var="r" items="${review}">
 							<li class="review-list">
 								<div class="review-list-container">
 									<span class="review-title">수강후기 제목 들어갈 자리</span>
-									<div class="review-star"><span class="star">★ ★ ★ ★ ★</span> 5</div>
+									<div class="review-star"><span class="star">★ ★ ★ ★ ★</span> ${r.reviewStar}</div>
 									<p class="review-text">
-										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
-										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
-										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
+										${r.content}
 									</p> 
-									<span class="review-classTitle">수강한 과목명</span>
+									<span class="review-classTitle">${pro.productName}</span>
 									<span class="review-teacherName">강사이름</span>
 									<div class="writer-date">
 										<span class="review-writer">김*수</span>
-										<span class="review-date">2020.05.12</span>
+										<span class="review-date">${r.reviewCreatedAt}</span>
 									</div>
 								</div>
 							</li>
-							<li class="review-list">
-								<div class="review-list-container">
-									<span class="review-title">수강후기 제목 들어갈 자리</span>
-									<div class="review-star"><span class="star">★ ★ ★ ★ ★</span> 5</div>
-									<p class="review-text">
-										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
-										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
-										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
-									</p>
-									<span class="review-classTitle">수강한 과목명</span>
-									<span class="review-teacherName">강사이름</span>
-									<div class="writer-date">
-										<span class="review-writer">김*수</span>
-										<span class="review-date">2020.05.12</span>
-									</div>
-								</div>
-							</li>
-							<li class="review-list">
-								<div class="review-list-container">
-									<span class="review-title">수강후기 제목 들어갈 자리</span>
-									<div class="review-star"><span class="star">★ ★ ★ ★ ★</span> 5</div>
-									<p class="review-text">
-										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
-										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
-										수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다. 수강 후기 text가 들어갈 자리입니다.
-									</p>
-									<span class="review-classTitle">수강한 과목명</span>
-									<span class="review-teacherName">강사이름</span>
-									<div class="writer-date">
-										<span class="review-writer">김*수</span>
-										<span class="review-date">2020.05.12</span>
-									</div>
-								</div>
-							</li>
+							</c:forEach>
 						</ul>
 						<div class="pageNavi">
 							<ul>
