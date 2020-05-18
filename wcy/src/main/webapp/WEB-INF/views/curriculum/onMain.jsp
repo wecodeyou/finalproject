@@ -42,13 +42,13 @@
 						
 						<li>
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network01.jpg'/>" alt="" />
+								<img src="${c.subImg1}" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle1}</h5>
 								<p>${c.subDetail1}
 								<div class="curri-list-btn">
-									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${c.subTitle1}' />'" class="btn_blue">과정 상세보기</button>
 									<!-- <button type="button" onclick="" class="btn_red">장바구니 담기</button> -->
 								</div>
 							</div>
@@ -56,13 +56,13 @@
 						
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="" />
+								<img src="${c.subImg2}" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle2}</h5>
 								<p>${c.subDetail2}
 								<div class="curri-list-btn">
-									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${c.subTitle2}' />'" class="btn_blue">과정 상세보기</button>
 								</div>
 							</div>
 						</li>
@@ -70,13 +70,13 @@
 						<c:if test="${c.subTitle3 != null }">
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network03.png'/>" alt="" />
+								<img src="${c.subImg3}" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle3}</h5>
 								<p>${c.subDetail3}
 								<div class="curri-list-btn">
-									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${c.subTitle3}' />'" class="btn_blue">과정 상세보기</button>
 								</div>
 							</div>
 						</li>
@@ -84,13 +84,13 @@
 						<c:if test="${c.subTitle4 != null }">
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network04.jpg'/>" alt="" />
+								<img src="${c.subImg4}" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle4}</h5>
 								<p>${c.subDetail4}
 								<div class="curri-list-btn">
-									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${c.subTitle4}' />'" class="btn_blue">과정 상세보기</button>
 								</div>
 							</div>
 						</li>
@@ -98,13 +98,13 @@
 						<c:if test="${c.subTitle5 != null }">
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network05.jpg'/>" alt="" />
+								<img src="${c.subImg5}" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle5}</h5>
 								<p>${c.subDetail5}
 								<div class="curri-list-btn">
-									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${c.subTitle5}' />'" class="btn_blue">과정 상세보기</button>
 								</div>
 							</div>
 						</li>
@@ -112,13 +112,13 @@
 						<c:if test="${c.subTitle6 != null }">
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network06.jpg'/>" alt="" />
+								<img src="${c.subImg6}" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle6}</h5>
 								<p>${c.subDetail6}
 								<div class="curri-list-btn">
-									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${c.subTitle6}' />'" class="btn_blue">과정 상세보기</button>
 								</div>
 							</div>
 						</li>
@@ -126,13 +126,13 @@
 						<c:if test="${c.subTitle7 != null }">
 						<li class="mt20">
 							<div class="curri-list-img">
-								<img src="<c:url value='/img/curriculum/network07.jpg'/>" alt="" />
+								<img src="${c.subImg7}" alt="" />
 							</div>
 							<div class="curri-list-text">
 								<h5>${c.subTitle7}</h5>
 								<p>${c.subDetail7}
 								<div class="curri-list-btn">
-									<button type="button" onclick="" class="btn_blue">과정 상세보기</button>
+									<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${c.subTitle7}' />'" class="btn_blue">과정 상세보기</button>
 								</div>
 							</div>
 						</li>

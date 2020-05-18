@@ -1,10 +1,13 @@
 package com.it.wecodeyou.mypage;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,19 +56,29 @@ public class MypageController {
 	}
 
 	@GetMapping("/myinfoChange")
-	public ModelAndView myInfo(ModelAndView mv, HttpSession session, HttpServletRequest req) {
+	public ModelAndView myInfo(ModelAndView mv, HttpServletResponse res ,HttpSession session, HttpServletRequest req) throws IOException {
 		System.out.println("/mypage/myinfoChange : GET 요청 발생!");
-		mv.setViewName("mypage/mypage-change");
-		// Timestamp t = new Timestamp(System.currentTimeMillis());
-		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
-		MemberVO mvo = (MemberVO) session.getAttribute("login");
-		if(mvo.getUserBirthday() != null) {
-			mv.addObject("user_birthday", sdf.format(mvo.getUserBirthday()));
-		}
-		if (req.getParameter("change") != null) {
-			mv.addObject("change", req.getParameter("change"));
-			System.out.println(req.getParameter("change"));
+		if(session.getAttribute("login") == null) {
+			 mv.setViewName("home");
+	         res.setContentType("text/html; charset=UTF-8");
+			 PrintWriter out_email = res.getWriter();
+	         out_email.println("<script>alert('장기간 미활동으로 로그아웃되었습니다. 다시 로그인 해주세요.');</script>");
+	         out_email.flush();
+	         
+		}else {
+			mv.setViewName("mypage/mypage-change");			
+			// Timestamp t = new Timestamp(System.currentTimeMillis());
+			// SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+			MemberVO mvo = (MemberVO) session.getAttribute("login");
+			if(mvo.getUserBirthday() != null) {
+				mv.addObject("user_birthday", sdf.format(mvo.getUserBirthday()));
+			}
+			/*
+			 * if (req.getParameter("change") != null) { mv.addObject("change",
+			 * req.getParameter("change")); System.out.println(req.getParameter("change"));
+			 * }
+			 */
 		}
 		return mv;
 	}

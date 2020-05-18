@@ -79,4 +79,10 @@
 		WHERE p.product_no = #{productNo} 
 		AND o.off_product_no = p.product_no
 	</select>
+		<select id="getOffProductByAuthor" resultMap="OffProductMap">
+		SELECT *
+		FROM off_course o, product p
+		WHERE o.off_author = #{offAuthor}
+		AND p.product_no = o.off_product_no 
+	</select>
 </mapper>

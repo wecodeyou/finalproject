@@ -20,22 +20,20 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-	<h2>오프라인 강의 시작하기</h2>
+	<h2>오프라인 강의 참여하기</h2>
 	<p id="message"></p>
-
 	<div id="result-panel">
 		<table border="2">
-			<c:forEach var="o" items="${myClass}">
+			<c:forEach var="o" items="${activeList}">
 				<tr>
-					<td>${o.productName}</td>
-					<td>${o.offPlace}</td>
-					<td><button onclick="location.href = '<c:url value="/session/instructor/lecture" />/${o.productNo}'" >강의 시작하기</button></td>
+					<td>${o.id}</td>
+					<td>${o.name}</td>
+					<td><button onclick="location.href ='/session/participant/join/${o.id}'" >강의 참여하기</button></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
 <script type="text/javascript">
-
 </script>
 </body>
 </html>

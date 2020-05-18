@@ -23,6 +23,15 @@ public class CurriculumVO {
 	private String subDetail8;
 	private String subTitle9;
 	private String subDetail9;
+	private String subImg1;
+	private String subImg2;
+	private String subImg3;
+	private String subImg4;
+	private String subImg5;
+	private String subImg6;
+	private String subImg7;
+	private String subImg8;
+	private String subImg9;
 	
 	public CurriculumVO() {
 		// TODO Auto-generated constructor stub
@@ -32,7 +41,8 @@ public class CurriculumVO {
 			String subTitle2, String subDetail2, String subTitle3, String subDetail3, String subTitle4,
 			String subDetail4, String subTitle5, String subDetail5, String subTitle6, String subDetail6,
 			String subTitle7, String subDetail7, String subTitle8, String subDetail8, String subTitle9,
-			String subDetail9) {
+			String subDetail9, String subImg1, String subImg2, String subImg3, String subImg4, String subImg5,
+			String subImg6, String subImg7, String subImg8, String subImg9) {
 		super();
 		this.seq = seq;
 		this.engName = engName;
@@ -55,6 +65,15 @@ public class CurriculumVO {
 		this.subDetail8 = subDetail8;
 		this.subTitle9 = subTitle9;
 		this.subDetail9 = subDetail9;
+		this.subImg1 = subImg1;
+		this.subImg2 = subImg2;
+		this.subImg3 = subImg3;
+		this.subImg4 = subImg4;
+		this.subImg5 = subImg5;
+		this.subImg6 = subImg6;
+		this.subImg7 = subImg7;
+		this.subImg8 = subImg8;
+		this.subImg9 = subImg9;
 	}
 
 	public Integer getSeq() {
@@ -225,18 +244,92 @@ public class CurriculumVO {
 		this.subDetail9 = subDetail9;
 	}
 
+	public String getSubImg1() {
+		return subImg1;
+	}
+
+	public void setSubImg1(String subImg1) {
+		this.subImg1 = subImg1;
+	}
+
+	public String getSubImg2() {
+		return subImg2;
+	}
+
+	public void setSubImg2(String subImg2) {
+		this.subImg2 = subImg2;
+	}
+
+	public String getSubImg3() {
+		return subImg3;
+	}
+
+	public void setSubImg3(String subImg3) {
+		this.subImg3 = subImg3;
+	}
+
+	public String getSubImg4() {
+		return subImg4;
+	}
+
+	public void setSubImg4(String subImg4) {
+		this.subImg4 = subImg4;
+	}
+
+	public String getSubImg5() {
+		return subImg5;
+	}
+
+	public void setSubImg5(String subImg5) {
+		this.subImg5 = subImg5;
+	}
+
+	public String getSubImg6() {
+		return subImg6;
+	}
+
+	public void setSubImg6(String subImg6) {
+		this.subImg6 = subImg6;
+	}
+
+	public String getSubImg7() {
+		return subImg7;
+	}
+
+	public void setSubImg7(String subImg7) {
+		this.subImg7 = subImg7;
+	}
+
+	public String getSubImg8() {
+		return subImg8;
+	}
+
+	public void setSubImg8(String subImg8) {
+		this.subImg8 = subImg8;
+	}
+
+	public String getSubImg9() {
+		return subImg9;
+	}
+
+	public void setSubImg9(String subImg9) {
+		this.subImg9 = subImg9;
+	}
+
 	@Override
 	public String toString() {
-		return "curriculumVO [seq=" + seq + ", engName=" + engName + ", korName=" + korName + ", subTitle1=" + subTitle1
+		return "CurriculumVO [seq=" + seq + ", engName=" + engName + ", korName=" + korName + ",\t제목및 설명: subTitle1=" + subTitle1
 				+ ", subDetail1=" + subDetail1 + ", subTitle2=" + subTitle2 + ", subDetail2=" + subDetail2
 				+ ", subTitle3=" + subTitle3 + ", subDetail3=" + subDetail3 + ", subTitle4=" + subTitle4
 				+ ", subDetail4=" + subDetail4 + ", subTitle5=" + subTitle5 + ", subDetail5=" + subDetail5
 				+ ", subTitle6=" + subTitle6 + ", subDetail6=" + subDetail6 + ", subTitle7=" + subTitle7
 				+ ", subDetail7=" + subDetail7 + ", subTitle8=" + subTitle8 + ", subDetail8=" + subDetail8
-				+ ", subTitle9=" + subTitle9 + ", subDetail9=" + subDetail9 + "]";
+				+ ", subTitle9=" + subTitle9 + ", subDetail9=" + subDetail9 + ",\t이미지 목록:  subImg1=" + subImg1 + ", subImg2="
+				+ subImg2 + ", subImg3=" + subImg3 + ", subImg4=" + subImg4 + ", subImg5=" + subImg5 + ", subImg6="
+				+ subImg6 + ", subImg7=" + subImg7 + ", subImg8=" + subImg8 + ", subImg9=" + subImg9 + "]";
 	}
+
 	
-	
-	
+
 	
 }

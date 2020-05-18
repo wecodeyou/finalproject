@@ -138,7 +138,8 @@
 
 						<!-- javascript library -->
 						<li data-pile="javascript library">
-							<a href="https://api.jquery.com/" target="_blank">
+							<a href="https://jquery.com/" target="_blank">
+
 								<span class="tp-info"><span>jQuery</span></span>
 								<img src="<c:url value='/img/site/site05.png'/>" />
 							</a>
@@ -182,7 +183,7 @@
 							</a>
 						</li>
 						<li data-pile="etc">
-							<a href="https://opentutorials.org/" target="_blank">
+							<a href="https://opentutorials.org/course/1" target="_blank">
 								<span class="tp-info"><span>생활코딩</span></span>
 								<img src="<c:url value='/img/site/site010.PNG'/>" />
 							</a>
