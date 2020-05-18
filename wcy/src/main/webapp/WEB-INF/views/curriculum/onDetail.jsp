@@ -61,7 +61,7 @@
 							<tbody>
 								<tr>
 									<td class="info-title">강사명</td>
-									<td class="info-content">홍길동</td>
+									<td class="info-content">${sensei}</td>
 								</tr>
 								<tr>
 									<td class="info-title">수강료</td>

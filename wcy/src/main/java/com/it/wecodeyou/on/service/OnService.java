@@ -11,6 +11,7 @@ import com.it.wecodeyou.on.repository.IOnMapper;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.repository.IProductMapper;
 import com.it.wecodeyou.ptag.repository.IPtagMapper;
+import com.it.wecodeyou.purchase.model.PurchaseVO;
 
 @Service
 public class OnService implements IOnService {
@@ -53,6 +54,30 @@ public class OnService implements IOnService {
 		}
 		
 		return result;
+	}
+
+
+
+	@Override
+	public OnVO getOne(Integer productNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public String getAuthor(Integer productNo){	
+		// TODO Auto-generated method stub
+		return onDao.getAuthor(productNo);
+	}
+
+
+
+	@Override
+	public Integer getDays(PurchaseVO pvo) {
+		// TODO Auto-generated method stub
+		return onDao.getDays(pvo);
 	}
 
 	

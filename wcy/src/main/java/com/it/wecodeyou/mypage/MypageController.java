@@ -25,7 +25,8 @@ import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.off.service.IOffService;
-import com.it.wecodeyou.on.model.OnVO;
+import com.it.wecodeyou.on.service.IOnService;
+import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.purchase.model.PurchaseVO;
 import com.it.wecodeyou.purchase.service.IPurchaseService;
@@ -46,13 +47,15 @@ public class MypageController {
 	private IPurchaseService pservice;
 	@Autowired
 	private IOffService oservice;
+	@Autowired
+	private IOnService onservice;
+
 
 	@GetMapping("/leclist")
 	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo, HttpSession session) {
 
 		System.out.println("/mypage/leclist : GET 요청 발생!");
 
-		mv.addObject("lec_list", pdservice.purchasedOn(((MemberVO) session.getAttribute("login")).getUserNo()));
 		mv.setViewName("mypage/mypage-lecList");
 		ArrayList<PurchaseVO> pv_list = new ArrayList<PurchaseVO>();
 		pv_list = pservice.selectUsersPurchase(((MemberVO) session.getAttribute("login")).getUserNo());
@@ -118,24 +121,25 @@ public class MypageController {
 
 	@GetMapping("/mylec")
 	public ModelAndView mylec(ModelAndView mv, HttpSession session) {
-/*		List<OffProductVO> offList;
-		List<OnVO> onList;
+		List<OffProductVO> offList = null;
 		List<PurchaseVO> purchaseList;
+		OffProductVO temp;
 		System.out.println("/mypage/mylec : GET 요청 발생!");
 		mv.setViewName("mypage/mypage-mylec");
 		MemberVO mvo = (MemberVO)session.getAttribute("login");
 		if(mvo.getUserType() == 0) {
 			purchaseList = pservice.selectUsersPurchase(mvo.getUserNo());
 			for(PurchaseVO pvo : purchaseList) {
-				if(oservice.getOffProduct(pvo.getPurchaseProNo()).getProductType().equals("0")) {
-					onList.add()
+				temp = oservice.getOffProduct(pvo.getPurchaseProNo());
+				if(temp.getProductType().equals("1")) {
+					offList.add(temp);
 				}
 			}
-
+		} else if(mvo.getUserType() == 1) {
+			offList = oservice.getOffProductByAuthor(mvo.getUserEmail());
 		}
-
-*/
 		
+		mv.addObject("offList", offList);
 		return mv;
 	}
 	

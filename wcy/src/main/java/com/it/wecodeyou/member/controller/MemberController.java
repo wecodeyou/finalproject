@@ -48,6 +48,7 @@ public class MemberController {
    public ModelAndView register() {
       ModelAndView mv = new ModelAndView();
       mv.setViewName("member/join-form");
+      
       return mv;
    }
    
@@ -424,4 +425,40 @@ public class MemberController {
       }
       
    
+      @PostMapping("/kakao")
+      public ModelAndView kakaologin(ModelAndView mv, HttpSession session, HttpServletRequest req) {
+    	  mv.setViewName("redirect:/");
+    	  
+    	  String email = req.getParameter("email");
+    	  
+    	  if (service.checkEmail(email) == 0) {
+    		  
+        	  mv.addObject("user_email",email);
+        	  mv.addObject("image", req.getParameter("image"));
+        	  mv.addObject("birth",req.getParameter("birth"));
+        	  mv.addObject("nickname",req.getParameter("nickname"));
+        	  mv.addObject("kakao","kakao");
+        	  mv.setViewName("/member/sns-join-form");
+        	  
+    	  }else {
+    		  
+        	  BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        	  MemberVO dbData = service.checkLogin(email);
+              
+              if(dbData != null) {
+                 if(encoder.matches("kakao", dbData.getUserPw())) {
+                    session.setAttribute("login", dbData);
+                    
+                 } else {
+                	 System.out.println("해당 이메일로 가입된 아이디가 존재합니다.");
+                 }
+              
+              }
+
+      
+    	  }
+    	  return mv;
+
+     }
 }
