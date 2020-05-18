@@ -39,13 +39,11 @@
         client.connect({}, function () {
             client.subscribe('/topic/off/room/' + roomId, function (note) {
                 var content = JSON.parse(note.body);
-                if(note.type === 'NOTE'){
- 
-
+                if(content.type === 'NOTE'){
     				chatBox.empty();
                     chatBox.append(content.message);         	
                 } else if(content.type === 'QUESTION'){
-                	$('#question-board').append("<p>" + content.message + "</p>");
+                	$('#question-board').append("<p>" + content.writer + " : " + content.message + "</p>");
                 } else if(content.type === 'ACTIVATE'){
                     $('#submit-q').attr('disabled', false);
                 } else if(content.type === 'DEACTIVATE'){
@@ -53,14 +51,14 @@
                 }  	
             });
         });
+        $('#submit-q').click(function(e){
+    		var content = $('#question-input').val();
+            client.send('/lecture/message/note', {}, JSON.stringify({id: roomId, type:'QUESTION', message: content, writer: member})); 
 
+        }); 
     });
 
-    $('#submit-q').click(function(e){
-		var content = $('#question-input').val();
-        client.send('/lecture/message/note', {}, JSON.stringify({id: roomId, type:'QUESTION', message: content, writer: member})); 
 
-    }); 
 </script>
 </body>
 </html>
