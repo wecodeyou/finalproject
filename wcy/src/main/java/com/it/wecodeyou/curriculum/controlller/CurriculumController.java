@@ -18,6 +18,7 @@ import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.review.model.ReviewVO;
 import com.it.wecodeyou.review.service.ReviewService;
+import com.it.wecodeyou.sub_product.service.SubProductService;
 
 @RestController
 @RequestMapping("/curriculum")
@@ -34,6 +35,9 @@ public class CurriculumController {
 
    @Autowired
    private ReviewService rservice;
+   
+   @Autowired
+   private SubProductService spservice;
    
 	//커리큘럼소개 main 요청 (==> 온라인, 오프라인 통합 main임. 맵핑 주소 이름 변경 요망)
 	@GetMapping("/on_main")
@@ -63,6 +67,11 @@ public class CurriculumController {
 		if(r_list.size() != 0) {
 			avg = sum/r_list.size(); 
 		}
+		
+		
+		
+		
+		mv.addObject("sub_pro", spservice.showSubPro(pvo.getProductNo()));
 		mv.addObject("s", req.getParameter("s"));
 		mv.addObject("pro",pvo);
 		mv.addObject("review_num",r_list.size());	// 수강후기 갯수
