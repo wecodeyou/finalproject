@@ -118,9 +118,16 @@ public class MypageController {
 		System.out.println("/mypage/mylec : GET 요청 발생!");
 		mv.setViewName("mypage/mypage-mylec");
 		
-		ArrayList<ProductVO> pro_lec_list = pdservice.purchasedOn(((MemberVO)session.getAttribute("login")).getUserNo());
-		ArrayList<PurchaseVO> pur_lec_list = pservice.selectUsersPurchaseOn(((MemberVO)session.getAttribute("login")).getUserNo());
-		
+		String msg = "";
+		ArrayList<ProductVO> pro_lec_list; 
+		ArrayList<PurchaseVO> pur_lec_list;
+		pro_lec_list = pdservice.purchasedOn(((MemberVO)session.getAttribute("login")).getUserNo());
+		pur_lec_list = pservice.selectUsersPurchaseOn(((MemberVO)session.getAttribute("login")).getUserNo());
+		if (pro_lec_list == null && pur_lec_list == null) {
+			msg = "수강중인 온라인 강의가 없습니다.";
+			mv.addObject("msg",msg);
+			return mv;
+		}
 		Integer[] days = new Integer[pur_lec_list.size()];
 		for (int i = 0; i <pur_lec_list.size();i++) {
 			

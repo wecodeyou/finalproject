@@ -153,7 +153,7 @@ p {
 				
 				
 				</p>
-				
+				<h1>${msg}</h1>
 	<table border = 0><tr>
 	<th>강의명</th><th>남은일수</th></tr>
 	<c:forEach var = "c" items = '${pro_lec_list}' varStatus ="status" >
