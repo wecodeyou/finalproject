@@ -26,7 +26,7 @@
     <form id="tx_editor_form">
  				<jsp:include page="/WEB-INF/views/include/editorFrame.jsp"></jsp:include>
 <!--     <input name="message"> -->
-    <input type="submit"/>
+    <button id = "submit"></button>
     </form>
 </div>
 <script>
@@ -59,7 +59,7 @@
 
         });
         
-        $("#tx_editor_form").on('submit', function(e) {
+/*         $("#tx_editor_form").on('submit', function(e) {
    			e.preventDefault();
    			e.stopPropagation();
         	console.log("sendNote 이벤트");
@@ -68,8 +68,15 @@
             console.log("content");
             client.send('/lecture/message/note', {}, JSON.stringify({id: roomId, type:'NOTE', message: content, writer: member}));
             return false;
+        }); */
+        $('#submit').click(function(e){
+        	e.preventDefault();
+        	console.log("sendNote 이벤트");
+            saveContent();
+            var content = $('#content').text();
+            console.log("content");
+            client.send('/lecture/message/note', {}, JSON.stringify({id: roomId, type:'NOTE', message: content, writer: member}));
         });
-        
     	var config = {
     			txHost: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) http://xxx.xxx.com */
     			txPath: '', /* 런타임 시 리소스들을 로딩할 때 필요한 부분으로, 경로가 변경되면 이 부분 수정이 필요. ex) /xxx/xxx/ */
