@@ -17,6 +17,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
+<style>
+    .star{color: #c0c0c0}
+    .star > .on{
+        color: red;
+    }
+</style>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"
 	integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
 	crossorigin="anonymous"></script>
@@ -35,7 +41,7 @@
 				<div class="detail-top"> <!-- detail-top : start  -->
 					<div class="detail-top-left">
 						<div class="top-left-img">
-							<img src="<c:url value='/img/curriculum/network02.jpg'/>" alt="" />
+							<img src="${sub_pro.spThum}" alt="" />
 						</div>
 						<div class="top-left-info">
 							<ul class="info-tag">
@@ -47,8 +53,15 @@
 							</ul>
 							<p>
 								<span class="info-title">강의평점</span>
-								<span class="info-content">${avg} <span class="star">★ ★ ★ ★ ★</span></span>
-							</p>
+								<span class="info-content">${avg} 
+									<span class="star">
+										<span id="avg_star1">★</span> 
+										<span id="avg_star2">★</span> 
+										<span id="avg_star3">★</span> 
+										<span id="avg_star4">★</span> 
+										<span id="avg_star5">★</span> 
+									</span>
+								</span></p>
 							<p>
 								<span class="info-title">수강후기</span>
 								<span class="info-content">${review_num} 건</span>
@@ -61,7 +74,9 @@
 							<tbody>
 								<tr>
 									<td class="info-title">강사명</td>
-									<td class="info-content">${sensei}</td>
+
+									<td class="info-content">${sub_pro.spLecName}</td>
+
 								</tr>
 								<tr>
 									<td class="info-title">수강료</td>
@@ -69,7 +84,7 @@
 								</tr>
 								<tr>
 									<td class="info-title">교재</td>
-									<td class="info-content">(Basic) C언어 기본서</td>									
+									<td class="info-content">${sub_pro.spBook}</td>									
 								</tr>
 							</tbody>
 						</table>
@@ -117,20 +132,36 @@
 				<div class="detail-bottom"> <!-- detail-bottom : start -->
 					<h4 class="contents-title">수강생들의 <span style="font-weight: bold">리얼후기</span></h4>
 					<div class="review-head">
-						<span class="review-head-red">전체</span> 수강후기<span class="review-head-gray">(100건)</span>
+						<span class="review-head-red">전체</span> 수강후기<span class="review-head-gray">(${review_num} 건)</span>
 					</div>
 					<div class="review-wrap">
 						<ul class="review-container">
 							<c:forEach var="r" items="${review}">
+							<script>
+							$( document ).ready(function() {
+								var es;
+								for(var i=0; i<${r.reviewStar}+1; i++){
+									es = '#each_star' +${r.reviewNo}+"_"+ i;
+									$(es).addClass("on");
+								}
+								return false;
+							});
+							</script>
 							<li class="review-list">
 								<div class="review-list-container">
-									<span class="review-title">수강후기 제목 들어갈 자리</span>
-									<div class="review-star"><span class="star">★ ★ ★ ★ ★</span> ${r.reviewStar}</div>
-									<p class="review-text">
+									<div class="review-star">
+										<span class="star">
+											<span id="each_star${r.reviewNo}_1">★</span> 
+											<span id="each_star${r.reviewNo}_2">★</span> 
+											<span id="each_star${r.reviewNo}_3">★</span> 
+											<span id="each_star${r.reviewNo}_4">★</span> 
+											<span id="each_star${r.reviewNo}_5">★</span> 
+										</span> ${r.reviewStar}</div>
+										<p class="review-text">
 										${r.content}
 									</p> 
 									<span class="review-classTitle">${pro.productName}</span>
-									<span class="review-teacherName">강사이름</span>
+									<!-- <span class="review-teacherName">강사이름</span> -->
 									<div class="writer-date">
 										<span class="review-writer">김*수</span>
 										<span class="review-date">${r.reviewCreatedAt}</span>
@@ -155,6 +186,18 @@
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
 
+<script type="text/javascript">
+
+$( document ).ready(function() {
+	var s;
+	for(var i=0; i<${avg}+1; i++){
+		s = '#avg_star' + i;
+		$(s).addClass("on");
+	}
+	return false;
+});
+
+</script>
 </body>
 <jsp:include page="../include/footer.jsp" />
 </html>

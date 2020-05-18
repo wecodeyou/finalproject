@@ -51,7 +51,7 @@
 
                 chatBox.append( content.message);            	
             } else if(content.type === 'QUESTION'){
-            	$('#question-board').append("<p>" + content.message + "</p>");
+            	$('#question-board').append("<p>" + content.writer + " : " + content.message + "</p>");
             }
             
 
@@ -88,8 +88,8 @@
     			initializedId: "", /* 대부분의 경우에 빈문자열 */
     			wrapper: "tx_trex_container", /* 에디터를 둘러싸고 있는 레이어 이름(에디터 컨테이너) */
     			form: 'note_submit'+"", /* 등록하기 위한 Form 이름 */
-    			txIconPath: "${ pageContext.request.contextPath }/resources/vendor/editor/images/icon/editor/' /> ", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
-    			txDecoPath: "${ pageContext.request.contextPath }/images/deco/contents/", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
+    			txIconPath: "/vendor/editor/images/icon/editor/' /> ", /*에디터에 사용되는 이미지 디렉터리, 필요에 따라 수정한다. */
+    			txDecoPath: "/vendor/editor/images/deco/contents/", /*본문에 사용되는 이미지 디렉터리, 서비스에서 사용할 때는 완성된 컨텐츠로 배포되기 위해 절대경로로 수정한다. */
     			canvas: {
     	            exitEditor:{
     	            },
