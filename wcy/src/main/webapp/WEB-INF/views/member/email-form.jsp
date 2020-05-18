@@ -214,7 +214,7 @@
             <div>
                 <ul class="email-auth-contents">
                       <li class="mb20"><strong>이메일로 인증번호 발송</strong></li>
-                        <li class="mb10">이메일 인증을 받아야 다음 단계로 넘어갈 수 있습니다.</li>
+                        <li class="mb10">이메일 인증을 받아야 다음 단계로 넘어갈 수 있습니다.</li> 
                         <li class="mb10">
                          	 이메일 : <input type="email" name="userEmail" id="userEmail" placeholder="example@google.com" class="form-control form-rounded" style="display:inline-block; height:30px; width:200px;">
                             <button type="button" id="check_btn" class="btn btn-outline-danger" onclick="isOverRap()" style="line-height: 1.1rem; height: 30px; margin-bottom: 7px; vertical-align: middle;">이메일 중복체크</button>
