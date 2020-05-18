@@ -33,6 +33,9 @@
 <body>
 
 	<jsp:include page="../include/header-sub.jsp" />
+	<%-- <jsp:include page="../schedule/ex.jsp" />
+	<%-- <%@ include file="../schedule/ex.jsp" %> --%>  
+	<%@ include file="../schedule/calendar.jsp" %>  
 
 
 	<main class="wcy-main-content">
@@ -98,6 +101,10 @@
 							</div>
 							<div class="button-register">
 								<a href="#" title="수강신청" class="btn_red_regi">좌석선택</a>
+							</div>
+							<div class="button-register">
+								<button type="button" id="btn2">달력 소환</button>
+								<a class="modal_open_btn" data-toggle="modal" data-target="#modal2">달력보기</a>
 							</div>
 						</div>
 					</div>

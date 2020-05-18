@@ -123,7 +123,19 @@
 		ORDER BY y DESC
 		LIMIT 1
 	</select>
-
+	
+	<select id="selectUsersPurchaseOn" resultMap="PurchaseMap">
+		SELECT * FROM purchase where purchase_buyer=#{purchaseBuyer} AND purchase_seat_no is null
+	</select>
+	
+	
+	<update id="updateExpire">
+		UPDATE purchase SET 
+		purchase_seat_no=0 
+		WHERE 
+		purchase_no=#{purchaseNo}
+	</update>
+	
 </mapper>
 
 

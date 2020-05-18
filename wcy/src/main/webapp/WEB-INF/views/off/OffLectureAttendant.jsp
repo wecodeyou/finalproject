@@ -16,10 +16,17 @@
 <p class="id">${roomInfo.id }</p>
 <p class="member">${login.userNo}</p>
 <div class="content" >
-    <ul class="chat_box">
-    </ul>
+    <div class="chat_box">
+    </div>
+
 
 </div>
+	<h2>질문 출력창</h2>
+	<div id="question-board">
+		
+	</div>
+	<textArea id="question-input"></textArea>
+	<button type="button" id="submit-q" disabled>질문등록</button>
 <script>
     $(function () {
         var chatBox = $('.chat_box');
@@ -27,18 +34,33 @@
         var member = $('.member').text();
 
         var sock = new SockJS("/begin-session");
-        var client = Stomp.over(sock); // 1. SockJS를 내부에 들고 있는 client를 내어준다.
+        var client = Stomp.over(sock);
 
-        // 2. connection이 맺어지면 실행된다.
         client.connect({}, function () {
             client.subscribe('/topic/off/room/' + roomId, function (note) {
-            	console.log(note);
                 var content = JSON.parse(note.body);
-                chatBox.append('<li>' + content.message + '(' + content.writer + ')</li>')
+                if(note.type === 'NOTE'){
+ 
+
+    				chatBox.empty();
+                    chatBox.append(content.message);         	
+                } else if(content.type === 'QUESTION'){
+                	$('#question-board').append("<p>" + content.message + "</p>");
+                } else if(content.type === 'ACTIVATE'){
+                    $('#submit-q').attr('disabled', false);
+                } else if(content.type === 'DEACTIVATE'){
+                    $('#submit-q').attr('disabled', true);
+                }  	
             });
         });
 
     });
+
+    $('#submit-q').click(function(e){
+		var content = $('#question-input').val();
+        client.send('/lecture/message/note', {}, JSON.stringify({id: roomId, type:'QUESTION', message: content, writer: member})); 
+
+    }); 
 </script>
 </body>
 </html>

@@ -36,9 +36,9 @@
    <insert id="insertMember">
       INSERT
       INTO user
-      (user_no,user_email,user_pw,user_name,user_birthday,user_tel,user_zipcode,user_address,user_detail_address,user_type,user_point,user_interest)
+      (user_no,user_email,user_pw,user_name,user_birthday,user_tel,user_profile_img,user_zipcode,user_address,user_detail_address,user_type,user_point,user_interest)
       VALUES
-      (#{userNo},#{userEmail},#{userPw},#{userName},#{userBirthday},#{userTel},#{userZipcode},#{userAddress},#{userDetailAddress},#{userType},#{userPoint},#{userInterest})
+      (#{userNo},#{userEmail},#{userPw},#{userName},#{userBirthday},#{userTel},#{userProfileImg},#{userZipcode},#{userAddress},#{userDetailAddress},#{userType},#{userPoint},#{userInterest})
    </insert>
    
    <!-- 정보 수정 (userNo 받아서 생일, 휴대폰번호, 프로필 이미지, 주소 수정, 수정날짜 now로  -->

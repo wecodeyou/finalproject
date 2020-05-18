@@ -22,8 +22,39 @@
 	</insert>
 
 
+	<select id = "getAuthor" resultType = "String" parameterType = "int">
+		select user_name
+		from user
+		where user_email = (select on_author 
+							from on_course 
+                   			 where on_product_no = #{productNo})
+
+	</select>
+
+	<select id="getOne" resultMap = "OnMap">
+	
+		select * 
+		from on_course
+		where on_product_no = (select product_no 
+								from product 
+								where product_no = #{productNo});
+	
+	</select>
 
 
+	<select id = "getDays" resultType = "int">
+			select timestampdiff(day, now(),
+				(select date_add((SELECT purchase_date
+								from purchase
+								where purchase_buyer = #{purchaseBuyer} 
+								AND purchase_pro_no = #{purchaseProNo}
+								AND purchase_seat_no is null
+								AND purchase_isrefund = 0),INTERVAL 
+									(select on_days 
+									from on_course 
+									where on_product_no = #{purchaseProNo}) DAY))); 
+	
+	</select>
 
 
 

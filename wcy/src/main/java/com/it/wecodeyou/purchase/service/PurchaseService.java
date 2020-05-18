@@ -55,4 +55,19 @@ public class PurchaseService implements IPurchaseService {
 		return dao.getThisAnnualEarnings();
 	}
 
+	@Override
+	public ArrayList<PurchaseVO> selectUsersPurchaseOn(Integer user_no) {
+		// TODO Auto-generated method stub
+		return dao.selectUsersPurchaseOn(user_no);
+	}
+
+	@Override
+	public void updateExpire(PurchaseVO pv) {
+		dao.updateExpire(pv);
+		System.out.println("기간만료로 seat_no = 0 업데이트 완료!");
+		// TODO Auto-generated method stub
+		
+		
+	}
+
 }
