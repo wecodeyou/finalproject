@@ -217,16 +217,17 @@
                         <li class="mb10">이메일 인증을 받아야 다음 단계로 넘어갈 수 있습니다.</li>
                         <li class="mb10">
                          	 이메일 : <input type="email" name="userEmail" id="userEmail" placeholder="example@google.com" class="form-control form-rounded" style="display:inline-block; height:30px; width:200px;">
-                            <button type="button" id="check_btn" onclick="isOverRap()">이메일 중복체크</button>
+                            <button type="button" id="check_btn" class="btn btn-outline-danger" onclick="isOverRap()" style="line-height: 1.1rem; height: 30px; margin-bottom: 7px; vertical-align: middle;">이메일 중복체크</button>
                             <span id="emailChk"></span>
                         </li>
-                        <li><button type="submit" name="submit" id="submit_btn" onclick="sendChkMail()">인증번호 발송</button></li>
+                        <li><button type="submit" name="submit" id="submit_btn" class="btn btn-outline-primary" onclick="sendChkMail()" style="margin-left: 50px; line-height: 0.1rem; height: 30px; margin-bottom: 7px; vertical-align: middle;">인증번호 발송</button></li>
                         <li>
                         <div id="auth_div">
 	                 		 <%-- <form action="<c:url value='/member/join_auth' />" method="post">--%>   
 	                   		<table border="1">
 	                        <tr>
-	                        <td>인증번호 입력: <input type="text" id="email_auth" name="email_auth" size="25" placeholder="인증번호를 입력해주세요">    <button type="submit" name="submit" onclick="chkCode()">이메일 인증하기</button>
+	                        <td>인증번호 입력: <input type="text" id="email_auth" name="email_auth" class="form-control form-rounded" style="display:inline-block; height:30px; width:200px; margin-bottom: 15px;" size="25" placeholder="인증번호를 입력해주세요">
+	                        <button type="submit" name="submit" class="btn btn-outline-dark" id="emailsubmit" onclick="chkCode()" style="line-height: 1.1rem; height: 30px; margin-bottom: 7px; vertical-align: middle;">이메일 인증하기</button>
 		                   </td>
 	                        </tr>
 	                        <tr>
@@ -262,7 +263,14 @@
 
 <script type="text/javascript">
 
+//엔터키 입력 이벤트
+$("#email_auth").keydown(function(key) {
 
+   if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
+      $("#emailsubmit").click();
+   }
+   
+});
 
    let chk1 = true
    const getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
@@ -378,7 +386,6 @@ function isOverRap(){
             data:$(email).val(),
             success:function(result){
                if(result==="OK"){
-                  $("#userEmail").css("background-color","aqua");
                   $("#emailChk").html("<b style='font-size:14px; color:green;'> 사용가능한 이메일입니다. </b>");
                } else{
                   $("#userEmail").css("background-color","pink");

@@ -36,11 +36,9 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 	<div style="text-align: center;">
 		<h2>${board.boardTitle}</h2>
 	</div>
-<%-- 
+<%-- <a href="javascript:history.back()">게시판으로 돌아가기</a>
 	<button onclick="location.href='<c:url value='/board/${board.boardNo}'/>'">게시판으로 돌아가기</button> --%>
-	<a href="javascript:history.back()">게시판으로 돌아가기</a>
-	<hr>
-	
+	<a href="javascript:history.back()">게시판으로 돌아가기</a><br>
 	제목: ${article.articleTitle}
 	생성일: ${article.articleCreatedAt}
 	수정일: ${article.articleModifiedAt}

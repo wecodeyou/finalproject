@@ -14,7 +14,7 @@
 
 
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
-
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
 
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"
@@ -22,36 +22,22 @@
 	crossorigin="anonymous"></script>
 
 <style>
-.left-section {
-	float: left;
-	width: 210px;
-}
+body{font-family:'Nanum Gothic Coding', monospace;}
 
-.left-section>h2 {
-	width: 210px;
-	height: 112px;
-	background: #25283D;
-	color: #fff;
-	text-align: center;
-	display: table-cell;
-	vertical-align: middle;
-}
+.greetingCon{margin:0 auto;}
 
-.left-section .left-sub-nav {
-	width: 210px;
-	border: solid #dbdbdb;
-	border-width: 0 1px;
-	box-sizing: border-box;
-}
+	.greetingCon > h1 , .wcy-main-content .greetingCon h1{font-size:42px; font-weight:normal;}
+    
+    .greetingCon > h2:before , .wcy-main-content .greetingCon h2:before{display:block; content:''; width:1px; height:25px; background: #febf14; margin:0 auto; margin-bottom: 15px;}
+  
+    .greetingCon > h2:after , .wcy-main-content .greetingCon h2:after{display:block; content:''; width:1px; height:25px; background: #febf14; margin:0 auto; margin-top: 15px;}
+    .greetingCon > h2 , .wcy-main-content .greetingCon h2{font-size:20px; font-weight:600; color:#febf14; margin-top: 50px;}
 
-.left-section .left-sub-nav>li>a {
-	padding: 10px 20px;
-	font-size: 14px;
-	display: block;
-	position: relative;
-	border-bottom: 1px solid #dbdbdb;
-	font-weight: bold;
-	color: #333;
+.wcy-main-content2{
+		width: 100%;
+		height:100%;
+		margin: 190px auto 120px;
+		overflow: hidden;
 }
 
 .right-section {
@@ -60,13 +46,13 @@
 	position: relative;
 }
 
-.right-header .right-sub-nav {
-	width: 100%;
+.wcy-main-content2 > .wcy-contents > .right-header > .right-sub-nav {
+	width: 80%;
 	background: #f4f4f4;
 	border-radius: 5px;
 	display: table;
 	table-layout: fixed;
-	margin-bottom: 50px;
+	margin: 0 auto 50px;
 	overflow: hidden;
 }
 
@@ -111,9 +97,55 @@
 	line-height: 40px;
 }
 
-p {
+.wcy-contents p {
 	line-height: 150% !important;
+	font-size:15px;
+	font-family:'Nanum Gothic Coding', monospace;
+	color: #767676;
 }
+
+.fleft{float:left !important;}
+
+article.company{
+	font-size: 14px;
+    color: #666;
+    line-height: 20px;
+}
+
+.company .txt {
+    background-color: #f7f7f7;
+    margin-top: 60px;
+    padding: 90px 0 100px;
+    height: 445px;
+}
+
+.width {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.company .txtLeft {
+    float: left;
+    width: 372px;
+}
+
+.company .txtLeft img{
+	width:372px;
+	height:300px;
+}
+
+.company .txtRight {
+    float: right;
+    width: 58%;
+    color: #6d6464;
+    text-align: left;
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 50px;
+}
+
+
+
 </style>
 
 </head>
@@ -122,38 +154,37 @@ p {
 	<jsp:include page="../include/header-sub.jsp" />
 
 
-	<main class="wcy-main-content">
-		<div class="left-section">
-			<h2>WeCodeYou</h2>
-			<ul class="left-sub-nav">
-				<li><a class="active">인삿말/소개</a></li>
-				<li><a href="<c:url value='/location' />">오시는 길</a></li>
-			</ul>
-		</div>
-
-		<div class="right-section">
+	<main class="wcy-main-content2">
+		<div class="wcy-contents">
 			<div class="right-header">
 				<ul class="right-sub-nav">
-					<li><a class="active"> 인삿말/소개 </a></li>
+					<li><a class="active"> WECODEYOU 소개 </a></li>
 				</ul>
 			</div>
-			<div class="right-contents">
-				<h4 class="contents-title">모든 프로그래머의 지침서 WCY입니다.</h4>
-				<p class="mb10">
-					[ 여러분과 함께 나아가는 IT 교육 사이트]
+			<div class="greetingCon">
+				<h1>모든 프로그래머의 지침서 WCY입니다.</h1>
+				<h2>[ 여러분과 함께 나아가는 IT 교육 사이트 ]</h2>
+				<p class="mb10 mt50">
+					"위코드유(WCY)"는 기존 IT 강의 사이트를 벗어나 커뮤니티적 성격이 추가된 새로운 형식의 교육 사이트입니다.
 				</p>
-				WCY는 기존 IT 강의 사이트를 벗어나 커뮤니티적 성격이 추가된 <br>
-				새로운 형식의 교육 사이트입니다. <br>
-				프로그래머분들이 필요한 정보와 기능을 지원하기위해 항상 최선을 다하겠습니다.<br>
-				
-				<div>
-					<ul>
-						<li>여기에 이미지</li>
-						<li>2020년 새로운 교육 플랫폼을 구상하던 우리는 프로그래머들이 막혔을때  
-						기존의 강의 사이트의 영상과 질의 응답 커뮤니티 등의 기능을 모두 필요로 한다는것을 알았습니다.
-						이에 WCY는 모두를 충족 시키는 사이트가 되는것을 자처하며 여러분의 개발에 든든한 파트너가 되겠습니다.</li>
-					</ul>
-				</div>
+				<p>
+					모든 프로그래머에게 필요한 정보와 기능을 지원하기 위해 항상 최선을 다하겠습니다.
+				</p>
+				<article class="company">
+					<div class="txt">
+						<div class="width">
+							<div class="txtLeft">
+							<img src="<c:url value='/img/commons/company (1).jpg'/>" alt="" />
+							</div>
+							<div class="txtRight">
+								<span class="fs25b">WECODEYOU</span> 는<br>
+								새로운 IT 교육 플랫폼 구상을 위해 노력해 왔습니다. 우리는 프로그래머들이 코딩에 막혔을 때 기존의 강의 사이트의 영상과 질의 응답 커뮤니티 등의 기능을 모두 필요로 한다는 것을 알았습니다.
+								이에 WCY는 이 모두를 충족시키는 사이트가 되는 것을 자처하며 여러분의 개발에 든든한 파트너가 되겠습니다.
+								또한 수강생들의 실무 능력에 대한 적응력을 키우는데 초점을 맞추어 강의, 교육 컨설팅 뿐만 아니라 수강생과 수료생에 대한 취업지원에도 온 힘을 다하겠습니다.
+							</div>
+						</div>
+					</div>
+				</article>
 			</div>
 		</div>
 	</main>

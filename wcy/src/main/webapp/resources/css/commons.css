@@ -44,6 +44,7 @@
     .fs13{font-size: 13px !important;}
     .fs14{font-size: 14px !important;}
     .fs14b{font-size: 14px !important; font-weight: bold;}
+    .fs25b{font-size: 25px !important; font-weight: bold;}
     .fs15{font-size: 15px !important;}
     
     .w200{width:200px !important;}
@@ -64,9 +65,10 @@
 	
 	.page-width > h1 , .wcy-main-content .page-width h1{font-size:42px; font-weight:normal;}
     
-    .page-width > h2:before , .wcy-main-content .page-width h2:before{display:block; content:''; width:30px; height:5px; background: #607D8B; margin:0 auto; margin-bottom: 15px;}
-    .page-width > h2:after , .wcy-main-content .page-width h2:after{display:block; content:''; width:30px; height:5px; background: #607D8B; margin:0 auto; margin-top: 15px;}
-    .page-width > h2 , .wcy-main-content .page-width h2{font-size:20px; font-weight:600; color:#607D8B; margin-top: 50px;}
+    .page-width > h2:before , .wcy-main-content .page-width h2:before{display:block; content:''; width:1px; height:25px; background: #febf14; margin:0 auto; margin-bottom: 15px;}
+  
+    .page-width > h2:after , .wcy-main-content .page-width h2:after{display:block; content:''; width:1px; height:25px; background: #febf14; margin:0 auto; margin-top: 15px;}
+    .page-width > h2 , .wcy-main-content .page-width h2{font-size:20px; font-weight:600; color:#febf14; margin-top: 50px;}
     
     
     .curriculum{margin-top: 60px; text-align: left;}
