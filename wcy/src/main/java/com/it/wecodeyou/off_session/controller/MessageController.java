@@ -1,13 +1,13 @@
 package com.it.wecodeyou.off_session.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 import com.it.wecodeyou.off_session.model.LectureMessage;
+import com.it.wecodeyou.off_session.model.MessageType;
 
 @Controller
 public class MessageController {
@@ -38,4 +38,5 @@ public class MessageController {
 		System.out.println("Message Request: /message/note");
 		template.convertAndSend("/topic/off/room/" + message.getId(), message);
 	}
+	
 }

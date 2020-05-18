@@ -153,14 +153,16 @@ p {
 				
 				
 				</p>
-				
-	<table border = 0>
-	
-	<c:forEach var = "c" items = '${lec_list}'>
+				<h1>${msg}</h1>
+	<table border = 0><tr>
+	<th>강의명</th><th>남은일수</th></tr>
+	<c:forEach var = "c" items = '${pro_lec_list}' varStatus ="status" >
 		<tr>
-			<td><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>">${c.productName}</a></td><td>${c.productCreatedAt}</td>		
+			<td><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>">${c.productName}</a></td>			
+			<td>${days[status.index]}</td>
 		</tr>
-	</c:forEach>	
+	</c:forEach>
+
 	</table>
 				
 				

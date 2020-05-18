@@ -1,8 +1,7 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.util.ArrayList"%>
 
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
@@ -10,10 +9,10 @@
 <html lang="ko">
 <head>
 
-<link href="<c:url value='/resources/vendor/calcss/fullcalendar.min.css' />" rel='stylesheet' />
-<link href="<c:url value='/resources/vendor/calcss/bootstrap.min.css' />" rel='stylesheet' />
-<link href="<c:url value='/resources/vendor/calcss/select2.min.css' />" rel='stylesheet' />
-<link href="<c:url value='/resources/vendor/calcss/calendar.css' />" rel='stylesheet' />
+<link href="<c:url value='/resources/vendor/calendar/calcss/fullcalendar.min.css' />" rel='stylesheet' />
+<link href="<c:url value='/resources/vendor/calendar/calcss/bootstrap.min.css' />" rel='stylesheet' />
+<link href="<c:url value='/resources/vendor/calendar/calcss/select2.min.css' />" rel='stylesheet' />
+<link href="<c:url value='/resources/vendor/calendar/calcss/calendar.css' />" rel='stylesheet' />
 
 
 <link
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var calendar = new Calendar($('#calendar'),{
 
-		  
+	  height:10,
 	  header: {
 	    left: 'today, prevYear, nextYear, viewWeekends',
 	    center: 'prev, title, next',
@@ -61,23 +60,16 @@ var calendar = new Calendar($('#calendar'),{
 		
 	  events: [ /* db에서 이벤트 받아옴 */
           
-	     	<c:forEach var="el" items="${el}">
 		
 				{
-				   id : '${el.schedule_no}'
-    			 , title : '${el.schedule_title}' // off_no ?
-     	 		 , start : '${el.schedule_start_date}'
-   				 , end : '${el.schedule_end_date}'
-   				 , backgroundColor : '${el.schedule_bg_color}'
-   				 , description : '${el.schedule_detail}' 				 
+     	 		   start : '${off.offStartAt}'
+   				 , end : '${off.offEndAt}'
    				 , allday : true
  	 			},
-				</c:forEach>
- 	 	
 			],
 
 
-	  eventResize: true,
+	  eventResize: false,
 	  select: false,
 	  eventClick: false, 
 	  locale: 'ko',
@@ -115,7 +107,10 @@ var calendar = new Calendar($('#calendar'),{
 	  
 
 	});
-
+/* 	if($('#modal2').is(':visible')){		
+		calendar.render();
+	} */
+	
 	calendar.render();
 });
 </script>
@@ -124,22 +119,31 @@ var calendar = new Calendar($('#calendar'),{
 
 <body>
 
-	<div class="container">
-
-		<div id="wrapper">
-			<div id="loading"></div>
-			<div id="calendar"></div>
+<div class="modal fade" id="modal2">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">FullCalendar</h4>
+			</div>
+			<div class="modal-body" >
+			<div class = "container2">
+				<div id="calendar"></div>
+			</div>
+			</div>
 		</div>
-
 	</div>
+</div>
+
 	<!-- /.container -->
 
-<script src = "<c:url value='/resources/vendor/caljs/jquery.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/bootstrap.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/moment.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/fullcalendar.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/select2.min.js' />"></script>
-<script src = "<c:url value='/resources/vendor/caljs/ko.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/jquery.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/bootstrap.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/moment.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/fullcalendar.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/select2.min.js' />"></script>
+<script src = "<c:url value='/resources/vendor/calendar/caljs/ko.js' />"></script>
 
 
 </body>

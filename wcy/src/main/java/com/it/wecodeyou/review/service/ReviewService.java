@@ -28,8 +28,8 @@ public class ReviewService implements IReviewService{
 	}
 
 	@Override
-	public ArrayList<ReviewVO> getAllReviewByLec(ReviewVO rvo) {
-		return null;
+	public ArrayList<ReviewVO> getAllReviewByLec(Integer reviewProductNo) {
+		return dao.getAllReviewByLec(reviewProductNo);
 	}
 
 	@Override

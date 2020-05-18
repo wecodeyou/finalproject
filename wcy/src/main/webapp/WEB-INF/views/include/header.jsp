@@ -186,7 +186,7 @@
 				<c:if test="${login.userType == 2}">
 					<li><a href="<c:url value='/admin' />"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">관리자페이지</p></i></a></li>
 				</c:if>
-				<li><a href="#"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
+				<li><a href="<c:url value='board/2'/>"><i class="fa fa-headset"><p class="headset-p" style="font-size:11px; padding-top:5px;">고객센터</p></i></a></li>
 			</ul>
 		</nav>
 		
@@ -261,8 +261,8 @@
                   <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=107' />">Database</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=R Programing' />">R Programing</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Hadoop Programing' />">Hadoop Programing</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=R Programming' />">R Programing</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Hadoop Programming' />">Hadoop Programing</a></li>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Oracle(WDP)' />">Oracle(WDP)</a></li>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Oracle(OAEC)' />">Oracle(OAEC)</a></li>
                         </ul>
@@ -345,8 +345,8 @@
             <div class="sub-menu-1">
                 <ul>
                   
-                  <li class="hover-me"><a href="#">자유게시판</a></li>
-                  <li class="hover-me"><a href="#">질문게시판</a>
+                  <li class="hover-me"><a href="<c:url value='board/1'/>">자유게시판</a></li>
+                  <li class="hover-me"><a href="<c:url value='board/4'/>">질문게시판</a>
                      <div class="sub-menu-2">
                         <ul>
                            <li style="width:300px;"><a href="#">Code</a></li>
@@ -354,7 +354,7 @@
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">공유게시판</a>
+                  <li class="hover-me"><a href="<c:url value='board/7'/>">공유게시판</a>
                      <div class="sub-menu-2">
                         <ul>
                            <li style="width:300px;"><a href="#">Teach</a></li>
@@ -362,8 +362,8 @@
                         </ul>                     
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">정기모임/스터디</a></li>
-                  <li class="hover-me"><a href="#">IT행사</a></li>
+                  <li class="hover-me"><a href="<c:url value='board/5'/>">정기모임/스터디</a></li>
+                  <li class="hover-me"><a href="<c:url value='board/6'/>">IT행사</a></li>
                </ul>
             </div>
          </li>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.wecodeyou.sub_product.repository.ISubProductMapper">
+
+   <resultMap id="SpMap" type="com.it.wecodeyou.sub_product.model.SubProductVO">
+      <id property="spId" column="sp_id" />
+      <result property="spProId" column="sp_pro_id" />
+      <result property="spLecName" column="sp_lec_name" />
+      <result property="spThum" column="sp_thum" />
+      <result property="spBook" column="sp_book" />
+     
+   </resultMap>
+
+   <!-- sp_pro_id를 받아서 해당 정보 가져오기 -->
+   <select id="showSubPro" resultMap="SpMap">
+      SELECT *
+      FROM sub_product
+      WHERE sp_pro_id=#{spProId}
+   </select>
+  
+</mapper>
+
+

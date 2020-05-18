@@ -156,8 +156,8 @@
                   <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=107' />">Database</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=R Programing' />">R Programing</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Hadoop Programing' />">Hadoop Programing</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=R Programming' />">R Programing</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Hadoop Programming' />">Hadoop Programing</a></li>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Oracle(WDP)' />">Oracle(WDP)</a></li>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Oracle(OAEC)' />">Oracle(OAEC)</a></li>
                         </ul>
