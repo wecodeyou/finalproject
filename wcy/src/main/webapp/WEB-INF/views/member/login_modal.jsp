@@ -358,13 +358,13 @@ $(function(){
 	               
 	               if(data === "emailFail") {
 	                  $('#emailCheck').html('<b style="font-size:14px;color:red;">존재하지 않는 이메일입니다. 회원가입 해주세요.</b>');
-	                  $('#"loginUserPw"').val("");
+	                  $('#loginUserPw').val("");
 	                  $('#loginUserEmail').focus();
 	                  chk2 = false;
 	                } else if(data === "pwFail") {
 	                  $('#pwCheck').html('<b style="font-size:14px;color:red;">비밀번호가 틀렸습니다.</b>');
-	                  $('#"loginUserPw"').val("");
-	                  $('#"loginUserPw"').focus();
+	                  $('#loginUserPw').val("");
+	                  $('#loginUserPw').focus();
 	                  chk2 = false;
 	               } else if(data === "loginSuccess") {
 	                  self.location="/";
@@ -389,7 +389,7 @@ $(function(){
 			if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
 				$("#login-btn").click();
 			}
-
+			
 		});
 
 	}); //end - jquery

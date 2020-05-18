@@ -36,17 +36,17 @@
 
     <footer id="footer" class="footer">
 		<div class="familylogo">
-			<a href="https://www.webjangi.com/"><img src="<c:url value='/img/footer/familylogo01.png'/>" title="웹쟁이" /></a>
-			<a href="https://fontawesome.com/"><img src="<c:url value='/img/footer/familylogo02.png'/>" title="fontawesome" /></a>
-			<a href="https://api.jquery.com/"><img src="<c:url value='/img/footer/familylogo03.png'/>" title="jQuery" /></a>
-			<a href="https://www.google.com/"><img src="<c:url value='/img/footer/familylogo04.png'/>" title="Google" /></a>
-			<a href="https://pixabay.com/ko/"><img src="<c:url value='/img/footer/familylogo05.png'/>" title="pixabay" /></a>
-			<a href="https://mvnrepository.com/"><img src="<c:url value='/img/footer/familylogo06.png'/>" title="mvn repository" /></a>
-			<a href="https://getbootstrap.com/"><img src="<c:url value='/img/footer/familylogo07.png'/>" title="Bootstrap" /></a>
-			<a href="https://okky.kr/"><img src="<c:url value='/img/footer/familylogo08.png'/>" title="OKKY" /></a>
-			<a href="https://stackoverflow.com/"><img src="<c:url value='/img/footer/familylogo09.png'/>" title="stackoverflow" /></a>
-			<a href="https://github.com/"><img src="<c:url value='/img/footer/familylogo10.png'/>" title="GitHub" /></a>
-			<a href="https://opentutorials.org/"><img src="<c:url value='/img/footer/familylogo11.png'/>" title="생활코딩" /></a>
+			<a href="https://www.webjangi.com/" target="_blank"><img src="<c:url value='/img/footer/familylogo01.png'/>" title="웹쟁이" /></a>
+			<a href="https://fontawesome.com/" target="_blank"><img src="<c:url value='/img/footer/familylogo02.png'/>" title="fontawesome" /></a>
+			<a href="https://api.jquery.com/" target="_blank"><img src="<c:url value='/img/footer/familylogo03.png'/>" title="jQuery" /></a>
+			<a href="https://www.google.com/" target="_blank"><img src="<c:url value='/img/footer/familylogo04.png'/>" title="Google" /></a>
+			<a href="https://pixabay.com/ko/" target="_blank"><img src="<c:url value='/img/footer/familylogo05.png'/>" title="pixabay" /></a>
+			<a href="https://mvnrepository.com/" target="_blank"><img src="<c:url value='/img/footer/familylogo06.png'/>" title="mvn repository" /></a>
+			<a href="https://getbootstrap.com/" target="_blank"><img src="<c:url value='/img/footer/familylogo07.png'/>" title="Bootstrap" /></a>
+			<a href="https://okky.kr/" target="_blank"><img src="<c:url value='/img/footer/familylogo08.png'/>" title="OKKY" /></a>
+			<a href="https://stackoverflow.com/" target="_blank"><img src="<c:url value='/img/footer/familylogo09.png'/>" title="stackoverflow" /></a>
+			<a href="https://github.com/" target="_blank"><img src="<c:url value='/img/footer/familylogo10.png'/>" title="GitHub" /></a>
+			<a href="https://opentutorials.org/" target="_blank"><img src="<c:url value='/img/footer/familylogo11.png'/>" title="생활코딩" /></a>
 		</div>
 		<div class="footerinfo">
 			<div class="logo">
@@ -103,6 +103,7 @@
 	           controls:false,
 	           moveSlides:1,
 	           shrinkItems:true,
+	           touchEnabled:false
 	        });
 	      });
     </script> 

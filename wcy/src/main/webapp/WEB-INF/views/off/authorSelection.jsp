@@ -22,46 +22,20 @@
 <body>
 	<h2>오프라인 강의 시작하기</h2>
 	<p id="message"></p>
-	<div>
-		<h3 id="message"></h3>
-		<h3>아이디를 입력</h3>
-		<form action="<c:url value='/off/myclass' />" method="POST">
-			<input type="text" id="id-form" name="userEmail" /> <input
-				type="submit" id="id-submit" value="제출" />
-		</form>
-	</div>
+
 	<div id="result-panel">
 		<table border="2">
-			<c:forEach var="o" items="${offList}">
+			<c:forEach var="o" items="${myClass}">
 				<tr>
 					<td>${o.productName}</td>
 					<td>${o.offPlace}</td>
-					<td><button onclick='createSession(${o.offNo} )' >강의 시작하기</button></td>
+					<td><button onclick="location.href = '<c:url value="/session/instructor/lecture" />/${o.productNo}'" >강의 시작하기</button></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
 <script type="text/javascript">
-	function createSession(offNo){
-		console.log("createSession(), 인자는 " + offNo);
-		
-		const url = '/off/instructor/startlecture/' + offNo;	
-		$.ajax({
-			type: "POST",
-			url : url,
-			success: function(data){
-				console.log("received output: " + data);
-				if(data === "off_start"){
-					location.href = "/off/instructor/lecture/" + offNo;
-				} else{
-					$('#message').text("서버에러가 발생하였습니다");
-				}
-			},
-			error: function(request, status, error){
-				$('#message').text("통신에 실패하였습니다");
-			}
-		}); /* end ajax */			
-	}
+
 </script>
 </body>
 </html>

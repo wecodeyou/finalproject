@@ -125,6 +125,34 @@ p {
 
 .bold{font-weight: 600 !important;}
 
+.right-contents dl{float:left;}
+.right-contents dl dt{
+	width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+    vertical-align: middle;
+    text-align:center;
+    line-height: 98px;
+    font-weight: bold;
+    position: relative;
+    bottom: 30px;
+    z-index: 1;
+}
+.right-contents dl dd{
+	/* width: 550px; */
+    color: #111;
+    font-size: 18px;
+    display: inline-block;
+    text-align: left;
+    padding: 15px 20px;
+    line-height: 24px;
+}
+.fleft{float:left !important;}
+.right-contents dl dd p{font-size: 15px;}
+
 </style>
 
 </head>
@@ -134,16 +162,7 @@ p {
 
 
 	<main class="wcy-main-content">
-		<div class="left-section">
-			<h2>WeCodeYou</h2>
-			<ul class="left-sub-nav">
-				<li><a href="#">인삿말</a></li>
-				<li><a href="#">WCY 소개</a></li>
-				<li><a class="active" href="#">오시는 길</a></li>
-			</ul>
-		</div>
-
-		<div class="right-section">
+		<div class="wcy-contents">
 			<div class="right-header">
 				<ul class="right-sub-nav">
 					<li><a class="active" href="javascript:mapchoiceJ();"> 종로 </a></li>
@@ -151,13 +170,29 @@ p {
 				</ul>
 				
 				<div class="right-contents jongro">
-					<h4 class="contents-title">WeCodeYou <span class="bold">종로점</span> 오시는 길 안내</h4>
+					<h4 class="contents-title fleft">WeCodeYou <span class="bold">종로점</span> 오시는 길 안내</h4>
 					<div id="map1" style="width:100%; height:350px;"></div>
+					<dl>
+						<dt>주소</dt>
+						<dd>서울특별시 종로구 돈화문로 26, 4층<p>(서울특별시 종로구 묘동 56 단성사빌딩)</p></dd>
+					</dl>
+					<dl>
+						<dt>대중교통</dt>
+						<dd>지하철: 3호선 종로3가역 9번출구 / 1호선 종로3가역 10번출구<br>버스: 종로12 마을버스 하차 후 도보 1분</dd>
+					</dl>
 				</div>
 				
 				<div class="right-contents gangnam">
-					<h4 class="contents-title">WeCodeYou <span class="bold">강남점</span> 오시는 길 안내</h4>
+					<h4 class="contents-title fleft">WeCodeYou <span class="bold">강남점</span> 오시는 길 안내</h4>
 					<div id="map2" style="width:100%; height:350px;"></div>
+					<dl>
+						<dt>주소</dt>
+						<dd>서울특별시 강남구 강남대로84길 16 제이스타워<p>(서울특별시 강남구 역삼동 826-27)</p></dd>
+					</dl>
+					<dl>
+						<dt>대중교통</dt>
+						<dd>지하철: 2호선 /신분당선 강남역 2/3번 출구<br>버스: 140,402,400,421,440번 등</dd>
+					</dl>
 				</div>
 				
 			</div>

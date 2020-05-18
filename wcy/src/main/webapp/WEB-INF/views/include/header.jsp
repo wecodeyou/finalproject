@@ -197,8 +197,7 @@
      	 <li><a href="<c:url value='/greeting' />">WeCodeYou<span>&#x25BE;</span></a>
             <div class="sub-menu-1">
                 <ul>
-                  <li class="hover-me"><a href="<c:url value='/greeting' />">인삿말</a></li>
-                  <li class="hover-me"><a href="<c:url value='/intro' />">소개</a></li>
+                  <li class="hover-me"><a href="<c:url value='/greeting' />">인삿말/소개</a></li>
                   <li class="hover-me"><a href="<c:url value='/location' />">오시는 길</a></li>  
                </ul>
             </div>
@@ -208,14 +207,6 @@
          	<a href="#">현장 강의<span>&#x25BE;</span></a>
             <div class="sub-menu-1">	
                <ul>
-                  <li class="hover-me"><a href="<c:url value='/curriculum/classroom' />">강의실 둘러보기</a>
-                 	 <div class="sub-menu-2">
-                 	  <ul>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/classroom' />">종로점</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/classroom' />">강남점</a></li>
-                      </ul>
-                     </div>
-                  </li>
                   <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=102' />">Programming</a>
                      <div class="sub-menu-2">
                         <ul>
@@ -270,8 +261,8 @@
                   <li class="hover-me"><a href="<c:url value='/curriculum/on_main?seq=107' />">Database</a>
                      <div class="sub-menu-2">
                         <ul>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=R Programing' />">R Programing</a></li>
-                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Hadoop Programing' />">Hadoop Programing</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=R Programming' />">R Programing</a></li>
+                           <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Hadoop Programming' />">Hadoop Programing</a></li>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Oracle(WDP)' />">Oracle(WDP)</a></li>
                            <li style="width:300px;"><a href="<c:url value='/curriculum/sub?s=Oracle(OAEC)' />">Oracle(OAEC)</a></li>
                         </ul>
@@ -377,7 +368,7 @@
             </div>
          </li>
          
-         <li><a href="#">도움이 되는 사이트</a></li>
+         <li><a href="<c:url value='/helpsite' />">도움이 되는 사이트</a></li>
          <li><a href="#">공지사항</a></li>
          
       </ul>

@@ -67,6 +67,10 @@ public class HomeController {
 	public String locationPage() {
 		return "intro/location";
 	}
+	@GetMapping("/helpsite")
+	public String helpsitePage() {
+		return "help-site/help-site";
+	}
 	
 	@GetMapping("/test01")
 	public String test01() {

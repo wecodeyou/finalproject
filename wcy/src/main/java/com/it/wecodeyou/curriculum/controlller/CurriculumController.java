@@ -1,6 +1,7 @@
 package com.it.wecodeyou.curriculum.controlller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +16,10 @@ import com.it.wecodeyou.curriculum.service.ICurriculumService;
 import com.it.wecodeyou.episode.service.IEpisodeService;
 import com.it.wecodeyou.off.service.IOffService;
 import com.it.wecodeyou.on.service.IOnService;
+import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
+import com.it.wecodeyou.review.model.ReviewVO;
+import com.it.wecodeyou.review.service.ReviewService;
 
 @RestController
 @RequestMapping("/curriculum")
@@ -29,6 +33,9 @@ public class CurriculumController {
    
    @Autowired
    private IEpisodeService eservice;
+
+   @Autowired
+   private ReviewService rservice;
    
    @Autowired
    private IOnService onservice;
@@ -53,19 +60,32 @@ public class CurriculumController {
 	//커리큘럼소개 sub 요청 (==> 온라인 detatil page, 오프라인 detatil 페이지 구분. 맵핑 요망)
 	@GetMapping("/sub")
 	public ModelAndView curriculumSub(ModelAndView mv, HttpServletRequest req) throws SQLException {
+		ProductVO pvo = pservice.getOneByName(req.getParameter("s"));
 		
+		ArrayList<ReviewVO> r_list = rservice.getAllReviewByLec(pvo.getProductNo());
+	    int sum = 0;
+		for (int i = 0; i < r_list.size(); i++) {
+			sum += r_list.get(i).getReviewStar();
+		}
+		float avg = 0;
+		if(r_list.size() != 0) {
+			avg = sum/r_list.size(); 
+		}
 		mv.addObject("s", req.getParameter("s"));
-		mv.addObject("pro",pservice.getOneByName(req.getParameter("s")));
-		System.out.println(pservice.getOneByName(req.getParameter("s")).getProductNo());
-		if(pservice.getOneByName(req.getParameter("s")).getProductType().equals("1")) {
+		mv.addObject("pro",pvo);
+		mv.addObject("review_num",r_list.size());	// 수강후기 갯수
+		mv.addObject("avg",avg);	// 별점 평균
+		mv.addObject("review",r_list);
+		System.out.println(pvo.getProductNo());
+		if(pvo.getProductType().equals("1")) {
 			mv.setViewName("curriculum/offDetail");
-			mv.addObject("off",offservice.getInfoByProductNo((pservice.getOneByName(req.getParameter("s")).getProductNo())));
+			mv.addObject("off",offservice.getInfoByProductNo(pvo.getProductNo()));
 			System.out.println("현장강의 선택");
 		}else {
 			
 			//에피소드 리스트 
-			mv.addObject("episodeList",eservice.getAllEpisode1(pservice.getOneByName(req.getParameter("s")).getProductNo()));
-			mv.addObject("sensei",onservice.getAuthor(pservice.getOneByName(req.getParameter("s")).getProductNo()));
+			mv.addObject("episodeList",eservice.getAllEpisode1(pvo.getProductNo()));
+			mv.addObject("sensei",onservice.getAuthor(pvo.getProductNo()));
 			mv.setViewName("curriculum/onDetail");
 			System.out.println("온라인 선택");
 		}

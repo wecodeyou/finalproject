@@ -24,6 +24,15 @@
       <result property="subDetail8" column="sub_detail8" />
       <result property="subTitle9" column="sub_title9" />
       <result property="subDetail9" column="sub_detail9" />
+      <result property="subImg1" column="sub_img1" />
+      <result property="subImg2" column="sub_img2" />
+      <result property="subImg3" column="sub_img3" />
+      <result property="subImg4" column="sub_img4" />
+      <result property="subImg5" column="sub_img5" />
+      <result property="subImg6" column="sub_img6" />
+      <result property="subImg7" column="sub_img7" />
+      <result property="subImg8" column="sub_img8" />
+      <result property="subImg9" column="sub_img9" />
    </resultMap>
 
    <!-- seq를 받아서 해당 정보 가져오기 -->
