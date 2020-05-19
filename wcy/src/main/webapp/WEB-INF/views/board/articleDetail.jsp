@@ -28,43 +28,39 @@
 
 <title>WE CODE YOU | 커뮤니티</title>
 <style>
+
 .post-reply {
-	margin-top:1px !important;
-	margin-bottom:1px !important;
+	margin-top: 1px !important;
+	margin-bottom: 1px !important;
 }
 
 .a_content {
-   margin:50px;
-   /* text-align:center; */
-
+	margin: 50px;
+	/* text-align:center; */
 }
 
 .reply_input {
-   width:100%;
-   border:1px;
-
+	width: 100%;
+	border: 1px;
 }
 
 .r_content {
-	margin-top:5px;
-	margin-bottom:14px;
-	font-size:15px;
-	
+	margin-top: 5px;
+	margin-bottom: 14px;
+	font-size: 15px;
 }
 
 .r_writer {
-	margin-top:5px;
-	margin-bottom:10px;
-	font-size:13px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-size: 13px;
 }
-
 
 .hashtag {
 	color: #3A73FB;
 	font-size: 11px;
 	font-weight: bold;
 }
-
 
 .hash_tag {
 	display: inline-block;
@@ -73,17 +69,16 @@
 	text-align: center;
 	font-size: 13px;
 	margin: 3px 3px;
-	margin-bottom:4px;
-	margin-right:1px;
-	padding: 4px 9px;
+	margin-bottom: 4px;
+	margin-right: 1px; padding : 4px 9px;
 	background: #dfedff;
-	border:0.3px solid #d5e7ff;
-	
+	border: 0.3px solid #d5e7ff;
+	padding: 4px 9px;
 }
 
 .hash_tag:hover {
 	background: white;
-	border:0.3px solid #c0dbff;
+	border: 0.3px solid #c0dbff;
 }
 
 .wcy-main-content {
@@ -211,7 +206,7 @@
 	overflow-x: hidden;
 	overflow-y: hidden;
 	text-align: left;
-	font-size:17px;
+	font-size: 17px;
 }
 </style>
 </head>
@@ -333,12 +328,11 @@
 										<h5 class="card-header">Search</h5>
 										<div class="card-body">
 											<div class="input-group">
-												<input type="text" class="form-control"
-													placeholder="Search for..."> <span
-													class="input-group-btn">
-													<button class="btn btn-secondary" type="button">Go!</button>
-												</span>
+												<input  id="search-input-article" type="text" class="form-control" placeholder="Search for..."/>
+													<button id="search-btn-article" class="btn btn-secondary" type="button">검색</button>
+							
 											</div>
+											
 										</div>
 									</div>
 
@@ -449,6 +443,37 @@ $('.hash_tag').click(function() {
 	//alert("clicked: " + id_check);
 	location.href = '/tag/searchProductByTag/'+ id_check;
 });
+
+</script>
+
+<script>
+//start jQuery
+$(function() {
+
+	//검색 버튼 이벤트 처리
+	$("#search-btn-article").click(
+			function() {
+				console.log("검색 버튼이 클릭됨!");
+				const keyword = $("#search-input-article").val();
+				
+				console.log("검색어: " + keyword);
+
+				const condition = "titleContent";
+				var url = "/search?q=" + keyword;
+				location.href = "/search?q=" + keyword + "&condition=" + condition;
+
+			});
+
+	//엔터키 입력 이벤트
+	$("#search-input-article").keydown(function(key) {
+
+		if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
+			$("#search-btn-article").click();
+		}
+
+	});
+
+});//end jQuery
 
 </script>
 

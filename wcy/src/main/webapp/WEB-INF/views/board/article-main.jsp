@@ -149,6 +149,40 @@
 	line-height: 40px;
 	text-align: left;
 }
+
+#keywordInput {
+    border-radius: 5px;
+    border:none;
+    opacity:.8;
+   	border: 1px solid #d3e0f1;
+   	background:white;
+    margin-left:-1px;
+    margin-right:-1px;
+    padding-top:20px;
+    padding-bottom:19px;
+    padding-left:10px;
+    adding-right:10px;
+    width: 419px;
+    height: 15px;    
+    font-size:18px;
+}
+
+#keywordInput:hover{
+	background:white;
+	border: 1px solid #93cfff;
+	 border-radius: 5px;
+}
+#keywordInput:focus{
+	background:white;
+	border: 1px solid #93cfff;
+}
+
+#searchBtn{
+	display:inline;height:41px;width:5%;
+	
+	border-radius: 5px;
+}
+
 </style>
 </head>
 
@@ -171,8 +205,18 @@
 			<div class="right-section-article">
 				<div class="right-contents-article">
 					<h4 class="contents-title-article">${board.boardTitle}</h4>
+					<div>
+						<select id="condition" class="form-control" name="condition" 
+						 style="display:inline;height:41px;width:16%;margin-top:1px; margin-left:10px;">
+							<option value="title">제목</option>
+							<option value="titleContent">제목+내용</option>
+							<option value="hashtag">해시태그</option>
+						</select>
+						<input type="text" id="keywordInput"/>
+						<button type="button" id="searchBtn">검색</button>
+					</div>
 					<div class="text-right">
-							<a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">
+						<a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">
 								<i class="fas fa-feather"></i><span style="color:#313D55;"> 글쓰기</span></a><br><br>
 						</div>
 					<div class="contents-box">
@@ -196,9 +240,7 @@
 													<c:if test="${entry.key eq status.index}">
 														<c:if test="${fn:length(entry.value) > 0}">
 															<c:forEach items="${entry.value}" var="tagName">
-																<a
-																	href="<c:url value='/tag/searchProductByTag/${tagName}'/>"
-																	class="hashtag">${tagName}</a>
+																<a href="#" type="button"class="hashtag">${tagName}</a>
 															</c:forEach>
 															<br>
 														</c:if>
@@ -259,6 +301,7 @@
 
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
+	<script src="<c:url value = "/js/search-filter.js"/>"></script>
 	
 	<script>
 	//start jQuery
