@@ -148,6 +148,7 @@ public class BoardController {
 		ArticleVO avo = articleService.getOneInfo(articleNo);
 		BoardVO bvo = boardService.getInfoByNo(avo.getArticleBoardNo());
 		MemberVO uvo = null;
+		
 		List<ReplyUserVO> replyList = replyService.listByArticle(articleNo);
 		try {
 			uvo = memberService.getOneInfo(avo.getArticleWriter());
@@ -158,6 +159,8 @@ public class BoardController {
 		System.out.println( "User : " + uvo.toString());
 		System.out.println("Board : " + bvo.toString());
 		System.out.println("Total Replies : " + replyList.size());
+		System.out.println("tags: " + tagService.getTagsByArticle(articleNo));
+		mv.addObject("tag", tagService.getTagsByArticle(articleNo));
 		mv.addObject("user", uvo);
 		mv.addObject("board", bvo);
 		mv.addObject("article", avo);

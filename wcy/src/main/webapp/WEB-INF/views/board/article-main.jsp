@@ -22,8 +22,6 @@
 <link rel="stylesheet" href="<c:url value='/css/search.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/tag.css'/>">
 
-<!-- 사용중인건지..? 확인하기 -->
-
 <title>WE CODE YOU | 커뮤니티</title>
 <style>
 .wcy-main-content {
@@ -36,12 +34,18 @@
 	text-align: left;
 }
 
+
 .article-gradient-tr {
 	background: #c3cfde;
 	opacity:0.8;
 	font-size:13px;
 }
 
+.hashtag {
+	color: #3A73FB;
+	font-size:11px;
+	font-weight: bold;
+}
 
 .write-btn {
 	text-align: left !important;
@@ -168,7 +172,8 @@
 				<div class="right-contents-article">
 					<h4 class="contents-title-article">${board.boardTitle}</h4>
 					<div class="text-right">
-							<a class="write-btn" href="btn btn-outline-primary">글쓰기</a><br><br>
+							<a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">
+								<i class="fas fa-feather"></i><span style="color:#313D55;"> 글쓰기</span></a><br><br>
 						</div>
 					<div class="contents-box">
 						<table class="table table-hover shadow p-3 mb-5 bg-white rounded">
@@ -204,8 +209,8 @@
 											</div>
 										</td>
 										<td style="text-align:center;">${a.articleWriter}</td>
-										<td style="text-align:center;"><fmt:formatDate value="${a.articleCreatedAt}"
-												pattern="yyyy.MM.dd  kk:mm" /></td>
+										<td style="text-align:center;">
+											<fmt:formatDate value="${a.articleCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></td>
 										<td style="text-align:center;">${a.articleClicks}</td>
 									</tr>
 								</c:forEach>
@@ -234,7 +239,8 @@
 								<c:if test="${pc.next}">
 									<li class="page_li"><a class="page_link"
 										href="<c:url value='/board/${board.boardNo}?
-							page=${pc.endPage+1}&countPerPage=${pc.paging.countPerPage}'/>">다음</a>
+							page=${pc.endPage+1}&countPerPage=${pc.paging.countPerPage}'/>">
+								<i class="fas fa-forward"></i></a>
 								</c:if>
 							</ul>
 						</div>
@@ -253,6 +259,47 @@
 
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
+	
+	<script>
+	//start jQuery
+	$(function() {
+
+		//목록 개수가 변동하는 이벤트 처리
+		$("#count-per-page .btn-izone").click(function() {
+			console.log("목록 버튼이 클릭됨!");
+			console.log($(this).val());
+			let count = $(this).val();
+			//location.href = "/board/list?countPerPage=" + count;
+		});
+
+		//검색 버튼 이벤트 처리
+		$("#searchBtn").click(
+				function() {
+					console.log("검색 버튼이 클릭됨!");
+					const keyword = $("#keywordInput").val();
+					console.log("검색어: " + keyword);
+
+					const condition = $("#condition option:selected").val();
+					console.log("검색 조건: " + condition);
+
+					location.href = "/search/filter?q=" + keyword
+							+ "&condition=" + condition;
+
+				});
+
+		//엔터키 입력 이벤트
+		$("#keywordInput").keydown(function(key) {
+
+			if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
+				$("#searchBtn").click();
+			}
+
+		});
+
+	});//end jQuery
+</script>
+
+
 </body>
 
 <jsp:include page="../include/footer.jsp" />

@@ -295,3 +295,4 @@
 		location.href = '/tag/searchProductByTag/'+ id_check;
 	});
 	
+	

@@ -106,6 +106,16 @@ public class TagService implements ITagService{
 		return dao.getProductByHashtag(svo);
 	}
 
+	@Override
+	public ArrayList<TagVO> getTagsByArticle(Integer articleNo) {
+		return dao.getTagsByArticle(articleNo);
+	}
+
+	@Override
+	public ArrayList<TagVO> getTagsByProduct(Integer productNo) {
+		return dao.getTagsByProduct(productNo);
+	}
+
 
 
 
