@@ -401,6 +401,11 @@ $(function(){
 	  console.log('Name: ' + profile.getName());
 	  console.log('Image URL: ' + profile.getImageUrl());
 	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	  
+      emailField.setAttribute("value", profile.getId());
+      birthField.setAttribute("value", birth);
+      nickField.setAttribute("value", nickname);
+	   form.submit();	  
 	}
 
 	function signOut() {
