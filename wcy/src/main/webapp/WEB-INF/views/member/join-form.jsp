@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
 
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
@@ -53,9 +53,9 @@
        <div class="left-section">
 	        <h2>회원가입</h2>
 	        <ul class="left-sub-nav">
-	            <li><a href="#">회원가입</a></li>
-	            <li><a href="#">아이디(이메일)찾기</a></li>
-	            <li><a href="#">비밀번호 찾기</a></li>
+				<li><a href="<c:url value='/member/email-form' />">회원가입</a></li>
+				<li><a href="<c:url value='/member/find-form?target=email' />">아이디(이메일)찾기</a></li>
+				<li><a href="<c:url value='/member/find-form?target=pw' />">비밀번호 찾기</a></li>
 	        </ul>
     	</div>
 
@@ -129,7 +129,7 @@
 
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 <script src="<c:url value = "/js/main.js"/>"></script>   
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 
 
 <script type="text/javascript">
@@ -149,20 +149,20 @@
          
          // 비밀번호 공백 체크
          if($("#userPw").val() === ""){
-             $('#userPw').css("background-color", "pink");
-            $('#pwChk1').html('<b style="font-size:14px;color:red;">비밀번호는 필수 정보 입니다.</b>');
+             $('#userPw').css("border-color", "#f44336");
+            $('#pwChk1').html('<b style="font-size:12px;color:#f44336;">비밀번호는 필수 정보 입니다.</b>');
             chk2 = false;
          }               
          // 비밀번호 유효성 검증 (특수문자 포함 8자 이상인지 검사)
          else if(!getPwCheck.test($("#userPw").val()) || $("#userPw").val().length < 8){
-             $('#userPw').css("background-color", "pink");
-            $('#pwChk1').html('<b style="font-size:14px;color:red;">특수문자 포함 8자 이상으로 입력해주세요.</b>');
+             $('#userPw').css("border-color", "#f44336");
+            $('#pwChk1').html('<b style="font-size:12px;color:#f44336;">특수문자 포함 8자 이상으로 입력해주세요.</b>');
             chk2 = false;
          } 
          // 비밀번호 제대로 썼을 때
          else {
-            $('#userPw').css("background-color", "aqua");
-            $('#pwChk1').html('<b style="font-size:14px;color:green;">사용 가능한 비밀번호입니다.</b>');
+            $('#userPw').css("border-color", "#2196F3");
+            $('#pwChk1').html('<b style="font-size:12px;color:#2196F3;">사용 가능한 비밀번호입니다.</b>');
             chk2 = true;
          }      
    }); //end - 비밀번호 입력값 keyup 이벤트
@@ -172,19 +172,19 @@
          
          // 비밀번호 확인란 공백 체크
          if($("#userPwChk").val() === ""){
-             $('#userPwChk').css("background-color", "pink");
-            $('#pwChk2').html('<b style="font-size:14px;color:red;">비밀번호 확인을 입력해주세요.</b>');
+             $('#userPwChk').css("border-color", "#f44336");
+            $('#pwChk2').html('<b style="font-size:12px;color:#f44336;">비밀번호 확인을 입력해주세요.</b>');
             chk3 = false;
          }               
          // 비밀번호 확인 검증 (비밀번호와 같은지 검사)
          else if($("#userPw").val() != $("#userPwChk").val()){
-             $('#userPwChk').css("background-color", "pink");
-            $('#pwChk2').html('<b style="font-size:14px;color:red;">비밀번호와 동일하게 입력해주세요.</b>');
+             $('#userPwChk').css("border-color", "#f44336");
+            $('#pwChk2').html('<b style="font-size:12px;color:#f44336;">비밀번호와 동일하게 입력해주세요.</b>');
             chk3 = false;
          } 
          // 비밀번호 확인 제대로 썼을 떄
          else {
-            $('#userPwChk').css("background-color", "aqua");
+            $('#userPwChk').css("border-color", "#2196F3");
             $('#pwChk2').html('');
             chk3 = true;
          }
@@ -195,13 +195,13 @@
          
          // 이름 공백 체크
          if($("#userName").val() === ""){
-             $('#userName').css("background-color", "pink");
-            $('#nameChk').html('<b style="font-size:14px;color:red;"> 이름은 필수 정보 입니다.</b>');
+             $('#userName').css("border-color", "#f44336");
+            $('#nameChk').html('<b style="font-size:12px;color:#f44336;"> 이름은 필수 정보 입니다.</b>');
             chk4 = false;
          }               
          // 이름을 썼을 때
          else {
-            $('#userName').css("background-color", "aqua");
+            $('#userName').css("border-color", "#2196F3");
             $('#nameChk').html('');
             chk4 = true;
          }
@@ -214,22 +214,22 @@
          
          // 전화번호 공백 체크
             if($("#userTel").val() === ""){
-             $('#userTel').css("background-color", "pink");
-            $('#telChk').html('<b style="font-size:14px;color:red;">전화번호를 입력해주세요.</b>');
+             $('#userTel').css("border-color", "#f44336");
+            $('#telChk').html('<b style="font-size:12px;color:#f44336;">전화번호를 입력해주세요.</b>');
             chk5 = false;
          }
          // 전화번호 입력값 길이가 11자리가 아닐때
             else if($("#userTel").val().length != 11){
-                 $("#userTel").css("background-color", "pink");
-               $("#telChk").html('<b style="font-size:14px;color:red;">\'-\'을 제외한 11자리 번호를 입력해주세요.</b>');
+                 $("#userTel").css("border-color", "#f44336");
+               $("#telChk").html('<b style="font-size:12px;color:#f44336;">\'-\'을 제외한 11자리 번호를 입력해주세요.</b>');
                chk5 = false;
             }
          // 전화번호 입력값이 11자리 일때
             else if($("#userTel").val().length == 11){
                // 전화번호 입력 형식에 맞지 않을 때
                if(!getTelChk.test($("#userTel").val())){
-                  $("#userTel").css("background-color", "pink");
-                  $("#telChk").html('<b style="font-size:14px;color:red;">숫자만 입력해주세요.</b>');
+                  $("#userTel").css("border-color", "#f44336");
+                  $("#telChk").html('<b style="font-size:12px;color:#f44336;">숫자만 입력해주세요.</b>');
                   chk5 = false;
                }
                // 전화번호 맞게 입력했을 때: 중복확인 비동기 통신
@@ -250,12 +250,12 @@
                      success: function(result){ 
    
                   if(result === 'OK'){
-                     $('#telChk').html('<b style="font-size:14px;color:green;">가입 가능한 번호 입니다.</b>');
-                     $("#userTel").css("background-color", "aqua");
+                     $('#telChk').html('<b style="font-size:12px;color:#2196F3;">가입 가능한 번호 입니다.</b>');
+                     $("#userTel").css("border-color", "#2196F3");
                      chk5 = true;   
                        } else {
-                     $("#telChk").html("<b style='font-size:14px; color:red;'> 이미 가입된 전화번호입니다. </b>");
-                     $("#userTel").css("background-color","pink");
+                     $("#telChk").html("<b style='font-size:12px;color:#f44336;'> 이미 가입된 전화번호입니다. </b>");
+                     $("#userTel").css("border-color", "#f44336");
                      chk5 = false;
                          }                        
                       }, 
@@ -328,10 +328,22 @@
                   
                console.log("통신 성공!: "+result);
                if(result === "joinSuccess"){
-                  alert("회원가입 성공!");
-                  location.href="/";
+            	   //alert("회원가입 성공!");
+		     	  	Swal.fire({
+		     			  title: 'Good job!',
+		     			  text: '회원가입 성공! 로그인해주세요.',
+		     			  type: 'success',
+		     		});
+			   		 window.setTimeout(function(){
+						 window.location.href="/";
+					 },2000);
                }else{
-                  alert("회원가입 실패!");                  
+		    	  	Swal.fire({
+		    			  title: 'Oops...',
+		    			  text: '회원가입 실패',
+		    			  type: 'error',
+		    		})
+                  //alert("회원가입 실패!");                  
                }
                
             },
@@ -342,7 +354,12 @@
       }
       // 위의 검증 중에서 하나라도 통과하지 못한 경우!!!!
       else{
-         alert("입력하신 정보를 다시 확인해주세요.");
+  	  	Swal.fire({
+			  title: 'Oops...',
+			  text: '입력하신 정보를 다시 확인해주세요.',
+			  type: 'error',
+		})
+        // alert("입력하신 정보를 다시 확인해주세요.");
       }
       
    }); //end - 회원가입 버튼 클릭 이벤트

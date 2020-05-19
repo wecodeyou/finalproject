@@ -222,6 +222,7 @@ p {
 	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 	var map1 = new kakao.maps.Map(mapContainer1, mapOption1); 
 	var map2 = new kakao.maps.Map(mapContainer2, mapOption2); 
+
 	
 	// 마커가 표시될 위치입니다 
 	var markerPosition1  = new kakao.maps.LatLng(37.571181, 126.992549); 

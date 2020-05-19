@@ -14,7 +14,7 @@
 
 
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"
@@ -258,6 +258,7 @@ p {
 
    <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
    <script src="<c:url value = "/js/main.js"/>"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 
 <c:if test="${login == null}">
    <script>   
@@ -385,11 +386,26 @@ function change_pw(){
 	        dataType:"text",
 	        data:newPw.value,
 	        success:function(){
-	        	location.replace("/");
+	     	  	Swal.fire({
+	     			  title: 'Success!',
+	     			  text: '비밀번호가 변경되었으니 다시 로그인해주세요 :) ',
+	     			  type: 'warning',
+	     		});
+		   		 window.setTimeout(function(){
+					 window.location.href="/";
+				 },2000);
+	        	//location.replace("/");
+	        	//alert("비밀번호가 변경되었으니 다시 로그인해주세요 :)");
 	        },
 	        error:function(){
 	         	console.log("서버와 통신 실패");
-				alert("알수 없는 오류가 발생했습니다.");
+	    	  	Swal.fire({
+	    			  title: 'Oops...',
+	    			  text: '알 수 없는 오류가 발생했습니다. 재시도해주세요.',
+	    			  type: 'error',
+	    			});
+	         	
+	         	//alert("알수 없는 오류가 발생했습니다.");
 	        }
 	     });
 	}else{
