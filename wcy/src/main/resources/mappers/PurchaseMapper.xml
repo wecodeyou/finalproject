@@ -37,10 +37,26 @@
 	
 	<!-- 구매 -->
 	<insert id="insertPurchase">
-		INSERT INTO 
+		INSERT INTO purchase
 		(purchase_no, purchase_pro_no, purchase_amount, purchase_buyer, purchase_seat_no, purchase_date, purchase_isrefund, purchase_refund_date)
 		VALUES 
 		(#{purchaseNo},#{purchaseProNo},#{purchaseAmount},#{purchaseBuyer},#{purchaseSeatNo},#{purchaseDate},#{purchaseIsrefund},#{purchaseRefundDate})
+	</insert>
+
+	<!-- 오프강의구매 -->
+	<insert id="insertOffPro">
+		INSERT INTO purchase
+		(purchase_pro_no, purchase_amount, purchase_buyer, purchase_seat_no)
+		VALUES 
+		(#{purchaseProNo},#{purchaseAmount},#{purchaseBuyer},#{purchaseSeatNo})
+	</insert>
+	
+	<!-- 온강의구매 -->
+	<insert id="insertOnPro">
+		INSERT INTO purchase
+		(purchase_pro_no, purchase_amount, purchase_buyer)
+		VALUES 
+		(#{purchaseProNo},#{purchaseAmount},#{purchaseBuyer})
 	</insert>
 	
 		<!-- 회원 구매 내용 출력 (관리자페이지) -->

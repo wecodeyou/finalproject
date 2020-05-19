@@ -46,6 +46,7 @@
 				<label for="Chk_id${x}${y}">
 					<span class="chk_img" id="span${x}${y}">&nbsp;</span>
 				</label>
+
             </c:forEach>
 			</div><br>
 		</c:forEach>
@@ -99,37 +100,46 @@ $(document).ready(function() {
 </script>
 
 <script type="text/javascript">
-
+var click_id;
+var sub_id;
+var id;
 function showpicks(obj) {
-   var click_id = $(obj).attr('id');
-   var sub_id = click_id.substr(7,1);
-   var id = 'Chk_id'+click_id.substr(6,2);
-   if(document.getElementById(id).checked){
-      console.log(click_id);
+   click_id = $(obj).attr('id');
+   sub_id = click_id.substr(7,1);
+   id = click_id.substr(6,2);
+   if(document.getElementById(click_id).checked){
+      console.log(id);
       console.log(sub_id+"번줄 선택")
    }
 }
    
-   
-function nullCheck(){
-	var isChk = false;
-    var arr = document.getElementsByName("Chk_name");
-    for(var i=0;i<arr.length;i++){
-        if(arr[i].checked == true) {
-            isChk = true;
-            break;
-        }
-    }
-
-    if(!isChk){
-        alert("아무 자리도 선택하지 않았습니다.");
-        return false;
-    }else{
-    	document.getElementById("submit").submit();
-    }
-}   
-   
 </script>
 
+				<script type="text/javascript">			   
+				function nullCheck(){
+					var isChk = false;
+				    var arr = document.getElementsByName("Chk_name");
+				    for(var i=0;i<arr.length;i++){
+				        if(arr[i].checked == true) {
+				            isChk = true;
+				            break;
+				        }
+				    }
+					
+				    if(!isChk){
+				        alert("아무 자리도 선택하지 않았습니다.");
+				        return false;
+				    }else{
+				           
+						var parent = window.opener;
+						//var answer = document.getElementById(id).value; 
+						parent.document.getElementById('get').value = id;
+						parent.document.getElementById('seat_no').value = id;
+					
+						window.close();
+				    	//document.getElementById("submit").submit();
+				    }
+				}   			   
+				</script>
 </body>
 </html>
