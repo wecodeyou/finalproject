@@ -67,7 +67,7 @@ public class OffController {
 	public ModelAndView viewSeat(ModelAndView mv, HttpServletRequest req) {
 
 		mv.setViewName("off/seat");
-		mv.addObject("seat", req.getParameter("seat"));
+		mv.addObject("off_no", req.getParameter("off_no"));
 		return mv;
 
 	}
@@ -143,17 +143,16 @@ public class OffController {
 		return mv;
 	}
 
-	@GetMapping("/test")
-	public ModelAndView test(ModelAndView mv, HttpServletRequest req) {
-		if (req.getParameter("seat") != null) {
-			service.bookedList2(Integer.parseInt(req.getParameter("seat")));
-		}
-		mv.setViewName("off/test");
-		mv.addObject("data", req.getParameter("seat"));
-
-		return mv;
-
-	}
+	/*
+	 * @GetMapping("/test") public ModelAndView test(ModelAndView mv,
+	 * HttpServletRequest req) { if (req.getParameter("seat") != null) {
+	 * service.bookedList2(Integer.parseInt(req.getParameter("seat"))); }
+	 * mv.setViewName("off/test"); mv.addObject("data", req.getParameter("seat"));
+	 * 
+	 * return mv;
+	 * 
+	 * }
+	 */
 
 	@PostMapping("/chooseSeat")
 	public ModelAndView chooseSeat(SeatVO sv, ModelAndView mv, HttpServletRequest req, HttpSession session) {
