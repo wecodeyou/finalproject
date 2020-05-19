@@ -911,7 +911,7 @@ $(document).ready(function(){
   
 function logincheck(){
     if(${login == null}){
-    	Swal.fire('로그인이 필요한 서비스입니다.')
+    	Swal.fire('로그인이 필요한 서비스입니다.');
        //alert("로그인이 필요한 서비스입니다.");
     }else{
     	location.href="<c:url value='/mypage/myinfoChange' />";
