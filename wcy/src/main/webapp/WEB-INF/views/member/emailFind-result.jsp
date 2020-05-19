@@ -64,54 +64,7 @@
 <jsp:include page="../include/header-sub.jsp" />
 
 
-<!-- 기본적으로 아이디 찾기 창 -->
-<c:if test="${target eq 'email'}">
-	<main class="wcy-main-content mb220">
-		<div class="left-section">
-	        <h2>회원가입</h2>
-	        <ul class="left-sub-nav">
-	            <li><a href="<c:url value='/member/email-form' />">회원가입</a></li>
-	            <li><a href="<c:url value='/member/find-form?target=email' />">아이디(이메일)찾기</a></li>
-	            <li><a href="<c:url value='/member/find-form?target=pw' />">비밀번호 찾기</a></li>
-	        </ul>
-	    </div>
-	
-		<div class="right-section">
-			<div class="right-header">
-	            <ul class="right-sub-nav">
-	                <li><a class="active">01 본인확인 정보입력</a></li>
-	                <li><a>02 이메일 확인</a></li>
-	            </ul> 
-	        </div>
-	        <div class="right-contents">
-	        	<h4 class="contents-title">이메일 찾기</h4>
-				<p class="mb10">회원정보에 등록한 이름과 전화번호와 입력한 정보가 같아야 이메일을 찾을 수 있습니다.</p>
-				<form action="<c:url value='/member/findEmail' />" method="post" class="form-group">
-					<label for="userName" class="control-label mt30">이름</label>
-					<div class="nameSection">
-						<input type="text" name="userName" id="userName" class="form-control mt10 w200"/>
-					</div>
-					<br>
-					<label for="userTel" class="control-label mt30">전화번호</label>
-					<div class="inputSection mb30">
-						<input type="text" name="userTel" id="userTel" class="form-control mt10 w200"/>
-						<!-- 이메일 찾기 결과: 입력한 정보가 존재하지 않을때 -->
-						<c:if test="${msg != null }">
-								${msg}
-						</c:if>
-					</div>
-					<br>
-					<button class="btn btn-outline-dark ml145">다음</button>
-				</form>
-			</div>
-		</div>
-	</main>
-</c:if>
-
-
-<!-- 클릭하면 비밀번호 찾기 창-->
-<c:if test="${target eq 'pw' }">
-	<main class="wcy-main-content mb260">
+<main class="wcy-main-content mb220">
 		<div class="left-section">
 	        <h2>회원가입</h2>
 	        <ul class="left-sub-nav">
@@ -124,31 +77,21 @@
 		<div class="right-section">
 			<div class="right-header">
 	            <ul class="right-sub-nav">
-	                <li><a class="active">01 본인확인 정보입력</a></li>
-	                <li><a>02 임시 비밀번호 발급</a></li>
-	            </ul> 
+	                <li><a>01 본인확인 정보입력</a></li>
+	                <li><a class="active">02 이메일 확인</a></li>
+	            </ul>
 	        </div>
 	        <div class="right-contents">
-	        	<h4 class="contents-title">비밀번호 찾기</h4>
-	        		<p class="mb10">회원정보에 등록한 이메일과 입력한 이메일이  같아야 임시 비밀번호가 발송됩니다.</p>
-					<form action="<c:url value='/member/findPw' />" method="post" class="form-group">
-						<label for="userEmail" class="control-label mt30">이메일</label>
-						<div class="inputSection mb30">
-							<input type="text" name="userEmail" id="userEmail" class="form-control mt10 w200"/>
-						</div>
-						<br>
-						<button class="btn btn-outline-dark ml77">임시 비밀번호 발송</button>
-					</form>
+	        	<h4 class="contents-title">[ ${name} ] 님의 회원정보에 등록된 이메일은 아래와 같습니다.</h4>
+				<p class="mb10" style="font-size: 17px;">이메일 : <span style="color:#ff9800; font-weight:600;">${findEmail}</span> 입니다.</p>
+				<p class="mb20" style="font-size: 14px;">(전체 이메일 주소가 기억나지 않으세요..? 다시 회원가입을 진행해주세요.)</p>
 			</div>
 		</div>
 	</main>
-</c:if>
 
 
-
-<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
-<script src="<c:url value = "/js/main.js"/>"></script>   
 
 </body>
-	<jsp:include page="../include/footer.jsp" />
+	 <jsp:include page="../include/footer.jsp" /> 
 </html>
+

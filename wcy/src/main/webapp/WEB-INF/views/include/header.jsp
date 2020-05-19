@@ -16,6 +16,7 @@
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" /> -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <link rel="stylesheet" href="<c:url value='/css/search.css'/>">
 
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
@@ -156,7 +157,8 @@
             
             <c:if test="${login != null}">
                <li>${login.userName}님 반갑습니다.</li>
-                <li><a href="<c:url value='/member/logout' />" onclick="return confirm('정말로 로그아웃 하시겠습니까?')">로그아웃</a></li>
+               <!--   <li><a href="<c:url value='/member/logout' />" onclick="logoutConfirm()">로그아웃</a></li>-->
+                <li><a onclick="logoutConfirm()">로그아웃</a></li>
             </c:if>
             
          </ul>
@@ -179,7 +181,7 @@
 			</div>
 			<ul id="wcy-menu">
 				<li><a class="modal_open_btn" data-toggle="modal" data-target="#wcy-event-modal"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
-				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
+				<li><a onclick="logincheck()"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
 				<c:if test="${login == null || login.userType == 0 || login.userType == 1}">
 					<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">마이페이지</p></i></a></li>
 				</c:if>
@@ -672,90 +674,22 @@
 			<span  style="font-size:17px; font-weight:400;">&nbsp;&nbsp;&nbsp;수강생들이 사랑한 강의</span>
 		</div>
 		<ul class="wcy-best-class">
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>프론트엔드 개발환경의 이해와 실습 </p>
-		            <p>김영희</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network01.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[온라인] 디자인</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+			<c:forEach var="sp" items="${sp_data}">
+				<li class="hover-layout">
+					<div class="overrap-bottom">
+			            <p>${sp.spBook}</p>
+			            <p>${sp.spLecName}</p>
+	        		</div>
+					<div class="hover-wrap">
+						<a href="#"><img src="${sp.spThum}" style="width:300px; height:300px;"/></a>
+						<h3>${sp.spScope}</h3>
+						<div class="hover-bottom">
+							<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+							<a href="<c:url value='/curriculum/sub?s=${sp.spBook}' />" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+						</div>
 					</div>
-				</div>
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>Spring Framework Project</p>
-		            <p>서영준</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network08.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[오프라인] Programming</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>			
-				</div>
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>빅데이터 분석 R 프로그래밍</p>
-		            <p>아무개</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network03.png'/>" style="width:300px; height:300px;"/></a>
-					<h3>[온라인] 빅데이터/보안</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>	
-				</div>		
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>JSP Programming</p>
-		            <p>홍순구</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network04.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[오프라인] Programming</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>	
-				</div>		
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>정보처리기사 (신유형 분석)</p>
-		            <p>김개똥</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network05.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[온라인] 서버/자격증</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>		
-				</div>	
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>Hacking Trace</p>
-		            <p>박철수</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network06.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[오프라인] Hacking</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>
-				</div>		
-			</li>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
 
@@ -819,6 +753,34 @@
 
 <!-- 검색 기능 -->
 <script src="<c:url value='/js/search-main.js'/>"></script>
+
+<!-- 로그아웃 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
+<script>
+function logoutConfirm(){
+	Swal.fire({
+	  title: 'Are you sure?',
+	  text: "정말로 로그아웃 하시겠습니까?",
+	  type: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'YES',
+	}).then((result) => {
+		 if (result.value) {
+			Swal.fire(
+		      '로그아웃!',
+		      '로그아웃되었습니다.',
+		      'success',
+		    )
+		 window.setTimeout(function(){
+			 window.location.href="/member/logout";
+		 },3000);
+		 //location.href="/member/logout"
+	    }
+	})
+};
+</script>
 
 <!-- 추천강의 변환 -->
 <script>
@@ -949,15 +911,13 @@ $(document).ready(function(){
   
 function logincheck(){
     if(${login == null}){
-       alert("로그인이 필요한 서비스입니다.");
+    	Swal.fire('로그인이 필요한 서비스입니다.')
+       //alert("로그인이 필요한 서비스입니다.");
     }else{
     	location.href="<c:url value='/mypage/myinfoChange' />";
     }
        
  };
-
- 
- // 인기강의 슬라이더
 
  
 </script>

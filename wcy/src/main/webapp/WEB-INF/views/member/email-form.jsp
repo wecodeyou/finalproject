@@ -12,6 +12,8 @@
 <!-- 파비콘 적용 -->
 <link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icheck-bootstrap@3.0.1/icheck-bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
 
 
@@ -66,9 +68,9 @@
     <div class="left-section">
         <h2>회원가입</h2>
         <ul class="left-sub-nav">
-            <li><a href="#">회원가입</a></li>
-            <li><a href="#">아이디(이메일)찾기</a></li>
-            <li><a href="#">비밀번호 찾기</a></li>
+			<li><a href="<c:url value='/member/email-form' />">회원가입</a></li>
+			<li><a href="<c:url value='/member/find-form?target=email' />">아이디(이메일)찾기</a></li>
+			<li><a href="<c:url value='/member/find-form?target=pw' />">비밀번호 찾기</a></li>
         </ul>
     </div>
 
@@ -227,12 +229,12 @@
 	                   		<table border="1">
 	                        <tr>
 	                        <td>인증번호 입력: <input type="text" id="email_auth" name="email_auth" class="form-control form-rounded" style="display:inline-block; height:30px; width:200px; margin-bottom: 15px;" size="25" placeholder="인증번호를 입력해주세요">
+	                
 	                        <button type="submit" name="submit" class="btn btn-outline-dark" id="emailsubmit" onclick="chkCode()" style="line-height: 1.1rem; height: 30px; margin-bottom: 7px; vertical-align: middle;">이메일 인증하기</button>
+	                        <span id="auth_alert"></span>
 		                   </td>
 	                        </tr>
 	                        <tr>
-	                        <td>
-	                           <span id="auth_alert"></span></td>
 	                        </tr>
 	                        </table>
 		                    <input type="hidden" name="dice" id="dice" />
@@ -257,6 +259,7 @@
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 <script src="<c:url value = "/js/main.js"/>"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 
 
 
@@ -305,7 +308,12 @@ function sendChkMail(){
 		         dataType:"text",
 		         data:$(email).val(),
 		         success:function(result){
-		        	alert('인증번호가 발송되었습니다. 인증번호를 적어주세요.'); 
+		     	  	Swal.fire({
+		     			  title: 'Good job!',
+		     			  text: '인증번호가 발송되었습니다. 확인 후 입력해주세요.',
+		     			  type: 'success',
+		     		})
+		        	 //alert('인증번호가 발송되었습니다. 인증번호를 적어주세요.'); 
 		            document.getElementById('submit_btn').style.display="none";
 		            document.getElementById('auth_div').style.display="block";
 		            
@@ -313,11 +321,21 @@ function sendChkMail(){
 		         },
 		         error:function(){
 		            console.log("서버와 통신 실패1");
-		            alert('이메일 입력 후 중복확인을 먼저 해주세요.');
+		    	  	Swal.fire({
+		    			  title: 'Oops...',
+		    			  text: '이메일 입력 후 중복확인을 먼저 해주세요!',
+		    			  type: 'error',
+		    		})
+		            //alert('이메일 입력 후 중복확인을 먼저 해주세요.');
 		         }
 		      });
   }else{
-       alert("이용약관 및 개인정보처리방침에 모두 동의해주세요.");
+	  	Swal.fire({
+		  title: 'Oops...',
+		  text: '이용약관 및 개인정보처리방침에 모두 동의해주세요.!',
+		  type: 'error',
+		})
+       //alert("이용약관 및 개인정보처리방침에 모두 동의해주세요.");
        $('#next').prop('disabled',true);
   }  
 	 
@@ -341,11 +359,19 @@ function chkCode(){
         data:$(email_auth).val(),
         success:function(result){
         	 if(result==="YES"){
-             	alert("인증성공! 정보입력 페이지로 이동됩니다.");
-             	location.replace("/member/send_join");
+		     	  Swal.fire({
+		     		  title: 'Good job!',
+		     		  text: '인증성공! 정보입력 페이지로 이동됩니다.',
+		     		  type: 'success',
+		     	 });
+			   	 window.setTimeout(function(){
+					 window.location.href="/member/send_join";
+				 },2000);
+        		 //alert("인증성공! 정보입력 페이지로 이동됩니다.");
+             	//location.replace("/member/send_join");
         	 } else{
                  $("#email_auth").css("border-color","red");
-                 $("#auth_alert").html("<b style='font-size:12px; color:red;'> 인증번호를 다시 확인해 주세요. </b>");
+                 $("#auth_alert").html("<b style='font-size:14px; color:red;'> 인증번호를 다시 확인해 주세요. </b>");
               }
         },
         error:function(){

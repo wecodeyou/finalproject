@@ -1,5 +1,7 @@
 package com.it.wecodeyou.sub_product.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class SubProductService implements ISubProductService{
 	public SubProductVO showSubPro(Integer spProId) {
 		
 		return sdao.showSubPro(spProId);
+	}
+
+	@Override
+	public ArrayList<SubProductVO> showAllPro() {
+		return sdao.showAllPro();
 	}
 
 }
