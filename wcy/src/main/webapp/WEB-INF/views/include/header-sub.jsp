@@ -239,7 +239,7 @@
             <div class="sub-menu-1">
                 <ul>
                   
-                  <li class="hover-me"><a href="#">자유게시판</a></li>
+                  <li class="hover-me"><a href="<c:url value='board/1'/>">자유게시판</a></li>
                   <li class="hover-me"><a href="#">질문게시판</a>
                      <div class="sub-menu-2">
                         <ul>
