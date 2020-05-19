@@ -50,6 +50,14 @@ public class MypageController {
 	@Autowired
 	private IOnService onservice;
 
+	
+	@GetMapping("/")
+	public ModelAndView mypageMain(ModelAndView mv) {
+		mv.setViewName("mypage/mypage-main");
+		
+		return mv;
+	}
+	
 	@GetMapping("/leclist")
 	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo, HttpSession session) {
 
@@ -70,7 +78,7 @@ public class MypageController {
 			 mv.setViewName("home");
 	         res.setContentType("text/html; charset=UTF-8");
 			 PrintWriter out_email = res.getWriter();
-	         out_email.println("<script>Swal.fire('장기간 미활동으로 로그아웃되었습니다. 다시 로그인해주세요.');</script>");
+	         out_email.println("<script>alert('장기간 미활동으로 로그아웃되었습니다. 다시 로그인 해주세요.');</script>");
 	         out_email.flush();
 	         
 		}else {
