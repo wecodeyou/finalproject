@@ -243,7 +243,7 @@
 						<div class="container" style="text-align:left !important;">
 							<div class="row">
 								<!-- Post Content Column -->
-								<div class="col-lg-8" style="padding-top:10px; ">
+								<div class="col-lg-8" style="padding-top:10px;">
 									
 									<!-- Author -->
 									<p style="text-align:left; font-size:16px;padding-left:8px; color:#bf8fbe">
