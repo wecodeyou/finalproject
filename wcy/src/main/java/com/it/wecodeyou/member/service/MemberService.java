@@ -112,6 +112,18 @@ public class MemberService implements IMemberService {
 	public void updateInterest(Integer userNo) throws SQLException {
 	}
 
+	@Override
+	public void changeUserType(MemberVO mvo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		if (mvo.getUserType() == 0)
+			mvo.setUserType(1);
+		else
+			mvo.setUserType(0);
+		
+		dao.changeUserType(mvo);
+	}
+
 
 
 }

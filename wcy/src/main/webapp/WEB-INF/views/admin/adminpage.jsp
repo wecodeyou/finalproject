@@ -36,7 +36,6 @@
     .center-header .center-sub-nav li a{display: block; height: 60px; box-sizing: border-box; font-size: 18px; color: #888; padding: 0 0 0 20px; line-height: 60px; border-bottom: 4px solid #ddd;}
     .center-sub-nav li a.active{color: #25283D; border-color: #25283D;}
 
-	#adminUser {display:none;}
 
 </style>
 
@@ -50,9 +49,10 @@
 			<div class="page-width">
 				<div class="center-header">
 					<ul class="center-sub-nav">
-						<li><a class="active" href="javascript:adminChart();">관리자 대시보드</a></li>
-						<li><a href="javascript:adminUser();">회원 관리</a></li>
-						<%-- <li><a href="<c:url value='/admin/etc'/>">기타 관리</a></li> --%>
+						<li><a class="active">관리자 대시보드</a></li>
+						<li><a href="<c:url value='/admin/user'/>">회원 관리</a></li>
+						<li><a href="<c:url value='/admin/etc'/>">기타 관리</a></li>
+						<li><a href="<c:url value='/product/'/>">상품 관리</a></li>
 					</ul>
 				</div>
 			</div>
@@ -66,7 +66,7 @@
 					<a href="#"
 						class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 						class="fas fa-download fa-sm text-white-50"></i> 월간 리포트 등록</a>
-					
+						
 				</div>
 
 				<!-- Content Row -->

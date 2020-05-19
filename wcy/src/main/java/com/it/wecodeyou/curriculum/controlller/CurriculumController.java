@@ -119,6 +119,16 @@ public class CurriculumController {
 	    return mv;
 	}
    
+	@GetMapping("/purchase")
+	public ModelAndView purchasePage(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		int pro_no = Integer.parseInt(req.getParameter("pro_no"));
+		mv.addObject("sub_info",spservice.showSubPro(pro_no));
+		mv.addObject("pro_info",pservice.getOneInfo(pro_no));
+		mv.setViewName("curriculum/purchasePage");
+		return mv;
+	}
+	
 }
 
 

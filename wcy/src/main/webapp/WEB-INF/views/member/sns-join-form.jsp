@@ -264,6 +264,7 @@
 		 const img = '${image}'
 		 console.log(img);
          
+		 
          //자바스크립트 형태의 객체 생성 (키:값) => 키는 VO의 필드명과 맞춘다
          const mvo={
             userEmail:email,
@@ -274,7 +275,8 @@
             userBirthday:birthday.value,
             userZipcode:zip,
             userAddress:addr,
-            userDetailAddress:detail
+            userDetailAddress:detail,
+            userEmailType:1
 
          };
          

@@ -100,7 +100,7 @@
 								</a>
 							</div>
 							<div class="button-register">
-								<a onclick="logincheck()" title="좌석선택" class="btn_red_regi">좌석선택</a>
+								<a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
 							</div>
 							<div class="button-register">
 								<button type="button" id="btn2">달력 소환</button>
@@ -236,10 +236,12 @@ function logincheck(){
     if(${login == null}){
     	Swal.fire('로그인 후 좌석선택이 가능합니다.');
     }else{
-    	location.href="<c:url value='/off/seat?off_no=${pro.productNo}'/>";
+    	location.href="<c:url value='/curriculum/purchase?pro_no=${pro.productNo}'/>";
     }
        
  };
+ 
+ 
 </script>
 
 </body>

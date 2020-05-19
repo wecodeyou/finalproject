@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.omg.PortableInterceptor.ForwardRequestHelper;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.it.wecodeyou.interest.model.InterestReportVO;
 import com.it.wecodeyou.interest.sevice.IInterestService;
-import com.it.wecodeyou.interest_list.model.Interest_ListVO;
+import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.purchase.model.PurchaseResultVO;
 import com.it.wecodeyou.purchase.service.IPurchaseService;
@@ -134,4 +135,17 @@ public class AdminController {
    		return mv;
    	}
 
+   	@GetMapping("/typechange")
+   	public ModelAndView typechange(HttpServletRequest req) throws SQLException {
+   		
+   		Integer userNo = Integer.parseInt(req.getParameter("userNo"));
+   		MemberVO mvo = memberService.getOneInfo(userNo);
+   		
+   		memberService.changeUserType(mvo);
+   		
+   		return new ModelAndView("redirect:/admin/user");
+   		
+   	}
+   	
+   	
 }

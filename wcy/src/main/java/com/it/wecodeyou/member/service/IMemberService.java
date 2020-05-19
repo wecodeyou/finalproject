@@ -47,5 +47,6 @@ public interface IMemberService {
    // 설문조사 등록시 true로 수정
    public void updateInterest(Integer userNo) throws SQLException;
    
-   
+   // 유저타입 변경
+   public void changeUserType(MemberVO mvo) throws SQLException;
 }

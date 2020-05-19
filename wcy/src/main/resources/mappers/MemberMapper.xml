@@ -112,7 +112,11 @@
 		SELECT user_interest FROM user WHERE user_no = #{userNo}
 	</select>
 	
-	
+ 	<update id = "changeUserType">
+		UPDATE user 
+		SET user_type = #{userType}
+		WHERE user_no = #{userNo}
+	</update>
 	
 </mapper>
 
