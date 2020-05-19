@@ -84,8 +84,10 @@ public class Point_PurchaseController {
 	}
 	
 	@GetMapping("/paycomplete")
-	public ModelAndView paycom(ModelAndView mv, HttpSession session) throws SQLException {
+	public ModelAndView paycom(ModelAndView mv, HttpSession session ) throws SQLException {
 		
+		MemberVO mvo = (MemberVO)session.getAttribute("login");
+		System.out.println("userno : " + mvo.getUserNo());
 		mv.addObject("recent",pservice.getOneRecent(((MemberVO)session.getAttribute("login")).getUserNo()));
 		mv.setViewName("point_purchase/result");
 		return mv;

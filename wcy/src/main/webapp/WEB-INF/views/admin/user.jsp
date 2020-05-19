@@ -52,6 +52,8 @@
 						<li><a href="<c:url value='/admin'/>">관리자 대시보드</a></li>
 						<li><a class="active" >회원 관리</a></li>
 						<li><a href="<c:url value='/admin/etc'/>">기타 관리</a></li>
+						<li><a href="<c:url value='/product/'/>">상품 관리</a></li>
+						
 					</ul>
 				</div>
 			</div>
@@ -74,17 +76,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        	<c:forEach var="m" items="${members}">
+                                        	<c:forEach var="m" items="${members}" varStatus = "status">
                                         		<tr>
                                         			<td>
                                         			<div style="text-align:center">
                                         				<c:if test="${m.userType == 0}">
-                                        					일반회원
-                                        					<button type="button" style="font-size:11px; width:50px"class="btn btn-info">변경</button>
+                                        				<a href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">일반회원</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 1}">
-                                        					강사
-                                        					<button type="button" style="font-size:11px; width:50px"class="btn btn-info">변경</button>
+                                        				<a href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">강사</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 2}">
                                         					*관리자
@@ -111,6 +111,8 @@
 
 		</div>
 	</main>
+
+
 
 
 

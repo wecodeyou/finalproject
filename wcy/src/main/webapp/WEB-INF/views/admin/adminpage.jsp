@@ -48,6 +48,7 @@
 						<li><a class="active">관리자 대시보드</a></li>
 						<li><a href="<c:url value='/admin/user'/>">회원 관리</a></li>
 						<li><a href="<c:url value='/admin/etc'/>">기타 관리</a></li>
+						<li><a href="<c:url value='/product/'/>">상품 관리</a></li>
 					</ul>
 				</div>
 			</div>

@@ -60,7 +60,6 @@ public class MemberController {
    public String register(@RequestBody MemberVO mvo) {
       System.out.println("/member/ : 회원가입 POST 요청 발생!");
       System.out.println("param: "+mvo);
-      
       service.insertMember(mvo);
       
       return "joinSuccess";

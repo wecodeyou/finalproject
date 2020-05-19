@@ -51,5 +51,7 @@ public interface IMemberMapper {
    // 설문조사 true 인지 false 인지
    public int checkInterest(Integer userNo) throws SQLException;
 
+   // 유저타입 변경
+   public void changeUserType(MemberVO mvo) throws SQLException;
    
 }
