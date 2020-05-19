@@ -27,7 +27,7 @@
 <title>WE CODE YOU | 커뮤니티</title>
 <style>
 .wcy-main-content {
-	width: 1180px !important;
+	width: 1160px !important;
 	/* 	margin-left:0px !important;
 	margin-right:0px !important; */
 }
@@ -82,7 +82,7 @@
 
 
 .right-section-article {
-	width: 955px;
+	width: 946px;
 	float: right;
 	position: relative;
 }
