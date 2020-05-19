@@ -23,9 +23,6 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="./jquery/jquery.js"></script>
-
 <style>
 	.searchResult-table{
 		background-color: rgba(249,249,249,0.8);
@@ -371,13 +368,23 @@
 	</c:if>
 	<br>
 	<hr>
-	<a href="javascript:history.back()"><button class="btn btn-outline-primary">다시 검색하기</button></a>
+	<a class="moveTop"><button class="btn btn-outline-primary">다시 검색하기</button></a>
 </main>	
 	
 
 <script src="<c:url value='/js/search-filter.js'/>"></script>
 <script src="<c:url value='/js/tag.js'/>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+	<script>
+	   //원하는 타겟으로 스크롤 부드럽게 이동 (맨위로 이동)
+		jQuery(document).ready(function($){
+			$(".moveTop").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:0},500);
+			});
+		});
+	</script>
 
 </body>
 <jsp:include page="../include/footer.jsp" />
