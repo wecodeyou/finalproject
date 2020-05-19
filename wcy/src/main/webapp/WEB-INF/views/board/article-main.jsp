@@ -36,6 +36,13 @@
 	text-align: left;
 }
 
+.article-gradient-tr {
+	background: #c3cfde;
+	opacity:0.8;
+	font-size:13px;
+}
+
+
 .write-btn {
 	text-align: left !important;
 	margin-bottom: 0px !important;
@@ -149,36 +156,36 @@
 		<div class="wcy-contents">
 			<div class="left-section-article">
 				<h2>커뮤니티</h2>
-				<ul class="left-sub-nav-article">
-					<li><a href="#">자유게시판</a></li>
-					<li><a href="#">질문게시판</a></li>
-					<li><a href="#">공유게시판</a></li>
-					<li><a href="#">정기모임/스터디</a></li>
-					<li><a href="#">IT행사</a></li>
+				<ul class="left-sub-nav-article shadow rounded">
+					<li><a href="<c:url value='1'/>">자유게시판</a></li>
+					<li><a href="<c:url value='4'/>">질문게시판</a></li>
+					<li><a href="<c:url value='7'/>">공유게시판</a></li>
+					<li><a href="<c:url value='5'/>">정기모임/스터디</a></li>
+					<li><a href="<c:url value='6'/>">IT행사</a></li>
 				</ul>
 			</div>
 			<div class="right-section-article">
 				<div class="right-contents-article">
-					<h4 class="contents-title-article">자유게시판</h4>
+					<h4 class="contents-title-article">${board.boardTitle}</h4>
 					<div class="text-right">
 							<a class="write-btn" href="btn btn-outline-primary">글쓰기</a><br><br>
 						</div>
 					<div class="contents-box">
-						<table class="table table-hover">
+						<table class="table table-hover shadow p-3 mb-5 bg-white rounded">
 							<thead class="article-table">
-								<tr>
-									<th>번호</th>
-									<th>제목</th>
-									<th>글쓴이</th>
-									<th>날짜</th>
-									<th>조회수</th>
+								<tr class="article-gradient-tr">
+									<th style="width:10%;text-align:center;font-weight: bold;">번호</th>
+									<th style="width:40%;font-weight: bold;">제목</th>
+									<th style="width:10%;text-align:center;font-weight: bold;">글쓴이</th>
+									<th style="width:20%;text-align:center;font-weight: bold;">날짜</th>
+									<th style="width:10%;text-align:center;font-weight: bold;">조회수</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="a" items="${articleList}" varStatus="status">
 									<tr>
-										<td>${a.articleNo}</td>
-										<td>
+										<td style="text-align:center;">${a.articleNo}</td>
+										<td style="height:10px !important;">
 											<div class="tag">
 												<c:forEach var="entry" items="${tagMap}">
 													<c:if test="${entry.key eq status.index}">
@@ -196,15 +203,15 @@
 													href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle}</a>
 											</div>
 										</td>
-										<td>${a.articleWriter}</td>
-										<td><fmt:formatDate value="${a.articleCreatedAt}"
+										<td style="text-align:center;">${a.articleWriter}</td>
+										<td style="text-align:center;"><fmt:formatDate value="${a.articleCreatedAt}"
 												pattern="yyyy.MM.dd  kk:mm" /></td>
-										<td>${a.articleClicks}</td>
+										<td style="text-align:center;">${a.articleClicks}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-						<hr>
+						
 						
 						<div class="text-center">
 							<ul class="pagenation">
