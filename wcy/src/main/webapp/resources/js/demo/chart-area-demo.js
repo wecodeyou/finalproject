@@ -95,7 +95,7 @@ var options = {
 	      bodyFontColor: "#858796",
 	      titleMarginBottom: 5,
 	      titleFontColor: '#6e707e',
-	      titleFontSize: 20,
+	      titleFontSize: 25,
 	      borderColor: '#dddfeb',
 	      borderWidth: 1,
 	      xPadding: 15,
@@ -105,9 +105,22 @@ var options = {
 	      mode: 'index',
 	      caretPadding: 10
 	 },
+	 animation: {
+         animateRotate: true,
+         animateScale: false
+       },
 	 scales: {
+		 xAxes: [{
+				ticks:{
+					fontSize : 20,
+				},
+				gridLines:{
+					lineWidth: 1
+				}
+			}],
          yAxes: [{
              ticks: {
+            	 lineWidth: 0,
                  beginAtZero: true,
                  callback: function(value, index, values) {
                      return float2dollar(value);

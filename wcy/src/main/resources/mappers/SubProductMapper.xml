@@ -8,6 +8,7 @@
       <result property="spLecName" column="sp_lec_name" />
       <result property="spThum" column="sp_thum" />
       <result property="spBook" column="sp_book" />
+      <result property="spScope" column="sp_scope" />
      
    </resultMap>
 
@@ -17,6 +18,13 @@
       FROM sub_product
       WHERE sp_pro_id=#{spProId}
    </select>
+  
+   <!-- 전체내용가져오기 -->
+   <select id="showAllPro" resultMap="SpMap">
+      SELECT *
+      FROM sub_product
+   </select>
+  
   
 </mapper>
 

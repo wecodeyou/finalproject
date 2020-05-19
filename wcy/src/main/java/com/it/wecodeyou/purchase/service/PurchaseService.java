@@ -70,4 +70,14 @@ public class PurchaseService implements IPurchaseService {
 		
 	}
 
+	@Override
+	public void insertOffPro(PurchaseVO pv) {
+		dao.insertOffPro(pv);
+	}
+
+	@Override
+	public void insertOnPro(PurchaseVO pv) {
+		dao.insertOnPro(pv);
+	}
+
 }

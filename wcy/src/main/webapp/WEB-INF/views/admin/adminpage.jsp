@@ -21,6 +21,10 @@
 <!-- Custom styles for this template-->
 <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 
+<link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
 <title>WE CODE YOU | 관리자 페이지</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <style>
@@ -53,7 +57,7 @@
 				</div>
 			</div>
 			<!-- Begin Page Content -->
-			<div class="container-fluid">
+			<div class="container-fluid" id="adminChart">
 
 				<!-- Page Heading -->
 				<div
@@ -114,7 +118,8 @@
 							<div class="card-body">
 								<div class="row no-gutters align-items-center">
 									<div class="col mr-2">
-										<div class="text-s font-weight-bold text-danger text-uppercase mb-1">이달의 환불 ${thisMonthly.refundCount/thisMonthly.purchaseCount*100}%</div>
+										<div class="text-s font-weight-bold text-danger text-uppercase mb-1">
+										이달의 환불 <fmt:formatNumber value="${thisMonthly.refundCount/thisMonthly.purchaseCount}" type="percent" /> </div>
 										<div class="row no-gutters align-items-center">
 											<div class="col-auto">
 												<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">총 ${thisMonthly.refundCount}개
@@ -270,45 +275,60 @@
 								<h6 class="m-0 font-weight-bold text-primary">사이트 이용 목적</h6>
 							</div>
 							<div class="card-body"><br>
-								<h4 class="small font-weight-bold">
-									Server Migration <span class="float-right">20%</span>
-								</h4>
-								<div class="progress mb-4">
-									<div class="progress-bar bg-info" role="progressbar"
-										style="width: 20%" aria-valuenow="20" aria-valuemin="0"
-										aria-valuemax="100"></div>
-								</div><br>
-								<h4 class="small font-weight-bold">
-									Sales Tracking <span class="float-right">40%</span>
-								</h4>
-								<div class="progress mb-4">
-									<div class="progress-bar" role="progressbar"
-										style="width: 40%" aria-valuenow="40" aria-valuemin="0"
-										aria-valuemax="100"></div>
-								</div><br>
-								<h4 class="small font-weight-bold">
-									Customer Database <span class="float-right">60%</span>
-								</h4>
-								<div class="progress mb-4">
-									<div class="progress-bar bg-info" role="progressbar" style="width: 60%"
-										aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-								</div><br>
-								<h4 class="small font-weight-bold">
-									Payout Details <span class="float-right">80%</span>
-								</h4>
-								<div class="progress mb-4">
-									<div class="progress-bar " role="progressbar"
-										style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-										aria-valuemax="100"></div>
-								</div><br>
-								<h4 class="small font-weight-bold">
-									Account Setup <span class="float-right">Complete!</span>
-								</h4>
-								<div class="progress">
-									<div class="progress-bar bg-info" role="progressbar"
-										style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-										aria-valuemax="100"></div>
-								</div><br><br>
+								<c:forEach items="${reportList}" var="rL" varStatus="status">
+									<c:if test="${status.index eq 0}">
+										<h4 class=" font-weight-bold">
+											${rL.interestIndex}<br><br>
+											<span class="float-right">
+												<fmt:formatNumber value="${rL.cnt / total}" type="percent" /></span>
+										</h4>
+										<div class="progress mb-4">
+											<div class="progress-bar bg-info" role="progressbar"
+												style="width: ${rL.cnt / total * 100}%" aria-valuenow="20" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+										<br>
+									</c:if>
+									<c:if test="${status.index eq 1}">
+											<h4 class=" font-weight-bold">
+											${rL.interestIndex}<br><br>
+											<span class="float-right">
+												<fmt:formatNumber value="${rL.cnt / total}" type="percent" /></span>
+										</h4>
+										<div class="progress mb-4">
+											<div class="progress-bar" role="progressbar"
+												style="width: ${rL.cnt / total * 100}%" aria-valuenow="20" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+										<br>
+									</c:if>
+									<c:if test="${status.index eq 2}">
+										<h4 class=" font-weight-bold">
+											${rL.interestIndex}<br><br>
+											<span class="float-right">
+												<fmt:formatNumber value="${rL.cnt / total}" type="percent" /></span>
+										</h4>
+										<div class="progress mb-4">
+											<div class="progress-bar bg-info" role="progressbar"
+												style="width: ${rL.cnt / total * 100}%" aria-valuenow="20" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+										<br>
+									</c:if>
+									<c:if test="${status.index eq 3}">
+											<h4 class=" font-weight-bold">
+											${rL.interestIndex}<br><br>
+											<span class="float-right">
+												<fmt:formatNumber value="${rL.cnt / total}" type="percent" /></span>
+										</h4>
+										<div class="progress mb-4">
+											<div class="progress-bar" role="progressbar"
+												style="width: ${rL.cnt / total * 100}%" aria-valuenow="20" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+									</c:if>
+								</c:forEach>
+								<br>
 							</div>
 						</div>
 						
@@ -336,11 +356,62 @@
 
 			</div>
 			<!-- /.container-fluid -->
+			
+			<div class="container-fluid" id="adminUser">
+			
+				<div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-table mr-1"></i>WE CODE YOU | 회원 목록</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>UserType</th>
+                                                <th>Email</th>
+                                                <th>Name</th>
+                                                <th>Tel</th>
+                                                <th>Created_at</th>
+                                                <th>Login_at</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        	<c:forEach var="m" items="${members}">
+                                        		<tr>
+                                        			<td>
+                                        			<div style="text-align:center">
+                                        				<c:if test="${m.userType == 0}">
+                                        					일반회원
+                                        				</c:if>
+                                        				<c:if test="${m.userType == 1}">
+                                        					강사
+                                        				</c:if>
+                                        				<c:if test="${m.userType == 2}">
+                                        					*관리자
+                                        				</c:if>
+                                        				<button type="button" style="font-size:11px; width:50px"class="btn btn-info" value="${m.userNo}" id="authChangeU">변경</button>
+                                        			</div>
+                                   
+                                        			</td>
+                                        			<td>${m.userEmail}</td>
+                                        			<td>${m.userName}</td>
+                                        			<td>${m.userTel}</td>
+                                        			<td>${m.userCreatedAt}</td>
+                                        			<td>${m.userLoginAt}</td>
+                                        		</tr>
+                                        	</c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+			</div>
+			<!-- /.container-fluid -->
 
 		</div>
 	</main>
 
-   
+<%@ include file="../admin/user-change-modal.jsp" %>  
+ 
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 <script src="<c:url value = "/js/main.js"/>"></script>
 
@@ -361,12 +432,41 @@
 <!-- Page level custom scripts -->
 <script src="/js/demo/chart-area-demo.js"></script>
 <script src="/js/demo/chart-pie-demo.js"></script>
-
 <script src="/js/demo/chart-bar-demo.js"></script>
+
+<!-- 데이터 테이블 -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+
+
 <!-- 여기까지 -->  
 
 <script type="text/javascript">
+
+//authChangeU authChangeL
+  $("#authChangeU").click(function() {
+	  
+  });
+
+
+var sBtn = $(".center-sub-nav > li");    //  ul > li 이를 sBtn으로 칭한다. (클릭이벤트는 li에 적용 된다.)
+$(function(){
+	  sBtn.find("a").click(function(){   // sBtn에 속해 있는  a 찾아 클릭 하면.
+	  sBtn.find("a").removeClass("active");     // sBtn 속에 (active) 클래스를 삭제 한다.
+	  $(this).addClass("active"); // 클릭한 a에 (active)클래스를 넣는다.
+	});
+});
+
+
+	function adminChart(){
+		$('#adminChart').show();
+ 		$('#adminUser').hide();
+	}
+	function adminUser(){
+		$('#adminChart').hide();
+		$('#adminUser').show();
 	
+	}
 	
 </script>
 

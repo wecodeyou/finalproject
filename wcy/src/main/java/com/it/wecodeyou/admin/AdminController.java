@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.it.wecodeyou.interest.model.InterestReportVO;
 import com.it.wecodeyou.interest.sevice.IInterestService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
@@ -37,12 +38,19 @@ public class AdminController {
    	@GetMapping("")
 	public ModelAndView admin(ModelAndView mv) throws SQLException {
    		System.out.println("/admin : GET 요청 발생!");
-   		
+   		List<InterestReportVO> reportList = new ArrayList<>();
    		// goal의 답 종류들
    		List<String> goalList = interestService.getInterestsByType("goal");
+   		Integer total = interestService.getInterestReportByIndex("interest_index5").get(0).getCnt();
+   		
    		for (int i = 0; i < goalList.size(); i++) {
-			Integer cnt = interestService.countAnswer(goalList.get(i));
+   			Integer cnt = interestService.countAnswer(goalList.get(i));
+			InterestReportVO irvo = new InterestReportVO(interestService.getAnswer(goalList.get(i)), cnt);
+			reportList.add(irvo);
+			System.out.println(reportList.toString());
 		}
+   		mv.addObject("total", total);
+   		mv.addObject("reportList", reportList);
    		
    		//이 달, 올 해의 통계
    		PurchaseResultVO thisMonthly = purchaseService.getThisMonthlyEarnings();
@@ -51,6 +59,10 @@ public class AdminController {
    		//전체 통계
    		mv.addObject("monthly", purchaseService.getMonthlyEarnings());
    		mv.addObject("annual", purchaseService.getAnnualEarnings());
+   		
+   		//멤버
+   		mv.addObject("members",memberService.getAllInfo());
+   		
    		mv.setViewName("admin/adminpage");
    		return mv;
    	}

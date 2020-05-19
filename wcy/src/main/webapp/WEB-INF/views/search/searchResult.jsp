@@ -23,9 +23,6 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="./jquery/jquery.js"></script>
-
 <style>
 	.searchResult-table{
 		background-color: rgba(249,249,249,0.8);
@@ -66,7 +63,6 @@
 	}
 	
 </style>
-
 
 </head>
 <body>
@@ -121,17 +117,12 @@
 	<!-- 추천 태그 끝-->
 	</c:if>
 	<c:if test="${fn:length(allProductList)!=0 || fn:length(articleList)!=0 }">
-	
-		<br><br>
-		<div style="text-align: center; font-size:17px;">
-			네~ <h2 style="color:blue; font-weight:bold; font-size:23px;" class="mt10 mb10">${search}</h2> 로 찾은 검색결과입니다.
-		</div>
-		<br><br>
 		
 	<!-- 검색창 -->
 	<div class="row">
 		<div class="col-sm-2"></div>
 		<div class="form-group col-sm-2">
+		
 			<select id="condition" class="form-control" name="condition">
 				<option value="title">제목</option>
 				<option value="titleContent">제목+내용</option>
@@ -147,10 +138,10 @@
 				</span>
 			</div>
 		</div>
-		<div class="col-sm-2">
+		<%-- <div class="col-sm-2">
 			<a href="<c:url value="/board/${board.boardNo}/register"/>"
 				class="btn btn-outline-dark float-right">글쓰기</a>
-		</div>
+		</div> --%>
 		<div class="col-sm-2"></div>
 	</div>
 	<!-- 검색창 끝-->
@@ -164,6 +155,7 @@
     	</c:forEach>
 	</div>
 	<!-- 추천 태그 끝-->
+	
 	
 	<br>
 	<div style="text-align:center;">
@@ -376,13 +368,23 @@
 	</c:if>
 	<br>
 	<hr>
-	<a href="javascript:history.back()"><button class="btn btn-outline-primary">다시 검색하기</button></a>
+	<a class="moveTop"><button class="btn btn-outline-primary">다시 검색하기</button></a>
 </main>	
 	
 
 <script src="<c:url value='/js/search-filter.js'/>"></script>
 <script src="<c:url value='/js/tag.js'/>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+	<script>
+	   //원하는 타겟으로 스크롤 부드럽게 이동 (맨위로 이동)
+		jQuery(document).ready(function($){
+			$(".moveTop").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:0},500);
+			});
+		});
+	</script>
 
 </body>
 <jsp:include page="../include/footer.jsp" />

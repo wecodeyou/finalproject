@@ -37,4 +37,11 @@ public interface IPurchaseService {
 	
 	//수강 기간 만료 > seat_no = 0 으로 설정
 	public void updateExpire(PurchaseVO pv);
+	
+	// 오프강의구매 
+	public void insertOffPro(PurchaseVO pv);
+	
+	// 온강의구매
+	public void insertOnPro(PurchaseVO pv);
+	
 }

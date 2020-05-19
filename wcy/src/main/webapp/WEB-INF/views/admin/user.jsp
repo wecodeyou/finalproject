@@ -24,7 +24,7 @@
 
 <!-- datatable-->
 <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script> -->
 
 <title>WE CODE YOU | 회원 관리</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
@@ -58,7 +58,7 @@
 				</div>
 			</div>
 			<!-- Begin Page Content -->
-			<div class="container-fluid">
+			<div class="container-fluid" id="adminUser">
 
 				<div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-1"></i>WE CODE YOU | 회원 목록</div>
@@ -135,9 +135,6 @@
 <!-- Page level plugins -->
 <script src="/vendor/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
 
 <!-- 데이터 테이블 -->
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>

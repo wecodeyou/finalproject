@@ -239,8 +239,8 @@
             <div class="sub-menu-1">
                 <ul>
                   
-                  <li class="hover-me"><a href="#">자유게시판</a></li>
-                  <li class="hover-me"><a href="#">질문게시판</a>
+                  <li class="hover-me"><a href="<c:url value='/board/1'/>">자유게시판</a></li>
+                  <li class="hover-me"><a href="<c:url value='/board/4'/>">질문게시판</a>
                      <div class="sub-menu-2">
                         <ul>
                            <li style="width:300px;"><a href="#">Code</a></li>
@@ -248,7 +248,7 @@
                         </ul>
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">공유게시판</a>
+                  <li class="hover-me"><a href="<c:url value='/board/7'/>">공유게시판</a>
                      <div class="sub-menu-2">
                         <ul>
                            <li style="width:300px;"><a href="#">Teach</a></li>
@@ -256,8 +256,8 @@
                         </ul>                     
                      </div>
                   </li>
-                  <li class="hover-me"><a href="#">정기모임/스터디</a></li>
-                  <li class="hover-me"><a href="#">IT행사</a></li>
+                  <li class="hover-me"><a href="<c:url value='/board/5'/>">정기모임/스터디</a></li>
+                  <li class="hover-me"><a href="<c:url value='/board/6'/>">IT행사</a></li>
                </ul>
             </div>
          </li>

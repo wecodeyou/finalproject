@@ -58,7 +58,8 @@ var options = {
 				drawBorder : false
 			},
 			ticks : {
-				maxTicksLimit : 6
+				maxTicksLimit : 6,
+				padding : 10,
 			},
 			maxBarThickness : 25,
 		} ],
@@ -68,6 +69,7 @@ var options = {
 				max : 10,
 				maxTicksLimit : 5,
 				padding : 10,
+				fontSize: 20
 
 			},
 			gridLines : {
@@ -163,6 +165,8 @@ $.ajax({
 		
 		bardata.datasets[0].data = count; 
 		bardata.labels = ln; 
+		myBarChart.options.scales.xAxes[0].ticks.fontSize = 16; 
+		myBarChart.options.scales.yAxes[0].ticks.fontSize = 6;
 		myBarChart.update();
 		
 	}

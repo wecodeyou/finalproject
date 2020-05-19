@@ -166,7 +166,7 @@
 		AND ta.a_article_no = a.article_no
 		AND t.tag_name REGEXP #{q}
 	</select>
-	
+
 	<select id="countProductsByKeywordList" resultType="int">
 		SELECT COUNT(*) FROM product
 		WHERE product_type = #{productType}
@@ -174,7 +174,7 @@
 		OR product_name REGEXP #{q})
 		<!-- ORDER BY product_no DESC -->
 	</select>
-	
+
 	<select id="getProductByHashtag" resultMap="ProductMap">
 		SELECT p.product_no, p.product_type, p.product_name, p.product_price,
 		p.product_detail, p.product_created_at, p.product_thumb
@@ -184,6 +184,15 @@
 		AND t.tag_name REGEXP #{q}
 		LIMIT #{pageStart}, #{countPerPage}
 	</select>
-	
+
+	<select id="getTagsByArticle" resultMap="TagMap">
+		select ta.a_tag_no tag_no, t.tag_name tag_name from tag_article ta, tag t
+		where ta.a_tag_no = t.tag_no and ta.a_article_no = #{articleNo}
+	</select>
+
+	<select id="getTagsByProduct" resultMap="TagMap">
+		select tp.p_tag_no tag_no, t.tag_name tag_name from tag_product tp, tag t
+		where tp.p_tag_no = t.tag_no and tp.p_product_no = #{productNo}
+	</select>
 	
 </mapper>

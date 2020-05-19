@@ -295,7 +295,7 @@ a {
 -------------------------------- */
 .wcy-secondary-nav {
   position: relative;
-  z-index: 99999;
+  z-index: 1;
   clear: both;
   width: 100%;
   height: 50px;

@@ -61,6 +61,12 @@ public interface ITagService {
     //search product by %tag%
       public List<ProductVO> getProductByHashtag(SearchVO svo);
       
+      //select tags by article no
+      public ArrayList<TagVO> getTagsByArticle(Integer articleNo);
+      
+      //select tags by product no
+      public ArrayList<TagVO> getTagsByProduct(Integer productNo);
+      
       
       
       

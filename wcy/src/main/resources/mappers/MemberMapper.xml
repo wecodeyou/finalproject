@@ -29,6 +29,7 @@
       <result property="userType" column="user_type" />
       <result property="userPoint" column="user_point" />
       <result property="userInterest" column="user_interest" />
+      <result property="userEmailType" column="user_email_type" />
    </resultMap>
 
    
