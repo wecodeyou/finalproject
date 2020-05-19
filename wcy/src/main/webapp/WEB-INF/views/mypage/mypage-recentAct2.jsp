@@ -124,23 +124,65 @@ p {
 
 	<main class="wcy-main-content">
 		<div class="left-section">
-			<h2>WeCodeYou</h2>
+			<h2>MyPage</h2>
 			<ul class="left-sub-nav">
-				<li><a href="<c:url value='/greeting' />">인삿말/소개</a></li>
-				<li><a href="<c:url value='/location' />">오시는 길</a></li>
+				<li><a href="<c:url value='/mypage/myinfoChange' />">내 정보</a></li>
+				<li><a href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
+				<li><a href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
+				<li><a class="active" href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
+				<li><a href="<c:url value='/mypage/mylec' />">내 강의실</a></li>
 			</ul>
 		</div>
 
 		<div class="right-section">
 			<div class="right-header">
 				<ul class="right-sub-nav">
-					<li><a class="active"> WCY 소개 </a></li>
+					<li><a class="active"> 최근 활동 </a></li>
 				</ul>
 			</div>
 			<div class="right-contents">
-				<h4 class="contents-title">우리는 이렇게나 잘합니다.</h4>
+				<h4 class="contents-title">${login.userName}님 최근 활동</h4>
 				<p class="mb10">
-					대충 소개하는 이야기.
+					
+					
+
+	<div>
+		<h1>리뷰 목록</h1>
+		<table>
+			<tr>
+				<th>강의 명</th>
+				<th>내용</th>
+				<th>작성일자</th>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<h1>게시물 목록</h1>
+		<table>
+			<tr>
+				<th>게시판 종류</th>
+				<th>게시물 명</th>
+				<th>내용(앞부분 일부만)</th>
+				<th>작성일자</th>
+				<th>댓글(새로운 댓글이 달리면 여기 아래에 new)</th>
+			</tr>
+		
+		</table>
+	</div>
+	<div>
+		<h1>댓글 목록</h1>
+		<table>
+			<tr>
+				<th>게시판 종류</th>
+				<th>게시물 명</th>
+				<th>댓글 내용(앞부분 일부만)</th>
+				<th>작성일자</th>
+			</tr>
+		
+		</table>
+
+	</div>
+
 				</p>
 			</div>
 		</div>
@@ -149,6 +191,13 @@ p {
 
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
+
+<c:if test="${login == null}">
+	<script>   
+	   alert("로그인이 필요한 서비스입니다.");
+	   location.href="<c:url value='/' />";
+	</script>
+</c:if>	
 
 </body>
 	<jsp:include page="../include/footer.jsp" />

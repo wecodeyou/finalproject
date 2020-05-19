@@ -50,7 +50,8 @@
 				
 				<c:if test="${login != null}">
 					<li>${login.userName}님 반갑습니다.</li>
-					 <li><a href="<c:url value='/member/logout' />" onclick="return confirm('정말로 로그아웃 하시겠습니까?')">로그아웃</a></li>
+					 <!-- <li><a href="<c:url value='/member/logout' />" onclick="return confirm('정말로 로그아웃 하시겠습니까?')">로그아웃</a></li> -->
+					 <li><a onclick="logoutConfirm()">로그아웃</a></li>
 				</c:if>
 				
 			</ul>
@@ -282,7 +283,33 @@
 
 <!-- 검색 기능 -->
 <script src="<c:url value='/js/search-main.js'/>"></script>
-
+<!-- 로그아웃 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
+<script>
+function logoutConfirm(){
+	Swal.fire({
+	  title: 'Are you sure?',
+	  text: "정말로 로그아웃 하시겠습니까?",
+	  type: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'YES',
+	}).then((result) => {
+		 if (result.value) {
+			Swal.fire(
+		      '로그아웃!',
+		      '로그아웃되었습니다.',
+		      'success',
+		    )
+		 window.setTimeout(function(){
+			 window.location.href="/member/logout";
+		 },3000);
+		 //location.href="/member/logout"
+	    }
+	})
+};
+</script>
 <script>
 
 
@@ -290,7 +317,7 @@ function logincheck(){
     if(${login == null}){
        alert("로그인이 필요한 서비스입니다.");
     }else{
-    	location.href="<c:url value='/mypage/myinfoChange' />";
+    	location.href="<c:url value='/mypage/' />";
     }
        
  };

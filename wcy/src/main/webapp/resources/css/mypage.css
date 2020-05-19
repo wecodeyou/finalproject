@@ -40,25 +40,56 @@
 
 /*수강목록 영역*/
 .mypageClassSection{
-	height:800px;
 	margin-top: 70px;
-	
-	
 }
+
+.mypageClassSection .selectric-wrapper {
+    top: -45px;
+    margin-left: 200px;
+}
+.selectric-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+.selectric-hide-select {
+    position: relative;
+    width: 0;
+    height: 0;
+}
+.titleBox .addBtn {
+    top: 14px;
+    width: 26px;
+    height: 26px;
+    background-color: #000;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 600;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    line-height: 20px;
+}
+.titleBox .addBtn:hover {
+    background-color: #f44336;
+}
+
+
 .titleBox {position: relative; margin-bottom:24px;height:40px; text-align: left;}
 .titleBox .title{font-size:28px; color:#000;left:0; margin-bottom: 20px;text-ailgn:left;}
+
 .classviewList {margin-bottom:48px; height:auto;}
-.classlectureList{position: relative; height:465px; overflow:hidden;}
+.classlectureList{position: relative; overflow:hidden;}
+
 .classlectureList .registerListLayout{overflow:hidden}
 .registerListLayout > ul > li:first-child {display:block;}
-.boxWebzineBorad{ height:231px; border:1px solid; border-color: rgba(151,151,151,0.3); overflow: hidden; position: relative; margin-bottom:32px; text-align:left;}
+.boxWebzineBorad{ height:260px; border:1px solid; border-color: rgba(151,151,151,0.3); overflow: hidden; position: relative; margin-bottom:32px; text-align:left;}
 .webzineLeft {
-    width: 314px;
-    height: 232px;
+    width: 300px;
+    height: 258px;
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 2;
+    z-index: 0;
     overflow: hidden;
     background-color: #eee;
 }
@@ -82,6 +113,476 @@
     margin-bottom: 12px;
     letter-spacing: -0.07em;
 }
+
+
+
+.boxWebzineBorad .webzineRight {
+    position: relative;
+}
+.webzineRight {
+    position: relative;
+    padding-left: 330px;
+    min-height: 231px;
+}
+.boxWebzineBorad .webzineRight .title {
+    margin-bottom: 15px;
+}
+.boxWebzineBorad .title {
+    position: relative;
+    font-size: 30px;
+    letter-spacing: -0.5px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    color: #000;
+}
+.webzineRight .title {
+    padding-top: 20px;
+    font-size: 21px;
+    line-height: 27px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 12px;
+    letter-spacing: -0.07em;
+}
+.boxWebzineBorad .webzineRight .title a {
+    font-size: 20px;
+    display: block;
+    width: 500px;
+    line-height: 34px;
+}
+.webzineRight .title a {
+    color: #000;
+}
+.boxWebzineBorad .webzineRight a.rBtn {
+    min-width: 185px;
+    transition: all 0.3s ease;
+    background-color: #F3F6F9;
+    font-size: 15px;
+    display: block;
+    padding: 9px 9px 7px 9px;
+    color: #000;
+    border: 1px solid #A8B6C4;
+    position: absolute;
+    right: 10px;
+    top: 13px;
+}
+.boxWebzineBorad .webzineRight a.rBtn span{
+    color: #000;
+    float: right;
+    margin-top: 4px;
+    font-size: 10px;
+    transition: all 0.3s ease;
+}
+
+.boxWebzineBorad .webzineRight a.rBtn i{
+	float:right;
+}
+
+.myclassInfoTabel, .myclassInfoTabel td {
+    border-spacing: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.myclassInfoTabel td.title {
+    font-size: 14px;
+    color: #666;
+    width: 60px;
+    vertical-align: top;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    position: relative;
+}
+
+.myclassInfoTabel td {
+    font-size: 16px;
+    color: #000;
+    letter-spacing: -0.5px;
+    font-weight: 400;
+    padding: 1px 15px;
+}
+
+.webzineRight .price {
+    position: absolute;
+    right: 50px;
+    bottom: 21px;
+    text-align: right;
+}
+
+.boxWebzineBorad .normality {
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.boxWebzineBorad .normality .productTitle {
+    text-align: right;
+    font-size: 16px;
+    margin-bottom: 0px;
+    padding-right: 0;
+    color: #666;
+    font-weight:bold;
+}
+
+.boxWebzineBorad .productPrice {
+    font-size: 26px;
+    font-weight: 600;
+    color: #000;
+}
+.normality .productPrice {
+    display: inline-block;
+    font-weight: 300;
+    font-size: 30px;
+    width: 160px;
+    text-align: right;
+    color: #000;
+    padding-top: 10px;
+}
+
+
+
+
+/*회원정보 변경*/
+.join_title_box {
+    position: relative;
+    width: 100%;
+    height: 152px;
+    text-align: center;
+    cursor: default;
+}
+.join_title_box h3 {
+    padding-top: 35px;
+    font-size: 36px;
+    color: #d92128;
+    font-weight: 600;
+}
+.join_title_box h4 {
+    padding-top: 15px;
+    font-size: 15px;
+    color: #999;
+    font-weight: 500;
+}
+
+#content {
+    position: relative;
+    width: 800px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.fvboard {
+    width: 100%;
+    font-size: 15px;
+    border: 1px solid #d1d5da;
+}
+
+.fvboard th {
+    height: 20px;
+    padding: 15px 0;
+    background: #e6eaec;
+    border-bottom: 1px solid #d1d5da;
+    border-right: 1px solid #d1d5da;
+    color: #7e8386;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 24px;
+}
+
+.fvboard td {
+    display: table-cell;
+    vertical-align: middle;
+    background: #fff;
+    border-bottom: 1px solid #d1d5da;
+    color: #545a5e;
+    font-weight: 500;
+    text-align: left;
+    padding: 15px;
+}
+
+.fvboard td input{
+	padding-left: 5px;
+}
+
+.int01 {
+    height: 33px;
+    line-height: 33px;
+    border: 1px solid #d1d5da !important;
+    text-indent: 10px;
+    font-size: 15px;
+    color: #333;
+}
+
+.address_box li {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+
+a.btn_gray {
+    vertical-align: -1px;
+    display: inline-block;
+    padding: 0 17px;
+    height: 33px;
+    line-height: 33px;
+    background: #eaecee;
+    border: 1px solid #c0c5cc;
+    text-align: center;
+    font-size: 13px;
+    color: #7e8386;
+    font-weight: 500;
+}
+
+
+/*포인트 상세보기*/
+.pointList {
+    background-color: #F3F6F9;
+    overflow: hidden;
+    margin-bottom: 60px;
+    margin-top: 30px;
+}
+.pointList li {
+    width: 25%;
+    float: left;
+}
+.pointIn {
+    padding: 34px 32px 38px 32px;
+    text-align: center;
+    position: relative;
+}
+.pointIn img {
+    position: absolute;
+    left: 49px;
+    width: 60px;
+}
+.pointBtn {
+	padding-left: 80px;
+    position: relative;
+    text-align: left;
+    font-size: 18px;
+    overflow: hidden;
+    padding-top: 31px
+}
+.pointexplain {
+	position: relative;
+    text-align: left;
+    font-size: 15px;
+    overflow: hidden;
+    padding-top: 4px;
+    width: 430px;
+    line-height: 1.2rem;
+}
+.pointBtn a {
+    color: #D31F21;
+}
+.pointIn:before {
+    display: block;
+    content: '';
+    width: 1px;
+    height: 65px;
+    border-left: 1px dashed #707070;
+    position: absolute;
+    left: 0;
+    top: 32px;
+}
+
+.pointList li:first-child .pointIn:before{display:none;}
+
+.pointhistoryLayout .Dtitle {
+    position: relative;
+    font-size: 28px;
+    color: #000;
+    letter-spacing: -0.5px;
+    margin-bottom: 25px;
+    margin-top: 50px;
+    float: left;
+}
+
+
+.pointhistoryLayout .table_normal {
+    margin-bottom: 36px;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.table_normal {
+    width: 100%;
+    border-top: 1px solid #575757;
+    border-bottom: 2px solid #575757;
+}
+
+.pointhistoryLayout .table_normal th {
+    text-align: center;
+}
+
+.pointhistoryLayout .table_normal th {
+    font-size: 18px;
+    background-color: #F8F9FA;
+    padding: 18px 0;
+}
+
+.table_normal thead tr th {
+    background-color: #f7f7f7;
+    border-top: 1px solid #dadada;
+    color: #333;
+    padding: 10px 0px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.line0 {
+    border-left: 0px !important;
+}
+
+.pointhistoryLayout .table_normal td {
+    padding: 20px;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+}
+
+.table_normal tbody tr td {
+    color: #666;
+    border-top: 1px solid #dadada;
+    padding: 8px 5px;
+    transition: 0.3s all;
+}
+
+
+
+/*최근활동 상세보기*/
+.pointList {
+    background-color: #F3F6F9;
+    overflow: hidden;
+    margin-bottom: 60px;
+    margin-top: 30px;
+}
+.pointList li {
+    width: 25%;
+    float: left;
+}
+.pointIn {
+    padding: 34px 32px 38px 32px;
+    text-align: center;
+    position: relative;
+}
+.pointIn img {
+    position: absolute;
+    left: 49px;
+    width: 60px;
+}
+.pointBtn {
+	padding-left: 80px;
+    position: relative;
+    text-align: left;
+    font-size: 18px;
+    overflow: hidden;
+    padding-top: 31px
+}
+.pointexplain {
+	position: relative;
+    text-align: left;
+    font-size: 15px;
+    overflow: hidden;
+    padding-top: 4px;
+    width: 430px;
+    line-height: 1.2rem;
+}
+.pointBtn a {
+    color: #D31F21;
+}
+.pointIn:before {
+    display: block;
+    content: '';
+    width: 1px;
+    height: 65px;
+    border-left: 1px dashed #707070;
+    position: absolute;
+    left: 0;
+    top: 32px;
+}
+
+.pointList li:first-child .pointIn:before{display:none;}
+
+.acthistoryLayout .Dtitle {
+    position: relative;
+    font-size: 28px;
+    color: #000;
+    letter-spacing: -0.5px;
+    margin-bottom: 25px;
+    margin-top: 50px;
+    width: 100%;
+    text-align: left;
+}
+.acthistoryLayout .subtitle {
+    position: relative;
+    font-size: 18px;
+    color: #F44336;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    margin-top: 20px;
+    float: left;
+}
+.acthistoryLayout .subtitle p{
+	padding-left: 20px;
+}
+.subtitle:before {
+    display: block;
+    content: '';
+    height: 7px;
+    border-left: 7px solid #F44336;
+    position: absolute;
+    left: 1px;
+    top: 7px
+}
+
+
+.acthistoryLayout .table_normal {
+    margin-bottom: 36px;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.table_normal {
+    width: 100%;
+    border-top: 1px solid #575757;
+    border-bottom: 2px solid #575757;
+}
+
+.acthistoryLayout .table_normal th {
+    text-align: center;
+}
+
+.acthistoryLayout .table_normal th {
+    font-size: 16px;
+    background-color: #F8F9FA;
+    padding: 6px 0;
+}
+
+.table_normal thead tr th {
+    background-color: #f7f7f7;
+    border-top: 1px solid #dadada;
+    color: #333;
+    padding: 10px 0px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.line0 {
+    border-left: 0px !important;
+}
+
+.acthistoryLayout .table_normal td {
+    padding: 10px;
+    font-size: 15px;
+    letter-spacing: -0.5px;
+}
+
+.table_normal tbody tr td {
+    color: #666;
+    border-top: 1px solid #dadada;
+    padding: 8px 5px;
+    transition: 0.3s all;
+}
+
+
+
 
 
 
