@@ -328,6 +328,7 @@
 					location.href = "/search/filter?q=" + keyword
 							+ "&condition=" + condition;
 
+					
 				});
 
 		//엔터키 입력 이벤트
