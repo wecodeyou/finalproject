@@ -67,7 +67,6 @@
 	
 </style>
 
-
 </head>
 <body>
 
@@ -121,17 +120,12 @@
 	<!-- 추천 태그 끝-->
 	</c:if>
 	<c:if test="${fn:length(allProductList)!=0 || fn:length(articleList)!=0 }">
-	
-		<br><br>
-		<div style="text-align: center; font-size:17px;">
-			네~ <h2 style="color:blue; font-weight:bold; font-size:23px;" class="mt10 mb10">${search}</h2> 로 찾은 검색결과입니다.
-		</div>
-		<br><br>
 		
 	<!-- 검색창 -->
 	<div class="row">
 		<div class="col-sm-2"></div>
 		<div class="form-group col-sm-2">
+		
 			<select id="condition" class="form-control" name="condition">
 				<option value="title">제목</option>
 				<option value="titleContent">제목+내용</option>
@@ -147,10 +141,10 @@
 				</span>
 			</div>
 		</div>
-		<div class="col-sm-2">
+		<%-- <div class="col-sm-2">
 			<a href="<c:url value="/board/${board.boardNo}/register"/>"
 				class="btn btn-outline-dark float-right">글쓰기</a>
-		</div>
+		</div> --%>
 		<div class="col-sm-2"></div>
 	</div>
 	<!-- 검색창 끝-->
@@ -164,6 +158,7 @@
     	</c:forEach>
 	</div>
 	<!-- 추천 태그 끝-->
+	
 	
 	<br>
 	<div style="text-align:center;">

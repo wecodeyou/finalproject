@@ -29,12 +29,21 @@ import org.springframework.web.servlet.ModelAndView;
 import com.it.wecodeyou.curriculum.model.CurriculumVO;
 import com.it.wecodeyou.curriculum.service.CurriculumService;
 import com.it.wecodeyou.curriculum.service.ICurriculumService;
+import com.it.wecodeyou.product.service.ProductService;
+import com.it.wecodeyou.sub_product.model.SubProductVO;
+import com.it.wecodeyou.sub_product.service.SubProductService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class HomeController {
+
+	@Autowired
+	private SubProductService spservice;
+	   
+	@Autowired
+	private ProductService pservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -50,6 +59,26 @@ public class HomeController {
 		
 		String formattedDate = dateFormat.format(date);
 		
+		// 32부터 81 사이 48과 75를 제외한 8개를 랜덤 배출
+		ArrayList<SubProductVO> ten_list = new ArrayList<SubProductVO>();
+		int[] nums = new int[8];
+		for (int i = 0; i < nums.length; i++) {	
+			int num = (int)(Math.random() * 48)+1;			
+			nums[i] = num;
+			for (int j = 0; j < i; j++) {
+				if(nums[i] == nums[j] || num == 15 || num == 16 || num == 42 || num == 43) {
+					i--;break;
+				}	
+			}
+		}	
+		for (int i = 0; i < nums.length; i++) {			
+			ten_list.add(spservice.showAllPro().get(nums[i]));
+		}
+		for (int i = 0; i < ten_list.size(); i++) {
+			ten_list.get(i).setSpBook(pservice.getOneInfo(ten_list.get(i).getSpProId()).getProductName());
+		}
+		
+		model.addAttribute("sp_data", ten_list);
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";

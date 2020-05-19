@@ -274,7 +274,6 @@ public class MemberController {
    @GetMapping("/send_join")
    public ModelAndView send_join() {
       System.out.println("이메일 인증 성공");
-         
       return new ModelAndView("/member/join-form");
    }
    

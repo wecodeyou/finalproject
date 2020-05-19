@@ -674,90 +674,22 @@
 			<span  style="font-size:17px; font-weight:400;">&nbsp;&nbsp;&nbsp;수강생들이 사랑한 강의</span>
 		</div>
 		<ul class="wcy-best-class">
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>프론트엔드 개발환경의 이해와 실습 </p>
-		            <p>김영희</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network01.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[온라인] 디자인</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+			<c:forEach var="sp" items="${sp_data}">
+				<li class="hover-layout">
+					<div class="overrap-bottom">
+			            <p>${sp.spBook}</p>
+			            <p>${sp.spLecName}</p>
+	        		</div>
+					<div class="hover-wrap">
+						<a href="#"><img src="${sp.spThum}" style="width:300px; height:300px;"/></a>
+						<h3>${sp.spScope}</h3>
+						<div class="hover-bottom">
+							<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
+							<a href="<c:url value='/curriculum/sub?s=${sp.spBook}' />" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
+						</div>
 					</div>
-				</div>
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>Spring Framework Project</p>
-		            <p>서영준</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network08.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[오프라인] Programming</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>			
-				</div>
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>빅데이터 분석 R 프로그래밍</p>
-		            <p>아무개</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network03.png'/>" style="width:300px; height:300px;"/></a>
-					<h3>[온라인] 빅데이터/보안</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>	
-				</div>		
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>JSP Programming</p>
-		            <p>홍순구</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network04.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[오프라인] Programming</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>	
-				</div>		
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>정보처리기사 (신유형 분석)</p>
-		            <p>김개똥</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network05.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[온라인] 서버/자격증</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>		
-				</div>	
-			</li>
-			<li class="hover-layout">
-				<div class="overrap-bottom">
-		            <p>Hacking Trace</p>
-		            <p>박철수</p>
-        		</div>
-				<div class="hover-wrap">
-					<a href="#"><img src="<c:url value='/img/curriculum/network06.jpg'/>" style="width:300px; height:300px;"/></a>
-					<h3>[오프라인] Hacking</h3>
-					<div class="hover-bottom">
-						<a href="#" title="장바구니"><i class="fas fa-cart-plus"></i></a>
-						<a href="#" title="상세보기"><i class="fas fa-search-plus" style="left:77px;"></i></a>
-					</div>
-				</div>		
-			</li>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
 

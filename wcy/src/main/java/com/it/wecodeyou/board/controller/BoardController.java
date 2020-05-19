@@ -105,9 +105,14 @@ public class BoardController {
 		mv.addObject("board", bvo);
 		mv.addObject("articleList", list);
 		mv.addObject("pc", pc);
-		mv.setViewName("/board/ArticleList");
+		
+		//mv.setViewName("/board/ArticleList");
+		mv.setViewName("/board/article-main");
 		return mv;
 	}
+	
+	
+	
 	
 	@GetMapping("/{boardNo}/register")
 	public ModelAndView registerArticle(ModelAndView mv, @PathVariable Integer boardNo) {
