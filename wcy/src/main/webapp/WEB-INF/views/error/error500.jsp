@@ -16,7 +16,7 @@
 		<a href="/"><button class="btn btn-danger">홈으로</button></a>
 	</div>
 </div>
-
+ 
 
 </body>
 </html>
