@@ -152,10 +152,10 @@ public class AdminController {
 	 * }
 	 */
    	
-    //로그인 요청 처리
+    //유저 타입 변경
     @PostMapping("/typechange")
     public String typechange(@RequestBody Integer usertype, HttpSession session) throws SQLException {
-       System.out.println("/member/typechange : 로그인 POST 요청 발생!");
+       System.out.println("/member/typechange : 유저타입 변경 POST 요청 발생!");
        String result=null;
        
        
@@ -168,4 +168,15 @@ public class AdminController {
        return result;
     }
    	
+    //태그추가
+    @GetMapping("/tag")
+    public ModelAndView tag(ModelAndView mv) {
+
+    	
+    	mv.setViewName("tag/inputTag");
+    
+    	return mv;
+    }
+    
+    
 }

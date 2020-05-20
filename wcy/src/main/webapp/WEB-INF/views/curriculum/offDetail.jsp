@@ -103,7 +103,6 @@
 								<a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
 							</div>
 							<div class="button-register">
-								<button type="button" id="btn2">달력 소환</button>
 								<a class="modal_open_btn" data-toggle="modal" data-target="#modal2">달력보기</a>
 							</div>
 						</div>
