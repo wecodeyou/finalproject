@@ -18,9 +18,10 @@ public class OffVO {
 	
 	public OffVO() {}
 
+	
 	public OffVO(Integer offNo, String offAuthor, String offCategory, Integer offProductNo, String offPlace,
-			String offRoom, String offUploadUri, Integer offSeats, Timestamp offStartAt, Timestamp offEndAt, Timestamp offCreatedAt,
-			Timestamp offModifiedAt) {
+			String offUploadUri, Integer offSeats, Timestamp offStartAt, Timestamp offEndAt, Timestamp offCreatedAt,
+			Timestamp offModifiedAt, String offRoom) {
 		super();
 		this.offNo = offNo;
 		this.offAuthor = offAuthor;
@@ -34,7 +35,9 @@ public class OffVO {
 		this.offEndAt = offEndAt;
 		this.offCreatedAt = offCreatedAt;
 		this.offModifiedAt = offModifiedAt;
+		this.offRoom = offRoom;
 	}
+
 
 	public Integer getOffNo() {
 		return offNo;
@@ -76,13 +79,6 @@ public class OffVO {
 		this.offPlace = offPlace;
 	}
 
-	public String getOffRoom() {
-		return offRoom;
-	}
-
-	public void setOffRoom(String offRoom) {
-		this.offRoom = offRoom;
-	}
 
 	public String getOffUploadUri() {
 		return offUploadUri;
@@ -132,6 +128,15 @@ public class OffVO {
 		this.offModifiedAt = offModifiedAt;
 	}
 
+	public String getOffRoom() {
+		return offRoom;
+	}
+
+	public void setOffRoom(String offRoom) {
+		this.offRoom = offRoom;
+	}
+
+
 	@Override
 	public String toString() {
 		return "OffVO [offNo=" + offNo + ", offAuthor=" + offAuthor + ", offCategory=" + offCategory + ", offProductNo="
@@ -139,5 +144,7 @@ public class OffVO {
 				+ ", offSeats=" + offSeats + ", offStartAt=" + offStartAt + ", offEndAt=" + offEndAt + ", offCreatedAt="
 				+ offCreatedAt + ", offModifiedAt=" + offModifiedAt + "]";
 	}
+
+
 	
 }

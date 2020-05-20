@@ -36,14 +36,15 @@
 		<result property="offSeats" column="off_seats"/>
 		<result property="offStartAt" column="off_start_at"/>
 		<result property="offEndAt" column="off_end_at"/>
+		<result property="offRoom" column="off_room"/>
 		<result property="offCreatedAt" column="off_created_at"/>
 		<result property="offModifiedAt" column="off_modified_at"/>
 	</resultMap>
 	<insert id="insert">
 		INSERT 
 		INTO off_course
-		(off_author, off_category, off_place, off_room, off_product_no, off_seats, off_start_at, off_end_at)
-		VALUES(#{offAuthor}, #{offCategory}, #{offPlace}, #{offRoom}, #{offProductNo}, #{offSeats}, #{offStartAt}, #{offEndAt})
+		(off_author, off_category, off_place, off_product_no, off_seats, off_start_at, off_end_at, off_room)
+		VALUES(#{offAuthor}, #{offCategory}, #{offPlace}, #{offProductNo}, #{offSeats}, #{offStartAt}, #{offEndAt}, #{offRoom})
 	</insert>
 	
 	<update id="update">

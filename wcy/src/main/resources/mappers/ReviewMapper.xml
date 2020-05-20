@@ -16,9 +16,9 @@
 	<insert id="insertReview">
 		INSERT
 		INTO review
-		(review_no, review_user, review_product_no, review_star, content, review_created_at)
+		(review_user, review_product_no, review_star, content, review_created_at)
 		VALUES
-		(#{reviewNo}, #{reviewUser}, #{reviewProductNo}, #{reviewStar}, #{content}, #{reviewCreatedAt})
+		(#{reviewUser}, #{reviewProductNo}, #{reviewStar}, #{content}, now())
 	</insert>
 
 	<!-- 개별 출력(상세조회) -->

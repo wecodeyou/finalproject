@@ -17,9 +17,9 @@ public class OffProductVO {
 	private String offCategory;
 	private Integer offProductNo;
 	private String offPlace;
-	private String offRoom;
 	private String offUploadUri;
 	private Integer offSeats;
+	private String offRoom;
 	private Timestamp offStartAt;
 	private Timestamp offEndAt;
 	private Timestamp offCreatedAt;
@@ -30,8 +30,8 @@ public class OffProductVO {
 
 	public OffProductVO(Integer productNo, String productType, String productName, Integer productPrice,
 			String productDetail, Timestamp productCreatedAt, String productThumb, Integer offNo, String offAuthor,
-			String offCategory, Integer offProductNo, String offPlace, String offRoom, String offUploadUri, Integer offSeats,
-			Timestamp offStartAt, Timestamp offEndAt, Timestamp offCreatedAt, Timestamp offModifiedAt,
+			String offCategory, Integer offProductNo, String offPlace, String offUploadUri, Integer offSeats,
+			String offRoom, Timestamp offStartAt, Timestamp offEndAt, Timestamp offCreatedAt, Timestamp offModifiedAt,
 			ArrayList<Integer> sendTagList) {
 		super();
 		this.productNo = productNo;
@@ -49,6 +49,7 @@ public class OffProductVO {
 		this.offRoom = offRoom;
 		this.offUploadUri = offUploadUri;
 		this.offSeats = offSeats;
+		this.offRoom = offRoom;
 		this.offStartAt = offStartAt;
 		this.offEndAt = offEndAt;
 		this.offCreatedAt = offCreatedAt;
@@ -56,7 +57,7 @@ public class OffProductVO {
 		this.sendTagList = sendTagList;
 	}
 
-	public long getProductNo() {
+	public Integer getProductNo() {
 		return productNo;
 	}
 
@@ -112,7 +113,7 @@ public class OffProductVO {
 		this.productThumb = productThumb;
 	}
 
-	public long getOffNo() {
+	public Integer getOffNo() {
 		return offNo;
 	}
 
@@ -136,7 +137,7 @@ public class OffProductVO {
 		this.offCategory = offCategory;
 	}
 
-	public long getOffProductNo() {
+	public Integer getOffProductNo() {
 		return offProductNo;
 	}
 
@@ -152,14 +153,6 @@ public class OffProductVO {
 		this.offPlace = offPlace;
 	}
 	
-	public String getOffRoom() {
-		return offRoom;
-	}
-
-	public void setOffRoom(String offRoom) {
-		this.offRoom = offRoom;
-	}
-
 	public String getOffUploadUri() {
 		return offUploadUri;
 	}
@@ -174,6 +167,14 @@ public class OffProductVO {
 
 	public void setOffSeats(Integer offSeats) {
 		this.offSeats = offSeats;
+	}
+
+	public String getOffRoom() {
+		return offRoom;
+	}
+
+	public void setOffRoom(String offRoom) {
+		this.offRoom = offRoom;
 	}
 
 	public Timestamp getOffStartAt() {
@@ -222,10 +223,10 @@ public class OffProductVO {
 				+ ", productPrice=" + productPrice + ", productDetail=" + productDetail + ", productCreatedAt="
 				+ productCreatedAt + ", productThumb=" + productThumb + ", offNo=" + offNo + ", offAuthor=" + offAuthor
 				+ ", offCategory=" + offCategory + ", offProductNo=" + offProductNo + ", offPlace=" + offPlace
-				+ ", offRoom=" + offRoom + ", offUploadUri=" + offUploadUri + ", offSeats=" + offSeats + ", offStartAt="
+				+ ", offUploadUri=" + offUploadUri + ", offSeats=" + offSeats + ", offRoom=" + offRoom + ", offStartAt="
 				+ offStartAt + ", offEndAt=" + offEndAt + ", offCreatedAt=" + offCreatedAt + ", offModifiedAt="
 				+ offModifiedAt + ", sendTagList=" + sendTagList + "]";
 	}
-	
+
 	
 }

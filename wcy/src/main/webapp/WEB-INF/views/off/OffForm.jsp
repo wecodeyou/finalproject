@@ -46,7 +46,11 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 			</tr>
 			<tr>
 				<td>
-				<input type="text" id="thumb" name="thumb" value="https://res.cloudinary.com/dl5spujr5/image/upload/v1588318923/samples/KakaoTalk_20200501_115545951_ob2vq4.jpg" readonly/>
+				<form method="post" enctype="multipart/form-data" action="#" id="imageForm">
+				<input type="file" id="thumb" name="filedata"/>
+				</form>
+				<button onclick="javascript:imageUpload()">업로드</button>
+				<input type="hidden" id="url"/>
 				</td>
 			</tr>
 			<tr>
@@ -57,20 +61,13 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 			</tr>
 			<tr>
 				<td>
-				# 상품등록자: 
-				<input type="text" name="author" id="author" value="kouri1004@gmail.com" readonly />
+				#방 호수
+				<input type="text" id="room" name="room" />
 				</td>
 			</tr>
 			<tr>
-				<td>
-					# 상품종류: 
-				<select name="type" id="type">
-				<option value="0">온라인</option>
-				<option value="1">오프라인</option>
-				<option value="2">상품</option>			
-				</select>
-				</td>
 			</tr>
+			<input type="hidden" id="type" value='1'/>
 			<tr>
 				<td>
 				# 강의종류: 
@@ -115,6 +112,13 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 		</table>		
 
 	</div>
+
+<c:if test="${login == null}">
+   <script>   
+   	  Swal.fire('로그인이 필요한 서비스입니다.');
+      location.href="<c:url value='/' />";
+   </script>
+</c:if>
 <script type="text/javascript">
 
 	$(function(){
@@ -130,15 +134,12 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 
 			const price = $('#price').val();
 			console.log(price);
-
+		
 			const detail = $('#detail').val();
 			console.log(detail);
 
-			const thumb = $('#thumb').val();
-			console.log(thumb);
-			
-			const author = $('#author').val();
-			console.log(author);
+			const thumb = $('#url').val();
+			console.log(url);
 			
 			const off_type = $('#off_type').val();
 			console.log(off_type);
@@ -155,18 +156,20 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 			const place = $('#place').val();
 			console.log(place);
 			
+			const room = $('#room').val();
+			console.log(room);
 			var data = {
 					productType : type,
 					productName : name,
 					productPrice : price,
 					productDetail : detail,
 					productThumb : thumb,
-					offAuthor : author,
 					offCategory : off_type,
 					offPlace : place,
 					offSeats : seats,
 					offStartAt : start,
 					offEndAt : end,
+					offRoom : room,
 					sendTagList: sendTagList
 				}
 			$.ajax({
@@ -179,11 +182,8 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 				data:JSON.stringify(data),
 				success: function(data){
 					console.log("received output: " + data);
-					if(data === "off_success"){
-						location.href = "/product";
-					} else{
-						$('#message').text("서버에러가 발생하였습니다");
-					}
+				
+
 				},
 				error: function(request, status, error){
 					$('#message').text("통신에 실패하였습니다");
@@ -191,6 +191,30 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 			}); /* end ajax */			
 		});
 	});
+
+	function imageUpload(){
+		var form= $('#imageForm')[0];
+		var formData = new FormData(form);
+		form.append('fileData', $('#thumb')[0].files[0]);
+		$.ajax({
+			type: "POST",
+			url : "<c:url value='/singleUploadImageAjax'/>",
+			processData: false,
+			contentType:false,
+			dataType: "json",
+			data:formData,
+			success: function(data){
+				console.log(data.filename + " ;; " + data.thumburl);
+				$('#url').val(data.thumburl);
+				console.log("data: " + data)
+				$('#message').text("이미지 업로드 완료!");			
+				
+			},
+			error: function(request, status, error){
+				$('#message').text("통신에 실패하였습니다");
+			}
+		}); /* end ajax */	
+	}
 
 </script>
 

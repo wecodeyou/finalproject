@@ -1,5 +1,7 @@
 package com.it.wecodeyou.purchase.controller;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -30,17 +32,17 @@ public class PurchaseController {
 	ISeatService sservice;
 	
 	@PostMapping(value="/purchase")
-	public ModelAndView purchaseProduct(HttpSession session, HttpServletRequest req, ModelAndView mv){
+	public ModelAndView purchaseProduct(HttpSession session, HttpServletRequest req, ModelAndView mv) throws SQLException{
 		Integer proNo = Integer.parseInt(req.getParameter("pro_no"));
 		Integer proPrice = Integer.parseInt(req.getParameter("pro_price"));
 		Integer proType = Integer.parseInt(req.getParameter("pro_type"));
-		Integer seatNo = Integer.parseInt(req.getParameter("seat_no"));
 		Integer buyer_no = ((MemberVO)session.getAttribute("login")).getUserNo();
 		PurchaseVO pv = new PurchaseVO();
 		pv.setPurchaseProNo(proNo);
 		pv.setPurchaseBuyer(buyer_no);
 		pv.setPurchaseAmount(proPrice);
 		if(proType == 1) {// 오프라인 강의 일경우 
+			Integer seatNo = Integer.parseInt(req.getParameter("seat_no"));
 			pv.setPurchaseSeatNo(seatNo);
 			// 자리도 설정
 			
@@ -54,8 +56,13 @@ public class PurchaseController {
 			pservice.insertOnPro(pv);
 		}
 		// 이제 member table point update
-		
-		
+		Integer newpoint = ((MemberVO)session.getAttribute("login")).getUserPoint()-proPrice;
+		MemberVO pmvo = new MemberVO();
+		pmvo.setUserNo(buyer_no);
+		pmvo.setUserPoint(newpoint);
+		mservice.updatePurchase(pmvo);
+		session.removeAttribute("login");
+		session.setAttribute("login", mservice.getOneInfo(buyer_no));
 		mv.setViewName("home");
 		
 		return mv;	

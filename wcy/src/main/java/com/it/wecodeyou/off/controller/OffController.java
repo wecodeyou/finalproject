@@ -80,10 +80,10 @@ public class OffController {
 
 	// 오프라인강의랑 상품 정보를 다 가져오기 위해 만든 커스텀 VO로 한번에 가져옴
 	@PostMapping(value = "/register")
-	public String register(@RequestBody OffProductVO opvo) {
+	public String register(@RequestBody OffProductVO opvo, HttpSession session) {
 		System.out.println("/register - param received \n\r " + opvo.toString());
 		String result = null;
-
+		MemberVO login = (MemberVO) session.getAttribute("login");
 		ProductVO pvo = new ProductVO();
 		pvo.setProductName(opvo.getProductName());
 		pvo.setProductPrice(opvo.getProductPrice());
@@ -101,7 +101,7 @@ public class OffController {
 		switch (pvo.getProductType()) {
 			
 			case "0": 
-					  onvo.setOnAuthor(opvo.getOffAuthor());
+					  onvo.setOnAuthor(login.getUserEmail());
 					  onvo.setOnCategory(Integer.parseInt(opvo.getOffCategory()));
 					  onvo.setOnDays(0);
 					  
@@ -112,12 +112,13 @@ public class OffController {
 						}
 					  break;
 			case "1": 
-					  ovo.setOffAuthor(opvo.getOffAuthor());
+					  ovo.setOffAuthor(login.getUserEmail());
 					  ovo.setOffCategory(opvo.getOffCategory());
 					  ovo.setOffPlace(opvo.getOffPlace());
 					  ovo.setOffSeats(opvo.getOffSeats());
 					  ovo.setOffStartAt(opvo.getOffStartAt());
 					  ovo.setOffEndAt(opvo.getOffEndAt());
+					  ovo.setOffRoom(opvo.getOffRoom());
 					  
 						if (offService.insert(pvo, ovo, sendTagList) == 1) {
 							result = "off_success";
