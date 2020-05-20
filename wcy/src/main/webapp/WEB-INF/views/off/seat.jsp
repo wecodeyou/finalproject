@@ -23,6 +23,68 @@
 	background:url("/img/icons/checkbox_choosed.png")no-repeat;
 	cursor:pointer;
 }
+
+.seatchoiceBtn {
+    border: 1px solid #F44336;
+    border-radius: 5px;
+    height: 25px;
+    color: #F44336;
+    font-size: 15px;
+    min-width: 75px;
+    display: inline-block;
+    padding: 2px;
+    cursor:pointer;
+    background: #fff;
+    float: right;
+    margin-right: 137px;
+}
+.seatchoiceBtn:hover{
+	color: #fff;
+	background: #F44336;
+}
+
+.blackboard:after{
+	display: block;
+    content: '';
+    width: 247px;
+    height: 30px;
+    background: #4CAF50;
+    position: absolute;
+    top: 3px;
+    z-index: -1;
+    border-radius: 3px;
+}
+.blackboard span{
+	color: #fff;
+    margin-left: 89px;
+}
+
+.door span{
+	position: absolute;
+    right: 95px;
+    top: -6px;
+    font-size: 12px;
+    line-height: 1.1;
+}
+
+.door{
+   float: right;
+   position: absolute;
+   top: 43px;
+   right: 11px;
+   color:#9E9E9E;
+}
+.door:before{
+	display: inline;
+    content: '';
+    width: 12px;
+    height: 25px;
+    position: absolute;
+    right: 113px;
+    background: #9E9E9E;
+    border-radius: 1px;
+}
+
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -34,7 +96,8 @@
 <!-- 일단 30에서만 작업해야지  -->
 
 <input type="hidden" id="seatOffNo" value="${off_no}" >
-	<div>칠판 부분</div><br><br>
+	<div class="blackboard"><span> 칠판부분 </span></div><br><br>
+	<div class="door"><span>출입문</span></div>
 	<form action="<c:url value='/off/chooseSeat' />" method="post" id="submit">
 	<input type="hidden" name="off" value="${off_no}"/>
 		<c:forEach var="y" begin="1" end="5">
@@ -50,7 +113,7 @@
             </c:forEach>
 			</div><br>
 		</c:forEach>
-		<button type="button" onclick="nullCheck()">좌석선택</button>
+		<button type="button" onclick="nullCheck()" class="seatchoiceBtn">선택완료</button>
 	</form>
 <script type="text/javascript">
 $(document).ready(function() {// 페이지가 켜지자마자 

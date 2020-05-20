@@ -74,7 +74,7 @@ jQuery(document).ready(function($){
 	    	
 	    } else {
 	    	//if scrolling down...	
-	 	  	if( currentTop > secondaryNavOffsetTop + scrollOffset ) {
+	 	  	if( currentTop > scrollOffset ) {
 	 	  		//hide primary nav
 	    		mainHeader.addClass('is-hidden');
 	    		secondaryNavigation.addClass('fixed slide-up');

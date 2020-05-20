@@ -62,6 +62,7 @@
     
     .wcy-contents{margin:0 auto; height: 100%; text-align:center;}
     .page-width{width:1100px; margin:0 auto;}
+    
 	
 	
 	.page-width > h1 , .wcy-main-content .page-width h1{font-size:42px; font-weight:normal;}
@@ -282,7 +283,7 @@
     
     .button-register{
     	margin: 0 0 0 88px;
-    	padding:0;
+    	
     	width:245px;
     	font-size: 20px;
     }

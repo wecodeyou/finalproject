@@ -66,6 +66,9 @@ body{font-family:'Nanum Gothic Coding', monospace;}
    background:#c7c7c7;
 }
 
+.bx-wrapper .bx-controls-direction a{z-index:0 !important;}
+
+
 .wcy-ProgramLayout2 > .bx-wrapper > .bx-controls > .bx-controls-direction > a{
 	margin-top: 15px;
 	top:100%;

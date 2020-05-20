@@ -1,13 +1,14 @@
 @charset "UTF-8";
 
 .classplLeftBox {
-    width: 740px;
+    width: 630px;
 }
 
 .classPaymentTitle {
     padding-top: 44px;
     padding-bottom: 25px;
     border-bottom: 2px solid #D8D8D8;
+    text-align: left;
 }
 
 .classPaymentTitle .title {
@@ -20,6 +21,7 @@
 
 .classpayList {
     margin-bottom: 84px;
+    text-align: left;
 }
 
 .classpayList .classpayli {
@@ -28,17 +30,16 @@
 
 .classpayList .classpayListIn {
     position: relative;
-    padding: 26px 0 0 78px;
+    padding: 26px 0 0 26px;
 }
 
 .classpayListIn .title {
     margin: 0;
-    margin-top: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .classpayListIn .title strong {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 600;
     color: #000;
     letter-spacing: -0.5px;
@@ -73,8 +74,21 @@
 .classpayList .classdate p span.dtitle {
     color: #666;
     font-size: 15px;
-    min-width: 70px;
+    min-width: 100px;
     display: inline-block;
+    margin-right: 20px
+}
+.classpayList .classdate p span.stitle {
+	color: #F44336;
+    font-size: 15px;
+    min-width: 75px;
+    display: inline-block;
+    margin-right: 41px;
+    padding: 5px;
+}
+.classpayList .classdate p a:hover span.stitle {
+	color: #fff;
+	background-color:#F44336;
 }
 
 .payment {
@@ -89,7 +103,136 @@
 .classpayList .payment .small {
     font-size: 18px;
     font-weight: 400;
+    margin-left: 5px;
 }
+
+.seatchoiceBtn{
+	border: 1px solid #F44336;
+    border-radius: 5px;
+    height: 25px;
+}
+
+
+/*수강생정보*/
+.classplRightBox {
+    position: relative;
+    width: 300px;
+    margin-left:90px;
+    margin-top: 50px;
+}
+
+.classplRightBox .crtitle {
+    background-color: #818AA1;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 17px 13px;
+}
+
+.classplRightBox .crContent {
+    border: 1px solid #F0F0F0;
+    padding: 15px;
+    line-height: 1.3;
+}
+
+.classplRightBox .crcName, .crcTel, .crcEmail {
+    margin: 0;
+    color: #000;
+    font-size: 22px;
+    letter-spacing: -0.4px;
+    font-weight: 400;
+}
+
+.crSection02 .crContent {
+    text-align: right;
+}
+
+
+.crSection02 .crContent .crcName {
+    color: #000;
+    font-size: 40px;
+    font-weight: 600;
+    padding: 22px 17px;
+    margin: 0;
+}
+
+.crSection02 .crContent .crcName .small {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.crSection04 .crtitle {
+    background-color: #272937;
+    margin-top: 22px;
+}
+
+.crSection04 .crContent {
+    border: 1px solid #272937;
+}
+
+.crSection04 .crcName {
+    margin: 0;
+    text-align: right;
+    padding: 22px;
+    padding-bottom: 17px;
+    color: #D31F21;
+    font-size: 40px;
+    font-weight: 600;
+}
+.crSection04 .crcName .small {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.crSection05 {
+    margin-top: 117px;
+}
+
+
+.refundLayout {
+    margin-bottom: 74px;
+    text-align: left;
+}
+
+.refundLayout .title {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 23px;
+    color: #000;
+}
+
+.refundLayout .text {
+    height: 180px;
+    overflow: hidden;
+    overflow-y: auto;
+    border: 1px solid #D1D1D1;
+    padding: 20px;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #797979;
+}
+
+.refundchkBox {
+    margin: 0;
+    text-align: right;
+    position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

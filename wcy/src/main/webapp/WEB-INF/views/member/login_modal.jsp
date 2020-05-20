@@ -31,12 +31,7 @@
 	}
 	
 	.modal-open{
-		overflow:auto;  /*로그인 모달 open 시, 뒤의 body 스크롤바 없앨건지 보일건지 선택(없앨경우 약간씩 움직임이 생김 ㅠㅠ)*/
-		
-		.modal{
-			overflow-y:hidden;
-			overflow-y:auto;
-		}
+		overflow:auto !important;  /*로그인 모달 open 시, 뒤의 body 스크롤바 없앨건지 보일건지 선택(없앨경우 약간씩 움직임이 생김 ㅠㅠ)*/
 	}
 
 	.modal{
@@ -76,7 +71,7 @@
 						Kakao
 					</a>
 
-					<div class="g-signin2 m-b-20 btn-face"  data-onsuccess="onSignIn" style="height:49px; width:200px; border-radius:7px;" >
+					<div class="g-signin2 m-b-20 btn-face"  data-onsuccess="onSignIn" style="height:49px; width:165px; border-radius:7px;" >
 						</div>
 						
 					
