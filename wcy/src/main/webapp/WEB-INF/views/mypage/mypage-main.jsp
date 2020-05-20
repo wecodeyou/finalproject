@@ -90,9 +90,9 @@
 					<div class="title">수강신청 목록</div>
 					<div class="selectric-wrapper">
 						<div class="selectric-hide-select">
-							<select id="sel_onoff" name="sel_onoff">
-								<option value="온라인" selected="selected">온라인</option>
-								<option value="오프라인">오프라인</option>
+							<select id="sel_onoff" name="sel_onoff" onchange="change_form()">
+								<option value="off" selected="selected">오프라인</option>
+								<option value="on">온라인</option>
 							</select>
 						</div>
 					</div>
@@ -103,22 +103,25 @@
 							<ul class="registerListIn">
 								<li>
 									<div class="boxWebzineBoradLayout">
-										<!-- 첫번째 강의 -->
+										<div id="off_form">
+										<!-- 오프라인 강의 -->
+										<c:forEach var="m" items="${mm_list}"> 
+										<c:if test="${m.productType == 1}">
 										<div class="boxWebzineBorad">
 											<div class="webzineLeft">
 												<div class="boxwebzineLeftIn">
-													<img src="<c:url value='/img/mypage/mypageleclist.PNG'/>" alt="" />
+													<img src="${m.spThum}" alt="" />
 												</div>
 											</div>
 											<div class="webzineRight">
 												<div class="title">
-													[온라인] 초보자를 위한 정보 보안및 해킹 방어 개론
+													[현장강의] ${m.productName}
 												</div>
-												<a href="#" title="수강후기  작성" class="rBtn reviewWriteBtn"> <!-- 수강후기 작성 -->
-													수강후기 작성
+												<a class="rBtn reviewWriteBtn" > <!-- 수강후기 작성 -->
+													<button class="rBtn reviewWriteBtn" title="수강후기 작성" onclick="open_window(this)" value="${m.productNo}">수강후기 작성</button>
 													<i class="fas fa-angle-right"></i>
 												</a>
-												<a href="#" title="수강후기 보기" class="rBtn reviewLookBtn" style="margin-top:50px;"> <!-- 내가 작성한 수강후기 보기 -->
+												<a href="<c:url value='/mypage/recentAct' />" title="수강후기 보기" class="rBtn reviewLookBtn" style="margin-top:50px;"> <!-- 내가 작성한 수강후기 보기 -->
 													내가 쓴 수강후기 보기
 													<i class="fas fa-angle-right"></i>
 												</a>
@@ -127,21 +130,21 @@
 														<tbody>
 															<tr>
 																<td class="title">구매일시</td>
-																<td style="padding-right:25px;">2019.09
+																<td style="padding-right:25px;">${m.purchaseDate}
 																<td class="title">개강일</td>
-																<td>2019.10.01</td>
+																<td>${m.offStartAt}</td>
 															</tr>
 															<tr>
 																<td class="title">지점</td>
-																<td>강남점</td>
-																<td class="title">강의시간</td>
-																<td>14:00~15:30</td>
+																<td>${m.offPlace}</td>
+																<td class="title">강의실</td>
+																<td>${m.offRoom}</td>
 															</tr>
 															<tr>
 																<td class="title">강사</td>
-																<td>김길동</td>
-																<td class="title">강의실</td>
-																<td>502호</td>
+																<td>${m.spLecName}</td>
+																<td class="title"></td>
+																<td></td>
 															</tr>
 														</tbody>
 													</table>
@@ -149,119 +152,86 @@
 												<div class="price">
 													<div class="normality">
 														<div class="productTitle">상품금액</div>
-														<span class="productPrice">142,000</span>원
+														<span class="productPrice">${m.purchaseAmount}</span>원
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										 <!-- 첫번째 강의 -->
+										</c:if>
+										</c:forEach>			
+										</div>
+										
+										<div id="on_form" style="display: none;">
+										<!-- 온라인 강의 -->
+										<c:forEach var="m" items="${mm_list}"> 
+										<c:if test="${m.productType == 0}">
+										<div class="boxWebzineBorad">
+											<div class="webzineLeft">
+												<div class="boxwebzineLeftIn">
+													<img src="${m.spThum}" alt="" />
+												</div>
+											</div>
+											<div class="webzineRight">
+												<div class="title">
+													[온라인] ${m.productName}
+												</div>
+												<a class="rBtn reviewWriteBtn" > <!-- 수강후기 작성 -->
+													<button class="rBtn reviewWriteBtn" title="수강후기 작성" onclick="open_window(this)" value="${m.productNo}">수강후기 작성</button>
+													<i class="fas fa-angle-right"></i>
+												</a>
+												<a href="<c:url value='/mypage/recentAct' />" title="수강후기 보기" class="rBtn reviewLookBtn" style="margin-top:50px;"> <!-- 내가 작성한 수강후기 보기 -->
+													내가 쓴 수강후기 보기
+													<i class="fas fa-angle-right"></i>
+												</a>
+												<div>
+													<table class="myclassInfoTabel">
+														<tbody>
+															<tr>
+																<td class="title">구매일시</td>
+																<td style="padding-right:25px;">${m.purchaseDate}
+																<td class="title"></td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="title">강사</td>
+																<td>${m.spLecName}</td>
+																<td class="title"></td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="title"></td>
+																<td></td>
+																<td class="title"></td>
+																<td></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="price">
+													<div class="normality">
+														<div class="productTitle">상품금액</div>
+														<span class="productPrice">${m.purchaseAmount}</span>원
 													</div>
 												</div>
 											</div>
 										</div> <!-- 첫번째 강의 -->
-										<!-- 두번째 강의 -->
-										<div class="boxWebzineBorad">
-											<div class="webzineLeft">
-												<div class="boxwebzineLeftIn">
-													<img src="<c:url value='/img/mypage/mypageleclist.PNG'/>" alt="" />
-												</div>
-											</div>
-											<div class="webzineRight">
-												<div class="title">
-													[온라인] 초보자를 위한 정보 보안및 해킹 방어 개론
-												</div>
-												<a href="#" title="수강후기  작성" class="rBtn reviewWriteBtn"> <!-- 수강후기 작성 -->
-													수강후기 작성
-													<i class="fas fa-angle-right"></i>
-												</a>
-												<a href="#" title="수강후기 보기" class="rBtn reviewLookBtn" style="margin-top:50px;"> <!-- 내가 작성한 수강후기 보기 -->
-													내가 쓴 수강후기 보기
-													<i class="fas fa-angle-right"></i>
-												</a>
-												<div>
-													<table class="myclassInfoTabel">
-														<tbody>
-															<tr>
-																<td class="title">구매일시</td>
-																<td style="padding-right:25px;">2019.09
-																<td class="title">개강일</td>
-																<td>2019.10.01</td>
-															</tr>
-															<tr>
-																<td class="title">지점</td>
-																<td>강남점</td>
-																<td class="title">강의시간</td>
-																<td>14:00~15:30</td>
-															</tr>
-															<tr>
-																<td class="title">강사</td>
-																<td>김길동</td>
-																<td class="title">강의실</td>
-																<td>502호</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-												<div class="price">
-													<div class="normality">
-														<div class="productTitle">상품금액</div>
-														<span class="productPrice">142,000</span>원
-													</div>
-												</div>
-											</div>
-										</div> <!-- 두번째 강의 -->
-										<!-- 세번째 강의 -->
-										<div class="boxWebzineBorad">
-											<div class="webzineLeft">
-												<div class="boxwebzineLeftIn">
-													<img src="<c:url value='/img/mypage/mypageleclist.PNG'/>" alt="" />
-												</div>
-											</div>
-											<div class="webzineRight">
-												<div class="title">
-													[온라인] 초보자를 위한 정보 보안및 해킹 방어 개론
-												</div>
-												<a href="#" title="수강후기  작성" class="rBtn reviewWriteBtn"> <!-- 수강후기 작성 -->
-													수강후기 작성
-													<i class="fas fa-angle-right"></i>
-												</a>
-												<a href="#" title="수강후기 보기" class="rBtn reviewLookBtn" style="margin-top:50px;"> <!-- 내가 작성한 수강후기 보기 -->
-													내가 쓴 수강후기 보기
-													<i class="fas fa-angle-right"></i>
-												</a>
-												<div>
-													<table class="myclassInfoTabel">
-														<tbody>
-															<tr>
-																<td class="title">구매일시</td>
-																<td style="padding-right:25px;">2019.09
-																<td class="title">개강일</td>
-																<td>2019.10.01</td>
-															</tr>
-															<tr>
-																<td class="title">지점</td>
-																<td>강남점</td>
-																<td class="title">강의시간</td>
-																<td>14:00~15:30</td>
-															</tr>
-															<tr>
-																<td class="title">강사</td>
-																<td>김길동</td>
-																<td class="title">강의실</td>
-																<td>502호</td>
-															</tr>
-														</tbody>
-													</table>
-												</div>
-												<div class="price">
-													<div class="normality">
-														<div class="productTitle">상품금액</div>
-														<span class="productPrice">142,000</span>원
-													</div>
-												</div>
-											</div>
-										</div> <!-- 세번째 강의 -->
-										
+										</c:if>
+										</c:forEach>		
+										</div>
 									</div>
 								</li>
 							</ul>
 						</div>
-					</div>
+					</div>	
+					
+					<script language="javascript" type="text/javascript">
+
+
+ </script>
+
+   <input type="button" value="클릭" onclick="javascript:openDialog();" />
 			</div> <!-- 수강목록 -->
 		</div>
 	</main>
@@ -276,8 +246,33 @@
       location.href="<c:url value='/' />";
    </script>
 </c:if>
+<script type="text/javascript">
+
+function change_form(){
+	
+	var Select = document.getElementById("sel_onoff");
+	var selectValue = Select.options[Select.selectedIndex].value;
+	
+	if(selectValue == 'on'){
+		document.getElementById("off_form").style.display = "none";
+		document.getElementById("on_form").style.display = "block";
+	}else{
+		document.getElementById("off_form").style.display = "block";
+		document.getElementById("on_form").style.display = "none";		
+	}
+}
 
 
+</script>
+<script type="text/javascript">
+var open_win;
+var p;
+function open_window(obj){
+	open_win = window.open("<c:url value='/mypage/review?p="+obj.value+"'/>","","width=500,height=400,left=700");    
+	setTimeout(function() {
+		}, 1);
+};// 수강후기 팝업창 
+</script>
 </body>
 	<jsp:include page="../include/footer.jsp" />
 </html>

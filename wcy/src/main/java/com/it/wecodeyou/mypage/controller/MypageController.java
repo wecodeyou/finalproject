@@ -1,8 +1,9 @@
-package com.it.wecodeyou.mypage;
+package com.it.wecodeyou.mypage.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ import com.it.wecodeyou.board.service.IArticleService;
 import com.it.wecodeyou.board.service.IReplyService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
+import com.it.wecodeyou.mypage.model.MyMainVO;
 import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.off.service.IOffService;
 import com.it.wecodeyou.on.service.IOnService;
@@ -41,6 +43,7 @@ import com.it.wecodeyou.purchase.service.IPurchaseService;
 import com.it.wecodeyou.review.model.ReviewVO;
 import com.it.wecodeyou.review.model.ShowReviewVO;
 import com.it.wecodeyou.review.service.IReviewService;
+import com.it.wecodeyou.sub_product.service.ISubProductService;
 
 @RestController
 @RequestMapping("/mypage")
@@ -64,9 +67,55 @@ public class MypageController {
 	private IArticleService aservice;
 	@Autowired
 	private IReplyService reservice;
+	@Autowired
+	private ISubProductService spreservice;
 	
 	@GetMapping("/")
-	public ModelAndView mypageMain(ModelAndView mv) {
+	public ModelAndView mypageMain(ModelAndView mv, HttpSession session) {
+		
+		Integer user_no = ((MemberVO)session.getAttribute("login")).getUserNo();
+		ArrayList<PurchaseVO> p_befor_list = pservice.selectUsersPurchase(user_no);
+		ArrayList<PurchaseVO> p_list = new ArrayList<PurchaseVO>();
+		ArrayList<MyMainVO> mm_list = new ArrayList<>();
+		for (int i = 0; i < p_befor_list.size(); i++) {
+			if(!p_befor_list.get(i).isPurchaseIsrefund()) {
+				p_list.add(p_befor_list.get(i));
+			}
+		}// 환불된거는 걸러주는 작업 
+		
+/*
+	private Integer productNo;
+	private String productName;
+	private Integer productType;
+	private String spThum;
+	private String spLecName;
+	private Integer purchaseAmount;
+	private Timestamp purchaseDate;
+	private Timestamp offStartAt;
+	private Timestamp offEndAt;
+	private String offPlace;
+	private String offRoom;
+*/
+		for (int i = 0; i < p_list.size(); i++) {
+			MyMainVO mmvo = new MyMainVO();
+			Integer pro_no = p_list.get(i).getPurchaseProNo();
+			mmvo.setPurchaseNo(p_list.get(i).getPurchaseNo());
+			mmvo.setProductNo(pro_no);
+			mmvo.setProductName(pdservice.getOneInfo(pro_no).getProductName());
+			mmvo.setProductType(Integer.parseInt(pdservice.getOneInfo(pro_no).getProductType()));
+			mmvo.setSpThum(spreservice.showSubPro(pro_no).getSpThum());
+			mmvo.setSpLecName(spreservice.showSubPro(pro_no).getSpLecName());
+			mmvo.setPurchaseAmount(p_list.get(i).getPurchaseAmount());
+			mmvo.setPurchaseDate(p_list.get(i).getPurchaseDate());
+			if(Integer.parseInt(pdservice.getOneInfo(pro_no).getProductType())==1) {
+				mmvo.setOffStartAt(oservice.getInfoByProductNo(pro_no).getOffStartAt());
+				mmvo.setOffEndAt(oservice.getInfoByProductNo(pro_no).getOffEndAt());
+				mmvo.setOffPlace(oservice.getInfoByProductNo(pro_no).getOffPlace());
+				mmvo.setOffRoom(oservice.getInfoByProductNo(pro_no).getOffRoom());
+			}
+			mm_list.add(mmvo);
+		}
+		mv.addObject("mm_list",mm_list);
 		mv.setViewName("mypage/mypage-main");
 		
 		return mv;
@@ -287,5 +336,13 @@ public class MypageController {
     	
     	return "Success";
     }
+    
+	@GetMapping("/review")
+	public ModelAndView reviewPage(ModelAndView mv, HttpSession session, HttpServletRequest req) {
+		mv.setViewName("mypage/mypage-reviewPage");
+		Integer pro_no = Integer.parseInt(req.getParameter("p"));
+		mv.addObject("proName",pdservice.getOneInfo(pro_no).getProductName());
+		return mv;
+	}
 	
 }
