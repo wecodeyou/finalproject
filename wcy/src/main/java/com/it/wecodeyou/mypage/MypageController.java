@@ -21,16 +21,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.it.wecodeyou.board.model.ArticleVO;
+import com.it.wecodeyou.board.model.ReplyVO;
+import com.it.wecodeyou.board.model.ShowArticleVO;
+import com.it.wecodeyou.board.model.ShowReplyVO;
+import com.it.wecodeyou.board.service.IArticleService;
+import com.it.wecodeyou.board.service.IReplyService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.off.service.IOffService;
 import com.it.wecodeyou.on.service.IOnService;
+import com.it.wecodeyou.point_purchase.service.IPoint_PurchaseService;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.purchase.model.PurchaseVO;
+import com.it.wecodeyou.purchase.model.ShowVO;
 import com.it.wecodeyou.purchase.service.IPurchaseService;
 import com.it.wecodeyou.review.model.ReviewVO;
+import com.it.wecodeyou.review.model.ShowReviewVO;
 import com.it.wecodeyou.review.service.IReviewService;
 
 @RestController
@@ -49,7 +58,12 @@ public class MypageController {
 	private IOffService oservice;
 	@Autowired
 	private IOnService onservice;
-
+	@Autowired
+	private IPoint_PurchaseService ppservice;	
+	@Autowired
+	private IArticleService aservice;
+	@Autowired
+	private IReplyService reservice;
 	
 	@GetMapping("/")
 	public ModelAndView mypageMain(ModelAndView mv) {
@@ -72,7 +86,7 @@ public class MypageController {
 	}
 
 	@GetMapping("/myinfoChange")
-	public ModelAndView myInfo(ModelAndView mv, HttpServletResponse res ,HttpSession session, HttpServletRequest req) throws IOException {
+	public ModelAndView myInfo(ModelAndView mv, HttpServletResponse res ,HttpSession session, HttpServletRequest req) throws IOException, SQLException {
 		System.out.println("/mypage/myinfoChange : GET 요청 발생!");
 		if(session.getAttribute("login") == null) {
 			 mv.setViewName("home");
@@ -100,15 +114,93 @@ public class MypageController {
 	}
 
 	@GetMapping("/pointInfo")
-	public ModelAndView pointInfo(ModelAndView mv, HttpSession session) {
+	public ModelAndView pointInfo(ModelAndView mv, HttpSession session) throws SQLException {
 		System.out.println("/mypage/pointInfo : GET 요청 발생!");
 		mv.setViewName("mypage/mypage-point");
+		Integer user_no = ((MemberVO)session.getAttribute("login")).getUserNo();
+		ArrayList<PurchaseVO> p_list = pservice.selectUsersPurchase(user_no);
+		ArrayList<ShowVO> s_list = new ArrayList<ShowVO>();
+
+    	for (int i = 0; i < p_list.size(); i++) {
+    		ShowVO sv = new ShowVO();
+    		sv.setPurchaseProName(pdservice.getOneInfo(p_list.get(i).getPurchaseProNo()).getProductName());
+			sv.setPurchaseAmount(p_list.get(i).getPurchaseAmount());
+			sv.setPurchaseDate(p_list.get(i).getPurchaseDate());
+			s_list.add(sv);
+		}
+    	mv.addObject("m_list",s_list);
+		mv.addObject("p_list",ppservice.getOnePurchaseList(user_no));
+		
 		return mv;
 	}
 
 	@GetMapping("/recentAct")
 	public ModelAndView recentAct(ModelAndView mv, HttpSession session) {
 		System.out.println("/mypage/recentAct : GET 요청 발생!");
+		Integer user_no = ((MemberVO)session.getAttribute("login")).getUserNo();
+		String user_email = ((MemberVO)session.getAttribute("login")).getUserEmail();
+		
+		//리뷰포장 start
+		ArrayList<ReviewVO> r_list = rservice.getAllReviewByUser(user_email);
+		ArrayList<ShowReviewVO> s_list = new ArrayList<>(); 	
+		for (int i = 0; i < r_list.size(); i++) {
+			ShowReviewVO svo = new ShowReviewVO();
+			svo.setReviewCreatedAt(r_list.get(i).getReviewCreatedAt());
+			svo.setContent(r_list.get(i).getContent());
+			svo.setReviewStar(r_list.get(i).getReviewStar());
+			svo.setReviewProductName(pdservice.getOneInfo(r_list.get(i).getReviewProductNo()).getProductName());
+			svo.setReviewNo(r_list.get(i).getReviewNo());
+			s_list.add(svo);
+		}
+		mv.addObject("s_list",s_list);// 리뷰 포장 end
+
+		// 게시물 포장 start
+		ArrayList<ArticleVO> a_list = aservice.getAllByUserNo(user_no);
+		ArrayList<ShowArticleVO> sa_list = new ArrayList<>();
+		for (int i = 0; i < a_list.size(); i++) {
+			ShowArticleVO savo = new ShowArticleVO();
+			savo.setArticleNo(a_list.get(i).getArticleNo());
+			savo.setArticleContent(a_list.get(i).getArticleContent());
+			savo.setArticleCreatedAt(a_list.get(i).getArticleCreatedAt());
+			savo.setArticleTitle(a_list.get(i).getArticleTitle());
+			switch(a_list.get(i).getArticleBoardNo()){
+			case 1:
+				savo.setArticleBoardType("자유");
+				break;
+			case 4:
+				savo.setArticleBoardType("질문");
+				break;
+			case 5:
+				savo.setArticleBoardType("정기모임/스터디");
+				break;
+			case 6:
+				savo.setArticleBoardType("IT 행사");
+				break;
+			case 7:
+				savo.setArticleBoardType("공유");
+				break;
+			default:
+				savo.setArticleBoardType("자유");
+				break;
+			}
+			sa_list.add(savo);
+		}
+		mv.addObject("sa_list",sa_list);
+		// 게시물포장 end 
+		
+		// 댓글포장 start
+		ArrayList<ReplyVO> re_list = reservice.listByUser(user_no);
+		ArrayList<ShowReplyVO> srp_list = new ArrayList<ShowReplyVO>();
+		for (int i = 0; i < re_list.size(); i++) {
+			ShowReplyVO srvo = new ShowReplyVO();
+			srvo.setReplyNo(re_list.get(i).getReplyArticleNo());
+			srvo.setReplyContent(re_list.get(i).getReplyContent());
+			srvo.setReplyCreatedAt(re_list.get(i).getReplyCreatedAt());
+			srvo.setReplyArticleTitle(aservice.getOneInfo((int)re_list.get(i).getReplyArticleNo()).getArticleTitle());
+			srp_list.add(srvo);
+		}
+		mv.addObject("srp_list",srp_list);
+		
 		mv.setViewName("mypage/mypage-recentAct");
 		return mv;
 	}
@@ -129,7 +221,7 @@ public class MypageController {
 	@GetMapping("/mylec")
 	public ModelAndView mylec(ModelAndView mv, HttpSession session) {
 		System.out.println("/mypage/mylec : GET 요청 발생!");
-		mv.setViewName("mypage/mypage-mylec");
+		mv.setViewName("mypage/mypage-mylec2");
 		
 		String msg = "";
 		ArrayList<ProductVO> pro_lec_list; 
@@ -186,5 +278,14 @@ public class MypageController {
 		return mv;
 	}
 	
+    @PostMapping("/changeInfo")
+    public String changePw(HttpSession session, @RequestBody MemberVO mvo) {
+    	System.out.println(mvo);
+    	mservice.changePw(mvo);
+    	mservice.changeInfo(mvo);
+    	session.removeAttribute("login");    	  
+    	
+    	return "Success";
+    }
 	
 }

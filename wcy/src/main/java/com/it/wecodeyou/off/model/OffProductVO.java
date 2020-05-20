@@ -46,6 +46,7 @@ public class OffProductVO {
 		this.offCategory = offCategory;
 		this.offProductNo = offProductNo;
 		this.offPlace = offPlace;
+		this.offRoom = offRoom;
 		this.offUploadUri = offUploadUri;
 		this.offSeats = offSeats;
 		this.offRoom = offRoom;
@@ -151,7 +152,7 @@ public class OffProductVO {
 	public void setOffPlace(String offPlace) {
 		this.offPlace = offPlace;
 	}
-
+	
 	public String getOffUploadUri() {
 		return offUploadUri;
 	}
@@ -226,7 +227,6 @@ public class OffProductVO {
 				+ offStartAt + ", offEndAt=" + offEndAt + ", offCreatedAt=" + offCreatedAt + ", offModifiedAt="
 				+ offModifiedAt + ", sendTagList=" + sendTagList + "]";
 	}
-	
-	
+
 	
 }

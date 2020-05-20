@@ -94,6 +94,12 @@
 		OR article_content REGEXP #{q}
 	</select>
 	
+	<!-- 한 유저가 작성한 게시물 전부 -->
+	<select id="getAllByUserNo" resultMap="ArticleMap">
+   		SELECT *
+   		FROM article
+   		WHERE article_writer = #{articleWriter}
+	</select>
 	
 <!--    LIKE절 DBMS별
    # MySql

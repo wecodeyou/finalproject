@@ -45,6 +45,16 @@
 		display:none;
 	}
 	
+	#onLineList-sub {
+		display:none;
+	}
+	#offLineList-sub {
+		display:none;
+	}
+	#productList-sub {
+		display:none;
+	}
+	
 	h2:after {
    		content: none !important;
 	}
@@ -422,34 +432,6 @@
 			</div>
 			<!-- /.container-fluid -->
 			
-			<!-- 상품관리 -->
-			
-			<div class="container-fluid" id="adminProduct-off" style="display:none;">
-				<article class="curriculum">
-					<div class="page-width">
-						<!-- off toggle start -->
-					<ul class="curri-list" id="offLineList-sub">
-						<c:forEach var="p" items="${productList}">
-							<c:if test='${p.productType.equals("1")}'>
-								<li class="mt20">
-									<div class="curri-list-img">
-										<img src="${p.productThumb}" alt="" />
-									</div>
-									<div class="curri-list-text">
-										<h5>${p.productName}</h5>
-										<p>${p.productPrice}
-										<div class="curri-list-btn">
-											<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${p.productName}' />'" class="btn_blue">과정 상세보기</button>
-										</div>
-									</div>
-								</li>
-							</c:if>
-						</c:forEach>
-					</ul>
-					
-					</div>
-				</article>
-			</div>
 			
 			<!-- 상품관리 -->
 			<div class="container-fluid" id="adminProduct">
@@ -459,11 +441,9 @@
 				<article class="curriculum">
 					<div class="page-width">
 					<h2 class="h3 mb-0 text-gray-800">
-						<a href="#">
-							<i class="fas fa-tools" style="color: #b52929;"></i>
-								&nbsp;온라인 강의 관리&nbsp;
-							<i class="fas fa-tools" style="color: #b52929;"></i>
-						</a></h2><br><br><br><br>
+						<i class="fas fa-tools" style="color: #b52929;"></i>
+							온라인 강의  <a href="javascript:doDisplayOn();" style="">&nbsp;관리하기&nbsp;</a>
+					</h2><br><br><br><br>
 						<!-- <h2>온라인 강의 관리</h2><br><br><br><br> -->
 					</div>
 					<div class="page-width">
@@ -490,6 +470,25 @@
 							</c:if>
 						</c:forEach>
 					</ul>
+					<!-- on toggle start -->
+						<ul class="curri-list" id="onLineList-sub">
+							<c:forEach var="p" items="${productList}">
+								<c:if test='${p.productType.equals("0")}'>
+									<li class="mt20">
+										<div class="curri-list-img">
+											<img src="${p.productThumb}" alt="" />
+										</div>
+										<div class="curri-list-text">
+											<h5>${p.productName}</h5>
+											<p>${p.productPrice}
+											<div class="curri-list-btn">
+												<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${p.productName}' />'" class="btn_blue">과정 상세보기</button>
+											</div>
+										</div>
+									</li>
+								</c:if>
+							</c:forEach>
+						</ul>
 					<!-- on end -->
 				</div>
 				</article>
@@ -497,11 +496,10 @@
 				<article class="curriculum">
 					<div class="page-width">
 						<h2 class="h3 mb-0 text-gray-800">
-						<a href="javascript:adminProduct();">
-							<i class="fas fa-tools" style="color: #b52929;"></i>
-								&nbsp;오프라인 강의 관리&nbsp;
-							<i class="fas fa-tools" style="color: #b52929;"></i>
-						</a></h2><br><br><br><br>
+						<i class="fas fa-tools" style="color: #b52929;"></i>
+						오프라인 강의   <a href="javascript:doDisplayOff();">&nbsp;관리하기&nbsp;</a>
+						
+						</h2><br><br><br><br>
 					</div>
 					<div class="page-width">
 					
@@ -527,19 +525,36 @@
 							</c:if>
 						</c:forEach>
 					</ul>
+					<!-- off toggle start -->
+						<ul class="curri-list" id="offLineList-sub">
+							<c:forEach var="p" items="${productList}">
+								<c:if test='${p.productType.equals("1")}'>
+									<li class="mt20">
+										<div class="curri-list-img">
+											<img src="${p.productThumb}" alt="" />
+										</div>
+										<div class="curri-list-text">
+											<h5>${p.productName}</h5>
+											<p>${p.productPrice}
+											<div class="curri-list-btn">
+												<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${p.productName}' />'" class="btn_blue">과정 상세보기</button>
+											</div>
+										</div>
+									</li>
+								</c:if>
+							</c:forEach>
+						</ul>
+					<!-- off end -->
 					
-					<!-- off end -->	
 				</div>
 				</article>
 					
 				<article class="curriculum">
 					<div class="page-width">
 						<h2 class="h3 mb-0 text-gray-800">
-						<a href="#">
 							<i class="fas fa-tools" style="color: #b52929;"></i>
-								&nbsp;상품 관리&nbsp;
-							<i class="fas fa-tools" style="color: #b52929;"></i>
-						</a></h2><br><br><br><br>
+								상품  <a href="javascript:doDisplayP();">&nbsp;관리하기&nbsp;</a>
+						</h2><br><br><br><br>
 					</div>
 					<div class="page-width">
 					
@@ -563,6 +578,25 @@
 						</li>
 						</c:if>
 					</ul>
+					<!-- p toggle start -->
+						<ul class="curri-list" id="productList-sub">
+							<c:forEach var="p" items="${productList}">
+								<c:if test='${p.productType.equals("2")}'>
+									<li class="mt20">
+										<div class="curri-list-img">
+											<img src="${p.productThumb}" alt="" />
+										</div>
+										<div class="curri-list-text">
+											<h5>${p.productName}</h5>
+											<p>${p.productPrice}
+											<div class="curri-list-btn">
+												<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${p.productName}' />'" class="btn_blue">과정 상세보기</button>
+											</div>
+										</div>
+									</li>
+								</c:if>
+							</c:forEach>
+						</ul>
 					<!-- product end -->
 					
 					</div>
@@ -613,6 +647,35 @@
 	  
   });
 
+
+  function doDisplayOn(){
+	  var con = document.getElementById("onLineList-sub");
+	  if(con.style.display == 'none'){
+		  con.style.display = 'block';
+	  }else {
+		  con.style.display = 'none';
+	  }
+  }
+  
+
+  function doDisplayOff(){
+	  var con = document.getElementById("offLineList-sub");
+	  if(con.style.display == 'none'){
+		  con.style.display = 'block';
+	  }else {
+		  con.style.display = 'none';
+	  }
+  }
+  
+
+  function doDisplayP(){
+	  var con = document.getElementById("productList-sub");
+	  if(con.style.display == 'none'){
+		  con.style.display = 'block';
+	  }else {
+		  con.style.display = 'none';
+	  }
+  }
 /* 
 $(function(){
 		function offToggle() {

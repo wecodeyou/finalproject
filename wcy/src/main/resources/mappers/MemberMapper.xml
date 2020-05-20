@@ -44,7 +44,9 @@
    
    <!-- 정보 수정 (userNo 받아서 생일, 휴대폰번호, 프로필 이미지, 주소 수정, 수정날짜 now로  -->
    <update id="changeInfo">
-      UPDATE user SET user_birthday=#{userBirthday}, user_tel=#{userTel}, user_profile_img=#{userProfileImg}, user_modified_at=NOW(), user_address=#{userAddress}
+      UPDATE user SET user_birthday=#{userBirthday}, user_tel=#{userTel},
+      user_profile_img=#{userProfileImg}, user_modified_at=NOW(),
+      user_zipcode=#{userZipcode}, user_address=#{userAddress}, user_detail_address=#{userDetailAddress}
       WHERE user_no=#{userNo}
    </update>
    
@@ -117,6 +119,12 @@
 		SET user_type = #{userType}
 		WHERE user_no = #{userNo}
 	</update>
+	
+	  <!-- 강의구매 -->
+   <update id="updatePurchase">
+	  UPDATE user SET user_point = #{userPoint} WHERE user_no = #{userNo}
+   </update>
+	
 	
 </mapper>
 

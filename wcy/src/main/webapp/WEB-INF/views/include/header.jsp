@@ -23,6 +23,7 @@
 
 
 <style>
+body{font-family:'Nanum Gothic Coding', monospace;}
 /* 이미지 슬라이더 스타일 변경 오버라이드 */
 .bx-wrapper{
 	border:0 !important; 
@@ -775,7 +776,7 @@ function logoutConfirm(){
 		    )
 		 window.setTimeout(function(){
 			 window.location.href="/member/logout";
-		 },3000);
+		 },1000);
 		 //location.href="/member/logout"
 	    }
 	})

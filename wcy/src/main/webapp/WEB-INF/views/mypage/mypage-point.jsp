@@ -110,14 +110,14 @@
 						<div class="pointIn">
 							<div class="pointexplain">
 								위코드유에서는 모든 강의를 포인트로 구매할 수 있습니다.<br>구매를 위해서 포인트를 충전해주세요.
-								<br><span style="font-size:12px;">(사용하지 않은 포인트는 환불 가능합니다.)</span>
+								<br><span style="font-size:12px;">(수강하지 않은 강의는 포인트로 환불 가능합니다.)</span>
 							</div>
 						</div>
 					</li>
 				</ul>
 			</div>
-			<div class="pointhistoryLayout"> <!-- 사용내역 조회 -->
-				<div class="Dtitle">포인트 적립 / 사용 내역 조회</div>
+			<div class="pointhistoryLayout"> <!-- 적립내역 조회 -->
+				<div class="Dtitle">포인트 적립 내역 조회</div>
 				<table class="table_normal">
 					<colgroup>
 						<col width="20%">
@@ -134,30 +134,44 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="p" items="${p_list}">
 						<tr>
-							<td style="text-align:center;">2019-01-01</td>
+							<td style="text-align:center;">${p.pointPurchasePurchasedAt}</td>
 							<td >포인트 충전</td>
-							<td style="text-align:center;">+300,000</td>
+							<td style="text-align:center;">+${p.pointPurchaseAmount}</td>
 							<td style="text-align:center;">충전</td>
 						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<br><br>
+			<div class="pointhistoryLayout"> <!-- 사용내역 조회 -->
+				<div class="Dtitle">포인트 사용 내역 조회</div>
+				<table class="table_normal">
+					<colgroup>
+						<col width="20%">
+						<col width="*">
+						<col width="20%">
+						<col width="15%">
+					</colgroup>
+					<thead>
 						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >[온라인] 반응형 웹제작 제대로 하기</td>
-							<td style="text-align:center;">-140,000</td>
+							<th scope="col" class="line0">날짜</th>
+							<th scope="col">상세내역</th>
+							<th scope="col">적립/사용</th>
+							<th scope="col">구분</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="m" items="${m_list}">
+						<tr>
+							<td style="text-align:center;">${m.purchaseDate}</td>
+							<td >${m.purchaseProName}</td>
+							<td style="text-align:center;">-${m.purchaseAmount}</td>
 							<td style="text-align:center;">사용</td>
 						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >포인트 충전</td>
-							<td style="text-align:center;">+300,000</td>
-							<td style="text-align:center;">충전</td>
-						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >[온라인] 나홀로 제작 쇼핑몰</td>
-							<td style="text-align:center;">-100,000</td>
-							<td style="text-align:center;">사용</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
+ 
 <link href="<c:url value='/resources/vendor/calendar/calcss/fullcalendar.min.css' />" rel='stylesheet' />
 <link href="<c:url value='/resources/vendor/calendar/calcss/bootstrap.min.css' />" rel='stylesheet' />
 <link href="<c:url value='/resources/vendor/calendar/calcss/select2.min.css' />" rel='stylesheet' />
@@ -24,6 +24,11 @@
 <meta charset="UTF-8">
 
 <title>스케줄</title>
+
+<style>
+.modal-body{height:500px !important;}
+</style>
+
 
 </head>
 
@@ -61,7 +66,7 @@ var calendar = new Calendar($('#calendar'),{
           
 		
 				{
-     	 		   start : '${off.offStartAt}'
+     	 		   start : '${off.offStartAt}',
    				 , end : '${off.offEndAt}'
    				 , allday : true
  	 			},

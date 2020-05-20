@@ -14,9 +14,10 @@
 <link rel="stylesheet" href="<c:url value='/css/header-sub.css'/>">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<c:url value='/css/search.css'/>">
 <style>
+body{font-family:'Nanum Gothic Coding', monospace;}
 @media only screen and (max-width: 1023px) {
   .wcy-search-menu{
   	display: none;
@@ -73,7 +74,7 @@
 			</div>
 			<ul id="wcy-menu">
 				<li><a class="modal_open_btn" data-toggle="modal" data-target="#wcy-event-modal"><i class="fa fa-gift"><p class="gift-p" style="font-size:11px; padding-top:5px;">이벤트</p></i></a></li>
-				<li><a href="#"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
+				<li><a a onclick="logincheck()"><i class="fa fa-shopping-cart"><p class="cart-p" style="font-size:11px; padding-top:5px;">장바구니</p></i></a></li>
 				<c:if test="${login == null || login.userType == 0 || login.userType == 1}">
 					<li><a onclick="logincheck()"><i class="fa fa-user"><p class="user-p" style="font-size:11px; padding-top:5px;">마이페이지</p></i></a></li>
 				</c:if>
@@ -304,7 +305,7 @@ function logoutConfirm(){
 		    )
 		 window.setTimeout(function(){
 			 window.location.href="/member/logout";
-		 },3000);
+		 },1000);
 		 //location.href="/member/logout"
 	    }
 	})
@@ -315,7 +316,7 @@ function logoutConfirm(){
 
 function logincheck(){
     if(${login == null}){
-       alert("로그인이 필요한 서비스입니다.");
+    	Swal.fire('로그인이 필요한 서비스입니다.');
     }else{
     	location.href="<c:url value='/mypage/' />";
     }

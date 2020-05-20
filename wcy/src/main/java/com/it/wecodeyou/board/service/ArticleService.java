@@ -110,6 +110,11 @@ public class ArticleService implements IArticleService {
 		return dao.countArticlesByTitleContent(svo);
 	}
 
+	@Override
+	public ArrayList<ArticleVO> getAllByUserNo(Integer articleWriter) {
+		return dao.getAllByUserNo(articleWriter);
+	}
+
 
 	
 }

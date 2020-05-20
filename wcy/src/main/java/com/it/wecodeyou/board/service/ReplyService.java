@@ -1,5 +1,6 @@
 package com.it.wecodeyou.board.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ public class ReplyService implements IReplyService {
 	@Override
 	public List<ReplyUserVO> listByMember(Integer userNo) {
 		return rdao.listByMember(userNo);
+	}
+
+	@Override
+	public ArrayList<ReplyVO> listByUser(Integer replyWriter) {
+		return rdao.listByUser(replyWriter);
 	}
 
 }

@@ -89,6 +89,12 @@ public class BoardController {
 
 		paging.setBoardNo(boardNo);
 		List<ArticleVO> list = articleService.list(paging);
+		ArrayList<MemberVO> userNameList = new ArrayList<MemberVO>();
+		
+		for (int i = 0; i<list.size();i++) {
+			userNameList.add(memberService.getOneInfo(list.get(i).getArticleWriter()));
+			
+		}
 		for(ArticleVO avo: list) {
 			System.out.println(avo.toString());
 		}
@@ -97,10 +103,11 @@ public class BoardController {
 		pc.setArticleTotalCount(articleService.countArticles(boardNo));
 		System.out.println(pc.toString());
 		
-		ArrayList<TagVO>nameList = tagService.getAllTag();
+		ArrayList<TagVO> nameList = tagService.getAllTag();
 	    ArrayList<TagVO> ptagList = tagService.searchPTagNo();
 	    mv.addObject("ptagList", ptagList);
 	    mv.addObject("nameList", nameList);
+	    mv.addObject("userNameList", userNameList);
 
 		mv.addObject("board", bvo);
 		mv.addObject("articleList", list);
@@ -143,13 +150,22 @@ public class BoardController {
 	}
 	
 	@GetMapping("/article/{articleNo}")
-	public ModelAndView articleDetail(@PathVariable Integer articleNo, ModelAndView mv) {
+	public ModelAndView articleDetail(@PathVariable Integer articleNo, ModelAndView mv) throws NumberFormatException, SQLException {
 		
 		ArticleVO avo = articleService.getOneInfo(articleNo);
 		BoardVO bvo = boardService.getInfoByNo(avo.getArticleBoardNo());
 		MemberVO uvo = null;
 		
 		List<ReplyUserVO> replyList = replyService.listByArticle(articleNo);
+		
+		ArrayList<MemberVO> memberList = new ArrayList<MemberVO>();
+		ArrayList<String> imgList = new ArrayList<String>(); 
+		for (int i =0; i< replyList.size(); i++) {
+			
+			memberList.add(memberService.getOneInfo(Integer.parseInt(replyList.get(i).getReplyWriter())));
+			imgList.add(memberList.get(i).getUserProfileImg());
+		}
+		
 		try {
 			uvo = memberService.getOneInfo(avo.getArticleWriter());
 		} catch (SQLException e) {
@@ -165,12 +181,13 @@ public class BoardController {
 		mv.addObject("board", bvo);
 		mv.addObject("article", avo);
 		mv.addObject("replyList", replyList);
+		mv.addObject("profileImg",imgList);
 		mv.setViewName("/board/articleDetail");
 		return mv;
 	}
 	
 	@PostMapping("/{boardNo}/post-reply")
-	public String postReply(@PathVariable Integer boardNo, @RequestBody ReplyVO rvo) {
+	public String postReply(@PathVariable Integer boardNo, @RequestBody ReplyVO rvo) throws NumberFormatException, SQLException {
 		System.out.println(rvo.toString());
 		if(replyService.insert(rvo) == 1) {
 			return "post-reply-success";

@@ -42,6 +42,7 @@ public interface IArticleService {
 
 	public Integer countArticlesByTitleContent(SearchVO svo);
 
+	public ArrayList<ArticleVO> getAllByUserNo(Integer articleWriter);
 	
 	
 	

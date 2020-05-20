@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+.classplLeftBox {
+    width: 740px;
+}
+
+.classPaymentTitle {
+    padding-top: 44px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #D8D8D8;
+}
+
+.classPaymentTitle .title {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #000;
+    position: relative;
+}
+
+.classpayList {
+    margin-bottom: 84px;
+}
+
+.classpayList .classpayli {
+    border-bottom: 2px solid #D8D8D8;
+}
+
+.classpayList .classpayListIn {
+    position: relative;
+    padding: 26px 0 0 78px;
+}
+
+.classpayListIn .title {
+    margin: 0;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+.classpayListIn .title strong {
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: -0.5px;
+}
+
+.classpayList .teachername {
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    font-weight: 400;
+    color: #000;
+    padding-bottom: 25px;
+    margin: 0;
+}
+
+.classpayList .classdate {
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.classpayList .classdate p:first-child {
+    margin-top: 0;
+}
+
+.classpayList .classdate p {
+    margin: 0;
+    margin-bottom: 19px;
+    font-size: 16px;
+    letter-spacing: -0.2px;
+    color: #000;
+}
+
+.classpayList .classdate p span.dtitle {
+    color: #666;
+    font-size: 15px;
+    min-width: 70px;
+    display: inline-block;
+}
+
+.payment {
+    position: absolute;
+    right: 0;
+    bottom: -5px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+}
+
+.classpayList .payment .small {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

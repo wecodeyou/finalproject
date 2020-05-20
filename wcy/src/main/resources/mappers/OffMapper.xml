@@ -9,6 +9,7 @@
 		<result property="offAuthor" column="off_author"/>
 		<result property="offCategory" column="off_category"/>
 		<result property="offPlace" column="off_place"/>
+		<result property="offRoom" column="off_room"/>
 		<result property="offProductNo" column="off_product_no"/>
 		<result property="offUploadUri" column="off_upload_uri"/>
 		<result property="offSeats" column="off_seats"/>
@@ -30,6 +31,7 @@
 		<result property="offAuthor" column="off_author"/>
 		<result property="offCategory" column="off_category"/>
 		<result property="offPlace" column="off_place"/>
+		<result property="offRoom" column="off_room"/>
 		<result property="offUploadUri" column="off_upload_uri"/>
 		<result property="offSeats" column="off_seats"/>
 		<result property="offStartAt" column="off_start_at"/>
@@ -47,7 +49,7 @@
 	
 	<update id="update">
 		UPDATE off_course SET
-		off_category = #{offCategory}, off_place = #{offPlace}, off_seats = #{offSeats}, 
+		off_category = #{offCategory}, off_place = #{offPlace}, off_room = #{offRoom}, off_seats = #{offSeats}, 
 		off_start_at = #{offStartAt},  off_end_at = #{offEndAt}, off_modified_at = now()
 	</update>
 	

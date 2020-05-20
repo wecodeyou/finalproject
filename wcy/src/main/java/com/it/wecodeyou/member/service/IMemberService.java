@@ -13,7 +13,7 @@ public interface IMemberService {
    public void insertMember(MemberVO mvo);
    
    // 정보 수정 (userNo 받아서 생일, 휴대폰번호, 프로필 이미지, 주소 수정)
-   public void changeInfo(Integer userNo, Date userBirthday, String userTel, String userProfileImg, String userAddress);
+   public void changeInfo(MemberVO mvo);
    
    // 비밀번호 변경
    public void changePw(MemberVO mvo);
@@ -49,4 +49,8 @@ public interface IMemberService {
    
    // 유저타입 변경
    public void changeUserType(MemberVO mvo) throws SQLException;
+   
+   // 구매
+   public void updatePurchase(MemberVO mvo);
+   
 }
