@@ -49,7 +49,16 @@
 								<li class="tag">#프로그래밍</li>
 								<li class="tag">#온라인강의</li>
 								<li class="tag">#교재증정</li>
-								<li class="tag"><a href="#"><i class="fas fa-plus-circle"></i></a></li>
+								<c:if test = "${login.userType == 2}"> 
+								<li class="tag"><a id = "addtag" href = "javascript:openTag();"><i class="fas fa-plus-circle"></i></a></li>
+								<li class="tag" id = "inputtag" style ="display:none;">
+								<div>	
+									<div id="selectedTagList" ></div>
+									<input type = "text" id="text" placeholder="#해시태그">
+									<ul class="override" id="resultList"></ul>
+										<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a> 
+									<input type="submit" id="add" value="등록"/>
+								</div></c:if>
 							</ul>
 							
 							<p>
@@ -101,6 +110,11 @@
 							<div class="button-register">
 								<a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
 							</div>
+							<c:if test = "${login.userType == 2}"> 
+								<div class="button-register">
+									<a class="btn_red_regi" title="에피소드 추가" href="<c:url value="/on/${pro.productNo}"/>">에피소드 추가</a>
+								</div>
+							</c:if>
 						</div>
 					</div>
 				</div>	<!-- detail-top : end -->		
@@ -186,6 +200,8 @@
 	
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
+	<script src="<c:url value='/js/tag.js'/>"></script>
+
 
 <script type="text/javascript">
 
@@ -206,6 +222,42 @@ function logincheck(){
     }
        
  };
+ 
+ function openTag(){
+	 
+	 $("#inputtag").show();
+	 
+ }
+ 
+ $("#add").click(function(){
+	 
+	 var productInfo = {
+				productNo: ${pro.productNo},
+				sendTagList: sendTagList
+			};
+	 
+	 $.ajax({
+			type: "POST",
+			url : "/admin/addtag",
+			headers:{
+				"Content-Type": "application/json"
+			},
+			dataType: "text",
+			data:JSON.stringify(productInfo),
+			success: function(data){
+				console.log("received output : " + data);
+				if(data === "input_success"){
+					console.log("입력완료")
+					location.reload();
+				}
+				
+			},
+			error: function(request, status, error){
+				console.log("POST : /product/register 요청에 실패했습니다.")
+			}
+		}); /* end ajax */
+	 
+ });
 
 </script>
 </body>

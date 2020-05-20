@@ -24,6 +24,6 @@ public class ScheduleController {
 		
 		
 		
-		return "schedule/ex";
+		return "schedule/calendar";
 	}
 }

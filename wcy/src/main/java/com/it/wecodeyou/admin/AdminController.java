@@ -21,6 +21,7 @@ import com.it.wecodeyou.interest.sevice.IInterestService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.purchase.model.PurchaseResultVO;
 import com.it.wecodeyou.purchase.service.IPurchaseService;
@@ -157,10 +158,10 @@ public class AdminController {
 	 * }
 	 */
    	
-    //로그인 요청 처리
+    //유저 타입 변경
     @PostMapping("/typechange")
     public String typechange(@RequestBody Integer usertype, HttpSession session) throws SQLException {
-       System.out.println("/member/typechange : 로그인 POST 요청 발생!");
+       System.out.println("/member/typechange : 유저타입 변경 POST 요청 발생!");
        String result=null;
        
        
@@ -173,4 +174,22 @@ public class AdminController {
        return result;
     }
    	
+    @PostMapping("/addtag")
+    public String addtag(@RequestBody OffProductVO opvo) {
+
+    	long lpno = opvo.getProductNo();
+    	ArrayList<Integer> sendTagList = opvo.getSendTagList();
+    	
+		boolean insertChk = productService.insertPtag(sendTagList, (Integer)(int)opvo.getProductNo());
+		
+    	if (insertChk) {
+    		return "input_success";
+    	}else {
+			return "input_fail";
+		}
+		
+    
+    }
+    
+    
 }
