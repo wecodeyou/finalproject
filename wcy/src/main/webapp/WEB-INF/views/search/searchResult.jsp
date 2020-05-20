@@ -61,8 +61,14 @@
 		margin-top: 10px;
 		margin-bottom: 20px;
 	}
-	
-	#keywordInput {
+
+.hashtag {
+	color: #3A73FB;
+	font-size:11px;
+	font-weight: bold;
+}
+
+#keywordInput {
     border-radius: 5px;
     border:none;
     opacity:.8;
@@ -74,7 +80,7 @@
     padding-bottom:19px;
     padding-left:10px;
     adding-right:10px;
-    width: 419px;
+    width: 344px;
     height: 15px;    
     font-size:18px;
 }
@@ -91,10 +97,8 @@
 
 #searchBtn{
 	display:inline;height:41px;width:5%;
-	
 	border-radius: 5px;
 }
-	
 </style>
 
 </head>
@@ -112,37 +116,22 @@
 			이런... <h2 style="color:red; font-weight:bold; font-size:23px;" class="mt10 mb10">${search}</h2> 로 찾은 검색결과가 없습니다.
 		</div>
 		<br><br>
-		<!-- 검색창 -->
-	<div class="row">
-		<div class="col-sm-2"></div>
-		<div class="form-group col-sm-2">
-			<select id="condition" class="form-control" name="condition">
-				<option value="title">제목</option>
-				<option value="titleContent">제목+내용</option>
-				<option value="hashtag">해시태그</option>
-			</select>
-		</div>
-		<div class="form-group col-sm-4">
-			<div class="input-group">
-				<input type="text" class="form-control" name="keyword"
-					id="keywordInput" value="${search}" > <span
-					class="input-group-btn"> <input type="button" value="검색"
-					class="btn btn-izone btn-flat" id="searchBtn">
-				</span>
+			<div>
+				<select id="condition" class="form-control" name="condition" style="display: inline; height: 41px; width: 22%;; margin-top: 1px; margin-left: 10px;">
+					<option value="title">제목</option>
+					<option value="titleContent">제목+내용</option>
+					<option value="hashtag">해시태그</option>
+				</select> 
+				<input type="text" id="keywordInput" />
+				<button type="button" id="searchBtn">검색</button>
+				<input type="hidden" id="reseult-con" name="reseult-con" value="${condition}" /> 
 			</div>
-		</div>
-		<div class="col-sm-2">
-			<a href="<c:url value="/board/${board.boardNo}/register"/>"
-				class="btn btn-izone float-right">글쓰기</a>
-		</div>
-		<div class="col-sm-2"></div>
-	</div>
-	<!-- 검색창 끝-->
+			<!-- 검색창 끝-->
 	<div style="text-align:center;">
 		<ul class="override" id="resultList"></ul>
 	</div>
 	<!-- 추천 태그 -->
-	<div style="text-align:center;">
+	<div style="text-align:right;">
 		<c:forEach var="p" items="${ptagList}" begin="1" end="5" varStatus="status">
       		<button type="button" class="search_tag" id="${p.tagNo}">${p.tagName}</button>
     	</c:forEach>
@@ -153,43 +142,15 @@
 		
 	<!-- 검색창 -->
 	<div class="row">
-		<div class="col-sm-2"></div>
-		
-		<div>
-						<select id="condition" class="form-control" name="condition" 
-						 style="display:inline;height:41px;width:16%;margin-top:1px; margin-left:10px;">
-							<option value="title">제목</option>
-							<option value="titleContent">제목+내용</option>
-							<option value="hashtag">해시태그</option>
-						</select>
-						<input type="text" id="keywordInput"/>
-						<button type="button" id="searchBtn">검색</button>
-						<input type="hidden" id="reseult-con" name="reseult-con" value="${condition}"/>
-						<input type="hidden" id="reseult-type" name="productType" value="3"/>
-					</div>
-		
-		<div class="form-group col-sm-2">
-		
-			<select id="condition" class="form-control" name="condition">
+		<div class="col-sm-6"></div>
+			<select id="condition" class="form-control" name="condition" style="display: inline; height: 41px; width: 12%; margin-top: 1px; margin-left: 10px;">
 				<option value="title">제목</option>
 				<option value="titleContent">제목+내용</option>
 				<option value="hashtag">해시태그</option>
-			</select>
-		</div>
-		<div class="form-group col-sm-4">
-			<div class="input-group">
-				<input type="text" class="form-control" name="keyword"
-					id="keywordInput" value="${search}" > <span
-					class="input-group-btn"> <input type="button" value="검색"
-					class="btn btn-izone btn-flat" id="searchBtn">
-				</span>
-			</div>
-		</div>
-		<%-- <div class="col-sm-2">
-			<a href="<c:url value="/board/${board.boardNo}/register"/>"
-				class="btn btn-outline-dark float-right">글쓰기</a>
-		</div> --%>
-		<div class="col-sm-2"></div>
+			</select> 
+			<input type="text" id="keywordInput" />
+			<button type="button" id="searchBtn">검색</button>
+			<input type="hidden" id="reseult-con" name="reseult-con" value="${condition}" /> 
 	</div>
 	<!-- 검색창 끝-->
 	<div style="text-align:center;">
@@ -202,13 +163,14 @@
     	</c:forEach>
 	</div>
 	<!-- 추천 태그 끝-->
-	
-	
 	<br>
-	<div style="text-align:center;">
-		<small><font color="red">*검색결과가 3개 이상이면 더보기 링크가 생깁니다~</font></small>
-	</div>
-	<br><br>
+			<%-- <div class="text-right">
+				<a class="btn btn-outline btn-sm"
+					href="<c:url value="/board/${board.boardNo}/register"/>"> <i
+					class="fas fa-feather"></i><span style="color: #313D55;">
+						글쓰기</span></a><br> <br>
+			</div>
+			<br> --%>
 	
 	
 	<div id="contents">
@@ -228,7 +190,7 @@
 				</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="p" items="${onList}" varStatus="status" begin="0" end="1">
+					<c:forEach var="p" items="${onList}" varStatus="status" begin="0" end="2">
 						<tr>
 							<td class="tdImg"><img src="${p.productThumb}" alt="${p.productThumb}" class="tdImgSize"/></td>
 							<td class="tdNo">${p.productNo}</td>
@@ -246,7 +208,7 @@
 										</c:if>
 									</c:if>
 								</c:forEach>
-								<a class="title_link" href="<c:url value="/product/${p.productNo}"/>">${p.productName}</a>
+								<a class="title_link" href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a>
 							</div>
 							</td>
 							<td class="tdDetail">${p.productDetail}</td>
@@ -279,7 +241,7 @@
 				</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="p" items="${offList}" varStatus="status" begin="0" end="1">
+					<c:forEach var="p" items="${offList}" varStatus="status" begin="0" end="2">
 						<tr>
 							<td class="tdImg"><img src="${p.productThumb}" alt="${p.productThumb}" class="tdImgSize"/></td>
 							<td class="tdNo">${p.productNo}</td>
@@ -296,7 +258,7 @@
 											</c:if>
 										</c:if>
 									</c:forEach>
-									<a class="title_link" href="<c:url value="/product/${p.productNo}"/>">${p.productName}</a>
+									<a class="title_link" href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a>
 								</div>
 							</td>
 							<td class="tdDetail">${p.productDetail}</td>
@@ -331,7 +293,7 @@
 				</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="p" items="${productList}" varStatus="status" begin="0" end="1">
+					<c:forEach var="p" items="${productList}" varStatus="status" begin="0" end="2">
 						<tr>
 							<td class="tdImg"><img src="${p.productThumb}" alt="${p.productThumb}" class="tdImgSize"/></td>
 							<td class="tdNo">${p.productNo}</td>
@@ -348,7 +310,7 @@
 											</c:if>
 										</c:if>
 									</c:forEach>
-									<a class="title_link" href="<c:url value="/product/${p.productNo}"/>">${p.productName}</a>
+									<a class="title_link" href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a>
 								</div>
 							</td>
 							<td class="tdDetail">${p.productDetail}</td>
@@ -380,7 +342,7 @@
 				</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="a" items="${articleList}" varStatus="status" begin="0" end="1">
+					<c:forEach var="a" items="${articleList}" varStatus="status" begin="0" end="2">
 						<tr>
 							<td class="tdNo">${a.articleNo }</td>
 							<td class="tdType">${a.articleBoardNo}</td>
@@ -390,7 +352,7 @@
 										<c:if test="${entry.key eq status.index}">
 											<c:if test="${fn:length(entry.value) > 0}">
 												<c:forEach items="${entry.value}" var="tagName">
-													<a href="<c:url value='/tag/searchProductByTag/${tagName}'/>" class="hashtag">${tagName}</a>
+													<a href="#<%-- <c:url value='/tag/searchProductByTag/${tagName}'/> --%>" class="hashtag">${tagName}</a>
 												</c:forEach>
 												<br>
 											</c:if>
