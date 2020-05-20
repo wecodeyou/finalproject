@@ -6,11 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +20,8 @@ import com.it.wecodeyou.interest.model.InterestReportVO;
 import com.it.wecodeyou.interest.sevice.IInterestService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
+import com.it.wecodeyou.off.model.OffProductVO;
+import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.purchase.model.PurchaseResultVO;
 import com.it.wecodeyou.purchase.service.IPurchaseService;
 
@@ -35,7 +35,8 @@ public class AdminController {
 	private IPurchaseService purchaseService;
 	@Autowired
 	private IInterestService interestService;
-
+	@Autowired
+	private IProductService productService;
 	
    	//admin page 호출
    	@GetMapping("")
@@ -168,14 +169,21 @@ public class AdminController {
        return result;
     }
    	
-    //태그추가
-    @GetMapping("/tag")
-    public ModelAndView tag(ModelAndView mv) {
+    @PostMapping("/addtag")
+    public String addtag(@RequestBody OffProductVO opvo) {
 
+    	long lpno = opvo.getProductNo();
+    	ArrayList<Integer> sendTagList = opvo.getSendTagList();
     	
-    	mv.setViewName("tag/inputTag");
+		boolean insertChk = productService.insertPtag(sendTagList, (Integer)(int)opvo.getProductNo());
+		
+    	if (insertChk) {
+    		return "input_success";
+    	}else {
+			return "input_fail";
+		}
+		
     
-    	return mv;
     }
     
     
