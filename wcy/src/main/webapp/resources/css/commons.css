@@ -136,7 +136,7 @@
     	margin-left: 0;
     }
     
-    .curriculum .curri-list li .curri-list-text{float: right; width: 690px;}
+    .curriculum .curri-list li .curri-list-text{float: right; width: 690px; padding-right: 20px;}
     
     .curriculum .curri-list li .curri-list-text h5{font-size: 20px; color:#333; margin-top: 50px; height:20px;}
       
