@@ -7,10 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -135,17 +138,34 @@ public class AdminController {
    		return mv;
    	}
 
-   	@GetMapping("/typechange")
-   	public ModelAndView typechange(HttpServletRequest req) throws SQLException {
-   		
-   		Integer userNo = Integer.parseInt(req.getParameter("userNo"));
-   		MemberVO mvo = memberService.getOneInfo(userNo);
-   		
-   		memberService.changeUserType(mvo);
-   		
-   		return new ModelAndView("redirect:/admin");
-   		
-   	}
+	/*
+	 * @GetMapping("/typechange") public ModelAndView typechange(HttpServletRequest
+	 * req) throws SQLException {
+	 * 
+	 * Integer userNo = Integer.parseInt(req.getParameter("userNo")); MemberVO mvo =
+	 * memberService.getOneInfo(userNo);
+	 * 
+	 * memberService.changeUserType(mvo);
+	 * 
+	 * return new ModelAndView("redirect:/admin");
+	 * 
+	 * }
+	 */
    	
+    //로그인 요청 처리
+    @PostMapping("/typechange")
+    public String typechange(@RequestBody Integer usertype, HttpSession session) throws SQLException {
+       System.out.println("/member/typechange : 로그인 POST 요청 발생!");
+       String result=null;
+       
+       
+       System.out.println(usertype);
+       MemberVO mvo = memberService.getOneInfo(usertype);
+       memberService.changeUserType(mvo);
+       
+       result="success";
+       
+       return result;
+    }
    	
 }
