@@ -487,7 +487,7 @@ $(".change").on("click",function(){
 	
 	usertype = $(this).attr('value');
 	$("#userType").val(usertype);	
-	
+
 	
 })
 	
