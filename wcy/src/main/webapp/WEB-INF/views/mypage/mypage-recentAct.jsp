@@ -48,6 +48,7 @@
 						</div>
 						안녕하세요!
 						<a href="<c:url value='/mypage/myinfoChange' />"><i class="fas fa-cog"></i>회원정보 수정</a>
+						<a href="<c:url value='/mypage/' />" style="margin-top: 12px;"><i class="fas fa-house-user"></i>마이페이지 홈</a>
 					</div>
 					<ul class="myCuponBox">
 						<li class="list01">
