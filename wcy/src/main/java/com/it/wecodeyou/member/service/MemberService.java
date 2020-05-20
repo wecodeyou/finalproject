@@ -39,9 +39,8 @@ public class MemberService implements IMemberService {
    }
 
    @Override
-   public void changeInfo(Integer userNo, Date userBirthday, String userTel, String userProfileImg,
-         String userAddress) {
-      dao.changeInfo(userNo, userBirthday, userTel, userProfileImg, userAddress);
+   public void changeInfo(MemberVO mvo) {
+      dao.changeInfo(mvo);
    }
 
    @Override

@@ -1,5 +1,6 @@
 package com.it.wecodeyou.board.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.it.wecodeyou.board.model.ArticleVO;
@@ -33,5 +34,7 @@ public interface IArticleMapper {
 	public List<ArticleVO> getArticleByTitleContent(SearchVO svo);
 
 	public Integer countArticlesByTitleContent(SearchVO svo);
+	
+	public ArrayList<ArticleVO> getAllByUserNo(Integer articleWriter);
 	
 }

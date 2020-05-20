@@ -34,7 +34,7 @@ public class ReviewService implements IReviewService{
 
 	@Override
 	public ArrayList<ReviewVO> getAllReviewByUser(String reviewUser) {
-		return null;
+		return dao.getAllReviewByUser(reviewUser);
 	}
 
 	@Override

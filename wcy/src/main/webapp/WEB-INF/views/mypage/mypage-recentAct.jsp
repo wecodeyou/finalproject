@@ -19,6 +19,14 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
+<style>
+    .star{color: #c0c0c0}
+    .star > .on{
+        color: red;
+    }
+    
+    .text_context {text-overflow: ellipsis;}
+</style>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <style>
 	html,body{height:100%;}
@@ -91,44 +99,47 @@
 				</div>
 				<table class="table_normal">
 					<colgroup>
-						<col width="20%">
+						<col width="15%">
 						<col width="*">
-						<col width="20%">
+						<col width="25%">
 						<col width="15%">
 					</colgroup>
 					<thead>
 						<tr>
 							<th scope="col" class="line0">날짜</th>
-							<th scope="col">상세내역</th>
-							<th scope="col">적립/사용</th>
-							<th scope="col">구분</th>
+							<th scope="col">내용</th>
+							<th scope="col">강의 명</th>
+							<th scope="col">별점</th>
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="r" items="${s_list}">
 						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >포인트 충전</td>
-							<td style="text-align:center;">+300,000</td>
-							<td style="text-align:center;">충전</td>
+							<td style="text-align:center;">${r.reviewCreatedAt}</td>
+							<td ><p class="text_context" >${r.content}</p></td>
+							<td style="text-align:center;">${r.reviewProductName}</td>
+							<td style="text-align:center;">
+							<span class="star">
+									<span id="star${r.reviewNo}_1">★</span> 
+									<span id="star${r.reviewNo}_2">★</span> 
+									<span id="star${r.reviewNo}_3">★</span> 
+									<span id="star${r.reviewNo}_4">★</span> 
+									<span id="star${r.reviewNo}_5">★</span> 
+							</span>
+							</td>
 						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >[온라인] 반응형 웹제작 제대로 하기</td>
-							<td style="text-align:center;">-140,000</td>
-							<td style="text-align:center;">사용</td>
-						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >포인트 충전</td>
-							<td style="text-align:center;">+300,000</td>
-							<td style="text-align:center;">충전</td>
-						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >[온라인] 나홀로 제작 쇼핑몰</td>
-							<td style="text-align:center;">-100,000</td>
-							<td style="text-align:center;">사용</td>
-						</tr>
+						
+<script type="text/javascript">
+$( document ).ready(function() {
+	var s;
+	for(var i=0; i<${r.reviewStar}+1; i++){
+		s = '#star'+${r.reviewNo}+"_"+i;
+		$(s).addClass("on");
+	}
+	return false;
+});
+</script>
+						</c:forEach>
 					</tbody>
 				</table>
 				<div class="subtitle"> <!-- 게시물 -->
@@ -136,44 +147,28 @@
 				</div>
 				<table class="table_normal">
 					<colgroup>
-						<col width="20%">
-						<col width="*">
-						<col width="20%">
+						<col width="15%">
+						<col width="15%">
+						<col width="*%">
 						<col width="15%">
 					</colgroup>
 					<thead>
 						<tr>
 							<th scope="col" class="line0">날짜</th>
-							<th scope="col">상세내역</th>
-							<th scope="col">적립/사용</th>
-							<th scope="col">구분</th>
+							<th scope="col">제목</th>
+							<th scope="col">내용</th>
+							<th scope="col">게시판</th>
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="sa" items="${sa_list}">
 						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >포인트 충전</td>
-							<td style="text-align:center;">+300,000</td>
-							<td style="text-align:center;">충전</td>
+							<td style="text-align:center;">${sa.articleCreatedAt}</td>
+							<td >${sa.articleTitle}</td>
+							<td style="text-align:center;">${sa.articleContent}</td>
+							<td style="text-align:center;">${sa.articleBoardType}</td>
 						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >[온라인] 반응형 웹제작 제대로 하기</td>
-							<td style="text-align:center;">-140,000</td>
-							<td style="text-align:center;">사용</td>
-						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >포인트 충전</td>
-							<td style="text-align:center;">+300,000</td>
-							<td style="text-align:center;">충전</td>
-						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >[온라인] 나홀로 제작 쇼핑몰</td>
-							<td style="text-align:center;">-100,000</td>
-							<td style="text-align:center;">사용</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 				<div class="subtitle"> <!-- 댓글 -->
@@ -181,44 +176,25 @@
 				</div>
 				<table class="table_normal">
 					<colgroup>
-						<col width="20%">
-						<col width="*">
-						<col width="20%">
 						<col width="15%">
+						<col width="*">
+						<col width="25%">
 					</colgroup>
 					<thead>
 						<tr>
 							<th scope="col" class="line0">날짜</th>
-							<th scope="col">상세내역</th>
-							<th scope="col">적립/사용</th>
-							<th scope="col">구분</th>
+							<th scope="col">댓글</th>
+							<th scope="col">게시물 제목</th>
 						</tr>
 					</thead>
 					<tbody>
+						<c:forEach var="rp" items="${srp_list}">
 						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >포인트 충전</td>
-							<td style="text-align:center;">+300,000</td>
-							<td style="text-align:center;">충전</td>
+							<td style="text-align:center;">${rp.replyCreatedAt}</td>
+							<td >${rp.replyContent}</td>
+							<td >${rp.replyArticleTitle}</td>
 						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >[온라인] 반응형 웹제작 제대로 하기</td>
-							<td style="text-align:center;">-140,000</td>
-							<td style="text-align:center;">사용</td>
-						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >포인트 충전</td>
-							<td style="text-align:center;">+300,000</td>
-							<td style="text-align:center;">충전</td>
-						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >[온라인] 나홀로 제작 쇼핑몰</td>
-							<td style="text-align:center;">-100,000</td>
-							<td style="text-align:center;">사용</td>
-						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div> <!-- 최근활동내역 -->
@@ -238,6 +214,7 @@
       location.href="<c:url value='/' />";
    </script>
 </c:if>
+
 
 
 </body>

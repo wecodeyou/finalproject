@@ -60,6 +60,7 @@ public class MemberController {
    public String register(@RequestBody MemberVO mvo) {
       System.out.println("/member/ : 회원가입 POST 요청 발생!");
       System.out.println("param: "+mvo);
+      mvo.setUserProfileImg("http://localhost/img/commons/basic-profileImg-blue.png");
       service.insertMember(mvo);
       
       return "joinSuccess";
@@ -413,16 +414,14 @@ public class MemberController {
     	  return result;
       }
       
-      @PostMapping("/changePw")
-      public void changePw(HttpSession session, @RequestBody String userPw) {
-    	  String userEmail = ((MemberVO) session.getAttribute("login")).getUserEmail();
-    	  MemberVO mvo = new MemberVO();
-          mvo.setUserEmail(userEmail);
-    	  mvo.setUserPw(userPw);
-    	  service.changePw(mvo);
-    	  
-    	  session.removeAttribute("login");    	  
-      }
+		/*
+		 * @PostMapping("/changePw") public void changePw(HttpSession
+		 * session, @RequestBody String userPw) { String userEmail = ((MemberVO)
+		 * session.getAttribute("login")).getUserEmail(); MemberVO mvo = new MemberVO();
+		 * mvo.setUserEmail(userEmail); mvo.setUserPw(userPw); service.changePw(mvo);
+		 * 
+		 * session.removeAttribute("login"); }
+		 */
       
    
       @PostMapping("/kakao")

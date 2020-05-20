@@ -58,5 +58,13 @@
    		AND reply.reply_writer = user.user_no
    		ORDER BY reply_depth, reply_order
    </select>
+      
+   <select id="listByUser" resultMap="ReplyMap">
+   		SELECT * FROM reply
+   		WHERE reply_writer = #{replyWriter} 		
+   </select>
+   
+   
+   
    
 </mapper>
