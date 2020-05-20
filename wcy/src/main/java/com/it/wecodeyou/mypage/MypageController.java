@@ -86,7 +86,7 @@ public class MypageController {
 	}
 
 	@GetMapping("/myinfoChange")
-	public ModelAndView myInfo(ModelAndView mv, HttpServletResponse res ,HttpSession session, HttpServletRequest req) throws IOException {
+	public ModelAndView myInfo(ModelAndView mv, HttpServletResponse res ,HttpSession session, HttpServletRequest req) throws IOException, SQLException {
 		System.out.println("/mypage/myinfoChange : GET 요청 발생!");
 		if(session.getAttribute("login") == null) {
 			 mv.setViewName("home");
