@@ -49,6 +49,7 @@
 								<li class="tag">#프로그래밍</li>
 								<li class="tag">#온라인강의</li>
 								<li class="tag">#교재증정</li>
+								<c:if test = "${login.userType == 2}"> 
 								<li class="tag"><a id = "addtag" href = "javascript:openTag();"><i class="fas fa-plus-circle"></i></a></li>
 								<li class="tag" id = "inputtag" style ="display:none;">
 								<div>	
@@ -57,7 +58,7 @@
 									<ul class="override" id="resultList"></ul>
 										<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a> 
 									<input type="submit" id="add" value="등록"/>
-								</div>
+								</div></c:if>
 							</ul>
 							
 							<p>
@@ -109,9 +110,11 @@
 							<div class="button-register">
 								<a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
 							</div>
-							<div class="button-register">
-								<a class="btn_red_regi" title="에피소드 추가" href="<c:url value="/on/${pro.productNo}"/>">에피소드 추가</a>
-							</div>
+							<c:if test = "${login.userType == 2}"> 
+								<div class="button-register">
+									<a class="btn_red_regi" title="에피소드 추가" href="<c:url value="/on/${pro.productNo}"/>">에피소드 추가</a>
+								</div>
+							</c:if>
 						</div>
 					</div>
 				</div>	<!-- detail-top : end -->		

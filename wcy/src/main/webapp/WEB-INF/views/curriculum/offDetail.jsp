@@ -52,6 +52,7 @@
 								<li class="tag">#프로그래밍</li>
 								<li class="tag">#온라인강의</li>
 								<li class="tag">#교재증정</li>
+								<c:if test = "${login.userType == 2}"> 
 								<li class="tag"><a id = "addtag" href = "javascript:openTag();"><i class="fas fa-plus-circle"></i></a></li>
 								<li class="tag" id = "inputtag" style ="display:none;">
 								<div>	
@@ -60,7 +61,7 @@
 									<ul class="override" id="resultList"></ul>
 										<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a> 
 									<input type="submit" id="add" value="등록"/>
-								</div>
+								</div></c:if>
 							</ul>
 							<p>
 								<span class="info-title">강의평점</span>
