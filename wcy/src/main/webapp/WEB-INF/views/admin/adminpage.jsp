@@ -24,7 +24,7 @@
 <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <title>WE CODE YOU | 관리자 페이지</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <style>
@@ -382,10 +382,11 @@
                                         			<td>
                                         			<div style="text-align:center">
                                         				<c:if test="${m.userType == 0}">
-                                        				<a href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">일반회원</a>
+                                        				<%-- <a id = "change" onclick ="return false;" href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">일반회원</a> --%>
+                                        				<a class = "change" href = "javascript:warnalert();" value = "${m.userNo}">일반회원</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 1}">
-                                        				<a href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">강사</a>
+                                        				<a class = "change" href = "javascript:warnalert();" value = "${m.userNo}">강사</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 2}">
                                         					*관리자
@@ -410,6 +411,9 @@
 
 		</div>
 	</main>
+	<form action = "<c:url value='/admin/typechange'/>" method = "get" id = "go">
+		<input type = "hidden" id ="userType" name = "userNo">
+	</form>
 
  
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
@@ -437,7 +441,7 @@
 <!-- 데이터 테이블 -->
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 
 <!-- 여기까지 -->  
 
@@ -467,6 +471,60 @@ $(function(){
 		$('#adminUser').show();
 	
 	}
+
+var change = $("#change");
+
+const swalWithBootstrapButtons = Swal.mixin({
+	  customClass: {
+	    confirmButton: 'btn btn-success',
+	    cancelButton: 'btn btn-danger'
+	  },
+	  buttonsStyling: false
+	})
+var form = $("#go");
+var usertype;
+$(".change").on("click",function(){
+	
+	usertype = $(this).attr('value');
+	$("#userType").val(usertype);	
+	
+	
+})
+	
+function warnalert(){
+
+	swalWithBootstrapButtons.fire({
+		  title: '정말 바꾸시겠습니까?',
+		  text: "",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonText: 'Yes, delete it!',
+		  cancelButtonText: 'No, cancel!',
+		  reverseButtons: true
+		}).then((result) => {
+		  if (result.value) {
+			  
+	 		console.log(usertype);
+		    swalWithBootstrapButtons.fire(
+		      'Deleted!',
+		      'Your file has been deleted.',
+		      'success'
+		    )
+			form.submit();
+
+		  } else if (
+		    /* Read more about handling dismissals below */
+		    result.dismiss === Swal.DismissReason.cancel
+		  ) {
+		    swalWithBootstrapButtons.fire(
+		      'Cancelled',
+		      'Your imaginary file is safe :)',
+		      'error'
+		    )
+		  }
+		})
+}
+	
 	
 </script>
 
