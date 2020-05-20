@@ -99,14 +99,14 @@
 							</tbody>
 						</table>
 						<div class="top-right-button">
-							<div class="button-cart">
+<!-- 							<div class="button-cart">
 								<a href="#" title="카트담기">
 									<i class="fa fa-shopping-cart"></i>
 									<span class="cart_on">
 										<i class="fa fa-shopping-cart"></i>										
 									</span>
 								</a>
-							</div>
+							</div> -->
 							<div class="button-register">
 								<a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
 							</div>

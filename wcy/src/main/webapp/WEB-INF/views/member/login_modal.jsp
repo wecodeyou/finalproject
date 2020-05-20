@@ -52,6 +52,9 @@
 		width: 100% !important;
 	}
 	
+	.abcRioButton {
+    	border-radius: 4px !important;
+    }
 	
 	</style>
 
@@ -73,7 +76,7 @@
 						Kakao
 					</a>
 
-					<div class="g-signin2 m-b-20 btn-face"  data-onsuccess="onSignIn"  >
+					<div class="g-signin2 m-b-20 btn-face"  data-onsuccess="onSignIn" style="height:49px; width:200px; border-radius:7px;" >
 						</div>
 						
 					

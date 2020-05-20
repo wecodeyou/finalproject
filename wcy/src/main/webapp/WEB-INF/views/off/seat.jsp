@@ -50,7 +50,7 @@
             </c:forEach>
 			</div><br>
 		</c:forEach>
-		<button type="button" onclick="nullCheck()">결제</button>
+		<button type="button" onclick="nullCheck()">좌석선택</button>
 	</form>
 <script type="text/javascript">
 $(document).ready(function() {// 페이지가 켜지자마자 

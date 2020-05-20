@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/purchase.css'/>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
@@ -113,7 +114,14 @@
 	<script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 	<script src="<c:url value = "/js/main.js"/>"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
-
+	
+	<script type="text/javascript">
+	function open_window(){
+		window.open("<c:url value='/off/seat?off_no=${pro_info.productNo}'/>","","width=400,height=400,left=500");    
+	 };
+	 
+	
+	</script>
 
 </body>
 	<jsp:include page="../include/footer.jsp" />

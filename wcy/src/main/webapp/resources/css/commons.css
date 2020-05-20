@@ -208,10 +208,12 @@
      	margin-bottom: 30px;
      	text-align: left;
      	background: #000;
-     	height:50px;
+     	height:100%;
      	border-radius: 5px;
      	padding-left:10px;
      	padding-top:6px;
+     	padding-bottom: 11px;
+     	    line-height: 1.2;
      }
     
     .top-right-info{
@@ -263,11 +265,11 @@
     	border: 1px solid #000;
     }
     
-    .top-right-button a {
+    .detail-top-right .top-right-button a {
     	margin:0px;
     	line-height: 40px;
     	border-radius: 0;
-    	color:#fff;
+    	color:#fff !important;
     	font-weight: 400;
     	display: block;
     	padding:10px;
@@ -290,7 +292,7 @@
     	border:1px solid #e13333;
     }
     
-.top-right-button .button-register:hover a{color:#D31F21;}
+.detail-top-right .top-right-button .button-register:hover a{color:#D31F21 !important;}
 .btn_red_regi {position: relative;/* border:1px solid #D31F21; *//* background-color:#D31F21; */}
 .btn_red_regi:before{border: 0px; content: ''; position: absolute; width: 0;height: 0; top: -1px; left: 0;}
 .btn_red_regi:after{bottom: -1px;right: 0px; content: ''; position: absolute; width: 0;height: 0; }
@@ -345,6 +347,7 @@ position: absolute;width: 0;height: 0; top: 0;left: 0;}
 .curri-table td.curri-table-title{
 	font-weight: 600;
 	font-size: 15px;
+	padding-bottom: 5px;
 }
 
 .curri-table td.curri-table-content{

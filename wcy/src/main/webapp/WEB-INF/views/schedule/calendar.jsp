@@ -25,6 +25,11 @@
 
 <title>스케줄</title>
 
+<style>
+.modal-body{height:500px !important;}
+</style>
+
+
 </head>
 
 <script type="text/javascript">
