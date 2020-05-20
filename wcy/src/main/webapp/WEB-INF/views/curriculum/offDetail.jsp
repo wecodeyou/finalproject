@@ -52,7 +52,7 @@
 								<li class="tag">#프로그래밍</li>
 								<li class="tag">#온라인강의</li>
 								<li class="tag">#교재증정</li>
-								<li class="tag">#이벤트할인</li>
+								<li class="tag"><a href="#"><i class="fas fa-plus-circle"></i></a></li>
 							</ul>
 							<p>
 								<span class="info-title">강의평점</span>
