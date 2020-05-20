@@ -59,7 +59,6 @@
 									<input type = "text" id="text" placeholder="#해시태그">
 									<ul class="override" id="resultList"></ul>
 										<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a> 
-									<input type = "hidden" name = "productNo" value = "${productNo}">
 									<input type="submit" id="add" value="등록"/>
 								</div>
 							</ul>
@@ -257,7 +256,6 @@ function logincheck(){
 	 
 	 $("#inputtag").show();
 	 
-	 
  }
  
  $("#add").click(function(){
@@ -288,7 +286,7 @@ function logincheck(){
 			}
 		}); /* end ajax */
 	 
- })
+ });
  
  
  

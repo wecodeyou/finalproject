@@ -109,6 +109,9 @@
 							<div class="button-register">
 								<a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
 							</div>
+							<div class="button-register">
+								<a class="btn_red_regi" title="에피소드 추가" href="<c:url value="/on/${pro.productNo}"/>">에피소드 추가</a>
+							</div>
 						</div>
 					</div>
 				</div>	<!-- detail-top : end -->		
@@ -228,7 +231,7 @@ function logincheck(){
 	 var productInfo = {
 				productNo: ${pro.productNo},
 				sendTagList: sendTagList
-			}
+			};
 	 
 	 $.ajax({
 			type: "POST",
