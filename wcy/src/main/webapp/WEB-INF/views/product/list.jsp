@@ -62,7 +62,7 @@
 		<tr>
 			<td><img src="${p.productThumb}" alt="${p.productThumb}" width="70px" height="70px"/></td> 
 			<td>${p.productNo}</td>
-			<td><a href="<c:url value="/off/${p.productNo}"/>">${p.productName}</a></td>
+			<td><a href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a></td>
 			<td>${p.productPrice}</td>
 			<td>${p.productCreatedAt}</td>				
 		</tr>
@@ -89,7 +89,7 @@
 		<tr>
 			<td><img src="${p.productThumb}" alt="${p.productThumb}" width="70px" height="70px"/></td> 
 			<td>${p.productNo}</td>
-			<td><a href="<c:url value="/on/${p.productNo}"/>">${p.productName}</a></td>
+			<td><a href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a></td>
 			<td>${p.productPrice}</td>
 			<td>${p.productCreatedAt}</td>				
 		</tr>

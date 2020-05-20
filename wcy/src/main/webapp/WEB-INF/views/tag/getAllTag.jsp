@@ -29,6 +29,11 @@ integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="ano
 	
 	<ul class="override" id="resultList"></ul>
 	
+	<!-- tag end -->
+	
+	
+	
+	
 	<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a>
 	
 </body>

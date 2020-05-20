@@ -24,8 +24,10 @@
 <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <title>WE CODE YOU | 관리자 페이지</title>
+
+
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <style>
 
@@ -36,7 +38,21 @@
     .center-header .center-sub-nav li a{display: block; height: 60px; box-sizing: border-box; font-size: 18px; color: #888; padding: 0 0 0 20px; line-height: 60px; border-bottom: 4px solid #ddd;}
     .center-sub-nav li a.active{color: #25283D; border-color: #25283D;}
 
-
+	#adminUser {
+		display:none;
+	}
+	#adminProduct {
+		display:none;
+	}
+	
+	h2:after {
+   		content: none !important;
+	}
+	
+	h2:before {
+   		content: none !important;
+	}
+	
 </style>
 
 </head>
@@ -49,10 +65,9 @@
 			<div class="page-width">
 				<div class="center-header">
 					<ul class="center-sub-nav">
-						<li><a class="active">관리자 대시보드</a></li>
-						<li><a href="<c:url value='/admin/user'/>">회원 관리</a></li>
-						<li><a href="<c:url value='/admin/etc'/>">기타 관리</a></li>
-						<li><a href="<c:url value='/product/'/>">상품 관리</a></li>
+						<li><a href="javascript:adminChart();"class="active">관리자 대시보드</a></li>
+						<li><a href="javascript:adminUser();" >회원 관리</a></li>
+						<li><a href="javascript:adminProduct();">상품 관리</a></li>
 					</ul>
 				</div>
 			</div>
@@ -375,21 +390,21 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        	<c:forEach var="m" items="${members}">
+                                        	<c:forEach var="m" items="${members}" varStatus = "status">
                                         		<tr>
                                         			<td>
                                         			<div style="text-align:center">
                                         				<c:if test="${m.userType == 0}">
-                                        					일반회원
+                                        				<%-- <a id = "change" onclick ="return false;" href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">일반회원</a> --%>
+                                        				<a class = "change" href = "javascript:warnalert();" id="${m.userNo}" value = "${m.userNo}">일반회원</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 1}">
-                                        					강사
+                                        				<a class = "change" href = "javascript:warnalert();" id="${m.userNo}" value = "${m.userNo}">강사</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 2}">
                                         					*관리자
                                         				</c:if>
-                                        				<button type="button" style="font-size:11px; width:50px"class="btn btn-info" value="${m.userNo}" id="authChangeU">변경</button>
-                                        			</div>
+                                        				</div>
                                    
                                         			</td>
                                         			<td>${m.userEmail}</td>
@@ -406,11 +421,161 @@
                         </div>
 			</div>
 			<!-- /.container-fluid -->
+			
+			<!-- 상품관리 -->
+			
+			<div class="container-fluid" id="adminProduct-off" style="display:none;">
+				<article class="curriculum">
+					<div class="page-width">
+						<!-- off toggle start -->
+					<ul class="curri-list" id="offLineList-sub">
+						<c:forEach var="p" items="${productList}">
+							<c:if test='${p.productType.equals("1")}'>
+								<li class="mt20">
+									<div class="curri-list-img">
+										<img src="${p.productThumb}" alt="" />
+									</div>
+									<div class="curri-list-text">
+										<h5>${p.productName}</h5>
+										<p>${p.productPrice}
+										<div class="curri-list-btn">
+											<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${p.productName}' />'" class="btn_blue">과정 상세보기</button>
+										</div>
+									</div>
+								</li>
+							</c:if>
+						</c:forEach>
+					</ul>
+					
+					</div>
+				</article>
+			</div>
+			
+			<!-- 상품관리 -->
+			<div class="container-fluid" id="adminProduct">
+				<!-- <div class="page-width" style="text-align:left;">
+					<h2>온라인 강의</h2><br>
+				</div> -->
+				<article class="curriculum">
+					<div class="page-width">
+					<h2 class="h3 mb-0 text-gray-800">
+						<a href="#">
+							<i class="fas fa-tools" style="color: #b52929;"></i>
+								&nbsp;온라인 강의 관리&nbsp;
+							<i class="fas fa-tools" style="color: #b52929;"></i>
+						</a></h2><br><br><br><br>
+						<!-- <h2>온라인 강의 관리</h2><br><br><br><br> -->
+					</div>
+					<div class="page-width">
+					
+					<!-- on 일때 -->
+					<ul class="curri-list" id="onLineList">
+					<!-- count == 0 -->
+					 <c:set var = "count" value = "0" />
+						<c:forEach var="p" items="${productList}">
+							<c:if test='${p.productType.equals("0") && count < 1}'>
+							<c:set var="count" value="${count + 1}" />
+							<li class="mt20">
+								<div class="curri-list-img">
+									<img src="${p.productThumb}" alt="" />
+								</div>
+								<div class="curri-list-text">
+									<h5>${p.productName}</h5>
+									<p>${p.productPrice}
+									<div class="curri-list-btn">
+										<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${p.productName}' />'" class="btn_blue">과정 상세보기</button>
+									</div>
+								</div>
+							</li>
+							</c:if>
+						</c:forEach>
+					</ul>
+					<!-- on end -->
+				</div>
+				</article>
+					
+				<article class="curriculum">
+					<div class="page-width">
+						<h2 class="h3 mb-0 text-gray-800">
+						<a href="javascript:adminProduct();">
+							<i class="fas fa-tools" style="color: #b52929;"></i>
+								&nbsp;오프라인 강의 관리&nbsp;
+							<i class="fas fa-tools" style="color: #b52929;"></i>
+						</a></h2><br><br><br><br>
+					</div>
+					<div class="page-width">
+					
+					<!-- off 일때 -->
+					<ul class="curri-list off" id="offLineList-main">
+					<!-- count == 0 -->
+					<c:set var = "count" value = "0" />
+						<c:forEach var="p" items="${productList}">
+							<c:if test='${p.productType.equals("1") && count < 1}'>
+							<c:set var="count" value="${count + 1}" />
+								<li class="mt20">
+									<div class="curri-list-img">
+										<img src="${p.productThumb}" alt="" />
+									</div>
+									<div class="curri-list-text">
+										<h5>${p.productName}</h5>
+										<p>${p.productPrice}
+										<div class="curri-list-btn">
+											<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${p.productName}' />'" class="btn_blue">과정 상세보기</button>
+										</div>
+									</div>
+								</li>
+							</c:if>
+						</c:forEach>
+					</ul>
+					
+					<!-- off end -->	
+				</div>
+				</article>
+					
+				<article class="curriculum">
+					<div class="page-width">
+						<h2 class="h3 mb-0 text-gray-800">
+						<a href="#">
+							<i class="fas fa-tools" style="color: #b52929;"></i>
+								&nbsp;상품 관리&nbsp;
+							<i class="fas fa-tools" style="color: #b52929;"></i>
+						</a></h2><br><br><br><br>
+					</div>
+					<div class="page-width">
+					
+					<!-- product 일때 -->
+					<ul class="curri-list" id="productList">
+					<!-- count == 0 -->
+					<c:set var = "count" value = "0" />
+						<c:if test='${p.productType.equals("2") && count < 1}'>
+						<c:set var="count" value="${count + 1}" />
+						<li class="mt20">
+							<div class="curri-list-img">
+								<img src="${p.productThumb}" alt="" />
+							</div>
+							<div class="curri-list-text">
+								<h5>${p.productName}</h5>
+								<p>${p.productPrice}
+								<div class="curri-list-btn">
+									<button type="button" onclick="location.href = '<c:url value='/curriculum/sub?s=${p.productName}' />'" class="btn_blue">과정 상세보기</button>
+								</div>
+							</div>
+						</li>
+						</c:if>
+					</ul>
+					<!-- product end -->
+					
+					</div>
+				</article>
+				
+			</div>
 
 		</div>
 	</main>
+	<form action = "<c:url value='/admin/typechange'/>" method = "get" id = "go">
+		<input type = "hidden" id ="userType" name = "userNo">
+	</form>
 
-<%@ include file="../admin/user-change-modal.jsp" %>  
  
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 <script src="<c:url value = "/js/main.js"/>"></script>
@@ -435,9 +600,9 @@
 <script src="/js/demo/chart-bar-demo.js"></script>
 
 <!-- 데이터 테이블 -->
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous" defer></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 
 <!-- 여기까지 -->  
 
@@ -447,6 +612,16 @@
   $("#authChangeU").click(function() {
 	  
   });
+
+/* 
+$(function(){
+		function offToggle() {
+			$('#offLineList-sub').show();
+			$('#offLineList-main').hide();
+		};
+	});
+});
+   */
 
 
 var sBtn = $(".center-sub-nav > li");    //  ul > li 이를 sBtn으로 칭한다. (클릭이벤트는 li에 적용 된다.)
@@ -461,12 +636,101 @@ $(function(){
 	function adminChart(){
 		$('#adminChart').show();
  		$('#adminUser').hide();
+ 		$('#adminProduct').hide();
 	}
-	function adminUser(){
-		$('#adminChart').hide();
-		$('#adminUser').show();
 	
+	function adminUser(){
+		$('#adminUser').show();
+		$('#adminChart').hide();
+		$('#adminProduct').hide();
 	}
+	
+	function adminProduct(){
+		$('#adminProduct').show();
+		$('#adminUser').hide();
+		$('#adminChart').hide();
+	}
+	
+var change = $("#change");
+
+const swalWithBootstrapButtons = Swal.mixin({
+	  customClass: {
+	    confirmButton: 'btn btn-success',
+	    cancelButton: 'btn btn-danger'
+	  },
+	  buttonsStyling: false
+	})
+var form = $("#go");
+var usertype;
+$(".change").on("click",function(){
+	
+	usertype = $(this).attr('value');
+	$("#userType").val(usertype);	
+
+})
+	
+function warnalert(){
+
+	swalWithBootstrapButtons.fire({
+		  title: '권한을 바꾸시겠습니까?',
+		  text: "",
+		  icon: 'alert',
+		  showCancelButton: true,
+		  confirmButtonText: '네',
+		  cancelButtonText: '아뇨',
+		  reverseButtons: true
+		}).then((result) => {
+		  if (result.value) {
+			  
+	 		console.log(usertype);
+		    swalWithBootstrapButtons.fire(
+		      'Deleted!',
+		      'Your file has been deleted.',
+		      'success'
+		    )
+	
+			//form.submit();
+		    $.ajax({
+	            type: "POST",
+	            url: "<c:url value = "/admin/typechange"/>",
+	            headers: {
+	                   "Content-Type": "application/json"
+	               },
+	            data: usertype,
+	            dataType : "text",
+	            success: function(data) {
+	               console.log("typechange 통신성공 ! result: " + data);   
+	               
+	               if(data === "success") {
+	                 	console.log("성공");
+	                 	self.location="/admin";
+	               }
+	            },
+	            error: function(){
+	               console.log("typechange 통신실패!");
+	            }
+	         });
+		    
+		    
+
+		  } else if (
+		    /* Read more about handling dismissals below */
+		    result.dismiss === Swal.DismissReason.cancel
+		  ) {
+		    swalWithBootstrapButtons.fire(
+		      '취소되었습니다.',
+		      '권한이 변경되지 않았습니다 :)',
+		      'error'
+		    )
+		  }
+		})
+}
+
+$(document).ready(function() {
+	  $('#dataTable').DataTable();
+	});
+
+	
 	
 </script>
 
