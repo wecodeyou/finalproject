@@ -20,6 +20,7 @@ import com.it.wecodeyou.interest.model.InterestReportVO;
 import com.it.wecodeyou.interest.sevice.IInterestService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
+import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.purchase.model.PurchaseResultVO;
@@ -35,8 +36,9 @@ public class AdminController {
 	private IPurchaseService purchaseService;
 	@Autowired
 	private IInterestService interestService;
-	@Autowired
+	@Autowired 
 	private IProductService productService;
+
 	
    	//admin page 호출
    	@GetMapping("")
@@ -66,6 +68,9 @@ public class AdminController {
    		
    		//멤버
    		mv.addObject("members",memberService.getAllInfo());
+   		
+   		//상품
+   		mv.addObject("productList", productService.list());
    		
    		mv.setViewName("admin/adminpage");
    		return mv;
