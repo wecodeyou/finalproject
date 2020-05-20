@@ -252,19 +252,28 @@ public class MypageController {
 		mv.addObject("days",days);
 
 		
-		/*
-		 * List<OffProductVO> offList = null; List<PurchaseVO> purchaseList;
-		 * OffProductVO temp; System.out.println("/mypage/mylec : GET 요청 발생!");
-		 * mv.setViewName("mypage/mypage-mylec"); MemberVO mvo =
-		 * (MemberVO)session.getAttribute("login"); if(mvo.getUserType() == 0) {
-		 * purchaseList = pservice.selectUsersPurchase(mvo.getUserNo()); for(PurchaseVO
-		 * pvo : purchaseList) { temp = oservice.getOffProduct(pvo.getPurchaseProNo());
-		 * if(temp.getProductType().equals("1")) { offList.add(temp); } } } else
-		 * if(mvo.getUserType() == 1) { offList =
-		 * oservice.getOffProductByAuthor(mvo.getUserEmail()); }
-		 * 
-		 * mv.addObject("offList", offList);
-		 */
+		//오프라인 강의 담기(유저별 따로 처리)
+		  List<OffProductVO> offList = new ArrayList<OffProductVO>(); 
+		  List<PurchaseVO> purchaseList = null;
+		  OffProductVO temp;
+		  System.out.println("/mypage/mylec : GET 요청 발생!");
+		  mv.setViewName("mypage/mypage-mylec");
+		  MemberVO mvo = (MemberVO)session.getAttribute("login"); 
+		  if(mvo.getUserType() == 0) {
+			  purchaseList = pservice.selectUsersPurchase(mvo.getUserNo()); 
+			  for(PurchaseVO pvo : purchaseList) {
+				  temp = oservice.getOffProduct(pvo.getPurchaseProNo());
+				  if(temp.getProductType().equals("1")) {
+					  offList.add(temp);
+				  } 
+			  } 
+		  } else {
+			  if(mvo.getUserType() == 1) 
+				  offList = oservice.getOffProductByAuthor(mvo.getUserEmail());
+		  		}
+		  
+		  mv.addObject("offList", offList);
+		  mv.addObject("offPurchaseList", purchaseList);
 		
 		return mv;
 	}

@@ -143,7 +143,7 @@
 				<input type="text" class="form-control" name="keyword"
 					id="keywordInput" value="${search}" > <span
 					class="input-group-btn"> <input type="button" value="검색"
-					class="btn btn-izone btn-flat" id="searchBtn">
+					class="btn btn-outline-primary" id="searchBtn">
 				</span>
 			</div>
 		</div>

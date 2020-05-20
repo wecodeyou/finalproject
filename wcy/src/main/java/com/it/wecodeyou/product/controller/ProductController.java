@@ -31,6 +31,7 @@ public class ProductController {
 
 		mv.addObject("productList", pList);
 		mv.setViewName("/product/list");
+		//mv.setViewName("/admin");
 		return mv;
 	}
 	

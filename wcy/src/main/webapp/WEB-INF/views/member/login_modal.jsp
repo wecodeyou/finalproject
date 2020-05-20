@@ -75,6 +75,7 @@
 
 					<div class="g-signin2 m-b-20 btn-face"  data-onsuccess="onSignIn"  >
 						</div>
+						
 					
 					<div class="p-t-25 p-b-9">
 						<span class="txt1">
@@ -390,22 +391,62 @@ $(function(){
 			
 		});
 
-
+	checkGoogle();
 	}); //end - jquery
 	
+/* 	function checkGoogle(){
+		
+	}
 	//Google Login
 	function onSignIn(googleUser) {
 
 	  var profile = googleUser.getBasicProfile();
-	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
 	  console.log('Name: ' + profile.getName());
-	  console.log('Image URL: ' + profile.getImageUrl());
 	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 	  
-      emailField.setAttribute("value", profile.getId());
-      birthField.setAttribute("value", birth);
-      nickField.setAttribute("value", nickname);
-	   form.submit();	  
+	  var googleInfo = {
+		  userEmail : profile.getEmail(),
+		  userName : profile.getName(),
+	  };
+       $.ajax({
+          type: "POST",
+          url: "<c:url value = '/member/gmail'/>",
+          headers: {
+                 "Content-Type": "application/json"
+             },
+          data: JSON.stringify(googleInfo),
+          dataType : "text",
+          success: function(data) {
+             console.log("통신성공 ! result: " + data);   
+             
+             if(data === "member-approved") {
+                 self.location="/";           	 
+             } else if(data === "signin-required") {
+            		var form1 = document.createElement("form"); //form 생성
+            		form1.setAttribute("charset", "UTF-8");
+            		form1.setAttribute("method", "Post"); 
+            		form1.setAttribute("action", "<c:url value='/member/gmail-signup' />");
+            		
+            		var emailField1 = document.createElement("input");
+            		emailField.setAttribute("type", "hidden");
+            		emailField.setAttribute("name", "userEmail");
+            		form1.appendChild(emailField1);
+      
+            		var nickField1 = document.createElement("input");
+            		nickField.setAttribute("type", "hidden");
+            		nickField.setAttribute("name", "nickName");
+            		form1.appendChild(nickField1); 
+                emailField.setAttribute("value", profile.getEmail());
+                nickField.setAttribute("value", profile.getName());
+                document.body.appendChild(form1);
+
+          	   form1.submit();
+             }
+          },
+          error: function(){
+             console.log("통신실패!");
+          }
+       }); 
 	}
 
 	function signOut() {
@@ -413,6 +454,7 @@ $(function(){
 	    auth2.signOut().then(function () {
 	      console.log('User signed out.');
 	    });	
+	    auth2.disconnect();
 	}
     function renderButton() {
         gapi.signin2.render('my-signin2', {
@@ -424,7 +466,7 @@ $(function(){
           'onsuccess': onSuccess,
           'onfailure': onFailure
         });
-      }
+      } */
 	
 </script>
 

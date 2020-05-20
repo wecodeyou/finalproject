@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -460,4 +461,23 @@ public class MemberController {
     	  return mv;
 
      }
+      
+      @PostMapping("/gmail")
+      public String googleLogin(@RequestBody MemberVO mvo, HttpSession session) {
+    	 MemberVO login =  service.findMemberById(mvo.getUserEmail());
+    	 if(login == null) {
+    		 return "signin-required";
+    	 }
+         session.setAttribute("login", login);
+    	  return "member-approved";
+      }
+      
+      @PostMapping("gmail-signup")
+      public ModelAndView googleSignup(@RequestParam String userEmail, @RequestParam String nickName, ModelAndView mv) {
+    	  
+    	  mv.addObject("user_email",userEmail);
+    	  mv.addObject("nickname",nickName);
+    	  mv.setViewName("/member/sns-join-form");
+    	  return mv;
+      }
 }
