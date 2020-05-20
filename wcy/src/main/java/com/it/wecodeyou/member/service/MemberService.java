@@ -35,6 +35,20 @@ public class MemberService implements IMemberService {
       mvo.setUserType(0);
       mvo.setUserInterest(false);
 
+      String[] profileimg = {
+    		  "https://res.cloudinary.com/dl5spujr5/image/upload/v1589563322/wecodeyou/basic-profileImg-gray_d7oewb.png",
+    			  "https://res.cloudinary.com/dl5spujr5/image/upload/v1589563317/wecodeyou/basic-profileImg-purple_evwe0n.png",
+    			  "https://res.cloudinary.com/dl5spujr5/image/upload/v1589563311/wecodeyou/basic-profileImg-blue_l5b5bf.png",
+    			  "https://res.cloudinary.com/dl5spujr5/image/upload/v1589563310/wecodeyou/basic-profileImg-apricot_zg7fo1.png"
+      };
+      
+      double ramdom = Math.random();
+      int intval = (int)(ramdom*4);
+      
+      if (mvo.getUserProfileImg() == null) {
+    	  mvo.setUserProfileImg(profileimg[intval]);
+      }
+      
       dao.insertMember(mvo);
    }
 
