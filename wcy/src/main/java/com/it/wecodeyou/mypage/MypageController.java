@@ -50,7 +50,14 @@ public class MypageController {
 	@Autowired
 	private IOnService onservice;
 
-
+	
+	@GetMapping("/")
+	public ModelAndView mypageMain(ModelAndView mv) {
+		mv.setViewName("mypage/mypage-main");
+		
+		return mv;
+	}
+	
 	@GetMapping("/leclist")
 	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo, HttpSession session) {
 
@@ -121,25 +128,61 @@ public class MypageController {
 
 	@GetMapping("/mylec")
 	public ModelAndView mylec(ModelAndView mv, HttpSession session) {
-		List<OffProductVO> offList = null;
-		List<PurchaseVO> purchaseList;
-		OffProductVO temp;
 		System.out.println("/mypage/mylec : GET 요청 발생!");
 		mv.setViewName("mypage/mypage-mylec");
-		MemberVO mvo = (MemberVO)session.getAttribute("login");
-		if(mvo.getUserType() == 0) {
-			purchaseList = pservice.selectUsersPurchase(mvo.getUserNo());
-			for(PurchaseVO pvo : purchaseList) {
-				temp = oservice.getOffProduct(pvo.getPurchaseProNo());
-				if(temp.getProductType().equals("1")) {
-					offList.add(temp);
-				}
-			}
-		} else if(mvo.getUserType() == 1) {
-			offList = oservice.getOffProductByAuthor(mvo.getUserEmail());
-		}
 		
-		mv.addObject("offList", offList);
+		String msg = "";
+		ArrayList<ProductVO> pro_lec_list; 
+		ArrayList<PurchaseVO> pur_lec_list;
+		pro_lec_list = pdservice.purchasedOn(((MemberVO)session.getAttribute("login")).getUserNo());
+		pur_lec_list = pservice.selectUsersPurchaseOn(((MemberVO)session.getAttribute("login")).getUserNo());
+		if (pro_lec_list == null && pur_lec_list == null) {
+			msg = "수강중인 온라인 강의가 없습니다.";
+			mv.addObject("msg",msg);
+			return mv;
+		}
+		Integer[] days = new Integer[pur_lec_list.size()];
+		for (int i = 0; i <pur_lec_list.size();i++) {
+			
+			/*	 days.set(i, onservice.getDays(pur_lec_list.get(i))); */
+			days[i] = onservice.getDays(pur_lec_list.get(i));
+			System.out.println("days : "+ days[i] + "   pur_lec_list : " + pur_lec_list.get(i));
+			if (days[i]<=0) {
+				pservice.updateExpire(pur_lec_list.get(i));
+				pro_lec_list = pdservice.purchasedOn(((MemberVO)session.getAttribute("login")).getUserNo());
+				pur_lec_list = pservice.selectUsersPurchaseOn(((MemberVO)session.getAttribute("login")).getUserNo());
+				continue;
+			}
+		}
+		//구매내역에 있는 온라인 강의
+		mv.addObject("pro_lec_list",pro_lec_list);
+		mv.addObject("pur_lec_list",pur_lec_list);
+		mv.addObject("days",days);
+
+		
+		//오프라인 강의 담기(유저별 따로 처리)
+		  List<OffProductVO> offList = new ArrayList<OffProductVO>(); 
+		  List<PurchaseVO> purchaseList = null;
+		  OffProductVO temp;
+		  System.out.println("/mypage/mylec : GET 요청 발생!");
+		  mv.setViewName("mypage/mypage-mylec");
+		  MemberVO mvo = (MemberVO)session.getAttribute("login"); 
+		  if(mvo.getUserType() == 0) {
+			  purchaseList = pservice.selectUsersPurchase(mvo.getUserNo()); 
+			  for(PurchaseVO pvo : purchaseList) {
+				  temp = oservice.getOffProduct(pvo.getPurchaseProNo());
+				  if(temp.getProductType().equals("1")) {
+					  offList.add(temp);
+				  } 
+			  } 
+		  } else {
+			  if(mvo.getUserType() == 1) 
+				  offList = oservice.getOffProductByAuthor(mvo.getUserEmail());
+		  		}
+		  
+		  mv.addObject("offList", offList);
+		  mv.addObject("offPurchaseList", purchaseList);
+		
 		return mv;
 	}
 	

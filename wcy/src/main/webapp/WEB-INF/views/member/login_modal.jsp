@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="google-signin-client_id" content="690220196013-0vrt74a1o5e3r67vfevah2sqo92cp6s7.apps.googleusercontent.com">
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 
 	<link rel="stylesheet" href="<c:url value='/vendor/bootstrap/css/bootstrap.min.css'/>">
@@ -19,7 +19,7 @@
 	
 	<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 	<script src="<c:url value = "/resources/js/kakao.js"/>"></script>
-	
+	<script src="https://apis.google.com/js/platform.js" async defer></script>	
 	
 	<style>
 	.modal-backdrop{
@@ -73,10 +73,9 @@
 						Kakao
 					</a>
 
-					<a href="#" class="btn-google m-b-20">
-						<img src="<c:url value='/img/login/google.png'/>" alt="google login" />
-						Google
-					</a>
+					<div class="g-signin2 m-b-20 btn-face"  data-onsuccess="onSignIn"  >
+						</div>
+						
 					
 					<div class="p-t-25 p-b-9">
 						<span class="txt1">
@@ -392,7 +391,83 @@ $(function(){
 			
 		});
 
+	checkGoogle();
 	}); //end - jquery
+	
+/* 	function checkGoogle(){
+		
+	}
+	//Google Login
+	function onSignIn(googleUser) {
+
+	  var profile = googleUser.getBasicProfile();
+	  console.log('Name: ' + profile.getName());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	  
+	  var googleInfo = {
+		  userEmail : profile.getEmail(),
+		  userName : profile.getName(),
+	  };
+       $.ajax({
+          type: "POST",
+          url: "<c:url value = '/member/gmail'/>",
+          headers: {
+                 "Content-Type": "application/json"
+             },
+          data: JSON.stringify(googleInfo),
+          dataType : "text",
+          success: function(data) {
+             console.log("통신성공 ! result: " + data);   
+             
+             if(data === "member-approved") {
+                 self.location="/";           	 
+             } else if(data === "signin-required") {
+            		var form1 = document.createElement("form"); //form 생성
+            		form1.setAttribute("charset", "UTF-8");
+            		form1.setAttribute("method", "Post"); 
+            		form1.setAttribute("action", "<c:url value='/member/gmail-signup' />");
+            		
+            		var emailField1 = document.createElement("input");
+            		emailField.setAttribute("type", "hidden");
+            		emailField.setAttribute("name", "userEmail");
+            		form1.appendChild(emailField1);
+      
+            		var nickField1 = document.createElement("input");
+            		nickField.setAttribute("type", "hidden");
+            		nickField.setAttribute("name", "nickName");
+            		form1.appendChild(nickField1); 
+                emailField.setAttribute("value", profile.getEmail());
+                nickField.setAttribute("value", profile.getName());
+                document.body.appendChild(form1);
+
+          	   form1.submit();
+             }
+          },
+          error: function(){
+             console.log("통신실패!");
+          }
+       }); 
+	}
+
+	function signOut() {
+	    var auth2 = gapi.auth2.getAuthInstance();
+	    auth2.signOut().then(function () {
+	      console.log('User signed out.');
+	    });	
+	    auth2.disconnect();
+	}
+    function renderButton() {
+        gapi.signin2.render('my-signin2', {
+          'scope': 'profile email',
+          'width': 240,
+          'height': 50,
+          'longtitle': true,
+          'theme': 'dark',
+          'onsuccess': onSuccess,
+          'onfailure': onFailure
+        });
+      } */
+	
 </script>
 
 

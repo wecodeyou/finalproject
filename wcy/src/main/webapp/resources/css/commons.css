@@ -3,7 +3,7 @@
 
 	.wcy-main-content{
 		width: 1100px;
-		height:100%;
+		/*height:100%;*/
 		margin: 190px auto 120px;
 		overflow: hidden;
 	}
@@ -15,7 +15,6 @@
         background: transparent;
     }
     
-    
     .mt5{margin-top: 5px !important;}
     .mt10{margin-top: 10px !important;}
     .mt20{margin-top: 20px !important;}
@@ -24,6 +23,7 @@
     .mt50{margin-top: 50px !important;}
     .mt60{margin-top: 60px !important;}
     .mt70{margin-top: 70px !important;}
+    .mt100{margin-top: 100px !important;}
     
     .mb5{margin-bottom: 5px !important;}
     .mb10{margin-bottom: 10px !important;}
@@ -44,6 +44,8 @@
     .fs13{font-size: 13px !important;}
     .fs14{font-size: 14px !important;}
     .fs14b{font-size: 14px !important; font-weight: bold;}
+    .fs25b{font-size: 25px !important; font-weight: bold;}
+    .fs35b{font-size: 35px !important; font-weight: bold;}
     .fs15{font-size: 15px !important;}
     
     .w200{width:200px !important;}
@@ -58,15 +60,16 @@
     
     /* 온 오프라인 페이지 디자인*/
     
-    .wcy-contents{margin:0 auto; text-align:center;}
+    .wcy-contents{margin:0 auto; height: 100%; text-align:center;}
     .page-width{width:1100px; margin:0 auto;}
 	
 	
 	.page-width > h1 , .wcy-main-content .page-width h1{font-size:42px; font-weight:normal;}
     
-    .page-width > h2:before , .wcy-main-content .page-width h2:before{display:block; content:''; width:30px; height:5px; background: #607D8B; margin:0 auto; margin-bottom: 15px;}
-    .page-width > h2:after , .wcy-main-content .page-width h2:after{display:block; content:''; width:30px; height:5px; background: #607D8B; margin:0 auto; margin-top: 15px;}
-    .page-width > h2 , .wcy-main-content .page-width h2{font-size:20px; font-weight:600; color:#607D8B; margin-top: 50px;}
+    .page-width > h2:before , .wcy-main-content .page-width h2:before{display:block; content:''; width:1px; height:25px; background: #febf14; margin:0 auto; margin-bottom: 15px;}
+  
+    .page-width > h2:after , .wcy-main-content .page-width h2:after{display:block; content:''; width:1px; height:25px; background: #febf14; margin:0 auto; margin-top: 15px;}
+    .page-width > h2 , .wcy-main-content .page-width h2{font-size:20px; font-weight:600; color:#febf14; margin-top: 50px;}
     
     
     .curriculum{margin-top: 60px; text-align: left;}
@@ -195,7 +198,7 @@
      	font-weight: 600;
      }
      
-     .star{color: #D31F21}
+     .star{color: #c0c0c0}
      
      .detail-top-right h1.className{
      	font-size: 30px;

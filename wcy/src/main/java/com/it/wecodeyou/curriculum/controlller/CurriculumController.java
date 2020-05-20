@@ -20,6 +20,7 @@ import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.review.model.ReviewVO;
 import com.it.wecodeyou.review.service.ReviewService;
+import com.it.wecodeyou.sub_product.service.SubProductService;
 
 @RestController
 @RequestMapping("/curriculum")
@@ -36,6 +37,9 @@ public class CurriculumController {
 
    @Autowired
    private ReviewService rservice;
+   
+   @Autowired
+   private SubProductService spservice;
    
    @Autowired
    private IOnService onservice;
@@ -71,6 +75,11 @@ public class CurriculumController {
 		if(r_list.size() != 0) {
 			avg = sum/r_list.size(); 
 		}
+		
+		
+		
+		
+		mv.addObject("sub_pro", spservice.showSubPro(pvo.getProductNo()));
 		mv.addObject("s", req.getParameter("s"));
 		mv.addObject("pro",pvo);
 		mv.addObject("review_num",r_list.size());	// 수강후기 갯수
@@ -110,6 +119,16 @@ public class CurriculumController {
 	    return mv;
 	}
    
+	@GetMapping("/purchase")
+	public ModelAndView purchasePage(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		int pro_no = Integer.parseInt(req.getParameter("pro_no"));
+		mv.addObject("sub_info",spservice.showSubPro(pro_no));
+		mv.addObject("pro_info",pservice.getOneInfo(pro_no));
+		mv.setViewName("curriculum/purchasePage");
+		return mv;
+	}
+	
 }
 
 

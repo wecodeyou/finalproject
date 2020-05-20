@@ -24,7 +24,7 @@
 
 <!-- datatable-->
 <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script> -->
 
 <title>WE CODE YOU | 회원 관리</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
@@ -52,11 +52,13 @@
 						<li><a href="<c:url value='/admin'/>">관리자 대시보드</a></li>
 						<li><a class="active" >회원 관리</a></li>
 						<li><a href="<c:url value='/admin/etc'/>">기타 관리</a></li>
+						<li><a href="<c:url value='/product/'/>">상품 관리</a></li>
+						
 					</ul>
 				</div>
 			</div>
 			<!-- Begin Page Content -->
-			<div class="container-fluid">
+			<div class="container-fluid" id="adminUser">
 
 				<div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-1"></i>WE CODE YOU | 회원 목록</div>
@@ -74,17 +76,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        	<c:forEach var="m" items="${members}">
+                                        	<c:forEach var="m" items="${members}" varStatus = "status">
                                         		<tr>
                                         			<td>
                                         			<div style="text-align:center">
                                         				<c:if test="${m.userType == 0}">
-                                        					일반회원
-                                        					<button type="button" style="font-size:11px; width:50px"class="btn btn-info">변경</button>
+                                        				<a href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">일반회원</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 1}">
-                                        					강사
-                                        					<button type="button" style="font-size:11px; width:50px"class="btn btn-info">변경</button>
+                                        				<a href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">강사</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 2}">
                                         					*관리자
@@ -115,6 +115,8 @@
 
 
 
+
+
    
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 <script src="<c:url value = "/js/main.js"/>"></script>
@@ -133,9 +135,6 @@
 <!-- Page level plugins -->
 <script src="/vendor/chart.js/Chart.min.js"></script>
 
-<!-- Page level custom scripts -->
-<script src="/js/demo/chart-area-demo.js"></script>
-<script src="/js/demo/chart-pie-demo.js"></script>
 
 <!-- 데이터 테이블 -->
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>

@@ -51,9 +51,7 @@
 	<thead>
 		<th>썸네일</th>
 		<th>상품번호</th>
-		<th>상품타입</th>
 		<th>상품이름</th>
-		<th>상품정보</th>
 		<th>상품가격</th>
 		<th>등록일</th>
 	</thead>
@@ -64,9 +62,7 @@
 		<tr>
 			<td><img src="${p.productThumb}" alt="${p.productThumb}" width="70px" height="70px"/></td> 
 			<td>${p.productNo}</td>
-			<td>${p.productType}</td>
-			<td><a href="<c:url value="/off/${p.productNo}"/>">${p.productName}</a></td>
-			<td>${p.productDetail}</td>
+			<td><a href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a></td>
 			<td>${p.productPrice}</td>
 			<td>${p.productCreatedAt}</td>				
 		</tr>
@@ -80,9 +76,7 @@
 	<thead>
 		<th>썸네일</th>
 		<th>상품번호</th>
-		<th>상품타입</th>
 		<th>상품이름</th>
-		<th>상품정보</th>
 		<th>상품가격</th>
 		<th>등록일</th>
 	</thead>
@@ -95,9 +89,7 @@
 		<tr>
 			<td><img src="${p.productThumb}" alt="${p.productThumb}" width="70px" height="70px"/></td> 
 			<td>${p.productNo}</td>
-			<td>${p.productType}</td>
-			<td><a href="<c:url value="/on/${p.productNo}"/>">${p.productName}</a></td>
-			<td>${p.productDetail}</td>
+			<td><a href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a></td>
 			<td>${p.productPrice}</td>
 			<td>${p.productCreatedAt}</td>				
 		</tr>

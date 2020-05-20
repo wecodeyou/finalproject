@@ -14,106 +14,15 @@
 
 
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
-
+<link rel="stylesheet" href="<c:url value='/css/mypage.css'/>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
-<script src="https://code.jquery.com/jquery-3.5.0.min.js"
-   integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-   crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style>
-.left-section {
-   float: left;
-   width: 210px;
-}
-
-.left-section>h2 {
-   width: 210px;
-   height: 112px;
-   background: #25283D;
-   color: #fff;
-   text-align: center;
-   display: table-cell;
-   vertical-align: middle;
-}
-
-.left-section .left-sub-nav {
-   width: 210px;
-   border: solid #dbdbdb;
-   border-width: 0 1px;
-   box-sizing: border-box;
-}
-
-.left-section .left-sub-nav>li>a {
-   padding: 10px 20px;
-   font-size: 14px;
-   display: block;
-   position: relative;
-   border-bottom: 1px solid #dbdbdb;
-   font-weight: bold;
-   color: #333;
-}
-
-.right-section {
-   width: 840px;
-   float: right;
-   position: relative;
-}
-
-.right-header .right-sub-nav {
-   width: 100%;
-   background: #f4f4f4;
-   border-radius: 5px;
-   display: table;
-   table-layout: fixed;
-   margin-bottom: 50px;
-   overflow: hidden;
-}
-
-.right-header .right-sub-nav li {
-   display: table-cell;
-}
-
-.right-header .right-sub-nav li a {
-   display: block;
-   height: 60px;
-   box-sizing: border-box;
-   font-size: 18px;
-   color: #888;
-   padding: 0 0 0 20px;
-   line-height: 60px;
-   border-bottom: 4px solid #ddd;
-}
-
-.right-sub-nav li a.active {
-   color: #25283D;
-   border-color: #25283D;
-}
-
-.contents-title:before {
-   display: block;
-   content: '';
-   width: 50px;
-   height: 3px;
-   background: #25283D;
-   position: absolute;
-   left: 0;
-   top: 0;
-}
-
-.contents-title {
-   font-size: 22px;
-   margin-bottom: 20px;
-   color: #000;
-   position: relative;
-   padding-top: 5px;
-   height: 40px;
-   line-height: 40px;
-}
-
-p {
-   line-height: 150% !important;
-}
+	html,body{height:100%;}
 </style>
 
 </head>
@@ -123,148 +32,156 @@ p {
 
 
 
-	<main class="wcy-main-content">
-		<div class="left-section">
-			<h2>MyPage</h2>
-			<ul class="left-sub-nav">
-				<li><a class="active" href="<c:url value='/mypage/myinfoChange' />">내 정보</a></li>
-				<li><a href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
-				<li><a href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
-				<li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
-				<li><a href="<c:url value='/mypage/mylec' />">내 강의실</a></li>
-			</ul>
+<main class="wcy-main-content">
+	<div class="wcy-contents">
+		<div class="join_title_box">
+			<h3>회원정보변경</h3>
+			<h4>안전한 개인정보보호를 위해 주기적으로 비밀번호를 변경해주세요.</h4>
 		</div>
-      <div class="right-section">
-         <div class="right-header">
-            <ul class="right-sub-nav">
-               <li><a id="info_link" class="active" onclick="info_active()"> 내 정보 </a></li>
-               <li><a id="pw_link" onclick="pw_active()"> 비밀번호 변경 </a></li>
-            </ul>
-         </div>
-         <div class="right-contents">
-            <h4 class="contents-title">${login.userName}님의 MYPAGE</h4>
-            <p class="mb10">
-          
-<!-- 일반적인 정보들을 바꾸겠다. -->
-<div id="info_change_form">
-
-  
-    <table border="1" class="tbl_model">
-                <colgroup>
-                    <col style="width:22%"><col>
-                </colgroup>
-                <tbody>
-                <tr>
-                    <th scope="row">
-                        <div class="thcell">
-                            사용자 <span class="word_br">이름</span>
-                       </div>
-                    </th>
-                    <td>
-                        <div class="tdcell">
-                            <p class="contxt_tit">${login.userName}</p>
-                            <p class="contxt_desc">이름이 변경되었다면 이메일 인증을 통해 정보를 수정할 수 있습니다.</p>
-                            <p class="btn_area_btm">
-                                <a href="javascript:changeName();" class="btn_model"><b class="btn2">수정</b></a>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <div class="thcell">휴대전화</div>
-                    </th>
-                    <td>
-                        <div class="tdcell">
-                            <p id="p_txt_phoneNo" class="contxt_tit">${login.userTel}</p>
-                            <p class="contxt_desc">필요한 정보를 위코드유로부터 알림을 받을 때 사용할 휴대전화입니다.</p>
-                            <div id="d_phoneNo" style="display:none">
-                                <p id="p_txt_phoneNo_changeYn" class="contxt_tit2"><label for="phoneNo">변경할 휴대전화</label></p>
-                                <p class="contxt_webctrl">
-                            <span class="country_code_w">
-                                        <span id="input_internationalCode" class="country_code">+82</span>
-                              <input type="text" id="phoneNo" name="phoneNo" maxlength="14" onkeydown="check_num_ajax2('phoneNo', '2', 'e_phoneNo','e_authNo');">
-                                    </span>
-                                    <a href="#" onclick="sendSmsForChangePhoneNo();return false;" class="btn_model"><span class="btn4">인증</span></a>
-                                </p>
-                                <p id="e_phoneNo" class="contxt_alert"></p>
-
-                                <p class="contxt_tit2"><label for="authNo">인증번호 입력</label></p>
-                                <p class="contxt_webctrl">
-                                    <input type="text" id="authNo" name="authNo" value=""  maxlength="6" onkeydown="check_num_ajax2('authNo', '2', 'e_authNo','e_phoneNo');" disabled class="focus" style="width:254px">
-                                </p>
-                                <p id="e_authNo"  class="contxt_alert"></p>
-
-                                <p class="btn_area_btm">
-                                    <a href="#" onclick="cancelChange('phoneNo');return false;" class="btn_model"><b id="b_txt_phoneNo_cncl"  class="btn2">수정취소</b></a>
-                                    <a href="#" onclick="checkAuthNoForChangePhoneNo();return false;" class="btn_model"><b id="b_txt_phoneNo_reg" class="btn3">수정완료</b></a>
-                                </p>
-                            </div>
-                            <p id="p_phoneNo" class="btn_area_btm">
-                                <a href="javascript:changeName();" onclick="display('phoneNo');return false;" class="btn_model"><b class="btn2">수정</b></a>
-                            </p>
-                        </div>
-                    </td>
-                </tr>
-  <tr>
-                   <th scope="row">
-                        <div class="thcell">
-                           <span class="word_br">주소지</span>
-                       </div>
-                    </th>
-                    <td>
-                        <p><span class="zipcode">${login.userZipcode}</span> ${login.userAddress}&nbsp;&nbsp;${login.userDetailAddress}</p>
-							<p class="btn_area_btm">
-                                <a href="javascript:changeName();" class="btn_model"><b class="btn2">수정</b></a>
-							</p>
-					</td>
-                </tr>
-                
-                </tbody>
-            </table> 
-            
-            
-<br>
-</div>
-
-<div id="pw_change_form" style="display: none;">
-	<div id="pcf_check">
-	기존의 비밀번호를 입력해주세요.<br><br>
-	
-	현재 비밀번호: <input type="password" name="is_pw" id="is_pw" required="required"/> <button onclick="check()"> 입력 </button>
+		<div id="content">
+			<table class="fvboard">
+				<colgroup>
+					<col width="20%">
+					<col width="80%">
+				</colgroup>
+				<tbody>
+					<tr>
+						<th>이름</th>
+						<td>${login.userName}</td>
+					</tr>
+					<tr>
+						<th>아이디(이메일)</th>
+						<td>${login.userEmail}</td>
+					</tr>
+					<tr>
+						<th>프로필 이미지</th>
+						<td >
+							<span>현재 프로필 이미지</span>						
+							<div class="pimg" style="width:200px; height:200px;">
+								<img width="150" height="145" src="${login.userProfileImg}">
+								${login.userProfileImg}
+							</div>
+							<span>변경할 프로필 이미지 선택</span>
+							<div class="profileImg_box">
+								<img width="100" height="95" src="<c:url value='/img/commons/basic-profileImg-blue.png'/>" alt="" />
+								<img width="100" height="95" src="<c:url value='/img/commons/basic-profileImg-apricot.png'/>" alt="" />
+								<img width="100" height="95" src="<c:url value='/img/commons/basic-profileImg-gray.png'/>" alt="" />
+								<img width="100" height="95" src="<c:url value='/img/commons/basic-profileImg-purple.png'/>" alt="" />
+								<div class="profileImg-radio">
+									<input type="radio" name="userProfileImg" value="blue" style="margin:0 87px 0 44px;">
+									<input type="radio" name="userProfileImg" value="apricot" style="margin:0 87px 0 0px;">
+									<input type="radio" name="userProfileImg" value="gray" style="margin:0 87px 0 0px;">
+									<input type="radio" name="userProfileImg" value="purple">
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th>기존 비밀번호</th>
+						<td><input type="password" name="is_pw" id="is_pw" required="required" maxlength="20" title="비밀번호입력" class="int01" placeholder="특수문자 포함 8자 이상" style="width:260px" />
+							<span id="pwChk0" style="color:red; font-size:11px;">&nbsp;</span>
+						</td>
+					</tr>
+					<tr>
+						<th>변경할 비밀번호</th>
+						<td><input type="password" name="newPw" id="newPw" required="required" maxlength="20" title="비밀번호입력" class="int01" placeholder="특수문자 포함 8자 이상" style="width:260px" />
+							<span id="pwChk1" style="color:red; font-size:11px;">&nbsp;</span>
+						</td>
+					</tr>
+					<tr>
+						<th>비밀번호 확인</th>
+						<td><input type="password" name="newPwChk" id="newPwChk" required="required" maxlength="20" title="비밀번호입력" class="int01" placeholder="위의 비밀번호 다시한번 기입" style="width:260px" />
+							<span id="pwChk2" style="color:red; font-size:11px;">&nbsp;</span>
+						</td>
+					</tr>
+					<tr>
+						<th>생년월일</th>
+						<td>${login.userBirthday}</td>
+					</tr>
+					<tr>
+						<th>휴대폰번호</th>
+						<td><input type="text" name="userTel" class="int01" style="width:193px;" placeholder="${login.userTel}"></td>
+					</tr>
+					<tr>
+						<th>주소</th>
+						<td>
+							<ul class="address_box">
+								<li>
+									<input type="text" name="userZipcode" id="userZipCode" class="int01" placeholder="${login.userZipcode}" readonly="readonly" style="width:193px;" />
+									<a onclick="openDaumPostcode('userZipCode','userFirstAddr','userSecondAddr'); return false;" style="cursor:point;" class="btn_gray">우편번호 검색</a>
+								</li>
+								<li>
+								  	<input type="text" name="userAddress" id="userFirstAddr" readonly="readonly" class="int01" style="width:335px;" placeholder="${login.userAddress}">
+								  	<input type="text" name="userDetailAddress" type="text" id="userSecondAddr" class="int01" style="width:260px;" placeholder="${login.userDetailAddress}" required="required">
+									<div id="layer" style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+								    	<img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer" style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+									</div>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="mt40" style="width:100%; text-align:center">
+				<input type="button" id="signup-btn" value="회원정보 변경" class="btn btn-primary"/>
+		        <a href="javascript:history.back();"><input type="button" value="취소" class="btn btn-warning" /></a>
+			</p>
+		</div>
 	</div>
-	<div id="pcf_ok" style="display: none;">
-	비밀번호 변경<br>
-	안전한 비밀번호로 내정보를 보호하세요.<br>
-	
-	다른 아이디/사이트에서 사용한 적 없는 비밀번호<br>
-	
-	이전에 사용한 적 없는 비밀번호가 안전합니다.<br>
-	
-	비밀번호: <input type="password" name="newPw" id="newPw" /><span id="pwChk1"></span><br>
-	번호확인: <input type="password" name="newPwChk" id="newPwChk" /><span id="pwChk2"></span><br>
-   
-    <button onclick="change_pw()">비밀번호 변경</button>
-   </div>
-<br>
-</div>
-
-
-            </p>
-         </div>
-      </div>
-   </main>
+</main>
+         
 
 
    <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
    <script src="<c:url value = "/js/main.js"/>"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 
 <c:if test="${login == null}">
    <script>   
-      alert("로그인이 필요한 서비스입니다.");
+   	  Swal.fire('로그인이 필요한 서비스입니다.');
       location.href="<c:url value='/' />";
    </script>
-</c:if>   
+</c:if>    
+
+<!-- 주소 -->
+<script>
+      var element_layer = document.getElementById('layer');
+      //주소 검색 닫아주기
+      function closeDaumPostcode() {
+         //iframe을 넣은 element를 안보이게 한다.
+         element_layer.style.display = 'none';
+      }
+      //주소 검색 열어주기
+      function openDaumPostcode(userZipCode, userFirstAddr, userSecondAddr) {
+         new daum.Postcode({
+                  oncomplete : function(data) {
+                     document.getElementById(userZipCode).value = data.zonecode;
+                     document.getElementById(userFirstAddr).value = data.address;
+                     document.getElementById(userSecondAddr).focus();
+                     element_layer.style.display = 'none';
+                  },
+                  width : '100%',
+                  height : '100%'
+               }).embed(element_layer);
+         element_layer.style.display = 'block';
+         initLayerPosition();
+      }
+      //팝업창 세부 설정
+      function initLayerPosition() {
+         var width = 300; //우편번호서비스가 들어갈 element의 width
+         var height = 460; //우편번호서비스가 들어갈 element의 height
+         var borderWidth = 5; //샘플에서 사용하는 border의 두께
+         //위에서 선언한 값들을 실제 element에 넣는다.
+         element_layer.style.width = width + 'px';
+         element_layer.style.height = height + 'px';
+         element_layer.style.border = borderWidth + 'px solid';
+         //실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
+         element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width) / 2 - borderWidth)
+               + 'px';
+         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height) / 2 - borderWidth)
+               + 'px';
+      }
+</script>
 
 <script type="text/javascript">
 function pw_active(){
@@ -295,7 +212,7 @@ function check(){
 	if(userPw != ""){
 		$.ajax({
 	        type:"POST",
-	        url:"/mypage/pwCheck",
+	        url:"/mypage/myinfoChange",
 	        headers:{
 	           "Content-Type":"application/json"
 	        },
@@ -385,11 +302,26 @@ function change_pw(){
 	        dataType:"text",
 	        data:newPw.value,
 	        success:function(){
-	        	location.replace("/");
+	     	  	Swal.fire({
+	     			  title: 'Success!',
+	     			  text: '비밀번호가 변경되었으니 다시 로그인해주세요 :) ',
+	     			  type: 'warning',
+	     		});
+		   		 window.setTimeout(function(){
+					 window.location.href="/";
+				 },2000);
+	        	//location.replace("/");
+	        	//alert("비밀번호가 변경되었으니 다시 로그인해주세요 :)");
 	        },
 	        error:function(){
 	         	console.log("서버와 통신 실패");
-				alert("알수 없는 오류가 발생했습니다.");
+	    	  	Swal.fire({
+	    			  title: 'Oops...',
+	    			  text: '알 수 없는 오류가 발생했습니다. 재시도해주세요.',
+	    			  type: 'error',
+	    			});
+	         	
+	         	//alert("알수 없는 오류가 발생했습니다.");
 	        }
 	     });
 	}else{

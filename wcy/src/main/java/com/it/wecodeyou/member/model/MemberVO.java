@@ -22,11 +22,21 @@ public class MemberVO {
    private String userZipcode;   
    private String userAddress;
    private String userDetailAddress;
+   // 0 = 일반, 1 = 강사, 2 = 관리자
    private Integer userType;
    private Integer userPoint;
    private Boolean userInterest;
+   private String userEmailType;
    
-   public MemberVO() {}
+   public String getUserEmailType() {
+	return userEmailType;
+}
+
+public void setUserEmailType(String userEmailType) {
+	this.userEmailType = userEmailType;
+}
+
+public MemberVO() {}
 
    public MemberVO(Integer userNo, String userEmail, String userPw, String userName, Date userBirthday, String userTel,
          String userProfileImg, Timestamp userCreatedAt, Timestamp userModifiedAt, Timestamp userLoginAt,
@@ -179,15 +189,17 @@ public class MemberVO {
       this.userInterest = userInterest;
    }
 
-   @Override
-   public String toString() {
-      return "MemberVO [userNo=" + userNo + ", userEmail=" + userEmail + ", userPw=" + userPw + ", userName="
-            + userName + ", userBirthday=" + userBirthday + ", userTel=" + userTel + ", userProfileImg="
-            + userProfileImg + ", userCreatedAt=" + userCreatedAt + ", userModifiedAt=" + userModifiedAt
-            + ", userLoginAt=" + userLoginAt + ", userZipcode=" + userZipcode + ", userAddress=" + userAddress
-            + ", userDetailAddress=" + userDetailAddress + ", userType=" + userType + ", userPoint=" + userPoint
-            + ", userInterest=" + userInterest + "]";
-   }
+@Override
+public String toString() {
+	return "MemberVO [userNo=" + userNo + ", userEmail=" + userEmail + ", userPw=" + userPw + ", userName=" + userName
+			+ ", userBirthday=" + userBirthday + ", userTel=" + userTel + ", userProfileImg=" + userProfileImg
+			+ ", userCreatedAt=" + userCreatedAt + ", userModifiedAt=" + userModifiedAt + ", userLoginAt=" + userLoginAt
+			+ ", userZipcode=" + userZipcode + ", userAddress=" + userAddress + ", userDetailAddress="
+			+ userDetailAddress + ", userType=" + userType + ", userPoint=" + userPoint + ", userInterest="
+			+ userInterest + ", userEmailType=" + userEmailType + "]";
+}
+
+
    
    
    

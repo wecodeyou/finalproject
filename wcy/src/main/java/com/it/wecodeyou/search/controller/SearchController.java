@@ -160,6 +160,7 @@ public class SearchController {
 			mv.setViewName("search/productlist");
 		} else {
 			mv.setViewName("search/articles");
+			//board/article-main
 		}
 
 		return mv;

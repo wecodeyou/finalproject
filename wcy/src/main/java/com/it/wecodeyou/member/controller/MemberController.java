@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -60,7 +61,6 @@ public class MemberController {
    public String register(@RequestBody MemberVO mvo) {
       System.out.println("/member/ : 회원가입 POST 요청 발생!");
       System.out.println("param: "+mvo);
-      
       service.insertMember(mvo);
       
       return "joinSuccess";
@@ -274,7 +274,6 @@ public class MemberController {
    @GetMapping("/send_join")
    public ModelAndView send_join() {
       System.out.println("이메일 인증 성공");
-         
       return new ModelAndView("/member/join-form");
    }
    
@@ -300,7 +299,8 @@ public class MemberController {
             // 없어서 널이 나왔다. 
             //model.addAttribute("msg", "입력하신 정보에 맞는 계정이 없습니다.");
             mv.setViewName("member/find-form");
-             mv.addObject("msg", "입력하신 정보에 맞는 계정이 없습니다.");
+            
+            mv.addObject("msg", "입력하신 정보에 맞는 계정이 없습니다.");
              
          }else {
             
@@ -310,10 +310,11 @@ public class MemberController {
            
             email = id.substring(0,id.length()-2)+"**@"+email_host;
             //model.addAttribute("msg", "찾으시는 계정은 "+email);
-            mv.setViewName("member/find-form");
-            mv.addObject("msg", "찾으시는 계정은 "+email);
+            mv.setViewName("member/emailFind-result");
+            mv.addObject("findEmail", email);
+            mv.addObject("name", req.getParameter("userName"));
             
-            
+ 
          }
          return mv;
       }
@@ -360,13 +361,13 @@ public class MemberController {
          }
          
          ModelAndView mv=new ModelAndView();   //ModelAndView로 보낼 페이지를 지정하고 보낼 값을 지정한다
-         mv.setViewName("/");
-         
+         mv.setViewName("member/pwFind-result");
+         mv.addObject("pwFindemail", tomail);
          System.out.println("view: "+mv.getViewName()   + "   임시 비밀번호: "+uuid);
          
          response.setContentType("text/html; charset=UTF-8");
          PrintWriter out_email = response.getWriter();
-         out_email.println("<script>alert('임시비밀번호가 이메일로 발송되었습니다. 확인 후 로그인해주세요.');</script>");
+         //out_email.println("<script>alert('임시비밀번호가 이메일로 발송되었습니다.');</script>");
          out_email.flush();
          
          return mv;
@@ -461,4 +462,23 @@ public class MemberController {
     	  return mv;
 
      }
+      
+      @PostMapping("/gmail")
+      public String googleLogin(@RequestBody MemberVO mvo, HttpSession session) {
+    	 MemberVO login =  service.findMemberById(mvo.getUserEmail());
+    	 if(login == null) {
+    		 return "signin-required";
+    	 }
+         session.setAttribute("login", login);
+    	  return "member-approved";
+      }
+      
+      @PostMapping("gmail-signup")
+      public ModelAndView googleSignup(@RequestParam String userEmail, @RequestParam String nickName, ModelAndView mv) {
+    	  
+    	  mv.addObject("user_email",userEmail);
+    	  mv.addObject("nickname",nickName);
+    	  mv.setViewName("/member/sns-join-form");
+    	  return mv;
+      }
 }

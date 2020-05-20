@@ -6,18 +6,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.omg.PortableInterceptor.ForwardRequestHelper;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.it.wecodeyou.interest.model.InterestReportVO;
 import com.it.wecodeyou.interest.sevice.IInterestService;
-import com.it.wecodeyou.interest_list.model.Interest_ListVO;
+import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
+import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.off.model.OffProductVO;
+import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.purchase.model.PurchaseResultVO;
 import com.it.wecodeyou.purchase.service.IPurchaseService;
 
@@ -31,18 +36,27 @@ public class AdminController {
 	private IPurchaseService purchaseService;
 	@Autowired
 	private IInterestService interestService;
+	@Autowired 
+	private IProductService productService;
 
 	
    	//admin page 호출
    	@GetMapping("")
 	public ModelAndView admin(ModelAndView mv) throws SQLException {
    		System.out.println("/admin : GET 요청 발생!");
-   		
+   		List<InterestReportVO> reportList = new ArrayList<>();
    		// goal의 답 종류들
    		List<String> goalList = interestService.getInterestsByType("goal");
+   		Integer total = interestService.getInterestReportByIndex("interest_index5").get(0).getCnt();
+   		
    		for (int i = 0; i < goalList.size(); i++) {
-			Integer cnt = interestService.countAnswer(goalList.get(i));
+   			Integer cnt = interestService.countAnswer(goalList.get(i));
+			InterestReportVO irvo = new InterestReportVO(interestService.getAnswer(goalList.get(i)), cnt);
+			reportList.add(irvo);
+			System.out.println(reportList.toString());
 		}
+   		mv.addObject("total", total);
+   		mv.addObject("reportList", reportList);
    		
    		//이 달, 올 해의 통계
    		PurchaseResultVO thisMonthly = purchaseService.getThisMonthlyEarnings();
@@ -51,6 +65,13 @@ public class AdminController {
    		//전체 통계
    		mv.addObject("monthly", purchaseService.getMonthlyEarnings());
    		mv.addObject("annual", purchaseService.getAnnualEarnings());
+   		
+   		//멤버
+   		mv.addObject("members",memberService.getAllInfo());
+   		
+   		//상품
+   		mv.addObject("productList", productService.list());
+   		
    		mv.setViewName("admin/adminpage");
    		return mv;
    	}
@@ -123,4 +144,52 @@ public class AdminController {
    		return mv;
    	}
 
+	/*
+	 * @GetMapping("/typechange") public ModelAndView typechange(HttpServletRequest
+	 * req) throws SQLException {
+	 * 
+	 * Integer userNo = Integer.parseInt(req.getParameter("userNo")); MemberVO mvo =
+	 * memberService.getOneInfo(userNo);
+	 * 
+	 * memberService.changeUserType(mvo);
+	 * 
+	 * return new ModelAndView("redirect:/admin");
+	 * 
+	 * }
+	 */
+   	
+    //유저 타입 변경
+    @PostMapping("/typechange")
+    public String typechange(@RequestBody Integer usertype, HttpSession session) throws SQLException {
+       System.out.println("/member/typechange : 유저타입 변경 POST 요청 발생!");
+       String result=null;
+       
+       
+       System.out.println(usertype);
+       MemberVO mvo = memberService.getOneInfo(usertype);
+       memberService.changeUserType(mvo);
+       
+       result="success";
+       
+       return result;
+    }
+   	
+    @PostMapping("/addtag")
+    public String addtag(@RequestBody OffProductVO opvo) {
+
+    	long lpno = opvo.getProductNo();
+    	ArrayList<Integer> sendTagList = opvo.getSendTagList();
+    	
+		boolean insertChk = productService.insertPtag(sendTagList, (Integer)(int)opvo.getProductNo());
+		
+    	if (insertChk) {
+    		return "input_success";
+    	}else {
+			return "input_fail";
+		}
+		
+    
+    }
+    
+    
 }
