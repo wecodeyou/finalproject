@@ -143,7 +143,7 @@ public class AdminController {
    		
    		memberService.changeUserType(mvo);
    		
-   		return new ModelAndView("redirect:/admin/user");
+   		return new ModelAndView("redirect:/admin");
    		
    	}
    	
