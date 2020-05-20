@@ -285,11 +285,11 @@
 
 
 									<!-- Single Comment -->
-									<c:forEach var="r" items="${replyList}">
+									<c:forEach var="r" items="${replyList}" varStatus = "status">
      									<c:choose>
         									<c:when test="${r.replyOrder< 1}"><!-- 댓글 -->
         										 <div class="media mb-4">
-													<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+													<img class="d-flex mr-3 rounded-circle" src="${profileImg[status.index]}" alt="" width = "80px" height = "80px">
         										 <div class="media-body">
             										<div class="r_writer">${r.userName} <i class="far fa-comment-dots"></i></div>
             										

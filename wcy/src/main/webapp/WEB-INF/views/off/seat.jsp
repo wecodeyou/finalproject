@@ -115,31 +115,31 @@ function showpicks(obj) {
    
 </script>
 
-				<script type="text/javascript">			   
-				function nullCheck(){
-					var isChk = false;
-				    var arr = document.getElementsByName("Chk_name");
-				    for(var i=0;i<arr.length;i++){
-				        if(arr[i].checked == true) {
-				            isChk = true;
-				            break;
-				        }
-				    }
+<script type="text/javascript">			   
+function nullCheck(){
+	var isChk = false;
+	var arr = document.getElementsByName("Chk_name");
+	for(var i=0;i<arr.length;i++){
+		if(arr[i].checked == true) {
+			isChk = true;
+			break;
+		}
+	}
 					
-				    if(!isChk){
-				        alert("아무 자리도 선택하지 않았습니다.");
-				        return false;
-				    }else{
+	if(!isChk){
+		alert("아무 자리도 선택하지 않았습니다.");
+		return false;
+	}else{
 				           
-						var parent = window.opener;
-						//var answer = document.getElementById(id).value; 
-						parent.document.getElementById('get').value = id;
-						parent.document.getElementById('seat_no').value = id;
+		var parent = window.opener;
+		//var answer = document.getElementById(id).value; 
+		parent.document.getElementById('get').value = id;
+		parent.document.getElementById('seat_no').value = id;
 					
-						window.close();
-				    	//document.getElementById("submit").submit();
-				    }
-				}   			   
-				</script>
+		window.close();
+		//document.getElementById("submit").submit();
+	}
+}   			   
+</script>
 </body>
 </html>

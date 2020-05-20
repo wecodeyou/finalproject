@@ -32,8 +32,15 @@
 	opacity: 0.7;
 	border: 0px;
 	cursor: pointer;
+	text-align:right !important;
 }
 
+#selectedTagList {
+	margin-top:0px;
+	margin-left:0px;
+	text-align:center;
+	
+}
 .override {
     padding: 0px 0px 0px 0px !important;
     margin: 5px !important;

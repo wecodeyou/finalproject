@@ -33,6 +33,8 @@
 
 
 <main class="wcy-main-content">
+	<input type="hidden" id="userNo" value="${login.userNo}" />
+	<input type="hidden" id="userEmail" value="${login.userEmail}" />
 	<div class="wcy-contents">
 		<div class="join_title_box">
 			<h3>회원정보변경</h3>
@@ -59,7 +61,7 @@
 							<span>현재 프로필 이미지</span>						
 							<div class="pimg" style="width:200px; height:200px;">
 								<img width="150" height="145" src="${login.userProfileImg}">
-								${login.userProfileImg}
+								<input type="hidden" id="oldImg" value="${login.userProfileImg}" />
 							</div>
 							<span>변경할 프로필 이미지 선택</span>
 							<div class="profileImg_box">
@@ -68,10 +70,10 @@
 								<img width="100" height="95" src="<c:url value='/img/commons/basic-profileImg-gray.png'/>" alt="" />
 								<img width="100" height="95" src="<c:url value='/img/commons/basic-profileImg-purple.png'/>" alt="" />
 								<div class="profileImg-radio">
-									<input type="radio" name="userProfileImg" value="blue" style="margin:0 87px 0 44px;">
-									<input type="radio" name="userProfileImg" value="apricot" style="margin:0 87px 0 0px;">
-									<input type="radio" name="userProfileImg" value="gray" style="margin:0 87px 0 0px;">
-									<input type="radio" name="userProfileImg" value="purple">
+									<input type="radio" name="userProfileImg" id="defaltImg" value="http://localhost/img/commons/basic-profileImg-blue.png" style="margin:0 87px 0 44px;">
+									<input type="radio" name="userProfileImg" value="http://localhost/img/commons/basic-profileImg-apricot.png" style="margin:0 87px 0 0px;">
+									<input type="radio" name="userProfileImg" value="http://localhost/img/commons/basic-profileImg-gray.png" style="margin:0 87px 0 0px;">
+									<input type="radio" name="userProfileImg" value="http://localhost/img/commons/basic-profileImg-purple.png">
 								</div>
 							</div>
 						</td>
@@ -96,11 +98,18 @@
 					</tr>
 					<tr>
 						<th>생년월일</th>
-						<td>${login.userBirthday}</td>
+						<c:if test="${user_birthday != null}">
+							<td>${user_birthday}</td>
+							<input type="hidden" id="userBirthday" value="${user_birthday}" />
+						</c:if>
+						<c:if test="${user_birthday == null}">
+							<td><input type="date" id="userBirthday" class="form-control mt10" name="userBirthday" /></td>
+						</c:if>
 					</tr>
 					<tr>
 						<th>휴대폰번호</th>
-						<td><input type="text" name="userTel" class="int01" style="width:193px;" placeholder="${login.userTel}"></td>
+						<td><input type="text" name="userTel" id="userTel" class="int01" style="width:193px;" placeholder="${login.userTel}">
+						<input type="hidden" id="oldTel" value="${login.userTel}"></td>
 					</tr>
 					<tr>
 						<th>주소</th>
@@ -108,11 +117,14 @@
 							<ul class="address_box">
 								<li>
 									<input type="text" name="userZipcode" id="userZipCode" class="int01" placeholder="${login.userZipcode}" readonly="readonly" style="width:193px;" />
+									<input type="hidden" id="oldZipCode" value="${login.userZipcode}" />
 									<a onclick="openDaumPostcode('userZipCode','userFirstAddr','userSecondAddr'); return false;" style="cursor:point;" class="btn_gray">우편번호 검색</a>
 								</li>
 								<li>
 								  	<input type="text" name="userAddress" id="userFirstAddr" readonly="readonly" class="int01" style="width:335px;" placeholder="${login.userAddress}">
 								  	<input type="text" name="userDetailAddress" type="text" id="userSecondAddr" class="int01" style="width:260px;" placeholder="${login.userDetailAddress}" required="required">
+								  	<input type="hidden" id="oldAddr" value="${login.userAddress}" />
+								  	<input type="hidden" id="oldDetail" value="${login.userDetailAddress}" />
 									<div id="layer" style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
 								    	<img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnCloseLayer" style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 									</div>
@@ -123,7 +135,7 @@
 				</tbody>
 			</table>
 			<p class="mt40" style="width:100%; text-align:center">
-				<input type="button" id="signup-btn" value="회원정보 변경" class="btn btn-primary"/>
+				<input type="button" id="signup-btn" value="회원정보 변경" class="btn btn-primary" onclick="btn_click()"/>
 		        <a href="javascript:history.back();"><input type="button" value="취소" class="btn btn-warning" /></a>
 			</p>
 		</div>
@@ -184,50 +196,150 @@
 </script>
 
 <script type="text/javascript">
-function pw_active(){
-	document.getElementById("info_change_form").style.display = "none";
-	document.getElementById("pw_change_form").style.display = "block";
 
-	document.getElementById("info_link").className = "";
-	document.getElementById("pw_link").className = "active";
-} // 비밀번호 변경창 active
+const getPwCheck= RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
+let chk1 = true, chk2 = true;
 
-function info_active(){
-	document.getElementById("info_change_form").style.display = "block";
-	document.getElementById("pw_change_form").style.display = "none";
-
-	document.getElementById("info_link").className = "active";
-	document.getElementById("pw_link").className = "";
-
-	document.getElementById("pcf_ok").style.display = "none";
-	document.getElementById("pcf_check").style.display = "block";
-	
-	document.getElementById("is_pw").value = "";
-	$("#is_pw").css("border-color","none");
-} // 기본정보 변경창 active
-
-function check(){
+function btn_click(){// 회원정보 변경을 누르면 
+	// 우선 현재 비밀번호 검사 
 	var userPw = document.getElementById("is_pw");
 	
-	if(userPw != ""){
-		$.ajax({
+	if(userPw.value != ""){
+		var xhr = $.ajax({
 	        type:"POST",
-	        url:"/mypage/myinfoChange",
+	        url:"/mypage/pwCheck",
 	        headers:{
 	           "Content-Type":"application/json"
 	        },
 	        dataType:"text",
 	        data:userPw.value,
 	        success:function(result){
-	        	 if(result==="OK"){
-	        			document.getElementById("pcf_ok").style.display = "block";
-	        			document.getElementById("pcf_check").style.display = "none";
-	        	 } else{
-	        		 $("#is_pw").css("border-color","red");
-	              }
+	        	 if(result==="OK"){// 현재 비밀번호 통과
+					if(chk1 == true && chk2 == true){// 비밀번호 검증완료 				
+						if(userPw.value == $("#newPw").val()){
+							Swal.fire({
+				    			  title: 'Oops...',
+				    			  text: '현재 비밀번호와 같은 비밀번호로 변경할 수 없습니다.',
+				    			  type: 'error',
+				    			});
+							$("#newPw").html('');
+							$("#newPwChk").html('');
+						}// 현재와 비밀번호가 같으면 에러 
+						else{ // 모든 검증 끝		
+							 // 유저 번호
+							 var userNo = Number($("#userNo").val());
+							 var userEmail = $("#userEmail").val();
+					         //패스워드 정보
+					         var pw = document.getElementById('is_pw').value;
+					         if(document.getElementById('newPw').value != ""){
+					         	pw = document.getElementById('newPw').value;
+					         }
+					         //전화번호
+					         var tel;
+					         if(document.getElementById('userTel').value != ""){
+					         	tel = document.getElementById('userTel').value;	
+					         }else{
+					        	tel = document.getElementById('oldTel').value;
+					         }
+					         //생일
+					         var birthday = document.getElementById('userBirthday').value;
+					         var year = birthday.substr(0,4);
+					         var month = birthday.substr(6,2);
+					         var day = birthday.substr(10,2);
+					         birthday = year+"-"+month+"-"+day;
+					         
+					         //주소
+					         var zip = document.getElementById('oldZipCode').value;
+					         var addr = document.getElementById('oldAddr').value;
+					         var detail = document.getElementById('oldDetail').value;
+					         if(document.getElementById('userZipCode').value != ""){
+					         	zip = document.getElementById('userZipCode').value;	
+					         	addr = document.getElementById('userFirstAddr').value;	
+					        	if(document.getElementById('userSecondAddr').value == ""){
+					        		Swal.fire({
+						    			  title: 'Oops...',
+						    			  text: '상세주소를 입력해주세요.',
+						    			  type: 'error',
+						    		})
+						    		xhr.abort();
+					        	}else{
+					        		detail = document.getElementById('userSecondAddr').value;	
+					        	}
+					         }
+	
+							 //이미지
+							 var img = $('input[name="userProfileImg"]:checked').val();
+							 if($('input[name="userProfileImg"]:checked').val() == ""){
+								img = document.getElementById('oldImg').value;	
+							 }
+					         //자바스크립트 형태의 객체 생성 (키:값) => 키는 VO의 필드명과 맞춘다
+					     	 
+					         const mvo={   
+					        	userEmail:userEmail,
+					            userNo:userNo,
+					            userPw:pw,
+					            userTel:tel,
+					            userBirthday:birthday,
+					            userProfileImg:img,
+					            userZipcode:zip,
+					            userAddress:addr,
+					            userDetailAddress:detail
+					         };
+					         //console.log(mvo);
+					         $.ajax({
+					            type: "POST",            //서버에 전송하는 HTTP 요청 방식 (POST, GET, PUT, DELETE)
+					            url: "/mypage/changeInfo",            //url이라고 키를 적고 서버에 요청할 uri만 작성해도됨
+					            headers: {               //요청 헤더 정보 (데이터 타입 등)
+					               "Content-Type":"application/json"
+					            },
+					            dataType: "text",         //응답받을 데이터의 형태 (text , xml, html, json) ==> 지금 text인 이유는 컨트롤러에서 return 값이 문자열(string)이기 때문에 text로!
+					            data: JSON.stringify(mvo),   //서버로 전송할 데이터  ,  JSON.stringify(user) ==> user라는 자바스크립트 객체를 JSON으로 바꿔서 서버로 보내라.
+					            success: function(result){   //통신 성공시 처리할 내용들을 함수 내부에 작성 , 함수의 매개변수는 통신 성공시에 서버가 가져다 줄 데이터가 저장될 곳!
+					                  
+					               console.log("통신 성공!: "+result);
+					               if(result === "Success"){
+							     	  	Swal.fire({
+							     			  title: 'Good job!',
+							     			  text: '회원변경 성공! 바뀐 정보로 다시 로그인해주세요.',
+							     			  type: 'success',
+							     		});
+								   		 window.setTimeout(function(){
+											 window.location.href="/";
+										 },500);
+					               }else{
+							    	  	Swal.fire({
+							    			  title: 'Oops...',
+							    			  text: '변경 실패',
+							    			  type: 'server error',
+							    		})
+					               }        
+					            },
+					            error: function(){         //통신 실패시 처리할 내용들을 함수 내부에 작성
+					               console.log("변경 통신 실패!");
+					            }
+					         });
+						}
+					}else{
+						Swal.fire({
+			    			  title: 'Oops...',
+			    			  text: '새 비밀번호를 다시 확인해 주세요.',
+			    			  type: 'error',
+			    			});
+						$("#newPw").html('');
+						$("#newPwChk").html('');
+					}
+	             }else{
+	            	 Swal.fire({
+		    			  title: 'Oops...',
+		    			  text: '기존 비밀번호를 다시 확인해 주세요.',
+		    			  type: 'error',
+		    			});
+	         		console.log("비밀번호 확인 컨트롤러실패");	      
+	         		$("#is_pw").html('');
+	             }
 	        },
 	        error:function(){
-	         	console.log("서버와 통신 실패");
+	         	console.log("비밀번호 확인 통신 실패");
 			 	$("#is_pw").css("border-color","red");
 			 	$('#is_pw').html('');
 	        }
@@ -235,26 +347,14 @@ function check(){
 	}else{
 		$("#is_pw").css("border-color","red");
 	}
-} // 현재 비밀번호 확인 (복호화해서 확인해야 하기때문에 ajax) 
+	
+	
+}
 
-
-
-
-// 1. 비밀번호 입력 값 검증 ======================================================================================
-const getPwCheck= RegExp(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/);
-let chk1 = false, chk2 = false;
-
-// 2) 비밀번호 입력값 keyup 이벤트
-$('#newPw').on('keyup', function() {
-      
-      // 비밀번호 공백 체크
-      if($("#newPw").val() === ""){
-          $('#newPw').css("background-color", "pink");
-         $('#pwChk1').html('<b style="font-size:14px;color:red;">비밀번호는 필수 정보 입니다.</b>');
-         chk1 = false;
-      }               
+$('#newPw').on('keyup', function() { 
+            
       // 비밀번호 유효성 검증 (특수문자 포함 8자 이상인지 검사)
-      else if(!getPwCheck.test($("#newPw").val()) || $("#newPw").val().length < 8){
+      if(!getPwCheck.test($("#newPw").val()) || $("#newPw").val().length < 8){
           $('#newPw').css("background-color", "pink");
          $('#pwChk1').html('<b style="font-size:14px;color:red;">특수문자 포함 8자 이상으로 입력해주세요.</b>');
          chk1 = false;
@@ -269,14 +369,8 @@ $('#newPw').on('keyup', function() {
 
 
 $('#newPwChk').on('keyup', function() { 
-    // 비밀번호 확인란 공백 체크
-    if($("#newPwChk").val() === ""){
-		$('#newPwChk').css("background-color", "pink");
-		$('#pwChk2').html('<b style="font-size:14px;color:red;">비밀번호 확인을 입력해주세요.</b>');
-		chk2 = false;
-    }               
     // 비밀번호 확인 검증 (비밀번호와 같은지 검사)
-    else if($("#newPwChk").val() != $("#newPw").val()){
+    if($("#newPwChk").val() != $("#newPw").val()){
 		$('#newPwChk').css("background-color", "pink");
 		$('#pwChk2').html('<b style="font-size:14px;color:red;">비밀번호와 동일하게 입력해주세요.</b>');
 		chk2 = false;
@@ -288,46 +382,6 @@ $('#newPwChk').on('keyup', function() {
        chk2 = true;
     }
 }); // end - 비밀번호 확인 입력값 keyup 이벤트
-
-function change_pw(){
-	var newPw = document.getElementById("newPw");
-	
-	if(chk1 == true && chk2 == true){
-		$.ajax({
-	        type:"POST",
-	        url:"/member/changePw",
-	        headers:{
-	           "Content-Type":"application/json"
-	        },
-	        dataType:"text",
-	        data:newPw.value,
-	        success:function(){
-	     	  	Swal.fire({
-	     			  title: 'Success!',
-	     			  text: '비밀번호가 변경되었으니 다시 로그인해주세요 :) ',
-	     			  type: 'warning',
-	     		});
-		   		 window.setTimeout(function(){
-					 window.location.href="/";
-				 },2000);
-	        	//location.replace("/");
-	        	//alert("비밀번호가 변경되었으니 다시 로그인해주세요 :)");
-	        },
-	        error:function(){
-	         	console.log("서버와 통신 실패");
-	    	  	Swal.fire({
-	    			  title: 'Oops...',
-	    			  text: '알 수 없는 오류가 발생했습니다. 재시도해주세요.',
-	    			  type: 'error',
-	    			});
-	         	
-	         	//alert("알수 없는 오류가 발생했습니다.");
-	        }
-	     });
-	}else{
-		$("#pwChk2").css("border-color","red");
-	}
-} // 현재 비밀번호 확인 (복호화해서 확인해야 하기때문에 ajax) 
 
 
 </script>

@@ -1,5 +1,6 @@
 package com.it.wecodeyou.board.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.it.wecodeyou.board.model.ReplyUserVO;
@@ -23,4 +24,7 @@ public interface IReplyMapper {
 	public List<ReplyUserVO> listByArticle(Integer articleNo);
 	
 	public List<ReplyUserVO> listByMember(Integer memberNo);
+
+	// 한 유저가 쓴 모든 댓글 가져오기 
+	public ArrayList<ReplyVO> listByUser(Integer replyWriter);
 }

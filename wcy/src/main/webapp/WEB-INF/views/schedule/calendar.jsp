@@ -66,7 +66,7 @@ var calendar = new Calendar($('#calendar'),{
           
 		
 				{
-     	 		   start : '${off.offStartAt}'
+     	 		   start : '${off.offStartAt}',
    				 , end : '${off.offEndAt}'
    				 , allday : true
  	 			},

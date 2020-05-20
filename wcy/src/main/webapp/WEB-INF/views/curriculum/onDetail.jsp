@@ -12,7 +12,8 @@
 <link rel="shortcut icon"
 	href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
 
-
+<link rel="stylesheet" href="<c:url value='/css/tag.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/tag-modal.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
@@ -50,17 +51,37 @@
 								<li class="tag">#온라인강의</li>
 								<li class="tag">#교재증정</li>
 								<c:if test = "${login.userType == 2}"> 
-								<li class="tag"><a id = "addtag" href = "javascript:openTag();"><i class="fas fa-plus-circle"></i></a></li>
-								<li class="tag" id = "inputtag" style ="display:none;">
-								<div>	
-									<div id="selectedTagList" ></div>
-									<input type = "text" id="text" placeholder="#해시태그">
-									<ul class="override" id="resultList"></ul>
-										<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a> 
-									<input type="submit" id="add" value="등록"/>
-								</div></c:if>
+									<li class="tag"><a id = "addtag" href = "javascript:openTag();"><i class="fas fa-plus-circle"></i></a></li>
+									
+								</c:if>
 							</ul>
-							
+
+							<!-- 모달 창 시작 -->
+							<div id="myModal" class="modal">
+								<!-- 모달 내용 -->
+								<div class="modal_content">
+									
+										<span class="close" id="modal_close_btn">&times;</span>
+									
+									<div class="modal_body">
+									<div class="modal_title_large" style="">해시태그를 등록해주세요 <i class="fas fa-tags"></i></div>
+										<div id="selectedTagList" ></div>
+									<input type = "text" id="text" style="width:200px;font-size:16px;"placeholder="#해시태그">
+									
+									<ul class="override" id="resultList"></ul>
+									
+										
+									</div>
+									<div class="modal-footer">
+										<input type="submit" id="add" value="등록"/>
+									</div>
+								</div>
+								<!-- 모달 내용 끝 -->
+								<div class="modal_layer"></div>
+							</div>
+							<!-- 모달 창 끝 -->
+
+
 							<p>
 								<span class="info-title">강의평점</span>
 								<span class="info-content">${avg} 
@@ -202,7 +223,33 @@
 	<script src="<c:url value = "/js/main.js"/>"></script>
 	<script src="<c:url value='/js/tag.js'/>"></script>
 
+<script>
 
+var myModal = document.getElementById("myModal");
+
+var modal_close_btn = document.getElementById("modal_close_btn");
+
+modal_close_btn.onclick = function(){
+	myModal.style.display = "none";
+}
+
+function openTag() {
+	 var myModal = document.getElementById("myModal");
+	  if(myModal.style.display == 'none'){
+		  myModal.style.display = 'block';
+	  }else {
+		  myModal.style.display = 'none';
+	  }
+	
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+     if (event.target == myModal) {
+    	 openTag();
+     }
+}
+	</script>
 <script type="text/javascript">
 
 $( document ).ready(function() {
@@ -223,41 +270,42 @@ function logincheck(){
        
  };
  
- function openTag(){
+/*  function openTag(){
 	 
 	 $("#inputtag").show();
 	 
- }
+ } */
  
  $("#add").click(function(){
-	 
-	 var productInfo = {
-				productNo: ${pro.productNo},
-				sendTagList: sendTagList
-			};
-	 
-	 $.ajax({
-			type: "POST",
-			url : "/admin/addtag",
-			headers:{
-				"Content-Type": "application/json"
-			},
-			dataType: "text",
-			data:JSON.stringify(productInfo),
-			success: function(data){
-				console.log("received output : " + data);
-				if(data === "input_success"){
-					console.log("입력완료")
-					location.reload();
-				}
-				
-			},
-			error: function(request, status, error){
-				console.log("POST : /product/register 요청에 실패했습니다.")
-			}
-		}); /* end ajax */
-	 
- });
+	    
+	    var productInfo = {
+	            productNo: ${pro.productNo},
+	            sendTagList: sendTagList
+	         };
+	    
+	    $.ajax({
+	         type: "POST",
+	         url : "/admin/addtag",
+	         headers:{
+	            "Content-Type": "application/json"
+	         },
+	         dataType: "text",
+	         data:JSON.stringify(productInfo),
+	         success: function(data){
+	            console.log("received output : " + data);
+	            if(data === "input_success"){
+	               console.log("입력완료")
+	               location.reload();
+	            }
+	            
+	         },
+	         error: function(request, status, error){
+	            console.log("POST : /product/register 요청에 실패했습니다.")
+	         }
+	      }); /* end ajax */
+	    
+	 });
+
 
 </script>
 </body>
