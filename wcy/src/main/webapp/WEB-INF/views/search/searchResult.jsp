@@ -379,7 +379,7 @@
 	<hr>
 	<a class="moveTop"><button class="btn btn-outline-primary">다시 검색하기</button></a>
 </main>	
-	
+
 
 <script src="<c:url value='/js/search-filter.js'/>"></script>
 <script src="<c:url value='/js/tag.js'/>"></script>
