@@ -120,6 +120,12 @@
 		WHERE user_no = #{userNo}
 	</update>
 	
+	  <!-- 강의구매 -->
+   <update id="updatePurchase">
+	  UPDATE user SET user_point = #{userPoint} WHERE user_no = #{userNo}
+   </update>
+	
+	
 </mapper>
 
 

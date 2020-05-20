@@ -54,4 +54,7 @@ public interface IMemberMapper {
    // 유저타입 변경
    public void changeUserType(MemberVO mvo) throws SQLException;
    
+   // 구매
+   public void updatePurchase(MemberVO mvo);
+   
 }

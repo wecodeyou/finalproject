@@ -137,6 +137,12 @@ public class MemberService implements IMemberService {
 		dao.changeUserType(mvo);
 	}
 
+	@Override
+	public void updatePurchase(MemberVO mvo) {
+		dao.updatePurchase(mvo);
+		
+	}
+
 
 
 }

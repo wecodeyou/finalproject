@@ -95,13 +95,13 @@
 						</li>
 					</ul>
 				</div> <!-- 왼쪽부분 -->
-				<form action="<c:url value='/purchase/purchase'/>" method="post">
-					<input type="hidden" value="" name="seat_no" id="seat_no"/>
+				<form action="<c:url value='/purchase/purchase'/>" method="post" id="submit">
+					<input type="hidden" value="" name="seat_no" id="seat_no" required="required"/>
 					<input type="hidden" name="pro_no" value="${pro_info.productNo}" />
 					<input type="hidden" name="pro_price" value="${pro_info.productPrice}" />
 					<input type="hidden" name="pro_type" value="${pro_info.productType}" />
 						
-					<button>결제</button>
+					<button type="button" onclick="seatChk()">결제</button>
 				</form>
 				<div class="classplRightBox"> <!-- 오른쪽 부분 -->
 				
@@ -120,6 +120,19 @@
 		window.open("<c:url value='/off/seat?off_no=${pro_info.productNo}'/>","","width=400,height=400,left=500");    
 	 };
 	 
+	 
+	 function seatChk(){
+		    var Form = document.getElementById('submit');
+		    var seat = document.getElementById('seat_no').value;
+		    
+		    if(seat == null || seat == ""){
+		        alert("좌석 선택해주세요.")
+		    }else{
+		        Form.submit();
+		    }
+		}
+
+
 	
 	</script>
 
