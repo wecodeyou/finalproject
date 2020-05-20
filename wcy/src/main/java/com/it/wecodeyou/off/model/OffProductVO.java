@@ -17,6 +17,7 @@ public class OffProductVO {
 	private String offCategory;
 	private Integer offProductNo;
 	private String offPlace;
+	private String offRoom;
 	private String offUploadUri;
 	private Integer offSeats;
 	private Timestamp offStartAt;
@@ -29,7 +30,7 @@ public class OffProductVO {
 
 	public OffProductVO(Integer productNo, String productType, String productName, Integer productPrice,
 			String productDetail, Timestamp productCreatedAt, String productThumb, Integer offNo, String offAuthor,
-			String offCategory, Integer offProductNo, String offPlace, String offUploadUri, Integer offSeats,
+			String offCategory, Integer offProductNo, String offPlace, String offRoom, String offUploadUri, Integer offSeats,
 			Timestamp offStartAt, Timestamp offEndAt, Timestamp offCreatedAt, Timestamp offModifiedAt,
 			ArrayList<Integer> sendTagList) {
 		super();
@@ -45,6 +46,7 @@ public class OffProductVO {
 		this.offCategory = offCategory;
 		this.offProductNo = offProductNo;
 		this.offPlace = offPlace;
+		this.offRoom = offRoom;
 		this.offUploadUri = offUploadUri;
 		this.offSeats = offSeats;
 		this.offStartAt = offStartAt;
@@ -149,6 +151,14 @@ public class OffProductVO {
 	public void setOffPlace(String offPlace) {
 		this.offPlace = offPlace;
 	}
+	
+	public String getOffRoom() {
+		return offRoom;
+	}
+
+	public void setOffRoom(String offRoom) {
+		this.offRoom = offRoom;
+	}
 
 	public String getOffUploadUri() {
 		return offUploadUri;
@@ -212,9 +222,9 @@ public class OffProductVO {
 				+ ", productPrice=" + productPrice + ", productDetail=" + productDetail + ", productCreatedAt="
 				+ productCreatedAt + ", productThumb=" + productThumb + ", offNo=" + offNo + ", offAuthor=" + offAuthor
 				+ ", offCategory=" + offCategory + ", offProductNo=" + offProductNo + ", offPlace=" + offPlace
-				+ ", offUploadUri=" + offUploadUri + ", offSeats=" + offSeats + ", offStartAt=" + offStartAt
-				+ ", offEndAt=" + offEndAt + ", offCreatedAt=" + offCreatedAt + ", offModifiedAt=" + offModifiedAt
-				+ ", sendTagList=" + sendTagList + "]";
+				+ ", offRoom=" + offRoom + ", offUploadUri=" + offUploadUri + ", offSeats=" + offSeats + ", offStartAt="
+				+ offStartAt + ", offEndAt=" + offEndAt + ", offCreatedAt=" + offCreatedAt + ", offModifiedAt="
+				+ offModifiedAt + ", sendTagList=" + sendTagList + "]";
 	}
 	
 	

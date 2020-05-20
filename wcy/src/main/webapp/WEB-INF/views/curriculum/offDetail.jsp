@@ -101,18 +101,15 @@
 						</table>
 						<div class="top-right-button">
 							<div class="button-cart">
-								<a href="#" title="카트담기">
-									<i class="fa fa-shopping-cart"></i>
+								<a class="modal_open_btn" data-toggle="modal" data-target="#modal2" title="일정보기">
+									<i class="far fa-calendar-alt"></i>
 									<span class="cart_on">
-										<i class="fa fa-shopping-cart"></i>										
+										<i class="far fa-calendar-alt"></i>									
 									</span>
 								</a>
 							</div>
 							<div class="button-register">
 								<a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
-							</div>
-							<div class="button-register">
-								<a class="modal_open_btn" data-toggle="modal" data-target="#modal2">달력보기</a>
 							</div>
 						</div>
 					</div>

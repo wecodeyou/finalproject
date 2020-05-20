@@ -110,7 +110,7 @@
 						<div class="pointIn">
 							<div class="pointexplain">
 								위코드유에서는 모든 강의를 포인트로 구매할 수 있습니다.<br>구매를 위해서 포인트를 충전해주세요.
-								<br><span style="font-size:12px;">(사용하지 않은 포인트는 환불 가능합니다.)</span>
+								<br><span style="font-size:12px;">(수강하지 않은 강의는 포인트로 환불 가능합니다.)</span>
 							</div>
 						</div>
 					</li>

@@ -166,6 +166,18 @@
     right: 10px;
     top: 13px;
 }
+
+.boxWebzineBorad .webzineRight a:hover{
+	color:#fff;
+	background-color: #7598bb;
+	transition:all 0.3s ease;
+}
+
+.mycuboxIn a:hover{
+	color: #527ba5;
+	transition:all 0.3s ease;
+}
+
 .boxWebzineBorad .webzineRight a.rBtn span{
     color: #000;
     float: right;

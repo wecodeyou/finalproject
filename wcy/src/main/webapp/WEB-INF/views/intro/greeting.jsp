@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,7 +102,7 @@ article.company, article.history{
 .company .txt {
     background-color: #f7f7f7;
     margin-top: 60px;
-    padding: 90px 0 100px;
+    padding: 90px 20px 100px 20px;
     height: 445px;
 }
 
@@ -179,13 +180,14 @@ article.company, article.history{
 }
 
 .company .txtRight{
-    float: right;
-    width: 58%;
+	float: left;
+    width: 650px;
     color: #6d6464;
     text-align: left;
     font-size: 16px;
     line-height: 26px;
     margin-top: 50px;
+    margin-left: 34px;
 }
 .history .txtRight {
 	float: right;
