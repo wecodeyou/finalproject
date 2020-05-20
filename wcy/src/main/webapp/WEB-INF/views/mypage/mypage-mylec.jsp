@@ -120,38 +120,98 @@
 					</tbody>
 				</table>
 				<div class="subtitle"> <!-- 게시물 -->
-					<p>오프라인 강의</p>
+					<p>
+					<c:choose>
+					<c:when test="${login.userType == '0' }">
+						구매한 오프라인 강의 목록
+					</c:when>
+					<c:otherwise>
+						나의 오프라인 강의 목록
+					</c:otherwise>
+					</c:choose>
+					</p>
 				</div>
+				
+					<c:choose>
+					<c:when test="${login.userType == '0' }">
 				<table class="table_normal">
 					<colgroup>
 						<col width="20%">
 						<col width="*">
 						<col width="20%">
 						<col width="15%">
+						<col width="15%">
 					</colgroup>
 					<thead>
 						<tr>
-							<th scope="col" class="line0">날짜</th>
-							<th scope="col">상세내역</th>
-							<th scope="col">적립/사용</th>
-							<th scope="col">구분</th>
+							<th scope="col" class="line0">썸네일</th>
+							<th scope="col">강의명</th>
+							<th scope="col">상세정보</th>
+							<th scope="col">구매 내역</th>
+							<th scope="col">상태</th>
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var="off" items="${offList}">
 						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >포인트 충전</td>
-							<td style="text-align:center;">+300,000</td>
-							<td style="text-align:center;">충전</td>
-						</tr>
-						<tr>
-							<td style="text-align:center;">2019-01-01</td>
-							<td >[온라인] 반응형 웹제작 제대로 하기</td>
-							<td style="text-align:center;">-140,000</td>
-							<td style="text-align:center;">사용</td>
-						</tr>
+							<td style="text-align:center;">
+							<img src="<c:url value = '${off.productThumb}'/>"/>
+							</td>
+							<td >${off.productName}</td>
+							<td style="text-align:center;">
+								<button type="button" >상세정보</button>
+							</td>
+							<td style="text-align:center;">
+								<button type="button" >구매정보</button>
+							</td>
+							<td style="text-align:center;">
+								<span></span><button type="button" >입장하기</button>
+							</td>
+						</tr>					
+					</c:forEach>
+
 					</tbody>
 				</table>
+					</c:when>
+					<c:otherwise>
+				<table class="table_normal">
+					<colgroup>
+						<col width="20%">
+						<col width="*">
+						<col width="20%">
+						<col width="15%">
+
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col" class="line0">썸네일</th>
+							<th scope="col">강의명</th>
+							<th scope="col">상세정보</th>
+							<th scope="col">개설</th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="off" items="${offList}">
+						<tr>
+							<td style="text-align:center;">
+							<img src="<c:url value = '${off.productThumb}'/>"/>
+							</td>
+							<td >${off.productName}</td>
+							<td style="text-align:center;">
+								<button type="button" >상세정보</button>
+							</td>
+							<td style="text-align:center;">
+								<button type="button" 
+								onclick="location.href = '/session/instructor/lecture/${off.productNo}'">강의시작</button>
+							</td>
+						</tr>					
+					</c:forEach>
+
+					</tbody>
+				</table>
+					</c:otherwise>
+					</c:choose>						
+
 			</div> <!-- 최근활동내역 -->
 		</div>
 	</main>
@@ -171,6 +231,29 @@
 </c:if>
 
 
+<<<<<<< HEAD
+	</table>
+	<h2>내 오프라인 강의</h2>
+	<c:choose>
+		<c:when test="${login.userType == ""}"></c:when>
+	</c:choose>
+		<table border = 0><tr>
+	<th>강의명</th></tr>
+	<c:forEach var = "c" items = '${pro_lec_list}' varStatus ="status" >
+		<tr>
+			<td><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>">${c.productName}</a></td>			
+			<td>${days[status.index]}</td>
+		</tr>
+	</c:forEach>
+
+	</table>
+	
+				
+				
+				
+				</div></div></main>
+=======
+>>>>>>> branch 'master' of https://github.com/wecodeyou/finalproject.git
 </body>
 	<jsp:include page="../include/footer.jsp" />
 </html>
