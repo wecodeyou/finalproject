@@ -34,7 +34,7 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 			</div>
 			<div>
 				# 글쓴이(나중에 세션처리): 
-				<input type="text" name="articleWriter" id="writer" value="9" readonly/>
+				<input type="text" name="articleWriter" id="writer" value="${login.userNo}" readonly/>
 			</div>
 			<div>
 					<input type="text" id="text" placeholder="#해시태그">

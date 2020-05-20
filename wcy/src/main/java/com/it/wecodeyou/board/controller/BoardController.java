@@ -89,6 +89,12 @@ public class BoardController {
 
 		paging.setBoardNo(boardNo);
 		List<ArticleVO> list = articleService.list(paging);
+		ArrayList<MemberVO> userNameList = new ArrayList<MemberVO>();
+		
+		for (int i = 0; i<list.size();i++) {
+			userNameList.add(memberService.getOneInfo(list.get(i).getArticleWriter()));
+			
+		}
 		for(ArticleVO avo: list) {
 			System.out.println(avo.toString());
 		}
@@ -97,10 +103,11 @@ public class BoardController {
 		pc.setArticleTotalCount(articleService.countArticles(boardNo));
 		System.out.println(pc.toString());
 		
-		ArrayList<TagVO>nameList = tagService.getAllTag();
+		ArrayList<TagVO> nameList = tagService.getAllTag();
 	    ArrayList<TagVO> ptagList = tagService.searchPTagNo();
 	    mv.addObject("ptagList", ptagList);
 	    mv.addObject("nameList", nameList);
+	    mv.addObject("userNameList", userNameList);
 
 		mv.addObject("board", bvo);
 		mv.addObject("articleList", list);
