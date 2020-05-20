@@ -26,6 +26,8 @@
 <link rel="stylesheet" href="<c:url value='/css/blog-post.css'/>">
 <link rel="stylesheet" href="<c:url value='/vendor/bootstrap/css/bootstrap.min.css'/>">
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <title>WE CODE YOU | 커뮤니티</title>
 <style>
 
@@ -374,6 +376,8 @@
 	<script src="<c:url value = "/vendor/jquery/bootstrap.bundle.min.js"/>"></script>
 	
 	<script src="<c:url value='/js/tag.js'/>"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
+	
 	
 	<script type="text/javascript">
 $(function(){
@@ -383,14 +387,14 @@ $(function(){
       const writer = $("#reply-writer").val();
       console.log(writer);
       if(writer === "") {
-    	  alert("로그인이 필요한 서비스입니다!");
+      	Swal.fire('로그인이 필요한 서비스입니다.');
     	  return;
       }
       
       const content = $("#reply-content").val();
       console.log("content " + content);
       if(content === ""){
-    	  alert("내용을 입력해주세요!");
+        	Swal.fire('내용을 입력해주세요!');
     	  return;
       }
 
@@ -417,16 +421,18 @@ $(function(){
             success: function(data){
                console.log("received output : " + data);
                if(data === "post-reply-success"){
-                     alert('댓글이 추가되었습니다');
+                 	Swal.fire('댓글이 추가되었습니다.');
+
                      window.location.reload();
                   }else{
-                     alert('웹사이트 오류입니다');
+                    Swal.fire('웹사이트 오류입니다.');
                   }
                
             },
             error: function(request, status, error){
                console.log("POST : /board/${boardNo}/register 요청에 실패했습니다.")
-               alert('댓글 등록에 실패하였습니다');
+             	Swal.fire('댓글 등록에 실패하였습니다.');
+
             }
          }); /* end ajax */
    });
