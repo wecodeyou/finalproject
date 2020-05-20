@@ -252,7 +252,7 @@
 													href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle}</a>
 											</div>
 										</td>
-										<td style="text-align:center;">${a.articleWriter}</td>
+										<td style="text-align:center;">${userNameList[status.index].userName}</td>
 										<td style="text-align:center;">
 											<fmt:formatDate value="${a.articleCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></td>
 										<td style="text-align:center;">${a.articleClicks}</td>
