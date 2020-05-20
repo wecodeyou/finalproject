@@ -36,6 +36,9 @@
     .center-header .center-sub-nav li a{display: block; height: 60px; box-sizing: border-box; font-size: 18px; color: #888; padding: 0 0 0 20px; line-height: 60px; border-bottom: 4px solid #ddd;}
     .center-sub-nav li a.active{color: #25283D; border-color: #25283D;}
 
+	#adminUser {
+		display:none;
+	}
 
 </style>
 
@@ -49,9 +52,8 @@
 			<div class="page-width">
 				<div class="center-header">
 					<ul class="center-sub-nav">
-						<li><a class="active">관리자 대시보드</a></li>
-						<li><a href="<c:url value='/admin/user'/>">회원 관리</a></li>
-						<li><a href="<c:url value='/admin/etc'/>">기타 관리</a></li>
+						<li><a href="javascript:adminChart();"class="active">관리자 대시보드</a></li>
+						<li><a href="javascript:adminUser();" >회원 관리</a></li>
 						<li><a href="<c:url value='/product/'/>">상품 관리</a></li>
 					</ul>
 				</div>
@@ -375,21 +377,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        	<c:forEach var="m" items="${members}">
+                                        	<c:forEach var="m" items="${members}" varStatus = "status">
                                         		<tr>
                                         			<td>
                                         			<div style="text-align:center">
                                         				<c:if test="${m.userType == 0}">
-                                        					일반회원
+                                        				<a href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">일반회원</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 1}">
-                                        					강사
+                                        				<a href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">강사</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 2}">
                                         					*관리자
                                         				</c:if>
-                                        				<button type="button" style="font-size:11px; width:50px"class="btn btn-info" value="${m.userNo}" id="authChangeU">변경</button>
-                                        			</div>
+                                        				</div>
                                    
                                         			</td>
                                         			<td>${m.userEmail}</td>
@@ -410,7 +411,6 @@
 		</div>
 	</main>
 
-<%@ include file="../admin/user-change-modal.jsp" %>  
  
 <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
 <script src="<c:url value = "/js/main.js"/>"></script>

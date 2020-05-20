@@ -214,6 +214,8 @@
 						</select>
 						<input type="text" id="keywordInput"/>
 						<button type="button" id="searchBtn">검색</button>
+						<input type="hidden" id="reseult-con" name="reseult-con" value="${condition}"/>
+						<input type="hidden" id="reseult-type" name="productType" value="3"/>
 					</div>
 					<div class="text-right">
 						<a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">

@@ -62,6 +62,39 @@
 		margin-bottom: 20px;
 	}
 	
+	#keywordInput {
+    border-radius: 5px;
+    border:none;
+    opacity:.8;
+   	border: 1px solid #d3e0f1;
+   	background:white;
+    margin-left:-1px;
+    margin-right:-1px;
+    padding-top:20px;
+    padding-bottom:19px;
+    padding-left:10px;
+    adding-right:10px;
+    width: 419px;
+    height: 15px;    
+    font-size:18px;
+}
+
+#keywordInput:hover{
+	background:white;
+	border: 1px solid #93cfff;
+	 border-radius: 5px;
+}
+#keywordInput:focus{
+	background:white;
+	border: 1px solid #93cfff;
+}
+
+#searchBtn{
+	display:inline;height:41px;width:5%;
+	
+	border-radius: 5px;
+}
+	
 </style>
 
 </head>
@@ -121,6 +154,20 @@
 	<!-- 검색창 -->
 	<div class="row">
 		<div class="col-sm-2"></div>
+		
+		<div>
+						<select id="condition" class="form-control" name="condition" 
+						 style="display:inline;height:41px;width:16%;margin-top:1px; margin-left:10px;">
+							<option value="title">제목</option>
+							<option value="titleContent">제목+내용</option>
+							<option value="hashtag">해시태그</option>
+						</select>
+						<input type="text" id="keywordInput"/>
+						<button type="button" id="searchBtn">검색</button>
+						<input type="hidden" id="reseult-con" name="reseult-con" value="${condition}"/>
+						<input type="hidden" id="reseult-type" name="productType" value="3"/>
+					</div>
+		
 		<div class="form-group col-sm-2">
 		
 			<select id="condition" class="form-control" name="condition">
