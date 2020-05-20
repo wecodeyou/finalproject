@@ -98,7 +98,7 @@
 								</a>
 							</div>
 							<div class="button-register">
-								<a href="#" title="수강신청" class="btn_red_regi">수강신청</a>
+								<a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
 							</div>
 						</div>
 					</div>
@@ -196,6 +196,15 @@ $( document ).ready(function() {
 	}
 	return false;
 });
+
+function logincheck(){
+    if(${login == null}){
+    	Swal.fire('로그인 후 좌석선택이 가능합니다.');
+    }else{
+    	location.href="<c:url value='/curriculum/purchase?pro_no=${pro.productNo}'/>";
+    }
+       
+ };
 
 </script>
 </body>
