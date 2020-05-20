@@ -6,11 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +20,8 @@ import com.it.wecodeyou.interest.model.InterestReportVO;
 import com.it.wecodeyou.interest.sevice.IInterestService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
+import com.it.wecodeyou.product.model.ProductVO;
+import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.purchase.model.PurchaseResultVO;
 import com.it.wecodeyou.purchase.service.IPurchaseService;
 
@@ -35,6 +35,8 @@ public class AdminController {
 	private IPurchaseService purchaseService;
 	@Autowired
 	private IInterestService interestService;
+	@Autowired 
+	private IProductService productService;
 
 	
    	//admin page 호출
@@ -65,6 +67,9 @@ public class AdminController {
    		
    		//멤버
    		mv.addObject("members",memberService.getAllInfo());
+   		
+   		//상품
+   		mv.addObject("productList", productService.list());
    		
    		mv.setViewName("admin/adminpage");
    		return mv;
