@@ -277,34 +277,35 @@ function logincheck(){
  } */
  
  $("#add").click(function(){
-	 
-	 var productInfo = {
-				productNo: ${pro.productNo},
-				sendTagList: sendTagList
-			};
-	 
-	 $.ajax({
-			type: "POST",
-			url : "/admin/addtag",
-			headers:{
-				"Content-Type": "application/json"
-			},
-			dataType: "text",
-			data:JSON.stringify(productInfo),
-			success: function(data){
-				console.log("received output : " + data);
-				if(data === "input_success"){
-					console.log("입력완료")
-					location.reload();
-				}
-				
-			},
-			error: function(request, status, error){
-				console.log("POST : /product/register 요청에 실패했습니다.")
-			}
-		}); /* end ajax */
-	 
- });
+	    
+	    var productInfo = {
+	            productNo: ${pro.productNo},
+	            sendTagList: sendTagList
+	         };
+	    
+	    $.ajax({
+	         type: "POST",
+	         url : "/admin/addtag",
+	         headers:{
+	            "Content-Type": "application/json"
+	         },
+	         dataType: "text",
+	         data:JSON.stringify(productInfo),
+	         success: function(data){
+	            console.log("received output : " + data);
+	            if(data === "input_success"){
+	               console.log("입력완료")
+	               location.reload();
+	            }
+	            
+	         },
+	         error: function(request, status, error){
+	            console.log("POST : /product/register 요청에 실패했습니다.")
+	         }
+	      }); /* end ajax */
+	    
+	 });
+
 
 </script>
 </body>
