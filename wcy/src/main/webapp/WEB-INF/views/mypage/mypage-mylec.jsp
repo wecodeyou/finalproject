@@ -231,29 +231,6 @@
 </c:if>
 
 
-<<<<<<< HEAD
-	</table>
-	<h2>내 오프라인 강의</h2>
-	<c:choose>
-		<c:when test="${login.userType == ""}"></c:when>
-	</c:choose>
-		<table border = 0><tr>
-	<th>강의명</th></tr>
-	<c:forEach var = "c" items = '${pro_lec_list}' varStatus ="status" >
-		<tr>
-			<td><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>">${c.productName}</a></td>			
-			<td>${days[status.index]}</td>
-		</tr>
-	</c:forEach>
-
-	</table>
-	
-				
-				
-				
-				</div></div></main>
-=======
->>>>>>> branch 'master' of https://github.com/wecodeyou/finalproject.git
 </body>
 	<jsp:include page="../include/footer.jsp" />
 </html>
