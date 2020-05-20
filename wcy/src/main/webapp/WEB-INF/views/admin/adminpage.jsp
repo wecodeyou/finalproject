@@ -26,6 +26,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <title>WE CODE YOU | 관리자 페이지</title>
+
+
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <style>
 
@@ -383,10 +385,10 @@
                                         			<div style="text-align:center">
                                         				<c:if test="${m.userType == 0}">
                                         				<%-- <a id = "change" onclick ="return false;" href = "<c:url value='/admin/typechange?userNo=${m.userNo}'/>">일반회원</a> --%>
-                                        				<a class = "change" href = "javascript:warnalert();" value = "${m.userNo}">일반회원</a>
+                                        				<a class = "change" href = "javascript:warnalert();" id="${m.userNo}" value = "${m.userNo}">일반회원</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 1}">
-                                        				<a class = "change" href = "javascript:warnalert();" value = "${m.userNo}">강사</a>
+                                        				<a class = "change" href = "javascript:warnalert();" id="${m.userNo}" value = "${m.userNo}">강사</a>
                                         				</c:if>
                                         				<c:if test="${m.userType == 2}">
                                         					*관리자
@@ -488,7 +490,6 @@ $(".change").on("click",function(){
 	usertype = $(this).attr('value');
 	$("#userType").val(usertype);	
 
-	
 })
 	
 function warnalert(){
@@ -510,7 +511,32 @@ function warnalert(){
 		      'Your file has been deleted.',
 		      'success'
 		    )
-			form.submit();
+	
+			//form.submit();
+		    $.ajax({
+	            type: "POST",
+	            url: "<c:url value = "/admin/typechange"/>",
+	            headers: {
+	                   "Content-Type": "application/json"
+	               },
+	            data: usertype,
+	            dataType : "text",
+	            success: function(data) {
+	               console.log("typechange 통신성공 ! result: " + data);   
+	               
+	               if(data === "success") {
+	                 	console.log("성공");
+	                 	var table = $('#dataTable').DataTable();
+	                 	table.ajax.reload();
+	                 	console.log("테이블 새로고침")
+	               }
+	            },
+	            error: function(){
+	               console.log("typechange 통신실패!");
+	            }
+	         });
+		    
+		    
 
 		  } else if (
 		    /* Read more about handling dismissals below */
