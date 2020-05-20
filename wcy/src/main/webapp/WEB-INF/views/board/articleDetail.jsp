@@ -210,6 +210,10 @@
 	text-align: left;
 	font-size: 17px;
 }
+
+	.hidden {
+	display: none;
+}
 </style>
 </head>
 
@@ -296,7 +300,22 @@
             										<p class="r_content">${r.replyContent}</p>
             										<div style="text-align:right; margin-bottom:5px;">
             											<small> <fmt:formatDate value="${r.replyCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></small>
-           											 	<small> <a href="javascript:kaja(repl${r.replyNo})" class="btn-xs btn-outline-primary">답글달기</a></small>
+           											 	<small> <a href="javascript:showReplyForm(repl${r.replyNo})" class="btn-xs btn-outline-primary">답글달기</a></small>
+            										</div>
+            											<br><br>
+            										</div><!-- media body -->
+            										</div><!-- media mb-4s -->
+        										 <div class="media mb-4 hidden repl${r.replyNo}" >
+													<img class="d-flex mr-3 rounded-circle" src="${login.userProfileImg}" alt="" width = "80px" height = "80px">
+        										 <div class="media-body">
+            										<div class="r_writer">${r.userName}님에게 답글 남기기 <i class="far fa-comment-dots"></i></div>
+            										
+            										<textArea cols="30" rows="20"></textArea>
+            										<div style="text-align:right; margin-bottom:5px;">
+           											 	<small>
+           											 		<button type="button" id="post-reply" class="btn-sm btn-outline-default"
+               								 				style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
+               								 				등록<i class="far fa-check-circle"></i></button></small>
             										</div>
             											<br><br>
             										</div><!-- media body -->
@@ -308,9 +327,9 @@
 																src="http://placehold.it/50x50" alt="">
 															<div class="media-body">
 																<div class="r_writer">${r.userName}님</div>
-																<p class="r_content">${r.replyContent} + 2</p>
+																<p class="r_content">${r.replyContent}</p>
 																<div style="text-align:right; margin-bottom:5px;">
-            														<small> ${r.replyCreatedAt}</small>
+            														<small> <fmt:formatDate value="${r.replyCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></small>
             													</div>
 															</div>
 														</div>
@@ -437,7 +456,7 @@ $(function(){
          }); /* end ajax */
    });
 });
-function kaja(selector){
+function showReplyForm(selector){
    $(selector).toggleClass("hidden");
 }
 </script> 
