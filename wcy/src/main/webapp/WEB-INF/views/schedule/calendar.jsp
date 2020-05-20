@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var calendar = new Calendar($('#calendar'),{
 
-	  height:10,
 	  header: {
 	    left: 'today, prevYear, nextYear, viewWeekends',
 	    center: 'prev, title, next',
