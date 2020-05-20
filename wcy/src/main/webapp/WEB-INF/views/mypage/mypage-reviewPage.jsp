@@ -36,24 +36,25 @@
 </style>
 </head>
 <body>
-<input type="hidden" name="cInput" id="cInput" value="" />
-	<div id="myodal" class="odal">
-		<!-- 모달 내용 -->
-		<div class="odal_content">
+
+		<div class="_content">
 			<form action="<c:url value='/review/write' />" method="POST">
-				<div class="odal-header">
-					<div class="odal_title_large">수강 후기</div>
+			<input type="hidden" name="reviewProductNo" value="${pno}"/>
+			<input type="hidden" name="reviewUser" value="${writer}"/>
+			<input type="hidden" name="reviewStar" value="" id="starValue"/>
+				<div class="-header">
+					<div class="_title_large">수강 후기</div>
 					<br>
-					<div class="odal_title_small">${proName}</div>
+					<div class="_title_small">${proName}</div>
 				</div>
 				<br>
-				<div class="odal_body">
+				<div class="_body">
 					<p class="star_rating">
-						<a href="#">★</a>
-						<a href="#">★</a>
-						<a href="#">★</a>
-						<a href="#">★</a>
-						<a href="#">★</a>
+						<a onclick="choice1()">★</a>
+						<a onclick="choice2()">★</a>
+						<a onclick="choice3()">★</a>
+						<a onclick="choice4()">★</a>
+						<a onclick="choice5()">★</a>
 					</p>
 					<textarea name="content" id="content"
 						placeholder="수강후기를 자유롭게 입력해주세요." required="required"></textarea>
@@ -61,16 +62,15 @@
 					<br> <input type="hidden" name="reviewUser"
 						value="${login.userEmail}">
 				</div>
-				<div class="odal_footer">
-					<input type="button" class="cancel" value="cancel"
-						onclick="odalClose()"> <input type="submit" id="submit"
-						value="send"
-						onclick="return confirm('수강후기는 한번 작성한 후 수정이 불가합니다. 작성하시겠습니까?')">
+				<div class="_footer">
+					<input type="button" class="cancel" value="cancel" onclick="window.close()">
+					<input type="submit" id="submit" value="send"
+						onclick="submit()">
 				</div>
 			</form>
 		</div>
-		<div class="odal_layer"></div>
-	</div>
+		<div class="_layer"></div>
+
 	
 <!-- 별점 -->
 <script>
@@ -81,15 +81,26 @@
 			return false;
 		});
 		
-		
-	       var arr_1 = window.dialogArguments["arr"];
-	        var arr_2 = window.dialogArguments["arr2"];
+function choice1(){
+	document.getElementById('starValue').value = 1;
+}
+function choice2(){
+	document.getElementById('starValue').value = 2;
+}
+function choice3(){
+	document.getElementById('starValue').value = 3;
+}
+function choice4(){
+	document.getElementById('starValue').value = 4;
+}
+function choice5(){
+	document.getElementById('starValue').value = 5;
+}
 
-	        var str = '부모창에서 넘어온 arr값 : ' + arr_1 + '<br />';
-	        str += '부모창에서 넘어온 arr2값 : ' + arr_2 + '<br />';
-	        document.write(str);   
-
-
-	</script>
+function submit(){
+	return confirm('수강후기는 한번 작성한 후 수정이 불가합니다. 작성하시겠습니까?');
+	window.close();
+}
+</script>
 </body>
 </html>

@@ -342,6 +342,8 @@ public class MypageController {
 		mv.setViewName("mypage/mypage-reviewPage");
 		Integer pro_no = Integer.parseInt(req.getParameter("p"));
 		mv.addObject("proName",pdservice.getOneInfo(pro_no).getProductName());
+		mv.addObject("pno",Integer.parseInt(req.getParameter("p")));
+		mv.addObject("writer",((MemberVO)session.getAttribute("login")).getUserEmail());
 		return mv;
 	}
 	
