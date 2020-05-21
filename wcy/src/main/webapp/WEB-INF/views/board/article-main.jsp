@@ -217,10 +217,23 @@
 						<input type="hidden" id="reseult-con" name="reseult-con" value="${condition}"/>
 						<input type="hidden" id="reseult-type" name="productType" value="3"/>
 					</div>
+					
+					<!-- 글쓰기 버튼 유저타입과 공지게시판에 따라 다르게 노출 -->
 					<div class="text-right">
-						<a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">
+						<c:if test = "${login == null}"> 
+                           <a class="btn btn-outline btn-sm" href="#">
+								<i class="fas fa-feather"></i><span style="color:#313D55;"> 로그인하셔야 글쓰기가 가능합니다.</span></a><br><br>
+                        </c:if>
+						<c:if test = "${login.userType == 2 && board.boardNo == 8}"> 
+                           <a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">
+								<i class="fas fa-feather"></i><span style="color:#313D55;"> 공지 작성</span></a><br><br>
+                        </c:if>
+                        <c:if test = "${(login.userType == 0 || login.userType == 1 || login.userType == 2) && board.boardNo != 8}"> 
+                           <a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">
 								<i class="fas fa-feather"></i><span style="color:#313D55;"> 글쓰기</span></a><br><br>
-						</div>
+                        </c:if>
+                    </div>
+                    
 					<div class="contents-box">
 						<table class="table table-hover shadow p-3 mb-5 bg-white rounded">
 							<thead class="article-table">

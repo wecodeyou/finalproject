@@ -232,7 +232,6 @@
 				<tr class="trHead">
 					<th>썸네일</th>
 					<th>상품번호</th>
-					<th>상품타입</th>
 					<th>상품이름</th>
 					<th>상품정보</th>
 					<th>상품가격</th>
@@ -244,7 +243,6 @@
 						<tr>
 							<td class="tdImg"><img src="${p.productThumb}" alt="${p.productThumb}" class="tdImgSize"/></td>
 							<td class="tdNo">${p.productNo}</td>
-							<td class="tdType">${p.productType}</td>
 							<td class="tdName">
 							<div class="tag">
 								<c:forEach var="entry" items="${tagOn}">
@@ -283,7 +281,6 @@
 				<tr class="trHead">
 					<th>썸네일</th>
 					<th>상품번호</th>
-					<th>상품타입</th>
 					<th>상품이름</th>
 					<th>상품정보</th>
 					<th>상품가격</th>
@@ -295,7 +292,6 @@
 						<tr>
 							<td class="tdImg"><img src="${p.productThumb}" alt="${p.productThumb}" class="tdImgSize"/></td>
 							<td class="tdNo">${p.productNo}</td>
-							<td class="tdType">${p.productType}</td>
 							<td class="tdName">
 								<div class="tag">
 									<c:forEach var="entry" items="${tagOff}">
@@ -335,7 +331,6 @@
 				<tr class="trHead">
 					<th>썸네일</th>
 					<th>상품번호</th>
-					<th>상품타입</th>
 					<th>상품이름</th>
 					<th>상품정보</th>
 					<th>상품가격</th>
@@ -347,7 +342,6 @@
 						<tr>
 							<td class="tdImg"><img src="${p.productThumb}" alt="${p.productThumb}" class="tdImgSize"/></td>
 							<td class="tdNo">${p.productNo}</td>
-							<td class="tdType">${p.productType}</td>
 							<td class="tdName">
 								<div class="tag">
 									<c:forEach var="entry" items="${tagP}">

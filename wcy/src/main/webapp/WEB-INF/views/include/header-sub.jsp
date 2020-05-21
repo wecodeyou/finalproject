@@ -237,7 +237,13 @@ body{font-family:'Nanum Gothic Coding', monospace;}
                </ul>
             </div>
          </li>
-         <li><a href="<c:url value='/board/list'/>">커뮤니티<span>&#x25BE;</span></a>
+         <li>
+         	<c:if test="${login.userType == 2}">
+         		<a href="<c:url value='/board/list'/>">커뮤니티<span>&#x25BE;</span></a>
+         	</c:if>
+         	<c:if test="${login == null || login.userType == 0 || login.userType == 1}">
+         		<a href="<c:url value='#'/>">커뮤니티<span>&#x25BE;</span></a>
+         	</c:if>
             <div class="sub-menu-1">
                 <ul>
                   
@@ -265,7 +271,7 @@ body{font-family:'Nanum Gothic Coding', monospace;}
          </li>
          
          <li><a href="<c:url value='/helpsite' />">도움이 되는 사이트</a></li>
-         <li><a href="#">공지사항</a></li>
+         <li><a href="<c:url value='/board/8'/>">공지사항</a></li>
          
 		</ul>
 	</nav> <!-- .wcy-secondary-nav -->

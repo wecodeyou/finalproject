@@ -4,9 +4,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- 파비콘 적용 -->
+<link rel="shortcut icon"
+	href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+
+<link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
+<!-- search / tag -->
+<link rel="stylesheet" href="<c:url value='/css/search.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/tag.css'/>">
-<title>게시글 작성</title>
+
+<!-- table을 위함  -->
+<link rel="stylesheet" href="<c:url value='/css/blog-post.css'/>">
+<link rel="stylesheet" href="<c:url value='/vendor/bootstrap/css/bootstrap.min.css'/>">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
+<title>WE CODE YOU | 글 쓰기</title>
 <!-- <script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -20,8 +40,24 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 <link rel="stylesheet" href="<c:url value='/resources/vendor/editor/css/editor.css' />" type="text/css" charset="utf-8"/>
 <script src="<c:url value='/resources/vendor/editor/js/editor_loader.js?environment=development' />" type="text/javascript" charset="utf-8"></script>
 
+<style>
+
+	.tx-content-container{
+		margin-left:10px !important;
+		margin-right:10px !important;
+	}
+	.wcy-main-content {
+		width:900px !important;
+	}
+	
+</style>
 </head>
 <body>
+
+<jsp:include page="../include/header-sub.jsp" />
+
+	<main class="wcy-main-content">
+		<div class="wcy-contents">
 	<form name="tx_editor_form" id="tx_editor_form" action="<c:url value='/board/${boardNo}/register' />" method="post">
 			<div>
 				# 게시글 제목: 
@@ -48,7 +84,8 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 					<input type="submit" id="article_register_btn" onclick="saveContent()" value="등록"/>
 			</div>	
 	</form>
-	
+</div>
+</main>	
 	
 <script type="text/javascript">
 $(function(){
@@ -118,8 +155,32 @@ $(function(){
 
 });
 	function saveContent() {
-		document.getElementById("sendTagList").value = sendTagList;
-		Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
+		//document.getElementById("sendTagList").value = sendTagList;
+		//console.log("sendTagList : " + document.getElementById("sendTagList"));
+		
+		var url1 =  "<c:url value = '/board/session' />";
+		var ArticleTagVO = {
+				sendTagList: sendTagList
+			}
+			$.ajax({
+				type: "POST",
+				url : url1,
+				headers:{
+					"Content-Type": "application/json"
+				},
+				dataType: "text",
+				data:JSON.stringify(ArticleTagVO),
+				success: function(data){
+					console.log("received output : " + data);
+					Editor.save(); // 이 함수를 호출하여 글을 등록하면 된다.
+					
+				},
+				error: function(request, status, error){
+					console.log("POST : /board/session 요청에 실패했습니다.")
+				}
+			}); /* end ajax */
+		
+		
 	}
 	/**
 	 * Editor.save()를 호출한 경우 데이터가 유효한지 검사하기 위해 부르는 콜백함수로
@@ -169,7 +230,7 @@ $(function(){
             // existStage는 현재 본문에 존재하는지 여부
             if (images[i].existStage) {
                 // data는 팝업에서 execAttach 등을 통해 넘긴 데이터
-                alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(images[i].data));
+                //alert('attachment information - image[' + i + '] \r\n' + JSON.stringify(images[i].data));
                 input = document.createElement('input');
                 input.type = 'hidden';
                 input.name = 'attach_image';
@@ -189,48 +250,36 @@ $(function(){
         return true;
 	}
 </script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 $(function(){
-	$("#article_register_btn").click(function(){
-		
-		const title = $("#title").val();
-		console.log(title);
-		
-		const content = $("#content").val();
-		console.log(content);
-
-		const writer = $("#writer").val();
-		console.log(writer);
-		
-		var data = {
-				articleTitle : title,
-				articleContent : content,
-				articleWriter : writer,
+	$("#register_tag").click(function(){
+		var url1 =  "<c:url value = '/board/session' />";
+		var ArticleTagVO = {
 				sendTagList: sendTagList
 			}
 			$.ajax({
 				type: "POST",
-				url : "/board/${boardNo}/register",
+				url : url1,
 				headers:{
 					"Content-Type": "application/json"
 				},
 				dataType: "text",
-				data:JSON.stringify(data),
+				data:JSON.stringify(ArticleTagVO),
 				success: function(data){
 					console.log("received output : " + data);
-					if(data === "register-success"){
-							location.href = "/board/${boardNo}";
-						}
+					alert("tag 등록 성공");
 					
 				},
 				error: function(request, status, error){
-					console.log("POST : /board/${boardNo}/register 요청에 실패했습니다.")
+					console.log("POST : /board/session 요청에 실패했습니다.")
 				}
 			}); /* end ajax */
 	});
 });
 
-</script> -->
+</script>
 <script src="<c:url value='/js/tag.js'/>"></script>
 </body>
+
+<jsp:include page="../include/footer.jsp" />
 </html>
