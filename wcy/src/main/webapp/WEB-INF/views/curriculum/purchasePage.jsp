@@ -117,7 +117,6 @@
 						</div>
 					</div>
 				</div> <!-- 왼쪽부분 -->
-<<<<<<< HEAD
 				<div class="classplRightBox"> <!-- 오른쪽 부분 : 수강생 정보-->
 					<div class="crSection01">
 						<div class="crtitle">수강생 정보</div>
@@ -150,19 +149,7 @@
 							</form>
 						</div>
 					</div>
-=======
-				<form action="<c:url value='/purchase/purchase'/>" method="post" id="submit">
-					<input type="hidden" value="" name="seat_no" id="seat_no" required="required"/>
-					<input type="hidden" name="pro_no" value="${pro_info.productNo}" />
-					<input type="hidden" name="pro_price" value="${pro_info.productPrice}" />
-					<input type="hidden" name="pro_type" value="${pro_info.productType}" />
-						
-					<button type="button" onclick="seatChk()">결제</button>
-				</form>
-				<div class="classplRightBox"> <!-- 오른쪽 부분 -->
-				
->>>>>>> branch 'master' of https://github.com/wecodeyou/finalproject.git
-				</div> <!-- 오른쪽 부분 -->
+				</div>
 			</div>
 		</div>
 	</main>

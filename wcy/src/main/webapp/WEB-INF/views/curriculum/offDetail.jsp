@@ -91,7 +91,7 @@
 								</tr>
 								<tr>
 									<td class="info-title">수강료</td>
-									<td class="info-content">${pro.productPrice}원</td>									
+									<td class="info-content">${pro.productPrice} point</td>									
 								</tr>
 								<tr>
 									<td class="info-title">교재</td>
@@ -127,43 +127,6 @@
 						<p class="mb40">
 							${pro.productDetail}
 						</p>
-					</div>
-					<h4 class="contents-title">커리큘럼</h4>
-					<div class="contents-text mb40">
-						<table class="curri-table">
-							<tr>
-								<td class="curri-table-title">1차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">2차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">3차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">4차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">5차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">6차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">7차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-							<tr>
-								<td class="curri-table-title">8차</td>
-								<td class="curri-table-content">각 차수에 해당하는 소제목 들어가는 자리</td>
-							</tr>
-						</table>
 					</div>
 				</div> <!-- detail-middle : end -->
 				<div class="detail-bottom"> <!-- detail-bottom : start -->
