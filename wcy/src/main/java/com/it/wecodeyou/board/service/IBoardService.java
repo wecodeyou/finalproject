@@ -22,4 +22,8 @@ public interface IBoardService {
 	
 	public BoardVO getInfoByNo(Integer boardNo);
 	
+	public Integer countReply(Integer articleNo);
+
+
+	
 }

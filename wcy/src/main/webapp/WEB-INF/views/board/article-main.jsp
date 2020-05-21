@@ -265,7 +265,7 @@
 													</c:if>
 												</c:forEach>
 												<a class="title_link"
-													href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle}</a>
+													href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle} ${countReplyList[status.index]}</a>
 											</div>
 										</td>
 										<td style="text-align:center;">${userNameList[status.index].userName}</td>

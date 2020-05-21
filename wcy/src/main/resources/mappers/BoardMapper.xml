@@ -39,5 +39,9 @@
    		WHERE board_no = #{boardNo}
    </select>
    
-
+	<select id = "countReply" resultType = "int">
+		SELECT COUNT(*)
+		FROM reply
+		WHERE reply_article_no = #{articleNo}
+	</select>
 </mapper>

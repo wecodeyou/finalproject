@@ -256,7 +256,7 @@
 									
 									<!-- Title -->
 									<span style="font-size:26px; font-weight:bold; padding-left:8px;">
-										${article.articleTitle}
+										${article.articleTitle}  댓글 수 ${countReply}
 									</span><br>
 									<hr>
 									<!-- Date/Time -->
