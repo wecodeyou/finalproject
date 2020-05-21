@@ -48,21 +48,37 @@
 						</div>
 						<div class="top-left-info">
 							<ul class="info-tag">
-								<li class="tag">#C언어</li>
-								<li class="tag">#프로그래밍</li>
-								<li class="tag">#온라인강의</li>
-								<li class="tag">#교재증정</li>
+								<c:if test = "${tag != null}"> 
+                     	 			<c:forEach var="t" items="${tag}" begin="0" end="4">
+										<li class="tag">${t}</li>
+									</c:forEach>
+                     	 		</c:if>
 								<c:if test = "${login.userType == 2}"> 
-								<li class="tag"><a id = "addtag" href = "javascript:openTag();"><i class="fas fa-plus-circle"></i></a></li>
-								<li class="tag" id = "inputtag" style ="display:none;">
-								<div>	
-									<div id="selectedTagList" ></div>
-									<input type = "text" id="text" placeholder="#해시태그">
-									<ul class="override" id="resultList"></ul>
-										<a href="<c:url value='/tag/searchByBtn'/>">TAG SEARCH by BTN</a> 
-									<input type="submit" id="add" value="등록"/>
-								</div></c:if>
+                           			<li class="tag"><a id = "addtag" href = "javascript:openTag();"><i class="fas fa-plus-circle"></i></a></li>
+                       			</c:if>
 							</ul>
+							
+						<!-- 모달 창 시작 -->
+                     	<div id="myModal-tag" class="modal-tag">
+                       		 <!-- 모달 내용 -->
+                        	<div class="modal_content-tag">
+                              <span class="close" id="modal_close_btn-tag">&times;</span>
+                           		<div class="modal_body-tag">
+                           			<div class="modal_title_large-tag" style="">해시태그를 등록해주세요 <i class="fas fa-tags"></i></div>
+                              			<input type = "text" id="text" style="margin-top:5px;width:200px;font-size:16px;"placeholder="#해시태그">
+                           			<div id="selectedTagList" ></div>
+                           			<ul class="override" id="resultList"></ul>
+                           		</div>
+                           		<div class="modal-footer-tag">
+                              		<input type="submit" class="btn btn-outline-primary btn-sm"id="add" value="등록"/>
+                           		</div>
+                       		 </div>
+                       		 <!-- 모달 내용 끝 -->
+                        	<div class="modal_layer-tag"></div>
+                    	</div>
+                     	<!-- 모달 창 끝 -->
+                     
+                     
 							<p>
 								<span class="info-title">강의평점</span>
 								<span class="info-content">${avg} 

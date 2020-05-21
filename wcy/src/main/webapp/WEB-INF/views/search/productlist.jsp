@@ -131,11 +131,11 @@
 	</div>
 	<!-- 검색창 끝-->
 	
-	<div style="text-align:center;">
+	<div style="text-align:right;">
 		<ul class="override" id="resultList"></ul>
 	</div>
 	<!-- 추천 태그 -->
-	<div style="text-align:center;">
+	<div style="text-align:right;">
 		<c:forEach var="p" items="${ptagList}" begin="1" end="5" varStatus="status">
       		<button type="button" class="search_tag" id="${p.tagNo}">${p.tagName}</button>
     	</c:forEach>

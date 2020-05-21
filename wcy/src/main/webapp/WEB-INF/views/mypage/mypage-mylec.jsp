@@ -106,9 +106,9 @@
 					<tbody>
 						<c:forEach var = "c" items = '${pro_lec_list}' varStatus ="status" >
 						<tr>
-							<td style="text-align:center;"><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>">${c.productName}</a></td>
+							<td style="text-align:center;">${c.productName}</td>
 							<td style="text-align:center;">${days[status.index]}</td>
-							<td style="text-align:center;"><button type="button" >입장하기</button></td>
+							<td style="text-align:center;"><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>"><button type="button" >입장하기</button></a></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -144,7 +144,7 @@
 						<tr>
 							<td style="text-align:center;">${off.productName}</td>
 							<td style="text-align:center;">
-								<button type="button" >입장하기</button>
+								<button type="button" onclick="location.href = '/session/participant/join/${off.productNo}'">입장하기</button>
 							</td>
 						</tr>					
 					</c:forEach>

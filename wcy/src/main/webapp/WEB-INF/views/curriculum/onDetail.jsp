@@ -46,13 +46,14 @@
                   </div>
                   <div class="top-left-info">
                      <ul class="info-tag">
-                        <li class="tag">#C언어</li>
-                        <li class="tag">#프로그래밍</li>
-                        <li class="tag">#온라인강의</li>
-                        <li class="tag">#교재증정</li>
+                     	 <c:if test = "${tag != null}"> 
+                     	 	<c:forEach var="t" items="${tag}" begin="0" end="4">
+								<li class="tag">${t}</li>
+							</c:forEach>
+                     	 </c:if>
+                     	 
                         <c:if test = "${login.userType == 2}"> 
                            <li class="tag"><a id = "addtag" href = "javascript:openTag();"><i class="fas fa-plus-circle"></i></a></li>
-                           
                         </c:if>
                      </ul>
 
@@ -69,7 +70,6 @@
                            <input type = "text" id="text" style="margin-top:5px;width:200px;font-size:16px;"placeholder="#해시태그">
                            <div id="selectedTagList" ></div>
                            <ul class="override" id="resultList"></ul>
-                           
                               
                            </div>
                            <div class="modal-footer-tag">
