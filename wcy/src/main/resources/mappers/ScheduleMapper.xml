@@ -27,9 +27,18 @@
 		(schedule_off_no,schedule_row_no,schedule_title,schedule_start_date,schedule_end_date,schedule_detail,schedule_bg_color)
 		VALUES
 		(#{scheduleOffNo},#{scheduleRowNo},#{scheduleTitle},#{scheduleStartDate},#{scheduleEndDate},#{scheduleDetail},#{scheduleBgColor})
-	
 	</insert> 
 
+	<select id = "getOneSchedule" resultMap = "ScheduleMap">	
+		SELECT *
+		FROM schedule
+		WHERE schedule_off_no = #{offNo}
+		ORDER BY schedule_row_no;
+	
+	</select>
+	
+	
+	
 
 
 

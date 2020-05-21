@@ -45,6 +45,12 @@ public class ScheduleService implements IScheduleService{
 		
 	}
 
+	@Override
+	public ArrayList<ScheduleVO> getOneSchedule(OffVO ovo) throws SQLException {
+		// TODO Auto-generated method stub
+		return dao.getOneSchedule(ovo);
+	}
+
 	
 	
 }
