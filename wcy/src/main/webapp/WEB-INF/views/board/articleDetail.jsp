@@ -318,7 +318,7 @@
            											 	<small>
            											 		<input type="submit" id="post-reply" class="btn-sm btn-outline-default"
                								 				style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; "/>
-               								 				등록<i class="far fa-check-circle"></i></small>
+               											</small>
                								 			</form>
             										</div>
             											<br><br>
