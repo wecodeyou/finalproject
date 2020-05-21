@@ -99,6 +99,11 @@
 	display:inline;height:41px;width:5%;
 	border-radius: 5px;
 }
+body span {
+    display: block;  
+}
+
+div p {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width:450px;height: 20px;}
 </style>
 
 </head>
@@ -209,8 +214,10 @@
 									</c:forEach>
 									<a class="title_link" href="<c:url value="/board/article/${a.articleNo}"/>">${a.articleTitle}</a>
 								</div>
-							</td>
-							<td class="tdDetail"><span>${a.articleContent}</span></td>
+							</td> 
+							<td class="tdDetail">
+								<c:set var = "contentVal" value='${a.articleContent.replaceAll("\\\<.*?\\\>","")}' />
+								<p>${contentVal}</p></td>
 							<td class="tdDate">${a.articleCreatedAt}</td>
 						</tr>
 					</c:forEach>
@@ -259,7 +266,7 @@
 								<a class="title_link" href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a>
 							</div>
 							</td>
-							<td class="tdDetail">${p.productDetail}</td>
+							<td class="tdDetail"><p>${p.productDetail}</p></td>
 							<td class="tdPrice">${p.productPrice}</td>
 							<td class="tdDate">${p.productCreatedAt}</td>
 						</tr>
@@ -307,7 +314,7 @@
 									<a class="title_link" href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a>
 								</div>
 							</td>
-							<td class="tdDetail">${p.productDetail}</td>
+							<td class="tdDetail"><p>${p.productDetail}</p></td>
 							<td class="tdPrice">${p.productPrice}</td>
 							<td class="tdDate">${p.productCreatedAt}</td>
 						</tr>
@@ -357,7 +364,7 @@
 									<a class="title_link" href="<c:url value="/curriculum/sub?s=${p.productName}"/>">${p.productName}</a>
 								</div>
 							</td>
-							<td class="tdDetail">${p.productDetail}</td>
+							<td class="tdDetail"><p>${p.productDetail}</p></td>
 							<td class="tdPrice">${p.productPrice}</td>
 							<td class="tdDate">${p.productCreatedAt}</td>
 						</tr>
