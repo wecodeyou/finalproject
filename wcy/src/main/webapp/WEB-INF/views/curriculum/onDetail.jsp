@@ -57,27 +57,27 @@
                      </ul>
 
                      <!-- 모달 창 시작 -->
-                     <div id="myModal" class="modal">
+                     <div id="myModal-tag" class="modal-tag">
                         <!-- 모달 내용 -->
-                        <div class="modal_content">
+                        <div class="modal_content-tag">
                            
-                              <span class="close" id="modal_close_btn">&times;</span>
+                              <span class="close" id="modal_close_btn-tag">&times;</span>
                            
-                           <div class="modal_body">
-                           <div class="modal_title_large" style="">해시태그를 등록해주세요 <i class="fas fa-tags"></i></div>
-                              <div id="selectedTagList" ></div>
-                           <input type = "text" id="text" style="width:200px;font-size:16px;"placeholder="#해시태그">
-                           
+                           <div class="modal_body-tag">
+                           <div class="modal_title_large-tag" style="">해시태그를 등록해주세요 <i class="fas fa-tags"></i></div>
+                              
+                           <input type = "text" id="text" style="margin-top:5px;width:200px;font-size:16px;"placeholder="#해시태그">
+                           <div id="selectedTagList" ></div>
                            <ul class="override" id="resultList"></ul>
                            
                               
                            </div>
-                           <div class="modal-footer">
-                              <input type="submit" id="add" value="등록"/>
+                           <div class="modal-footer-tag">
+                              <input type="submit" class="btn btn-outline-primary btn-sm"id="add" value="등록"/>
                            </div>
                         </div>
                         <!-- 모달 내용 끝 -->
-                        <div class="modal_layer"></div>
+                        <div class="modal_layer-tag"></div>
                      </div>
                      <!-- 모달 창 끝 -->
 
@@ -225,16 +225,16 @@
 
 <script>
 
-var myModal = document.getElementById("myModal");
+var myModal = document.getElementById("myModal-tag");
 
-var modal_close_btn = document.getElementById("modal_close_btn");
+var modal_close_btn = document.getElementById("modal_close_btn-tag");
 
 modal_close_btn.onclick = function(){
    myModal.style.display = "none";
 }
 
 function openTag() {
-    var myModal = document.getElementById("myModal");
+    var myModal = document.getElementById("myModal-tag");
      if(myModal.style.display == 'none'){
         myModal.style.display = 'block';
      }else {
@@ -277,34 +277,34 @@ function logincheck(){
  } */
  
  $("#add").click(function(){
-       
-       var productInfo = {
-               productNo: ${pro.productNo},
-               sendTagList: sendTagList
-            };
-       
-       $.ajax({
-            type: "POST",
-            url : "/admin/addtag",
-            headers:{
-               "Content-Type": "application/json"
-            },
-            dataType: "text",
-            data:JSON.stringify(productInfo),
-            success: function(data){
-               console.log("received output : " + data);
-               if(data === "input_success"){
-                  console.log("입력완료")
-                  location.reload();
-               }
-               
-            },
-            error: function(request, status, error){
-               console.log("POST : /product/register 요청에 실패했습니다.")
+    
+	    var productInfo = {
+	            productNo: ${pro.productNo},
+	            sendTagList: sendTagList
+	         };
+    
+    $.ajax({
+         type: "POST",
+         url : "/admin/addtag",
+         headers:{
+            "Content-Type": "application/json"
+         },
+         dataType: "text",
+         data:JSON.stringify(productInfo),
+         success: function(data){
+            console.log("received output : " + data);
+            if(data === "input_success"){
+               console.log("입력완료")
+               location.reload();
             }
-         }); /* end ajax */
-       
-    });
+            
+         },
+         error: function(request, status, error){
+            console.log("POST : /product/register 요청에 실패했습니다.")
+         }
+      }); /* end ajax */
+    
+ });
 
 
 </script>

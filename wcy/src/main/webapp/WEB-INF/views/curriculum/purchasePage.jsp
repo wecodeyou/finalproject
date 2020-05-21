@@ -175,9 +175,6 @@
 		        Form.submit();
 		    }
 		}
-
-
-	
 	</script>
 
 </body>

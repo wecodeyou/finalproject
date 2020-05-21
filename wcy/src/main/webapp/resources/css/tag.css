@@ -27,6 +27,7 @@
 /* btnTag 하나도 안 적용됨*/
 .btnTag { 
 	margin: 5px;
+	margin-top:3px;
 	background-color: light-blue;
 	/* font-color: #3d6cec !important; */
 	opacity: 0.7;
