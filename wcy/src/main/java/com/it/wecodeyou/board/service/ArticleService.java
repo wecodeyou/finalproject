@@ -121,6 +121,12 @@ public class ArticleService implements IArticleService {
 		return dao.NotiList(articleBoardNo);
 	}
 
+	@Override
+	public void increaseView(Integer articleNo) {
+		dao.increaseView(articleNo);
+		
+	}
+
 
 	
 }

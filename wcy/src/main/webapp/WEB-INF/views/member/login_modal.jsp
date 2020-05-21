@@ -368,7 +368,8 @@ $(function(){
 	                  $('#loginUserPw').focus();
 	                  chk2 = false;
 	               } else if(data === "loginSuccess") {
-	                  self.location="/";
+	                  //self.location="/";
+	            	   location.reload();
 	               }
 	            },
 	            error: function(){

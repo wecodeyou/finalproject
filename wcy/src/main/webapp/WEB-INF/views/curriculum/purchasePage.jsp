@@ -128,8 +128,8 @@
                   <div class="crSection02">
                      <div class="crtitle">내 포인트</div>
                      <div class="crContent">
-                        <p class="crcName">${login.userPoint}<span class="small">point</span></p>
-                        <button class="btn btn-outline-warning" style="width: 90px;height: 30px;font-size: 13px;letter-spacing: -1.5px;margin-bottom: 10px;margin-right: 14px;">포인트 충전</button>
+                        <p class="crcName">${login.userPoint}<span class="small">point</span></p>	<a href="<c:url value = '/pay/'/>"  onclick ="window.open(this.href, '_blank', 'width=880,height=600,toolbars=no,scrollbars=no,resizable=no,status=no,location=no'); return false;">
+                        <button class="btn btn-outline-warning" style="width: 90px;height: 30px;font-size: 13px;letter-spacing: -1.5px;margin-bottom: 10px;margin-right: 14px;">포인트 충전</button></a>
                      </div>
                   </div>
                   <div class="crSection04">

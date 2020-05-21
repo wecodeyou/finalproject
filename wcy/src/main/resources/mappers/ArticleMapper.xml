@@ -61,7 +61,12 @@
    		FROM article
    		WHERE article_no = #{articleNo}
    </select>
-   
+   <update id="increaseView">
+ 		UPDATE
+ 		article
+ 		SET article_clicks = article_clicks + 1
+		WHERE article_no = #{articleNo}  	
+   </update>   
     <select id="getArticleListPaging" resultMap="ArticleMap">
    		SELECT * FROM article
    		ORDER BY article_no DESC

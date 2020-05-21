@@ -438,6 +438,15 @@
 				<!-- <div class="page-width" style="text-align:left;">
 					<h2>온라인 강의</h2><br>
 				</div> -->
+				 <a href="<c:url value='/product/registerMain' />">&nbsp;상품 등록&nbsp;</a>
+				
+				
+				
+				
+				
+				
+				
+				
 				<article class="curriculum">
 					<div class="page-width">
 					<h2 class="h3 mb-0 text-gray-800">

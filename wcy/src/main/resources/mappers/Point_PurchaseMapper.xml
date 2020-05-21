@@ -39,9 +39,9 @@
 <insert id="insertPointPurchase">
 	INSERT 
 	INTO point_purchase
-	(point_purchase_user_no, point_purchase_id, point_purchase_amount)
+	(point_purchase_user_no, point_purchase_id,point_purchase_purchased_at, point_purchase_amount)
 	VALUES
-	(#{pointPurchaseUserNo},#{pointPurchaseId},#{pointPurchaseAmount})
+	(#{pointPurchaseUserNo},#{pointPurchaseId},#{pointPurchasePurchasedAt},#{pointPurchaseAmount})
 
 </insert>
 
@@ -54,6 +54,13 @@
 
 </update>
 
+<select id = "getPoint">
+
+	SELECT user_point
+	FROM user
+	WHERE user_no = #{pointPurchaseUserNo};
+
+</select>
 
 
 <!-- <insert id="insertPointPurchase">

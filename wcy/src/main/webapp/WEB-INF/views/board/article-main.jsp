@@ -220,7 +220,7 @@
 					
 					<!-- 글쓰기 버튼 유저타입과 공지게시판에 따라 다르게 노출 -->
 					<div class="text-right">
-						<c:if test = "${login == null}"> 
+						<c:if test = "${login == null && board.boardNo != 8}"> 
                            <a class="btn btn-outline btn-sm" href="#">
 								<i class="fas fa-feather"></i><span style="color:#313D55;"> 로그인하셔야 글쓰기가 가능합니다.</span></a><br><br>
                         </c:if>
@@ -231,6 +231,9 @@
                         <c:if test = "${(login.userType == 0 || login.userType == 1 || login.userType == 2) && board.boardNo != 8}"> 
                            <a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">
 								<i class="fas fa-feather"></i><span style="color:#313D55;"> 글쓰기</span></a><br><br>
+                        </c:if>
+                         <c:if test = "${(login.userType == 0 || login.userType == 1 || login == null) && board.boardNo == 8}"> 
+                           <br><br>
                         </c:if>
                     </div>
                     
@@ -267,7 +270,7 @@
 										</td>
 										<td style="text-align:center;">${userNameList[status.index].userName}</td>
 										<td style="text-align:center;">
-											<fmt:formatDate value="${a.articleCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></td>
+											<fmt:formatDate value="${a.articleCreatedAt}" pattern="yyyy-MM-dd  kk:mm" /></td>
 										<td style="text-align:center;">${a.articleClicks}</td>
 									</tr>
 								</c:forEach>

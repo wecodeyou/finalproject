@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,7 +93,7 @@
 				<ul class="pointList">
 					<li>
 						<div class="pointIn">
-							<a href="#">
+							<a href="<c:url value = '/pay/'/>"  onclick ="window.open(this.href, '_blank', 'width=880,height=600,toolbars=no,scrollbars=no,resizable=no,status=no,location=no'); return false;">
 							<img src="<c:url value='/img/mypage/pointpurchase.PNG'/>" alt="" />
 							<div class="pointBtn">
 								충전하기
@@ -140,9 +141,9 @@
 					<tbody>
 					<c:forEach var="p" items="${p_list}">
 						<tr>
-							<td style="text-align:center;">${p.pointPurchasePurchasedAt}</td>
+							<td style="text-align:center;"><fmt:formatDate value="${p.pointPurchasePurchasedAt}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
 							<td >포인트 충전</td>
-							<td style="text-align:center;">+${p.pointPurchaseAmount}</td>
+							<td style="text-align:center;">+<fmt:formatNumber type="number" maxFractionDigits="3" value="${p.pointPurchaseAmount}" /></td>
 							<td style="text-align:center;">충전</td>
 						</tr>
 					</c:forEach>
@@ -170,9 +171,9 @@
 					<tbody>
 						<c:forEach var="m" items="${m_list}">
 						<tr>
-							<td style="text-align:center;">${m.purchaseDate}</td>
+							<td style="text-align:center;"><fmt:formatDate value="${m.purchaseDate}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
 							<td >${m.purchaseProName}</td>
-							<td style="text-align:center;">-${m.purchaseAmount}</td>
+							<td style="text-align:center;">-<fmt:formatNumber type="number" maxFractionDigits="3" value="${m.purchaseAmount}" /></td>
 							<td style="text-align:center;">사용</td>
 						</tr>
 						</c:forEach>
