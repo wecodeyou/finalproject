@@ -30,13 +30,13 @@
 
 	<main class="wcy-main-content">
 		<div class="wcy-contents">
-			<div class="page-width">
+			<div class="page-width" >
 				<h1>${c.engName}</h1>
 				<h2>[ <span>${c.korName}에 관련된 과정</span> ]</h2>
 			</div>
 			
 			<article class="curriculum">
-				<div class="page-width">
+				<div class="page-width   shadow rounded">
 					<h5 class="curri-title">${c.engName}</h5>
 					<ul class="curri-list">
 						

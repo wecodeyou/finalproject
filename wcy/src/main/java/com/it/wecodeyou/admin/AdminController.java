@@ -20,11 +20,11 @@ import com.it.wecodeyou.interest.model.InterestReportVO;
 import com.it.wecodeyou.interest.sevice.IInterestService;
 import com.it.wecodeyou.member.model.MemberVO;
 import com.it.wecodeyou.member.service.IMemberService;
-import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.off.model.OffProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.purchase.model.PurchaseResultVO;
 import com.it.wecodeyou.purchase.service.IPurchaseService;
+import com.it.wecodeyou.tag.service.ITagService;
 
 @RestController
 @RequestMapping("/admin")
@@ -38,6 +38,8 @@ public class AdminController {
 	private IInterestService interestService;
 	@Autowired 
 	private IProductService productService;
+	@Autowired
+	private ITagService tagService;
 
 	
    	//admin page 호출
