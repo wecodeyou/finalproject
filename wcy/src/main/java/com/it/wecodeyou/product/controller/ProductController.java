@@ -79,4 +79,9 @@ public class ProductController {
 		  return mv;
 	  }
 	
+	  @GetMapping("/registerMain")
+	  public ModelAndView registerMain(ModelAndView mv) {
+		  mv.setViewName("/product/registerMain");
+		  return mv;
+	  }
 }

@@ -66,7 +66,7 @@
                               <span class="close" id="modal_close_btn-tagoff">&times;</span>
                            		<div class="modal_body-tagoff">
                            			<div class="modal_title_large-tagoff" style="">해시태그를 등록해주세요 <i class="fas fa-tags"></i></div>
-                              			<input type = "text" id="text" style="margin-top:5px;width:200px;font-size:16px;"placeholder="#해시태그">
+                              			<input type = "text" id="text" style="margin-top:5px;width:200px;font-size:16px;padding-left: 5px;"placeholder="#해시태그">
                            			<div id="selectedTagList" ></div>
                            			<ul class="override" id="resultList"></ul>
                            		</div>
