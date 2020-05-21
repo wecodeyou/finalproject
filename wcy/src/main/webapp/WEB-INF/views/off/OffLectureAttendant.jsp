@@ -74,6 +74,7 @@
     </div>
     <div>
         <button type="button" id="submit-q" disabled class="btn btn-dark" style="margin-left: 20px;">질문 전송</button>
+      	enter 활성화 (shift+enter를 눌러 개행)<input type="checkbox" name="" id="enterAct" value="true" />	
     </div>
 	
 	
@@ -101,13 +102,35 @@
                 }  	
             });
         });
+      
+        String.prototype.replaceAll = function(org, dest) {
+            return this.split(org).join(dest);
+        }// replaceAll 만들기
+        
         $('#submit-q').click(function(e){
     		var content = $('#question-input').val();
+    		content = content.replaceAll("\n", "<br>"); // 줄바꿈 적용
             client.send('/lecture/message/note', {}, JSON.stringify({id: roomId, type:'QUESTION', message: content, writer: member})); 
-
+            document.getElementById("question-input").value=''; // 보내고 나면 창비우기      
         }); 
+            
+        $("input:checkbox[id=enterAct]").change(function() {
+        	if($("input:checkbox[id=enterAct]").is(":checked") == true){// 체크박스 여부 
+    	        $('#question-input').keypress(function(e){   
+    	            if(e.keyCode ==13){	// defalut = only enter
+    	    			if (!e.shiftKey){ // shift+enter	 
+    	 					$('#submit-q').click();
+    						return false;    			
+    					}
+    	      	  	}   
+    	       });       
+            }else{ // 체크가 안돼있다면
+            	$('#question-input').unbind(); // 이벤트 해제
+            }
+        });
     });
 
+    
 
 </script>
 </body>
