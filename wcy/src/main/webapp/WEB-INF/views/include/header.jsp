@@ -381,7 +381,7 @@ body{font-family:'Nanum Gothic Coding', monospace;}
          </li>
          
          <li><a href="<c:url value='/helpsite' />">도움이 되는 사이트</a></li>
-         <li><a href="<c:url value='/board/8'/>">공지사항</a></li>
+         <li><a href="#">공지사항</a></li>
          
       </ul>
    </nav> <!-- .wcy-secondary-nav -->
