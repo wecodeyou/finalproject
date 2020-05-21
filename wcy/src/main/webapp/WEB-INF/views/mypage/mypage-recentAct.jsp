@@ -104,7 +104,7 @@
 				</div>
 				<table class="table_normal">
 					<colgroup>
-						<col width="15%">
+						<col width="20%">
 						<col width="*">
 						<col width="25%">
 						<col width="15%">
@@ -152,7 +152,7 @@ $( document ).ready(function() {
 				</div>
 				<table class="table_normal">
 					<colgroup>
-						<col width="15%">
+						<col width="20%">
 						<col width="15%">
 						<col width="*%">
 						<col width="15%">
@@ -181,7 +181,7 @@ $( document ).ready(function() {
 				</div>
 				<table class="table_normal">
 					<colgroup>
-						<col width="15%">
+						<col width="20%">
 						<col width="*">
 						<col width="25%">
 					</colgroup>

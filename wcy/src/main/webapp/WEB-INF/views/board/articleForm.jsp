@@ -58,30 +58,26 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 
 	<main class="wcy-main-content">
 		<div class="wcy-contents">
-	<form name="tx_editor_form" id="tx_editor_form" action="<c:url value='/board/${boardNo}/register' />" method="post">
-			<div>
-				# 게시글 제목: 
-				<input type="text" name="articleTitle" id="title"/>
+	<form name="tx_editor_form" id="tx_editor_form" action="<c:url value='/board/${boardNo}/register' />" method="post" style="margin-top: 30px;">
+			<div style="text-align: left; margin-bottom: 10px; width: 100%;">
+				<input type="text" name="articleTitle" class="form-control form-rounded" id="title" style="width: 100%;height: 30px;" placeholder="제목"/>
 			</div>
 			<div>
 <!-- 				# : 내용
 				<textArea  name="article_content"id="content" col="50" row="15"></textArea> -->
  				<jsp:include page="/WEB-INF/views/include/editorFrame.jsp"></jsp:include>
 			</div>
-			<div>
-				# 글쓴이(나중에 세션처리): 
-				<input type="text" name="articleWriter" id="writer" value="${login.userNo}" readonly/>
-			</div>
-			<div>
-					<input type="text" id="text" placeholder="#해시태그">
+			
+			<div class="hashtagbottom">
+				<h4 style="font-size:17px; font-weight:600;">해시태그 등록</h4>
+				<hr>
+					<div style="display:inline-flex;">
+					<input type="text" id="text" placeholder="#해시태그" style="height:38px; width:250px;">
+					<button type="submit" id="article_register_btn" onclick="saveContent()" class="btn btn-outline-dark" style="margin-left: 25px;">등록</button>
+					</div>
 					<ul class="override" id="resultList" name="resultList"></ul>
-			</div>
-			<div>
 				<div id="selectedTagList"></div> 
 				<input type="hidden" name="sendTagList" id="sendTagList" />
-			</div>
-			<div>
-					<input type="submit" id="article_register_btn" onclick="saveContent()" value="등록"/>
 			</div>	
 	</form>
 </div>
