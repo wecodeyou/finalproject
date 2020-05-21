@@ -187,7 +187,12 @@
 													[온라인] ${m.productName}
 												</div>
 												<a class="rBtn reviewWriteBtn" > <!-- 수강후기 작성 -->
-													<button class="rBtn reviewWriteBtn" title="수강후기 작성" onclick="open_window(this)" value="${m.productNo}">수강후기 작성</button>
+													<c:if test="${m.isWrite == 0}">
+														<button class="rBtn reviewWriteBtn" title="수강후기 작성" onclick="open_window(this)" value="${m.productNo}" id="window_btn${m.productNo}">수강후기 작성</button>
+													</c:if>
+													<c:if test="${m.isWrite == 1}">
+														<button class="rBtn reviewWriteBtn" title="" disabled="disabled">가자~ 이미 썼다네~</button>																			
+													</c:if>
 													<i class="fas fa-angle-right"></i>
 												</a>
 												<a href="<c:url value='/mypage/recentAct' />" title="수강후기 보기" class="rBtn reviewLookBtn" style="margin-top:50px;"> <!-- 내가 작성한 수강후기 보기 -->
