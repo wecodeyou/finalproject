@@ -232,6 +232,9 @@
                            <a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">
 								<i class="fas fa-feather"></i><span style="color:#313D55;"> 글쓰기</span></a><br><br>
                         </c:if>
+                         <c:if test = "${(login.userType == 0 || login.userType == 1 || login == null) && board.boardNo == 8}"> 
+                           <br><br>
+                        </c:if>
                     </div>
                     
 					<div class="contents-box">

@@ -101,6 +101,13 @@
    		WHERE article_writer = #{articleWriter}
 	</select>
 	
+	<!-- 한 게시판의 아티클 전부 -->
+   <select id="NotiList" resultMap="ArticleMap">
+   		SELECT * 
+   		FROM article
+		WHERE article_board_no = #{boardNo}
+   </select>
+	
 <!--    LIKE절 DBMS별
    # MySql
 SELECT * FROM TABLE_NAME

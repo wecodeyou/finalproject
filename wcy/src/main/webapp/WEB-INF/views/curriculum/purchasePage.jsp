@@ -112,7 +112,7 @@
                      수업 일수별 환불은 진행되지 않습니다.<br><br>
                   </div>
                   <div class="refundchkBox checkbox icheck-alizarin">
-                     <input type="checkBox" title="위 환불, 변경 규정 안내를 확인하였습니다." id="refundchk">
+                     <input type="checkBox" title="위 환불, 변경 규정 안내를 확인하였습니다." id="refundchk" value="true">
                      <label for="refundchk"><span style="font-size: 14px;">위 환불, 변경 규정 안내를 확인하였습니다.</span></label>
                   </div>
                </div>
@@ -139,13 +139,13 @@
                      </div>
                   </div>
                   <div class="crSection05">
-                     <form action="<c:url value='/purchase/purchase'/>" method="post">
+                     <form action="<c:url value='/purchase/purchase'/>" method="post" id="purchaseForm">
                         <input type="hidden" value="" name="seat_no" id="seat_no"/>
                         <input type="hidden" name="pro_no" value="${pro_info.productNo}" />
                         <input type="hidden" name="pro_price" value="${pro_info.productPrice}" />
                         <input type="hidden" name="pro_type" value="${pro_info.productType}" />
                            
-                        <button class="btn btn-danger" style="width: 100%;height: 50px;">수강신청 결제하기 ></button>
+                        <button type="button" class="btn btn-danger" style="width: 100%;height: 50px;" onclick="Chk()">수강신청 결제하기 ></button>
                      </form>
                   </div>
                </div>
@@ -165,17 +165,27 @@
     };
     
     
-    function seatChk(){
-          var Form = document.getElementById('submit');
+    function Chk(){
+          var Form = document.getElementById('purchaseForm');
           var seat = document.getElementById('seat_no').value;
           
           if(seat == null || seat == ""){
               alert("좌석 선택해주세요.")
-          }else{
-              Form.submit();
+          }else{// 좌석은 선택한 상태일때
+        	  if($(':input:checkbox[id=refundchk]:checked').val() != 'true'){// 체크박스 여부
+	              alert("약관에 동의해 주세요.");        		  
+        	  }else{
+	        	  if((${login.userPoint}-${pro_info.productPrice}) < 0){// 포인트가 충분한지 여부
+	              	alert("포인트가 부족합니다.");        		  
+	        	  }else{
+	              	Form.submit();        		  
+	        	  }
+        	  }        			
           }
       }
    </script>
+   
+   
 
 </body>
    <jsp:include page="../include/footer.jsp" />
