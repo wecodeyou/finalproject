@@ -60,11 +60,11 @@
 		</div>
 		<div style="line-height: 2.5;">
 	  <input type='radio' name='radiop' value='100' style="margin-right: 14px;" checked/>100 P(테스트용) <br>
-	  <input type='radio' name='radiop' value='10000' style="margin-right: 14px;"/>10000 P <br>
-	  <input type='radio' name='radiop' value='50000' style="margin-right: 14px;"/>50000 P <br>
-	  <input type='radio' name='radiop' value='100000' style="margin-right: 14px;"/>100000 P <br>
-	  <input type='radio' name='radiop' value='100000' style="margin-right: 14px;"/>200000 P <br>
-	  <input type='radio' name='radiop' value='100000' style="margin-right: 14px;"/>300000 P <br>
+	  <input type='radio' name='radiop' value='10000' style="margin-right: 14px;"/>10,000 P <br>
+	  <input type='radio' name='radiop' value='50000' style="margin-right: 14px;"/>50,000 P <br>
+	  <input type='radio' name='radiop' value='100000' style="margin-right: 14px;"/>100,000 P <br>
+	  <input type='radio' name='radiop' value='100000' style="margin-right: 14px;"/>200,000 P <br>
+	  <input type='radio' name='radiop' value='100000' style="margin-right: 14px;"/>300,000 P <br>
 		</div>
 	</div>
 	<div class="inputs">

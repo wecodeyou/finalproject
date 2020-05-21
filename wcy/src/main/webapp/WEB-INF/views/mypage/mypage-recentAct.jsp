@@ -190,7 +190,8 @@
 							<c:forEach var="r" items="${s_list}">
 							<tr>
 								<td style="text-align:center;"><fmt:formatDate value="${r.reviewCreatedAt}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
-								<td ><p class="text_context" >${r.content}</p></td>
+								<td ><p class="text_context" ><c:set var = "contentVal" value='${r.content.replaceAll("\\\<.*?\\\>","")}' />
+								<p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width:650px;height: 20px;">${contentVal}</p></p></td>
 								<td style="text-align:center;">${r.reviewProductName}</td>
 								<td style="text-align:center;">
 								<span class="star">
@@ -211,6 +212,7 @@ $( document ).ready(function() {
 		$(s).addClass("on");
 	}
 	return false;
+	
 });
 </script>
 						</c:forEach>
