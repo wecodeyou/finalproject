@@ -135,9 +135,10 @@ public class BoardController {
 	public ModelAndView registerArticle(@PathVariable Integer boardNo, ArticleTagVO atvo, ModelAndView mv, HttpSession session) {
 		System.out.println(atvo.toString());
 		ArticleVO avo = new ArticleVO();
+		MemberVO mvo = (MemberVO)session.getAttribute("login");
 		avo.setArticleTitle(atvo.getArticleTitle());
 		avo.setArticleContent(atvo.getArticleContent());
-		avo.setArticleWriter(atvo.getArticleWriter());
+		avo.setArticleWriter(mvo.getUserNo());
 		avo.setArticleBoardNo(boardNo);
 		
 		//tag number list
