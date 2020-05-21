@@ -48,7 +48,7 @@
 
 .r_content {
 	margin-top: 5px;
-	margin-bottom: 14px;
+	margin-bottom: 4px;
 	font-size: 15px;
 }
 
@@ -85,6 +85,7 @@
 
 .wcy-main-content {
 	width: 1190px !important;
+	margin-left:80px;
 	/* 	margin-left:0px !important;
 	margin-right:0px !important; */
 }
@@ -202,7 +203,7 @@
 
 .contents-box-article {
 	width: 100%;
-	height: 350px;
+	height: auto;
 	padding: 8px;
 	box-sizing: border-box;
 	overflow-x: hidden;
@@ -246,7 +247,7 @@
 						<div class="container" style="text-align:left !important;">
 							<div class="row">
 								<!-- Post Content Column -->
-								<div class="col-lg-8" style="padding-top:10px;">
+								<div class="col-lg-8" style="padding-top:5px;margin-left: -23px;">
 									
 									<!-- Author -->
 									<p style="text-align:left; font-size:16px;padding-left:8px; color:#bf8fbe">
@@ -271,6 +272,70 @@
 									</div>
 									<hr>
 
+									<!-- Single Comment -->
+									<c:forEach var="r" items="${replyList}" varStatus = "status">
+     									<c:choose>
+     										
+        									<c:when test="${r.replyOrder == 0}">
+        										<c:if test="${status.index ne 0 }">
+        											<hr>
+        										</c:if>
+        									
+        										<div class="media mb-4">
+													<img class="d-flex mr-3 rounded-circle" src="${profileImg[status.index]}" alt="" width = "60px" height = "60px">
+        										 		<div class="media-body">
+            												<div class="r_writer">${r.userName} <i class="far fa-comment-dots"></i></div>
+            												<p class="r_content">${r.replyContent}</p>
+            													
+            														<div style="text-align:right; margin-bottom:5px;">
+            															<small> <fmt:formatDate value="${r.replyCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></small>
+           											 					<small> <a href="javascript:showReplyForm('.repl${r.replyNo}')" 
+           											 							class="btn btn-outline-primary btn-xs" style="font-size: 12px;font-weight: bold;padding: 3px; margin: 0px 0 3px 5px;">답글</a></small>
+            														</div>
+            														<c:set var = "indexNo" value = "${status.index}" />
+            													<hr style="margin-bottom: 0 !important;margin-top: 0 !important;margin-left: -75px !important;">
+            											</div><!-- media body -->
+            									</div><!-- media mb-4s -->
+            									
+            									
+        										 <div class="media mb-4 hidden repl${r.replyNo}"  style="margin-left: 57px;" >
+													<%-- <img class="d-flex mr-3 rounded-circle" src="${login.userProfileImg}" alt="" width = "60px" height = "60px"> --%>
+        										 	<div class="media-body">
+            											<div class="r_writer">${r.userName}님에게 답글 남기기 <i class="far fa-comment-dots"></i></div>
+            											<div style="text-align:right; margin-bottom:5px;">
+            												<form method="post" action="/board/${board.boardNo}/post-reply">
+            													<input type="hidden" name="replyParent" value="${r.replyNo}"/>
+            													<input type="hidden" name="replyArticleNo" value="${article.articleNo}"/>
+               													<textArea rows="2" cols="90" id="reply-content"name="replyContent" style="border: 1px solid #ccc;float:left;resize:none;background: #eaeaea6b;padding: 5px;font-size: 12px;"></textArea>         											
+           											 			<small>
+           											 				<input type="submit" id="post-reply" class="btn-sm btn-outline-default"
+               								 						style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; "/>
+               													</small>
+               								 				</form>
+            											</div>
+            										</div><!-- media body -->
+            									</div><!-- media mb-4s -->
+            									
+            									
+        									</c:when>
+        										 
+         										<c:otherwise>
+														<div class="media mt-4"  style="margin-left: 35px;">
+															<i class="fas fa-reply fa-rotate-180" style="color:gray;margin-top: 18px; margin-right: 7px;"></i>
+															<img class="d-flex mr-3 rounded-circle" src="${login.userProfileImg}" alt="" width = "50px" height = "50px">
+															<div class="media-body">
+																<div class="r_writer">${r.userName}님</div>
+																<p class="r_content">${r.replyContent}</p>
+																	<div style="text-align:right; margin-bottom:0px;">
+            															<small> <fmt:formatDate value="${r.replyCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></small>
+            														</div>
+															</div>
+														</div>
+         										</c:otherwise>
+         										
+      										</c:choose>
+   											</c:forEach>
+   									
 									<!-- Comments Form -->
 									<div class="card my-4">
 										<h5 class="card-header">댓글을 남겨봐요 <i class="far fa-comment-dots"></i></h5>
@@ -283,64 +348,7 @@
                								 등록<i class="far fa-check-circle"></i></button>
 										</div>
 
-										
-									</div>
-
-
-									<!-- Single Comment -->
-									<c:forEach var="r" items="${replyList}" varStatus = "status">
-     									<c:choose>
-        									<c:when test="${r.replyOrder == 0}"><!-- 댓글 -->
-        										 <div class="media mb-4">
-													<img class="d-flex mr-3 rounded-circle" src="${profileImg[status.index]}" alt="" width = "80px" height = "80px">
-        										 <div class="media-body">
-            										<div class="r_writer">${r.userName} <i class="far fa-comment-dots"></i></div>
-            										
-            										<p class="r_content">${r.replyContent}</p>
-            										<div style="text-align:right; margin-bottom:5px;">
-            											<small> <fmt:formatDate value="${r.replyCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></small>
-           											 	<small> <a href="javascript:showReplyForm('.repl${r.replyNo}')" class="btn-xs btn-outline-primary">답글달기</a></small>
-            										</div>
-            											<br><br>
-            										</div><!-- media body -->
-            										</div><!-- media mb-4s -->
-        										 <div class="media mb-4 hidden repl${r.replyNo}" >
-													<img class="d-flex mr-3 rounded-circle" src="${login.userProfileImg}" alt="" width = "80px" height = "80px">
-        										 <div class="media-body">
-            										<div class="r_writer">${r.userName}님에게 답글 남기기 <i class="far fa-comment-dots"></i></div>
-            										
-
-            										<div style="text-align:right; margin-bottom:5px;">
-            											<form method="post" action="/board/${board.boardNo}/post-reply">
-            											<input type="hidden" name="replyParent" value="${r.replyNo}"/>
-            											<input type="hidden" name="replyArticleNo" value="${article.articleNo}"/>
-               											<textArea  rows="2" name="replyContent"></textArea>         											
-           											 	<small>
-           											 		<input type="submit" id="post-reply" class="btn-sm btn-outline-default"
-               								 				style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; "/>
-               											</small>
-               								 			</form>
-            										</div>
-            											<br><br>
-            										</div><!-- media body -->
-            										</div><!-- media mb-4s -->
-        										 </c:when>
-         										<c:otherwise>
-														<div class="media mt-4">
-															<img class="d-flex mr-3 rounded-circle"
-																src="http://placehold.it/50x50" alt="">
-															<div class="media-body">
-																<div class="r_writer">${r.userName}님</div>
-																<p class="r_content">${r.replyContent}</p>
-																<div style="text-align:right; margin-bottom:5px;">
-            														<small> <fmt:formatDate value="${r.replyCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></small>
-            													</div>
-															</div>
-														</div>
-         										</c:otherwise>
-      										</c:choose>
-   											</c:forEach>
-   											
+									</div>		
 										
 
 								</div>
@@ -404,7 +412,16 @@
 	
 	<script type="text/javascript">
 $(function(){
-   
+	
+	//엔터키 입력 이벤트
+	$("#reply-content").keydown(function(key) {
+
+		if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
+			$("#post-reply").click();
+		}
+		
+	});
+	
    $("#post-reply").click(function(){
       
       const writer = $("#reply-writer").val();
@@ -416,7 +433,7 @@ $(function(){
       
       const content = $("#reply-content").val();
       console.log("content " + content);
-      if(content === ""){
+      if(content === "" || content.startsWith( '/ /gi' )){
         	Swal.fire('내용을 입력해주세요!');
     	  return;
       }
