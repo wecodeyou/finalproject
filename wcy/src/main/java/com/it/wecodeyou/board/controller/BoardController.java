@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -129,7 +131,7 @@ public class BoardController {
 	}
 
 	@PostMapping("/{boardNo}/register")
-	public ModelAndView registerArticle(@PathVariable Integer boardNo, ArticleTagVO atvo, ModelAndView mv) {
+	public ModelAndView registerArticle(@PathVariable Integer boardNo, ArticleTagVO atvo, ModelAndView mv, HttpSession session) {
 		System.out.println(atvo.toString());
 		ArticleVO avo = new ArticleVO();
 		avo.setArticleTitle(atvo.getArticleTitle());
@@ -138,7 +140,11 @@ public class BoardController {
 		avo.setArticleBoardNo(boardNo);
 		
 		//tag number list
-        ArrayList<Integer> sendTagList = atvo.getSendTagList();
+		System.out.println("세션에서 가져옴: " + session.getAttribute("sendTagList"));
+		
+        @SuppressWarnings("unchecked")
+		ArrayList<Integer> sendTagList = (ArrayList<Integer>) session.getAttribute("sendTagList");
+        System.out.println("sendTagList : " + sendTagList.toString());
 		if(articleService.insert(avo, sendTagList) == 1) {
 			mv.addObject("message", "register-success");
 			mv.setViewName("redirect:/board/" + boardNo);
@@ -196,4 +202,11 @@ public class BoardController {
 		}
 	}
 	
+	@PostMapping("/session")
+	public String session(@RequestBody ArticleTagVO atvo, HttpSession session) {
+		System.out.println("session con: " + atvo.getSendTagList());
+		session.setAttribute("sendTagList", atvo.getSendTagList());
+		System.out.println("세션에서 가져옴: " + session.getAttribute("sendTagList"));
+		return "success";
+	}
 }
