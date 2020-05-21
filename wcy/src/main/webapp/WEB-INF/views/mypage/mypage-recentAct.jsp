@@ -212,6 +212,7 @@ $( document ).ready(function() {
 		$(s).addClass("on");
 	}
 	return false;
+	
 });
 </script>
 						</c:forEach>
