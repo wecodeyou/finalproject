@@ -35,7 +35,10 @@
 			<!-- 최상단 박스 -->
 			<div class="mypageInfoCuponLayout">
 				<div class="myinfocuponIn">
-					<div class="myInfoBox">
+					<div class="myImgBox">
+						<img width="150" height="145" src="${login.userProfileImg}">
+					</div>  
+					<div class="myInfoBox-sub">
 						<div class="mb10">
 							<span class="fs35b" style="font-size:35px; font-weight:bold;">${login.userName}</span>님,
 						</div>

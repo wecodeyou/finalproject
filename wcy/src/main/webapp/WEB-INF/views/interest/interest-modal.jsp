@@ -7,6 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 파비콘 적용 -->
+<link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
+
 <title>WE CODE YOU | 설문조사</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="<c:url value = "/resources/js/kakao.js"/>"></script>
@@ -202,8 +208,12 @@ input[type="file"] {
 			<button type="button" id="skip-btn" class="skip-btn">건너뛰기</button>
 		</div>
 	</div>
+	
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
+	
 
-	<script>
+	<script type="text/javascript">
 	
 		var totalChecked = 0;	
 	
@@ -213,7 +223,11 @@ input[type="file"] {
 		  totalChecked++;
 		  
 		  if(cntEPT>3){
-		   alert('최대 3개까지 선택 가능합니다.')
+			  Swal.fire({
+				  type: 'info',
+				  title: 'Oops...',
+				  text: '최대 1개까지 선택 가능합니다!',
+				});
 		   totalChecked--;
 		   $(this).prop('checked', false);
 		  }
@@ -227,7 +241,11 @@ input[type="file"] {
 			  totalChecked++;
 			  
 			  if(cntEPT>1){
-			   alert('최대 1개까지 선택 가능합니다.')
+				  Swal.fire({
+					  type: 'info',
+					  title: 'Oops...',
+					  text: '최대 1개까지 선택 가능합니다!',
+					});
 			   totalChecked--;
 			   $(this).prop('checked', false);
 			  }
@@ -241,7 +259,11 @@ input[type="file"] {
 			  totalChecked++;
 			  
 			  if(cntEPT>1){
-			   alert('최대 1개까지 선택 가능합니다.')
+				  Swal.fire({
+					  type: 'info',
+					  title: 'Oops...',
+					  text: '최대 1개까지 선택 가능합니다!',
+					});
 			   totalChecked--;
 			   $(this).prop('checked', false);
 			  }
@@ -255,7 +277,11 @@ input[type="file"] {
 			  totalChecked++;
 			  
 			  if(cntEPT>1){
-			   alert('최대 1개까지 선택 가능합니다.')
+				  Swal.fire({
+					  type: 'info',
+					  title: 'Oops...',
+					  text: '최대 1개까지 선택 가능합니다!',
+					});
 			   totalChecked--;
 			   $(this).prop('checked', false);
 			  }
@@ -277,7 +303,12 @@ input[type="file"] {
 				function() {
 					
 					if(totalChecked < 6){
-						alert("빠뜨린 문항이 있어요! 다시 한 번 확인해주세요.");
+						Swal.fire({
+							  type: 'info',
+							  title: 'Oops...',
+							  text: '빠뜨린 문항이 있어요! 다시 한 번 확인해주세요.',
+							});
+						//alert("빠뜨린 문항이 있어요! 다시 한 번 확인해주세요.");
 						return;
 					}
 					
@@ -326,10 +357,23 @@ input[type="file"] {
 							console.log("통신성공 ! result: " + data);
 							if (data === "success") {
 								console.log("입력성공! ");
-								alert("감사합니다! 00포인트가 지급됩니다.");
-								location.href = "/";
+								Swal.fire({
+									  type: 'success',
+									  title: '500 Point',
+									  text: '감사합니다! 포인트가 지급됩니다.',
+									});
+								 window.setTimeout(function(){
+									 window.location.href="/";
+								 },1000);
+								//alert("감사합니다! 00포인트가 지급됩니다.");
+								//location.href = "/";
 							} else if (data === "already exist") {
-								alert("이미 설문조사가 등록되어있어요!");
+								Swal.fire({
+									  type: 'info',
+									  title: 'Oops...',
+									  text: '이미 설문조사가 등록되어있어요!',
+									});
+								//alert("이미 설문조사가 등록되어있어요!");
 							}
 						},
 						error : function() {
@@ -338,10 +382,46 @@ input[type="file"] {
 					});
 					
 				});
+		
+
+
 
 		// skip-btn 클릭 이벤트
 		$("#skip-btn").click(function() {
-			if (confirm("설문조사를 건너뛰면 포인트를 받을 수 없어요... 정말로 건너뛸까요?") == false) {
+			Swal.fire({
+			  title: 'Are you sure?',
+			  text: "설문조사를 건너뛰면 포인트를 받을 수 없어요...T T",
+			  type: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'YES',
+			}).then((result) => {
+				 if (result.value) {
+					$.ajax({
+						type : "POST",
+						url : "/member/updateInterest",
+						headers : {
+							"Content-Type" : "application/json"
+						},
+						dataType : "text",
+						success : function(data) {
+							console.log("통신성공 ! result: " + data);
+							if (data === "success") {
+								console.log("설문조사 참여처리");
+								location.href = "/";
+							}
+						},
+						error : function() {
+							console.log("통신실패! ");
+						}
+					});
+			    } else{
+					return;			    	
+			    }
+			})
+			
+/* 			if (confirm("설문조사를 건너뛰면 포인트를 받을 수 없어요... 정말로 건너뛸까요?") == false) {
 				return;
 			} else {
 				$.ajax({
@@ -362,7 +442,7 @@ input[type="file"] {
 						console.log("통신실패! ");
 					}
 				});
-			}
+			} */
 		});
 	</script>
 	

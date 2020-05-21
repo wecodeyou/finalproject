@@ -381,7 +381,7 @@ body{font-family:'Nanum Gothic Coding', monospace;}
          </li>
          
          <li><a href="<c:url value='/helpsite' />">도움이 되는 사이트</a></li>
-         <li><a href="<c:url value='/board/8'/>">공지사항</a></li>
+         <li><a href="#">공지사항</a></li>
          
       </ul>
    </nav> <!-- .wcy-secondary-nav -->
@@ -758,34 +758,34 @@ body{font-family:'Nanum Gothic Coding', monospace;}
 
 <!-- 로그아웃 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
-<script>
-function logoutConfirm(){
-	Swal.fire({
-	  title: 'Are you sure?',
-	  text: "정말로 로그아웃 하시겠습니까?",
-	  type: 'warning',
-	  showCancelButton: true,
-	  confirmButtonColor: '#3085d6',
-	  cancelButtonColor: '#d33',
-	  confirmButtonText: 'YES',
-	}).then((result) => {
-		 if (result.value) {
-			Swal.fire(
-		      '로그아웃!',
-		      '로그아웃되었습니다.',
-		      'success',
-		    )
-		 window.setTimeout(function(){
-			 window.location.href="/member/logout";
-		 },1000);
-		 //location.href="/member/logout"
-	    }
-	})
-};
+<script type="text/javascript">
+	function logoutConfirm(){
+		Swal.fire({
+		  title: 'Are you sure?',
+		  text: "정말로 로그아웃 하시겠습니까?",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'YES',
+		}).then((result) => {
+			 if (result.value) {
+				Swal.fire(
+			      '로그아웃!',
+			      '잠시 후 로그아웃됩니다.',
+			      'success',
+			    )
+			 window.setTimeout(function(){
+				 window.location.href="/member/logout";
+			 },1000);
+			 //location.href="/member/logout"
+		    }
+		})
+	};
 </script>
 
 <!-- 추천강의 변환 -->
-<script>
+<script type="text/javascript">
 	var s1=$('.maingProgramTabList-ul > li');	//ul > li 를 s1 으로 정함
 	$(function(){
 		s1.find("a").click(function(){			//s1의 아래에 속해 있는 a태그를 찾아서 클릭할 경우
@@ -822,7 +822,7 @@ function logoutConfirm(){
 
 
 <!-- 설문조사 pop up modal -->
-<script>
+<script type="text/javascript">
 	window.onload = function(){
 		showInterestModal();
 	};
@@ -856,7 +856,7 @@ function logoutConfirm(){
 
 </script>
 
-<script>
+<script type="text/javascript">
 
 $(document).ready(function(){
     $('.wcy-img-content').bxSlider({
