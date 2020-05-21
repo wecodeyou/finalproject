@@ -305,7 +305,7 @@ function btn_click(){// 회원정보 변경을 누르면
 							     		});
 								   		 window.setTimeout(function(){
 											 window.location.href="/";
-										 },500);
+										 },1500);
 					               }else{
 							    	  	Swal.fire({
 							    			  title: 'Oops...',
@@ -334,13 +334,14 @@ function btn_click(){// 회원정보 변경을 누르면
 		    			  text: '기존 비밀번호를 다시 확인해 주세요.',
 		    			  type: 'error',
 		    			});
-	         		console.log("비밀번호 확인 컨트롤러실패");	      
 	         		$("#is_pw").html('');
+	         		$('#is_pw').css("border","1px solid #f44336");
+	         		console.log("비밀번호 확인 컨트롤러실패");	      
 	             }
 	        },
 	        error:function(){
 	         	console.log("비밀번호 확인 통신 실패");
-			 	$("#is_pw").css("border-color","red");
+			 	$("#is_pw").css("border","1px solid #f44336");
 			 	$('#is_pw').html('');
 	        }
 	     });
@@ -355,14 +356,14 @@ $('#newPw').on('keyup', function() {
             
       // 비밀번호 유효성 검증 (특수문자 포함 8자 이상인지 검사)
       if(!getPwCheck.test($("#newPw").val()) || $("#newPw").val().length < 8){
-          $('#newPw').css("background-color", "pink");
-         $('#pwChk1').html('<b style="font-size:14px;color:red;">특수문자 포함 8자 이상으로 입력해주세요.</b>');
+          $('#newPw').css("border","1px solid #f44336");
+         $('#pwChk1').html('<b style="font-size:14px;color:#f44336;">특수문자 포함 8자 이상으로 입력해주세요.</b>');
          chk1 = false;
       } 
       // 비밀번호 제대로 썼을 때
       else {
          $('#newPw').css("background-color", "white");
-         $('#pwChk1').html('<b style="font-size:14px;color:green;">사용 가능한 비밀번호입니다.</b>');
+         $('#pwChk1').html('<b style="font-size:14px;color:#2196F3;">사용 가능한 비밀번호입니다.</b>');
          chk1 = true;
       }      
 }); //end - 비밀번호 입력값 keyup 이벤트
@@ -371,8 +372,8 @@ $('#newPw').on('keyup', function() {
 $('#newPwChk').on('keyup', function() { 
     // 비밀번호 확인 검증 (비밀번호와 같은지 검사)
     if($("#newPwChk").val() != $("#newPw").val()){
-		$('#newPwChk').css("background-color", "pink");
-		$('#pwChk2').html('<b style="font-size:14px;color:red;">비밀번호와 동일하게 입력해주세요.</b>');
+		$('#newPwChk').css("border","1px solid #f44336");
+		$('#pwChk2').html('<b style="font-size:14px;color:#f44336;">비밀번호와 동일하게 입력해주세요.</b>');
 		chk2 = false;
     } 
     // 비밀번호 확인 제대로 썼을 떄

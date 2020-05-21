@@ -37,6 +37,9 @@
 			<!-- 최상단 박스 -->
 			<div class="mypageInfoCuponLayout">
 				<div class="myinfocuponIn">
+					<div class="myImgBox">
+						<img width="150" height="145" src="${login.userProfileImg}">
+					</div>
 					<div class="myInfoBox">
 						<div class="mb10">
 							<span class="fs35b" style="font-size:35px; font-weight:bold;">${login.userName}</span>님,
@@ -276,7 +279,7 @@ function change_form(){
 var open_win;
 var p;
 function open_window(obj){
-	open_win = window.open("<c:url value='/mypage/review?p="+obj.value+"'/>","","width=400,height=350,left=700,top=300");    
+	open_win = window.open("<c:url value='/mypage/review?p="+obj.value+"'/>","","width=710,height=400,left=50%,top=50%");    
 };// 수강후기 팝업창 
 </script>
 </body>

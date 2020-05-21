@@ -44,7 +44,7 @@
 }
 
 .title_large{
-	font-size: 20px;
+	font-size: 25px;
     font-weight: 600;
 }
 
@@ -53,7 +53,7 @@
 }
 ._body{margin-top: -6px;}
 
-.footer{float:right;}
+.footer{float:right;margin-right: 13px;}
 
 </style>
 </head>
@@ -79,7 +79,7 @@
 						<a onclick="choice5()">★</a>
 					</p>
 					<textarea name="content" id="content"
-						placeholder="수강후기를 자유롭게 입력해주세요." required="required" cols="50" rows="5" style="resize:none;"></textarea>
+						placeholder="수강후기를 자유롭게 입력해주세요." required="required" cols="90" rows="6" style="resize:none;background: #e5e4e452;padding: 8px;color: #505050;"></textarea>
 					<br>
 					<br> 
 				</div>
@@ -97,7 +97,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 	
 <!-- 별점 -->
-<script>
+<script type="text/javascript">
 
 
 		//별점
@@ -125,13 +125,37 @@ function choice5(){
 
 $("#submit_btn").click(function(){
 	var form = document.getElementById("write_form");
-	if(confirm('수강후기는 한번 작성한 후 수정이 불가합니다. 작성하시겠습니까?')){
+	
+	Swal.fire({
+		  title: '작성하시겠습니까?',
+		  text: "수강후기는 한번 작성한 후 수정이 불가합니다.",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'YES',
+		}).then((result) => {
+			 if (result.value) {
+				Swal.fire(
+			      '작성완료!',
+			      '수강후기가 등록되었습니다.',
+			      'success'
+			    )
+				form.submit();
+				setTimeout(function() {
+					opener.location.replace("<c:url value='/mypage/' />");
+					window.close();
+				}, 2000);
+		    }
+		})
+	
+/* 	if(confirm('수강후기는 한번 작성한 후 수정이 불가합니다. 작성하시겠습니까?')){
 		form.submit();
 		setTimeout(function() {
 			opener.location.replace("<c:url value='/mypage/' />");
 			window.close();
 		}, 10);
-	}
+	} */
 });
 
 </script>
