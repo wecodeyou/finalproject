@@ -286,7 +286,7 @@
         										 		<div class="media-body">
             												<div class="r_writer">${r.userName} <i class="far fa-comment-dots"></i></div>
             												<p class="r_content">${r.replyContent}</p>
-            													
+            													<input type="hidden" id="reply-writer" value="${login.userNo}" />
             														<div style="text-align:right; margin-bottom:5px;">
             															<small> <fmt:formatDate value="${r.replyCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></small>
            											 					<small> <a href="javascript:showReplyForm('.repl${r.replyNo}')" 
@@ -304,11 +304,12 @@
             											<div class="r_writer">${r.userName}님에게 답글 남기기 <i class="far fa-comment-dots"></i></div>
             											<div style="text-align:right; margin-bottom:5px;">
             												<form method="post" action="/board/${board.boardNo}/post-reply">
+            													<input type="hidden" id="reply-writer" name="" value="${login.userNo}" />
             													<input type="hidden" name="replyParent" value="${r.replyNo}"/>
             													<input type="hidden" name="replyArticleNo" value="${article.articleNo}"/>
                													<textArea rows="2" cols="90" id="reply-content"name="replyContent" style="border: 1px solid #ccc;float:left;resize:none;background: #eaeaea6b;padding: 5px;font-size: 12px;"></textArea>         											
            											 			<small>
-           											 				<input type="submit" id="post-reply" class="btn-sm btn-outline-default"
+           											 				<input type="submit" id="post-reply" value="달기" class="btn-sm btn-outline-default"
                								 						style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; "/>
                													</small>
                								 				</form>
@@ -322,7 +323,7 @@
          										<c:otherwise>
 														<div class="media mt-4"  style="margin-left: 35px;">
 															<i class="fas fa-reply fa-rotate-180" style="color:gray;margin-top: 18px; margin-right: 7px;"></i>
-															<img class="d-flex mr-3 rounded-circle" src="${login.userProfileImg}" alt="" width = "50px" height = "50px">
+															<img class="d-flex mr-3 rounded-circle" src="${profileImg[status.index]}" alt="" width = "50px" height = "50px">
 															<div class="media-body">
 																<div class="r_writer">${r.userName}님</div>
 																<p class="r_content">${r.replyContent}</p>
@@ -424,6 +425,11 @@ $(function(){
 	
    $("#post-reply").click(function(){
       
+	   if(${login == null}){
+		   Swal.fire('로그인이 필요한 서비스입니다.');
+	    	  return;
+	   }
+	   
       const writer = $("#reply-writer").val();
       console.log(writer);
       if(writer === "") {
