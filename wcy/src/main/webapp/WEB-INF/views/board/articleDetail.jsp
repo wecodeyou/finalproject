@@ -202,6 +202,17 @@
 }
 
 .contents-box-article {
+<<<<<<< HEAD
+	width: 100%;
+	height: auto;
+	padding: 8px;
+	box-sizing: border-box;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	text-align: left;
+	font-size: 17px;
+	min-height:400px;
+=======
    width: 100%;
    height: auto;
    padding: 8px;
@@ -210,6 +221,7 @@
    overflow-y: hidden;
    text-align: left;
    font-size: 17px;
+>>>>>>> branch 'master' of https://github.com/wecodeyou/finalproject.git
 }
 
    .hidden {
@@ -221,6 +233,7 @@
 <body>
 
    <jsp:include page="../include/header-sub.jsp" />
+
 
    <main class="wcy-main-content">
       <div class="wcy-contents">
@@ -256,11 +269,12 @@
                            
                            <!-- Title -->
                            <span style="font-size:26px; font-weight:bold; padding-left:8px;">
-                              ${article.articleTitle}
+                              ${article.articleTitle} 댓글 수 ${countReply}
                            </span><br>
                            <hr>
                            <!-- Date/Time -->
                            <p style="padding-left:8px;">작성일 <fmt:formatDate value="${article.articleCreatedAt}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></p>
+
 
                            <hr>
                            <!-- Preview Image -->
@@ -512,20 +526,13 @@ $(function() {
 
          });
 
-   //엔터키 입력 이벤트
-   $("#search-input-article").keydown(function(key) {
-
-      if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
-         $("#search-btn-article").click();
-      }
-
    });
-
 });//end jQuery
 
 </script>
 
 </body>
+
 
 <jsp:include page="../include/footer.jsp" />
 

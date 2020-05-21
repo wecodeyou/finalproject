@@ -13,6 +13,7 @@
 	href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
 	
 <link rel="stylesheet" href="<c:url value='/css/registerMain.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/tag-on.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/tag.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/tag-modal.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
@@ -30,7 +31,7 @@
     
     .product_name { width: 389px;height: 41px;margin-left: 13px;padding: 3px 0px 0px 7px; margin-bottom: -4px; font-size:17px;}
     
-    .input_off { width: 389px;height: 41px;margin-left: 13px;padding: 3px 0px 0px 7px; margin-bottom: -4px; font-size:17px;}
+    .input_off {width: 370px; height: 34px;margin-left: 0px;padding:4px 16px 4px 6px; margin-bottom: 7px;margin-top: 9px;font-size: 17px;}
     
    	.info-title{font-weight:bold !important; }
    	
@@ -41,11 +42,29 @@
     .center-header .center-sub-nav-p li a{display: block; height: 60px; box-sizing: border-box; font-size: 18px; color: #888; padding: 0 0 0 20px; line-height: 60px; border-bottom: 4px solid #ddd;}
     .center-sub-nav-p li a.active{color: #25283D; border-color: #25283D;}
 
-	#adminUser {
+	#offForm {
+		/* display:none; */
+	}
+	#onForm {
 		display:none;
 	}
-	#adminProduct {
-		display:none;
+	
+	.btnTag {
+		margin: 5px !important;
+    	margin-top: 3px !important;
+    	background-color: whitesmoke !important;
+   	 	color: black !important;
+    	opacity: 0.8 !important;
+    	border: 1px solid lightslategray !important;
+    	border-radius: 17px !important;
+    	padding: 6px 8px 5px 12px !important;
+    	cursor: pointer !important;
+    	text-align: right !important;
+    	font-size: 14px !important;
+	}
+	
+	.btnTag:hover {
+		background-color: #c4e0f6 !important;
 	}
 
 </style>
@@ -80,7 +99,7 @@
 					<div class="detail-top"> 
 						<div class="detail-top-left">
 <!-- 썸네일 박스 시작 -->
-						<div class="mypageInfoCuponLayout2">
+						<div class="mypageInfoCuponLayout2"  style="margin: 68px 0 24px 0 !important">
 							<div class="myinfocuponIn2">
 								<div class="myInfoBox2">
 									<div class="mb10">
@@ -90,9 +109,10 @@
 								</div>
 <!-- 썸네일 업로드 시작 -->
 								<div class="thum_input">
-				<form method="post" enctype="multipart/form-data" action="#" id="imageForm">
-					<input type="file" id="thumb" name="filedata"/>
-				</form>				<input type="hidden" id="url"/>
+									<form method="post" enctype="multipart/form-data" action="#" id="imageForm">
+										<input type="file" id="thumb" name="filedata"/>
+									</form>				
+									<input type="hidden" id="url"/>
 								</div>
 							</div>
 						</div> 
@@ -126,12 +146,12 @@
 <!-- selectedTagList 끝 -->
 						
 					</div>
-					<div class="detail-top-right">		 						
+					<div class="detail-top-right" style="">		 						
 						<h1 class="className">강의명: <input type="text" id="off_name" class="product_name" placeholder="[현장강의]"/></h1>
 						<table class="top-right-info" style="margin-left: 33px !important;">
 							<tbody>
 								<tr>
-									<td class="info-title">지점</td><!-- off_course 테이블의 off_place -->
+									<td class="info-title" style="padding: 4px 23px 2px 0px;">지점</td><!-- off_course 테이블의 off_place -->
 									<td class="info-content">
 										<input type="radio" id="off_place" name="off_place" value="종로점" checked/>종로점
 										<input type="radio" id="off_place" value="강남점"name="off_place"/>강남점
@@ -139,9 +159,9 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="info-title">현장강의 종류</td><!-- off_course 테이블의 off_type -->
+									<td class="info-title">분류</td><!-- off_course 테이블의 off_type -->
 									<td class="info-content">
-											<select name="off_Type" id="off_type">
+											<select name="off_Type" id="off_type" style="margin: 15px 0px 7px 0px !important;padding:4px 3px 6px 4px !important;width: 370px;font-size: 17px;">
 											<option value="0">programming</option>
 											<option value="1">cloud</option>
 											<option value="2">network</option>
@@ -211,7 +231,7 @@
 					<div class="detail-top"> 
 						<div class="detail-top-left">
 <!-- 썸네일 박스 시작 -->
-						<div class="mypageInfoCuponLayout2">
+						<div class="mypageInfoCuponLayout2"  style="margin: 5px 0 10px 0 !important;">
 							<div class="myinfocuponIn2">
 								<div class="myInfoBox2">
 									<div class="mb10">
@@ -244,26 +264,27 @@
 							
 								<div class="tag_input_div">
 									<div class="tag_input">
-										<input type = "text" id="text" style="margin-top:5px;width:230px;font-size:16px;padding-left: 5px;"placeholder="#해시태그">
-										<ul class="override" id="resultList"></ul>
+										<input type = "text" id="" style="margin-top:5px;width:230px;font-size:16px;padding-left: 5px;"placeholder="#해시태그">
+										<ul class="override" id=""></ul>
 									</div>
 								</div>
 							</div>
-						</div>
+						</div>   
+
 <!-- 태그 박스 끝 -->
 						<br>
-<!-- selectedTagList 시작 -->
-						<div id="selectedTagList" ></div>
-<!-- selectedTagList 끝 -->
+<!-- selectedTagListOn 시작 -->
+						<div id="" ></div>
+<!-- selectedTagListOn 끝 -->
 						
 					</div>
-					<div class="detail-top-right">		 						
+					<div class="detail-top-right" style="margin-top: 26px;">		 						
 						<h1 class="className">강의명: <input type="text" id="on_name" class="product_name" placeholder="[온라인강의]"/></h1>
 
 						<table class="top-right-info" style="margin-left: 33px !important;">
 							<tbody>
 								<tr>
-									<td class="info-title">온라인강의 종류</td><!-- on_course 테이블의 on_category -->
+									<td class="info-title">분류</td><!-- on_course 테이블의 on_category -->
 									<td class="info-content">
 											<select name="on_category" id="on_category">
 											<option value="0">programming</option>
@@ -456,7 +477,7 @@
 					category : category,
 					book : book,
 					days : days,
-					sendTagList: sendTagList
+					sendTagList: sendTagListOn
 				}
 			
 			$.ajax({
@@ -503,7 +524,6 @@
 
 <!-- tag -->
 <script src="<c:url value='/js/tag.js'/>"></script>
-
 
 </body>
 <jsp:include page="../include/footer.jsp" />
