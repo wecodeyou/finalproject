@@ -56,7 +56,7 @@ integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6ji
 
 <jsp:include page="../include/header-sub.jsp" />
 
-	<main class="wcy-main-content">
+	<main class="wcy-main-content"> 
 		<div class="wcy-contents">
 	<form name="tx_editor_form" id="tx_editor_form" action="<c:url value='/board/${boardNo}/register' />" method="post" style="margin-top: 30px;">
 			<div style="text-align: left; margin-bottom: 10px; width: 100%;">
