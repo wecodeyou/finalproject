@@ -23,9 +23,9 @@ ${login.userName}님 안녕하세요
 <br>
  라디오 버튼<br>
   <input type='radio' name='radiop' value='100' />100P(테스트용)
-  <input type='radio' name='radiop' value='10000' />10000P
-  <input type='radio' name='radiop' value='50000' />50000P
-  <input type='radio' name='radiop' value='100000' />100000P
+  <input type='radio' name='radiop' value='10000' />10,000P
+  <input type='radio' name='radiop' value='50000' />50,000P
+  <input type='radio' name='radiop' value='100000' />100,000P
 
 <input type = "submit" value = "구매하기">
 </form>

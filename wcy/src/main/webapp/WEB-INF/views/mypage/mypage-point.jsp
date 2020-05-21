@@ -54,7 +54,7 @@
 									<div class="textBox">
 										<span class="moneyText">WCY Point</span>
 										<div class="moneyBox">
-											<span class="money">${login.userPoint}</span>Point
+											<span class="money"><fmt:formatNumber type="number" maxFractionDigits="3" value="${login.userPoint}" /></span>Point
 										</div>
 									</div>
 								</a>
