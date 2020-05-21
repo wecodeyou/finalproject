@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,7 @@
 <body>
 
 		<div class="_content">
-			<form action="<c:url value='/review/write' />" method="POST">
+			<form action="<c:url value='/review/write' />" method="POST" id="write_form">
 			<input type="hidden" name="reviewProductNo" value="${pno}"/>
 			<input type="hidden" name="reviewUser" value="${writer}"/>
 			<input type="hidden" name="reviewStar" value="" id="starValue"/>
@@ -59,13 +60,11 @@
 					<textarea name="content" id="content"
 						placeholder="수강후기를 자유롭게 입력해주세요." required="required"></textarea>
 					<br>
-					<br> <input type="hidden" name="reviewUser"
-						value="${login.userEmail}">
+					<br> 
 				</div>
 				<div class="_footer">
 					<input type="button" class="cancel" value="cancel" onclick="window.close()">
-					<input type="submit" id="submit" value="send"
-						onclick="submit()">
+					<input type="button" id="submit_btn" value="send" />
 				</div>
 			</form>
 		</div>
@@ -97,10 +96,17 @@ function choice5(){
 	document.getElementById('starValue').value = 5;
 }
 
-function submit(){
-	return confirm('수강후기는 한번 작성한 후 수정이 불가합니다. 작성하시겠습니까?');
-	window.close();
-}
+$("#submit_btn").click(function(){
+	var form = document.getElementById("write_form");
+	if(confirm('수강후기는 한번 작성한 후 수정이 불가합니다. 작성하시겠습니까?')){
+		form.submit();
+		setTimeout(function() {
+			opener.location.replace("<c:url value='/mypage/' />");
+			window.close();
+		}, 10);
+	}
+});
+
 </script>
 </body>
 </html>
