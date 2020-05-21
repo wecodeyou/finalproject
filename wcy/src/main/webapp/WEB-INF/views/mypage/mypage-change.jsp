@@ -269,7 +269,7 @@ function btn_click(){// 회원정보 변경을 누르면
 	
 							 //이미지
 							 var img = $('input[name="userProfileImg"]:checked').val();
-							 if($('input[name="userProfileImg"]:checked').val() == ""){
+							 if($('input[name="userProfileImg"]:checked').val() == null){
 								img = document.getElementById('oldImg').value;	
 							 }
 					         //자바스크립트 형태의 객체 생성 (키:값) => 키는 VO의 필드명과 맞춘다
@@ -342,6 +342,8 @@ function btn_click(){// 회원정보 변경을 누르면
 	         	console.log("비밀번호 확인 통신 실패");
 			 	$("#is_pw").css("border-color","red");
 			 	$('#is_pw').html('');
+			 	$('#pwChk0').html('<b style="font-size:14px;color:red;">현재 비밀번호는 필수입니다.</b>');
+			    $('#is_pw').focus();
 	        }
 	     });
 	}else{

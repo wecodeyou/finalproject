@@ -2,24 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.wecodeyou.schedule.repository.IScheduleMapper">
 
-<!-- 	<resultMap id="ScheduleMap" type="com.it.wecodeyou.schedule.model.ScheduleVO">
+ 	<resultMap id="ScheduleMap" type="com.it.wecodeyou.schedule.model.ScheduleVO">
 		<id property="scheduleNo" column="schedule_no" />
 		<result property="scheduleOffNo" column="schedule_off_no" />
-		<result property="scheduleBgColor" column="schedule_bg_color" />
-		<result property="scheduleDetail" column="schedule_detail" />
+		<result property="scheduleRowNo" column="schedule_row_no" />
+		<result property="scheduleTitle" column="schedule_title" />
 		<result property="scheduleStartDate" column="schedule_start_date" />
 		<result property="scheduleEndDate" column="schedule_end_date" />
+		<result property="scheduleDetail" column="schedule_detail" />
+		<result property="scheduleBgColor" column="schedule_bg_color" />
 
 	</resultMap>
 
-	off_no를 가져와서 강의명?
 
 	<select id="getEvent" resultMap="ScheduleMap">
-		SELECT * FROM schedule
+		SELECT *
+		FROM schedule
+		WHERE schedule_off_no = #{offNo}
+		ORDER BY schedule_row_no
 	</select>
 
+	<insert id = "insertEvent">
+		INSERT INTO schedule
+		(schedule_off_no,schedule_row_no,schedule_title,schedule_start_date,schedule_end_date,schedule_detail,schedule_bg_color)
+		VALUES
+		(#{scheduleOffNo},#{scheduleRowNo},#{scheduleTitle},#{scheduleStartDate},#{scheduleEndDate},#{scheduleDetail},#{scheduleBgColor})
+	
+	</insert> 
 
- -->
+
+
+
 </mapper>
 
 

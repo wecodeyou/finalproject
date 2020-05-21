@@ -40,7 +40,7 @@ public class Point_PurchaseController {
 	@GetMapping("/")
 	public ModelAndView pay(ModelAndView mv) throws SQLException {
 		
-		mv.setViewName("point_purchase/point_purchase-main");
+		mv.setViewName("/mypage/mypage-point2");
 			
 		return mv;
 	}
