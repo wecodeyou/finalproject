@@ -22,4 +22,5 @@ public interface IPoint_PurchaseService {
 	//구매완료 시 포인트 추가
 	public void addPoint(Point_PurchaseVO pvo);
 	
+	public Integer getPoint(Point_PurchaseVO pvo);
 }

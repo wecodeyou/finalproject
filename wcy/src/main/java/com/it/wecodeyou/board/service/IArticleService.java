@@ -46,5 +46,5 @@ public interface IArticleService {
 	
 	public ArrayList<ArticleVO> NotiList(Integer articleBoardNo);
 	
-	
+	public void increaseView(Integer articleNo);
 }

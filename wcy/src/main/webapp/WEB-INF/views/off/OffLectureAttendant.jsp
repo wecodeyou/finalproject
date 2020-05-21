@@ -6,27 +6,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>오프라인 강의 세션 페이지</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta name="viewport"
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- 파비콘 적용 -->
+<link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+   
+    <title>WE CODE YOU | 실시간 노트 공유</title>
+<style>
+    body{margin: 0; padding: 0;}
+    .background-header{width:100%; height:40px;background: #000;}
+    .fc-white{color: #fff;}
+    .fw-bold{font-weight: bold;}
+    .heade-info{
+        padding: 7px;
+    }
+    .stu-name{float: right; font-size: 13px; line-height: 1.8; margin-right: 10px;}
+    
+    .teacher-contents{margin:40px 0px 30px 20px; display: flex;}
+    .chat_box{margin-left: 30px;border:1px dashed #000; border-radius: 8px;padding: 10px;width: 670px;height: 400px;}
+    
+    .t-img{background:#000; width:90px; height:90px; border-radius: 50px;}
+    .t-name{margin-top: 95px; text-align: center}
+    
+    .stu-contents{margin:10px 0px 30px 20px; display: inline-block;}
+    .student-text{resize: none;margin-right: 30px;border:1px dashed #7d888e; border-radius: 8px;padding: 10px;}
+    .student-question{resize: none;margin-right: 30px;border:0px;padding: 10px;}
+    
+    .s-img{background: #bbbbbb; width:90px; height:90px; border-radius: 50px; display: inline-block;}
+    .s-name{margin-top: 95px; text-align: center; letter-spacing: -0.8; font-size: 14px;}
+</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js"></script>
     <script src="<c:url value='/js/stomp.js'/>"></script>
+    
 </head>
 <body>
-<h1>${roomInfo.name}</h1>
-<p class="id">${roomInfo.id }</p>
-<p class="member">${login.userNo}</p>
-<div class="content" >
-    <div class="chat_box">
+
+    <div class="header">
+        <div class="background-header">
+            <div class="heade-info fc-white">
+                <span class="fw-bold">[${roomInfo.name}]</span> 실시간 노트 공유
+                <span class="stu-name">${login.userName} 수강생</span>
+            </div>
+        </div>
     </div>
-
-
-</div>
-	<h2>질문 출력창</h2>
-	<div id="question-board">
-		
-	</div>
-	<textArea id="question-input"></textArea>
-	<button type="button" id="submit-q" disabled>질문등록</button>
+    <p class="id" style="display:none;">${roomInfo.id }</p>
+	<p class="member" style="display:none;">${login.userNo}</p>
+    
+    <div class="teacher-contents">
+        <div class="t-img">
+            <p class="t-name">강사</p>
+        </div>
+        <div class="chat_box"></div>
+       <!-- <textarea cols="90" rows="15" class="chat_box" readonly></textarea> -->
+    </div>
+    
+    <div class="stu-contents">
+		<div id="question-board"></div>
+        <textarea cols="90" rows="5" id="question-input" class="student-text" placeholder="강사님께 질문을 전송할 수 있습니다요">
+        </textarea>
+        <div class="s-img">
+            <p class="s-name">${login.userName} 수강생</p>
+        </div>
+    </div>
+    <div>
+        <button type="button" id="submit-q" disabled class="btn btn-dark" style="margin-left: 20px;">질문 전송</button>
+    </div>
+	
+	
 <script>
     $(function () {
         var chatBox = $('.chat_box');
@@ -43,7 +93,7 @@
     				chatBox.empty();
                     chatBox.append(content.message);         	
                 } else if(content.type === 'QUESTION'){
-                	$('#question-board').append("<p>" + content.writer + " : " + content.message + "</p>");
+                	$('#question-board').append("<p>나 : " + content.message + "</p>");
                 } else if(content.type === 'ACTIVATE'){
                     $('#submit-q').attr('disabled', false);
                 } else if(content.type === 'DEACTIVATE'){

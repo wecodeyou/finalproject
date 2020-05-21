@@ -35,7 +35,10 @@
 			<!-- 최상단 박스 -->
 			<div class="mypageInfoCuponLayout">
 				<div class="myinfocuponIn">
-					<div class="myInfoBox">
+					<div class="myImgBox">
+						<img width="150" height="145" src="${login.userProfileImg}">
+					</div>  
+					<div class="myInfoBox-sub">
 						<div class="mb10">
 							<span class="fs35b" style="font-size:35px; font-weight:bold;">${login.userName}</span>님,
 						</div>
@@ -90,7 +93,7 @@
 				<ul class="pointList">
 					<li>
 						<div class="pointIn">
-							<a href="<c:url value = '/pay/'/>">
+							<a href="<c:url value = '/pay/'/>"  onclick ="window.open(this.href, '_blank', 'width=880,height=600,toolbars=no,scrollbars=no,resizable=no,status=no,location=no'); return false;">
 							<img src="<c:url value='/img/mypage/pointpurchase.PNG'/>" alt="" />
 							<div class="pointBtn">
 								충전하기

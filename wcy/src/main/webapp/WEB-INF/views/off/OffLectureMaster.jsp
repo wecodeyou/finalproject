@@ -5,32 +5,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>오프라인 강의 세션 페이지</title>
+    <title>WE CODE YOU | 실시간 노트 공유</title>
+    
+    <style>
+    body{margin: 0; padding: 0;}
+    .background-header{width:100%; height:40px;background: #000;}
+    .fc-white{color: #fff;}
+    .fw-bold{font-weight: bold;}
+    .heade-info{
+        padding: 7px;
+    }
+    .stu-name{float: right; font-size: 13px; line-height: 1.8; margin-right: 10px;}
+    
+    .content > .tx-editor-container > .tx-canvas > .tx-holder > #tx_canvas_wysiwyg > .tx-content-container{
+    	padding: 15px !important;
+    	width: 100% !important;
+    	margin-right:0px !important;
+    	margin-left:0px !important;
+    }
+    
+    </style>
+    
+    <!-- 파비콘 적용 -->
+	<link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+    
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js"></script>
     <script src="<c:url value='/js/stomp.js'/>"></script>
+    
 	<link rel="stylesheet" href="<c:url value='/resources/vendor/editor/css/editor.css' />" type="text/css" charset="utf-8"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	
 	<script src="<c:url value='/resources/vendor/editor/js/editor_loader.js?environment=development' />" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-	<h1>${roomInfo.name}</h1>
-	<p class="id">${roomInfo.id }</p>
-	<p class="member">${login.userNo}</p>
-	<div class="content" >
+
+    <div class="header">
+        <div class="background-header">
+            <div class="heade-info fc-white">
+                <span class="fw-bold">[${roomInfo.name}]</span> 실시간 노트 공유
+                <span class="stu-name">강사용</span>
+            </div>
+        </div>
+    </div>
+
+	<p class="id" style="display:none;">${roomInfo.id }</p>
+	<p class="member" style="display:none;">${login.userNo}</p>
+	
+	<div class="content" style="padding: 20px;">
     <div id="chat_box">
     </div>
     <form id="note_submit">
  		<jsp:include page="/WEB-INF/views/include/editorFrame.jsp"></jsp:include>
     </form>
-       <button type="button" id = "submit-btn">노트 전송</button>
+       <!-- <button type="button" id = "submit-btn" class="btn btn-dark">노트 전송</button> -->
 </div>
-	<div id="question-board">
+	<span>
+	<button type="button" id="activate-q" class="btn btn-primary" style="margin-left:20px;">질문창 활성화</button>
+	<button type="button" id="deactivate-q" class="btn btn-danger" disabled>질문창 비활성화</button>
+	</span>
+	<p style="margin-left: 20px; margin-top: 10px; font-size:17px; font-weight:600;">학생 질문 리스트</p>
+	<hr>
+	<div id="question-board" style="margin-left: 20px; margin-top: 10px;">
 		
 	</div>
-	<span>
-	<button type="button" id="activate-q">질문창 활성화</button>
-	<button type="button" id="deactivate-q" disabled>질문창 비활성화</button>
-	</span>
 <script>
     $(function () {
         var chatBox = $('.chat_box');
@@ -132,6 +170,17 @@
     			}
     		}
     	new Editor(config);
+    	
+        Editor.getCanvas().observeJob(Trex.Ev.__CANVAS_PANEL_KEYDOWN, function(e){
+            if((e.keyCode>40 && e.keyCode<112) || (e.keyCode>123 && e.keyCode<126) || (e.keyCode>185 && e.keyCode<192) || (e.keyCode>218 && e.keyCode<223) || e.keyCode==229 || e.keyCode==32 || e.keyCode==8){
+             var content = Editor.getContent();
+             console.log("content");       
+             $('#note').remove();
+             client.send('/lecture/message/note', {}, JSON.stringify({id: roomId, type:'NOTE', message: content, writer: member}));                        
+            }else{
+               console.log(e.keyCode);
+            }
+          });// keydown 마다 전송
 
     });
 

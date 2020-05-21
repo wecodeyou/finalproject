@@ -24,6 +24,8 @@
    		SET board_title = #{boardTitle}, board_detail = #{boardDetail}, board_type = #{boardType}
    </update>
    
+
+   
    <delete id="deleteBoard">
       DELETE FROM board WHERE board_no=#{boardNo}
    </delete>

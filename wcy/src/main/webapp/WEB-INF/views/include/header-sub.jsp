@@ -292,30 +292,30 @@ body{font-family:'Nanum Gothic Coding', monospace;}
 <script src="<c:url value='/js/search-main.js'/>"></script>
 <!-- 로그아웃 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
-<script>
-function logoutConfirm(){
-	Swal.fire({
-	  title: 'Are you sure?',
-	  text: "정말로 로그아웃 하시겠습니까?",
-	  type: 'warning',
-	  showCancelButton: true,
-	  confirmButtonColor: '#3085d6',
-	  cancelButtonColor: '#d33',
-	  confirmButtonText: 'YES',
-	}).then((result) => {
-		 if (result.value) {
-			Swal.fire(
-		      '로그아웃!',
-		      '로그아웃되었습니다.',
-		      'success',
-		    )
-		 window.setTimeout(function(){
-			 window.location.href="/member/logout";
-		 },1000);
-		 //location.href="/member/logout"
-	    }
-	})
-};
+<script type="text/javascript">
+	function logoutConfirm(){
+		Swal.fire({
+		  title: 'Are you sure?',
+		  text: "정말로 로그아웃 하시겠습니까?",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'YES',
+		}).then((result) => {
+			 if (result.value) {
+				Swal.fire(
+			      '로그아웃!',
+			      '잠시 후 로그아웃됩니다.',
+			      'success',
+			    )
+			 window.setTimeout(function(){
+				 window.location.href="/member/logout";
+			 },1000);
+			 //location.href="/member/logout"
+		    }
+		})
+	};
 </script>
 <script>
 

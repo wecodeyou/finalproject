@@ -176,7 +176,7 @@ var calendar = new Calendar($('#calendar'),{
 	} */
 	
 	calendar.render();
-	calendar.setOption('contentHeight', 450);
+	
 });
 </script>
 

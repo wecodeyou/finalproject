@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-signin-client_id" content="690220196013-0vrt74a1o5e3r67vfevah2sqo92cp6s7.apps.googleusercontent.com">
+
+<!-- 파비콘 적용 -->
+<link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 
 	<link rel="stylesheet" href="<c:url value='/vendor/bootstrap/css/bootstrap.min.css'/>">
@@ -389,8 +393,6 @@ $(function(){
 			}
 			
 		});
-
-	checkGoogle();
 	}); //end - jquery
 	
 /* 	function checkGoogle(){
