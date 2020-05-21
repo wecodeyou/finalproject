@@ -236,10 +236,12 @@
 			<div class="right-section-article">
 				<div class="right-contents-article">
 					<h4 class="contents-title-article">${board.boardTitle} </h4>
-					<%-- <div class="text-right">
-							<a class="btn btn-outline btn-sm" href="<c:url value="/board/${board.boardNo}/register"/>">
-								<i class="fas fa-feather"></i><span style="color:#313D55;"> 본인 글이면 수정</span></a><br><br>
-						</div> --%>
+						<c:if test="${login.userNo == user.userNo}">
+							<div class="text-right">
+								<a class="btn btn-outline btn-sm" href="<c:url value="#"/>">
+									<i class="fas fa-feather"></i><span style="color:#313D55;"> 수정하기</span></a><br><br>
+							</div>
+						</c:if>
 					<div >
 						<div class="container" style="text-align:left !important;">
 							<div class="row">
