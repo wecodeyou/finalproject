@@ -220,7 +220,7 @@
 					
 					<!-- 글쓰기 버튼 유저타입과 공지게시판에 따라 다르게 노출 -->
 					<div class="text-right">
-						<c:if test = "${login == null}"> 
+						<c:if test = "${login == null && board.boardNo != 8}"> 
                            <a class="btn btn-outline btn-sm" href="#">
 								<i class="fas fa-feather"></i><span style="color:#313D55;"> 로그인하셔야 글쓰기가 가능합니다.</span></a><br><br>
                         </c:if>
