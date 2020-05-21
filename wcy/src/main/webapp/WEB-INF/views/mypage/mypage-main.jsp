@@ -109,7 +109,7 @@
 										<div class="boxWebzineBorad">
 											<div class="webzineLeft">
 												<div class="boxwebzineLeftIn">
-													<img src="${m.spThum}" alt="" />
+													<img src="${m.spThum}" alt="" /> 
 												</div>
 											</div>
 											<div class="webzineRight">
@@ -117,7 +117,12 @@
 													[현장강의] ${m.productName}
 												</div>
 												<a class="rBtn reviewWriteBtn" > <!-- 수강후기 작성 -->
-													<button class="rBtn reviewWriteBtn" title="수강후기 작성" onclick="open_window(this)" value="${m.productNo}">수강후기 작성</button>
+													<c:if test="${m.isWrite == 0}">
+														<button class="rBtn reviewWriteBtn" title="수강후기 작성" onclick="open_window(this)" value="${m.productNo}" id="window_btn${m.productNo}">수강후기 작성</button>
+													</c:if>
+													<c:if test="${m.isWrite == 1}">
+														<button class="rBtn reviewWriteBtn" title="" disabled="disabled">가자~ 이미 썼다네~</button>																			
+													</c:if>
 													<i class="fas fa-angle-right"></i>
 												</a>
 												<a href="<c:url value='/mypage/recentAct' />" title="수강후기 보기" class="rBtn reviewLookBtn" style="margin-top:50px;"> <!-- 내가 작성한 수강후기 보기 -->
@@ -229,8 +234,6 @@
 
 
  </script>
-
-   <input type="button" value="클릭" onclick="javascript:openDialog();" />
 			</div> <!-- 수강목록 -->
 		</div>
 	</main>
@@ -259,7 +262,9 @@ function change_form(){
 		document.getElementById("off_form").style.display = "block";
 		document.getElementById("on_form").style.display = "none";		
 	}
-}
+}// 온/오프 변경창 
+
+
 
 
 </script>
@@ -268,8 +273,6 @@ var open_win;
 var p;
 function open_window(obj){
 	open_win = window.open("<c:url value='/mypage/review?p="+obj.value+"'/>","","width=500,height=400,left=700");    
-	setTimeout(function() {
-		}, 1);
 };// 수강후기 팝업창 
 </script>
 </body>
