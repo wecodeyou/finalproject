@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,7 +117,7 @@
 					<tbody>
 						<c:forEach var="r" items="${s_list}">
 						<tr>
-							<td style="text-align:center;">${r.reviewCreatedAt}</td>
+							<td style="text-align:center;"><fmt:formatDate value="${r.reviewCreatedAt}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
 							<td ><p class="text_context" >${r.content}</p></td>
 							<td style="text-align:center;">${r.reviewProductName}</td>
 							<td style="text-align:center;">
@@ -164,7 +165,7 @@ $( document ).ready(function() {
 					<tbody>
 						<c:forEach var="sa" items="${sa_list}">
 						<tr>
-							<td style="text-align:center;">${sa.articleCreatedAt}</td>
+							<td style="text-align:center;"><fmt:formatDate value="${sa.articleCreatedAt}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
 							<td >${sa.articleTitle}</td>
 							<td style="text-align:center;">${sa.articleContent}</td>
 							<td style="text-align:center;">${sa.articleBoardType}</td>
@@ -191,7 +192,7 @@ $( document ).ready(function() {
 					<tbody>
 						<c:forEach var="rp" items="${srp_list}">
 						<tr>
-							<td style="text-align:center;">${rp.replyCreatedAt}</td>
+							<td style="text-align:center;"><fmt:formatDate value="${rp.replyCreatedAt}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
 							<td >${rp.replyContent}</td>
 							<td >${rp.replyArticleTitle}</td>
 						</tr>

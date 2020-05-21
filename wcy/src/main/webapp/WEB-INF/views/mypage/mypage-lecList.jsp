@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -319,7 +320,7 @@ to {
 			<c:forEach var="l" items="${pv_list}">
 				<tr>
 					<c:if test="${!l.purchaseIsrefund and l.purchaseSeatNo == null }"><!-- 환불 false고 online -->
-						<td>${l.purchaseDate}</td>
+						<td><fmt:formatDate value="${l.purchaseDate}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
 						<td>${l.purchaseAmount}</td>
 						<td>
 							<button id="btn${l.purchaseNo}" value="${l.purchaseNo}"
@@ -344,8 +345,8 @@ to {
 			<c:forEach var="l" items="${pv_list}">
 				<tr>
 					<c:if test="${l.purchaseIsrefund and l.purchaseSeatNo == null }"><!-- 환불 true고 online -->
-						<td>${l.purchaseDate}</td>
-						<td>${l.purchaseRefundDate}</td>
+						<td><fmt:formatDate value="${l.purchaseDate}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
+						<td><fmt:formatDate value="${l.purchaseRefundDate}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
 						<td>${l.purchaseAmount}</td>
 						<td>
 							<button disabled="disabled">수강후기</button> <br>
@@ -375,7 +376,7 @@ to {
 			<c:forEach var="l" items="${pv_list}">
 				<tr>
 					<c:if test="${!l.purchaseIsrefund and l.purchaseSeatNo != null }"><!-- 환불 false고 off -->
-						<td>${l.purchaseDate}</td>
+						<td>$<fmt:formatDate value="${l.purchaseDate}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
 						<td>${l.purchaseAmount}</td>
 						<td>${l.purchaseSeatNo}</td>
 						<td>
@@ -402,8 +403,8 @@ to {
 			<c:forEach var="l" items="${pv_list}">
 				<tr>
 					<c:if test="${l.purchaseIsrefund and l.purchaseSeatNo != null }"><!-- 환불 true고 off -->
-						<td>${l.purchaseDate}</td>
-						<td>${l.purchaseRefundDate}</td>
+						<td><fmt:formatDate value="${l.purchaseDate}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
+						<td><fmt:formatDate value="${l.purchaseRefundDate}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
 						<td>${l.purchaseAmount}</td>
 						<td>${l.purchaseSeatNo}</td>
 						<td>

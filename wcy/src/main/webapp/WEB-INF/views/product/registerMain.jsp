@@ -233,8 +233,7 @@
 <!-- selectedTagList 끝 -->
 						
 					</div>
-					<div class="detail-top-right">
-						<br>									
+					<div class="detail-top-right">						
 						<h1 class="className">강의명: <input type="text" name="" id="" class="product_name" placeholder="[온라인강의]"/></h1>
 						<table class="top-right-info" style="margin-left: 33px !important;">
 							<tbody>
