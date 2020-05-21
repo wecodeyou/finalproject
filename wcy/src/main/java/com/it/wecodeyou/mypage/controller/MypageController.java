@@ -115,11 +115,39 @@ public class MypageController {
 			}
 			mm_list.add(mmvo);
 		}
+		String reviewUser = ((MemberVO)session.getAttribute("login")).getUserEmail();
+		ArrayList<ReviewVO> re_list = rservice.getAllReviewByUser(reviewUser); 
+		for (int i = 0; i < mm_list.size(); i++) {
+			for (int j = 0; j < re_list.size(); j++) {
+				if(mm_list.get(i).getProductNo() == re_list.get(j).getReviewProductNo()) {
+					mm_list.get(i).setIsWrite(1);
+					break;
+				}
+			}
+		}
+		for (int i = 0; i < mm_list.size(); i++) {
+			if(mm_list.get(i).getIsWrite() == null) {
+				mm_list.get(i).setIsWrite(0);
+			}
+		}
+		
 		mv.addObject("mm_list",mm_list);
 		mv.setViewName("mypage/mypage-main");
 		
 		return mv;
 	}
+	/*
+	 * @PostMapping("/isWrite") public String isWrite( @RequestBody Integer
+	 * reviewProductNo, HttpSession session) {
+	 * System.out.println("/review/isWrite : POST 요청 발생!");
+	 * 
+	 * String reviewUser = ((MemberVO)session.getAttribute("login")).getUserEmail();
+	 * ArrayList<ReviewVO> re_list = service.getAllReviewByUser(reviewUser); for
+	 * (int i = 0; i < re_list.size(); i++) {
+	 * if(re_list.get(i).getReviewProductNo()==reviewProductNo) { return "overed"; }
+	 * } return "not"; }
+	 */
+	
 	
 	@GetMapping("/leclist")
 	public ModelAndView lectureList(ModelAndView mv, ReviewVO rvo, HttpSession session) {
@@ -344,6 +372,7 @@ public class MypageController {
 		mv.addObject("proName",pdservice.getOneInfo(pro_no).getProductName());
 		mv.addObject("pno",Integer.parseInt(req.getParameter("p")));
 		mv.addObject("writer",((MemberVO)session.getAttribute("login")).getUserEmail());
+		System.out.println(((MemberVO)session.getAttribute("login")).getUserEmail());
 		return mv;
 	}
 	

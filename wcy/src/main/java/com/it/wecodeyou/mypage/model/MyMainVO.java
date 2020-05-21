@@ -16,6 +16,7 @@ public class MyMainVO {
 	private Timestamp offEndAt;
 	private String offPlace;
 	private String offRoom;
+	private Integer isWrite;
 	
 	public MyMainVO() {
 		// TODO Auto-generated constructor stub
@@ -23,7 +24,7 @@ public class MyMainVO {
 
 	public MyMainVO(Integer purchaseNo, Integer productNo, String productName, Integer productType, String spThum,
 			String spLecName, Integer purchaseAmount, Timestamp purchaseDate, Timestamp offStartAt, Timestamp offEndAt,
-			String offPlace, String offRoom) {
+			String offPlace, String offRoom, Integer isWrite) {
 		super();
 		this.purchaseNo = purchaseNo;
 		this.productNo = productNo;
@@ -37,6 +38,7 @@ public class MyMainVO {
 		this.offEndAt = offEndAt;
 		this.offPlace = offPlace;
 		this.offRoom = offRoom;
+		this.isWrite = isWrite;
 	}
 
 	public Integer getPurchaseNo() {
@@ -135,16 +137,26 @@ public class MyMainVO {
 		this.offRoom = offRoom;
 	}
 
+	public Integer getIsWrite() {
+		return isWrite;
+	}
+
+	public void setIsWrite(Integer isWrite) {
+		this.isWrite = isWrite;
+	}
+
 	@Override
 	public String toString() {
 		return "MyMainVO [purchaseNo=" + purchaseNo + ", productNo=" + productNo + ", productName=" + productName
 				+ ", productType=" + productType + ", spThum=" + spThum + ", spLecName=" + spLecName
 				+ ", purchaseAmount=" + purchaseAmount + ", purchaseDate=" + purchaseDate + ", offStartAt=" + offStartAt
-				+ ", offEndAt=" + offEndAt + ", offPlace=" + offPlace + ", offRoom=" + offRoom + "]";
+				+ ", offEndAt=" + offEndAt + ", offPlace=" + offPlace + ", offRoom=" + offRoom + ", isWrite=" + isWrite
+				+ "]";
 	}
 
 	
 	
-	
-	
+
+
+
 }
