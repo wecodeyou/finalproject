@@ -12,7 +12,8 @@
 <link rel="shortcut icon"
 	href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
 
-
+<link rel="stylesheet" href="<c:url value='/css/tag.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/tag-modal.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
@@ -54,27 +55,27 @@
 									</c:forEach>
                      	 		</c:if>
 								<c:if test = "${login.userType == 2}"> 
-                           			<li class="tag"><a id = "addtag" href = "javascript:openTag();"><i class="fas fa-plus-circle"></i></a></li>
+                           			<li class="tag"><a id = "addtag" href = "javascript:openTagOff();"><i class="fas fa-plus-circle"></i></a></li>
                        			</c:if>
 							</ul>
 							
 						<!-- 모달 창 시작 -->
-                     	<div id="myModal-tag" class="modal-tag">
+                     	<div id="myModal-tagoff" class="modal-tagoff">
                        		 <!-- 모달 내용 -->
-                        	<div class="modal_content-tag">
-                              <span class="close" id="modal_close_btn-tag">&times;</span>
-                           		<div class="modal_body-tag">
-                           			<div class="modal_title_large-tag" style="">해시태그를 등록해주세요 <i class="fas fa-tags"></i></div>
+                        	<div class="modal_content-tagoff">
+                              <span class="close" id="modal_close_btn-tagoff">&times;</span>
+                           		<div class="modal_body-tagoff">
+                           			<div class="modal_title_large-tagoff" style="">해시태그를 등록해주세요 <i class="fas fa-tags"></i></div>
                               			<input type = "text" id="text" style="margin-top:5px;width:200px;font-size:16px;"placeholder="#해시태그">
                            			<div id="selectedTagList" ></div>
                            			<ul class="override" id="resultList"></ul>
                            		</div>
-                           		<div class="modal-footer-tag">
+                           		<div class="modal-footer-tagoff">
                               		<input type="submit" class="btn btn-outline-primary btn-sm"id="add" value="등록"/>
                            		</div>
                        		 </div>
                        		 <!-- 모달 내용 끝 -->
-                        	<div class="modal_layer-tag"></div>
+                        	<div class="modal_layer-tagoff"></div>
                     	</div>
                      	<!-- 모달 창 끝 -->
                      
@@ -207,6 +208,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 <script type="text/javascript">
 
+
+
 $( document ).ready(function() {
 	var s;
 	for(var i=0; i<${avg}+1; i++){
@@ -229,46 +232,76 @@ function logincheck(){
  
 
  
- function openTag(){
+/*  function openTag(){
 	 
 	 $("#inputtag").show();
 	 
  }
+  */
+  
+
  
- $("#add").click(function(){
-	 
-	 var productInfo = {
-				productNo: ${pro.productNo},
-				sendTagList: sendTagList
-			}
-	 
-	 $.ajax({
-			type: "POST",
-			url : "/admin/addtag",
-			headers:{
-				"Content-Type": "application/json"
-			},
-			dataType: "text",
-			data:JSON.stringify(productInfo),
-			success: function(data){
-				console.log("received output : " + data);
-				if(data === "input_success"){
-					console.log("입력완료")
-					location.reload();
-				}
-				
-			},
-			error: function(request, status, error){
-				console.log("POST : /product/register 요청에 실패했습니다.")
-			}
-		}); /* end ajax */
-	 
- });
- 
- 
- 
- 
- 
+</script>
+
+<script>
+
+var myModaltagoff = document.getElementById("myModal-tagoff");
+
+var modal_close_btntagoff = document.getElementById("modal_close_btn-tagoff");
+
+modal_close_btntagoff.onclick = function(){
+   myModaltagoff.style.display = "none";
+}
+
+function openTagOff() {
+    
+     if(myModaltagoff.style.display == 'none'){
+        myModaltagoff.style.display = 'block';
+     }else {
+        myModaltagoff.style.display = 'none';
+     }
+   
+}
+
+//When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+     if (event.target == myModaltagoff) {
+        openTagOff();
+     }
+}
+
+
+
+$("#add").click(function(){
+	    
+	    var productInfo = {
+	            productNo: ${pro.productNo},
+	            sendTagList: sendTagList
+	         };
+
+$.ajax({
+     type: "POST",
+     url : "/admin/addtag",
+     headers:{
+        "Content-Type": "application/json"
+     },
+     dataType: "text",
+     data:JSON.stringify(productInfo),
+     success: function(data){
+        console.log("received output : " + data);
+        if(data === "input_success"){
+           console.log("입력완료")
+           location.reload();
+        }
+        
+     },
+     error: function(request, status, error){
+        console.log("POST : /product/register 요청에 실패했습니다.")
+     }
+  }); /* end ajax */
+
+});
+
 </script>
 
 </body>

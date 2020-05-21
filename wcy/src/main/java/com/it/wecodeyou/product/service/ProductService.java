@@ -109,4 +109,9 @@ public class ProductService implements IProductService {
 		return pdao.getOneByName(productName);
 	}
 
+	@Override
+	public Integer getProductType(Integer productNo) {
+		return pdao.getProductType(productNo);
+	}
+
 }

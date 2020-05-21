@@ -83,7 +83,10 @@
 		WHERE product_name = #{productName}
 	</select>
 	
-	
+	<select id="getProductType" resultType="int">
+	SELECT product_type FROM product
+	WHERE product_no = #{productNo};
+	</select>
 	<!-- 수강중인 온라인 강의 출력 -->
 	<select id = "purchasedOn" resultMap = "ProductMap">
 		select * from product 

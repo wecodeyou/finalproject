@@ -223,6 +223,35 @@
    <script src="<c:url value = "/js/main.js"/>"></script>
    <script src="<c:url value='/js/tag.js'/>"></script>
 
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+   var s;
+   for(var i=0; i<${avg}+1; i++){
+      s = '#avg_star' + i;
+      $(s).addClass("on");
+   }
+   return false;
+});
+
+function logincheck(){
+    if(${login == null}){
+       Swal.fire('로그인 후 좌석선택이 가능합니다.');
+    }else{
+       location.href="<c:url value='/curriculum/purchase?pro_no=${pro.productNo}'/>";
+    }
+       
+ };
+ 
+/*  function openTag(){
+    
+    $("#inputtag").show();
+    
+ } */
+
+</script>
+
 <script>
 
 var myModal = document.getElementById("myModal-tag");
@@ -249,63 +278,37 @@ window.onclick = function(event) {
         openTag();
      }
 }
-   </script>
-<script type="text/javascript">
 
-$( document ).ready(function() {
-   var s;
-   for(var i=0; i<${avg}+1; i++){
-      s = '#avg_star' + i;
-      $(s).addClass("on");
-   }
-   return false;
-});
 
-function logincheck(){
-    if(${login == null}){
-       Swal.fire('로그인 후 좌석선택이 가능합니다.');
-    }else{
-       location.href="<c:url value='/curriculum/purchase?pro_no=${pro.productNo}'/>";
-    }
-       
- };
- 
-/*  function openTag(){
-    
-    $("#inputtag").show();
-    
- } */
- 
- $("#add").click(function(){
-    
+$("#add").click(function(){
+   
 	    var productInfo = {
 	            productNo: ${pro.productNo},
 	            sendTagList: sendTagList
 	         };
-    
-    $.ajax({
-         type: "POST",
-         url : "/admin/addtag",
-         headers:{
-            "Content-Type": "application/json"
-         },
-         dataType: "text",
-         data:JSON.stringify(productInfo),
-         success: function(data){
-            console.log("received output : " + data);
-            if(data === "input_success"){
-               console.log("입력완료")
-               location.reload();
-            }
-            
-         },
-         error: function(request, status, error){
-            console.log("POST : /product/register 요청에 실패했습니다.")
-         }
-      }); /* end ajax */
-    
- });
-
+   
+   $.ajax({
+        type: "POST",
+        url : "/admin/addtag",
+        headers:{
+           "Content-Type": "application/json"
+        },
+        dataType: "text",
+        data:JSON.stringify(productInfo),
+        success: function(data){
+           console.log("received output : " + data);
+           if(data === "input_success"){
+              console.log("입력완료")
+              location.reload();
+           }
+           
+        },
+        error: function(request, status, error){
+           console.log("POST : /product/register 요청에 실패했습니다.")
+        }
+     }); /* end ajax */
+   
+});
 
 </script>
 </body>
