@@ -14,11 +14,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.it.wecodeyou.curriculum.model.CurriculumVO;
 import com.it.wecodeyou.curriculum.service.ICurriculumService;
 import com.it.wecodeyou.episode.service.IEpisodeService;
+import com.it.wecodeyou.member.service.IMemberService;
 import com.it.wecodeyou.off.service.IOffService;
 import com.it.wecodeyou.on.service.IOnService;
 import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.review.model.ReviewVO;
+import com.it.wecodeyou.review.model.ShowDetailVO;
 import com.it.wecodeyou.review.service.ReviewService;
 import com.it.wecodeyou.sub_product.service.SubProductService;
 import com.it.wecodeyou.tag.service.ITagService;
@@ -50,6 +52,9 @@ public class CurriculumController {
    
    @Autowired
    private ITagService tagservice;
+
+   @Autowired
+   private IMemberService mservice;
    
 	//커리큘럼소개 main 요청 (==> 온라인, 오프라인 통합 main임. 맵핑 주소 이름 변경 요망)
 	@GetMapping("/on_main")
@@ -71,7 +76,29 @@ public class CurriculumController {
 		ProductVO pvo = pservice.getOneByName(req.getParameter("s"));
 		
 		ArrayList<ReviewVO> r_list = rservice.getAllReviewByLec(pvo.getProductNo());
-	    int sum = 0;
+		ArrayList<ShowDetailVO> sd_list = new ArrayList<ShowDetailVO>();
+		for (int i = 0; i < r_list.size(); i++) {
+			ShowDetailVO sdvo = new ShowDetailVO();
+			sdvo.setReviewNo(r_list.get(i).getReviewNo());
+			sdvo.setContent(r_list.get(i).getContent());
+			sdvo.setReviewCreatedAt(r_list.get(i).getReviewCreatedAt());
+			sdvo.setReviewProductNo(r_list.get(i).getReviewProductNo());
+			sdvo.setReviewStar(r_list.get(i).getReviewStar());
+			// 이름에 * 넣기
+			String hiddenName = mservice.checkLogin(r_list.get(i).getReviewUser()).getUserName();
+			if(hiddenName.length()<3) {
+				hiddenName = hiddenName.substring(0,1)+"*";
+			}else if(hiddenName.length()==3) {
+				hiddenName = hiddenName.substring(0,1)+"*"+hiddenName.substring(2,3);
+			}else {// 3보다 크면
+				hiddenName = hiddenName.substring(0,1)+"**"+hiddenName.substring(3,hiddenName.length());				
+			}
+			sdvo.setUserName(hiddenName); 
+			sd_list.add(sdvo);
+		}
+		mv.addObject("sd_list",sd_list);
+		
+		int sum = 0;
 		for (int i = 0; i < r_list.size(); i++) {
 			sum += r_list.get(i).getReviewStar();
 		}
@@ -79,16 +106,12 @@ public class CurriculumController {
 		if(r_list.size() != 0) {
 			avg = sum/r_list.size(); 
 		}
-		
-		
-		
 		mv.addObject("tag", tagservice.searchTags(pvo.getProductNo()));
 		mv.addObject("sub_pro", spservice.showSubPro(pvo.getProductNo()));
 		mv.addObject("s", req.getParameter("s"));
 		mv.addObject("pro",pvo);
 		mv.addObject("review_num",r_list.size());	// 수강후기 갯수
 		mv.addObject("avg",avg);	// 별점 평균
-		mv.addObject("review",r_list);
 		System.out.println(pvo.getProductNo());
 		if(pvo.getProductType().equals("1")) {
 			mv.setViewName("curriculum/offDetail");

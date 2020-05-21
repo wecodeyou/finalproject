@@ -37,4 +37,6 @@ public interface IArticleMapper {
 	
 	public ArrayList<ArticleVO> getAllByUserNo(Integer articleWriter);
 	
+	public ArrayList<ArticleVO> NotiList(Integer articleBoardNo);
+	
 }
