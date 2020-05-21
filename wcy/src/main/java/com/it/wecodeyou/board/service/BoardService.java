@@ -45,5 +45,11 @@ public class BoardService implements IBoardService {
 		return dao.getInfoByNo(boardNo);
 	}
 
+	@Override
+	public Integer countReply(Integer articleNo) {
+		// TODO Auto-generated method stub
+		return dao.countReply(articleNo);
+	}
+
 
 }

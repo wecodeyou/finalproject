@@ -92,9 +92,10 @@ public class BoardController {
 		paging.setBoardNo(boardNo);
 		List<ArticleVO> list = articleService.list(paging);
 		ArrayList<MemberVO> userNameList = new ArrayList<MemberVO>();
-		
+		ArrayList<Integer> countReplyList = new ArrayList<Integer>();
 		for (int i = 0; i<list.size();i++) {
 			userNameList.add(memberService.getOneInfo(list.get(i).getArticleWriter()));
+			countReplyList.add(boardService.countReply(list.get(i).getArticleNo()));
 			
 		}
 		for(ArticleVO avo: list) {
@@ -110,7 +111,7 @@ public class BoardController {
 	    mv.addObject("ptagList", ptagList);
 	    mv.addObject("nameList", nameList);
 	    mv.addObject("userNameList", userNameList);
-
+	    mv.addObject("countReplyList",countReplyList); //이거 댓글 수
 		mv.addObject("board", bvo);
 		mv.addObject("articleList", list);
 		mv.addObject("pc", pc);
@@ -187,6 +188,7 @@ public class BoardController {
 		mv.addObject("board", bvo);
 		mv.addObject("article", avo);
 		mv.addObject("replyList", replyList);
+		mv.addObject("countReply", replyList.size()); //댓글 수
 		mv.addObject("profileImg",imgList);
 		mv.setViewName("/board/articleDetail");
 		return mv;

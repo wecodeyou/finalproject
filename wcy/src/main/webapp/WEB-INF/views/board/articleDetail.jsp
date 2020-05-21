@@ -234,6 +234,7 @@
 
    <jsp:include page="../include/header-sub.jsp" />
 
+
    <main class="wcy-main-content">
       <div class="wcy-contents">
          <div class="left-section-article">
@@ -268,11 +269,12 @@
                            
                            <!-- Title -->
                            <span style="font-size:26px; font-weight:bold; padding-left:8px;">
-                              ${article.articleTitle}
+                              ${article.articleTitle} 댓글 수 ${countReply}
                            </span><br>
                            <hr>
                            <!-- Date/Time -->
                            <p style="padding-left:8px;">작성일 <fmt:formatDate value="${article.articleCreatedAt}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></p>
+
 
                            <hr>
                            <!-- Preview Image -->

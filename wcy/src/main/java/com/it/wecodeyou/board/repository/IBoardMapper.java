@@ -39,4 +39,7 @@ public interface IBoardMapper {
 
 	//총 게시물의 수 조회기능
 	Integer countArticles();
+	
+	public Integer countReply(Integer articleNo);
+
 }
