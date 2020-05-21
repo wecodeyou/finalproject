@@ -54,8 +54,10 @@
 			</div>
 		</div>
 		<div class="col-sm-2">
+		<c:if test="${login != null}">
 			<a href="<c:url value="/board/${board.boardNo}/register"/>"
 				class="btn btn-izone float-right">글쓰기</a>
+		</c:if>
 		</div>
 		<div class="col-sm-2"></div>
 	</div>

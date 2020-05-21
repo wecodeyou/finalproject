@@ -45,6 +45,8 @@
 						안녕하세요!
 						<a href="<c:url value='/mypage/myinfoChange' />"><i class="fas fa-cog"></i>회원정보 수정</a>
 					</div>
+					
+						<img src="${login.userProfileImg}"/>
 					<ul class="myCuponBox">
 						<li class="list01">
 							<div class="mycuboxIn">

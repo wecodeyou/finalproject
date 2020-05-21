@@ -157,7 +157,7 @@ public class BoardController {
 	
 	@GetMapping("/article/{articleNo}")
 	public ModelAndView articleDetail(@PathVariable Integer articleNo, ModelAndView mv) throws NumberFormatException, SQLException {
-		
+		articleService.increaseView(articleNo);
 		ArticleVO avo = articleService.getOneInfo(articleNo);
 		BoardVO bvo = boardService.getInfoByNo(avo.getArticleBoardNo());
 		MemberVO uvo = null;

@@ -39,4 +39,6 @@ public interface IArticleMapper {
 	
 	public ArrayList<ArticleVO> NotiList(Integer articleBoardNo);
 	
+	public void increaseView(Integer articleNo);
+	
 }

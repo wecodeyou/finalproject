@@ -237,7 +237,7 @@
 			<div class="right-section-article">
 				<div class="right-contents-article">
 					<h4 class="contents-title-article">${board.boardTitle} </h4>
-						<c:if test="${login.userNo == user.userNo}">
+						<c:if test="${login != null && login.userNo == user.userNo}">
 							<div class="text-right">
 								<a class="btn btn-outline btn-sm" href="<c:url value="#"/>">
 									<i class="fas fa-feather"></i><span style="color:#313D55;"> 수정하기</span></a><br><br>
@@ -336,24 +336,37 @@
          										
       										</c:choose>
    											</c:forEach>
-   									
-									<!-- Comments Form -->
-									<div class="card my-4">
-										<h5 class="card-header">댓글을 남겨봐요 <i class="far fa-comment-dots"></i></h5>
-										<div class="card-body" style="padding-bottom:7px;">
-											<textarea class="form-control" rows="2" id="reply-content"></textarea>
-               								<input type="hidden" id="reply-writer" name="replyWriter"value="${login.userNo}" /> 
-               								<input type="hidden" id="reply-article" name="replyArticleNo" value="${article.articleNo}" /> 
-               								<button type="button" id="post-reply" class="btn-sm btn-outline-default"
-               								 style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
-               								 등록<i class="far fa-check-circle"></i></button>
-										</div>
-
-									</div>		
-										
-
-								</div>
-							
+   									<c:choose>
+   									<c:when test="${login != null}">
+										<!-- Comments Form -->
+										<div class="card my-4">
+											<h5 class="card-header">댓글을 남겨봐요 <i class="far fa-comment-dots"></i></h5>
+											<div class="card-body" style="padding-bottom:7px;">
+												<textarea class="form-control" rows="2" id="reply-content"></textarea>
+	               								<input type="hidden" id="reply-writer" name="replyWriter"value="${login.userNo}" /> 
+	               								<input type="hidden" id="reply-article" name="replyArticleNo" value="${article.articleNo}" /> 
+	               								<button type="button" id="post-reply" class="btn-sm btn-outline-default"
+	               								 style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
+	               								 등록<i class="far fa-check-circle"></i></button>
+											</div>
+										</div>		
+									</c:when>
+									<c:otherwise>
+										<!-- Comments Form -->
+										<div class="card my-4">
+											<h5 class="card-header">로그인을 해주세요 <i class="far fa-comment-dots"></i></h5>
+											<div class="card-body" style="padding-bottom:7px;">
+												<textarea class="form-control" rows="2" id="reply-content" readonly></textarea>
+	               								<input type="hidden" id="reply-writer" name="replyWriter"value="${login.userNo}" /> 
+	               								<input type="hidden" id="reply-article" name="replyArticleNo" value="${article.articleNo}" /> 
+	               								<button type="button" onclick="javascript:authAlert()"class="btn-sm btn-outline-default"
+	               								 style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
+	               								 등록<i class="far fa-check-circle"></i></button>
+											</div>
+										</div>											
+									</c:otherwise>
+									</c:choose>
+							</div>
 								<!-- Sidebar Widgets Column -->
 								<div class="col-md-4">
 
@@ -472,7 +485,7 @@ $(function(){
                
             },
             error: function(request, status, error){
-               console.log("POST : /board/${boardNo}/register 요청에 실패했습니다.")
+               console.log("POST : /board/${boardNo}/register 요청에 실패했습니다.");
              	Swal.fire('댓글 등록에 실패하였습니다.');
 
             }
@@ -481,6 +494,9 @@ $(function(){
 });
 function showReplyForm(selector){
    $(selector).toggleClass("hidden");
+}
+function authAlert(){
+ 	Swal.fire('로그인이 필요한 서비스입니다!');
 }
 </script> 
 
