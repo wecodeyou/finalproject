@@ -389,9 +389,10 @@
 			</div>
 		</div>
 		<div id="tx_canvas_text_holder" class="tx-holder">
-			<textarea id="tx_canvas_text" rows="30" cols="30"></textarea>
+			<textarea name="Notes" id="tx_canvas_text" rows="30" cols="30"></textarea>
 		</div>
 	</div>
+
 					<!-- 높이조절 Start -->
 	<div id="tx_resizer" class="tx-resize-bar">
 		<div class="tx-resize-bar-bg"></div>

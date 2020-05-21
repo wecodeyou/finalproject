@@ -341,12 +341,12 @@ public class MypageController {
 			  if(purchaseList.size() != 0 && purchaseList != null) {
 				  for(PurchaseVO pvo : purchaseList) {
 					  System.out.println("pvo" + pvo);
-					  if(pdservice.getProductType(pvo.getPurchaseProNo()).equals("1")) {
+					  if(pdservice.getProductType(pvo.getPurchaseProNo()) == 1 && !pvo.isPurchaseIsrefund()) {
 					  temp = oservice.getOffProduct(pvo.getPurchaseProNo());
 					  System.out.println("temp" + temp);
-					  if(temp.getProductType().equals("1")) {
-						  offList.add(temp);
-					  } 
+					  	if(temp.getProductType().equals("1")) {
+					  		offList.add(temp);
+					  	} 
 					  }
 				  } 
 
