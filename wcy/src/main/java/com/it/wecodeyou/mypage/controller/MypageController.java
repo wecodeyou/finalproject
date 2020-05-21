@@ -310,12 +310,16 @@ public class MypageController {
 		  mv.setViewName("mypage/mypage-mylec");
 		  MemberVO mvo = (MemberVO)session.getAttribute("login"); 
 			  purchaseList = pservice.selectUsersPurchase(mvo.getUserNo());
-			  if(purchaseList.size() != 0) {
+			  if(purchaseList.size() != 0 && purchaseList != null) {
 				  for(PurchaseVO pvo : purchaseList) {
+					  System.out.println("pvo" + pvo);
+					  if(pdservice.getProductType(pvo.getPurchaseProNo()).equals("1")) {
 					  temp = oservice.getOffProduct(pvo.getPurchaseProNo());
+					  System.out.println("temp" + temp);
 					  if(temp.getProductType().equals("1")) {
 						  offList.add(temp);
 					  } 
+					  }
 				  } 
 
 			  }
