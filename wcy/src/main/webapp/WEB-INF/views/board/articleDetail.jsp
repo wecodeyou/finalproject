@@ -250,7 +250,7 @@
 									
 									<!-- Author -->
 									<p style="text-align:left; font-size:16px;padding-left:8px; color:#bf8fbe">
-										<i class="fas fa-user-tag"></i> <a href="#">${user.userName}</a>
+										글쓴이<i class="fas fa-user-tag"></i> <a href="#"> ${user.userName}</a>
 									</p><br><br>
 									
 									<!-- Title -->
@@ -259,7 +259,7 @@
 									</span><br>
 									<hr>
 									<!-- Date/Time -->
-									<p style="padding-left:8px;">Posted on <fmt:formatDate value="${article.articleCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></p>
+									<p style="padding-left:8px;">작성일 <fmt:formatDate value="${article.articleCreatedAt}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></p>
 
 									<hr>
 									<!-- Preview Image -->

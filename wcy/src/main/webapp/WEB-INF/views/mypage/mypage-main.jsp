@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,7 @@
 									<div class="textBox">
 										<span class="moneyText">WCY Point</span>
 										<div class="moneyBox">
-											<span class="money">${login.userPoint}</span>Point
+											<span class="money"><fmt:formatNumber type="number" maxFractionDigits="3" value="${login.userPoint}" /></span>Point
 										</div>
 									</div>
 								</a>
@@ -138,9 +139,9 @@
 														<tbody>
 															<tr>
 																<td class="title">구매일시</td>
-																<td style="padding-right:25px;">${m.purchaseDate}
+																<td style="padding-right:25px;"><fmt:formatDate value="${m.purchaseDate}" pattern="yyyy년 MM월 dd일  kk시 mm분" />
 																<td class="title">개강일</td>
-																<td>${m.offStartAt}</td>
+																<td><fmt:formatDate value="${m.offStartAt}" pattern="yyyy년 MM월 dd일 " /></td>
 															</tr>
 															<tr>
 																<td class="title">지점</td>
@@ -160,7 +161,7 @@
 												<div class="price">
 													<div class="normality">
 														<div class="productTitle">상품금액</div>
-														<span class="productPrice">${m.purchaseAmount}</span>point
+														<span class="productPrice"><fmt:formatNumber type="number" maxFractionDigits="3" value="${m.purchaseAmount}" /></span>point
 													</div>
 												</div>
 											</div>
@@ -198,7 +199,7 @@
 														<tbody>
 															<tr>
 																<td class="title">구매일시</td>
-																<td style="padding-right:25px;">${m.purchaseDate}
+																<td style="padding-right:25px;"><fmt:formatDate value="${m.purchaseDate}" pattern="yyyy-MM-dd  kk시 mm분" />
 																<td class="title"></td>
 																<td></td>
 															</tr>
