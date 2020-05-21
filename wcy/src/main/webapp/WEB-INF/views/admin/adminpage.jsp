@@ -12,7 +12,7 @@
 <!-- 파비콘 적용 -->
 <link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
-
+<link rel="stylesheet" href="<c:url value='/css/mypage.css'/>">
 <!-- Custom fonts for this template-->
 <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
@@ -435,15 +435,82 @@
 			
 			<!-- 상품관리 -->
 			<div class="container-fluid" id="adminProduct">
-				<!-- <div class="page-width" style="text-align:left;">
-					<h2>온라인 강의</h2><br>
-				</div> -->
-				 <a href="<c:url value='/product/registerMain' />">&nbsp;상품 등록&nbsp;</a>
 				
-				
-				
-				
-				
+				<!-- 최상단 박스 -->
+			<div class="mypageInfoCuponLayout">
+				<div class="myinfocuponIn">
+					<div class="myImgBox">
+						<img width="150" height="145" src="${login.userProfileImg}">
+					</div>
+					<div class="myInfoBox">
+						<div class="mb10">
+							<span class="fs35b" style="font-size:35px; font-weight:bold;">${login.userName}</span>님,
+						</div>
+						안녕하세요!
+						<a href="<c:url value='/mypage/myinfoChange' />"><i class="fas fa-cog"></i>회원정보 수정</a>
+					</div>
+					
+						
+					<ul class="myCuponBox">
+						<li class="list01">
+							<div class="mycuboxIn">
+								<a >
+									<i class="fas fa-book-reader"></i>
+									<div class="textBox">
+										<span class="moneyText">강의 관리</span>
+										<div class="moneyBox">
+											<span class="money">수정</span>
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li class="list02">
+							<div class="mycuboxIn">
+								<a href="<c:url value='/product/registerMain' />">
+									<i class="fas fa-plus-square"></i>
+									<div class="textBox">
+										<span class="moneyText">강의 관리</span>
+										<div class="moneyBox">
+											<span class="money">추가</span>
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li class="list03">
+							<div class="mycuboxIn">
+								<a href="<c:url value='/mypage/recentAct' />">
+									<i class="fas fa-clipboard-list"></i>
+									<div class="textBox">
+										<span class="moneyText">최근 활동</span>
+										<div class="moneyBox">
+											<span class="money">내역</span>
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div> <!-- 최상단 박스 -->
+			
+			<!-- 수강목록 -->
+			<div class="mypageClassSection">
+				<div class="titleBox">
+					<div class="title">수강신청 목록</div>
+					<div class="selectric-wrapper">
+						<div class="selectric-hide-select">
+							<select id="sel_onoff" name="sel_onoff" onchange="change_form()">
+								<option value="off" selected="selected">오프라인</option>
+								<option value="on">온라인</option>
+							</select>
+						</div>
+					</div>
+					<a href="#" class="addBtn" title="더보기">+</a>
+					
+					</div>
+					
 				
 				
 				

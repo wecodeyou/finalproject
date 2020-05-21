@@ -41,68 +41,6 @@
 	<main class="wcy-main-content">
 		<div class="wcy-contents">
 		
-		<c:if test="${login.userType != 2}">
-			<!-- 최상단 박스 -->
-			<div class="mypageInfoCuponLayout">
-				<div class="myinfocuponIn">
-					<div class="myImgBox">
-						<img width="150" height="145" src="${login.userProfileImg}">
-					</div>  
-					<div class="myInfoBox-sub">
-						<div class="mb10">
-							<span class="fs35b" style="font-size:35px; font-weight:bold;">${login.userName}</span>님,
-						</div>
-						안녕하세요!
-						<a href="<c:url value='/mypage/myinfoChange' />"><i class="fas fa-cog"></i>회원정보 수정</a>
-						<a href="<c:url value='/mypage/' />" style="margin-top: 12px;"><i class="fas fa-house-user"></i>마이페이지 홈</a>
-					</div>
-					<ul class="myCuponBox">
-						<li class="list01">
-							<div class="mycuboxIn">
-								<a href="<c:url value='/mypage/pointInfo' />">
-									<i class="fas fa-coins"></i>
-									<div class="textBox">
-										<span class="moneyText">WCY Point</span>
-										<div class="moneyBox">
-											<span class="money">${login.userPoint}</span>Point
-										</div>
-									</div>
-								</a>
-							</div>
-						</li>
-						<li class="list02">
-							<div class="mycuboxIn">
-								<a href="<c:url value='/mypage/recentAct' />">
-									<i class="fas fa-clipboard-list"></i>
-									<div class="textBox">
-										<span class="moneyText">최근활동</span>
-										<div class="moneyBox">
-											모두보기
-										</div>
-									</div>
-								</a>
-							</div>
-						</li>
-						<li class="list03">
-							<div class="mycuboxIn">
-								<a href="<c:url value='/mypage/mylec' />">
-									<i class="fas fa-chalkboard-teacher"></i>
-									<div class="textBox">
-										<span class="moneyText">내 강의실</span>
-										<div class="moneyBox">
-											입장하기
-										</div>
-									</div>
-								</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div> <!-- 최상단 박스 -->
-		</c:if>	
-		
-		
-		<c:if test="${login.userType == 2}">
 							<!-- 최상단 박스 -->
 			<div class="mypageInfoCuponLayout">
 				<div class="myinfocuponIn">
@@ -161,62 +99,9 @@
 					</ul>
 				</div>
 			</div> <!-- 최상단 박스 -->
-		</c:if>
 		
 			<div class="acthistoryLayout"> <!-- 최근활동내역 -->
 				<div class="Dtitle">${login.userName}님 최근 활동 내역</div>
-				
-				<c:if test="${login.userType != 2}">
-					<div class="subtitle"> <!-- 수강후기 -->
-						<p>수강후기</p>
-					</div>
-				
-					<table class="table_normal">
-						<colgroup>
-							<col width="15%">
-							<col width="*">
-							<col width="25%">
-							<col width="15%">
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="col" class="line0">날짜</th>
-								<th scope="col">내용</th>
-								<th scope="col">강의 명</th>
-								<th scope="col">별점</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="r" items="${s_list}">
-							<tr>
-								<td style="text-align:center;"><fmt:formatDate value="${r.reviewCreatedAt}" pattern="yyyy년 MM월 dd일  kk시 mm분" /></td>
-								<td ><p class="text_context" >${r.content}</p></td>
-								<td style="text-align:center;">${r.reviewProductName}</td>
-								<td style="text-align:center;">
-								<span class="star">
-									<span id="star${r.reviewNo}_1">★</span> 
-									<span id="star${r.reviewNo}_2">★</span> 
-									<span id="star${r.reviewNo}_3">★</span> 
-									<span id="star${r.reviewNo}_4">★</span> 
-									<span id="star${r.reviewNo}_5">★</span> 
-								</span>
-								</td>
-							</tr>
-						
-<script type="text/javascript">
-$( document ).ready(function() {
-	var s;
-	for(var i=0; i<${r.reviewStar}+1; i++){
-		s = '#star'+${r.reviewNo}+"_"+i;
-		$(s).addClass("on");
-	}
-	return false;
-});
-</script>
-						</c:forEach>
-					</tbody>
-				</table>
-				</c:if>
 				
 				<div class="subtitle"> <!-- 게시물 -->
 					<p>게시물</p>

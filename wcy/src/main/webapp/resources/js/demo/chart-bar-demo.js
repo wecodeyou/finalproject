@@ -66,7 +66,7 @@ var options = {
 		yAxes : [ {
 			ticks : {
 				min : 0,
-				max : 10,
+				max : 15,
 				maxTicksLimit : 5,
 				padding : 10,
 				fontSize: 20

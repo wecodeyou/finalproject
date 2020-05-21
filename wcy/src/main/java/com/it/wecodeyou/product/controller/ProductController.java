@@ -99,6 +99,7 @@ public class ProductController {
 		  return mv;
 	  }
 	  
+	  
 	  @PostMapping("/register-off")
 	  public String registerOff(@RequestBody OffCourseVO ocvo, HttpSession session) {
 		  System.out.println("/register-off : \n " + ocvo.toString());
