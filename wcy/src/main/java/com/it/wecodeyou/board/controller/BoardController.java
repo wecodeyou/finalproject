@@ -168,7 +168,7 @@ public class BoardController {
 		ArrayList<String> imgList = new ArrayList<String>(); 
 		for (int i =0; i< replyList.size(); i++) {
 			
-			memberList.add(memberService.getOneInfo(Integer.parseInt(replyList.get(i).getReplyWriter())));
+			memberList.add(memberService.getOneInfo(replyList.get(i).getReplyWriter()));
 			imgList.add(memberList.get(i).getUserProfileImg());
 		}
 		
@@ -193,9 +193,26 @@ public class BoardController {
 	}
 	
 	@PostMapping("/{boardNo}/post-reply")
-	public String postReply(@PathVariable Integer boardNo, @RequestBody ReplyVO rvo) throws NumberFormatException, SQLException {
+	public ModelAndView postReply(@PathVariable Integer boardNo, ReplyVO rvo, HttpSession session, ModelAndView mv) throws NumberFormatException, SQLException {
 		System.out.println(rvo.toString());
-		if(replyService.insert(rvo) == 1) {
+		MemberVO mvo = (MemberVO) session.getAttribute("login");
+		rvo.setReplyWriter(mvo.getUserNo());
+		rvo.setReplyDepth(replyService.getDepth(rvo.getReplyParent()));
+		rvo.setReplyOrder(replyService.getMaxOrder(rvo.getReplyParent()));
+		System.out.println("답글: " + rvo);
+			replyService.insertReply(rvo);
+		String viewName  = "redirect:/board/article/" + rvo.getReplyArticleNo();
+		mv.setViewName(viewName);
+		return mv;
+	}
+	@PostMapping("/{boardNo}/post-comment")
+	public String postComment(@PathVariable Integer boardNo, @RequestBody ReplyVO rvo, HttpSession session) throws NumberFormatException, SQLException {
+		MemberVO mvo = (MemberVO) session.getAttribute("login");
+		int depth = replyService.getMaxDepth(rvo.getReplyArticleNo());
+		rvo.setReplyDepth(depth);
+		rvo.setReplyWriter(mvo.getUserNo());
+		System.out.println(rvo.toString());
+		if(replyService.insertComment(rvo) == 1) {
 			return "post-reply-success";
 		} else {
 		return "post-reply-fail";

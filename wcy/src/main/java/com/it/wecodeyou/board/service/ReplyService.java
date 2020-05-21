@@ -17,8 +17,13 @@ public class ReplyService implements IReplyService {
 	IReplyMapper rdao;
 	
 	@Override
-	public Integer insert(ReplyVO rvo) {
-		return rdao.insert(rvo);
+	public Integer insertComment(ReplyVO rvo) {
+		return rdao.insertComment(rvo);
+	}
+
+	@Override
+	public Integer insertReply(ReplyVO rvo) {
+		return rdao.insertReply(rvo);
 	}
 
 	@Override
@@ -52,5 +57,24 @@ public class ReplyService implements IReplyService {
 	public ArrayList<ReplyVO> listByUser(Integer replyWriter) {
 		return rdao.listByUser(replyWriter);
 	}
+
+	@Override
+	public Integer getMaxOrder(Integer replyParent) {
+		return rdao.getMaxOrder(replyParent);
+	}
+
+	@Override
+	public Integer getMaxDepth(Integer replyArticleNo) {
+		return rdao.getMaxDepth(replyArticleNo);
+	}
+
+	@Override
+	public Integer getDepth(Integer replyNo) {
+		int depth = rdao.getDepth(replyNo);
+		
+		return depth;
+	}
+
+
 
 }

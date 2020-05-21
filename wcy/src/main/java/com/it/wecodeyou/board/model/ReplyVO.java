@@ -7,23 +7,24 @@ import java.sql.Timestamp;
 depth: 댓글 순위
 order: 같은 댓글을 가진 답글들의 순위*/
 public class ReplyVO {
-	private long replyNo;
-	private String replyWriter;
+	private Integer replyNo;
+	private Integer replyWriter;
 	private String replyContent;
 	private String replyTitle;
 	private Timestamp replyCreatedAt;
 	private Timestamp replyModifiedAt;
-	private boolean replyIsRemoved;
+	private Integer replyIsRemoved;
 	private Integer replyOrder;
-	private long replyParent;
+	private Integer replyParent;
 	private Integer replyDepth;
 	private Integer replyLikes;
-	private long replyArticleNo;
+	private Integer replyArticleNo;
 	
 	public ReplyVO() {}
-	public ReplyVO(long replyNo, String replyWriter, String replyContent, String replyTitle, Timestamp replyCreatedAt,
-			Timestamp replyModifiedAt, boolean replyIsRemoved, Integer replyOrder, long replyParent, Integer replyDepth,
-			Integer replyLikes, long replyArticleNo) {
+
+	public ReplyVO(Integer replyNo, Integer replyWriter, String replyContent, String replyTitle,
+			Timestamp replyCreatedAt, Timestamp replyModifiedAt, Integer replyIsRemoved, Integer replyOrder,
+			Integer replyParent, Integer replyDepth, Integer replyLikes, Integer replyArticleNo) {
 		super();
 		this.replyNo = replyNo;
 		this.replyWriter = replyWriter;
@@ -39,31 +40,19 @@ public class ReplyVO {
 		this.replyArticleNo = replyArticleNo;
 	}
 
-	public ReplyVO(String replyWriter, String replyContent, String replyTitle, Integer replyOrder, long replyParent,
-			Integer replyDepth, long replyArticleNo) {
-		super();
-		this.replyWriter = replyWriter;
-		this.replyContent = replyContent;
-		this.replyTitle = replyTitle;
-		this.replyOrder = replyOrder;
-		this.replyParent = replyParent;
-		this.replyDepth = replyDepth;
-		this.replyArticleNo = replyArticleNo;
-	}
-
-	public long getReplyNo() {
+	public Integer getReplyNo() {
 		return replyNo;
 	}
 
-	public void setReplyNo(long replyNo) {
+	public void setReplyNo(Integer replyNo) {
 		this.replyNo = replyNo;
 	}
 
-	public String getReplyWriter() {
+	public Integer getReplyWriter() {
 		return replyWriter;
 	}
 
-	public void setReplyWriter(String replyWriter) {
+	public void setReplyWriter(Integer replyWriter) {
 		this.replyWriter = replyWriter;
 	}
 
@@ -99,11 +88,11 @@ public class ReplyVO {
 		this.replyModifiedAt = replyModifiedAt;
 	}
 
-	public boolean isReplyIsRemoved() {
+	public Integer getReplyIsRemoved() {
 		return replyIsRemoved;
 	}
 
-	public void setReplyIsRemoved(boolean replyIsRemoved) {
+	public void setReplyIsRemoved(Integer replyIsRemoved) {
 		this.replyIsRemoved = replyIsRemoved;
 	}
 
@@ -115,11 +104,11 @@ public class ReplyVO {
 		this.replyOrder = replyOrder;
 	}
 
-	public long getReplyParent() {
+	public Integer getReplyParent() {
 		return replyParent;
 	}
 
-	public void setReplyParent(long replyParent) {
+	public void setReplyParent(Integer replyParent) {
 		this.replyParent = replyParent;
 	}
 
@@ -139,13 +128,14 @@ public class ReplyVO {
 		this.replyLikes = replyLikes;
 	}
 
-	public long getReplyArticleNo() {
+	public Integer getReplyArticleNo() {
 		return replyArticleNo;
 	}
 
-	public void setReplyArticleNo(long replyArticleNo) {
+	public void setReplyArticleNo(Integer replyArticleNo) {
 		this.replyArticleNo = replyArticleNo;
 	}
+
 	@Override
 	public String toString() {
 		return "ReplyVO [replyNo=" + replyNo + ", replyWriter=" + replyWriter + ", replyContent=" + replyContent
@@ -154,6 +144,6 @@ public class ReplyVO {
 				+ ", replyParent=" + replyParent + ", replyDepth=" + replyDepth + ", replyLikes=" + replyLikes
 				+ ", replyArticleNo=" + replyArticleNo + "]";
 	}
-	
+
 	
 }
