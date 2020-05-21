@@ -1,15 +1,34 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<title>게시판</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- 파비콘 적용 -->
+<link rel="shortcut icon"
+	href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+
+<link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
+<!-- search / tag -->
+<link rel="stylesheet" href="<c:url value='/css/search.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/tag.css'/>">
+
+<!-- table을 위함  -->
+<link rel="stylesheet" href="<c:url value='/css/blog-post.css'/>">
+<link rel="stylesheet" href="<c:url value='/vendor/bootstrap/css/bootstrap.min.css'/>">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
+<title>WE CODE YOU | 커뮤니티 관리</title>
 <style>
 .register_btn {
 	
@@ -98,34 +117,21 @@ a:hover { text-decoration: none;}
 </style>
 </head>
 <body>
+<jsp:include page="../include/header-sub.jsp" />
 
+	<main class="wcy-main-content">
+		<div class="wcy-contents">
 	<br>
 	<div style="text-align: center;">
-		<h2>커뮤니티</h2>
+		<h2>커뮤니티 관리</h2>
 	</div>
 	
-	<hr>
-	일반회원
-	<div class="row">
-		<c:forEach var="b" items="${boardList}">
-			 <div class="column">
-    			<div class="card">
-    			<a class="title_link" href="<c:url value='/board/${b.boardNo}'/>">${b.boardTitle}</a>
-    				<br>
-    				<small>${b.boardDetail}</small>
-    			</div>
-    			
-  			</div>
-		</c:forEach>
 	
-	</div>
-	
-	<br><br><br><hr>
 	관리자모드
 	<button class="register_btn" onclick="location.href='<c:url value='/board/register'/>'">게시판 추가하기</button>
 	<br><br>
 	
-	<div class="row">
+	<div class="row" style="margin-left:113px;">
 		<c:forEach var="b" items="${boardList}">
 			 <div class="column">
     			<div class="card">
@@ -143,6 +149,8 @@ a:hover { text-decoration: none;}
 	
 	</div>
 	
+	</div>
+	</main>
 	
 	
 	<%-- <table>
@@ -204,4 +212,5 @@ a:hover { text-decoration: none;}
 				</table> -->
 
 </body>
+<jsp:include page="../include/footer.jsp" />
 </html>
