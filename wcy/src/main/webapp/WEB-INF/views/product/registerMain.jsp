@@ -124,7 +124,7 @@
 <!-- selectedTagList 끝 -->
 						
 					</div>
-					<div class="detail-top-right">								
+					<div class="detail-top-right">		 						
 						<h1 class="className">강의명: <input type="text" name="" class="product_name" placeholder="[현장강의]"/></h1>
 						<table class="top-right-info" style="margin-left: 33px !important;">
 							<tbody>
