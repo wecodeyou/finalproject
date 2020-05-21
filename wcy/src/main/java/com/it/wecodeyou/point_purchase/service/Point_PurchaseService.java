@@ -30,7 +30,7 @@ public class Point_PurchaseService implements IPoint_PurchaseService{
 
 	@Override
 	public void insertPointPurchase(Point_PurchaseVO pvo) {
-		// TODO Auto-generated method stub
+		dao.addPoint(pvo);
 		dao.insertPointPurchase(pvo);
 		
 	}
@@ -43,9 +43,15 @@ public class Point_PurchaseService implements IPoint_PurchaseService{
 
 	@Override
 	public void addPoint(Point_PurchaseVO pvo) {
-		// TODO Auto-generated method stub
+		System.out.println("point 추가");
 		dao.addPoint(pvo);
 		
+	}
+
+	@Override
+	public Integer getPoint(Point_PurchaseVO pvo) {
+		// TODO Auto-generated method stub
+		return dao.getPoint(pvo);
 	}
 
 

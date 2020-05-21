@@ -12,13 +12,6 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 
-<%
-
-
-
-%>
-
-
 
 <body>
     <script>
@@ -43,37 +36,45 @@
             	
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
                 $.ajax({
-                    url: "<c:url value='/pay/paying' />", 
+                    url: "/pay/paying", 
                     type: 'POST',
-                    dataType: 'json',
-                    data:   {
-                       		imp_uid : rsp.imp_uid,
-                       		gname : rsp.name,
-                       		bname : rsp.buyer_name,
-                       		purchased_at : new Date().getTime(),
-                       		amount : rsp.paid_amount
+    				headers:{
+    					"Content-Type": "application/json"
+    				},
+                    dataType: 'text',
+                    data:JSON.stringify({
+                    		pointPurchaseId : rsp.imp_uid,
+                       		pointPurchaseUserNo : '${login.userNo}',
+                    		pointPurchasePurchasedAt : new Date().getTime(),
+                       		pointPurchaseAmount : rsp.paid_amount
 							
                         	//기타 필요한 데이터가 있으면 추가 전달
-							},success : function(result){
+							}),success : function(result){
 									console.log("ajax 통신 성공");
+									console.log(result);
 								
 							},error : function(){console.log("실패")}
 								
 						
-                }).done(function(data) { })
-         	           		            		  
+                }).done(function(data) {  			
+       	          alert("결제 성공");
+
+                	opener.document.location.reload();
+               		self.close();})
                     //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
 
-               location.href="/pay/paycomplete";
+               /* location.href="/pay/paycomplete"; */
                 //성공시 이동할 페이지
 				
                 
           	  } else {
                 msg = '결제에 실패하였습니다.';
                 msg += ' 에러내용 : ' + rsp.error_msg;
-                //실패시 이동할 페이지
-                location.href="<c:url value='/pay/fail' />";
                 alert(msg);
+   	            console.log("결제 실패");
+
+ 				opener.document.location.reload();
+                self.close();
             }
         });
         
