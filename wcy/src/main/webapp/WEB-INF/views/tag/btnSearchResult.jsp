@@ -50,7 +50,7 @@ table {
 		<hr>
 		<!-- product -->
 		<c:if test="${fn:length(productList)!=0}">
-			<h3>상품 검색결과</h3>
+			<h3> fn:length(productList) matching results in Product</h3>
 			<table border="2px">
 				<thead>
 					<th>썸네일</th>

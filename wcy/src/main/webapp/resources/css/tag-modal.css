@@ -1,10 +1,10 @@
  @charset "UTF-8";
  
  
- .modal {
+ .modal-tag {
             display: none; 
             position: fixed; /* 위치 고정 */
-            z-index: 1; /* 맨 위로 띄우기 */
+            z-index: 11; /* 맨 위로 띄우기 */
             left: 0;
             top: 0;
             max-width: 100%;
@@ -16,15 +16,19 @@
 			display:inline-block;
 			width:100px;
 			margin-left:calc(100% - 100px - 10px);
-		}
+		}modal_close_btn-tag
 */
-		.modal .modal_content {
-            /*border: 1px solid transparent;*/
+		.modal-tag .modal_content-tag {
+            border: 1px solid transparent;
            /*  border: 20px solid transparent; */
             border-radius: 10px; /* 테두리를 살짝 둥글게 */
-            width: 25%; /* Could be more or less, depending on screen size */ 
-            height: 225px;
-            margin: 15% auto; /* 위와 중앙에서 5% 떨어지게 */
+            width: 30%; /* Could be more or less, depending on screen size */ 
+            height: 250px;
+            margin: 15% auto; 
+            padding:3px;
+            padding-top:5px;
+            padding-right:3px;
+            padding-bottom:5px;/* 위와 중앙에서 5% 떨어지게 */
 			background-color: #fefefe; /* 모달 컨텐츠 컬러 */
             animation-name: animatetop;/* 에니메이션 */
             animation-duration: 0.6s
@@ -36,7 +40,7 @@
             to {top: 0; opacity: 1}
         }
     
-        .modal .modal_layer {
+        .modal-tag .modal_layer-tag {
 			position:fixed;
 			top:0;
 			left:0;
@@ -47,7 +51,7 @@
 			z-index:-1; /*가장 앞에 나오도록 제일 낮은 값 부여*/
 		}
         
-        .modal .modal_title_large {
+        .modal-tag .modal_title_large-tag {
             display: inline-block;
             color:#0b1755;
             font-size: 20px;
@@ -58,12 +62,12 @@
             max-width: 85%;
             opacity: .8;
             overflow: hidden;
-            padding-bottom: 30px;
+            padding-bottom: 25px;
             text-overflow: ellipsis;
             vertical-align: middle;
         }
         
-        .modal .modal_title_small {
+        .modal-tag .modal_title_small-tag {
             display: inline-block;
             font-size: 16px;
             opacity: .6;
@@ -71,7 +75,7 @@
         }
         
         /* Modal Header */
-        .modal-header {
+        .modal-header-tag {
             color: white;
             background-color: #EFF0F1;
             border-top-left-radius: 10px;
@@ -79,30 +83,33 @@
         }
 
         /* Modal Body */
-        .modal-body {padding: 2px 16px;}
+        .modal-body-tag {padding: 2px 16px;}
 
         /* Modal Footer */
-        .modal-footer {
+        .modal-footer-tag {
         	border:none !important;
-            margin-top: 30px;
+        	border-radius: 10px;
+            margin-top: 25px;
+            margin-bottom: 20px;
             background-color: white;
             color: white;
         }
     
         /* 상단 닫기 버튼 */
-        .modal .close {
+        .modal-tag .close-tag #modal_close_btn-tag {
             color: #aaa;
             float: right;
-            font-size: 28px;
+            font-size: 50px;
             font-weight: bold;
+            margin-right:10px;
         }
-        .modal .close:hover,
+        .modal-tag .close-tag #modal_close_btn-tag:hover,
     
-        .modal .close:focus {
-            color: pink;
+        .modal-tag .close-tag #modal_close_btn-tag:focus {
+            color: gray;
             text-decoration: none;
             cursor: pointer;
         }
     
-    .write {padding: 3px; border: 2px solid #d2e1e7; background: #f9f9f9}
-    .input_txt {display: block; width: 100%; height: 20px; border: 0 none; background: #f9f9f9}
+    .write-tag {padding: 3px; border: 2px solid #d2e1e7; background: #f9f9f9}
+    .input_txt-tag {display: block; width: 100%; height: 20px; border: 0 none; background: #f9f9f9}

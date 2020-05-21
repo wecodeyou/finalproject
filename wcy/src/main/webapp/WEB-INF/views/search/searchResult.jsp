@@ -175,7 +175,7 @@
 	
 	<div id="contents">
 		<c:if test="${fn:length(onList)!=0}">
-			<h3 class="mb20 contents-title">온라인 강의 검색결과</h3>
+			<h3 class="mb20 contents-title">${fn:length(onList)} matching results in 온라인 강의</h3>
 			<table class="wp100 searchResult-table">
 			
 				<thead>
@@ -227,7 +227,7 @@
 		<br>
 
 		<c:if test="${fn:length(offList)!=0}">
-			<h3 class="mt50 mb20 contents-title">오프라인 강의 검색결과</h3>
+			<h3 class="mt50 mb20 contents-title">${fn:length(offList)} matching results in 오프라인 강의</h3>
 			<table class="wp100 searchResult-table">
 				<thead>
 				<tr class="trHead">
@@ -279,7 +279,7 @@
 
 		<!-- product -->
 		<c:if test="${fn:length(productList)!=0}">
-			<h3 class="mt50 mb20 contents-title">상품 검색결과</h3>
+			<h3 class="mt50 mb20 contents-title">${fn:length(productList)} matching results in 상품</h3>
 			<table class="wp100 searchResult-table">
 				<thead>
 				<tr class="trHead">
@@ -330,7 +330,7 @@
 
 		<!-- article -->
 		<c:if test="${fn:length(articleList)!=0}">
-			<h3 class="mt50 mb20 contents-title">게시글 검색결과</h3>
+			<h3 class="mt50 mb20 contents-title">${fn:length(articleList)} matching results in 게시글</h3>
 			<table class="wp100 searchResult-table">
 				<thead>
 				<tr class="trHead">
