@@ -25,4 +25,9 @@ public class SubProductService implements ISubProductService{
 		return sdao.showAllPro();
 	}
 
+	@Override
+	public Integer insert(SubProductVO spvo) {
+		return sdao.insert(spvo);
+	}
+
 }

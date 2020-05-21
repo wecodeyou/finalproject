@@ -48,11 +48,10 @@ public class OffService implements IOffService {
 			ovo.setOffProductNo(pvo.getProductNo());
 			result = offDao.insert(ovo);
 			System.out.println("OffService register() - off_course Insert Result: " + result);
+			return pvo.getProductNo();
 		} else {
 			return 0;
 		}
-		
-		return result;
 	}
 
 	@Override

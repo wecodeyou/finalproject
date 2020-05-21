@@ -102,7 +102,7 @@ public class OffController {
 			
 			case "0": 
 					  onvo.setOnAuthor(login.getUserEmail());
-					  onvo.setOnCategory(Integer.parseInt(opvo.getOffCategory()));
+					  onvo.setOnCategory(opvo.getOffCategory());
 					  onvo.setOnDays(0);
 					  
 						if (onService.insert(pvo, onvo, sendTagList) == 1) {

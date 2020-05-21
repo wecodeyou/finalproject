@@ -10,4 +10,5 @@ public interface ISubProductMapper {
 	
 	public ArrayList<SubProductVO> showAllPro();
 	
+	public Integer insert(SubProductVO spvo);
 }

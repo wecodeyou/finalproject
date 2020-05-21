@@ -10,4 +10,5 @@ public interface ISubProductService {
 	
 	public ArrayList<SubProductVO> showAllPro();
 	
+	public Integer insert(SubProductVO spvo);
 }

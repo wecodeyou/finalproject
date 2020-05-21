@@ -49,11 +49,10 @@ public class OnService implements IOnService {
 			ovo.setOnProductNo(pvo.getProductNo());
 			result = onDao.insert(ovo);
 			System.out.println("OnService register() - on_course Insert Result: " + result);
+			return pvo.getProductNo();
 		} else {
 			return 0;
 		}
-		
-		return result;
 	}
 
 
