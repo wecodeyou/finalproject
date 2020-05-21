@@ -4,14 +4,14 @@ public class OnVO {
 
 	private Integer onNo;
 	private String onAuthor;
-	private Integer onCategory;
+	private String onCategory;
 	private Integer onProductNo;
 	private String onUploadUri;
 	private Integer onDays;
-	
-	public OnVO() {}
-	
-	public OnVO(Integer onNo, String onAuthor, Integer onCategory, Integer onProductNo, String onUploadUri,
+	public OnVO() {
+		super();
+	}
+	public OnVO(Integer onNo, String onAuthor, String onCategory, Integer onProductNo, String onUploadUri,
 			Integer onDays) {
 		super();
 		this.onNo = onNo;
@@ -33,10 +33,10 @@ public class OnVO {
 	public void setOnAuthor(String onAuthor) {
 		this.onAuthor = onAuthor;
 	}
-	public Integer getOnCategory() {
+	public String getOnCategory() {
 		return onCategory;
 	}
-	public void setOnCategory(Integer onCategory) {
+	public void setOnCategory(String onCategory) {
 		this.onCategory = onCategory;
 	}
 	public Integer getOnProductNo() {
@@ -57,7 +57,11 @@ public class OnVO {
 	public void setOnDays(Integer onDays) {
 		this.onDays = onDays;
 	}
-	
+	@Override
+	public String toString() {
+		return "OnVO [onNo=" + onNo + ", onAuthor=" + onAuthor + ", onCategory=" + onCategory + ", onProductNo="
+				+ onProductNo + ", onUploadUri=" + onUploadUri + ", onDays=" + onDays + "]";
+	}
 	
 	
 }

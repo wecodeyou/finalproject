@@ -90,7 +90,9 @@
 								</div>
 <!-- 썸네일 업로드 시작 -->
 								<div class="thum_input">
-									<input type="file" />
+				<form method="post" enctype="multipart/form-data" action="#" id="imageForm">
+					<input type="file" id="thumb" name="filedata"/>
+				</form>				<input type="hidden" id="url"/>
 								</div>
 							</div>
 						</div> 
@@ -125,40 +127,60 @@
 						
 					</div>
 					<div class="detail-top-right">		 						
-						<h1 class="className">강의명: <input type="text" name="" class="product_name" placeholder="[현장강의]"/></h1>
+						<h1 class="className">강의명: <input type="text" id="off_name" class="product_name" placeholder="[현장강의]"/></h1>
 						<table class="top-right-info" style="margin-left: 33px !important;">
 							<tbody>
 								<tr>
 									<td class="info-title">지점</td><!-- off_course 테이블의 off_place -->
 									<td class="info-content">
-										종로점&nbsp;<input type="checkbox" id="" name="종로점">
-										강남점&nbsp;<input type="checkbox" id="" name="강남점">
-										<input type="hidden" name="productType" value="1"/><!-- offline productType = 1 -->	
+										<input type="radio" id="off_place" name="off_place" value="종로점" checked/>종로점
+										<input type="radio" id="off_place" value="강남점"name="off_place"/>강남점
+										<input type="hidden" id="product_type" name="product_type" value="1"/><!-- offline productType = 1 -->	
+									</td>
+								</tr>
+								<tr>
+									<td class="info-title">현장강의 종류</td><!-- off_course 테이블의 off_type -->
+									<td class="info-content">
+											<select name="off_Type" id="off_type">
+											<option value="0">programming</option>
+											<option value="1">cloud</option>
+											<option value="2">network</option>
+											<option value="3">system&server</option>
+											<option value="4">hacking</option>
+											<option value="5">database</option>
+											<option value="6">자격증</option>					
+										</select>
 									</td>
 								</tr>
 								<tr>
 									<td class="info-title">강의실</td><!-- off_course 테이블의 off_room -->
-									<td class="info-content"><input type="text" name="" id="" class="input_off"/></td>									
+									<td class="info-content"><input type="text" name="off_room" id="off_room" class="input_off"/></td>									
 								</tr>
 								<tr>
 									<td class="info-title">개강 날짜</td><!-- off_course 테이블의 off_start_at -->
-									<td class="info-content"><input type="text" name="" id="" class="input_off"/></td>									
+									<td class="info-content">
+									<input type="date" name="off_start" id="off_start" value="2020-05-22"class="input_off"/></td>									
 								</tr>
 								<tr>
 									<td class="info-title">종강 날짜</td><!-- off_course 테이블의 off_end_at -->
-									<td class="info-content"><input type="text" name="" id="" class="input_off"/></td>									
+									<td class="info-content">
+									<input type="date" name="off_end" id="off_end" value="2020-05-22" class="input_off"/></td>									
 								</tr>
 								<tr>
 									<td class="info-title">강사명</td><!-- sub_product 테이블의 sp_lec_name -->
-									<td class="info-content"><input type="text" name="" id="" class="input_off"/></td>
+									<td class="info-content"><input type="text" name="off_author" id="off_author" class="input_off"/></td>
+								</tr>
+								<tr>
+									<td class="info-title">좌석개수</td><!-- off_course 테이블의  off_seats-->
+									<td class="info-content"><input type="number" name="off_seats" id="off_seats" class="input_off"/></td>									
 								</tr>
 								<tr>
 									<td class="info-title">수강료</td><!-- product 테이블의  product_price-->
-									<td class="info-content"><input type="text" name="" id="" class="input_off"/></td>									
+									<td class="info-content"><input type="text" name="off_price" id="off_price" class="input_off"/></td>									
 								</tr>
 								<tr>
 									<td class="info-title">교재</td>
-									<td class="info-content"><input type="text" name="" id="" class="input_off"/></td>
+									<td class="info-content"><input type="text" name="off_book" id="off_book" class="input_off"/></td>
 								</tr>
 							</tbody>
 						</table>
@@ -169,9 +191,9 @@
 					<h4 class="contents-title">과목 설명</h4>
 					<div class="contents-text">
 						<p class="mb10">
-							<textarea class="form-control" rows="8" id="예시 product_detail"></textarea>
+							<textarea class="form-control" rows="8" id="off_detail" name="off_detail"></textarea>
 						</p>
-						<button type="button" id="post-reply" 
+						<button type="button" id="register-off" 
 								class="btn-sm btn-outline-default" style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
 <!-- 전체 등록 버튼 -->            등록<i class="far fa-check-circle"></i></button>
 					</div>
@@ -199,7 +221,9 @@
 								</div>
 <!-- 썸네일 업로드 시작 -->
 								<div class="thum_input">
-									<input type="file" />
+				<form method="post" enctype="multipart/form-data" action="#" >
+					<input type="file" id="thumb" name="filedata"/>
+				</form>				<input type="hidden" id="url"/>
 								</div>
 							</div>
 						</div> 
@@ -233,25 +257,35 @@
 <!-- selectedTagList 끝 -->
 						
 					</div>
-					<div class="detail-top-right">
-						<br>									
-						<h1 class="className">강의명: <input type="text" name="" id="" class="product_name" placeholder="[온라인강의]"/></h1>
+					<div class="detail-top-right">		 						
+						<h1 class="className">강의명: <input type="text" id="on_name" class="product_name" placeholder="[온라인강의]"/></h1>
 						<table class="top-right-info" style="margin-left: 33px !important;">
 							<tbody>
 								<tr>
-									<td class="info-title">강사명</td>
+									<td class="info-title">온라인강의 종류</td><!-- on_course 테이블의 on_category -->
 									<td class="info-content">
-										<input type="text" name="" id="" class="input_off"/>
-										<input type="hidden" name="productType" value="0"/><!-- online productType = 1 -->	
+											<select name="on_category" id="on_category">
+											<option value="0">programming</option>
+											<option value="1">cloud</option>
+											<option value="2">network</option>
+											<option value="3">system&server</option>
+											<option value="4">hacking</option>
+											<option value="5">database</option>
+											<option value="6">자격증</option>					
+										</select>
 									</td>
 								</tr>
 								<tr>
-									<td class="info-title">수강료</td>
-									<td class="info-content"><input type="text" name="" id="" class="input_off"/></td>									
+									<td class="info-title">강사명</td><!-- sub_product 테이블의 sp_lec_name -->
+									<td class="info-content"><input type="text" name="on_author" id="on_author" class="input_off"/></td>
 								</tr>
 								<tr>
-									<td class="info-title">교재</td>
-									<td class="info-content"><input type="text" name="" id="" class="input_off"/></td>									
+									<td class="info-title">수강료</td><!-- product 테이블의  product_price-->
+									<td class="info-content"><input type="text" name="on_price" id="on_price" class="input_off"/></td>									
+								</tr>
+								<tr>
+									<td class="info-title">구독기간</td>
+									<td class="info-content"><input type="number" name="on_days" id="on_days" class="input_off"/></td>
 								</tr>
 							</tbody>
 						</table>
@@ -262,9 +296,9 @@
 					<h4 class="contents-title">과목 설명</h4>
 					<div class="contents-text">
 						<p class="mb10">
-							<textarea class="form-control" rows="8" id="예시 product_detail"></textarea>
+							<textarea class="form-control" rows="8" id="on_detail" name="on_detail"></textarea>
 						</p>
-						<button type="button" id="=" 
+						<button type="button" id="register-on" 
 								class="btn-sm btn-outline-default" style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
 <!-- 전체 등록 버튼 -->            등록<i class="far fa-check-circle"></i></button>
 					</div>
@@ -293,10 +327,156 @@
 <script>
 
 	<!-- input창에 [현장강의] 추가하기 -->
-	/* $(document).ready(function() {
-		document.getElementById("offName").value = "[현장강의]";
-		document.getElementById("onName").value = "[온라인강의]";
-	}); */
+	 $(function() {
+		$("input[type=file]").on('change', function(){
+			var form= $('#imageForm')[0];
+			var formData = new FormData(form);
+			form.append('fileData', $('#thumb')[0].files[0]);
+			$.ajax({
+				type: "POST",
+				url : "<c:url value='/singleUploadImageAjax'/>",
+				processData: false,
+				contentType:false,
+				dataType: "json",
+				data:formData,
+				success: function(data){
+					console.log(data.filename + " ;; " + data.thumburl);
+					$('#url').val(data.thumburl);
+					console.log("성공");	
+					
+				},
+				error: function(request, status, error){
+					console.log("통신실패");
+				}
+			}); /* end ajax */			
+		});
+		
+		$("#register-off").click(function(){
+			const name = $('#off_name').val();
+			console.log(name);
+
+			const price = $('#off_price').val();
+			console.log(price);
+		
+			const detail = $('#off_detail').val();
+			console.log(detail);
+
+			const thumb = $('#url').val();
+			console.log(url);
+
+			const book = $('#off_book').val();
+			console.log(book);
+			
+			const off_type = $('#off_type').val();
+			console.log(off_type);
+
+			const author = $('#off_author').val();
+			console.log(author);
+			
+			const start = $('#off_start').val();
+			console.log(start);
+			
+			const end = $('#off_end').val();
+			console.log(end);
+			
+			const seats = $('#off_seats').val();
+			console.log(seats);
+			
+			const place = $('#off_place').val();
+			console.log(place);
+			
+			const room = $('#off_room').val();
+			console.log(room);
+			var data = {
+					name : name,
+					price : price,
+					detail : detail,
+					thumb : thumb,
+					author : author,
+					type : off_type,
+					place : place,
+					room : room,
+					seats : seats,
+					book : book,
+					offStartAt : start,
+					offEndAt : end,
+					sendTagList: sendTagList
+				}
+			
+			$.ajax({
+				type: "POST",
+				url : '/product/register-on',
+				headers:{
+					"Content-Type": "application/json"
+				},
+				dataType: "text",
+				data:JSON.stringify(data),
+				success: function(data){
+					console.log("received output: " + data);
+				
+
+				},
+				error: function(request, status, error){
+					$('#message').text("통신에 실패하였습니다");
+				}
+			}); /* end ajax */					
+		});	
+
+		$("#register-on").click(function(){
+			const name = $('#on_name').val();
+			console.log(name);
+
+			const price = $('#on_price').val();
+			console.log(price);
+		
+			const detail = $('#on_detail').val();
+			console.log(detail);
+
+			const thumb = $('#url').val();
+			console.log(url);
+
+			const book = $('#on_book').val();
+			console.log(book);
+			
+			const category = $('#on_category').val();
+			console.log(off_type);
+
+			const author = $('#on_author').val();
+			console.log(author);
+			
+			const days= $('#on_days').val();
+			console.log(days);
+			var data = {
+					name : name,
+					price : price,
+					detail : detail,
+					thumb : thumb,
+					author : author,
+					category : category,
+					book : book,
+					days : days,
+					sendTagList: sendTagList
+				}
+			
+			$.ajax({
+				type: "POST",
+				url : '/product/register-on',
+				headers:{
+					"Content-Type": "application/json"
+				},
+				dataType: "text",
+				data:JSON.stringify(data),
+				success: function(data){
+					console.log("received output: " + data);
+				
+
+				},
+				error: function(request, status, error){
+					$('#message').text("통신에 실패하였습니다");
+				}
+			}); /* end ajax */					
+		});		
+	}); 
 
 	
 	<!-- li 클릭으로 온/오프 폼 변경하기 -->
@@ -321,10 +501,8 @@
 
 
 <!-- tag -->
-<script>
-//sendTagList: sendTagList 로 받아서 아작스로 보내세요
+<script src="<c:url value='/js/tag.js'/>"></script>
 
-</script>
 
 </body>
 <jsp:include page="../include/footer.jsp" />

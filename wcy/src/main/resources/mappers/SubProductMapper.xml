@@ -12,6 +12,11 @@
      
    </resultMap>
 
+	<insert id="insert">
+		INSERT INTO sub_product
+		(sp_lec_name, sp_pro_id, sp_thum, sp_book, sp_scope)VALUES
+		(#{spLecName}, #{spProId}, #{spThum}, #{spBook}, #{spScope});
+	</insert>
    <!-- sp_pro_id를 받아서 해당 정보 가져오기 -->
    <select id="showSubPro" resultMap="SpMap">
       SELECT *
