@@ -109,7 +109,7 @@
 										<div class="boxWebzineBorad">
 											<div class="webzineLeft">
 												<div class="boxwebzineLeftIn">
-													<img src="${m.spThum}" alt="" />
+													<img src="${m.spThum}" alt="" /> 
 												</div>
 											</div>
 											<div class="webzineRight">
