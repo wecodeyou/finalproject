@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,7 +54,7 @@
                            <div class="textBox">
                               <span class="moneyText">WCY Point</span>
                               <div class="moneyBox">
-                                 <span class="money">${login.userPoint}</span>Point
+                                 <span class="money"><fmt:formatNumber type="number" maxFractionDigits="3" value="${login.userPoint}" /></span>Point
                               </div>
                            </div>
                         </a>

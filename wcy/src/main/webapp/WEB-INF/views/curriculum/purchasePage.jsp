@@ -170,13 +170,16 @@
           var seat = document.getElementById('seat_no').value;
           
           if(seat == null || seat == ""){
-              alert("좌석 선택해주세요.")
+        	  Swal.fire('좌석 선택해주세요.');
+        	  //alert("좌석 선택해주세요.")
           }else{// 좌석은 선택한 상태일때
         	  if($(':input:checkbox[id=refundchk]:checked').val() != 'true'){// 체크박스 여부
-	              alert("약관에 동의해 주세요.");        		  
+        		  Swal.fire('약관에 동의해 주세요.');
+        		  //alert("약관에 동의해 주세요.");        		  
         	  }else{
 	        	  if((${login.userPoint}-${pro_info.productPrice}) < 0){// 포인트가 충분한지 여부
-	              	alert("포인트가 부족합니다.");        		  
+	        		  Swal.fire('포인트가 부족합니다. 충전먼저 해주세요!');
+	        		  //alert("포인트가 부족합니다.");        		  
 	        	  }else{
 	              	Form.submit();        		  
 	        	  }

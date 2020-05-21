@@ -64,7 +64,7 @@
 									<div class="textBox">
 										<span class="moneyText">WCY Point</span>
 										<div class="moneyBox">
-											<span class="money">${login.userPoint}</span>Point
+											<span class="money"><fmt:formatNumber type="number" maxFractionDigits="3" value="${login.userPoint}" /></span>Point
 										</div>
 									</div>
 								</a>
@@ -223,7 +223,7 @@ $( document ).ready(function() {
 				</div>
 				<table class="table_normal">
 					<colgroup>
-						<col width="15%">
+						<col width="20%">
 						<col width="15%">
 						<col width="*%">
 						<col width="15%">
@@ -255,7 +255,7 @@ $( document ).ready(function() {
 				</div>
 				<table class="table_normal">
 					<colgroup>
-						<col width="15%">
+						<col width="20%">
 						<col width="*">
 						<col width="25%">
 					</colgroup>
