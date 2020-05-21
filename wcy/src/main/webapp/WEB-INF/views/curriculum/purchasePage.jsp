@@ -161,7 +161,7 @@
    
    <script type="text/javascript">
    function open_window(){
-      window.open("<c:url value='/off/seat?off_no=${pro_info.productNo}'/>","","width=400,height=400,left=500");    
+      window.open("<c:url value='/off/seat?off_no=${pro_info.productNo}'/>","","width=302,height=340,left=500,top=150");    
     };
     
     

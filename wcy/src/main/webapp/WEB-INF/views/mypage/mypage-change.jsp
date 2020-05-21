@@ -136,7 +136,7 @@
 			</table>
 			<p class="mt40" style="width:100%; text-align:center">
 				<input type="button" id="signup-btn" value="회원정보 변경" class="btn btn-primary" onclick="btn_click()"/>
-		        <a href="javascript:history.back();"><input type="button" value="취소" class="btn btn-warning" /></a>
+		        <a href="<c:url value='/mypage/' />"><input type="button" value="취소" class="btn btn-warning" /></a>
 			</p>
 		</div>
 	</div>

@@ -111,7 +111,7 @@
                         </tr>
                         <tr>
                            <td class="info-title">수강료</td>
-                           <td class="info-content">${pro.productPrice}원</td>                           
+                           <td class="info-content">${pro.productPrice} point</td>                           
                         </tr>
                         <tr>
                            <td class="info-title">교재</td>

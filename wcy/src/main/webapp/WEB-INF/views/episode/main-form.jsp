@@ -1,182 +1,135 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- 파비콘 적용 -->
 <link rel="shortcut icon"
-	href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
+   href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
 
 
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
-
-
+<link rel="stylesheet" href="<c:url value='/css/mypage.css'/>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
-<script src="https://code.jquery.com/jquery-3.5.0.min.js"
-	integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
-	crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <style>
-.left-section {
-	float: left;
-	width: 210px;
-}
-
-.left-section>h2 {
-	width: 210px;
-	height: 112px;
-	background: #25283D;
-	color: #fff;
-	text-align: center;
-	display: table-cell;
-	vertical-align: middle;
-}
-
-.left-section .left-sub-nav {
-	width: 210px;
-	border: solid #dbdbdb;
-	border-width: 0 1px;
-	box-sizing: border-box;
-}
-
-.left-section .left-sub-nav>li>a {
-	padding: 10px 20px;
-	font-size: 14px;
-	display: block;
-	position: relative;
-	border-bottom: 1px solid #dbdbdb;
-	font-weight: bold;
-	color: #333;
-}
-
-.right-section {
-	width: 840px;
-	float: right;
-	position: relative;
-}
-
-.right-header .right-sub-nav {
-	width: 100%;
-	background: #f4f4f4;
-	border-radius: 5px;
-	display: table;
-	table-layout: fixed;
-	margin-bottom: 50px;
-	overflow: hidden;
-}
-
-.right-header .right-sub-nav li {
-	display: table-cell;
-}
-
-.right-header .right-sub-nav li a {
-	display: block;
-	height: 60px;
-	box-sizing: border-box;
-	font-size: 18px;
-	color: #888;
-	padding: 0 0 0 20px;
-	line-height: 60px;
-	border-bottom: 4px solid #ddd;
-}
-
-.right-sub-nav li a.active {
-	color: #25283D;
-	border-color: #25283D;
-}
-
-.contents-title:before {
-	display: block;
-	content: '';
-	width: 50px;
-	height: 3px;
-	background: #25283D;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-
-.contents-title {
-	font-size: 22px;
-	margin-bottom: 20px;
-	color: #000;
-	position: relative;
-	padding-top: 5px;
-	height: 40px;
-	line-height: 40px;
-}
-
-p {
-	line-height: 150% !important;
-}
+	html,body{height:100%;}
 </style>
-
 </head>
 <body>
-
 
 <jsp:include page="../include/header-sub.jsp" />
 
 
 	<main class="wcy-main-content">
-		<div class="left-section">
-			<h2>MyPage</h2>
-			<ul class="left-sub-nav">
-				<li><a href="<c:url value='/mypage/myinfoChange' />">내 정보</a></li>
-				<li><a class="active" href="<c:url value='/mypage/leclist?type=on' />">수강 목록</a></li>
-				<li><a href="<c:url value='/mypage/pointInfo' />">내 포인트</a></li>
-				<li><a href="<c:url value='/mypage/recentAct' />">최근 활동</a></li>
-				<li><a href="<c:url value='/mypage/mylec' />">내 강의실</a></li>
-				
-			</ul>
+		<div class="wcy-contents">
+			<!-- 최상단 박스 -->
+			<div class="mypageInfoCuponLayout">
+				<div class="myinfocuponIn">
+					<div class="myInfoBox">
+						<div class="mb10">
+							<span class="fs35b" style="font-size:35px; font-weight:bold;">${login.userName}</span>님,
+						</div>
+						안녕하세요!
+						<a href="<c:url value='/mypage/myinfoChange' />"><i class="fas fa-cog"></i>회원정보 수정</a>
+						<a href="<c:url value='/mypage/' />" style="margin-top: 12px;"><i class="fas fa-house-user"></i>마이페이지 홈</a>
+					</div>
+					<ul class="myCuponBox">
+						<li class="list01">
+							<div class="mycuboxIn">
+								<a href="<c:url value='/mypage/pointInfo' />">
+									<i class="fas fa-coins"></i>
+									<div class="textBox">
+										<span class="moneyText">WCY Point</span>
+										<div class="moneyBox">
+											<span class="money">${login.userPoint}</span>Point
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li class="list02">
+							<div class="mycuboxIn">
+								<a href="<c:url value='/mypage/recentAct' />">
+									<i class="fas fa-clipboard-list"></i>
+									<div class="textBox">
+										<span class="moneyText">최근활동</span>
+										<div class="moneyBox">
+											모두보기
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+						<li class="list03">
+							<div class="mycuboxIn">
+								<a href="<c:url value='/mypage/mylec' />">
+									<i class="fas fa-chalkboard-teacher"></i>
+									<div class="textBox">
+										<span class="moneyText">내 강의실</span>
+										<div class="moneyBox">
+											입장하기
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div> <!-- 최상단 박스 -->
+			<div class="acthistoryLayout">
+				<div class="Dtitle">${login.userName}님의 온라인 강의실</div>
+				<table class="table_normal">
+					<colgroup>
+						<col width="70%">
+						<col width="30%">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col" class="line0">차시/강의내용</th>
+							<th scope="col">강의보기</th> 
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="p" items="${episodeList}">
+						<tr>
+							<td style="padding-left: 10%;">${p.episodeName}</td>
+							<td style="text-align:center;" ><a href = "<c:url value = "/episode/play?episodeRowNo=${p.episodeRowNo}&episodeSource=${p.episodeSource}"/>" onclick ="window.open(this.href, '_blank', 'width=1038,height=600,toolbars=no,scrollbars=no,resizable=no,status=no,location=no'); return false;"> 
+									<button type="button"  class="btn btn-outline-dark">강의보기</button>
+								</a>
+							</td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<input type ="hidden" name = "episodeList" value = "${episodeList}">
+			</div> 
 		</div>
+	</main>
+	
+	
+	
+	
+   <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
+   <script src="<c:url value = "/js/main.js"/>"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
 
-		<div class="right-section">
-			<div class="right-header">
-				<ul class="right-sub-nav">
-					<li><a class="active"> 수강 목록 </a></li>
-				</ul>
-			</div>
-			<div class="right-contents">
-				<h4 class="contents-title">${login.userName}님의 온라인 강의실</h4>
-				<p class="mb10">
-				
-				<br>
-				<br>
-				
+<c:if test="${login == null}">
+   <script>   
+   	  Swal.fire('로그인이 필요한 서비스입니다.');
+      location.href="<c:url value='/' />";
+   </script>
+</c:if>
 
-				
-				
-				</p>
-	<table border=1>
-		<tr>
-			<th>차시</th>
-			<th>강의내용</th>
-			<!-- <th>시간</th> --> 
-			<!-- 디비에 넣는거 깜빡; -->
-			
-			<!-- <th>진도율</th> -->
-			<th>강의보기</th>
-		</tr>
-	<tbody>
 
-	<c:forEach var="p" items="${episodeList}">
-		<tr>
-			<td>${p.episodeRowNo} 차시</td>
-			<td>${p.episodeName}</td>
-			<td><a href = "<c:url value = "/episode/play?episodeRowNo=${p.episodeRowNo}&episodeSource=${p.episodeSource}"/>" onclick ="window.open(this.href, '_blank', 'width=1038,height=600,toolbars=no,scrollbars=no,resizable=no,status=no,location=no'); return false;"> 강의보기</a></td>
-		</tr>
-	</c:forEach>	
-	</tbody>
-			
-		
-	</table>
-	<input type ="hidden" name = "episodeList" value = "${episodeList}">
-</div></div></main>
 </body>
+	<jsp:include page="../include/footer.jsp" />
 </html>

@@ -298,7 +298,7 @@ public class MypageController {
 	@GetMapping("/mylec")
 	public ModelAndView mylec(ModelAndView mv, HttpSession session) {
 		System.out.println("/mypage/mylec : GET 요청 발생!");
-		mv.setViewName("mypage/mypage-mylec2");
+		mv.setViewName("mypage/mypage-mylec");
 		
 		String msg = "";
 		ArrayList<ProductVO> pro_lec_list; 
