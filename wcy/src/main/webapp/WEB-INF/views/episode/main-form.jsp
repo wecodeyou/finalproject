@@ -95,7 +95,7 @@
 					<thead>
 						<tr>
 							<th scope="col" class="line0">차시/강의내용</th>
-							<th scope="col">강의보기</th>
+							<th scope="col">강의보기</th> 
 						</tr>
 					</thead>
 					<tbody>
