@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="<c:url value='/css/mypage.css'/>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <style>
@@ -101,8 +101,11 @@
 					<tbody>
 						<c:forEach var="p" items="${episodeList}">
 						<tr>
-							<td>${p.episodeName}</td>
-							<td><a href = "<c:url value = "/episode/play?episodeRowNo=${p.episodeRowNo}&episodeSource=${p.episodeSource}"/>" onclick ="window.open(this.href, '_blank', 'width=1038,height=600,toolbars=no,scrollbars=no,resizable=no,status=no,location=no'); return false;"> 강의보기</a></td>
+							<td style="padding-left: 10%;">${p.episodeName}</td>
+							<td style="text-align:center;" ><a href = "<c:url value = "/episode/play?episodeRowNo=${p.episodeRowNo}&episodeSource=${p.episodeSource}"/>" onclick ="window.open(this.href, '_blank', 'width=1038,height=600,toolbars=no,scrollbars=no,resizable=no,status=no,location=no'); return false;"> 
+									<button type="button"  class="btn btn-outline-dark">강의보기</button>
+								</a>
+							</td>
 						</tr>
 						</c:forEach>
 					</tbody>

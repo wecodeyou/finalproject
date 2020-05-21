@@ -12,8 +12,12 @@
 <link rel="shortcut icon" href="<c:url value='/img/favicon/wcy-favicon.ico'/>">
 
 
+
+
+
 <link rel="stylesheet" href="<c:url value='/css/commons.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/mypage.css'/>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icheck-bootstrap@3.0.1/icheck-bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 
@@ -156,7 +160,7 @@
 												<div class="price">
 													<div class="normality">
 														<div class="productTitle">상품금액</div>
-														<span class="productPrice">${m.purchaseAmount}</span>원
+														<span class="productPrice">${m.purchaseAmount}</span>point
 													</div>
 												</div>
 											</div>
@@ -216,7 +220,7 @@
 												<div class="price">
 													<div class="normality">
 														<div class="productTitle">상품금액</div>
-														<span class="productPrice">${m.purchaseAmount}</span>원
+														<span class="productPrice">${m.purchaseAmount}</span>point
 													</div>
 												</div>
 											</div>
@@ -272,7 +276,7 @@ function change_form(){
 var open_win;
 var p;
 function open_window(obj){
-	open_win = window.open("<c:url value='/mypage/review?p="+obj.value+"'/>","","width=500,height=400,left=700");    
+	open_win = window.open("<c:url value='/mypage/review?p="+obj.value+"'/>","","width=400,height=350,left=700,top=300");    
 };// 수강후기 팝업창 
 </script>
 </body>

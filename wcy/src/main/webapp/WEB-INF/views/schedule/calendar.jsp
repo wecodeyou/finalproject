@@ -27,6 +27,7 @@
 
 <style>
 .modal-body{height:500px !important;}
+.fc-title{color:#fff;}
 </style>
 
 
@@ -66,7 +67,8 @@ var calendar = new Calendar($('#calendar'),{
           
 		
 				{
-     	 		   start : '${off.offStartAt}',
+		  		   title : '${pro.productName}'
+     	 		 , start : '${off.offStartAt}'
    				 , end : '${off.offEndAt}'
    				 , allday : true
  	 			},
@@ -116,6 +118,7 @@ var calendar = new Calendar($('#calendar'),{
 	} */
 	
 	calendar.render();
+	calendar.setOption('contentHeight', 450);
 });
 </script>
 

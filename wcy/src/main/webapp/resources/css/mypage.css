@@ -175,9 +175,12 @@
     top: 13px;
 }
 
+.boxWebzineBorad .webzineRight a:hover{
+	box-shadow:4px 3px 3px #A8B6C4;
+}
 
 .mycuboxIn a:hover{
-	border-color: #7598bb;
+	color: #527ba5;
 	transition:all 0.3s ease;
 }
 
@@ -191,6 +194,11 @@
 
 .boxWebzineBorad .webzineRight a.rBtn i{
 	float:right;
+}
+
+.boxWebzineBorad .webzineRight a.rBtn buuton{
+	width: 157px;
+    text-align: left;
 }
 
 .myclassInfoTabel, .myclassInfoTabel td {

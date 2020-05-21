@@ -5,12 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
+
+
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js"
 	integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
 	crossorigin="anonymous"></script>
 
 <style type="text/css">
+
+.content{padding: 10px;}
 
 .star_rating {
 	font-size: 0;
@@ -23,8 +30,9 @@
 	letter-spacing: 0;
 	display: inline-block;
 	margin-left: 5px;
-	color: #ccc;
+	color: #ff572275 !important;
 	text-decoration: none;
+	cursor:pointer;
 }
 
 .star_rating a:first-child {
@@ -32,21 +40,34 @@
 }
 
 .star_rating a.on {
-	color: #777;
+	color: #F44336 !important;
 }
+
+.title_large{
+	font-size: 20px;
+    font-weight: 600;
+}
+
+.title_small{
+	color: #605e5e;
+}
+._body{margin-top: -6px;}
+
+.footer{float:right;}
+
 </style>
 </head>
 <body>
 
-		<div class="_content">
+		<div class="content">
 			<form action="<c:url value='/review/write' />" method="POST" id="write_form">
 			<input type="hidden" name="reviewProductNo" value="${pno}"/>
 			<input type="hidden" name="reviewUser" value="${writer}"/>
 			<input type="hidden" name="reviewStar" value="" id="starValue"/>
 				<div class="-header">
-					<div class="_title_large">수강 후기</div>
+					<div class="title_large">수강 후기 작성</div>
 					<br>
-					<div class="_title_small">${proName}</div>
+					<div class="title_small">강의명 : ${proName}</div>
 				</div>
 				<br>
 				<div class="_body">
@@ -58,21 +79,27 @@
 						<a onclick="choice5()">★</a>
 					</p>
 					<textarea name="content" id="content"
-						placeholder="수강후기를 자유롭게 입력해주세요." required="required"></textarea>
+						placeholder="수강후기를 자유롭게 입력해주세요." required="required" cols="50" rows="5" style="resize:none;"></textarea>
 					<br>
 					<br> 
 				</div>
-				<div class="_footer">
-					<input type="button" class="cancel" value="cancel" onclick="window.close()">
-					<input type="button" id="submit_btn" value="send" />
+				<div class="footer">
+					<button type="button" class="cancel btn btn-outline-danger" value="cancel" onclick="window.close()">취소</button>
+					<button type="button" id="submit_btn" class="btn btn-outline-info" value="send" >작성</button>
 				</div>
 			</form>
 		</div>
 		<div class="_layer"></div>
 
 	
+   <script src="<c:url value = "/js/jquery-3.0.0.min.js"/>"></script>
+   <script src="<c:url value = "/js/main.js"/>"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.js"></script>
+	
 <!-- 별점 -->
 <script>
+
+
 		//별점
 		$(".star_rating a").click(function() {
 			$(this).parent().children("a").removeClass("on");

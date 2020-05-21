@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="<c:url value='/css/mypage.css'/>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <title>WE CODE YOU | 모든 프로그래머를 위한 아카데미</title>
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <style>
@@ -108,7 +108,7 @@
 						<tr>
 							<td style="text-align:center;">${c.productName}</td>
 							<td style="text-align:center;">${days[status.index]}</td>
-							<td style="text-align:center;"><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>"><button type="button" >입장하기</button></a></td>
+							<td style="text-align:center;"><a href = "<c:url value = "/episode/?productNo=${c.productNo}"/>"><button type="button" class="btn btn-outline-dark">입장하기</button></a></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -144,7 +144,7 @@
 						<tr>
 							<td style="text-align:center;">${off.productName}</td>
 							<td style="text-align:center;">
-								<button type="button" onclick="location.href = '/session/participant/join/${off.productNo}'">입장하기</button>
+								<button type="button" class="btn btn-outline-dark" onclick="location.href = '/session/participant/join/${off.productNo}'">입장하기</button>
 							</td>
 						</tr>					
 					</c:forEach>
@@ -169,7 +169,7 @@
 						<tr>
 							<td >${off.productName}</td>
 							<td style="text-align:center;">
-								<button type="button" onclick="location.href = '/session/instructor/lecture/${off.productNo}'">강의시작</button>
+								<button type="button" class="btn btn-outline-dark" onclick="location.href = '/session/instructor/lecture/${off.productNo}'">강의시작</button>
 							</td>
 						</tr>					
 					</c:forEach>

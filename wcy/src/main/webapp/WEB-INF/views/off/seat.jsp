@@ -70,8 +70,8 @@
 .door{
    float: right;
    position: absolute;
-   top: 43px;
-   right: 11px;
+	top: 43px;
+    right: -84px;
    color:#9E9E9E;
 }
 .door:before{
