@@ -138,6 +138,8 @@
 	</div>
 	<!-- 추천 태그 끝-->
 	</c:if>
+	
+	
 	<c:if test="${fn:length(allProductList)!=0 || fn:length(articleList)!=0 }">
 		
 	<!-- 검색창 -->
@@ -157,7 +159,7 @@
 		<ul class="override" id="resultList"></ul>
 	</div>
 	<!-- 추천 태그 -->
-	<div style="text-align:center;">
+	<div style="text-align:right;">
 		<c:forEach var="p" items="${ptagList}" begin="1" end="5" varStatus="status">
       		<button type="button" class="search_tag" id="${p.tagNo}">${p.tagName}</button>
     	</c:forEach>
@@ -174,6 +176,54 @@
 	
 	
 	<div id="contents">
+	
+		<!-- article -->
+		<c:if test="${fn:length(articleList)!=0}">
+			<h3 class=" mb20 contents-title">${fn:length(articleList)} matching results in 게시글</h3>
+			<table class="wp100 searchResult-table">
+				<thead>
+				<tr class="trHead">
+					<th>글번호</th>
+					<th>게시판</th>
+					<th>제목</th>
+					<th>내용</th>
+					<th>등록일</th>
+				</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="a" items="${articleList}" varStatus="status" begin="0" end="2">
+						<tr>
+							<td class="tdNo">${a.articleNo }</td>
+							<td class="tdType">${a.articleBoardNo}</td>
+							<td class="tdName">
+								<div class="tag">
+									<c:forEach var="entry" items="${tagA}">
+										<c:if test="${entry.key eq status.index}">
+											<c:if test="${fn:length(entry.value) > 0}">
+												<c:forEach items="${entry.value}" var="tagName">
+													<a href="#<%-- <c:url value='/tag/searchProductByTag/${tagName}'/> --%>" class="hashtag">${tagName}</a>
+												</c:forEach>
+												<br>
+											</c:if>
+										</c:if>
+									</c:forEach>
+									<a class="title_link" href="<c:url value="/board/article/${a.articleNo}"/>">${a.articleTitle}</a>
+								</div>
+							</td>
+							<td class="tdDetail"><span>${a.articleContent}</span></td>
+							<td class="tdDate">${a.articleCreatedAt}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<c:if test="${fn:length(articleList)> 3}">
+				<div class="link">
+					<a href="#" onclick="location.href='/search?q=${search}&condition=${condition}&productType=3';"><i class="fas fa-search-plus fa-lg"></i>더 보기...</a>
+				</div>
+			</c:if>
+		</c:if>
+		<br>
+		
 		<c:if test="${fn:length(onList)!=0}">
 			<h3 class="mb20 contents-title">${fn:length(onList)} matching results in 온라인 강의</h3>
 			<table class="wp100 searchResult-table">
@@ -220,7 +270,7 @@
 			</table>
 			<c:if test="${fn:length(onList)> 3}">
 				<div class="link">
-					<a href="#"  onclick="location.href='/search?q=${search}&condition=${condition}&productType=0';"><i class="fas fa-search-plus mr5"></i>더 보기...</a>
+					<a href="#"  onclick="location.href='/search?q=${search}&condition=${condition}&productType=0';"><i class="fas fa-search-plus fa-lg"></i>더 보기...</a>
 				</div>
 			</c:if>
 		</c:if>
@@ -270,7 +320,7 @@
 			</table>
 			<c:if test="${fn:length(offList)> 3}">
 				<div class="link">
-					<a href="#" onclick="location.href='/search?q=${search}&condition=${condition}&productType=1';"><i class="fas fa-search-plus"></i>더 보기...</a>
+					<a href="#" onclick="location.href='/search?q=${search}&condition=${condition}&productType=1';"><i class="fas fa-search-plus fa-lg"></i>더 보기...</a>
 				</div>
 			</c:if>
 		</c:if>
@@ -322,57 +372,13 @@
 			</table>
 			<c:if test="${fn:length(productList)> 3}">
 				<div class="link">
-					<a href="#" onclick="location.href='/search?q=${search}&condition=${condition}&productType=2';"><i class="fas fa-search-plus"></i>더 보기...</a>
+					<a href="#" onclick="location.href='/search?q=${search}&condition=${condition}&productType=2';"><i class="fas fa-search-plus fa-lg"></i>더 보기...</a>
 				</div>
 			</c:if>
 		</c:if>
 		<br>
 
-		<!-- article -->
-		<c:if test="${fn:length(articleList)!=0}">
-			<h3 class="mt50 mb20 contents-title">${fn:length(articleList)} matching results in 게시글</h3>
-			<table class="wp100 searchResult-table">
-				<thead>
-				<tr class="trHead">
-					<th>글번호</th>
-					<th>게시판</th>
-					<th>제목</th>
-					<th>내용</th>
-					<th>등록일</th>
-				</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="a" items="${articleList}" varStatus="status" begin="0" end="2">
-						<tr>
-							<td class="tdNo">${a.articleNo }</td>
-							<td class="tdType">${a.articleBoardNo}</td>
-							<td class="tdName">
-								<div class="tag">
-									<c:forEach var="entry" items="${tagA}">
-										<c:if test="${entry.key eq status.index}">
-											<c:if test="${fn:length(entry.value) > 0}">
-												<c:forEach items="${entry.value}" var="tagName">
-													<a href="#<%-- <c:url value='/tag/searchProductByTag/${tagName}'/> --%>" class="hashtag">${tagName}</a>
-												</c:forEach>
-												<br>
-											</c:if>
-										</c:if>
-									</c:forEach>
-									<a class="title_link" href="<c:url value="/board/article/${a.articleNo}"/>">${a.articleTitle}</a>
-								</div>
-							</td>
-							<td class="tdDetail"><span>${a.articleContent}</span></td>
-							<td class="tdDate">${a.articleCreatedAt}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<c:if test="${fn:length(articleList)> 3}">
-				<div class="link">
-					<a href="#" onclick="location.href='/search?q=${search}&condition=${condition}&productType=3';"><i class="fas fa-search-plus"></i>더 보기...</a>
-				</div>
-			</c:if>
-		</c:if>
+		
 		</div>
 	</c:if>
 	<br>
