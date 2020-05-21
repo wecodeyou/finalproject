@@ -290,7 +290,7 @@
 									<!-- Single Comment -->
 									<c:forEach var="r" items="${replyList}" varStatus = "status">
      									<c:choose>
-        									<c:when test="${r.replyOrder< 1}"><!-- 댓글 -->
+        									<c:when test="${r.replyOrder == 0}"><!-- 댓글 -->
         										 <div class="media mb-4">
 													<img class="d-flex mr-3 rounded-circle" src="${profileImg[status.index]}" alt="" width = "80px" height = "80px">
         										 <div class="media-body">
@@ -318,7 +318,7 @@
            											 	<small>
            											 		<input type="submit" id="post-reply" class="btn-sm btn-outline-default"
                								 				style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; "/>
-               								 				등록<i class="far fa-check-circle"></i></small>
+               											</small>
                								 			</form>
             										</div>
             											<br><br>

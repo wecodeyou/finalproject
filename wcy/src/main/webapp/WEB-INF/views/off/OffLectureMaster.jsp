@@ -24,7 +24,6 @@
     </form>
        <button type="button" id = "submit-btn">노트 전송</button>
 </div>
-
 	<div id="question-board">
 		
 	</div>
@@ -49,7 +48,7 @@
                 var content = JSON.parse(note.body);
             if(content.type === 'NOTE'){
 
-                chatBox.append( content.message);            	
+                chatBox.append(content.message);            	
             } else if(content.type === 'QUESTION'){
             	$('#question-board').append("<p>" + content.writer + " : " + content.message + "</p>");
             }
@@ -58,10 +57,13 @@
             });
         });
 
-        $('#submit-btn').click(function(e){
+
+        
+        
+        $('#submit-btn').click(function(e){       
         	e.preventDefault();
             var content = Editor.getContent();
-            console.log("content");
+            console.log("content");       
             $('#note').remove();
             client.send('/lecture/message/note', {}, JSON.stringify({id: roomId, type:'NOTE', message: content, writer: member})); 
 

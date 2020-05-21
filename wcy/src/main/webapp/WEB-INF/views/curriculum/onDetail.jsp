@@ -172,7 +172,7 @@
                </div>
                <div class="review-wrap">
                   <ul class="review-container">
-                     <c:forEach var="r" items="${review}">
+                     <c:forEach var="r" items="${sd_list}">
                      <script>
                      $( document ).ready(function() {
                         var es;
@@ -199,7 +199,7 @@
                            <span class="review-classTitle">${pro.productName}</span>
                            <!-- <span class="review-teacherName">강사이름</span> -->
                            <div class="writer-date">
-                              <span class="review-writer">김*수</span>
+                              <span class="review-writer">${r.userName}</span>
                               <span class="review-date">${r.reviewCreatedAt}</span>
                            </div>
                         </div>

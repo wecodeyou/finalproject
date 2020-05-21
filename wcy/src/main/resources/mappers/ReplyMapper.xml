@@ -80,7 +80,7 @@
    		WHERE reply_article_no = #{replyArticleNo};
    </select>
    <select id="getMaxOrder" resultType="int">
-   		SELECT MAX(reply_order) + 1 "MAXORDER" FROM reply
+   		SELECT IFNULL((MAX(reply_order) + 1), 1) "MAXORDER" FROM reply
    		WHERE reply_parent = #{replyParent}
    		
    </select>
