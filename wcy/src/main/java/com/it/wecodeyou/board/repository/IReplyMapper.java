@@ -9,8 +9,9 @@ import com.it.wecodeyou.board.model.ReplyVO;
 public interface IReplyMapper {
 	
 	//댓글 삽입문
-	public Integer insert(ReplyVO rvo);
-	
+	public Integer insertComment(ReplyVO rvo);
+	//답글 삽입문
+	public Integer insertReply(ReplyVO rvo);	
 	//댓글을 DB에서 삭제하지는 않고 is_removed를 true로만 바꿈
 	public void remove(Integer replyNo);
 	
@@ -27,4 +28,9 @@ public interface IReplyMapper {
 
 	// 한 유저가 쓴 모든 댓글 가져오기 
 	public ArrayList<ReplyVO> listByUser(Integer replyWriter);
+	
+	public Integer getMaxOrder(Integer replyParent);
+	public Integer getMaxDepth(Integer replyArticleNo);
+	
+	public Integer getDepth(Integer replyNo);
 }

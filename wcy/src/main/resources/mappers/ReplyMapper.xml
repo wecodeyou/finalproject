@@ -33,20 +33,31 @@
       <result property="userEmail" column="user_email" />
       <result property="userName" column="user_name" />
    </resultMap> 
-   <insert id="insert">
+
+   
+   <insert id="insertComment">
    		INSERT
    		INTO reply
-   		(reply_writer, reply_content, reply_title, reply_article_no )
+   		(reply_writer, reply_content, reply_depth, reply_article_no )
    		VALUES
-   		(#{replyWriter}, #{replyContent}, #{replyTitle}, #{replyArticleNo})
+   		(#{replyWriter}, #{replyContent}, #{replyDepth}, #{replyArticleNo})   	
    </insert>
-   
+ 
+    <insert id="insertReply">
+   		INSERT
+   		INTO reply
+   		(reply_writer, reply_content, reply_depth, reply_order, reply_article_no, reply_parent )
+   		VALUES
+   		(#{replyWriter}, #{replyContent}, #{replyDepth}, #{replyOrder}, #{replyArticleNo}, #{replyParent})
+   </insert>
+     
    <update id="update">
    		UPDATE
    		reply
    		SET reply_content = #{replyContent}, reply_title = #{replyTitle}
    </update>
-   
+
+ 
    <delete id="delete">
       DELETE FROM reply WHERE reply_no=#{replyNo}
    </delete>
@@ -64,7 +75,18 @@
    		WHERE reply_writer = #{replyWriter} 		
    </select>
    
-   
-   
+   <select id="getMaxDepth" resultType="int">
+   		SELECT IFNULL((MAX(reply_depth) + 1), 1) "MAXDEPTH" FROM reply
+   		WHERE reply_article_no = #{replyArticleNo};
+   </select>
+   <select id="getMaxOrder" resultType="int">
+   		SELECT MAX(reply_order) + 1 "MAXORDER" FROM reply
+   		WHERE reply_parent = #{replyParent}
+   		
+   </select>
+   <select id="getDepth" resultType="int">
+   	SELECT reply_depth FROM reply
+   	WHERE reply_no = #{reply_no}
+   </select>
    
 </mapper>

@@ -212,7 +212,7 @@
 }
 
 	.hidden {
-	display: none;
+	display: none !important;
 }
 </style>
 </head>
@@ -274,11 +274,8 @@
 										<h5 class="card-header">댓글을 남겨봐요 <i class="far fa-comment-dots"></i></h5>
 										<div class="card-body" style="padding-bottom:7px;">
 											<textarea class="form-control" rows="2" id="reply-content"></textarea>
-               								<input type="hidden" id="reply-writer" value="${login.userNo}" /> 
-               								<input type="hidden" id="reply-article" value="${article.articleNo}" /> 
-               								<input type="hidden" id="reply-board" value="${board.boardNo}" /> 
-               								<input type="hidden" name="re_depth" value="${r.replyDepth}" /> 
-               								<input type="hidden" name="a_no" value="${article.articleNo}" /> 
+               								<input type="hidden" id="reply-writer" name="replyWriter"value="${login.userNo}" /> 
+               								<input type="hidden" id="reply-article" name="replyArticleNo" value="${article.articleNo}" /> 
                								<button type="button" id="post-reply" class="btn-sm btn-outline-default"
                								 style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
                								 등록<i class="far fa-check-circle"></i></button>
@@ -300,7 +297,7 @@
             										<p class="r_content">${r.replyContent}</p>
             										<div style="text-align:right; margin-bottom:5px;">
             											<small> <fmt:formatDate value="${r.replyCreatedAt}" pattern="yyyy.MM.dd  kk:mm" /></small>
-           											 	<small> <a href="javascript:showReplyForm(repl${r.replyNo})" class="btn-xs btn-outline-primary">답글달기</a></small>
+           											 	<small> <a href="javascript:showReplyForm('.repl${r.replyNo}')" class="btn-xs btn-outline-primary">답글달기</a></small>
             										</div>
             											<br><br>
             										</div><!-- media body -->
@@ -310,12 +307,17 @@
         										 <div class="media-body">
             										<div class="r_writer">${r.userName}님에게 답글 남기기 <i class="far fa-comment-dots"></i></div>
             										
-            										<textArea cols="30" rows="20"></textArea>
+
             										<div style="text-align:right; margin-bottom:5px;">
+            											<form method="post" action="/board/${board.boardNo}/post-reply">
+            											<input type="hidden" name="replyParent" value="${r.replyNo}"/>
+            											<input type="hidden" name="replyArticleNo" value="${article.articleNo}"/>
+               											<textArea  rows="2" name="replyContent"></textArea>         											
            											 	<small>
-           											 		<button type="button" id="post-reply" class="btn-sm btn-outline-default"
-               								 				style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
-               								 				등록<i class="far fa-check-circle"></i></button></small>
+           											 		<input type="submit" id="post-reply" class="btn-sm btn-outline-default"
+               								 				style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; "/>
+               								 				등록<i class="far fa-check-circle"></i></small>
+               								 			</form>
             										</div>
             											<br><br>
             										</div><!-- media body -->
@@ -420,13 +422,9 @@ $(function(){
       const article = $("#reply-article").val();
       console.log(article);
       
-      const board = $("#reply-board").val();
-      console.log(board);      
-      
-      const url = "/board/" + board + "/post-reply"
+      const url = "/board/" + ${board.boardNo} + "/post-comment"
       var data = {
             replyContent : content,
-            replyWriter : writer,
             replyArticleNo: article
          }
          $.ajax({
