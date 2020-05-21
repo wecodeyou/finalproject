@@ -122,19 +122,10 @@
 				</table>
 				<div class="subtitle"> <!-- 게시물 -->
 					<p>
-					<c:choose>
-					<c:when test="${login.userType == '0' }">
 						구매한 오프라인 강의 목록
-					</c:when>
-					<c:otherwise>
-						나의 오프라인 강의 목록
-					</c:otherwise>
-					</c:choose>
 					</p>
 				</div>
 				
-					<c:choose>
-					<c:when test="${login.userType == '0' }">
 				<table class="table_normal">
 					<colgroup>
 						<col width="20%">
@@ -166,15 +157,21 @@
 								<button type="button" >구매정보</button>
 							</td>
 							<td style="text-align:center;">
-								<span></span><button type="button" >입장하기</button>
+								<span></span><button type="button" 
+								onclick="location.href = '/session/participant/join/${off.productNo}'">입장하기</button>
 							</td>
 						</tr>					
 					</c:forEach>
 
 					</tbody>
 				</table>
-					</c:when>
-					<c:otherwise>
+
+				<div class="subtitle"> <!-- 게시물 -->
+					<p>
+						나의 오프라인 강의 목록
+					</p>
+				</div>
+				
 				<table class="table_normal">
 					<colgroup>
 						<col width="20%">
@@ -192,7 +189,7 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="off" items="${offList}">
+					<c:forEach var="off" items="${classList}">
 						<tr>
 							<td style="text-align:center;">
 							<img src="<c:url value = '${off.productThumb}'/>"/>
@@ -209,9 +206,7 @@
 					</c:forEach>
 
 					</tbody>
-				</table>
-					</c:otherwise>
-					</c:choose>						
+				</table>				
 
 			</div> <!-- 최근활동내역 -->
 		</div>

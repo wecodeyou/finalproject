@@ -303,24 +303,24 @@ public class MypageController {
 		
 		//오프라인 강의 담기(유저별 따로 처리)
 		  List<OffProductVO> offList = new ArrayList<OffProductVO>(); 
-		  List<PurchaseVO> purchaseList = null;
+		  List<OffProductVO> classList = new ArrayList<OffProductVO>();
+		  List<PurchaseVO> purchaseList = new ArrayList<PurchaseVO>();
 		  OffProductVO temp;
 		  System.out.println("/mypage/mylec : GET 요청 발생!");
 		  mv.setViewName("mypage/mypage-mylec");
 		  MemberVO mvo = (MemberVO)session.getAttribute("login"); 
-		  if(mvo.getUserType() == 0) {
-			  purchaseList = pservice.selectUsersPurchase(mvo.getUserNo()); 
-			  for(PurchaseVO pvo : purchaseList) {
-				  temp = oservice.getOffProduct(pvo.getPurchaseProNo());
-				  if(temp.getProductType().equals("1")) {
-					  offList.add(temp);
+			  purchaseList = pservice.selectUsersPurchase(mvo.getUserNo());
+			  if(purchaseList.size() != 0) {
+				  for(PurchaseVO pvo : purchaseList) {
+					  temp = oservice.getOffProduct(pvo.getPurchaseProNo());
+					  if(temp.getProductType().equals("1")) {
+						  offList.add(temp);
+					  } 
 				  } 
-			  } 
-		  } else {
-			  if(mvo.getUserType() == 1) 
-				  offList = oservice.getOffProductByAuthor(mvo.getUserEmail());
-		  		}
-		  
+
+			  }
+			  classList = oservice.getOffProductByAuthor(mvo.getUserEmail());	
+		  mv.addObject("classList", classList);
 		  mv.addObject("offList", offList);
 		  mv.addObject("offPurchaseList", purchaseList);
 		
