@@ -82,8 +82,9 @@
     $(function () {
         var chatBox = $('.chat_box');
         var roomId = $('.id').text();
-        var member = $('.member').text();
-
+        var member = $('.member').text();	// 유저의 번호로
+        member = "${login.userName}";		// 유저의 이름으로
+        
         var sock = new SockJS("/begin-session");
         var client = Stomp.over(sock);
 

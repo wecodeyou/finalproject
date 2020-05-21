@@ -480,4 +480,11 @@ public class MemberController {
     	  mv.setViewName("/member/sns-join-form");
     	  return mv;
       }
+      
+      @PostMapping("getName")
+      public String getName(@RequestBody Integer userNo) throws SQLException {  
+    	  return service.getOneInfo(userNo).getUserName();
+      }
+      
+      
 }
