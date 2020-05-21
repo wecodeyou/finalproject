@@ -89,7 +89,7 @@
 				<ul class="pointList">
 					<li>
 						<div class="pointIn">
-							<a href="#">
+							<a href="<c:url value = '/pay/'/>">
 							<img src="<c:url value='/img/mypage/pointpurchase.PNG'/>" alt="" />
 							<div class="pointBtn">
 								충전하기
