@@ -109,7 +109,7 @@ div p {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width:450px;
 </head>
 <body>
 
- <jsp:include page="../include/header-sub.jsp" /> 
+   <jsp:include page="../include/header-sub.jsp" />
 
 	<!-- ${condition} hidden 값으로 넘기기 -->
 <main class="wcy-main-content">	

@@ -66,12 +66,14 @@
                               <span class="close" id="modal_close_btn-tagoff">&times;</span>
                            		<div class="modal_body-tagoff">
                            			<div class="modal_title_large-tagoff" style="">해시태그를 등록해주세요 <i class="fas fa-tags"></i></div>
-                              			<input type = "text" id="text" style="margin-top:5px;width:200px;font-size:16px;padding-left: 5px;"placeholder="#해시태그">
+                              			 <br><input type = "text" id="text" style="margin-top:5px;width:222px;
+                           						font-size: 16px;padding-left: 7px;margin-left:9px;"placeholder="#해시태그">
+                          				 <input type="submit" class="btn btn-outline-primary btn-sm" style="margin: 0 2px 6px 0px;"id="add" value="등록"/>
                            			<div id="selectedTagList" ></div>
                            			<ul class="override" id="resultList"></ul>
                            		</div>
                            		<div class="modal-footer-tagoff">
-                              		<input type="submit" class="btn btn-outline-primary btn-sm"id="add" value="등록"/>
+                              		
                            		</div>
                        		 </div>
                        		 <!-- 모달 내용 끝 -->

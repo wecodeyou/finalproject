@@ -210,6 +210,7 @@
 	overflow-y: hidden;
 	text-align: left;
 	font-size: 17px;
+	min-height:400px;
 }
 
 	.hidden {
@@ -512,7 +513,7 @@ $(function() {
 
 			});
 
-	//엔터키 입력 이벤트
+/* 	//엔터키 입력 이벤트
 	$("#search-input-article").keydown(function(key) {
 
 		if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
@@ -520,7 +521,7 @@ $(function() {
 		}
 
 	});
-
+ */
 });//end jQuery
 
 </script>
