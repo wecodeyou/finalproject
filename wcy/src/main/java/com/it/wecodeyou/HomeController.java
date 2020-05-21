@@ -26,6 +26,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.it.wecodeyou.board.model.ArticleVO;
+import com.it.wecodeyou.board.model.BoardVO;
+import com.it.wecodeyou.board.model.ShowNoticeVO;
+import com.it.wecodeyou.board.service.ArticleService;
+import com.it.wecodeyou.board.service.BoardService;
 import com.it.wecodeyou.curriculum.model.CurriculumVO;
 import com.it.wecodeyou.curriculum.service.CurriculumService;
 import com.it.wecodeyou.curriculum.service.ICurriculumService;
@@ -44,6 +49,9 @@ public class HomeController {
 	   
 	@Autowired
 	private ProductService pservice;
+
+	@Autowired
+	private ArticleService aservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -77,10 +85,23 @@ public class HomeController {
 		for (int i = 0; i < ten_list.size(); i++) {
 			ten_list.get(i).setSpBook(pservice.getOneInfo(ten_list.get(i).getSpProId()).getProductName());
 		}
-		
 		model.addAttribute("sp_data", ten_list);
-		model.addAttribute("serverTime", formattedDate );
+		// 과목별 인기강의 포장
 		
+		ArrayList<ArticleVO> before_list = aservice.NotiList(8);
+		ArrayList<ShowNoticeVO> noti_list = new ArrayList<>();		
+		for (int i = 0; i < before_list.size(); i++) {
+			ShowNoticeVO snvo = new ShowNoticeVO();
+			snvo.setArticleNo(before_list.get(i).getArticleNo());
+			snvo.setArticleTitle(before_list.get(i).getArticleTitle());
+			java.sql.Date d = new java.sql.Date(before_list.get(i).getArticleCreatedAt().getTime());
+			snvo.setArticleCreatedAt(d);
+			noti_list.add(snvo);
+		}
+		model.addAttribute("noti_list", noti_list);
+		
+		
+		//model.addAttribute("serverTime", formattedDate );
 		return "home";
 	}
 	

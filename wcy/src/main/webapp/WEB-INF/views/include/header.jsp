@@ -706,25 +706,17 @@ body{font-family:'Nanum Gothic Coding', monospace;}
 	<div class="wcy-boardLayout">
 		<div class="boardWrap">
 			<div class="boardNotice">
-				<h1>공지사항<a href="#" class="more">더보기 ></a></h1>
+				<h1>공지사항<a href="<c:url value='/board/8'/>" class="more">더보기 ></a></h1>
 				<ul>
+					<c:forEach var="n" items="${noti_list}">
 					<li>
-						<a href="#">개인정보처리방침 개정 - 위코드유<img src="<c:url value='/img/commons/new.png'/>" alt="new" />
+						<a href="<c:url value='/board/article/${n.articleNo}'/>">${n.articleTitle}
+						<%-- <img src="<c:url value='/img/commons/new.png'/>" alt="new" /> --%>
 						</a>
-						<span>2020-05-15</span>
+						<span>${n.articleCreatedAt}</span>
 					</li>
-					<li>
-						<a href="#">직업능력개발훈련 인증평가 3년연속 우수 훈련기관 선정</a>
-						<span>2020-05-14</span>
-					</li>
-					<li>
-						<a href="#">코로나 관련 원내 방역작업 실시</a>
-						<span>2020-04-10</span>
-					</li>
-					<li>
-						<a href="#">네트워크 인재양성 아카데미 신규 런칭</a>
-						<span>2019-12-12</span>
-					</li>
+					</c:forEach>
+					
 				</ul>
 			</div>
 			<div class="boardFAQ">

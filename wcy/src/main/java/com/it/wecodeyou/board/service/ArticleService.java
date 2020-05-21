@@ -115,6 +115,12 @@ public class ArticleService implements IArticleService {
 		return dao.getAllByUserNo(articleWriter);
 	}
 
+	@Override
+	public ArrayList<ArticleVO> NotiList(Integer articleBoardNo) {
+		
+		return dao.NotiList(articleBoardNo);
+	}
+
 
 	
 }
