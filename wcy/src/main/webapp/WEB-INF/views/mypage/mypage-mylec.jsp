@@ -148,7 +148,7 @@
                   <tr>
                      <td style="text-align:center;">${off.productName}</td>
                      <td style="text-align:center;">
-                        <button type="button" class="btn btn-outline-dark" onclick="location.href = '/session/participant/join/${off.productNo}'">입장하기</button>
+                        <button type="button" class="btn btn-outline-dark" id="window_btn${off.productNo}" value="${off.productNo}" onclick="join_window(this)">입장하기</button>
                      </td>
                   </tr>               
                </c:forEach>
@@ -173,7 +173,8 @@
                   <tr>
                      <td >${off.productName}</td>
                      <td style="text-align:center;">
-                        <button type="button" class="btn btn-outline-dark" onclick="location.href = '/session/instructor/lecture/${off.productNo}'">강의시작</button>
+                        <button type="button" class="btn btn-outline-dark" id="window_btn${off.productNo}" value="${off.productNo}" onclick="lec_window(this)">강의시작</button>
+
                      </td>
                   </tr>               
                </c:forEach>
@@ -200,7 +201,15 @@
       location.href="<c:url value='/' />";
    </script>
 </c:if>
-
+<script type="text/javascript">
+function join_window(pro_no){
+	window.open("<c:url value='/session/participant/join/"+pro_no.value+"'/>","","width=900,height=770,left=500,top=150");    
+};
+					
+function lec_window(pro_no){
+	window.open("<c:url value='/session/instructor/lecture/"+pro_no.value+"'/>","","width=900,height=650,left=500,top=150");    
+};
+</script>
 
 </body>
    <jsp:include page="../include/footer.jsp" />

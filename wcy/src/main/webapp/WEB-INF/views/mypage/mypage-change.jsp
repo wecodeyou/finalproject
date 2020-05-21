@@ -70,10 +70,10 @@
 								<img width="100" height="95" src="<c:url value='/img/commons/basic-profileImg-gray.png'/>" alt="" />
 								<img width="100" height="95" src="<c:url value='/img/commons/basic-profileImg-purple.png'/>" alt="" />
 								<div class="profileImg-radio">
-									<input type="radio" name="userProfileImg" id="defaltImg" value="http://localhost/img/commons/basic-profileImg-blue.png" style="margin:0 87px 0 44px;">
-									<input type="radio" name="userProfileImg" value="http://localhost/img/commons/basic-profileImg-apricot.png" style="margin:0 87px 0 0px;">
-									<input type="radio" name="userProfileImg" value="http://localhost/img/commons/basic-profileImg-gray.png" style="margin:0 87px 0 0px;">
-									<input type="radio" name="userProfileImg" value="http://localhost/img/commons/basic-profileImg-purple.png">
+									<input type="radio" name="userProfileImg" id="defaltImg" value="/img/commons/basic-profileImg-blue.png" style="margin:0 87px 0 44px;">
+									<input type="radio" name="userProfileImg" value="/img/commons/basic-profileImg-apricot.png" style="margin:0 87px 0 0px;">
+									<input type="radio" name="userProfileImg" value="/img/commons/basic-profileImg-gray.png" style="margin:0 87px 0 0px;">
+									<input type="radio" name="userProfileImg" value="/img/commons/basic-profileImg-purple.png">
 								</div>
 							</div>
 						</td>
