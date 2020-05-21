@@ -20,6 +20,7 @@ import com.it.wecodeyou.product.model.ProductVO;
 import com.it.wecodeyou.product.service.IProductService;
 import com.it.wecodeyou.review.model.ReviewVO;
 import com.it.wecodeyou.review.service.ReviewService;
+import com.it.wecodeyou.schedule.service.IScheduleService;
 import com.it.wecodeyou.sub_product.service.SubProductService;
 import com.it.wecodeyou.tag.service.ITagService;
 
@@ -51,6 +52,9 @@ public class CurriculumController {
    @Autowired
    private ITagService tagservice;
    
+   @Autowired
+   private IScheduleService schedulservice;
+   
 	//커리큘럼소개 main 요청 (==> 온라인, 오프라인 통합 main임. 맵핑 주소 이름 변경 요망)
 	@GetMapping("/on_main")
 	public ModelAndView curriculumOnMain(ModelAndView mv, HttpServletRequest req) {
@@ -80,7 +84,7 @@ public class CurriculumController {
 			avg = sum/r_list.size(); 
 		}
 		
-		
+		mv.addObject("eventList",schedulservice.getEvent(offservice.getInfoByProductNo(pvo.getProductNo())));
 		
 		mv.addObject("tag", tagservice.searchTags(pvo.getProductNo()));
 		mv.addObject("sub_pro", spservice.showSubPro(pvo.getProductNo()));
