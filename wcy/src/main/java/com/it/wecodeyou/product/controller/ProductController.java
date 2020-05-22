@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -147,7 +148,7 @@ public class ProductController {
 	  }
 	  
 	  @PostMapping("/register-on")
-	  public String registerOn(@RequestBody OnCourseVO ocvo, HttpSession session) {
+	  public Integer registerOn(@RequestBody OnCourseVO ocvo, HttpSession session, Model Model) {
 		  System.out.println("/register-on : \n " + ocvo.toString());
 		  MemberVO login = (MemberVO) session.getAttribute("login");
 		  
@@ -171,20 +172,23 @@ public class ProductController {
 		  spvo.setSpThum(ocvo.getThumb());
 		  
 			// tag number list
-			ArrayList<Integer> sendTagList = ocvo.getSendTagList();
+			ArrayList<Integer> sendTagList = new ArrayList<Integer>();
+			sendTagList.add(142);
 			int result = onService.insert(pvo, ovo, sendTagList);
+			Integer productNo=pvo.getProductNo();
+
 			System.out.println("ID값" + result);
 		 if(result != 0){
 			 spvo.setSpProId(result);
 			 System.out.println(spvo.toString());
 			if(subService.insert(spvo) ==1 ) {
-			  return "register-success";
+			  return productNo;
 			} else {
-				return "subservice-error";
+				return 0;
 			}
 			
 		 } else {
-			  return "register-fail";			 
+			  return 0;			 
 		 }
 	  }
 }

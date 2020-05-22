@@ -85,7 +85,7 @@
 
 .wcy-main-content {
    width: 1190px !important;
-   margin-left:80px;
+   margin:0 auto;
    /*    margin-left:0px !important;
    margin-right:0px !important; */
 }
