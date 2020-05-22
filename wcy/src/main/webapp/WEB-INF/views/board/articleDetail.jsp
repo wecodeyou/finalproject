@@ -428,14 +428,7 @@
    <script type="text/javascript">
 $(function(){
    
-   //엔터키 입력 이벤트
-   $("#reply-content").keydown(function(key) {
-
-      if (key.keyCode == 13) {//키가 13이면 실행 (엔터는 13)
-         $("#post-reply").click();
-      }
-      
-   });
+   
    
    $("#post-reply").click(function(){
       

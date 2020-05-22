@@ -12,4 +12,6 @@ public interface IScheduleMapper {
 	public ArrayList<ScheduleVO> getEvent(OffVO ovo) throws SQLException;
 	
 	public Integer insertEvent (ScheduleVO svo)throws SQLException;
+	
+	public ArrayList<ScheduleVO> getOneSchedule(OffVO ovo) throws SQLException;
 }

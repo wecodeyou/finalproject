@@ -58,7 +58,7 @@ public class CurriculumController {
    private IMemberService mservice;
    
    @Autowired
-   private IScheduleService schedulservice;
+   private IScheduleService scheduleservice;
    
 	//커리큘럼소개 main 요청 (==> 온라인, 오프라인 통합 main임. 맵핑 주소 이름 변경 요망)
 	@GetMapping("/on_main")
@@ -111,7 +111,7 @@ public class CurriculumController {
 			avg = sum/r_list.size(); 
 		}
 		
-		mv.addObject("eventList",schedulservice.getEvent(offservice.getInfoByProductNo(pvo.getProductNo())));
+		mv.addObject("eventList",scheduleservice.getEvent(offservice.getInfoByProductNo(pvo.getProductNo())));
 		
 		mv.addObject("tag", tagservice.searchTags(pvo.getProductNo()));
 		mv.addObject("sub_pro", spservice.showSubPro(pvo.getProductNo()));
@@ -123,6 +123,7 @@ public class CurriculumController {
 		if(pvo.getProductType().equals("1")) {
 			mv.setViewName("curriculum/offDetail");
 			mv.addObject("off",offservice.getInfoByProductNo(pvo.getProductNo()));
+			mv.addObject("episodeList",scheduleservice.getOneSchedule(offservice.getInfoByProductNo((pvo.getProductNo()))));
 			System.out.println("현장강의 선택");
 		}else {
 			

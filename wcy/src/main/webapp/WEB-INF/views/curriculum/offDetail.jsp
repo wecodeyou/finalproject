@@ -147,6 +147,17 @@
 							${pro.productDetail}
 						</p>
 					</div>
+					<h4 class="contents-title">커리큘럼</h4>
+               <div class="contents-text mb40">
+                  <table class="curri-table">
+                  <c:forEach var="e" items="${episodeList}">
+                     <tr>
+                        <td class="curri-table-title">${e.scheduleRowNo}차</td>
+                        <td class="curri-table-content">${e.scheduleTitle}</td>
+                     </tr>
+                  </c:forEach>
+                  </table>
+               </div>
 				</div> <!-- detail-middle : end -->
 				<div class="detail-bottom"> <!-- detail-bottom : start -->
 					<h4 class="contents-title">수강생들의 <span style="font-weight: bold">리얼후기</span></h4>

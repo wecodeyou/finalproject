@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,12 +86,13 @@
                               <div class="classdate-on">
                                  <p>
                                     <span class="dtitle">수강일</span>
+                                    
                                     <span>30일</span>
                                  </p>
                               </div>
                            </c:if>
                            <div class="payment">
-                              ${pro_info.productPrice}<span class="small">point</span>
+                              <fmt:formatNumber type="number" maxFractionDigits="3" value="${pro_info.productPrice}" /><span class="small">point</span>
                            </div>
                         </div>
                      </div>
@@ -128,14 +129,14 @@
                   <div class="crSection02">
                      <div class="crtitle">내 포인트</div>
                      <div class="crContent">
-                        <p class="crcName">${login.userPoint}<span class="small">point</span></p>	<a href="<c:url value = '/pay/'/>"  onclick ="window.open(this.href, '_blank', 'width=880,height=600,toolbars=no,scrollbars=no,resizable=no,status=no,location=no'); return false;">
+                        <p class="crcName"><fmt:formatNumber type="number" maxFractionDigits="3" value="${login.userPoint}" /><span class="small">point</span></p>	<a href="<c:url value = '/pay/'/>"  onclick ="window.open(this.href, '_blank', 'width=880,height=600,toolbars=no,scrollbars=no,resizable=no,status=no,location=no'); return false;">
                         <button class="btn btn-outline-warning" style="width: 90px;height: 30px;font-size: 13px;letter-spacing: -1.5px;margin-bottom: 10px;margin-right: 14px;">포인트 충전</button></a>
                      </div>
                   </div>
                   <div class="crSection04">
                      <div class="crtitle">결제 금액</div>
                      <div class="crContent">
-                        <p class="crcName">${pro_info.productPrice}<span class="small">point</span></p>
+                        <p class="crcName"><fmt:formatNumber type="number" maxFractionDigits="3" value="${pro_info.productPrice}" /><span class="small">point</span></p>
                      </div>
                   </div>
                   <div class="crSection05">
@@ -169,6 +170,8 @@
           var Form = document.getElementById('purchaseForm');
           var seat = document.getElementById('seat_no').value;
           
+          if (${pro_info.productType} == 1){
+          
           if(seat == null || seat == ""){
         	  Swal.fire('좌석 선택해주세요.');
         	  //alert("좌석 선택해주세요.")
@@ -185,7 +188,19 @@
 	        	  }
         	  }        			
           }
-      }
+      }else
+    	  if($(':input:checkbox[id=refundchk]:checked').val() != 'true'){// 체크박스 여부
+		  Swal.fire('약관에 동의해 주세요.');
+		  //alert("약관에 동의해 주세요.");        		  
+	  }else{
+    	  if((${login.userPoint}-${pro_info.productPrice}) < 0){// 포인트가 충분한지 여부
+    		  Swal.fire('포인트가 부족합니다. 충전먼저 해주세요!');
+    		  //alert("포인트가 부족합니다.");        		  
+    	  }else{
+          	Form.submit();        		  
+    	  }
+	  }
+    }
    </script>
    
    
