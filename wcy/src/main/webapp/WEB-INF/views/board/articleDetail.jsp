@@ -202,7 +202,6 @@
 }
 
 .contents-box-article {
-<<<<<<< HEAD
 	width: 100%;
 	height: auto;
 	padding: 8px;
@@ -212,16 +211,6 @@
 	text-align: left;
 	font-size: 17px;
 	min-height:400px;
-=======
-   width: 100%;
-   height: auto;
-   padding: 8px;
-   box-sizing: border-box;
-   overflow-x: hidden;
-   overflow-y: hidden;
-   text-align: left;
-   font-size: 17px;
->>>>>>> branch 'master' of https://github.com/wecodeyou/finalproject.git
 }
 
    .hidden {
