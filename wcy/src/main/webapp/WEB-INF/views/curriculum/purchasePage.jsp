@@ -86,6 +86,7 @@
                               <div class="classdate-on">
                                  <p>
                                     <span class="dtitle">수강일</span>
+                                    
                                     <span>30일</span>
                                  </p>
                               </div>
@@ -169,6 +170,8 @@
           var Form = document.getElementById('purchaseForm');
           var seat = document.getElementById('seat_no').value;
           
+          if (${pro_info.productType} == 1){
+          
           if(seat == null || seat == ""){
         	  Swal.fire('좌석 선택해주세요.');
         	  //alert("좌석 선택해주세요.")
@@ -185,7 +188,19 @@
 	        	  }
         	  }        			
           }
-      }
+      }else
+    	  if($(':input:checkbox[id=refundchk]:checked').val() != 'true'){// 체크박스 여부
+		  Swal.fire('약관에 동의해 주세요.');
+		  //alert("약관에 동의해 주세요.");        		  
+	  }else{
+    	  if((${login.userPoint}-${pro_info.productPrice}) < 0){// 포인트가 충분한지 여부
+    		  Swal.fire('포인트가 부족합니다. 충전먼저 해주세요!');
+    		  //alert("포인트가 부족합니다.");        		  
+    	  }else{
+          	Form.submit();        		  
+    	  }
+	  }
+    }
    </script>
    
    
