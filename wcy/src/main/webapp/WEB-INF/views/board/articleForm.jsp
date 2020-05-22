@@ -263,7 +263,7 @@ $(function(){
 				data:JSON.stringify(ArticleTagVO),
 				success: function(data){
 					console.log("received output : " + data);
-					alert("tag 등록 성공");
+					//alert("tag 등록 성공");
 					
 				},
 				error: function(request, status, error){

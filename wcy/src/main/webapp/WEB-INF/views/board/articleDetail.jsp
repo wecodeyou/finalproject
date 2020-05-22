@@ -85,7 +85,7 @@
 
 .wcy-main-content {
    width: 1190px !important;
-   margin:0 auto;
+   /* margin:0 auto; */
    /*    margin-left:0px !important;
    margin-right:0px !important; */
 }
@@ -201,19 +201,7 @@
    text-align: left;
 }
 
-.contents-box-article {
-<<<<<<< HEAD
-	width: 100%;
-	height: auto;
-	padding: 8px;
-	box-sizing: border-box;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	text-align: left;
-	font-size: 17px;
-	min-height:400px;
-=======
-   width: 100%;
+.contents-box-article {   width: 100%;
    height: auto;
    padding: 8px;
    box-sizing: border-box;
@@ -221,7 +209,7 @@
    overflow-y: hidden;
    text-align: left;
    font-size: 17px;
->>>>>>> branch 'master' of https://github.com/wecodeyou/finalproject.git
+   min-height:400px;
 }
 
    .hidden {
@@ -268,7 +256,7 @@
                            </p><br><br>
                            
                            <!-- Title -->
-                           <span style="font-size:26px; font-weight:bold; padding-left:8px;">
+                           <span style="font-size:23px; font-weight:bold; padding-left:8px;">
                               ${article.articleTitle} 댓글 수 ${countReply}
                            </span><br>
                            <hr>
@@ -358,7 +346,7 @@
                                  <textarea class="form-control" rows="2" id="reply-content"></textarea>
                                        <input type="hidden" id="reply-writer" name="replyWriter"value="${login.userNo}" /> 
                                        <input type="hidden" id="reply-article" name="replyArticleNo" value="${article.articleNo}" /> 
-                                       <button type="button" id="post-reply" class="btn-sm btn-outline-default"
+                                       <button type="button" id="post-comment" class="btn-sm btn-outline-default"
                                         style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
                                         등록<i class="far fa-check-circle"></i></button>
                               </div>
@@ -428,7 +416,61 @@
    <script type="text/javascript">
 $(function(){
    
-   
+	   $("#post-comment").click(function(){
+		      
+		      if(${login == null}){
+		         Swal.fire('로그인이 필요한 서비스입니다.');
+		            return;
+		      }
+		      
+		      const writer = $("#reply-writer").val();
+		      console.log(writer);
+		      if(writer === "") {
+		         Swal.fire('로그인이 필요한 서비스입니다.');
+		         return;
+		      }
+		      
+		      const content = $("#reply-content").val();
+		      console.log("content " + content);
+		      if(content === "" || content.startsWith( '/ /gi' )){
+		           Swal.fire('내용을 입력해주세요!');
+		         return;
+		      }
+
+		      const article = $("#reply-article").val();
+		      console.log(article);
+		      
+		      const url = "/board/" + ${board.boardNo} + "/post-comment"
+		      var data = {
+		            replyContent : content,
+		            replyArticleNo: article
+		         }
+		         $.ajax({
+		            type: "POST",
+		            url : url,
+		            headers:{
+		               "Content-Type": "application/json"
+		            },
+		            dataType: "text",
+		            data:JSON.stringify(data),
+		            success: function(data){
+		               console.log("received output : " + data);
+		               if(data === "post-reply-success"){
+		                    Swal.fire('댓글이 추가되었습니다.');
+
+		                     window.location.reload();
+		                  }else{
+		                    Swal.fire('웹사이트 오류입니다.');
+		                  }
+		               
+		            },
+		            error: function(request, status, error){
+		               console.log("POST : /board/${boardNo}/register 요청에 실패했습니다.")
+		                Swal.fire('댓글 등록에 실패하였습니다.');
+
+		            }
+		         }); /* end ajax */
+		   }); 
    
    $("#post-reply").click(function(){
       
@@ -454,7 +496,7 @@ $(function(){
       const article = $("#reply-article").val();
       console.log(article);
       
-      const url = "/board/" + ${board.boardNo} + "/post-comment"
+      const url = "/board/" + ${board.boardNo} + "/post-reply"
       var data = {
             replyContent : content,
             replyArticleNo: article
@@ -519,7 +561,6 @@ $(function() {
 
          });
 
-   });
 });//end jQuery
 
 </script>
