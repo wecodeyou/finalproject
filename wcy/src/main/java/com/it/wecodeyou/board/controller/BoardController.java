@@ -137,7 +137,8 @@ public class BoardController {
 		ArticleVO avo = new ArticleVO();
 		avo.setArticleTitle(atvo.getArticleTitle());
 		avo.setArticleContent(atvo.getArticleContent());
-		avo.setArticleWriter(atvo.getArticleWriter());
+		MemberVO  mvo = (MemberVO) session.getAttribute("login");
+		avo.setArticleWriter(mvo.getUserNo());
 		avo.setArticleBoardNo(boardNo);
 		
 		//tag number list

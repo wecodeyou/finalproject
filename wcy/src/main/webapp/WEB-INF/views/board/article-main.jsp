@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -183,6 +183,15 @@
 	border-radius: 5px;
 }
 
+.replBtn {
+	margin: 0px 0px 0px 3px;
+    border-radius: 50px;
+    /* border: 1px solid gray; */
+    background: transparent;
+    font-size: 12px;
+    color: royalblue;
+    padding: 0px 6px 0px 6px;
+}
 </style>
 </head>
 
@@ -265,7 +274,9 @@
 													</c:if>
 												</c:forEach>
 												<a class="title_link"
-													href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle} ${countReplyList[status.index]}</a>
+													href="<c:url value='/board/article/${a.articleNo}'/>">${a.articleTitle}
+													<button type="button" class="replBtn"><i class="far fa-comment-dots"></i>&nbsp;${countReplyList[status.index]}</button> </a>
+												
 											</div>
 										</td>
 										<td style="text-align:center;">${userNameList[status.index].userName}</td>
