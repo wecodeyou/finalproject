@@ -30,175 +30,175 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.css" />
 <title>WE CODE YOU | 커뮤니티</title>
 <style>
-
 .post-reply {
-   margin-top: 1px !important;
-   margin-bottom: 1px !important;
+	margin-top: 1px !important;
+	margin-bottom: 1px !important;
 }
 
 .a_content {
-   margin: 50px;
-   /* text-align:center; */
+	margin: 50px;
+	/* text-align:center; */
 }
 
 .reply_input {
-   width: 100%;
-   border: 1px;
+	width: 100%;
+	border: 1px;
 }
 
 .r_content {
-   margin-top: 5px;
-   margin-bottom: 4px;
-   font-size: 15px;
+	margin-top: 5px;
+	margin-bottom: 4px;
+	font-size: 15px;
 }
 
 .r_writer {
-   margin-top: 5px;
-   margin-bottom: 10px;
-   font-size: 13px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-size: 13px;
 }
 
 .hashtag {
-   color: #3A73FB;
-   font-size: 11px;
-   font-weight: bold;
+	color: #3A73FB;
+	font-size: 11px;
+	font-weight: bold;
 }
 
 .hash_tag {
-   display: inline-block;
-   border-radius: 13px;
-   opacity: 0.8;
-   text-align: center;
-   font-size: 13px;
-   margin: 3px 3px;
-   margin-bottom: 4px;
-   margin-right: 1px; padding : 4px 9px;
-   background: #dfedff;
-   border: 0.3px solid #d5e7ff;
-   padding: 4px 9px;
+	display: inline-block;
+	border-radius: 13px;
+	opacity: 0.8;
+	text-align: center;
+	font-size: 13px;
+	margin: 3px 3px;
+	margin-bottom: 4px;
+	margin-right: 1px;
+	padding: 4px 9px;
+	background: #dfedff;
+	border: 0.3px solid #d5e7ff;
+	padding: 4px 9px;
 }
 
 .hash_tag:hover {
-   background: white;
-   border: 0.3px solid #c0dbff;
+	background: white;
+	border: 0.3px solid #c0dbff;
 }
 
 .wcy-main-content {
-   width: 1190px !important;
-   margin-left:80px;
-   /*    margin-left:0px !important;
+	width: 1190px !important;
+	/* margin:0 auto; */
+	/*    margin-left:0px !important;
    margin-right:0px !important; */
 }
 
 .article-table {
-   text-align: left;
+	text-align: left;
 }
 
 .article-gradient-tr {
-   background: #c3cfde;
-   opacity: 0.8;
-   font-size: 13px;
+	background: #c3cfde;
+	opacity: 0.8;
+	font-size: 13px;
 }
 
 .write-btn {
-   text-align: left !important;
-   margin-bottom: 0px !important;
-   padding: 0px !important;
+	text-align: left !important;
+	margin-bottom: 0px !important;
+	padding: 0px !important;
 }
 
 .left-section-article {
-   float: left;
-   width: 210px;
-   margin-top: 0px;
+	float: left;
+	width: 210px;
+	margin-top: 0px;
 }
 
 .left-section-article>h2 {
-   width: 180px;
-   height: 112px;
-   background: #25283D;
-   color: #fff;
-   text-align: center;
-   display: table-cell;
-   vertical-align: middle;
+	width: 180px;
+	height: 112px;
+	background: #25283D;
+	color: #fff;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .left-section-article .left-sub-nav-article {
-   width: 180px;
-   border: solid #dbdbdb;
-   border-width: 0 1px;
-   box-sizing: border-box;
+	width: 180px;
+	border: solid #dbdbdb;
+	border-width: 0 1px;
+	box-sizing: border-box;
 }
 
 .left-section-article .left-sub-nav-article>li>a {
-   padding: 10px 20px;
-   font-size: 14px;
-   display: block;
-   position: relative;
-   border-bottom: 1px solid #dbdbdb;
-   font-weight: bold;
-   color: #333;
+	padding: 10px 20px;
+	font-size: 14px;
+	display: block;
+	position: relative;
+	border-bottom: 1px solid #dbdbdb;
+	font-weight: bold;
+	color: #333;
 }
 
 .left-section-article .left-sub-nav-article>li:hover {
-   background: #f4f4f4;
+	background: #f4f4f4;
 }
 
 .right-section-article {
-   width: 980px;
-   float: right;
-   position: relative;
+	width: 980px;
+	float: right;
+	position: relative;
 }
 
 .right-header-article .right-sub-nav-article {
-   width: 100%;
-   background: #f4f4f4;
-   border-radius: 5px;
-   display: table;
-   table-layout: fixed;
-   margin-bottom: 50px;
-   overflow: hidden;
+	width: 100%;
+	background: #f4f4f4;
+	border-radius: 5px;
+	display: table;
+	table-layout: fixed;
+	margin-bottom: 50px;
+	overflow: hidden;
 }
 
 .right-header-article .right-sub-nav-article li {
-   display: table-cell;
+	display: table-cell;
 }
 
 .right-header-article .right-sub-nav-article li a {
-   display: block;
-   height: 60px;
-   box-sizing: border-box;
-   font-size: 18px;
-   color: #888;
-   padding: 0 0 0 20px;
-   line-height: 60px;
-   border-bottom: 4px solid #ddd;
+	display: block;
+	height: 60px;
+	box-sizing: border-box;
+	font-size: 18px;
+	color: #888;
+	padding: 0 0 0 20px;
+	line-height: 60px;
+	border-bottom: 4px solid #ddd;
 }
 
 .right-sub-nav-article li a.active {
-   color: #25283D;
-   border-color: #25283D;
+	color: #25283D;
+	border-color: #25283D;
 }
 
 .contents-title-article:before {
-   display: block;
-   content: '';
-   width: 50px;
-   height: 3px;
-   background: #25283D;
-   position: absolute;
-   left: 0;
-   top: 0;
+	display: block;
+	content: '';
+	width: 50px;
+	height: 3px;
+	background: #25283D;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
 
 .contents-title-article {
-   font-size: 22px;
-   margin-bottom: 20px;
-   color: #000;
-   position: relative;
-   padding-top: 5px;
-   height: 40px;
-   line-height: 40px;
-   text-align: left;
+	font-size: 22px;
+	margin-bottom: 20px;
+	color: #000;
+	position: relative;
+	padding-top: 5px;
+	height: 40px;
+	line-height: 40px;
+	text-align: left;
 }
 
 .contents-box-article {
@@ -210,11 +210,11 @@
 	overflow-y: hidden;
 	text-align: left;
 	font-size: 17px;
-	min-height:400px;
+	min-height: 400px;
 }
 
-   .hidden {
-   display: none !important;
+.hidden {
+	display: none !important;
 }
 </style>
 </head>
@@ -257,7 +257,7 @@
                            </p><br><br>
                            
                            <!-- Title -->
-                           <span style="font-size:26px; font-weight:bold; padding-left:8px;">
+                           <span style="font-size:23px; font-weight:bold; padding-left:8px;">
                               ${article.articleTitle} 댓글 수 ${countReply}
                            </span><br>
                            <hr>
@@ -347,7 +347,7 @@
                                  <textarea class="form-control" rows="2" id="reply-content"></textarea>
                                        <input type="hidden" id="reply-writer" name="replyWriter"value="${login.userNo}" /> 
                                        <input type="hidden" id="reply-article" name="replyArticleNo" value="${article.articleNo}" /> 
-                                       <button type="button" id="post-reply" class="btn-sm btn-outline-default"
+                                       <button type="button" id="post-comment" class="btn-sm btn-outline-default"
                                         style="float: right; margin-top:3px !important; background:white; color:gray;border:0.7px solid gray; ">
                                         등록<i class="far fa-check-circle"></i></button>
                               </div>
@@ -417,7 +417,61 @@
    <script type="text/javascript">
 $(function(){
    
-   
+	   $("#post-comment").click(function(){
+		      
+		      if(${login == null}){
+		         Swal.fire('로그인이 필요한 서비스입니다.');
+		            return;
+		      }
+		      
+		      const writer = $("#reply-writer").val();
+		      console.log(writer);
+		      if(writer === "") {
+		         Swal.fire('로그인이 필요한 서비스입니다.');
+		         return;
+		      }
+		      
+		      const content = $("#reply-content").val();
+		      console.log("content " + content);
+		      if(content === "" || content.startsWith( '/ /gi' )){
+		           Swal.fire('내용을 입력해주세요!');
+		         return;
+		      }
+
+		      const article = $("#reply-article").val();
+		      console.log(article);
+		      
+		      const url = "/board/" + ${board.boardNo} + "/post-comment"
+		      var data = {
+		            replyContent : content,
+		            replyArticleNo: article
+		         }
+		         $.ajax({
+		            type: "POST",
+		            url : url,
+		            headers:{
+		               "Content-Type": "application/json"
+		            },
+		            dataType: "text",
+		            data:JSON.stringify(data),
+		            success: function(data){
+		               console.log("received output : " + data);
+		               if(data === "post-reply-success"){
+		                    Swal.fire('댓글이 추가되었습니다.');
+
+		                     window.location.reload();
+		                  }else{
+		                    Swal.fire('웹사이트 오류입니다.');
+		                  }
+		               
+		            },
+		            error: function(request, status, error){
+		               console.log("POST : /board/${boardNo}/register 요청에 실패했습니다.")
+		                Swal.fire('댓글 등록에 실패하였습니다.');
+
+		            }
+		         }); /* end ajax */
+		   }); 
    
    $("#post-reply").click(function(){
       
@@ -443,7 +497,7 @@ $(function(){
       const article = $("#reply-article").val();
       console.log(article);
       
-      const url = "/board/" + ${board.boardNo} + "/post-comment"
+      const url = "/board/" + ${board.boardNo} + "/post-reply"
       var data = {
             replyContent : content,
             replyArticleNo: article
@@ -508,7 +562,6 @@ $(function() {
 
          });
 
-   });
 });//end jQuery
 
 </script>

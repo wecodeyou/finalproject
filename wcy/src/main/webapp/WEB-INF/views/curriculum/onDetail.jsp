@@ -102,7 +102,7 @@
                   </div>
                </div>
                <div class="detail-top-right">
-                  <h1 class="className">[온라인] ${pro.productName}</h1>
+                  <h1 class="className shadow rounded">[온라인] ${pro.productName}</h1>
                   <table class="top-right-info">
                      <tbody>
                         <tr>
@@ -130,11 +130,11 @@
                            </span>
                         </a>
                      </div> -->
-                     <div class="button-register">
+                     <div class="button-register shadow rounded">
                         <a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
                      </div>
                      <c:if test = "${login.userType == 2}"> 
-                        <div class="button-register">
+                        <div class="button-register shadow rounded">
                            <a class="btn_red_regi" title="에피소드 추가" href="<c:url value="/on/${pro.productNo}"/>">에피소드 추가</a>
                         </div>
                      </c:if>
@@ -172,7 +172,7 @@
                <div class="review-head">
                   <span class="review-head-red">전체</span> 수강후기<span class="review-head-gray">(${review_num} 건)</span>
                </div>
-                <div class="review-wrap">
+                <div class="review-wrap shadow rounded">
                   <ul class="review-container">
                      <c:forEach var="r" items="${sd_list}">
                      <script>

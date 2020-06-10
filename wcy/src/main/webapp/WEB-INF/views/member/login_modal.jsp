@@ -122,7 +122,7 @@
 							아직 WCY 회원이 아니세요? 
 						</span>
 
-						<a href="#" class="txt3 bo1">
+						<a href="<c:url value='/member/email-form' />" class="txt3 bo1">
 							 회원가입
 						</a>
 					</div>

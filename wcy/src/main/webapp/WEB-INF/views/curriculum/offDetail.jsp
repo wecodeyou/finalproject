@@ -101,7 +101,7 @@
 						</div>
 					</div>
 					<div class="detail-top-right">
-						<h1 class="className">[현장강의] ${pro.productName}</h1>
+						<h1 class="className shadow rounded">[현장강의] ${pro.productName}</h1>
 						<table class="top-right-info">
 							<tbody>
 								<tr>
@@ -119,7 +119,7 @@
 							</tbody>
 						</table>
 						<div class="top-right-button">
-							<div class="button-cart">
+							<div class="button-cart shadow rounded">
 								<a class="modal_open_btn" data-toggle="modal" data-target="#modal2" title="일정보기">
 									<i class="far fa-calendar-alt"></i>
 									<span class="cart_on">
@@ -127,7 +127,7 @@
 									</span>
 								</a>
 							</div>
-							<div class="button-register">
+							<div class="button-register shadow rounded">
 								<a onclick="logincheck()" title="수강신청" class="btn_red_regi">수강신청</a>
 							</div>
 						</div>
@@ -164,7 +164,7 @@
 					<div class="review-head">
 						<span class="review-head-red">전체</span> 수강후기<span class="review-head-gray">(${review_num} 건)</span>
 					</div>
-					<div class="review-wrap">
+					<div class="review-wrap shadow rounded">
 						<ul class="review-container">
 							<c:forEach var="r" items="${sd_list}">
 							<script>

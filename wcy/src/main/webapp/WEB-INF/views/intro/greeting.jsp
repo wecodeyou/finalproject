@@ -299,7 +299,7 @@ article.company, article.history{
 	<main class="wcy-main-content">
 		<div class="wcy-contents">
 			<div class="right-header">
-				<ul class="right-sub-nav1">
+				<ul class="right-sub-nav1 shadow rounded">
 					<li><a class="active"> WECODEYOU 소개 </a></li>
 					<li><a class="scrollMove" href="#historyCon"> WECODEYOU 연혁 </a></li>
 				</ul>
@@ -313,7 +313,7 @@ article.company, article.history{
 				<p>
 					모든 프로그래머에게 필요한 정보와 기능을 지원하기 위해 항상 최선을 다하겠습니다.
 				</p>
-				<article class="company">
+				<article class="company shadow rounded">
 					<div class="txt">
 						<div class="width">
 							<div class="txtLeft">
@@ -342,7 +342,7 @@ article.company, article.history{
 					<div class="txt">
 						<div class="width">
 							<div class="txtLeft">
-							<img src="<c:url value='/img/commons/company (2).jpg'/>" alt="" />
+							<img src="<c:url value='/img/commons/company (2).jpg'/>" alt="" class="shadow rounded" />
 							<div class="semo"></div>
 							</div>
 							<div class="txtRight">
@@ -360,11 +360,11 @@ article.company, article.history{
 							</div>
 								<div class="imgbottom">
 									<div class="txtLeft">
-										<img src="<c:url value='/img/commons/company (3).jpg'/>" alt=""/>
+										<img src="<c:url value='/img/commons/company (3).jpg'/>" alt="" class="shadow rounded" />
 										<div class="semo2"></div>
 									</div>
 									<div class="txtRight">
-										<img src="<c:url value='/img/commons/company (4).jpg'/>" alt="" />
+										<img src="<c:url value='/img/commons/company (4).jpg'/>" alt="" class="shadow rounded" />
 										<div class="semo3"></div>
 									</div>
 									

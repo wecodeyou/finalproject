@@ -36,9 +36,9 @@
 			</div>
 			
 			<article class="curriculum">
-				<div class="page-width   shadow rounded">
-					<h5 class="curri-title">${c.engName}</h5>
-					<ul class="curri-list">
+				<div class="page-width">
+					<h5 class="curri-title shadow rounded">${c.engName}</h5>
+					<ul class="curri-list shadow rounded">
 						
 						<li>
 							<div class="curri-list-img">

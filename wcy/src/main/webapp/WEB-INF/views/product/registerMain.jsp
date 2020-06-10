@@ -78,9 +78,6 @@
 <body>
 
 	<jsp:include page="../include/header-sub.jsp" />
-	<%-- <jsp:include page="../schedule/ex.jsp" />
-	<%-- <%@ include file="../schedule/ex.jsp" %> --%>  
-	<%-- <%@ include file="../schedule/calendar.jsp" %>  --%> 
 
 
 	<main class="wcy-main-content">
@@ -427,16 +424,18 @@
 			
 			$.ajax({
 				type: "POST",
-				url : '/product/register-on',
+				url : '/product/register-off',
 				headers:{
 					"Content-Type": "application/json"
 				},
 				dataType: "text",
 				data:JSON.stringify(data),
-				success: function(data){
+				success: function(data){	//오프라인
 					console.log("received output: " + data);
-				
-
+					Swal.fire('오프라인 강의 등록 성공!');
+					 window.setTimeout(function(){
+						 window.location.href="/admin";
+					 },1000);
 				},
 				error: function(request, status, error){
 					$('#message').text("통신에 실패하였습니다");
@@ -477,7 +476,7 @@
 					category : category,
 					book : book,
 					days : days,
-					sendTagList: sendTagListOn
+					
 				}
 			
 			$.ajax({
@@ -488,9 +487,12 @@
 				},
 				dataType: "text",
 				data:JSON.stringify(data),
-				success: function(data){
+				success: function(data){	//온라인 
 					console.log("received output: " + data);
-				
+					Swal.fire('온라인 강의 등록 다음단계로 이동합니다!');
+					 window.setTimeout(function(){
+						 window.location.href="/on/"+data;
+					 },1000);
 
 				},
 				error: function(request, status, error){
@@ -501,7 +503,7 @@
 	}); 
 
 	
-	<!-- li 클릭으로 온/오프 폼 변경하기 -->
+	// li 클릭으로 온/오프 폼 변경하기
 	var sBtn = $(".center-sub-nav-p > li"); //  ul > li 이를 sBtn으로 칭한다. (클릭이벤트는 li에 적용 된다.)
 	$(function() {
 		sBtn.find("a").click(function() { // sBtn에 속해 있는  a 찾아 클릭 하면.
